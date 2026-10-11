@@ -33,6 +33,31 @@
 | `dlssRenderScale` | `"game"` | `"game"`、`"dlaa"`、`"quality"`、`"balanced"`、`"performance"`、`"ultra-performance"`、`"custom"` |
 | `dlssCustomScale` | `67` | `"custom"` 时的百分比，`50` 至 `100` |
 
+### `dlssPresets`
+
+三个模型选项相互独立，均需**重启游戏**。SR/RR 位于 **Image → DLSS Super Resolution**，FG 位于
+**Frames → Frame generation**。这些选项不改变渲染分辨率、插帧倍率或 NR 预设。
+
+| 键 | 默认 | 值 |
+| :--- | :---: | :--- |
+| `dlssSrPreset` | `"game"` | `"game"`、`"default"`、`"a"`–`"f"`（旧预设）、`"j"`、`"k"`、`"l"`、`"m"` |
+| `dlssRrPreset` | `"game"` | `"game"`、`"default"`、`"a"`–`"c"`（旧预设）、`"d"`、`"e"` |
+| `dlssFgPreset` | `"game"` | `"game"`、`"a"`、`"b"` |
+
+`"game"` 保留游戏的选择。SR/RR 选择适用于所有质量模式，包括 DLAA；`"default"` 明确请求 DLSS DLL 的默认值。
+可用模型取决于安装的 DLL，NVIDIA 驱动覆盖设置或模型回退可能优先生效。选择 RR 预设不会启用 RR。
+
+FG A/B 支持以下经过逐一验证的 NVIDIA **DLSS-G 正式版二进制文件**：
+
+- **310.6.0.0、310.7.0.0、310.7.128.0、310.7.129.0**
+- **310.8.0.0、310.9.0.0、310.9.1.0**
+
+此列表仅适用于预设覆盖；帧生成本身的兼容范围更广。
+版本号相同并不保证接受，开发版本不在支持范围内。
+其他二进制文件保留原有行为，日志会记录拒绝原因。A 使用经典插帧；B 的 UI 重组需要兼容的无 HUD/UI 输入。
+模组不写入 NVIDIA 驱动配置文件。会话详情显示保存的选项、启动时的选项以及 FG 请求是否被接受，
+但不能证明实际执行了哪个模型。保持 `"game"` 可保留现有行为。
+
 ### `neuralRendering`
 
 | 键 | 默认 | 值 |
@@ -101,7 +126,7 @@ Open 的性能键位于此独立分组。请先在菜单中选择引擎和适合
 
 | 键 | 默认 | 值 |
 | :--- | :---: | :--- |
-| `reflexFrameLimit` | `0` | `0` 跟随游戏；`1` 至 `1000` 限制渲染帧率 |
+| `reflexFrameLimit` | `0` | `0` 恢复游戏的 Reflex 设置；`1` 至 `1000` 请求帧率上限。FG 的计入方式取决于游戏与驱动 |
 | `vsyncOff` | `false` | 请求 DirectX 游戏关闭 V-Sync |
 | `hairEnabled` | `true` | 在具备该功能的游戏中启用兼容的光线追踪毛发。需重启。 |
 
@@ -109,7 +134,7 @@ Open 的性能键位于此独立分组。请先在菜单中选择引擎和适合
 
 | 键 | 默认 | 值 |
 | :--- | :---: | :--- |
-| `logPerformance` | `false` | 将帧率和帧时间写入 `rtx-encore-logs` 中的 CSV 文件 |
+| `logPerformance` | `false` | 将帧时间写入 CSV，并将 GPU 温度、功耗和性能限制原因写入 `rtx-encore-logs` 中的会话日志 |
 | `logFilesKept` | `3` | 保留的常规日志数及同等数量的异常日志，`1` 至 `100` |
 
 ### `keyboardShortcuts`

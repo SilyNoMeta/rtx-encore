@@ -41,6 +41,29 @@ La génération d'images fonctionne avec ces versions du fichier `nvngx_dlssg.dl
 - Les autres fichiers DLSS du jeu (Super Resolution, Ray Reconstruction, ...) peuvent avoir n'importe quelle
   version.
 
+## Versions de Streamline
+
+La prise en charge de Streamline dépend de la fonction. Les SDK Windows x64 disponibles de 1.0.0 à 2.14.1
+ont été examinés hors ligne, y compris les fichiers de production et de développement lorsqu'ils sont publiés.
+Cela ne valide pas en jeu chaque combinaison SDK/jeu/pilote.
+
+| Fonction | Couverture examinée et limites |
+| :--- | :--- |
+| Contrôles Streamline | Demandent Streamline 2.x. L'interface Streamline 1.x n'est pas prise en charge. |
+| MFG fixe au-delà de X2 | Reconnu dans les fichiers des SDK publiés 2.7.2, 2.7.30, 2.7.32, 2.8.0, 2.9.0, 2.10.0, 2.10.3, 2.11.1, 2.12.0 et 2.14.1. Les SDK antérieurs ne sont pas qualifiés pour ces multiplicateurs. Un fichier DLSS Frame Generation pris en charge est également nécessaire. |
+| Extension du DMFG natif | Fichiers officiels de production Streamline 2.11.1, 2.12.0 et 2.14.1 qualifiés hors jeu. Le rythme varie selon la version ; une confirmation par jeu reste nécessaire. Les autres builds conservent leurs capacités natives. |
+| MFG adaptatif Encore (DX12) | Fichiers officiels de production et de développement : 2.7.2, 2.7.30, 2.7.32, 2.8.0, 2.9.0, 2.10.0, 2.10.3. X2–X4 seulement, même si X5/X6 expérimental est activé. Nécessite une intégration de jeu compatible ; certaines anciennes intégrations restent exclues. Qualifié hors jeu, pas encore confirmé en jeu. |
+| Forçage de la recomposition de l'interface | Les mêmes trois fichiers de production sont qualifiés. Demande des données d’interface exploitables fournies par le jeu. Les autres builds gardent leur propre gestion. Cette fonction est distincte de UI assist. |
+| Plafond Reflex | Versions de DLL 2.1.1–2.14.1 ; voir [Menu et overlay](MENU-AND-OVERLAY.fr.md#plafond-reflex-suggéré). |
+
+Il n'existe pas de tag SDK public pour 2.13 ou 2.14.0 dans cet examen. Un numéro de version intermédiaire
+ne suffit pas à établir la prise en charge de toutes les fonctions. Conservez les fichiers Streamline du jeu
+ensemble ; ces notes ne recommandent pas de remplacer des fichiers individuellement.
+
+**Pour profiter du plus grand nombre de fonctions, privilégiez les dernières versions qualifiées : Streamline 2.14.1 et DLSS-G 310.9.1.0.** Les anciennes versions offrent moins de fonctions ; un fichier plus récent non examiné n’est pas automatiquement compatible. Gardez un ensemble Streamline cohérent et compatible avec le jeu. Les presets SR/RR dépendent de leurs DLL et du pilote ; Neural Rendering exige toujours spécifiquement 310.8.0.
+
+**DirectX 11 :** DLSS MFG et son mode Dynamique sont indisponibles. Le chemin distinct Smooth Motion produit uniquement du X2, sans bascule X3/X4. Ses exigences de GPU et de pilote restent applicables.
+
 ## Pilotes pour Smooth Motion
 
 Smooth Motion sur RTX 30 accepte les pilotes NVIDIA **617.42**, **617.14**, **616.92** et **616.64**, et aucun

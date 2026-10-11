@@ -16,8 +16,8 @@ to go to its settings. When a problem lasts, a card under the strip names it and
 
 | Tab | What it holds |
 | :--- | :--- |
-| **Frames** | Frame generation with its quality and interface options, Smooth Motion, the rendered-frame limit, V-Sync |
-| **Image** | DLSS render resolution, Neural Rendering |
+| **Frames** | Frame generation with its model preset, quality and interface options, Smooth Motion, the Reflex frame limit, V-Sync |
+| **Image** | DLSS render resolution, SR/RR model presets, Neural Rendering |
 | **Overlay** | A preview of the overlay, its position, its text size and the lines it shows |
 | **System** | Shortcuts, compatibility, diagnostics and the session details, with a **Copy** button for bug reports |
 
@@ -37,6 +37,10 @@ Good to know:
 In a few games the menu cannot be drawn safely inside the image. The settings then open in a separate window and
 the overlay becomes a small click-through text over the game. Borderless window mode is recommended in that case.
 The settings and their effect are the same.
+
+### Component availability
+
+**System → Component compatibility** shows the loaded Streamline, DLSS-G, SR and RR versions, plus feature availability and the reason for each limitation. Unavailable or unqualified choices are greyed out. A component that has not loaded yet is shown as waiting; this can change after enabling DLSS/FG in the game. You can still disable a saved override or return to the game’s settings. An available preset request does not prove which model the driver actually selected.
 
 ## The overlay
 
@@ -67,9 +71,34 @@ Position (four corners) and text size (10 to 32 px) are in the same tab.
 | Setting | Tab | What it does |
 | :--- | :--- | :--- |
 | **Render resolution** | Image | Forces the resolution the game renders at before DLSS: DLAA, Quality, Balanced, Performance, Ultra Performance, or a custom scale from 50 to 100 %. The game must already use DLSS. The menu shows the resolution observed and whether the game follows the request; set it back to *Game* if a game misbehaves. In Unreal Engine 4 and 5 games the screen percentage is adjusted live when possible. |
-| **Render-frame limit (FPS)** | Frames | Caps the frames the game renders, through NVIDIA Reflex when the game supports it. 0 follows the game. It does not count generated frames and is suspended in Dynamic mode. |
+| **Frame limit (FPS)** | Frames | Requests a frame limit through NVIDIA Reflex when supported. 0 restores the game's settings. Generated frames may count toward the limit depending on the game/driver. Suspended in Dynamic mode. |
 | **Request V-Sync off** | Frames | Asks DirectX games to present without V-Sync. A setting forced in the NVIDIA control panel keeps priority. No effect in Vulkan games. |
 | **Compatible ray-traced hair** | System | The Witcher 3 (DirectX 12, game builds 25575366 and 25646871): makes the game's ray-traced hair available on RTX 20, 30 and 40 cards. The game's own hair settings still decide whether hair is rendered. Not validated in game on RTX 20 and RTX 30 yet. Restart to apply. |
+
+### Suggested Reflex cap
+
+The Reflex limiter accepts DLL versions 2.1.1–2.14.1. Versions outside that range retain the game's settings.
+The published SDKs in this range have been examined offline; this is not in-game validation of every version.
+Untagged intermediate versions, including 2.13 and 2.14.0, have no public SDK validation.
+Actual limiting still depends on the game's Reflex integration and driver support. This does not add a CPU-wait fallback.
+
+In **Frames → Frame pacing**, **For this display** suggests `display refresh rate - 3 FPS`:
+for example, **117 FPS at 120 Hz**. It does not divide the request by the FG multiplier. Depending on the
+game and driver, generated frames may count toward the cap. In Starfield with Streamline 2.12, a request
+of 90 was observed at about 22.5 rendered FPS with FG ×4. Compare the measured source and FG-inclusive rates.
+Click **Use … FPS** to save the suggestion. Display or multiplier changes never adjust your saved limit automatically.
+Or type a value directly into **Frame limit (FPS)** and press **Enter** or **Apply**. Values from 1 to 1000 FPS
+are accepted. **Use game settings** (or 0) restores the game’s own limit; it does not force all limiters off.
+An unfinished edit is not saved when you click elsewhere.
+
+The suggestion is unavailable in Dynamic mode, with Smooth Motion, or while the display rate or current
+Frame Generation state is unknown. The manual limit remains available and requires supported Reflex.
+The menu shows the Reflex request/status separately from measured source FPS: **Reflex accepted … FPS** confirms the
+request, not that the measured rate or display output matches it.
+
+The 3 FPS margin is a starting point, not automatic VRR detection or a guarantee of staying within its range.
+A lower limit can reduce load, power and heat if it reduces the actual rendering rate. A limit above the
+rate the game already achieves may have no benefit; adjust it after comparing the same scene at operating temperature.
 
 ## Shortcuts
 
@@ -83,3 +112,5 @@ Session logs are written in the `rtx-encore-logs` folder beside the mod's file; 
 file in the same folder.
 
 Exception logs are kept separately, with the same count. Each process has its own file; logs still in use are preserved.
+
+With **Log performance** enabled, the session log also records GPU temperature, power, clocks and reported performance limits about once per second. This works with the overlay hidden and Frame Generation off. Unavailable readings are marked `NA`. See [performance drops](TROUBLESHOOTING.md#performance-drops-after-playing-for-a-while).

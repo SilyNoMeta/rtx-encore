@@ -51,7 +51,45 @@ Voir la fin de leurs pages : [Smooth Motion](SMOOTH-MOTION.fr.md#si-cela-ne-fonc
 | Un réglage n'a aucun effet | Les réglages marqués `*` sont lus au démarrage du jeu : relancez le jeu. |
 | Les raccourcis ne font rien | Ils n'agissent que lorsque la fenêtre du jeu a le focus, et `disableKeybinds` doit valoir `false`. |
 
+## Baisse de performances après quelques minutes
+
+Activez **System → Diagnostics → Log performance**, puis jouez depuis un démarrage à froid jusqu’au ralentissement.
+Gardez les mêmes réglages pendant cette capture et notez l’heure approximative de la chute. Envoyez le journal
+de session du jeu dans `rtx-encore-logs` ; le CSV des temps d’image, s’il est produit, est également utile.
+Désactivez ensuite cette option.
+
+Les lignes `[GPU-PERF]` relèvent températures, puissance, fréquences, limites signalées, charge CPU et état
+secteur/batterie avec la cadence du jeu. Elles identifient la carte NVIDIA surveillée ; vérifiez son nom si vous
+avez plusieurs GPU NVIDIA. Une mesure absente vaut `NA`, jamais zéro. La température et la puissance CPU,
+ainsi que la vitesse des ventilateurs du portable, ne sont pas relevées. Ces mesures ne prouvent pas l’état de la pâte thermique.
+
+Une limitation thermique signalée aide à confirmer un ralentissement lié à la chauffe. Une limitation de
+puissance seule ne départage pas un profil du portable, le partage CPU/GPU ou une autre contrainte électrique.
+Les événements brefs entre deux relevés peuvent être manqués. Comparer la même scène avant et après la chute
+est particulièrement utile.
+
+Pour une comparaison distincte, essayez **Frames → Frame pacing → Suggested Reflex cap** si disponible,
+ou une demande Reflex manuelle. La suggestion utilise la fréquence écran moins 3 FPS ; ce n’est pas une cible
+thermique. Le comptage des images FG dépend du jeu et du pilote. Si l’application ne réduit pas la cadence de
+rendu mesurée, essayez une demande plus basse. Comparez les FPS source et les mesures GPU ; `accepted` seul ne
+démontre pas un gain. Le plafond enregistré reste fixe jusqu’à votre prochaine modification.
+Voir [les commandes du plafond](MENU-AND-OVERLAY.fr.md#plafond-reflex-suggéré).
+
 ## Signaler un problème
+
+Le journal de session relève automatiquement les informations de base, même avec les options de diagnostic
+désactivées : version de Windows, CPU, mémoire, cartes graphiques et modes du bureau, versions et chemins
+des DLL chargées (jeu, mod, Streamline, DLSS et composants du pilote compris). Les versions indisponibles
+sont signalées. Plusieurs copies chargées ne prouvent pas laquelle est utilisée. La collecte peut manquer
+un crash très précoce ou une DLL déchargée avant son observation.
+
+Les créations DLSS observées indiquent aussi l’API graphique, le mode SR/RR, la qualité, les résolutions et
+les presets demandés. **Un preset demandé ne confirme pas le preset effectivement utilisé** : le pilote
+ou une substitution peut choisir un autre modèle. Valeur par défaut, absente ou inconnue restent distinctes.
+Les rapports sont bornés et dédupliqués lorsque c’est pertinent ; les performances image par image et les traces
+graphiques/NR détaillées demandent toujours leurs options. Compressez tout le dossier `rtx-encore-logs` du
+lancement concerné pour inclure le jeu et les éventuels chargeurs/rapporteurs d’erreur. Le rapport **Copy** du
+menu est un résumé et ne remplace pas ce dossier.
 
 Ouvrez un [ticket](https://github.com/SilyNoMeta/rtx-encore/issues) avec :
 

@@ -31,6 +31,8 @@ each rendered one.
 - In Vulkan games, Dynamic mode chooses between X2 and X6 from the measured frame rate and the target.
 - On an 8 GB card, start with X2 or X3, or X4 with High or Medium textures.
 
+On qualified older Streamline versions, DX12 Dynamic uses Encore’s adaptive X2–X4 mode. It starts at X2, reacts to the measured source-frame cadence, waits between changes and suspends adaptation if the game refuses a request. Modern qualified providers retain native Dynamic MFG. See [the version matrix](COMPATIBILITY.md#streamline-versions). D3D11 uses the separate Smooth Motion X2 path only.
+
 ## Shortcuts
 
 | Shortcut | Action |

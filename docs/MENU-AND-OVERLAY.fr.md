@@ -17,8 +17,8 @@ comment le corriger.
 
 | Onglet | Ce qu'il contient |
 | :--- | :--- |
-| **Frames** | La génération d'images avec ses options de qualité et d'interface, Smooth Motion, la limite d'images calculées, la V-Sync |
-| **Image** | La résolution de rendu DLSS, Neural Rendering |
+| **Frames** | La génération d'images avec son preset de modèle et ses options de qualité et d'interface, Smooth Motion, la limite d'images calculées, la V-Sync |
+| **Image** | La résolution de rendu DLSS, les presets de modèles SR/RR, Neural Rendering |
 | **Overlay** | Un aperçu de l'overlay, sa position, la taille de son texte et les lignes qu'il affiche |
 | **System** | Les raccourcis, la compatibilité, les diagnostics et les détails de la session, avec un bouton **Copy** pour les rapports de bug |
 
@@ -39,6 +39,10 @@ comment le corriger.
 Dans quelques jeux, le menu ne peut pas être dessiné sans risque dans l'image. Les réglages s'ouvrent alors dans une
 fenêtre séparée et l'overlay devient un petit texte posé sur le jeu, qui laisse passer les clics. Le mode fenêtré
 sans bordure est recommandé dans ce cas. Les réglages et leur effet sont les mêmes.
+
+### Disponibilité des fonctions
+
+**System → Component compatibility** affiche les versions chargées de Streamline, DLSS-G, SR et RR, les fonctions disponibles et la raison de chaque limite. Les choix indisponibles ou non qualifiés sont grisés. Un composant pas encore chargé est indiqué en attente ; cela peut changer après activation de DLSS/FG dans le jeu. Il reste possible de désactiver un forçage enregistré ou de revenir aux réglages du jeu. Une demande de preset disponible ne prouve pas quel modèle le pilote utilise réellement.
 
 ## L'overlay
 
@@ -69,9 +73,34 @@ La position (quatre coins) et la taille du texte (10 à 32 px) sont dans le mêm
 | Réglage | Onglet | Ce qu'il fait |
 | :--- | :--- | :--- |
 | **Render resolution** | Image | Force la résolution à laquelle le jeu calcule l'image avant DLSS : DLAA, Quality, Balanced, Performance, Ultra Performance, ou une échelle personnalisée de 50 à 100 %. Le jeu doit déjà utiliser DLSS. Le menu montre la résolution observée et si le jeu suit la demande ; revenez à *Game* si un jeu se comporte mal. Dans les jeux Unreal Engine 4 et 5, le pourcentage d'écran est ajusté en direct quand c'est possible. |
-| **Render-frame limit (FPS)** | Frames | Plafonne les images que le jeu calcule, par NVIDIA Reflex quand le jeu le prend en charge. 0 suit le jeu. Les images générées ne sont pas comptées, et la limite est suspendue en mode Dynamique. |
+| **Frame limit (FPS)** | Frames | Demande un plafond via NVIDIA Reflex compatible. 0 restaure les réglages du jeu. Les images générées peuvent compter dans ce plafond selon le jeu et le pilote. Suspendu en mode Dynamic. |
 | **Request V-Sync off** | Frames | Demande aux jeux DirectX de présenter sans V-Sync. Un réglage forcé dans le panneau de configuration NVIDIA garde la priorité. Sans effet dans les jeux Vulkan. |
 | **Compatible ray-traced hair** | System | The Witcher 3 (DirectX 12, versions du jeu 25575366 et 25646871) : rend les cheveux en ray tracing du jeu disponibles sur les cartes RTX 20, 30 et 40. Les réglages de cheveux du jeu décident toujours s'ils sont affichés. Pas encore validé en jeu sur RTX 20 et RTX 30. Relancez pour appliquer. |
+
+### Plafond Reflex suggéré
+
+Le limiteur Reflex accepte les versions de DLL 2.1.1–2.14.1. En dehors de cette plage, les réglages du jeu sont conservés.
+Les SDK publiés dans cette plage ont été examinés hors ligne ; chaque version n'a pas été validée en jeu.
+Les versions intermédiaires sans tag public, dont 2.13 et 2.14.0, n'ont pas été vérifiées avec un SDK public.
+Son effet dépend toujours de l'intégration Reflex du jeu et du pilote. Aucun limiteur de repli par attente CPU n'est ajouté.
+
+Dans **Frames → Frame pacing**, **For this display** propose `fréquence de l’écran - 3 FPS` :
+par exemple **117 FPS à 120 Hz**, sans division par le multiplicateur FG. Selon le jeu et le pilote, les images
+générées peuvent compter dans le plafond. Dans Starfield avec Streamline 2.12, une demande de 90 a donné environ
+22,5 FPS rendus avec FG ×4. Comparez la cadence source mesurée et celle incluant FG.
+Cliquez sur **Use … FPS** pour enregistrer la suggestion ; changer d’écran ou de multiplicateur n’ajuste jamais le plafond automatiquement.
+Vous pouvez aussi saisir directement une valeur dans **Frame limit (FPS)**, puis valider par **Entrée** ou **Apply**.
+La plage est de 1 à 1000 FPS. **Use game settings** (ou 0) restaure le plafond du jeu, sans désactiver tous les limiteurs.
+Cliquer ailleurs n’enregistre pas une saisie inachevée.
+
+La suggestion est indisponible en mode Dynamic, avec Smooth Motion, ou tant que la fréquence de l’écran ou
+l’état actuel de la génération est inconnu. Le réglage manuel reste disponible et nécessite Reflex compatible.
+Le menu distingue la demande et son statut Reflex des FPS source mesurés : **Reflex accepted … FPS** confirme la demande,
+pas que la cadence mesurée ou celle de l’affichage lui correspond.
+
+La marge de 3 FPS est un point de départ, sans détection automatique du VRR ni garantie de rester dans sa plage.
+Un plafond plus bas peut réduire charge, consommation et chauffe s’il réduit effectivement la cadence de rendu.
+Un plafond supérieur aux FPS déjà atteints peut n’apporter aucun bénéfice ; ajustez-le en comparant la même scène à chaud.
 
 ## Raccourcis
 
@@ -86,3 +115,5 @@ récents sont conservés (**Session logs kept**, 1 à 100). **Log performance** 
 de la session dans un fichier CSV du même dossier.
 
 Les journaux d’exception sont conservés séparément, en même nombre. Chaque processus a son fichier ; les journaux encore utilisés sont conservés.
+
+Avec **Log performance**, le journal de session relève aussi la température, la puissance, les fréquences GPU et les limitations signalées, environ une fois par seconde. Cela fonctionne avec l’overlay masqué et la Frame Generation désactivée. Les mesures indisponibles sont marquées `NA`. Voir [les baisses de performances](TROUBLESHOOTING.fr.md#baisse-de-performances-après-quelques-minutes).

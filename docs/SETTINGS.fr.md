@@ -36,6 +36,36 @@ Aucune clé ne contient de chemin ni de commande : un fichier de réglages peut 
 | `dlssRenderScale` | `"game"` | `"game"`, `"dlaa"`, `"quality"`, `"balanced"`, `"performance"`, `"ultra-performance"`, `"custom"` |
 | `dlssCustomScale` | `67` | Pourcentage, `50` à `100`, avec `"custom"` |
 
+### `dlssPresets`
+
+Ces choix de modèles sont indépendants et demandent de **relancer le jeu**. SR/RR se trouvent dans
+**Image → DLSS Super Resolution**, FG dans **Frames → Frame generation**. Ils ne changent ni la résolution de rendu,
+ni le multiplicateur d'images, ni le preset NR.
+
+| Clé | Défaut | Valeurs |
+| :--- | :---: | :--- |
+| `dlssSrPreset` | `"game"` | `"game"`, `"default"`, `"a"`–`"f"` (anciens), `"j"`, `"k"`, `"l"`, `"m"` |
+| `dlssRrPreset` | `"game"` | `"game"`, `"default"`, `"a"`–`"c"` (anciens), `"d"`, `"e"` |
+| `dlssFgPreset` | `"game"` | `"game"`, `"a"`, `"b"` |
+
+`"game"` conserve le choix du jeu. Les choix SR/RR s'appliquent à tous les modes de qualité, DLAA compris ;
+`"default"` demande explicitement le choix par défaut de la DLL DLSS. Les modèles disponibles dépendent
+de la DLL installée ; les réglages NVIDIA ou un modèle de repli peuvent prendre le dessus.
+Choisir un preset RR n'active pas RR.
+
+Le choix FG A/B prend en charge les **binaires release NVIDIA DLSS-G** vérifiés individuellement ci-dessous :
+
+- **310.6.0.0, 310.7.0.0, 310.7.128.0, 310.7.129.0**
+- **310.8.0.0, 310.9.0.0, 310.9.1.0**
+
+Cette liste concerne le forçage des presets ; la compatibilité générale de la génération d’images est plus large.
+Le numéro de version seul ne garantit pas l’acceptation, et les variantes de développement sont exclues.
+Les autres binaires conservent leur comportement et le journal indique le refus. A utilise la FG classique ;
+B nécessite des entrées HUD-less/UI compatibles pour la recomposition de l'interface.
+Le mod n'écrit pas dans les profils du pilote NVIDIA. Les détails de session indiquent les choix enregistrés,
+ceux du lancement et si la demande FG a été acceptée ; ils ne prouvent pas quel modèle a été exécuté.
+Laissez `"game"` pour conserver le comportement actuel.
+
 ### `neuralRendering`
 
 | Clé | Défaut | Valeurs |
@@ -106,7 +136,7 @@ indépendant de `nrOpenUltraFast` et de `dlssRenderScale` ; ces réglages ne s'a
 
 | Clé | Défaut | Valeurs |
 | :--- | :---: | :--- |
-| `reflexFrameLimit` | `0` | `0` suit le jeu ; `1` à `1000` plafonne les images calculées |
+| `reflexFrameLimit` | `0` | `0` restaure les réglages Reflex du jeu ; `1` à `1000` demande un plafond FPS. Le comptage de FG dépend du jeu et du pilote |
 | `vsyncOff` | `false` | Demande aux jeux DirectX de présenter sans V-Sync |
 | `hairEnabled` | `true` | Cheveux en ray tracing compatibles, dans les jeux qui en ont. Relancez pour appliquer. |
 
@@ -114,7 +144,7 @@ indépendant de `nrOpenUltraFast` et de `dlssRenderScale` ; ces réglages ne s'a
 
 | Clé | Défaut | Valeurs |
 | :--- | :---: | :--- |
-| `logPerformance` | `false` | Écrit la fréquence et les temps d'image dans un fichier CSV de `rtx-encore-logs` |
+| `logPerformance` | `false` | Écrit les temps d’image en CSV et les températures, la puissance et les raisons de limitation GPU dans le journal de session de `rtx-encore-logs` |
 | `logFilesKept` | `3` | Journaux normaux conservés, plus autant de journaux d’exception, `1` à `100` |
 
 ### `keyboardShortcuts`

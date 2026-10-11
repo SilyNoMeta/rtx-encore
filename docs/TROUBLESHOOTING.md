@@ -51,7 +51,41 @@ See the end of their pages: [Smooth Motion](SMOOTH-MOTION.md#if-it-does-not-work
 | A setting has no effect | Settings marked with `*` are read when the game starts: restart the game. |
 | Shortcuts do nothing | They only act while the game window has focus, and `disableKeybinds` must be `false`. |
 
+## Performance drops after playing for a while
+
+Enable **System → Diagnostics → Log performance**, then play from a cool start until the slowdown occurs.
+Keep the same game settings for that capture, and note the approximate time of the drop. Send the game's
+session log from `rtx-encore-logs`; the frame-time CSV, if produced, is useful too. Turn the option off afterwards.
+
+The `[GPU-PERF]` entries record temperature, power, frequencies, reported limits, CPU usage and AC/battery
+status alongside the game's cadence. They identify the NVIDIA GPU being monitored; check its name if your
+machine has several NVIDIA GPUs. Missing readings are marked `NA`, not zero. CPU temperature/power and
+laptop fan RPM are not included. The readings do not prove the condition of the thermal paste.
+
+A reported thermal limit helps confirm overheating-related slowdown. A power limit alone does not tell us
+whether the cause is a laptop power profile, CPU/GPU power sharing, or another power constraint. Brief events
+between samples may be missed. Comparing the same scene before and after the drop is especially useful.
+
+For a separate comparison, try **Frames → Frame pacing → Suggested Reflex cap** when available, or a manual
+Reflex request. The suggestion uses the display rate minus 3 FPS; it is not a thermal target. FG counting
+depends on the game/driver. If applying it does not reduce the actual render rate, try a lower request.
+Compare measured source FPS and GPU readings; `accepted` alone does not prove a benefit. The saved limit
+stays fixed until you change it. See [the cap controls](MENU-AND-OVERLAY.md#suggested-reflex-cap).
+
 ## Reporting a problem
+
+Basic context is recorded automatically in the session log, even with diagnostic options off:
+Windows build, CPU, memory, display adapters and desktop modes, and loaded DLL versions and paths
+(including the game, mod, Streamline, DLSS and driver components). Unavailable versions are marked explicitly.
+Multiple loaded copies do not prove which one is used. Discovery can miss a very early crash or a DLL
+that unloads before it is observed.
+
+Observed DLSS creations also report the graphics API, SR/RR mode, quality, resolutions and requested
+presets. **A requested preset is not a confirmed effective preset**: the driver or an override may select
+another model. Default, unavailable and unknown values are kept distinct. Reports are bounded and deduplicated
+where appropriate; frame-by-frame performance and detailed graphics/NR traces still require their options.
+Zip the whole `rtx-encore-logs` folder from the failing launch so the game's log is included alongside any
+loader/error-reporter logs. The menu's **Copy** report is a short summary and does not replace that folder.
 
 Open an [issue](https://github.com/SilyNoMeta/rtx-encore/issues) with:
 
