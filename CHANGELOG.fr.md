@@ -2,6 +2,28 @@
 
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.0.0-beta.4 — préversion
+
+- Extension du DMFG natif et de la recomposition de l’interface aux fichiers de production Streamline 2.11.1 et 2.12.0 qualifiés, en plus de 2.14.1. Ajout de l’adaptation Encore X2–X4 pour les anciens fichiers DX12 Streamline 2.7.2–2.10.3 qualifiés. Vulkan garde son adaptation ; D3D11 reste limité à Smooth Motion X2. Voir [Compatibilité](docs/COMPATIBILITY.fr.md#versions-de-streamline) pour les versions exactes et les limites.
+- Ajout de **System → Component compatibility** : versions chargées, fonctions disponibles et explications. Les choix incompatibles sont grisés, tout en permettant de désactiver un ancien forçage. Privilégiez les dernières versions qualifiées Streamline 2.14.1 et DLSS-G 310.9.1.0 pour profiter du plus de fonctions.
+- Correction d’un accès mémoire invalide identifié avec le FG dynamique dans The Witcher 3 ([#4](https://github.com/SilyNoMeta/rtx-encore/issues/4)) et d’un problème de fermeture de Starfield avec Streamline 2.12 ([#21](https://github.com/SilyNoMeta/rtx-encore/issues/21)). La fermeture de Starfield a été confirmée avec le précédent build de test ; le retest de la beta.4 finale et la résolution du crash Witcher restent à confirmer.
+- Correction de la durée de vie du plugin Reflex lors des réinitialisations de Streamline, pour les problèmes de démarrage Cyberpunk étudiés ([#14](https://github.com/SilyNoMeta/rtx-encore/issues/14), [#17](https://github.com/SilyNoMeta/rtx-encore/issues/17)). Confirmation en jeu encore attendue.
+- Correction des mises à jour et restaurations tardives du plafond Reflex entre threads. Saisie FPS directe, **Use game settings** et **For this display** (fréquence écran moins 3 FPS). Le comptage avec FG dépend du jeu/pilote ; le DMFG suspend ce forçage. Compatibilité Reflex étendue aux versions de DLL qualifiées 2.1.1–2.14.1 ; aucun SDK officiel 2.13 disponible pour vérification.
+- Choix indépendants des presets SR, RR et FG, appliqués au redémarrage. FG A/B prend en charge les fichiers de production DLSS-G qualifiés individuellement 310.6.0.0, 310.7.0.0, 310.7.128.0, 310.7.129.0, 310.8.0.0, 310.9.0.0 et 310.9.1.0. SR/RR dépend des DLL et des réglages du pilote ; le modèle effectif n’est pas garanti. Par défaut, les choix du jeu sont conservés.
+- Journaux automatiques des versions système et des composants chargés, de la qualité/résolution DLSS et des presets SR/RR demandés. Les journaux de performance optionnels ajoutent température, puissance, fréquences, limites GPU signalées et pauses de plus d’une seconde. Ces ajouts améliorent le diagnostic ; ils ne prouvent pas une correction de [#12](https://github.com/SilyNoMeta/rtx-encore/issues/12) ou [#19](https://github.com/SilyNoMeta/rtx-encore/issues/19).
+
+La qualification automatisée ne remplace pas les essais de chaque combinaison jeu/GPU/pilote. L’adaptation ajoutée, l’affichage de compatibilité et les presets attendent encore des retours en jeu.
+
+### Remerciements
+
+- [@Avictuu](https://github.com/Avictuu) — essais répétés de Starfield, multiplicateurs, journaux Reflex/fermeture détaillés et confirmation de la fermeture normale du build de test ([#21](https://github.com/SilyNoMeta/rtx-encore/issues/21)).
+- [@wisecase2](https://github.com/wisecase2) — journaux Witcher 3 de la même session et éléments de suivi Cyberpunk ([#4](https://github.com/SilyNoMeta/rtx-encore/issues/4), [#17](https://github.com/SilyNoMeta/rtx-encore/issues/17)).
+- [@hunan-NRT](https://github.com/hunan-NRT) et [@naruto490610-alt](https://github.com/naruto490610-alt) — rapports, journaux et essais de suivi Cyberpunk ([#14](https://github.com/SilyNoMeta/rtx-encore/issues/14), [#17](https://github.com/SilyNoMeta/rtx-encore/issues/17)).
+- [@yannduwooz83](https://github.com/yannduwooz83) et [@PrincessofCelery](https://github.com/PrincessofCelery) — rapports ayant amélioré les informations de support et le diagnostic des blocages ([#12](https://github.com/SilyNoMeta/rtx-encore/issues/12), [#19](https://github.com/SilyNoMeta/rtx-encore/issues/19)).
+
+Merci à tous ceux qui partagent leurs journaux et prennent le temps de tester les builds.
+
+
 ## 1.0.0-beta.3 — préversion
 
 - Correction du crash de démarrage identifié dans The Last of Us avec RTX Encore, OptiScaler et l'ancien runtime Streamline du jeu. Confirmation en jeu attendue ; le cas de Dead Space reste à confirmer.

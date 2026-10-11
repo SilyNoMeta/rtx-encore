@@ -29,6 +29,8 @@ RTX Encore 为 RTX 20、RTX 30 和 RTX 40 显卡带来 X2 至 X6 的 DLSS 多帧
 - 在 Vulkan 游戏中，动态模式根据实测帧率和目标在 X2 到 X6 之间选择。
 - 8 GB 显存的显卡请从 X2 或 X3 开始，或在高/中纹理质量下使用 X4。
 
+在符合条件的旧 Streamline 中，DX12 动态模式使用 Encore 自适应 X2–X4。从 X2 开始，依据游戏源帧率调整，在切换之间等待，并在游戏拒绝请求时暂停。符合条件的新版保留原生动态 MFG。见[版本矩阵](COMPATIBILITY.zh-CN.md#streamline-版本)。D3D11 仅提供独立的 Smooth Motion X2。
+
 ## 快捷键
 
 | 快捷键 | 作用 |

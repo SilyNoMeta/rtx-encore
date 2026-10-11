@@ -2,6 +2,28 @@
 
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.0.0-beta.4 — pre-release
+
+- Extend native Dynamic MFG and UI recomposition to the qualified production Streamline 2.11.1 and 2.12.0 files, alongside 2.14.1. Add Encore adaptive X2–X4 for qualified older DX12 Streamline 2.7.2–2.10.3 files. Vulkan keeps its adaptive path; D3D11 remains Smooth Motion X2 only. See [Compatibility](docs/COMPATIBILITY.md#streamline-versions) for exact versions and limits.
+- Add **System → Component compatibility**: loaded component versions, available features and explanations. Grey out unsupported choices while retaining the option to disable saved overrides. Prefer the latest qualified Streamline 2.14.1 and DLSS-G 310.9.1.0 for the fullest coverage.
+- Correct an invalid memory access identified with Dynamic FG in The Witcher 3 ([#4](https://github.com/SilyNoMeta/rtx-encore/issues/4)) and a Streamline 2.12 shutdown problem in Starfield ([#21](https://github.com/SilyNoMeta/rtx-encore/issues/21)). The Starfield exit fix was confirmed with the earlier test build; final beta.4 retesting and confirmation of the Witcher crash resolution remain pending.
+- Correct Reflex plugin lifetime across Streamline restarts, addressing the investigated Cyberpunk startup problems ([#14](https://github.com/SilyNoMeta/rtx-encore/issues/14), [#17](https://github.com/SilyNoMeta/rtx-encore/issues/17)). In-game confirmation remains pending.
+- Correct delayed Reflex cap updates and restoration across game threads. Add direct FPS entry, **Use game settings** and **For this display** (refresh rate minus 3 FPS). FG counting depends on the game/driver; Dynamic MFG suspends this override. Extend Reflex compatibility to qualified DLL versions 2.1.1–2.14.1; no official 2.13 SDK was available for verification.
+- Add independent SR, RR and FG preset controls, applied after restarting the game. FG A/B requests support individually qualified production DLSS-G 310.6.0.0, 310.7.0.0, 310.7.128.0, 310.7.129.0, 310.8.0.0, 310.9.0.0 and 310.9.1.0. SR/RR support depends on the loaded DLL and driver overrides; the effective model is not guaranteed. Defaults preserve the game’s choices.
+- Automatically record system and loaded component versions, DLSS quality/resolutions and requested SR/RR presets. Optional performance logs now include GPU temperature, power, clocks, reported limits and gaps longer than one second. These additions improve diagnostics; they do not establish fixes for [#12](https://github.com/SilyNoMeta/rtx-encore/issues/12) or [#19](https://github.com/SilyNoMeta/rtx-encore/issues/19).
+
+Automated qualification is not a substitute for testing each game, GPU and driver combination. The new adaptive path, compatibility display and preset changes still need in-game feedback.
+
+### Thanks
+
+- [@Avictuu](https://github.com/Avictuu) — repeated Starfield tests, multiplier checks, detailed Reflex/exit logs and confirmation of normal shutdown in the test build ([#21](https://github.com/SilyNoMeta/rtx-encore/issues/21)).
+- [@wisecase2](https://github.com/wisecase2) — matching Witcher 3 session logs and Cyberpunk follow-up evidence ([#4](https://github.com/SilyNoMeta/rtx-encore/issues/4), [#17](https://github.com/SilyNoMeta/rtx-encore/issues/17)).
+- [@hunan-NRT](https://github.com/hunan-NRT) and [@naruto490610-alt](https://github.com/naruto490610-alt) — Cyberpunk reports, logs and follow-up tests ([#14](https://github.com/SilyNoMeta/rtx-encore/issues/14), [#17](https://github.com/SilyNoMeta/rtx-encore/issues/17)).
+- [@yannduwooz83](https://github.com/yannduwooz83) and [@PrincessofCelery](https://github.com/PrincessofCelery) — reports that helped improve automatic support information and freeze diagnostics ([#12](https://github.com/SilyNoMeta/rtx-encore/issues/12), [#19](https://github.com/SilyNoMeta/rtx-encore/issues/19)).
+
+Thanks to everyone who shares logs and takes time to test the builds.
+
+
 ## 1.0.0-beta.3 — pre-release
 
 - Address a startup crash identified in The Last of Us when using RTX Encore with OptiScaler and the game's older Streamline runtime. In-game confirmation is pending; Dead Space remains unconfirmed.

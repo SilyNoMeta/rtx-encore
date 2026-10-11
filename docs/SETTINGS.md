@@ -35,6 +35,33 @@ No key holds a path or a command: a settings file can be shared with someone els
 | `dlssRenderScale` | `"game"` | `"game"`, `"dlaa"`, `"quality"`, `"balanced"`, `"performance"`, `"ultra-performance"`, `"custom"` |
 | `dlssCustomScale` | `67` | Percent, `50` to `100`, with `"custom"` |
 
+### `dlssPresets`
+
+These independent model choices require a **game restart**. SR/RR are in **Image → DLSS Super Resolution**;
+FG is in **Frames → Frame generation**. They do not change render resolution, the frame multiplier or the NR preset.
+
+| Key | Default | Values |
+| :--- | :---: | :--- |
+| `dlssSrPreset` | `"game"` | `"game"`, `"default"`, `"a"`–`"f"` (legacy), `"j"`, `"k"`, `"l"`, `"m"` |
+| `dlssRrPreset` | `"game"` | `"game"`, `"default"`, `"a"`–`"c"` (legacy), `"d"`, `"e"` |
+| `dlssFgPreset` | `"game"` | `"game"`, `"a"`, `"b"` |
+
+`"game"` leaves the game's choice intact. SR/RR choices apply to every quality mode, including DLAA;
+`"default"` explicitly requests the DLSS DLL's default. Available models depend on the installed DLL,
+and NVIDIA driver overrides or model fallback can take priority. Choosing an RR preset does not enable RR.
+
+FG A/B selection supports the individually verified NVIDIA **DLSS-G release binaries** listed below:
+
+- **310.6.0.0, 310.7.0.0, 310.7.128.0, 310.7.129.0**
+- **310.8.0.0, 310.9.0.0, 310.9.1.0**
+
+This list applies to preset overrides; it is narrower than overall frame-generation compatibility.
+A matching version number alone does not guarantee acceptance, and development variants are excluded.
+Other binaries keep their existing behavior and the log records the refusal. A uses classic FG;
+B needs compatible HUD-less/UI inputs for UI recomposition. The mod does not write NVIDIA driver profiles.
+Session details show saved/startup choices and whether FG accepted the request; they do not prove which
+model executed. Leave `"game"` selected to preserve the existing behavior.
+
 ### `neuralRendering`
 
 | Key | Default | Values |
@@ -105,7 +132,7 @@ the menu first; these keys do not turn Open on by themselves.
 
 | Key | Default | Values |
 | :--- | :---: | :--- |
-| `reflexFrameLimit` | `0` | `0` follows the game; `1` to `1000` caps the rendered frames |
+| `reflexFrameLimit` | `0` | `0` restores the game's Reflex settings; `1` to `1000` requests an FPS cap. FG counting depends on the game/driver |
 | `vsyncOff` | `false` | Asks DirectX games to present without V-Sync |
 | `hairEnabled` | `true` | Compatible ray-traced hair, in the games that have it. Restart to apply. |
 
@@ -113,7 +140,7 @@ the menu first; these keys do not turn Open on by themselves.
 
 | Key | Default | Values |
 | :--- | :---: | :--- |
-| `logPerformance` | `false` | Writes frame rate and frame times to a CSV file in `rtx-encore-logs` |
+| `logPerformance` | `false` | Writes frame times to CSV and GPU temperature, power and slowdown reasons to the session log in `rtx-encore-logs` |
 | `logFilesKept` | `3` | Regular logs kept, plus the same number of exception logs, `1` to `100` |
 
 ### `keyboardShortcuts`

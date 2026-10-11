@@ -2,6 +2,28 @@
 
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
+## 1.0.0-beta.4 — 预发布版本
+
+- 在已验证的 Streamline 2.14.1 生产版之外，为 2.11.1、2.12.0 增加原生动态 MFG 和界面重组支持。为符合条件的旧 DX12 Streamline 2.7.2–2.10.3 增加 Encore 自适应 X2–X4。Vulkan 保留自适应路径；D3D11 仅限 Smooth Motion X2。具体版本与限制见[兼容性](docs/COMPATIBILITY.zh-CN.md#streamline-版本)。
+- 新增 **System → Component compatibility**，显示已加载版本、功能可用性及原因。不兼容选项变灰，仍可关闭旧覆盖设置。建议使用最新已验证的 Streamline 2.14.1 和 DLSS-G 310.9.1.0，以获得最完整的功能。
+- 修正 The Witcher 3 动态 FG 中发现的无效内存访问（[#4](https://github.com/SilyNoMeta/rtx-encore/issues/4)）以及 Starfield 搭配 Streamline 2.12 的退出问题（[#21](https://github.com/SilyNoMeta/rtx-encore/issues/21)）。此前测试构建的正常退出已获确认；最终 beta.4 的复测及 Witcher 崩溃是否解决仍待确认。
+- 修正 Streamline 重启时 Reflex 插件的生命周期，以处理调查中的 Cyberpunk 启动问题（[#14](https://github.com/SilyNoMeta/rtx-encore/issues/14)、[#17](https://github.com/SilyNoMeta/rtx-encore/issues/17)）。尚待游戏内确认。
+- 修正跨线程 Reflex 上限更新及恢复延迟。新增直接 FPS 输入、**Use game settings** 与 **For this display**（刷新率减 3 FPS）。FG 是否计入取决于游戏/驱动；动态 MFG 暂停此覆盖设置。Reflex 兼容范围扩展至已验证的 DLL 版本 2.1.1–2.14.1；没有官方 2.13 SDK 可供核验。
+- 新增独立 SR、RR、FG 预设选择，重启游戏生效。FG A/B 支持逐一验证的 DLSS-G 310.6.0.0、310.7.0.0、310.7.128.0、310.7.129.0、310.8.0.0、310.9.0.0、310.9.1.0 生产版文件。SR/RR 取决于 DLL 与驱动覆盖设置，不能保证实际模型。默认保留游戏选择。
+- 自动记录系统与已加载组件版本、DLSS 质量/分辨率和请求的 SR/RR 预设。可选性能日志新增 GPU 温度、功耗、频率、报告的性能限制及超过一秒的间隔。这只改善诊断，不代表 [#12](https://github.com/SilyNoMeta/rtx-encore/issues/12) 或 [#19](https://github.com/SilyNoMeta/rtx-encore/issues/19) 已修复。
+
+自动化检查不能代替各游戏、显卡、驱动组合的实际测试。新增自适应路径、兼容性显示和预设功能仍需要游戏内反馈。
+
+### 致谢
+
+- [@Avictuu](https://github.com/Avictuu)：反复测试 Starfield、核对倍率、提供详细 Reflex/退出日志，并确认测试构建正常退出（[#21](https://github.com/SilyNoMeta/rtx-encore/issues/21)）。
+- [@wisecase2](https://github.com/wisecase2)：提供同一会话的 Witcher 3 日志及 Cyberpunk 后续证据（[#4](https://github.com/SilyNoMeta/rtx-encore/issues/4)、[#17](https://github.com/SilyNoMeta/rtx-encore/issues/17)）。
+- [@hunan-NRT](https://github.com/hunan-NRT)、[@naruto490610-alt](https://github.com/naruto490610-alt)：Cyberpunk 报告、日志与后续测试（[#14](https://github.com/SilyNoMeta/rtx-encore/issues/14)、[#17](https://github.com/SilyNoMeta/rtx-encore/issues/17)）。
+- [@yannduwooz83](https://github.com/yannduwooz83)、[@PrincessofCelery](https://github.com/PrincessofCelery)：帮助完善支持信息与卡顿诊断的报告（[#12](https://github.com/SilyNoMeta/rtx-encore/issues/12)、[#19](https://github.com/SilyNoMeta/rtx-encore/issues/19)）。
+
+感谢所有分享日志并花时间测试构建的用户。
+
+
 ## 1.0.0-beta.3 — 预发布版本
 
 - 修正 The Last of Us 中 RTX Encore、OptiScaler 与游戏旧版 Streamline 同时使用时发现的启动崩溃原因。尚待游戏内确认；Dead Space 的情况仍未确认。
