@@ -2,6 +2,17 @@
 
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
+## 1.0.0-beta.5 — 预发布版本
+
+- 修正帧生成运行期间界面重组（UIR）设置变更被忽略的问题（[#27](https://github.com/SilyNoMeta/rtx-encore/issues/27)）。这包括启用和关闭 UIR、**Force UIR** 以及游戏或自动模式发出的请求，适用于已验证的 Streamline 2.11.1、2.12.0、2.14.1 生产版文件。关闭 Force UIR 后，游戏或自动模式仍可请求启用 UIR。
+- 兼容范围与 beta.4 相同。建议使用最新已验证的 Streamline 2.14.1 和 DLSS-G 310.9.1.0，以获得最完整的功能；详见[兼容性](docs/COMPATIBILITY.zh-CN.md#streamline-版本)。
+
+UIR 修正已通过游戏外自动化检查。最终 beta.5 构建仍待在 Starfield 及其他游戏中确认；本次不宣称性能提升。
+
+### 致谢
+
+- [@Avictuu](https://github.com/Avictuu)：提供 Starfield 报告、组件对比和日志，帮助定位游戏运行期间 UIR 设置不生效的问题（[#27](https://github.com/SilyNoMeta/rtx-encore/issues/27)）。
+
 ## 1.0.0-beta.4 — 预发布版本
 
 - 在已验证的 Streamline 2.14.1 生产版之外，为 2.11.1、2.12.0 增加原生动态 MFG 和界面重组支持。为符合条件的旧 DX12 Streamline 2.7.2–2.10.3 增加 Encore 自适应 X2–X4。Vulkan 保留自适应路径；D3D11 仅限 Smooth Motion X2。具体版本与限制见[兼容性](docs/COMPATIBILITY.zh-CN.md#streamline-版本)。
