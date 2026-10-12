@@ -2,6 +2,17 @@
 
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.0.0-beta.5 — pre-release
+
+- Fix live UI recomposition (UIR) changes being ignored while Frame Generation is already running ([#27](https://github.com/SilyNoMeta/rtx-encore/issues/27)). This affects enabling and disabling UIR, including **Force UIR** and game/automatic requests, with qualified production Streamline 2.11.1, 2.12.0 and 2.14.1. Turning Force UIR off still allows the game or automatic mode to request UIR.
+- Keep the compatibility scope of beta.4. Prefer the latest qualified Streamline 2.14.1 and DLSS-G 310.9.1.0 for the fullest feature coverage; see [Compatibility](docs/COMPATIBILITY.md#streamline-versions).
+
+The UIR correction passes automated checks outside the game. Confirmation of the final beta.5 build in Starfield and other games remains pending; no performance improvement is claimed.
+
+### Thanks
+
+- [@Avictuu](https://github.com/Avictuu) — Starfield report, component comparisons and logs that helped identify the live UIR problem ([#27](https://github.com/SilyNoMeta/rtx-encore/issues/27)).
+
 ## 1.0.0-beta.4 — pre-release
 
 - Extend native Dynamic MFG and UI recomposition to the qualified production Streamline 2.11.1 and 2.12.0 files, alongside 2.14.1. Add Encore adaptive X2–X4 for qualified older DX12 Streamline 2.7.2–2.10.3 files. Vulkan keeps its adaptive path; D3D11 remains Smooth Motion X2 only. See [Compatibility](docs/COMPATIBILITY.md#streamline-versions) for exact versions and limits.

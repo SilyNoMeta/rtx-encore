@@ -2,6 +2,17 @@
 
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.0.0-beta.5 — préversion
+
+- Correction des changements de recomposition de l’interface (UIR) ignorés lorsque la Frame Generation est déjà active ([#27](https://github.com/SilyNoMeta/rtx-encore/issues/27)). Cela concerne l’activation et la désactivation, y compris **Force UIR** et les demandes du jeu ou du mode automatique, avec les fichiers Streamline de production qualifiés 2.11.1, 2.12.0 et 2.14.1. Désactiver Force UIR laisse toujours le jeu ou le mode automatique demander l’UIR.
+- Périmètre de compatibilité identique à la beta.4. Privilégiez les dernières versions qualifiées, Streamline 2.14.1 et DLSS-G 310.9.1.0, pour bénéficier du plus grand nombre de fonctions ; voir [Compatibilité](docs/COMPATIBILITY.fr.md#versions-de-streamline).
+
+La correction UIR passe les vérifications automatisées hors jeu. La confirmation du build final beta.5 dans Starfield et les autres jeux reste attendue ; aucun gain de performance n’est revendiqué.
+
+### Remerciements
+
+- [@Avictuu](https://github.com/Avictuu) — rapport Starfield, comparaisons de composants et logs ayant aidé à identifier le problème de changement UIR en cours de partie ([#27](https://github.com/SilyNoMeta/rtx-encore/issues/27)).
+
 ## 1.0.0-beta.4 — préversion
 
 - Extension du DMFG natif et de la recomposition de l’interface aux fichiers de production Streamline 2.11.1 et 2.12.0 qualifiés, en plus de 2.14.1. Ajout de l’adaptation Encore X2–X4 pour les anciens fichiers DX12 Streamline 2.7.2–2.10.3 qualifiés. Vulkan garde son adaptation ; D3D11 reste limité à Smooth Motion X2. Voir [Compatibilité](docs/COMPATIBILITY.fr.md#versions-de-streamline) pour les versions exactes et les limites.
