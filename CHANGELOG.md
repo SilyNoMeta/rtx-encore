@@ -2,6 +2,31 @@
 
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.0.0-rc.1 — pre-release
+
+- **Support for the latest NVIDIA files.** Qualify the files the NVIDIA app beta of 13 October 2026 downloads: Streamline 2.14.16 (Dynamic MFG, fixed MFG above X2, Reflex frame limit, UI recomposition) and DLSS-G 310.9.16 (presets, quality options and Fast frame generation). Add frame generation preset **C (Lite)**, NVIDIA's faster performance mode, with the qualified DLSS-G 310.9.16.0 only; A/B keep Normal and **Fast frame generation** stays independent. These additions are experimental and lightly tested; see [Compatibility](docs/COMPATIBILITY.md#streamline-versions).
+- **[RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub)**, the new Windows companion, is available as a release candidate. It installs RTX Encore in your games, brings the latest qualified DLSS and Streamline files and NVIDIA's Neural Rendering file with it, updates every game in one click, and can always put a game back as it was. Installing by hand works exactly as before; see [Installation](docs/INSTALLATION.md#the-easy-way-rtx-encore-hub).
+- Add **Force Smooth Motion** (`"smoothMotionForce"`, off by default) for Vulkan games whose NVIDIA profile keeps Smooth Motion off. Forcing can give unexpected results (duplicated cursor, artifacts, crash). The overlay and the menu now say when Smooth Motion is not actually running, or when the selected graphics API does not match the game, instead of showing a doubled frame rate (seen in RPCS3).
+- Fix Forza Horizon 6 closing at its startup logos while the menu was attached ([#11](https://github.com/SilyNoMeta/rtx-encore/issues/11), [#18](https://github.com/SilyNoMeta/rtx-encore/issues/18)). The game now stays up in repeated local launches with the menu; the reporters' installations were not retested.
+- Fix Final Fantasy VII Rebirth hiding Frame Generation on RTX 20 and 30 cards ([#12](https://github.com/SilyNoMeta/rtx-encore/issues/12), [#30](https://github.com/SilyNoMeta/rtx-encore/issues/30)). Confirmed in game on an RTX 3070 Ti with the game's own Streamline 2.8.0; not tested with the Streamline 2.14.1 update in this game.
+- Fix Where Winds Meet failing to start (0xc0000142) with `version.dll` or `winmm.dll` ([#9](https://github.com/SilyNoMeta/rtx-encore/issues/9)), and a crash of the `dinput8.dll` name with the Epic overlay. Use `version.dll` in that game: loaded as `dinput8.dll`, RTX Encore arrives after the game has already given up DLSS Frame Generation. The reporter's installation was not retested.
+- Fix the menu refusing to attach in Direct3D 12 with Special K ([#24](https://github.com/SilyNoMeta/rtx-encore/issues/24)). In-game confirmation pending.
+- Fix **For this display**: the suggested limit now keeps a margin that grows with the refresh rate (116 FPS at 120 Hz, 138 at 144 Hz, 224 at 240 Hz) ([#23](https://github.com/SilyNoMeta/rtx-encore/issues/23)).
+- Fix the first launch after an update from an older settings file: Smooth Motion and a few other startup settings only took effect from the second launch (seen in Shadows of Doubt).
+- Stay inert in a game's crash reporter, which used to write its own session logs and push the real ones out of the kept logs (seen in Shadows of Doubt).
+- The exception log now records which thread ended the process, to tell a game's own exit from a termination coming from outside.
+
+Windows Release build with Open NR included, default diagnostics and all six distribution variants, built and tested on the maintainer's PC: the automated regression tests pass outside the game. The Forza Horizon 6, Final Fantasy VII Rebirth and Where Winds Meet corrections were checked with earlier test builds; the final rc.1 build was not run in game before publication, and no performance improvement is claimed.
+
+### Thanks
+
+- [@avikpal693](https://github.com/avikpal693) and [@wer2357666](https://github.com/wer2357666) — Forza Horizon 6 reports and logs ([#11](https://github.com/SilyNoMeta/rtx-encore/issues/11), [#18](https://github.com/SilyNoMeta/rtx-encore/issues/18)).
+- [@yannduwooz83](https://github.com/yannduwooz83) — Final Fantasy VII Rebirth report and logs ([#12](https://github.com/SilyNoMeta/rtx-encore/issues/12)); [@wd3dmlys](https://github.com/wd3dmlys) — the GPU-architecture pointer ([#12](https://github.com/SilyNoMeta/rtx-encore/issues/12)); [@lovebabyx](https://github.com/lovebabyx) — the beta.5 report ([#30](https://github.com/SilyNoMeta/rtx-encore/issues/30)).
+- [@ranmo-1](https://github.com/ranmo-1) — Where Winds Meet report ([#9](https://github.com/SilyNoMeta/rtx-encore/issues/9)).
+- [@PhantomGamers](https://github.com/PhantomGamers) — the refresh-rate margin formula ([#23](https://github.com/SilyNoMeta/rtx-encore/issues/23)) and the Special K report and log ([#24](https://github.com/SilyNoMeta/rtx-encore/issues/24)).
+
+Thanks to everyone who shares logs and takes time to test the builds.
+
 ## 1.0.0-beta.5 — pre-release
 
 - Fix live UI recomposition (UIR) changes being ignored while Frame Generation is already running ([#27](https://github.com/SilyNoMeta/rtx-encore/issues/27)). This affects enabling and disabling UIR, including **Force UIR** and game/automatic requests, with qualified production Streamline 2.11.1, 2.12.0 and 2.14.1. Turning Force UIR off still allows the game or automatic mode to request UIR.

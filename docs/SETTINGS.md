@@ -44,16 +44,32 @@ FG is in **Frames → Frame generation**. They do not change render resolution, 
 | :--- | :---: | :--- |
 | `dlssSrPreset` | `"game"` | `"game"`, `"default"`, `"a"`–`"f"` (legacy), `"j"`, `"k"`, `"l"`, `"m"` |
 | `dlssRrPreset` | `"game"` | `"game"`, `"default"`, `"a"`–`"c"` (legacy), `"d"`, `"e"` |
-| `dlssFgPreset` | `"game"` | `"game"`, `"a"`, `"b"` |
+| `dlssFgPreset` | `"game"` | `"game"`, `"a"`, `"b"`, `"c"` |
+| `dlssFgLite` | `"game"` | Diagnostic only, JSON: `"game"`, `"off"`, `"on"` |
 
-`"game"` leaves the game's choice intact. SR/RR choices apply to every quality mode, including DLAA;
+For the preset keys, `"game"` leaves the game's choice intact. SR/RR choices apply to every quality mode, including DLAA;
 `"default"` explicitly requests the DLSS DLL's default. Available models depend on the installed DLL,
 and NVIDIA driver overrides or model fallback can take priority. Choosing an RR preset does not enable RR.
 
-FG A/B selection supports the individually verified NVIDIA **DLSS-G release binaries** listed below:
+FG preset selection supports the individually verified NVIDIA **DLSS-G release binaries** listed below:
 
 - **310.6.0.0, 310.7.0.0, 310.7.128.0, 310.7.129.0**
 - **310.8.0.0, 310.9.0.0, 310.9.1.0**
+- **310.9.16.0**, the only one that accepts preset C
+
+Preset C is NVIDIA's faster performance mode for frame generation, with minor trade-offs in image quality.
+With any other binary a saved `"c"` is refused and the game's choice is kept.
+
+**The FG preset is sufficient: A/B use Normal; C automatically enables Lite.** Fast frame generation stays
+independent and can remain enabled with every preset. Restart after changing the preset.
+
+`dlssFgLite` is a **JSON-only diagnostic override**, absent from the menu controls. Leave it at `"game"` to follow
+the selected preset or the game/driver. Only for diagnostics with the individually qualified 310.9.16.0 file,
+`"off"` forces Normal and `"on"` forces Lite, taking priority over the preset. Changing it requires a restart;
+other binaries refuse this override. Lite keeps NVIDIA's native image
+policy: **Anti-tearing / anti-ghosting** and **Protection tuning** have no effect in that mode, and UI recomposition is unavailable. Fast frame generation
+uses the optimizations applicable to the active composition mode. The 310.9.16 additions await in-game validation;
+no performance gain is established for Lite.
 
 This list applies to preset overrides; it is narrower than overall frame-generation compatibility.
 A matching version number alone does not guarantee acceptance, and development variants are excluded.

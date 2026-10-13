@@ -14,6 +14,15 @@
 > RTX Encore loads inside the game. Do not install it in online or anti-cheat protected games: it can be blocked,
 > or get an account flagged.
 
+## The easy way: RTX Encore Hub
+
+**[RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub)** installs RTX Encore for you. It finds your games, picks a file name that is free,
+brings the latest DLSS and Streamline files this RTX Encore supports and NVIDIA's Neural Rendering file, backs up
+everything it replaces, and updates every game in one click. Download it from [its releases](https://github.com/SilyNoMeta/rtx-encore-hub/releases); its
+[user guide](https://github.com/SilyNoMeta/rtx-encore-hub/blob/main/docs/USER-GUIDE.md) explains each screen.
+
+The rest of this page is the installation by hand, which works exactly as before.
+
 ## What the release contains
 
 | File | Use |

@@ -32,11 +32,16 @@ DirectX 9 and OpenGL games are not supported.
 Frame generation works with these versions of the game's `nvngx_dlssg.dll`:
 
 `310.1.0` · `310.2.0` · `310.2.1` · `310.3.0` · `310.4.0` · `310.5.0` · `310.5.2` · `310.5.3` · `310.6.0` ·
-`310.7.0` · `310.7.128` · `310.7.129` · `310.8.0` · `310.9.0` · `310.9.1`
+`310.7.0` · `310.7.128` · `310.7.129` · `310.8.0` · `310.9.0` · `310.9.1` · `310.9.16`
 
 - Any other version is left untouched: the game keeps its own frame generation.
-- **310.9.0 or 310.9.1** is recommended on every card, for the best quality above X2, and is needed on RTX 20
-  cards. **Fast frame generation** needs 310.9.1.
+- **310.9.0 and 310.9.1** retain their quality and Fast frame generation support. RTX 20 users should use a
+  qualified 310.9.0, 310.9.1 or 310.9.16 file.
+- **310.9.16** is the file the NVIDIA app beta downloads; it is the only one with frame generation preset C.
+  **A/B use Normal; selecting C automatically enables Lite after restarting the game.** Fast frame generation
+  stays independent for every preset. Normal supports the anti-tearing policies. Lite keeps NVIDIA's native image policy:
+  Anti-tearing and Protection tuning have no effect, UI recomposition is unavailable, and Fast frame generation uses only optimizations relevant
+  to Lite. These additions were checked locally and are not yet confirmed in game; no Lite performance gain is measured.
 - The other DLSS files of the game (Super Resolution, Ray Reconstruction, ...) can have any version.
 
 ## Streamline versions
@@ -48,17 +53,17 @@ in-game compatibility for every SDK/game/driver combination.
 | Feature | Examined coverage and limits |
 | :--- | :--- |
 | Streamline controls | Require Streamline 2.x. The Streamline 1.x interface is not supported. |
-| Fixed MFG above X2 | Recognized in the published 2.7.2, 2.7.30, 2.7.32, 2.8.0, 2.9.0, 2.10.0, 2.10.3, 2.11.1, 2.12.0 and 2.14.1 SDK files. Earlier SDKs are not qualified for these multipliers. A supported DLSS Frame Generation file is also required. |
-| Native Dynamic MFG extension | Official production Streamline 2.11.1, 2.12.0 and 2.14.1 files qualified offline. Pacing differs by version; per-game confirmation remains necessary. Other builds retain their native capabilities. |
+| Fixed MFG above X2 | Recognized in the published 2.7.2, 2.7.30, 2.7.32, 2.8.0, 2.9.0, 2.10.0, 2.10.3, 2.11.1, 2.12.0 and 2.14.1 SDK files, and in the 2.14.16 files the NVIDIA app beta downloads. Earlier SDKs are not qualified for these multipliers. A supported DLSS Frame Generation file is also required. |
+| Native Dynamic MFG extension | Official production Streamline 2.11.1, 2.12.0, 2.14.1 and 2.14.16 files qualified offline. Pacing differs by version; per-game confirmation remains necessary. Other builds retain their native capabilities. |
 | Encore adaptive MFG (DX12) | Official production and development files: 2.7.2, 2.7.30, 2.7.32, 2.8.0, 2.9.0, 2.10.0, 2.10.3. X2–X4 only, including when experimental X5/X6 is enabled. Requires a compatible game integration; older integrations may remain unsupported. Offline qualified, not yet confirmed in game. |
-| UI recomposition override | The same three production files are qualified. Still needs usable UI inputs from the game. Other builds retain their own UI handling. This is separate from UI assist. |
-| Reflex frame limit | DLL versions 2.1.1–2.14.1; see [Menu and overlay](MENU-AND-OVERLAY.md#suggested-reflex-cap). |
+| UI recomposition override | Production 2.11.1, 2.12.0, 2.14.1 and 2.14.16 are qualified locally. Explicit on/off requests remain authoritative; an unspecified request retains the existing choice. Still needs usable UI inputs from the game and in-game validation for 2.14.16. Other builds retain their own UI handling. This is separate from UI assist. |
+| Reflex frame limit | DLL versions 2.1.1–2.14.1, and 2.14.16; see [Menu and overlay](MENU-AND-OVERLAY.md#suggested-reflex-cap). |
 
 There is no public SDK tag for 2.13 or 2.14.0 in this review. Intermediate version numbers alone do not
 establish support for every feature. Keep the game's Streamline files together; these notes are not a
 recommendation to replace individual files.
 
-**For the fullest feature coverage, use the latest qualified versions: Streamline 2.14.1 and DLSS-G 310.9.1.0.** Older versions expose fewer features; a newer, unreviewed file is not automatically supported. Keep a matched Streamline set compatible with the game. SR/RR preset availability still depends on their own DLLs and the driver; Neural Rendering still specifically requires 310.8.0.
+**Check availability per feature in the menu.** The Streamline 2.14.16 and DLSS-G 310.9.16 additions await in-game validation. Older versions expose fewer features; a newer, unreviewed file is not automatically supported. Keep a matched Streamline set compatible with the game. SR/RR preset availability still depends on their own DLLs and the driver; Neural Rendering still specifically requires 310.8.0.
 
 **DirectX 11:** DLSS MFG and its Dynamic mode are unavailable. The separate Smooth Motion path provides X2 only; it cannot switch to X3/X4. Its GPU and driver requirements still apply.
 
@@ -69,7 +74,7 @@ Only **617.14** has been verified in a game. See [Smooth Motion](SMOOTH-MOTION.m
 
 ## Neural Rendering file
 
-Neural Rendering needs NVIDIA's `nvngx_dlssnr.dll` **310.8.0**, supplied by you. See
+Neural Rendering needs NVIDIA's `nvngx_dlssnr.dll` **310.8.0**, supplied by you or fetched by [RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub). See
 [Neural Rendering](NEURAL-RENDERING.md).
 
 ## Game notes

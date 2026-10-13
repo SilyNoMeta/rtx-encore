@@ -48,11 +48,32 @@ quality in other games.
 | `296/74 fps 2x+sm` | DLSS Frame Generation X2, then Smooth Motion |
 
 The Smooth Motion figure is an estimate: the driver can suspend interpolation, and the overlay does not measure
-what the screen receives.
+what the screen receives. It only appears once the driver has started its interpolation; until then the overlay
+shows the game's frame rate alone, with one of these lines, and the menu shows the same state with what to do:
+
+| Line | Meaning |
+| :--- | :--- |
+| `SM OFF: SET GRAPHICS API TO VULKAN` | The game presents with Vulkan while **Graphics API** is set to Direct3D |
+| `SM NOT RUNNING: TRY FORCE SMOOTH MOTION` | Vulkan game: the driver did not start Smooth Motion for it; see below |
+| `SM NOT RUNNING: NO DRIVER MODULE LOADED` | The driver is prepared but has not started interpolating |
+
+## Forcing Smooth Motion in a Vulkan game
+
+In Vulkan games, the NVIDIA driver decides per game whether Smooth Motion may run. Where it refuses, the menu shows
+**Not running** and suggests **Force Smooth Motion** (**Frames** tab, **Smooth Motion** section), which is the
+`"smoothMotionForce": true` setting of `rtx-encore.jsonc`. It is off by default; restart the game after changing it.
+
+> [!WARNING]
+> NVIDIA may exclude a game for a reason. Forcing Smooth Motion there can give unexpected results: a duplicated
+> mouse cursor, visual artifacts or a crash. Turn it back off if the game misbehaves.
+
+It has no effect in DirectX games. If Smooth Motion still does not start with it, it cannot run in that game.
 
 ## If it does not work
 
 - **The menu reports an unsupported driver**: install one of the four versions above.
-- **Nothing changes in game**: check the **Graphics API** choice, and restart the game after every change.
-- **Vulkan**: try with Smooth Motion set to Off in the game's profile of the NVIDIA app.
+- **Nothing changes in game**, or the menu says **Wrong API** or **Not running**: check the **Graphics API**
+  choice, and restart the game after every change. Emulators are often Vulkan.
+- **Vulkan**: try with Smooth Motion set to Off in the game's profile of the NVIDIA app. If the menu says the
+  driver does not start it for this game, see [Forcing Smooth Motion](#forcing-smooth-motion-in-a-vulkan-game).
 - Include the menu's report (**System** tab, **Copy**) when you open an issue.

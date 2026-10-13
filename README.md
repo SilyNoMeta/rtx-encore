@@ -14,6 +14,7 @@ One file next to the game, a built-in menu, nothing else to install.
 [![Graphics APIs](https://img.shields.io/badge/APIs-DirectX%2011%20%7C%2012%20%7C%20Vulkan-0078d4?style=flat-square)](docs/COMPATIBILITY.md)
 
 **[Download](https://github.com/SilyNoMeta/rtx-encore/releases)** ·
+**[RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub)** ·
 **[Installation](docs/INSTALLATION.md)** ·
 **[Français](README.fr.md)** ·
 **[中文](README.zh-CN.md)**
@@ -64,7 +65,26 @@ less NR time. **[See the measurements, controls and tradeoffs](docs/NEURAL-RENDE
 RTX Encore is made for RTX 20, 30 and 40; RTX 50 cards get frame generation and Smooth Motion from NVIDIA.
 Details, graphics APIs, driver and game notes: **[Compatibility](docs/COMPATIBILITY.md)**.
 
+## Install and update with RTX Encore Hub
+
+**[RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub)** is the Windows companion for RTX Encore: the simplest way to install the mod, and to
+keep it and the NVIDIA files it works with up to date.
+
+| | With the Hub |
+| :---: | :--- |
+| 🎮 | **Your games in one place.** The games of Steam, Epic and GOG are found by themselves, and each game's page says what RTX Encore can do there on your card and driver. |
+| 📦 | **The right NVIDIA files, taken for you.** The latest DLSS and Streamline versions this RTX Encore supports, with the Streamline plugins kept as a matched set, and NVIDIA's Neural Rendering file downloaded and checked. Many reported problems come from outdated DLSS or Streamline files. |
+| 🔄 | **Updates in one click.** A new RTX Encore is announced with its notes, **Update all** updates every game, and the Hub updates itself. |
+| ↩️ | **A way back.** Every replaced file is backed up first, and **Restore game** puts the game back as it was. |
+| 🎚️ | **Settings explained.** A form for the settings file, where what has no effect on your card is greyed out. |
+| 🩺 | **A first check.** **Launch and verify** watches the game's first minute and says whether the mod loaded. |
+
+Download it from **[its releases](https://github.com/SilyNoMeta/rtx-encore-hub/releases)**. The Hub is a release candidate: installing by hand, below,
+works exactly as before. Community profiles, to share settings per game, are built into the Hub but not open yet.
+
 ## Quick start
+
+The simplest way is **[RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub)**: install it, open the game's page and press **Install**. By hand:
 
 1. Download the **[latest release](https://github.com/SilyNoMeta/rtx-encore/releases)** and extract it.
 2. Copy `rtx-encore.dll` next to the game's executable and rename it `version.dll`.

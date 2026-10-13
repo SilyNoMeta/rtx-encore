@@ -13,6 +13,14 @@
 > [!WARNING]
 > RTX Encore 在游戏进程内加载。请勿安装到联机游戏或受反作弊保护的游戏中：它可能被拦截，或导致账号被标记。
 
+## 最简单的方式：RTX Encore Hub
+
+**[RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub)** 会替你安装 RTX Encore。它会找到你的游戏，选择一个未被占用的文件名，带来此版本 RTX Encore
+支持的最新 DLSS 和 Streamline 文件以及 NVIDIA 的 Neural Rendering 文件，备份它替换的所有文件，并一键更新所有游戏。
+请从[它的发布页面](https://github.com/SilyNoMeta/rtx-encore-hub/releases)下载；它的[用户指南](https://github.com/SilyNoMeta/rtx-encore-hub/blob/main/docs/USER-GUIDE.zh-CN.md)说明了每个界面。
+
+本页其余部分介绍手动安装，方式与以前完全一样。
+
 ## 发布包内容
 
 | 文件 | 用途 |

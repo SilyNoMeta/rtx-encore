@@ -9,7 +9,7 @@ RTX Encore 为 RTX 20、RTX 30 和 RTX 40 显卡带来 X2 至 X6 的 DLSS 多帧
 - 游戏必须提供 **DLSS 帧生成**，并运行在 DirectX 12 或 Vulkan 下。RTX Encore 扩展的是游戏已有的帧生成；
   它无法为没有帧生成的游戏添加这一功能。对于这类游戏，请参阅 [Smooth Motion](SMOOTH-MOTION.zh-CN.md)。
 - 游戏的帧生成文件 `nvngx_dlssg.dll` 须为受支持的版本：见
-  [兼容性](COMPATIBILITY.zh-CN.md#dlss-帧生成版本)。310.9.1 版本效果最好。
+  [兼容性](COMPATIBILITY.zh-CN.md#dlss-帧生成版本)。可用功能取决于具体文件。
 - 在游戏设置中开启帧生成。
 
 ## 模式
@@ -53,16 +53,25 @@ RTX Encore 为 RTX 20、RTX 30 和 RTX 40 显卡带来 X2 至 X6 的 DLSS 多帧
 - **High-multiplier quality**：让 X3 到 X6 的生成帧保持干净。请保持开启。
 - **Fast frame generation**：下文所述的性能选项。请保持开启。
 
+选择 **FG model preset** 后重启游戏：**A/B 使用 Normal；C (Lite) 自动启用 Lite**，需要通过资格检查的
+DLSS-G 310.9.16.0。无需再选择第二个模式。**Fast frame generation 保持独立**，可与每个预设一起开启。
+Lite 保留 NVIDIA 的原生图像策略，因此 Anti-tearing 和 Protection tuning 在此模式下无效，界面重组也不可用。
+仅供诊断的覆盖选项保留在 JSON 中，请保持默认值。见[设置](SETTINGS.zh-CN.md#dlsspresets)。
+
 ### Fast frame generation
 
-开启 **Fast frame generation** 后，每个生成帧占用的 GPU 时间更少，而画面保持不变。在 RTX 3070 Ti Laptop、1080p 下实测：
+**Fast frame generation** 在保持预期画面的同时减少 GPU 工作量。以下为此前使用 DLSS-G 310.9.1，
+在 RTX 3070 Ti Laptop、1080p 下的测量结果：
 
 | 倍率 | 选项关闭 | 选项开启 | 差异 |
 | :---: | ---: | ---: | ---: |
 | X2 | 2.33 ms | 1.57 ms | −33 % |
 | X6 | 6.38 ms | 5.23 ms | −18 % |
 
-这些数据来自单一系统，并不代表所有显卡或游戏都能达到。该选项需要 `nvngx_dlssg.dll` 310.9.1。
+这些数据来自单一系统，并不代表所有显卡或游戏都能达到，也不适用于 Lite。
+该选项支持经过逐一资格检查的 310.9.0、310.9.1 和 310.9.16 文件。使用 310.9.16 时，它会匹配当前的 Normal 或 Lite
+合成方式，菜单会显示可用状态。310.9.16 新增画质和性能支持已通过本地检查，尚待游戏内验证；尚未测得 Lite 的性能增益。
+神经网络优化需要 DirectX 12；Vulkan 仅受益于图像处理优化。
 
 ## 游戏界面
 

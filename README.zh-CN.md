@@ -14,6 +14,7 @@ Smooth Motion 和 Neural Rendering。**
 [![图形 API](https://img.shields.io/badge/APIs-DirectX%2011%20%7C%2012%20%7C%20Vulkan-0078d4?style=flat-square)](docs/COMPATIBILITY.zh-CN.md)
 
 **[下载](https://github.com/SilyNoMeta/rtx-encore/releases)** ·
+**[RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub)** ·
 **[安装](docs/INSTALLATION.zh-CN.md)** ·
 **[English](README.md)** ·
 **[Français](README.fr.md)**
@@ -63,7 +64,24 @@ Open 的其他 RTX 30 设置也可以用轻微的画面差异或额外显存换�
 RTX Encore 面向 RTX 20、30 和 40；RTX 50 显卡的帧生成和 Smooth Motion 由 NVIDIA 提供。
 详细信息、图形 API、驱动和游戏说明见 **[兼容性](docs/COMPATIBILITY.zh-CN.md)**。
 
+## 使用 RTX Encore Hub 安装和更新
+
+**[RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub)** 是 RTX Encore 的 Windows 配套应用：安装模组，并让模组及其配套的 NVIDIA 文件保持最新的最简单方式。
+
+| | 使用 Hub |
+| :---: | :--- |
+| 🎮 | **所有游戏集中一处。** 自动找到 Steam、Epic 和 GOG 的游戏，每个游戏的页面都会说明 RTX Encore 在你的显卡和驱动上能做什么。 |
+| 📦 | **自动采用合适的 NVIDIA 文件。** 此版本 RTX Encore 支持的最新 DLSS 和 Streamline 版本（Streamline 插件始终整套更换），以及下载并校验过的 NVIDIA Neural Rendering 文件。许多被报告的问题都源于过旧的 DLSS 或 Streamline 文件。 |
+| 🔄 | **一键更新。** 新版 RTX Encore 会连同其说明一起提示，**全部更新**会更新所有游戏，Hub 自身也会自动更新。 |
+| ↩️ | **可以回退。** 每个被替换的文件都会先备份，**还原游戏**会把游戏恢复原状。 |
+| 🎚️ | **带说明的设置。** 用表单编辑设置文件，对你的显卡无效的设置会变灰。 |
+| 🩺 | **首次检查。** **启动并验证**会观察游戏的第一分钟，并说明模组是否已加载。 |
+
+请从**[它的发布页面](https://github.com/SilyNoMeta/rtx-encore-hub/releases)**下载。Hub 目前是候选发布版：下面的手动安装方式与以前完全一样。用于分享各游戏设置的社区配置已内置于 Hub，但尚未开放。
+
 ## 快速开始
+
+最简单的方式是 **[RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub)**：安装它，打开游戏页面并点击**安装**。手动安装：
 
 1. 下载 **[最新版本](https://github.com/SilyNoMeta/rtx-encore/releases)** 并解压。
 2. 把 `rtx-encore.dll` 复制到游戏可执行文件旁边，并重命名为 `version.dll`。

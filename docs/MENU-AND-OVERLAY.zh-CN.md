@@ -14,7 +14,7 @@ RTX Encore 在 DirectX 11、DirectX 12 和 Vulkan 游戏中绘制自己的菜单
 
 | 选项卡 | 内容 |
 | :--- | :--- |
-| **Frames** | 帧生成及其模型预设、画质和界面选项、Smooth Motion、渲染帧率限制、V-Sync |
+| **Frames** | 帧生成及其模型预设（A/B Normal、C Lite）、独立的 Fast 选项、画质和界面选项、Smooth Motion、渲染帧率限制、V-Sync |
 | **Image** | DLSS 渲染分辨率、SR/RR 模型预设、Neural Rendering |
 | **Overlay** | 叠加层预览、位置、文字大小和显示项目 |
 | **System** | 快捷键、兼容性、诊断和会话详情，以及用于报告问题的 **Copy** 按钮 |
@@ -24,6 +24,7 @@ RTX Encore 在 DirectX 11、DirectX 12 和 Vulkan 游戏中绘制自己的菜单
 - 每次修改都会立即保存到 `rtx-encore.jsonc`，保留文件中的注释。
 - 大部分设置实时生效。名称后的 `*` 表示该设置在游戏启动时读取；修改后变为橙色，菜单底部会列出等待重启的修改。
 - 已修改的设置名称更亮，并带有重置按钮。
+- **FG model preset** 需要重启游戏：**A/B 使用 Normal；C (Lite) 自动启用 Lite**。**Fast frame generation** 保持独立。Lite 覆盖仅供 JSON 诊断使用，菜单不再提供单独的设置。见[设置](SETTINGS.zh-CN.md#dlsspresets)。
 - 每部分显示主要设置，其余设置位于可展开的分组中，例如 **Fine tuning**、**Performance** 和 **Diagnostics**。
 - 拖动标题栏移动菜单，拖动右下角调整大小。位置和尺寸会被记住。
 - 打开菜单时如果仍按着鼠标按钮，请先松开再点击。
@@ -72,14 +73,14 @@ RTX Encore 在 DirectX 11、DirectX 12 和 Vulkan 游戏中绘制自己的菜单
 
 ### 建议的 Reflex 帧率上限
 
-Reflex 限制器接受 DLL 版本 2.1.1–2.14.1；范围之外保留游戏设置。
+Reflex 限制器接受 DLL 版本 2.1.1–2.14.1，以及 2.14.16；其他版本保留游戏设置。
 已对该范围内公开发布的 SDK 进行离线检查，但并未逐个版本进行游戏内验证。
 没有公开标签的中间版本（包括 2.13 和 2.14.0）尚无公开 SDK 验证。
 实际限帧仍取决于游戏的 Reflex 集成和驱动支持。
 不会添加基于 CPU 等待的备用限制器。
 
-在 **Frames → Frame pacing** 中，**For this display** 建议 `显示器刷新率 - 3 FPS`，
-例如 120 Hz 时请求 **117 FPS**，不再除以 FG 倍率。生成帧是否计入上限取决于游戏和驱动。
+在 **Frames → Frame pacing** 中，**For this display** 建议 `刷新率 - 刷新率² / 3600`（向下取整），
+例如 120 Hz 时请求 **116 FPS**，144 Hz 时为 138，240 Hz 时为 224，不再除以 FG 倍率。生成帧是否计入上限取决于游戏和驱动。
 Starfield 搭配 Streamline 2.12 时，请求 90 曾得到约 22.5 FPS 渲染帧率和 ×4 FG。
 请比较实测源帧率与包含 FG 的帧率。点击 **Use … FPS** 保存建议值；更换显示器或倍率不会自动调整上限。
 也可直接在 **Frame limit (FPS)** 中输入 1 至 1000，按 **Enter** 或点击 **Apply** 保存。
@@ -90,7 +91,7 @@ Dynamic 模式、Smooth Motion，或显示器刷新率及当前帧生成状态�
 仍可手动设置上限，但需要受支持的 Reflex。菜单分别显示 Reflex 请求及其状态和实测源帧率：
 **Reflex accepted … FPS** 仅表示请求已被接受，不证明实测帧率或显示输出符合该值。
 
-3 FPS 余量只是初始建议，不会自动检测 VRR，也不保证始终处于其范围内。
+余量随刷新率增大，只是初始建议，不会自动检测 VRR，也不保证始终处于其范围内。
 较低的上限只有在实际降低渲染帧率时，才可能降低负载、功耗和温度。
 上限高于游戏当前可达到的帧率时可能没有收益；请在机器热起来后，对比同一场景再调整。
 

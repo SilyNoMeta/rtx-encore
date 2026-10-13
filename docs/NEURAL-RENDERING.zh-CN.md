@@ -36,7 +36,7 @@ RTX Encore 为 **Ampere（RTX 30）**自行开发 NR 性能选项，同时支持
 ## 要求
 
 - NVIDIA 的 NR 文件 **`nvngx_dlssnr.dll` 310.8.0**。RTX Encore 不包含它：需要自行提供，并放在模组文件旁边，
-  通常是游戏可执行文件所在的目录。其他版本均不接受。
+  通常是游戏可执行文件所在的目录。其他版本均不接受。[RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub) 会替你下载、校验并放置这个文件。
 - 游戏已开启 **DLSS 超分辨率或 DLAA**。NR 应用于其输出。
 - RTX 40 或 RTX 30 显卡。RTX 20 支持是实验性的。
 

@@ -17,7 +17,7 @@ comment le corriger.
 
 | Onglet | Ce qu'il contient |
 | :--- | :--- |
-| **Frames** | La génération d'images avec son preset de modèle et ses options de qualité et d'interface, Smooth Motion, la limite d'images calculées, la V-Sync |
+| **Frames** | La génération d'images avec son preset de modèle (A/B Normal, C Lite), son option Fast indépendante et ses options de qualité et d'interface, Smooth Motion, la limite d'images calculées, la V-Sync |
 | **Image** | La résolution de rendu DLSS, les presets de modèles SR/RR, Neural Rendering |
 | **Overlay** | Un aperçu de l'overlay, sa position, la taille de son texte et les lignes qu'il affiche |
 | **System** | Les raccourcis, la compatibilité, les diagnostics et les détails de la session, avec un bouton **Copy** pour les rapports de bug |
@@ -28,6 +28,7 @@ comment le corriger.
 - La plupart des réglages s'appliquent en direct. Un `*` après un nom marque un réglage lu au démarrage du jeu ; il
   passe à l'orange une fois modifié, et une ligne en bas du menu liste les changements en attente d'un redémarrage.
 - Un réglage modifié a un nom plus lumineux et un bouton de réinitialisation.
+- **FG model preset** demande de relancer le jeu : **A/B utilisent Normal ; C (Lite) active automatiquement Lite**. **Fast frame generation** reste indépendant. Le forçage Lite est réservé au diagnostic dans le JSON, sans réglage séparé dans le menu. Voir les [réglages](SETTINGS.fr.md#dlsspresets).
 - Chaque section montre ses réglages principaux ; les autres sont dans des groupes qui s'ouvrent sur place
   (**Fine tuning**, **Performance**, **Diagnostics**, ...).
 - Faites glisser la barre de titre pour déplacer le menu, et son coin inférieur droit pour le redimensionner.
@@ -79,13 +80,13 @@ La position (quatre coins) et la taille du texte (10 à 32 px) sont dans le mêm
 
 ### Plafond Reflex suggéré
 
-Le limiteur Reflex accepte les versions de DLL 2.1.1–2.14.1. En dehors de cette plage, les réglages du jeu sont conservés.
+Le limiteur Reflex accepte les versions de DLL 2.1.1–2.14.1, et 2.14.16. Avec une autre version, les réglages du jeu sont conservés.
 Les SDK publiés dans cette plage ont été examinés hors ligne ; chaque version n'a pas été validée en jeu.
 Les versions intermédiaires sans tag public, dont 2.13 et 2.14.0, n'ont pas été vérifiées avec un SDK public.
 Son effet dépend toujours de l'intégration Reflex du jeu et du pilote. Aucun limiteur de repli par attente CPU n'est ajouté.
 
-Dans **Frames → Frame pacing**, **For this display** propose `fréquence de l’écran - 3 FPS` :
-par exemple **117 FPS à 120 Hz**, sans division par le multiplicateur FG. Selon le jeu et le pilote, les images
+Dans **Frames → Frame pacing**, **For this display** propose `fréquence - fréquence² / 3600`, arrondi à l’entier inférieur :
+par exemple **116 FPS à 120 Hz**, 138 à 144 Hz et 224 à 240 Hz, sans division par le multiplicateur FG. Selon le jeu et le pilote, les images
 générées peuvent compter dans le plafond. Dans Starfield avec Streamline 2.12, une demande de 90 a donné environ
 22,5 FPS rendus avec FG ×4. Comparez la cadence source mesurée et celle incluant FG.
 Cliquez sur **Use … FPS** pour enregistrer la suggestion ; changer d’écran ou de multiplicateur n’ajuste jamais le plafond automatiquement.
@@ -98,7 +99,7 @@ l’état actuel de la génération est inconnu. Le réglage manuel reste dispon
 Le menu distingue la demande et son statut Reflex des FPS source mesurés : **Reflex accepted … FPS** confirme la demande,
 pas que la cadence mesurée ou celle de l’affichage lui correspond.
 
-La marge de 3 FPS est un point de départ, sans détection automatique du VRR ni garantie de rester dans sa plage.
+La marge grandit avec la fréquence de l’écran. C’est un point de départ, sans détection automatique du VRR ni garantie de rester dans sa plage.
 Un plafond plus bas peut réduire charge, consommation et chauffe s’il réduit effectivement la cadence de rendu.
 Un plafond supérieur aux FPS déjà atteints peut n’apporter aucun bénéfice ; ajustez-le en comparant la même scène à chaud.
 

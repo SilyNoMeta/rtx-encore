@@ -49,11 +49,36 @@ la latence, ni la qualité d'image dans d'autres jeux.
 | `296/74 fps 2x+sm` | DLSS Frame Generation X2, puis Smooth Motion |
 
 Le chiffre de Smooth Motion est une estimation : le pilote peut suspendre l'interpolation, et l'overlay ne mesure
-pas ce que l'écran reçoit.
+pas ce que l'écran reçoit. Il n'apparaît qu'une fois l'interpolation du pilote démarrée ; d'ici là, l'overlay
+affiche la seule fréquence d'images du jeu, avec l'une de ces lignes, et le menu montre le même état avec la marche
+à suivre :
+
+| Ligne | Signification |
+| :--- | :--- |
+| `SM OFF: SET GRAPHICS API TO VULKAN` | Le jeu affiche en Vulkan alors que **Graphics API** est sur Direct3D |
+| `SM NOT RUNNING: TRY FORCE SMOOTH MOTION` | Jeu Vulkan : le pilote n'y a pas démarré Smooth Motion ; voir ci-dessous |
+| `SM NOT RUNNING: NO DRIVER MODULE LOADED` | Le pilote est prêt mais n'a pas commencé à interpoler |
+
+## Forcer Smooth Motion dans un jeu Vulkan
+
+Dans les jeux Vulkan, le pilote NVIDIA décide jeu par jeu si Smooth Motion peut fonctionner. Là où il refuse, le menu
+affiche **Not running** et propose **Force Smooth Motion** (onglet **Frames**, section **Smooth Motion**), qui est
+le réglage `"smoothMotionForce": true` de `rtx-encore.jsonc`. Il est désactivé par défaut ; relancez le jeu après
+l'avoir changé.
+
+> [!WARNING]
+> NVIDIA peut exclure un jeu pour une raison. Y forcer Smooth Motion peut donner des résultats inattendus : curseur
+> de souris dédoublé, artefacts visuels ou plantage. Désactivez-le si le jeu se comporte mal.
+
+Il n'a aucun effet dans les jeux DirectX. Si Smooth Motion ne démarre toujours pas avec lui, il ne peut pas
+fonctionner dans ce jeu.
 
 ## Si cela ne fonctionne pas
 
 - **Le menu signale un pilote non pris en charge** : installez l'une des quatre versions ci-dessus.
-- **Rien ne change en jeu** : vérifiez le choix **Graphics API**, et relancez le jeu après chaque changement.
-- **Vulkan** : essayez avec Smooth Motion sur Off dans le profil du jeu de l'application NVIDIA.
+- **Rien ne change en jeu**, ou le menu indique **Wrong API** ou **Not running** : vérifiez le choix
+  **Graphics API**, et relancez le jeu après chaque changement. Les émulateurs sont souvent en Vulkan.
+- **Vulkan** : essayez avec Smooth Motion sur Off dans le profil du jeu de l'application NVIDIA. Si le menu indique
+  que le pilote ne le démarre pas pour ce jeu, voir
+  [Forcer Smooth Motion](#forcer-smooth-motion-dans-un-jeu-vulkan).
 - Joignez le rapport du menu (onglet **System**, **Copy**) quand vous ouvrez un ticket.

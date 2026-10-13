@@ -67,7 +67,7 @@ whether the cause is a laptop power profile, CPU/GPU power sharing, or another p
 between samples may be missed. Comparing the same scene before and after the drop is especially useful.
 
 For a separate comparison, try **Frames → Frame pacing → Suggested Reflex cap** when available, or a manual
-Reflex request. The suggestion uses the display rate minus 3 FPS; it is not a thermal target. FG counting
+Reflex request. The suggestion uses a limit below the display rate (224 FPS at 240 Hz); it is not a thermal target. FG counting
 depends on the game/driver. If applying it does not reduce the actual render rate, try a lower request.
 Compare measured source FPS and GPU readings; `accepted` alone does not prove a benefit. The saved limit
 stays fixed until you change it. See [the cap controls](MENU-AND-OVERLAY.md#suggested-reflex-cap).

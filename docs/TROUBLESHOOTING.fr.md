@@ -69,7 +69,7 @@ Les événements brefs entre deux relevés peuvent être manqués. Comparer la m
 est particulièrement utile.
 
 Pour une comparaison distincte, essayez **Frames → Frame pacing → Suggested Reflex cap** si disponible,
-ou une demande Reflex manuelle. La suggestion utilise la fréquence écran moins 3 FPS ; ce n’est pas une cible
+ou une demande Reflex manuelle. La suggestion utilise une limite sous la fréquence écran (224 FPS à 240 Hz) ; ce n’est pas une cible
 thermique. Le comptage des images FG dépend du jeu et du pilote. Si l’application ne réduit pas la cadence de
 rendu mesurée, essayez une demande plus basse. Comparez les FPS source et les mesures GPU ; `accepted` seul ne
 démontre pas un gain. Le plafond enregistré reste fixe jusqu’à votre prochaine modification.

@@ -16,7 +16,7 @@ to go to its settings. When a problem lasts, a card under the strip names it and
 
 | Tab | What it holds |
 | :--- | :--- |
-| **Frames** | Frame generation with its model preset, quality and interface options, Smooth Motion, the Reflex frame limit, V-Sync |
+| **Frames** | Frame generation with its model preset (A/B Normal, C Lite), independent Fast option, quality and interface options, Smooth Motion, the Reflex frame limit, V-Sync |
 | **Image** | DLSS render resolution, SR/RR model presets, Neural Rendering |
 | **Overlay** | A preview of the overlay, its position, its text size and the lines it shows |
 | **System** | Shortcuts, compatibility, diagnostics and the session details, with a **Copy** button for bug reports |
@@ -27,6 +27,7 @@ Good to know:
 - Most settings apply live. A `*` after a name marks a setting read when the game starts; it turns orange once
   changed, and a line at the bottom of the menu lists the changes waiting for a restart.
 - A modified setting has a brighter name and a reset button.
+- **FG model preset** requires a restart: **A/B use Normal; C (Lite) automatically enables Lite**. **Fast frame generation** stays independent. The Lite override is diagnostic-only in JSON, with no separate menu control. See [settings](SETTINGS.md#dlsspresets).
 - Each section shows its main settings; the others are in groups that open in place (**Fine tuning**,
   **Performance**, **Diagnostics**, ...).
 - Drag the title bar to move the menu and its bottom-right corner to resize it. Position and size are remembered.
@@ -77,13 +78,13 @@ Position (four corners) and text size (10 to 32 px) are in the same tab.
 
 ### Suggested Reflex cap
 
-The Reflex limiter accepts DLL versions 2.1.1–2.14.1. Versions outside that range retain the game's settings.
+The Reflex limiter accepts DLL versions 2.1.1–2.14.1, and 2.14.16. Other versions retain the game's settings.
 The published SDKs in this range have been examined offline; this is not in-game validation of every version.
 Untagged intermediate versions, including 2.13 and 2.14.0, have no public SDK validation.
 Actual limiting still depends on the game's Reflex integration and driver support. This does not add a CPU-wait fallback.
 
-In **Frames → Frame pacing**, **For this display** suggests `display refresh rate - 3 FPS`:
-for example, **117 FPS at 120 Hz**. It does not divide the request by the FG multiplier. Depending on the
+In **Frames → Frame pacing**, **For this display** suggests `refresh rate - refresh rate² / 3600`, rounded down:
+for example, **116 FPS at 120 Hz**, 138 at 144 Hz and 224 at 240 Hz. It does not divide the request by the FG multiplier. Depending on the
 game and driver, generated frames may count toward the cap. In Starfield with Streamline 2.12, a request
 of 90 was observed at about 22.5 rendered FPS with FG ×4. Compare the measured source and FG-inclusive rates.
 Click **Use … FPS** to save the suggestion. Display or multiplier changes never adjust your saved limit automatically.
@@ -96,7 +97,7 @@ Frame Generation state is unknown. The manual limit remains available and requir
 The menu shows the Reflex request/status separately from measured source FPS: **Reflex accepted … FPS** confirms the
 request, not that the measured rate or display output matches it.
 
-The 3 FPS margin is a starting point, not automatic VRR detection or a guarantee of staying within its range.
+The margin grows with the refresh rate. It is a starting point, not automatic VRR detection or a guarantee of staying within its range.
 A lower limit can reduce load, power and heat if it reduces the actual rendering rate. A limit above the
 rate the game already achieves may have no benefit; adjust it after comparing the same scene at operating temperature.
 

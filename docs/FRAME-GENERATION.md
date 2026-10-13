@@ -10,7 +10,7 @@ RTX Encore brings DLSS Multi Frame Generation, from X2 to X6, to RTX 20, RTX 30 
   game already has; it cannot add one to a game that has none. For those games, see
   [Smooth Motion](SMOOTH-MOTION.md).
 - The game's frame generation file, `nvngx_dlssg.dll`, in a supported version: see
-  [Compatibility](COMPATIBILITY.md#dlss-frame-generation-versions). Version 310.9.1 gives the most.
+  [Compatibility](COMPATIBILITY.md#dlss-frame-generation-versions). Feature coverage depends on the exact file.
 - Frame generation turned on in the game's settings.
 
 ## Modes
@@ -59,18 +59,27 @@ default and are read when the game starts.
 - **High-multiplier quality**: keeps generated frames clean from X3 to X6. Leave it on.
 - **Fast frame generation**: the performance option described below. Leave it on.
 
+Choose **FG model preset** and restart: **A/B use Normal; C (Lite) automatically enables Lite** with qualified
+DLSS-G 310.9.16.0. There is no second mode setting to select. **Fast frame generation stays independent** and can
+remain enabled with every preset. Lite keeps NVIDIA's native image policy, so Anti-tearing and Protection tuning
+have no effect there, and UI recomposition is unavailable. A JSON-only override is reserved for diagnostics;
+leave it at its default. See [settings](SETTINGS.md#dlsspresets).
+
 ### Fast frame generation
 
-With **Fast frame generation** on, each generated frame costs less GPU time and the image is the same. Measured on an
-RTX 3070 Ti Laptop at 1080p:
+**Fast frame generation** reduces GPU work while preserving the intended image. Earlier measurements with
+DLSS-G 310.9.1 on an RTX 3070 Ti Laptop at 1080p:
 
 | Multiplier | Option off | Option on | Difference |
 | :---: | ---: | ---: | ---: |
 | X2 | 2.33 ms | 1.57 ms | −33 % |
 | X6 | 6.38 ms | 5.23 ms | −18 % |
 
-These figures come from one system; they are not a promise for every card or game. The option needs
-`nvngx_dlssg.dll` 310.9.1.
+These figures come from one system; they are not a promise for every card or game and do not apply to Lite.
+The option is available for individually qualified 310.9.0, 310.9.1 and 310.9.16 files. With 310.9.16 it follows
+the active Normal or Lite composition path; the menu reports its availability. The new 310.9.16 quality and
+performance support is locally checked but awaits in-game validation. No Lite performance gain has been measured.
+The neural-network optimizations require DirectX 12; Vulkan benefits only from the image-processing optimizations.
 
 ## HUD and interface
 

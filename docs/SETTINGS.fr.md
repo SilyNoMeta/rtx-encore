@@ -46,17 +46,33 @@ ni le multiplicateur d'images, ni le preset NR.
 | :--- | :---: | :--- |
 | `dlssSrPreset` | `"game"` | `"game"`, `"default"`, `"a"`–`"f"` (anciens), `"j"`, `"k"`, `"l"`, `"m"` |
 | `dlssRrPreset` | `"game"` | `"game"`, `"default"`, `"a"`–`"c"` (anciens), `"d"`, `"e"` |
-| `dlssFgPreset` | `"game"` | `"game"`, `"a"`, `"b"` |
+| `dlssFgPreset` | `"game"` | `"game"`, `"a"`, `"b"`, `"c"` |
+| `dlssFgLite` | `"game"` | Diagnostic uniquement, JSON : `"game"`, `"off"`, `"on"` |
 
-`"game"` conserve le choix du jeu. Les choix SR/RR s'appliquent à tous les modes de qualité, DLAA compris ;
+Pour les clés de preset, `"game"` conserve le choix du jeu. Les choix SR/RR s'appliquent à tous les modes de qualité, DLAA compris ;
 `"default"` demande explicitement le choix par défaut de la DLL DLSS. Les modèles disponibles dépendent
 de la DLL installée ; les réglages NVIDIA ou un modèle de repli peuvent prendre le dessus.
 Choisir un preset RR n'active pas RR.
 
-Le choix FG A/B prend en charge les **binaires release NVIDIA DLSS-G** vérifiés individuellement ci-dessous :
+Le choix du preset FG prend en charge les **binaires release NVIDIA DLSS-G** vérifiés individuellement ci-dessous :
 
 - **310.6.0.0, 310.7.0.0, 310.7.128.0, 310.7.129.0**
 - **310.8.0.0, 310.9.0.0, 310.9.1.0**
+- **310.9.16.0**, le seul qui accepte le preset C
+
+Le preset C est le mode performance plus rapide de NVIDIA pour la génération d’images, avec de légers compromis
+sur la qualité d’image. Avec un autre binaire, un `"c"` enregistré est refusé et le choix du jeu est conservé.
+
+**Le preset FG suffit : A/B utilisent Normal ; C active automatiquement Lite.** Fast frame generation reste
+indépendant et peut rester activé avec chaque preset. Relancez le jeu après un changement de preset.
+
+`dlssFgLite` est un **forçage réservé au diagnostic, uniquement dans le JSON**, absent des réglages du menu.
+Laissez `"game"` pour suivre le preset choisi ou le jeu/pilote. Uniquement pour le diagnostic avec le fichier
+310.9.16.0 qualifié individuellement, `"off"` force Normal et `"on"` force Lite, en priorité sur le preset.
+Il faut relancer le jeu ; les autres binaires refusent ce forçage. Lite conserve la politique
+d'image native de NVIDIA : **Anti-tearing / anti-ghosting** et **Protection tuning** n'ont aucun effet dans ce mode, et la recomposition de l'interface est indisponible.
+Fast frame generation utilise les optimisations adaptées au mode actif. Les ajouts pour 310.9.16 restent à valider
+en jeu ; aucun gain de performance n'est établi pour Lite.
 
 Cette liste concerne le forçage des presets ; la compatibilité générale de la génération d’images est plus large.
 Le numéro de version seul ne garantit pas l’acceptation, et les variantes de développement sont exclues.

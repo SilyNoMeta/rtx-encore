@@ -39,7 +39,7 @@ Les options qui consomment davantage de VRAM sont désactivées par défaut.
 
 - Le fichier NR de NVIDIA, **`nvngx_dlssnr.dll` version 310.8.0**. Il n'est pas inclus dans RTX Encore :
   fournissez-le vous-même et placez-le à côté du fichier du mod, normalement dans le dossier de l'exécutable du jeu.
-  Toute autre version est refusée.
+  Toute autre version est refusée. [RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub) télécharge ce fichier, le vérifie et le place là pour vous.
 - Un jeu avec **DLSS Super Resolution ou DLAA activé**. NR s'applique à son résultat.
 - Une carte RTX 40 ou RTX 30. RTX 20 est expérimental.
 

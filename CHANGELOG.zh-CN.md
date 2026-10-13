@@ -2,6 +2,31 @@
 
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
+## 1.0.0-rc.1 — 预发布版本
+
+- **支持最新的 NVIDIA 文件。** 完成对 2026 年 10 月 13 日 NVIDIA 应用测试版所下载文件的资格检查：Streamline 2.14.16（动态 MFG、X2 以上固定 MFG、Reflex 帧率限制、界面重组）和 DLSS-G 310.9.16（预设、画质选项和 Fast frame generation）。新增帧生成预设 **C (Lite)**，即 NVIDIA 更快的性能模式，仅适用于已验证的 DLSS-G 310.9.16.0；A/B 仍使用 Normal，**Fast frame generation** 保持独立。这些新增内容属于实验性功能，测试尚少；见[兼容性](docs/COMPATIBILITY.zh-CN.md#streamline-版本)。
+- **[RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub)**，全新的 Windows 配套应用，现以候选发布版提供。它会在你的游戏中安装 RTX Encore，同时带来最新的已验证 DLSS 和 Streamline 文件以及 NVIDIA 的 Neural Rendering 文件，一键更新所有游戏，并且随时可以把游戏恢复原状。手动安装方式与以前完全一样；见[安装](docs/INSTALLATION.zh-CN.md#最简单的方式rtx-encore-hub)。
+- 新增 **Force Smooth Motion**（`"smoothMotionForce"`，默认关闭），用于 NVIDIA 配置文件未启用 Smooth Motion 的 Vulkan 游戏。强制启用可能带来意外结果（光标重影、画面伪影、崩溃）。覆盖层和菜单现在会提示 Smooth Motion 实际未运行，或所选图形 API 与游戏不符，而不再显示翻倍的帧率（见于 RPCS3）。
+- 修正 Forza Horizon 6 在菜单附加时于启动 logo 阶段退出的问题（[#11](https://github.com/SilyNoMeta/rtx-encore/issues/11)、[#18](https://github.com/SilyNoMeta/rtx-encore/issues/18)）。本地多次带菜单启动均保持运行；报告者的安装环境未复测。
+- 修正 Final Fantasy VII Rebirth 在 RTX 20/30 显卡上隐藏帧生成的问题（[#12](https://github.com/SilyNoMeta/rtx-encore/issues/12)、[#30](https://github.com/SilyNoMeta/rtx-encore/issues/30)）。已在 RTX 3070 Ti 上使用游戏自带的 Streamline 2.8.0 于游戏内确认；未在该游戏中测试 Streamline 2.14.1 更新。
+- 修正 Where Winds Meet 使用 `version.dll` 或 `winmm.dll` 时无法启动（0xc0000142）的问题（[#9](https://github.com/SilyNoMeta/rtx-encore/issues/9)），以及 `dinput8.dll` 名称搭配 Epic 覆盖层时的崩溃。该游戏请使用 `version.dll`：以 `dinput8.dll` 加载时，RTX Encore 到达过晚，游戏已放弃 DLSS 帧生成。报告者的安装环境未复测。
+- 修正搭配 Special K 时菜单在 Direct3D 12 下拒绝附加的问题（[#24](https://github.com/SilyNoMeta/rtx-encore/issues/24)）。游戏内确认待定。
+- 修正 **For this display**：建议的上限现在保留随刷新率增大的余量（120 Hz 为 116 FPS，144 Hz 为 138，240 Hz 为 224）（[#23](https://github.com/SilyNoMeta/rtx-encore/issues/23)）。
+- 修正从旧版设置文件更新后的首次启动：Smooth Motion 及部分其他启动设置要到第二次启动才生效（见于 Shadows of Doubt）。
+- RTX Encore 在游戏的崩溃报告程序中保持不活动；此前它会写入自己的会话日志，把真正的游戏日志挤出保留范围（见于 Shadows of Doubt）。
+- 异常日志现在会记录结束进程的线程，以区分游戏自身退出与外部终止。
+
+Windows Release 构建，包含 Open NR、默认诊断和全部六个分发变体，在维护者的电脑上构建并测试：自动化回归测试在游戏外通过。Forza Horizon 6、Final Fantasy VII Rebirth 和 Where Winds Meet 的修正已用此前的测试构建验证；最终 rc.1 构建在发布前未在游戏内运行，本次不宣称性能提升。
+
+### 致谢
+
+- [@avikpal693](https://github.com/avikpal693) 和 [@wer2357666](https://github.com/wer2357666)：提供 Forza Horizon 6 报告和日志（[#11](https://github.com/SilyNoMeta/rtx-encore/issues/11)、[#18](https://github.com/SilyNoMeta/rtx-encore/issues/18)）。
+- [@yannduwooz83](https://github.com/yannduwooz83)：提供 Final Fantasy VII Rebirth 报告和日志（[#12](https://github.com/SilyNoMeta/rtx-encore/issues/12)）；[@wd3dmlys](https://github.com/wd3dmlys)：提供 GPU 架构线索（[#12](https://github.com/SilyNoMeta/rtx-encore/issues/12)）；[@lovebabyx](https://github.com/lovebabyx)：提供 beta.5 报告（[#30](https://github.com/SilyNoMeta/rtx-encore/issues/30)）。
+- [@ranmo-1](https://github.com/ranmo-1)：提供 Where Winds Meet 报告（[#9](https://github.com/SilyNoMeta/rtx-encore/issues/9)）。
+- [@PhantomGamers](https://github.com/PhantomGamers)：提供刷新率余量公式（[#23](https://github.com/SilyNoMeta/rtx-encore/issues/23)）以及 Special K 报告和日志（[#24](https://github.com/SilyNoMeta/rtx-encore/issues/24)）。
+
+感谢每一位分享日志并花时间测试构建的朋友。
+
 ## 1.0.0-beta.5 — 预发布版本
 
 - 修正帧生成运行期间界面重组（UIR）设置变更被忽略的问题（[#27](https://github.com/SilyNoMeta/rtx-encore/issues/27)）。这包括启用和关闭 UIR、**Force UIR** 以及游戏或自动模式发出的请求，适用于已验证的 Streamline 2.11.1、2.12.0、2.14.1 生产版文件。关闭 Force UIR 后，游戏或自动模式仍可请求启用 UIR。

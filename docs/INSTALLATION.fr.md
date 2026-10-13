@@ -14,6 +14,16 @@
 > RTX Encore se charge dans le jeu. Ne l'installez pas dans un jeu en ligne ou protégé par un anti-triche : il peut
 > être bloqué, ou faire signaler un compte.
 
+## Le plus simple : RTX Encore Hub
+
+**[RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub)** installe RTX Encore pour vous. Il trouve vos jeux, choisit un nom de fichier libre,
+apporte les fichiers DLSS et Streamline les plus récents que ce RTX Encore prend en charge ainsi que le fichier
+Neural Rendering de NVIDIA, sauvegarde tout ce qu'il remplace, et met à jour tous les jeux en un clic.
+Téléchargez-le depuis [ses publications](https://github.com/SilyNoMeta/rtx-encore-hub/releases) ; son
+[guide d'utilisation](https://github.com/SilyNoMeta/rtx-encore-hub/blob/main/docs/USER-GUIDE.fr.md) explique chaque écran.
+
+Le reste de cette page décrit l'installation à la main, qui fonctionne exactement comme avant.
+
 ## Contenu de l'archive
 
 | Fichier | Rôle |

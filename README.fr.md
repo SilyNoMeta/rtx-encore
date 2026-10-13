@@ -14,6 +14,7 @@ Un seul fichier à côté du jeu, un menu intégré, rien d'autre à installer.
 [![API graphiques](https://img.shields.io/badge/API-DirectX%2011%20%7C%2012%20%7C%20Vulkan-0078d4?style=flat-square)](docs/COMPATIBILITY.fr.md)
 
 **[Télécharger](https://github.com/SilyNoMeta/rtx-encore/releases)** ·
+**[RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub)** ·
 **[Installation](docs/INSTALLATION.fr.md)** ·
 **[English](README.md)** ·
 **[中文](README.zh-CN.md)**
@@ -67,7 +68,27 @@ d'image ou davantage de VRAM contre moins de temps NR.
 RTX Encore est fait pour les RTX 20, 30 et 40 ; les RTX 50 tiennent la génération d'images et Smooth Motion de
 NVIDIA. Détails, API graphiques, pilotes et notes par jeu : **[Compatibilité](docs/COMPATIBILITY.fr.md)**.
 
+## Installer et mettre à jour avec RTX Encore Hub
+
+**[RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub)** est le compagnon Windows de RTX Encore : la façon la plus simple d'installer le mod, et
+de le tenir à jour avec les fichiers NVIDIA qui vont avec.
+
+| | Avec le Hub |
+| :---: | :--- |
+| 🎮 | **Vos jeux au même endroit.** Les jeux Steam, Epic et GOG sont trouvés tout seuls, et la fiche de chaque jeu dit ce que RTX Encore peut y faire sur votre carte et votre pilote. |
+| 📦 | **Les bons fichiers NVIDIA, pris pour vous.** Les versions de DLSS et de Streamline les plus récentes que ce RTX Encore prend en charge, les plugins Streamline restant un jeu complet, et le fichier Neural Rendering de NVIDIA téléchargé et vérifié. Beaucoup de problèmes signalés viennent de fichiers DLSS ou Streamline restés anciens. |
+| 🔄 | **Des mises à jour en un clic.** Un nouveau RTX Encore est annoncé avec ses notes, **Tout mettre à jour** met à jour tous les jeux, et le Hub se met à jour lui-même. |
+| ↩️ | **Un retour arrière.** Chaque fichier remplacé est sauvegardé d'abord, et **Restaurer le jeu** remet le jeu comme il était. |
+| 🎚️ | **Des réglages expliqués.** Un formulaire pour le fichier de réglages, où ce qui n'a pas d'effet sur votre carte est grisé. |
+| 🩺 | **Une première vérification.** **Lancer et vérifier** observe la première minute du jeu et dit si le mod s'est chargé. |
+
+Téléchargez-le depuis **[ses publications](https://github.com/SilyNoMeta/rtx-encore-hub/releases)**. Le Hub est une version candidate : l'installation à
+la main, ci-dessous, fonctionne exactement comme avant. Les profils de la communauté, pour partager des réglages par
+jeu, sont dans le Hub mais pas encore ouverts.
+
 ## Démarrage rapide
+
+Le plus simple est **[RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub)** : installez-le, ouvrez la fiche du jeu et appuyez sur **Installer**. À la main :
 
 1. Téléchargez la **[dernière version](https://github.com/SilyNoMeta/rtx-encore/releases)** et extrayez-la.
 2. Copiez `rtx-encore.dll` à côté de l'exécutable du jeu et renommez-le `version.dll`.

@@ -44,11 +44,33 @@ Smooth Motion 是 NVIDIA 驱动的插帧功能：在 DirectX 11、DirectX 12 和
 | `148/74 fps sm` | 使用 Smooth Motion 的估算输出 / 游戏的帧率 |
 | `296/74 fps 2x+sm` | DLSS 帧生成 X2，再加 Smooth Motion |
 
-Smooth Motion 的数值是估算值：驱动可能暂停插帧，而且叠加层并不测量屏幕实际接收到的内容。
+Smooth Motion 的数值是估算值：驱动可能暂停插帧，而且叠加层并不测量屏幕实际接收到的内容。只有在驱动开始
+插帧之后才会显示该数值；在此之前，叠加层只显示游戏的帧率，并附带下列提示之一，菜单也会显示相同的状态和
+处理方法：
+
+| 提示行 | 含义 |
+| :--- | :--- |
+| `SM OFF: SET GRAPHICS API TO VULKAN` | 游戏使用 Vulkan 呈现，而 **Graphics API** 设为 Direct3D |
+| `SM NOT RUNNING: TRY FORCE SMOOTH MOTION` | Vulkan 游戏：驱动没有为它启动 Smooth Motion；见下文 |
+| `SM NOT RUNNING: NO DRIVER MODULE LOADED` | 驱动已就绪，但尚未开始插帧 |
+
+## 在 Vulkan 游戏中强制启用 Smooth Motion
+
+在 Vulkan 游戏中，NVIDIA 驱动会按游戏决定是否允许 Smooth Motion 运行。当驱动拒绝时，菜单会显示
+**Not running**，并建议启用 **Force Smooth Motion**（**Frames** 选项卡，**Smooth Motion** 部分），即
+`rtx-encore.jsonc` 中的 `"smoothMotionForce": true`。该设置默认关闭；修改后请重启游戏。
+
+> [!WARNING]
+> NVIDIA 排除某个游戏可能是有原因的。在这类游戏中强制启用 Smooth Motion 可能产生意外结果：鼠标指针重影、
+> 画面瑕疵或崩溃。如果游戏表现异常，请将其关闭。
+
+它对 DirectX 游戏没有作用。如果启用后 Smooth Motion 仍未启动，说明它无法在该游戏中运行。
 
 ## 如果不起作用
 
 - **菜单提示驱动不受支持**：请安装上述四个版本之一。
-- **游戏中没有任何变化**：检查 **Graphics API** 的选择，并在每次修改后重启游戏。
-- **Vulkan**：尝试在 NVIDIA 应用的游戏配置文件中把 Smooth Motion 设为 Off。
+- **游戏中没有任何变化**，或菜单显示 **Wrong API** 或 **Not running**：检查 **Graphics API** 的选择，并在
+  每次修改后重启游戏。模拟器通常使用 Vulkan。
+- **Vulkan**：尝试在 NVIDIA 应用的游戏配置文件中把 Smooth Motion 设为 Off。如果菜单提示驱动没有为该游戏
+  启动它，请参阅[强制启用 Smooth Motion](#在-vulkan-游戏中强制启用-smooth-motion)。
 - 提交 issue 时请附上菜单的报告（**System** 选项卡，**Copy**）。

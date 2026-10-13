@@ -10,8 +10,7 @@ RTX Encore apporte DLSS Multi Frame Generation, de X2 à X6, aux cartes RTX 20, 
   que le jeu possède déjà ; il ne peut pas en ajouter une à un jeu qui n'en a pas. Pour ces jeux, voir
   [Smooth Motion](SMOOTH-MOTION.fr.md).
 - Le fichier de génération d'images du jeu, `nvngx_dlssg.dll`, dans une version prise en charge : voir
-  [Compatibilité](COMPATIBILITY.fr.md#versions-de-dlss-frame-generation). La version 310.9.1 est celle qui en tire
-  le plus.
+  [Compatibilité](COMPATIBILITY.fr.md#versions-de-dlss-frame-generation). Les fonctions disponibles dépendent du fichier exact.
 - La génération d'images activée dans les réglages du jeu.
 
 ## Modes
@@ -60,18 +59,29 @@ activées par défaut et sont lues au démarrage du jeu.
 - **High-multiplier quality** : garde les images générées propres de X3 à X6. Laissez-le activé.
 - **Fast frame generation** : l'option de performance décrite ci-dessous. Laissez-la activée.
 
+Choisissez **FG model preset**, puis relancez le jeu : **A/B utilisent Normal ; C (Lite) active automatiquement
+Lite** avec le fichier DLSS-G 310.9.16.0 qualifié. Aucun second mode n'est à sélectionner. **Fast frame generation
+reste indépendant** et peut rester activé avec chaque preset. Lite conserve la politique d'image native de NVIDIA :
+Anti-tearing et Protection tuning n'y ont aucun effet, et la recomposition de l'interface est indisponible.
+Un forçage réservé au diagnostic reste accessible uniquement dans le JSON ; laissez sa valeur par défaut.
+Voir les [réglages](SETTINGS.fr.md#dlsspresets).
+
 ### Fast frame generation
 
-Avec **Fast frame generation**, chaque image générée coûte moins de temps GPU et l'image est la même. Mesuré sur un
-RTX 3070 Ti Laptop en 1080p :
+**Fast frame generation** réduit le travail GPU en conservant l'image attendue. Mesures antérieures avec
+DLSS-G 310.9.1 sur un RTX 3070 Ti Laptop en 1080p :
 
 | Multiplicateur | Option désactivée | Option activée | Écart |
 | :---: | ---: | ---: | ---: |
 | X2 | 2,33 ms | 1,57 ms | −33 % |
 | X6 | 6,38 ms | 5,23 ms | −18 % |
 
-Ces chiffres viennent d'un seul système ; ils ne sont pas une promesse pour toutes les cartes ni tous les jeux.
-L'option demande `nvngx_dlssg.dll` 310.9.1.
+Ces chiffres viennent d'un seul système ; ils ne sont pas une promesse pour toutes les cartes ni tous les jeux et
+ne s'appliquent pas à Lite. L'option accepte les fichiers 310.9.0, 310.9.1 et 310.9.16 qualifiés individuellement.
+Avec 310.9.16, elle suit le chemin de composition Normal ou Lite actif ; le menu indique sa disponibilité.
+Les nouveaux correctifs de qualité et de performance 310.9.16 sont vérifiés localement, mais restent à valider
+en jeu. Aucun gain de performance n'a été mesuré pour Lite.
+Les optimisations des réseaux neuronaux demandent DirectX 12 ; Vulkan bénéficie seulement des optimisations de traitement de l'image.
 
 ## Interface du jeu
 
