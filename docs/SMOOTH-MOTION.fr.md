@@ -13,7 +13,8 @@ les cartes RTX 30.
 ## Prérequis
 
 - Une carte **RTX 30**. Les RTX 40 tiennent Smooth Motion de NVIDIA ; les RTX 20 ne sont pas prises en charge.
-- L'une de ces versions du pilote NVIDIA, exactement : **617.42**, **617.14**, **616.92** ou **616.64**.
+- L'une de ces versions du pilote NVIDIA, exactement : **620.12**, **617.42**, **617.14**, **616.92**
+  ou **616.64**.
   Seule la 617.14 a été vérifiée en jeu à ce jour. Avec tout autre pilote, la fonction reste désactivée et dit
   pourquoi ; le reste de RTX Encore continue de fonctionner.
 

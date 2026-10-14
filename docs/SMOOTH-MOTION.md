@@ -13,7 +13,8 @@ cards.
 ## Requirements
 
 - An **RTX 30** card. RTX 40 cards have Smooth Motion from NVIDIA; RTX 20 cards are not supported.
-- One of these NVIDIA driver versions, exactly: **617.42**, **617.14**, **616.92** or **616.64**.
+- One of these NVIDIA driver versions, exactly: **620.12**, **617.42**, **617.14**, **616.92** or
+  **616.64**.
   Only 617.14 has been verified in a game so far. With any other driver the feature stays off and says why; the
   rest of RTX Encore keeps working.
 

@@ -2,6 +2,24 @@
 
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.0.0-rc.3 — pre-release
+
+- Fix Star Wars Outlaws crashing when its video settings show the Frame Generation options. The game's own Frame Generation menu now offers what the game supports (up to 4x); the multiplier chosen in RTX Encore still applies. Confirmed in game on the Star Wars Outlaws demo (RTX 3070 Ti Laptop). The crash on launch reported in [#33](https://github.com/SilyNoMeta/rtx-encore/issues/33) appears to have the same cause; the reporter has not retested yet.
+- Accept the NVIDIA **620.12** driver for Smooth Motion on RTX 30 ([#35](https://github.com/SilyNoMeta/rtx-encore/issues/35)). Checked from the driver files only; not yet run with that driver. See [Smooth Motion](docs/SMOOTH-MOTION.md).
+- Fix the menu not appearing in Euro Truck Simulator 2 ([#22](https://github.com/SilyNoMeta/rtx-encore/issues/22)). In Euro Truck Simulator 2, install RTX Encore as `winmm.dll`. Checked from the session log of a local run; not yet confirmed in game, and the reporter's installation was not retested.
+- Warn when the earlier dlssg_for_sm86 add-on is still installed next to RTX Encore ([#1](https://github.com/SilyNoMeta/rtx-encore/issues/1)): with both active, Frame Generation may show no generated frame. The session log and the menu's Compatibility section say so; remove the old add-on.
+
+Windows Release build with Open NR included, default diagnostics and all six distribution variants, built and tested on the maintainer's PC: the automated regression tests pass outside the game. The Star Wars Outlaws correction was checked in game with a test build of the same change; the final rc.3 build was not run in game before publication, and no performance improvement is claimed.
+
+### Thanks
+
+- [@ivanmestre](https://github.com/ivanmestre) — the Star Wars Outlaws report and the beta.5 and rc.2 logs that led to the fix ([#33](https://github.com/SilyNoMeta/rtx-encore/issues/33)).
+- [@CorwinMaximus](https://github.com/CorwinMaximus) — the 620.12 driver request ([#35](https://github.com/SilyNoMeta/rtx-encore/issues/35)).
+- [@naruto490610-alt](https://github.com/naruto490610-alt) — the Euro Truck Simulator 2 report ([#22](https://github.com/SilyNoMeta/rtx-encore/issues/22)).
+- [@hasnainb237](https://github.com/hasnainb237) — the Star Wars Zero Company logs that showed the leftover add-on ([#1](https://github.com/SilyNoMeta/rtx-encore/issues/1)).
+
+Thanks to everyone who shares logs and takes time to test the builds.
+
 ## 1.0.0-rc.2 — pre-release
 
 - Fix Star Wars Outlaws closing after an alt-tab from its main menu, while the automatic UI recomposition was capturing the scene. Confirmed in game on an RTX 3070 Ti Laptop.

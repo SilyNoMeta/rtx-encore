@@ -2,6 +2,24 @@
 
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.0.0-rc.3 — préversion
+
+- Correction de Star Wars Outlaws qui plantait quand ses réglages vidéo affichaient les options de génération d’images. Le menu de génération d’images du jeu propose maintenant ce que le jeu prend en charge (jusqu’à 4x) ; le multiplicateur choisi dans RTX Encore s’applique toujours. Confirmé en jeu sur la démo de Star Wars Outlaws (RTX 3070 Ti Laptop). Le plantage au lancement signalé dans [#33](https://github.com/SilyNoMeta/rtx-encore/issues/33) semble avoir la même cause ; son auteur n’a pas encore refait l’essai.
+- Prise en charge du pilote NVIDIA **620.12** pour Smooth Motion sur RTX 30 ([#35](https://github.com/SilyNoMeta/rtx-encore/issues/35)). Vérifié à partir des fichiers du pilote seulement ; pas encore lancé avec ce pilote. Voir [Smooth Motion](docs/SMOOTH-MOTION.fr.md).
+- Correction du menu qui n’apparaissait pas dans Euro Truck Simulator 2 ([#22](https://github.com/SilyNoMeta/rtx-encore/issues/22)). Dans Euro Truck Simulator 2, installez RTX Encore sous le nom `winmm.dll`. Vérifié d’après le journal de session d’un essai local ; pas encore confirmé en jeu, et l’installation de l’auteur du signalement n’a pas été retestée.
+- Avertissement quand l’ancien module dlssg_for_sm86 est encore installé à côté de RTX Encore ([#1](https://github.com/SilyNoMeta/rtx-encore/issues/1)) : avec les deux actifs, la génération d’images peut ne présenter aucune image générée. Le journal de session et la section Compatibilité du menu le signalent ; retirez l’ancien module.
+
+Build Windows Release avec Open NR inclus, diagnostics par défaut et les six variantes de distribution, compilé et testé sur le PC du mainteneur : les tests de régression automatisés passent hors jeu. La correction Star Wars Outlaws a été vérifiée en jeu avec un build de test de la même modification ; le build final rc.3 n’a pas été lancé en jeu avant publication, et aucun gain de performance n’est revendiqué.
+
+### Remerciements
+
+- [@ivanmestre](https://github.com/ivanmestre) — le signalement Star Wars Outlaws et les logs beta.5 et rc.2 qui ont mené à la correction ([#33](https://github.com/SilyNoMeta/rtx-encore/issues/33)).
+- [@CorwinMaximus](https://github.com/CorwinMaximus) — la demande du pilote 620.12 ([#35](https://github.com/SilyNoMeta/rtx-encore/issues/35)).
+- [@naruto490610-alt](https://github.com/naruto490610-alt) — le signalement Euro Truck Simulator 2 ([#22](https://github.com/SilyNoMeta/rtx-encore/issues/22)).
+- [@hasnainb237](https://github.com/hasnainb237) — les logs Star Wars Zero Company qui ont montré l’ancien module resté en place ([#1](https://github.com/SilyNoMeta/rtx-encore/issues/1)).
+
+Merci à toutes celles et tous ceux qui partagent leurs logs et prennent le temps de tester les builds.
+
 ## 1.0.0-rc.2 — préversion
 
 - Correction de Star Wars Outlaws qui se fermait après un alt-tab depuis son menu principal, pendant que la recomposition automatique de l’interface capturait la scène. Confirmé en jeu sur une RTX 3070 Ti Laptop.

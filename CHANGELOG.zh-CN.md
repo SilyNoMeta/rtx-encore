@@ -2,6 +2,24 @@
 
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
+## 1.0.0-rc.3 — 预发布版本
+
+- 修正 Star Wars Outlaws 在视频设置中显示帧生成选项时崩溃的问题。游戏自己的帧生成菜单现在只提供游戏支持的选项（最高 4x）；在 RTX Encore 中选择的倍数仍然生效。已在 Star Wars Outlaws 试玩版上于游戏内确认（RTX 3070 Ti Laptop）。[#33](https://github.com/SilyNoMeta/rtx-encore/issues/33) 中报告的启动崩溃看起来是同一原因；报告者尚未重新测试。
+- 支持 NVIDIA **620.12** 驱动在 RTX 30 上使用 Smooth Motion（[#35](https://github.com/SilyNoMeta/rtx-encore/issues/35)）。仅根据驱动文件进行了检查；尚未在该驱动下实际运行。见 [Smooth Motion](docs/SMOOTH-MOTION.zh-CN.md)。
+- 修正菜单在 Euro Truck Simulator 2（[#22](https://github.com/SilyNoMeta/rtx-encore/issues/22)）中不显示的问题。在 Euro Truck Simulator 2 中，请以 `winmm.dll` 的名称安装 RTX Encore。已根据一次本地运行的会话日志进行检查；尚未在游戏内确认，报告者的安装也未重新测试。
+- 当旧的 dlssg_for_sm86 附加组件仍与 RTX Encore 一起安装时给出警告（[#1](https://github.com/SilyNoMeta/rtx-encore/issues/1)）：两者同时启用时，帧生成可能不显示任何生成帧。会话日志和菜单的兼容性部分会提示这一点；请移除旧的附加组件。
+
+Windows Release 构建，包含 Open NR、默认诊断和全部六个分发变体，在维护者的电脑上构建并测试：自动化回归测试在游戏外通过。Star Wars Outlaws 的修正已用包含同一改动的测试构建在游戏内验证；最终 rc.3 构建在发布前未在游戏内运行，本次不宣称性能提升。
+
+### 致谢
+
+- [@ivanmestre](https://github.com/ivanmestre)：提供 Star Wars Outlaws 报告以及 beta.5 和 rc.2 的日志，促成了这次修正（[#33](https://github.com/SilyNoMeta/rtx-encore/issues/33)）。
+- [@CorwinMaximus](https://github.com/CorwinMaximus)：提出支持 620.12 驱动的请求（[#35](https://github.com/SilyNoMeta/rtx-encore/issues/35)）。
+- [@naruto490610-alt](https://github.com/naruto490610-alt)：报告 Euro Truck Simulator 2 的问题（[#22](https://github.com/SilyNoMeta/rtx-encore/issues/22)）。
+- [@hasnainb237](https://github.com/hasnainb237)：提供 Star Wars Zero Company 日志，显示了残留的旧附加组件（[#1](https://github.com/SilyNoMeta/rtx-encore/issues/1)）。
+
+感谢每一位分享日志并花时间测试构建的朋友。
+
 ## 1.0.0-rc.2 — 预发布版本
 
 - 修正 Star Wars Outlaws 在主菜单中 alt-tab 后关闭的问题：当时自动界面重组正在捕获场景。已在 RTX 3070 Ti Laptop 上于游戏内确认。
