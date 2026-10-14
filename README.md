@@ -78,9 +78,10 @@ keep it and the NVIDIA files it works with up to date.
 | ↩️ | **A way back.** Every replaced file is backed up first, and **Restore game** puts the game back as it was. |
 | 🎚️ | **Settings explained.** A form for the settings file, where what has no effect on your card is greyed out. |
 | 🩺 | **A first check.** **Launch and verify** watches the game's first minute and says whether the mod loaded. |
+| 👥 | **Community profiles.** Settings per game shared by other players, ranked for your machine, to import with a way back, or to share your own. New since Hub 1.0.0-rc.2, and experimental. |
 
 Download it from **[its releases](https://github.com/SilyNoMeta/rtx-encore-hub/releases)**. The Hub is a release candidate: installing by hand, below,
-works exactly as before. Community profiles, to share settings per game, are built into the Hub but not open yet.
+works exactly as before.
 
 ## Quick start
 

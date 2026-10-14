@@ -81,10 +81,10 @@ de le tenir à jour avec les fichiers NVIDIA qui vont avec.
 | ↩️ | **Un retour arrière.** Chaque fichier remplacé est sauvegardé d'abord, et **Restaurer le jeu** remet le jeu comme il était. |
 | 🎚️ | **Des réglages expliqués.** Un formulaire pour le fichier de réglages, où ce qui n'a pas d'effet sur votre carte est grisé. |
 | 🩺 | **Une première vérification.** **Lancer et vérifier** observe la première minute du jeu et dit si le mod s'est chargé. |
+| 👥 | **Des profils de la communauté.** Des réglages par jeu partagés par d'autres joueurs, classés pour votre machine, à importer avec un retour arrière, ou à partager. Nouveaux depuis le Hub 1.0.0-rc.2, et expérimentaux. |
 
 Téléchargez-le depuis **[ses publications](https://github.com/SilyNoMeta/rtx-encore-hub/releases)**. Le Hub est une version candidate : l'installation à
-la main, ci-dessous, fonctionne exactement comme avant. Les profils de la communauté, pour partager des réglages par
-jeu, sont dans le Hub mais pas encore ouverts.
+la main, ci-dessous, fonctionne exactement comme avant.
 
 ## Démarrage rapide
 
