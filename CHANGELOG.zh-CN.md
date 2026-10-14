@@ -2,6 +2,20 @@
 
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
+## 1.0.0-rc.2 — 预发布版本
+
+- 修正 Star Wars Outlaws 在主菜单中 alt-tab 后关闭的问题：当时自动界面重组正在捕获场景。已在 RTX 3070 Ti Laptop 上于游戏内确认。
+- 当 Streamline 插件版本与游戏自带的 Streamline 核心不同时，叠加层会显示插件版本：更新插件时核心保持不变，因此叠加层以前只显示游戏的原始版本。见[菜单与叠加层](docs/MENU-AND-OVERLAY.zh-CN.md)。
+- 会话日志现在自动包含 Streamline/NGX 的常规消息及其报告的功能拒绝原因，无需开启诊断选项。消息数量有限；额外的详细日志仍为可选项。感谢 [@lovebabyx](https://github.com/lovebabyx) 在 [#30](https://github.com/SilyNoMeta/rtx-encore/issues/30) 中提供日志，帮助发现这一信息缺失。这项改动改善诊断；报告的 RTX 20 帧生成故障仍在调查中。
+
+Windows Release 构建，包含 Open NR、默认诊断和全部六个分发变体，在维护者的电脑上构建并测试：自动化回归测试在游戏外通过。Star Wars Outlaws 的修正已用包含同一改动的测试构建在游戏内验证；最终 rc.2 构建在发布前未在游戏内运行，本次不宣称性能提升。
+
+### 致谢
+
+- [@lovebabyx](https://github.com/lovebabyx)：提供 RTX 2070 Super 日志，显示了会话日志缺少的信息（[#30](https://github.com/SilyNoMeta/rtx-encore/issues/30)）。
+
+感谢每一位分享日志并花时间测试构建的朋友。
+
 ## 1.0.0-rc.1 — 预发布版本
 
 - **支持最新的 NVIDIA 文件。** 完成对 2026 年 10 月 13 日 NVIDIA 应用测试版所下载文件的资格检查：Streamline 2.14.16（动态 MFG、X2 以上固定 MFG、Reflex 帧率限制、界面重组）和 DLSS-G 310.9.16（预设、画质选项和 Fast frame generation）。新增帧生成预设 **C (Lite)**，即 NVIDIA 更快的性能模式，仅适用于已验证的 DLSS-G 310.9.16.0；A/B 仍使用 Normal，**Fast frame generation** 保持独立。这些新增内容属于实验性功能，测试尚少；见[兼容性](docs/COMPATIBILITY.zh-CN.md#streamline-版本)。

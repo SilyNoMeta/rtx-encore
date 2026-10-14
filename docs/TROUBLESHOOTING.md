@@ -74,6 +74,11 @@ stays fixed until you change it. See [the cap controls](MENU-AND-OVERLAY.md#sugg
 
 ## Reporting a problem
 
+Normal Streamline/NGX messages, including the feature rejection reasons they report, are recorded automatically
+even when diagnostic options are off. Message counts are limited to prevent repeated messages from filling
+the log. If support requests more detail, set `diagnostics.logStreamline` to `true` in `rtx-encore.jsonc` and
+restart the game. Turn it off and restart after collecting the log; verbose logging can reduce performance.
+
 Basic context is recorded automatically in the session log, even with diagnostic options off:
 Windows build, CPU, memory, display adapters and desktop modes, and loaded DLL versions and paths
 (including the game, mod, Streamline, DLSS and driver components). Unavailable versions are marked explicitly.

@@ -57,7 +57,7 @@ RTX Encore 在 DirectX 11、DirectX 12 和 Vulkan 游戏中绘制自己的菜单
 | Frame pacing | 帧时间：平均值、第 99 百分位和抖动 |
 | GPU | 负载、温度、功耗和频率 |
 | VRAM | 显卡已用 / 总显存，包含所有程序 |
-| Versions | 游戏加载的 DLSS、DLSS 帧生成和 Streamline 版本 |
+| Versions | 游戏加载的 DLSS、DLSS 帧生成和 Streamline 版本。`SL` 是游戏自带的 Streamline 核心，更新插件时它保持不变；插件版本不同时，第二行同时显示两者（`SL 2.7.11.0 PLUGINS 2.14.16.0`） |
 | Interface | 是否启用界面单独处理，以及无界面场景和界面层的来源 |
 
 同一选项卡还可以设置位置（四个角落）和文字大小（10 至 32 px）。

@@ -2,6 +2,20 @@
 
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.0.0-rc.2 — pre-release
+
+- Fix Star Wars Outlaws closing after an alt-tab from its main menu, while the automatic UI recomposition was capturing the scene. Confirmed in game on an RTX 3070 Ti Laptop.
+- The overlay shows the Streamline plugin version when it differs from the game's own Streamline core: plugin updates leave the core in place, so the overlay used to show only the game's original version. See [Menu and overlay](docs/MENU-AND-OVERLAY.md).
+- Automatically include normal Streamline/NGX messages and reported feature rejection reasons in the session log, without enabling diagnostic options. Message counts are limited; extra verbose logging remains optional. Thanks to [@lovebabyx](https://github.com/lovebabyx) for the logs in [#30](https://github.com/SilyNoMeta/rtx-encore/issues/30) that revealed this gap. This improves diagnosis; the reported RTX 20 Frame Generation failure remains under investigation.
+
+Windows Release build with Open NR included, default diagnostics and all six distribution variants, built and tested on the maintainer's PC: the automated regression tests pass outside the game. The Star Wars Outlaws correction was checked in game with a test build of the same change; the final rc.2 build was not run in game before publication, and no performance improvement is claimed.
+
+### Thanks
+
+- [@lovebabyx](https://github.com/lovebabyx) — the RTX 2070 Super logs that showed what the session log was missing ([#30](https://github.com/SilyNoMeta/rtx-encore/issues/30)).
+
+Thanks to everyone who shares logs and takes time to test the builds.
+
 ## 1.0.0-rc.1 — pre-release
 
 - **Support for the latest NVIDIA files.** Qualify the files the NVIDIA app beta of 13 October 2026 downloads: Streamline 2.14.16 (Dynamic MFG, fixed MFG above X2, Reflex frame limit, UI recomposition) and DLSS-G 310.9.16 (presets, quality options and Fast frame generation). Add frame generation preset **C (Lite)**, NVIDIA's faster performance mode, with the qualified DLSS-G 310.9.16.0 only; A/B keep Normal and **Fast frame generation** stays independent. These additions are experimental and lightly tested; see [Compatibility](docs/COMPATIBILITY.md#streamline-versions).

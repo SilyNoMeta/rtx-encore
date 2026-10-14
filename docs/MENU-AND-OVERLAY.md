@@ -62,7 +62,7 @@ Optional lines, all off by default:
 | Frame pacing | Frame time: average, 99th percentile and jitter |
 | GPU | Load, temperature, power and clocks |
 | VRAM | Used / total on the card, all programs included |
-| Versions | DLSS, DLSS Frame Generation and Streamline versions loaded by the game |
+| Versions | DLSS, DLSS Frame Generation and Streamline versions loaded by the game. `SL` is the game's own Streamline core, which plugin updates leave in place; when the plugins are of another version, a second line shows both (`SL 2.7.11.0 PLUGINS 2.14.16.0`) |
 | Interface | Whether the separate interface handling is on, and where the clean scene and interface layer come from |
 
 Position (four corners) and text size (10 to 32 px) are in the same tab.

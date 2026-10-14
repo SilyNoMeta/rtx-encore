@@ -2,6 +2,20 @@
 
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.0.0-rc.2 — préversion
+
+- Correction de Star Wars Outlaws qui se fermait après un alt-tab depuis son menu principal, pendant que la recomposition automatique de l’interface capturait la scène. Confirmé en jeu sur une RTX 3070 Ti Laptop.
+- L’overlay affiche la version des plugins Streamline quand elle diffère du cœur Streamline du jeu : les mises à jour des plugins laissent ce cœur en place, si bien que l’overlay ne montrait que la version d’origine du jeu. Voir [Menu et overlay](docs/MENU-AND-OVERLAY.fr.md).
+- Le journal de session inclut automatiquement les messages normaux de Streamline/NGX et les motifs de refus des fonctions qu'ils signalent, sans activer d'option de diagnostic. Leur nombre est limité ; les traces supplémentaires restent facultatives. Merci à [@lovebabyx](https://github.com/lovebabyx) pour les logs de [#30](https://github.com/SilyNoMeta/rtx-encore/issues/30) qui ont révélé ce manque. Cela améliore le diagnostic ; le défaut de génération d'images signalé sur RTX 20 reste en cours d'analyse.
+
+Build Windows Release avec Open NR inclus, diagnostics par défaut et les six variantes de distribution, compilé et testé sur le PC du mainteneur : les tests de régression automatisés passent hors jeu. La correction Star Wars Outlaws a été vérifiée en jeu avec un build de test de la même modification ; le build final rc.2 n’a pas été lancé en jeu avant publication, et aucun gain de performance n’est revendiqué.
+
+### Remerciements
+
+- [@lovebabyx](https://github.com/lovebabyx) — les logs RTX 2070 Super qui ont montré ce qui manquait au journal de session ([#30](https://github.com/SilyNoMeta/rtx-encore/issues/30)).
+
+Merci à toutes les personnes qui partagent leurs logs et prennent le temps de tester les builds.
+
 ## 1.0.0-rc.1 — préversion
 
 - **Prise en charge des derniers fichiers NVIDIA.** Qualification des fichiers téléchargés par la bêta de l’application NVIDIA du 13 octobre 2026 : Streamline 2.14.16 (MFG dynamique, MFG fixe au-delà de X2, limite de fréquence Reflex, recomposition de l’interface) et DLSS-G 310.9.16 (presets, options de qualité et Fast frame generation). Ajout du preset de frame generation **C (Lite)**, le mode performance plus rapide de NVIDIA, uniquement avec le DLSS-G 310.9.16.0 qualifié ; A/B gardent Normal et **Fast frame generation** reste indépendant. Ces ajouts sont expérimentaux et peu testés ; voir [Compatibilité](docs/COMPATIBILITY.fr.md#versions-de-streamline).

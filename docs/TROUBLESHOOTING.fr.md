@@ -77,6 +77,12 @@ Voir [les commandes du plafond](MENU-AND-OVERLAY.fr.md#plafond-reflex-suggéré)
 
 ## Signaler un problème
 
+Les messages normaux de Streamline/NGX, dont les motifs de refus des fonctions qu'ils signalent, sont enregistrés
+automatiquement même si les options de diagnostic sont désactivées. Leur nombre est limité pour éviter que des
+messages répétés remplissent le journal. Si le support demande davantage de détails, passez `diagnostics.logStreamline`
+à `true` dans `rtx-encore.jsonc`, puis relancez le jeu. Désactivez ensuite cette option et redémarrez : les traces
+verbeuses peuvent réduire les performances.
+
 Le journal de session relève automatiquement les informations de base, même avec les options de diagnostic
 désactivées : version de Windows, CPU, mémoire, cartes graphiques et modes du bureau, versions et chemins
 des DLL chargées (jeu, mod, Streamline, DLSS et composants du pilote compris). Les versions indisponibles
