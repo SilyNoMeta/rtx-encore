@@ -143,12 +143,20 @@ Open 的性能键位于此独立分组。请先在菜单中选择引擎和适合
 | `vsyncOff` | `false` | 请求 DirectX 游戏关闭 V-Sync |
 | `hairEnabled` | `true` | 在具备该功能的游戏中启用兼容的光线追踪毛发。需重启。 |
 
+### `compatibility`
+
+| 键 | 默认值 | 取值 |
+| :--- | :---: | :--- |
+| `disableInGameMenu` | `false` | `true` 时不附加 RTX Encore 菜单，用于拒绝该菜单的游戏（Star Wars Outlaws）。帧生成仍可正常工作；请在此文件中或通过 RTX Encore Hub 更改设置。重启游戏后生效。 |
+
 ### `diagnostics`
 
 | 键 | 默认 | 值 |
 | :--- | :---: | :--- |
 | `logPerformance` | `false` | 将帧时间写入 CSV，并将 GPU 温度、功耗和性能限制原因写入 `rtx-encore-logs` 中的会话日志 |
 | `logFilesKept` | `3` | 保留的常规日志数及同等数量的异常日志，`1` 至 `100` |
+| `logDxgiWrappers` | `false` | 在会话日志和异常日志中记录游戏对菜单交换链的每一次调用及调用模块。用于菜单附加后发生的崩溃。重启后生效 |
+| `crashDetails` | `false` | 异常日志会额外记录寄存器指向的内存和堆栈；游戏或 RTX Encore 崩溃时会在 `rtx-encore-logs` 中留下 `.dmp` 内存快照（通常有数十 MB）。用于崩溃报告，之后请关闭。重启后生效 |
 
 ### `keyboardShortcuts`
 

@@ -82,6 +82,7 @@ Neural Rendering 需要 NVIDIA 的 `nvngx_dlssnr.dll` **310.8.0**，由你自行
 | No Man's Sky | Vulkan | 在 RTX 4090 上测试了帧生成。**请关闭 Automatic UI recomposition**：它在此游戏的镜头移动中造成双重轮廓。用户确认了 1080p 和 1440p 下 NR 与帧生成 X2 一起运行。 |
 | DOOM: The Dark Ages | Vulkan | 在 RTX 4090 上测试了帧生成。无论模组设置如何，游戏都保留自己的界面处理选择。 |
 | Starfield | DX12 | 开启 UI assist 时可运行；根据用户报告修复了读取存档时的崩溃。 |
+| Star Wars Outlaws | DX12 | 完整版游戏（Ubisoft Connect）在附加 RTX Encore 菜单时会在启动时关闭。**请在 `rtx-encore.jsonc` 中设置 `"disableInGameMenu": true`**，或在 [RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub) 中应用该游戏的社区配置。不使用菜单时，游戏可以启动并使用最高 X4 的帧生成（两位用户报告）；请在文件中或通过 Hub 更改设置。试玩版可以正常使用菜单。 |
 | The Witcher 3 | DX12 | 游戏构建 25575366 和 25646871 支持兼容的光线追踪毛发；见[菜单和叠加层](MENU-AND-OVERLAY.zh-CN.md#其他控制)。 |
 | Manor Lords | DX12 | 在 RTX 30、驱动 617.14 上观察到 Smooth Motion 运行。 |
 | Shadows of Doubt | DX11 | 在 RTX 30、驱动 617.14 上观察到 Smooth Motion 运行。用户确认 NR 运行。 |

@@ -156,12 +156,20 @@ indépendant de `nrOpenUltraFast` et de `dlssRenderScale` ; ces réglages ne s'a
 | `vsyncOff` | `false` | Demande aux jeux DirectX de présenter sans V-Sync |
 | `hairEnabled` | `true` | Cheveux en ray tracing compatibles, dans les jeux qui en ont. Relancez pour appliquer. |
 
+### `compatibility`
+
+| Clé | Défaut | Valeurs |
+| :--- | :---: | :--- |
+| `disableInGameMenu` | `false` | `true` n'attache pas le menu RTX Encore, pour les jeux qui le refusent (Star Wars Outlaws). La génération d'images continue de fonctionner ; changez les réglages dans ce fichier ou avec RTX Encore Hub. Redémarrez le jeu pour l'appliquer. |
+
 ### `diagnostics`
 
 | Clé | Défaut | Valeurs |
 | :--- | :---: | :--- |
 | `logPerformance` | `false` | Écrit les temps d’image en CSV et les températures, la puissance et les raisons de limitation GPU dans le journal de session de `rtx-encore-logs` |
 | `logFilesKept` | `3` | Journaux normaux conservés, plus autant de journaux d’exception, `1` à `100` |
+| `logDxgiWrappers` | `false` | Enregistre chaque appel du jeu sur la swapchain du menu, avec le module appelant, dans les logs de session et d'exception. Pour les plantages après l'attache du menu. Redémarrez pour appliquer |
+| `crashDetails` | `false` | Les logs d'exception ajoutent la mémoire des registres et la pile, et un plantage dans le jeu ou dans RTX Encore laisse un instantané mémoire `.dmp` (souvent des dizaines de Mo) dans `rtx-encore-logs`. Pour les rapports de plantage ; désactivez-le ensuite. Redémarrez pour appliquer |
 
 ### `keyboardShortcuts`
 

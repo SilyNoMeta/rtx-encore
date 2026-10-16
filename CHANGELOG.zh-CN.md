@@ -2,6 +2,23 @@
 
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
+## 1.0.0
+
+RTX Encore 的首个稳定版本，继以下测试版和候选版之后发布。
+
+- **Star Wars Outlaws：启动时崩溃**（[#33](https://github.com/SilyNoMeta/rtx-encore/issues/33)）。完整版游戏（Ubisoft Connect）在附加 RTX Encore 菜单时会在启动时关闭；试玩版不会。新设置 **`"disableInGameMenu": true`** 不附加菜单，最高 X4 的帧生成仍可正常工作，两位用户已用该改动的测试构建确认。[RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub) 中该游戏的社区配置会开启此设置。见[兼容性](docs/COMPATIBILITY.zh-CN.md)。更正 rc.3 说明：rc.3 对视频设置的修正并未解决这一启动崩溃。
+- **崩溃报告：** 两个新设置（默认关闭）用于诊断崩溃。`logDxgiWrappers` 记录游戏对菜单交换链的调用；`crashDetails` 在异常日志中加入内存细节，并在游戏或 RTX Encore 崩溃时留下 `.dmp` 内存快照。见[设置](docs/SETTINGS.zh-CN.md)。
+- **`profileFrameGpu`**（默认关闭，DirectX 12）：在 `rtx-encore-logs` 中记录每次 DLSS 超分辨率、光线重构和帧生成处理的 GPU 时间。仅为 GPU 工作时间，不是显示帧率或延迟；用于测量。
+
+Windows Release 构建，包含 Open NR、默认诊断和全部六个分发变体，在维护者的电脑上构建并测试：自动化回归测试在游戏外通过。Star Wars Outlaws 的设置已在游戏试玩版上，以及由两位用户用包含同一改动的测试构建验证；最终 1.0.0 构建在发布前未在游戏内运行，本次不宣称性能提升。
+
+### 致谢
+
+- [@ivanmestre](https://github.com/ivanmestre)：完成隔离测试和跟踪测试，提供日志和崩溃快照，定位了 Star Wars Outlaws 的崩溃（[#33](https://github.com/SilyNoMeta/rtx-encore/issues/33)）。
+- [@yannduwooz83](https://github.com/yannduwooz83)：完成 Star Wars Outlaws 测试，并与之前的项目对比，指出了变化所在（[#33](https://github.com/SilyNoMeta/rtx-encore/issues/33)）。
+
+感谢每一位分享日志并花时间测试构建的朋友。
+
 ## 1.0.0-rc.3 — 预发布版本
 
 - 修正 Star Wars Outlaws 在视频设置中显示帧生成选项时崩溃的问题。游戏自己的帧生成菜单现在只提供游戏支持的选项（最高 4x）；在 RTX Encore 中选择的倍数仍然生效。已在 Star Wars Outlaws 试玩版上于游戏内确认（RTX 3070 Ti Laptop）。[#33](https://github.com/SilyNoMeta/rtx-encore/issues/33) 中报告的启动崩溃看起来是同一原因；报告者尚未重新测试。

@@ -152,12 +152,20 @@ the menu first; these keys do not turn Open on by themselves.
 | `vsyncOff` | `false` | Asks DirectX games to present without V-Sync |
 | `hairEnabled` | `true` | Compatible ray-traced hair, in the games that have it. Restart to apply. |
 
+### `compatibility`
+
+| Key | Default | Values |
+| :--- | :---: | :--- |
+| `disableInGameMenu` | `false` | `true` does not attach the RTX Encore menu, for games that reject it (Star Wars Outlaws). Frame generation keeps working; change settings in this file or with RTX Encore Hub. Restart to apply. |
+
 ### `diagnostics`
 
 | Key | Default | Values |
 | :--- | :---: | :--- |
 | `logPerformance` | `false` | Writes frame times to CSV and GPU temperature, power and slowdown reasons to the session log in `rtx-encore-logs` |
 | `logFilesKept` | `3` | Regular logs kept, plus the same number of exception logs, `1` to `100` |
+| `logDxgiWrappers` | `false` | Records every call the game makes on the menu's swap chain, with the calling module, in the session and exception logs. For crashes after the menu attaches. Restart to apply |
+| `crashDetails` | `false` | Exception logs add register memory and the stack, and a crash in the game or RTX Encore leaves a `.dmp` memory snapshot (often tens of MB) in `rtx-encore-logs`. For crash reports; turn it off afterwards. Restart to apply |
 
 ### `keyboardShortcuts`
 

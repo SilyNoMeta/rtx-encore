@@ -87,6 +87,7 @@ Neural Rendering needs NVIDIA's `nvngx_dlssnr.dll` **310.8.0**, supplied by you 
 | No Man's Sky | Vulkan | Frame generation tested on an RTX 4090. **Turn Automatic UI recomposition off**: it causes doubled outlines in camera motion in this game. Neural Rendering with frame generation X2 confirmed at 1080p and 1440p. |
 | DOOM: The Dark Ages | Vulkan | Frame generation tested on an RTX 4090. The game keeps its own choice for the interface handling, whatever the setting. |
 | Starfield | DX12 | Works with UI assist on; a crash when loading a save was fixed after a user's report. |
+| Star Wars Outlaws | DX12 | The full game (Ubisoft Connect) closes at launch when the RTX Encore menu is attached. **Set `"disableInGameMenu": true`** in `rtx-encore.jsonc`, or apply the game's community profile in [RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub). Without the menu, frame generation up to X4 starts, as reported by two users; change settings in the file or with the Hub. The demo runs with the menu. |
 | The Witcher 3 | DX12 | Compatible ray-traced hair on game builds 25575366 and 25646871; see [Menu and overlay](MENU-AND-OVERLAY.md#other-controls). |
 | Manor Lords | DX12 | Smooth Motion observed working on RTX 30 (driver 617.14). |
 | Shadows of Doubt | DX11 | Smooth Motion observed working on RTX 30 (driver 617.14). Neural Rendering confirmed by users. |

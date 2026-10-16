@@ -89,6 +89,7 @@ Neural Rendering demande le fichier `nvngx_dlssnr.dll` **310.8.0** de NVIDIA, qu
 | No Man's Sky | Vulkan | Génération d'images testée sur une RTX 4090. **Désactivez Automatic UI recomposition** : dans ce jeu, il provoque des contours dédoublés quand la caméra bouge. Neural Rendering avec la génération d'images X2 confirmé en 1080p et 1440p. |
 | DOOM: The Dark Ages | Vulkan | Génération d'images testée sur une RTX 4090. Le jeu garde son propre choix pour le traitement de l'interface, quel que soit le réglage. |
 | Starfield | DX12 | Fonctionne avec UI assist activé ; un plantage au chargement d'une sauvegarde a été corrigé après le rapport d'un utilisateur. |
+| Star Wars Outlaws | DX12 | Le jeu complet (Ubisoft Connect) se ferme au lancement quand le menu RTX Encore est attaché. **Mettez `"disableInGameMenu": true`** dans `rtx-encore.jsonc`, ou appliquez le profil communautaire du jeu dans [RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub). Sans le menu, le jeu démarre avec la génération d'images jusqu'à X4, d'après deux utilisateurs ; changez les réglages dans le fichier ou avec le Hub. La démo fonctionne avec le menu. |
 | The Witcher 3 | DX12 | Cheveux en ray tracing compatibles sur les versions du jeu 25575366 et 25646871 ; voir [Menu et overlay](MENU-AND-OVERLAY.fr.md#autres-commandes). |
 | Manor Lords | DX12 | Smooth Motion observé en fonctionnement sur RTX 30 (pilote 617.14). |
 | Shadows of Doubt | DX11 | Smooth Motion observé en fonctionnement sur RTX 30 (pilote 617.14). Neural Rendering confirmé par des utilisateurs. |

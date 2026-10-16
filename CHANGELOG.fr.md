@@ -2,6 +2,23 @@
 
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.0.0
+
+La première version stable de RTX Encore, après les bêtas et les versions candidates ci-dessous.
+
+- **Star Wars Outlaws : plantage au lancement** ([#33](https://github.com/SilyNoMeta/rtx-encore/issues/33)). Le jeu complet (Ubisoft Connect) se ferme au lancement quand le menu RTX Encore y est attaché ; sa démo, non. Le nouveau réglage **`"disableInGameMenu": true`** laisse le menu de côté, et la génération d’images jusqu’à X4 continue de fonctionner, comme l’ont confirmé deux utilisateurs avec des builds de test de cette modification. Le profil communautaire du jeu dans [RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub) l’active. Voir [Compatibilité](docs/COMPATIBILITY.fr.md). Correction des notes de la rc.3 : la correction des réglages vidéo de la rc.3 ne couvrait pas ce plantage au lancement.
+- **Rapports de plantage :** deux nouveaux réglages, désactivés par défaut, aident à diagnostiquer un plantage. `logDxgiWrappers` enregistre les appels du jeu sur la swapchain du menu ; `crashDetails` ajoute des détails mémoire aux logs d’exception et laisse un instantané mémoire `.dmp` quand le jeu ou RTX Encore plante. Voir [Paramètres](docs/SETTINGS.fr.md).
+- **`profileFrameGpu`** (désactivé par défaut, DirectX 12) : enregistre le temps GPU de chaque passe DLSS Super Resolution, Ray Reconstruction et génération d’images dans `rtx-encore-logs`. Temps de travail GPU seulement, ni FPS affichés ni latence ; pour les mesures.
+
+Build Windows Release avec Open NR inclus, diagnostics par défaut et les six variantes de distribution, compilé et testé sur le PC du mainteneur : les tests de régression automatisés passent hors jeu. Le réglage pour Star Wars Outlaws a été vérifié sur la démo du jeu et par deux utilisateurs avec des builds de test de la même modification ; le build final 1.0.0 n’a pas été lancé en jeu avant publication, et aucun gain de performance n’est revendiqué.
+
+### Remerciements
+
+- [@ivanmestre](https://github.com/ivanmestre) — les tests d’isolation et de trace, leurs logs et instantanés de plantage, qui ont localisé le plantage de Star Wars Outlaws ([#33](https://github.com/SilyNoMeta/rtx-encore/issues/33)).
+- [@yannduwooz83](https://github.com/yannduwooz83) — les tests de Star Wars Outlaws et la comparaison avec le projet précédent, qui a montré ce qui avait changé ([#33](https://github.com/SilyNoMeta/rtx-encore/issues/33)).
+
+Merci à toutes celles et tous ceux qui partagent leurs logs et prennent le temps de tester les builds.
+
 ## 1.0.0-rc.3 — préversion
 
 - Correction de Star Wars Outlaws qui plantait quand ses réglages vidéo affichaient les options de génération d’images. Le menu de génération d’images du jeu propose maintenant ce que le jeu prend en charge (jusqu’à 4x) ; le multiplicateur choisi dans RTX Encore s’applique toujours. Confirmé en jeu sur la démo de Star Wars Outlaws (RTX 3070 Ti Laptop). Le plantage au lancement signalé dans [#33](https://github.com/SilyNoMeta/rtx-encore/issues/33) semble avoir la même cause ; son auteur n’a pas encore refait l’essai.

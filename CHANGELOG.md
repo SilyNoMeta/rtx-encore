@@ -2,6 +2,23 @@
 
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.0.0
+
+The first stable release of RTX Encore, after the betas and release candidates below.
+
+- **Star Wars Outlaws: launch crash** ([#33](https://github.com/SilyNoMeta/rtx-encore/issues/33)). The full game (Ubisoft Connect) closes at launch when the RTX Encore menu is attached to it; its demo does not. The new setting **`"disableInGameMenu": true`** leaves the menu out, and frame generation up to X4 keeps working, as two users confirmed with test builds of this change. The game's community profile in [RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub) turns it on. See [Compatibility](docs/COMPATIBILITY.md#game-notes). Correction to the rc.3 notes: the rc.3 fix for the video settings did not cover this launch crash.
+- **Crash reports:** two new settings, off by default, help diagnose a crash. `logDxgiWrappers` records the calls the game makes on the menu's swap chain; `crashDetails` adds memory details to the exception logs and leaves a `.dmp` memory snapshot when the game or RTX Encore crashes. See [Settings](docs/SETTINGS.md).
+- **`profileFrameGpu`** (off by default, DirectX 12): records the GPU time of each DLSS Super Resolution, Ray Reconstruction and Frame Generation pass in `rtx-encore-logs`. GPU work time only, not displayed FPS or latency; for measurements.
+
+Windows Release build with Open NR included, default diagnostics and all six distribution variants, built and tested on the maintainer's PC: the automated regression tests pass outside the game. The Star Wars Outlaws setting was checked on the game's demo and by two users with test builds of the same change; the final 1.0.0 build was not run in game before publication, and no performance improvement is claimed.
+
+### Thanks
+
+- [@ivanmestre](https://github.com/ivanmestre) — the isolation and trace tests, their logs and crash snapshots, which located the Star Wars Outlaws crash ([#33](https://github.com/SilyNoMeta/rtx-encore/issues/33)).
+- [@yannduwooz83](https://github.com/yannduwooz83) — the Star Wars Outlaws tests and the comparison with the earlier project that pointed to what changed ([#33](https://github.com/SilyNoMeta/rtx-encore/issues/33)).
+
+Thanks to everyone who shares logs and takes time to test the builds.
+
 ## 1.0.0-rc.3 — pre-release
 
 - Fix Star Wars Outlaws crashing when its video settings show the Frame Generation options. The game's own Frame Generation menu now offers what the game supports (up to 4x); the multiplier chosen in RTX Encore still applies. Confirmed in game on the Star Wars Outlaws demo (RTX 3070 Ti Laptop). The crash on launch reported in [#33](https://github.com/SilyNoMeta/rtx-encore/issues/33) appears to have the same cause; the reporter has not retested yet.
