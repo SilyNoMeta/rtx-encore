@@ -15,7 +15,7 @@ RTX Encore 在 DirectX 11、DirectX 12 和 Vulkan 游戏中绘制自己的菜单
 | 选项卡 | 内容 |
 | :--- | :--- |
 | **Frames** | 帧生成及其模型预设（A/B Normal、C Lite）、独立的 Fast 选项、画质和界面选项、Smooth Motion、渲染帧率限制、V-Sync |
-| **Image** | DLSS 渲染分辨率、SR/RR 模型预设、Neural Rendering |
+| **Image** | DLSS 渲染分辨率、SR/RR/NR 模型预设、Fast super resolution（RTX 30）、Neural Rendering |
 | **Overlay** | 叠加层预览、位置、文字大小和显示项目 |
 | **System** | 快捷键、兼容性、诊断和会话详情，以及用于报告问题的 **Copy** 按钮 |
 
@@ -36,7 +36,7 @@ RTX Encore 在 DirectX 11、DirectX 12 和 Vulkan 游戏中绘制自己的菜单
 
 ### 功能可用性
 
-**System → Component compatibility** 显示已加载的 Streamline、DLSS-G、SR、RR 版本，以及功能可用性与限制原因。不支持或未经资格检查的选项会变灰。尚未加载的组件显示为等待中；在游戏内启用 DLSS/FG 后可能更新。仍可关闭已保存的覆盖设置或恢复游戏设置。可提交预设请求并不代表已确认驱动实际使用的模型。
+**System → Session details** 显示已加载的 Streamline、DLSS-G、SR、RR 版本，并列出已加载组件不支持的每项功能及其原因。不支持或未经资格检查的选项会变灰。尚未加载的组件显示为未加载，依赖它的功能显示为等待中；在游戏内启用 DLSS/FG 后可能更新。仍可关闭已保存的覆盖设置或恢复游戏设置。可提交预设请求并不代表已确认驱动实际使用的模型。
 
 ## 叠加层
 
@@ -53,7 +53,7 @@ RTX Encore 在 DirectX 11、DirectX 12 和 Vulkan 游戏中绘制自己的菜单
 
 | 项目 | 显示内容 |
 | :--- | :--- |
-| Neural Rendering | 状态和工作尺寸 |
+| Neural Rendering | 状态和工作尺寸；使用 310.9.16 时还显示 NVIDIA 网络（preset A、B 或 Auto） |
 | Frame pacing | 帧时间：平均值、第 99 百分位和抖动 |
 | GPU | 负载、温度、功耗和频率 |
 | VRAM | 显卡已用 / 总显存，包含所有程序 |
@@ -67,6 +67,7 @@ RTX Encore 在 DirectX 11、DirectX 12 和 Vulkan 游戏中绘制自己的菜单
 | 设置 | 选项卡 | 作用 |
 | :--- | :--- | :--- |
 | **Render resolution** | Image | 指定游戏在 DLSS 处理前的渲染分辨率：DLAA、Quality、Balanced、Performance、Ultra Performance，或 50 至 100 % 的自定义比例。游戏必须已使用 DLSS。菜单显示实际观察到的分辨率，以及游戏是否遵从请求；出现问题时改回 Game。Unreal Engine 4 和 5 游戏会在可行时实时调整分辨率比例。 |
+| **Fast super resolution (RTX 30)** | Image | 默认关闭。在 RTX 30 显卡上，对使用预设为 M 或 L 的 DLSS 超分辨率的 DirectX 12 游戏，改用更快的放大版本：在测量的系统上每个放大帧约减少 16% 至 20% 的 GPU 时间，画面与原版非常接近。在其他显卡上不起作用。见[超分辨率](SUPER-RESOLUTION.zh-CN.md#fast-super-resolution-rtx-30)。 |
 | **Frame limit (FPS)** | Frames | 通过受支持的 NVIDIA Reflex 请求帧率上限。0 恢复游戏设置。生成帧是否计入上限取决于游戏与驱动。在 Dynamic 模式下暂停。 |
 | **Request V-Sync off** | Frames | 请求 DirectX 游戏关闭 V-Sync。NVIDIA 控制面板强制设置的优先级更高。对 Vulkan 游戏无效。 |
 | **Compatible ray-traced hair** | System | The Witcher 3（DirectX 12，游戏构建 25575366 和 25646871）：使游戏的光线追踪毛发可用于 RTX 20、30 和 40。游戏自身的毛发设置仍决定是否渲染毛发。尚未在 RTX 20 和 RTX 30 上进行游戏内验证。需重启游戏。 |

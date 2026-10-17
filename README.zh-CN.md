@@ -36,6 +36,7 @@ Smooth Motion 和 Neural Rendering。**
 | 🌀 | **[RTX 30 上的 Smooth Motion](docs/SMOOTH-MOTION.zh-CN.md)** | NVIDIA 驱动的插帧功能，适用于 DirectX 11、DirectX 12 和 Vulkan 游戏，包括没有 DLSS 的游戏。默认关闭。 |
 | ✨ | **[Neural Rendering](docs/NEURAL-RENDERING.zh-CN.md)** | 在 RTX 20、30 和 40 上运行 NR，并提供 RTX Encore 自行开发的 Ampere 性能选项：优化处理、Fast 精度、独立的 NR 分辨率和 Open 超快模式。支持一至四遍处理、每遍独立风格以及 HDR。实验性功能，默认关闭。 |
 | 🎛️ | **[内置菜单和叠加层](docs/MENU-AND-OVERLAY.zh-CN.md)** | 在游戏中按 **Insert**：所有设置、每项功能的状态，以及显示帧率、倍率、帧时间稳定性、GPU 和显存的叠加层。支持 DirectX 11、DirectX 12 和 Vulkan。 |
+| 🚀 | **[RTX 30 上的 Fast super resolution](docs/SUPER-RESOLUTION.zh-CN.md)** | 为 RTX 30 在预设为 M 或 L 的 DirectX 12 游戏中提供更快的 DLSS 超分辨率：在测量的系统上每个放大帧约减少 16% 至 20% 的 GPU 时间，画面与原版非常接近。默认关闭。 |
 | 🔍 | **DLSS 渲染分辨率** | 在已使用 DLSS 的游戏中选择 DLAA、质量、平衡、性能、超级性能或自定义比例。 |
 | 🧩 | **一个通用文件** | `rtx-encore.dll` 可改成游戏会加载的文件名（`version.dll`、`dinput8.dll`、`winmm.dll`、`dxgi.dll` 以及另外十五个），也可作为 `.asi` 插件运行。 |
 
@@ -115,6 +116,7 @@ RTX Encore 面向 RTX 20、30 和 40；RTX 50 显卡的帧生成和 Smooth Motio
 | :--- | :---: | :---: | :---: |
 | 安装、更新、卸载 | [Open](docs/INSTALLATION.md) | [Ouvrir](docs/INSTALLATION.fr.md) | [打开](docs/INSTALLATION.zh-CN.md) |
 | 帧生成 | [Open](docs/FRAME-GENERATION.md) | [Ouvrir](docs/FRAME-GENERATION.fr.md) | [打开](docs/FRAME-GENERATION.zh-CN.md) |
+| 超分辨率 | [Open](docs/SUPER-RESOLUTION.md) | [Ouvrir](docs/SUPER-RESOLUTION.fr.md) | [打开](docs/SUPER-RESOLUTION.zh-CN.md) |
 | RTX 30 上的 Smooth Motion | [Open](docs/SMOOTH-MOTION.md) | [Ouvrir](docs/SMOOTH-MOTION.fr.md) | [打开](docs/SMOOTH-MOTION.zh-CN.md) |
 | Neural Rendering | [Open](docs/NEURAL-RENDERING.md) | [Ouvrir](docs/NEURAL-RENDERING.fr.md) | [打开](docs/NEURAL-RENDERING.zh-CN.md) |
 | 菜单和叠加层 | [Open](docs/MENU-AND-OVERLAY.md) | [Ouvrir](docs/MENU-AND-OVERLAY.fr.md) | [打开](docs/MENU-AND-OVERLAY.zh-CN.md) |

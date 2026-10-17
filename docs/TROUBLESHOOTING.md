@@ -6,8 +6,8 @@
 
 1. **Is the mod loaded?** A `rtx-encore-logs` folder appears beside the mod's file when it is, and **Insert** opens
    the menu. If neither happens, the game did not load the file.
-2. **Is there only one copy?** Two copies of the mod in the same game, under two names, cause crashes and odd
-   behavior.
+2. **Is there only one copy?** Two copies of the mod in the same game, under two names, cause crashes, odd
+   behavior and a degraded image with Neural Rendering.
 3. **What does the menu say?** The four chips at the top give the state of each feature, and a card names any
    lasting problem with its fix.
 

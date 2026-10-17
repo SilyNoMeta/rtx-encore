@@ -32,6 +32,7 @@
 | :--- | :---: | :--- |
 | `dlssRenderScale` | `"game"` | `"game"`、`"dlaa"`、`"quality"`、`"balanced"`、`"performance"`、`"ultra-performance"`、`"custom"` |
 | `dlssCustomScale` | `67` | `"custom"` 时的百分比，`50` 至 `100` |
+| `fastSuperResolution` | `false` | RTX 30、DirectX 12：在预设为 M 或 L 时加速 DLSS 超分辨率，在测量的系统上每个放大帧约减少 16% 至 20% 的 GPU 时间，画面与原版非常接近。在其他显卡上不起作用。需重启游戏。见[超分辨率](SUPER-RESOLUTION.zh-CN.md#fast-super-resolution-rtx-30)。 |
 
 ### `dlssPresets`
 
@@ -44,9 +45,11 @@
 | `dlssRrPreset` | `"game"` | `"game"`、`"default"`、`"a"`–`"c"`（旧预设）、`"d"`、`"e"` |
 | `dlssFgPreset` | `"game"` | `"game"`、`"a"`、`"b"`、`"c"` |
 | `dlssFgLite` | `"game"` | 仅供诊断，JSON：`"game"`、`"off"`、`"on"` |
+| `dlssNrPreset` | `"b"` | 使用 `nvngx_dlssnr.dll` 310.9.16 时的 Neural Rendering 网络：`"b"`（更小、快得多）、`"a"`（310.8.0 的网络）或 `"auto"`（由文件选择，即 B）。310.8.0 只有一个网络。实时生效。旧文件中的 `nrPreset` 会以此名称连同取值读取；其 `0` 至 `3` 仍可读取。 |
 
 对于预设键，`"game"` 保留游戏的选择。SR/RR 选择适用于所有质量模式，包括 DLAA；`"default"` 明确请求 DLSS DLL 的默认值。
 可用模型取决于安装的 DLL，NVIDIA 驱动覆盖设置或模型回退可能优先生效。选择 RR 预设不会启用 RR。
+使用 DLSS Super Resolution **310.9.1.0** 和 **310.9.16.0** 时，即使 NVIDIA 驱动配置文件强制使用其他预设，在 Encore 中选择的 SR 预设仍然生效（310.9.1.0 以及 Streamline SDK 和 NVIDIA DLSS GitHub 上的 310.9.16.0 不包含预设 A 至 D）。
 
 FG 预设选择支持以下经过逐一验证的 NVIDIA **DLSS-G 正式版二进制文件**：
 
@@ -89,7 +92,6 @@ FG 预设选择支持以下经过逐一验证的 NVIDIA **DLSS-G 正式版二进
 | `nrSkinStructure` | `1` | `0` 至 `2` |
 | `nrHdrExposure` | `1` | HDR 游戏：提供给 NR 的亮度 |
 | `nrPrecision` | `"exact"` | `"exact"` 或 `"fast"`（RTX 20 和 RTX 30）。需重启。 |
-| `nrPreset` | `0` | NVIDIA 模型配置：`0` 自动（推荐），`1` 至 `3` |
 
 #### NR 性能选项
 

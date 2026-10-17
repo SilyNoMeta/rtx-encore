@@ -69,6 +69,7 @@ lieu de renommer la DLL.
 
 - `rtx-encore.jsonc` : vos réglages, créés au premier lancement. Voir [Fichier de réglages](SETTINGS.fr.md).
 - `rtx-encore-logs\` : les journaux de session, les trois plus récents par défaut, plus jusqu’à trois journaux d’exception. Les fichiers encore utilisés sont conservés.
+  Il contient aussi `rtx-encore-status.json`, l’état de la session en cours, que lit RTX Encore Hub.
 
 ## Mettre à jour
 

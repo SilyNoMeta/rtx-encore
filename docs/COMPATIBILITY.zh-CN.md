@@ -6,11 +6,11 @@
 
 ## 显卡
 
-| 显卡 | 帧生成 | Smooth Motion | Neural Rendering |
-| :--- | :--- | :--- | :--- |
-| RTX 40 | 支持。已在 RTX 4090 上测试 DirectX 12 和 Vulkan。 | 由 NVIDIA 提供 | 支持 |
-| RTX 30 | 支持。已在 RTX 3070 Ti Laptop 上测试 DirectX 12。 | 支持（需使用下文列出的驱动） | 支持 |
-| RTX 20 | 实验性：尚未在真实 RTX 20 显卡上验证。 | 不支持 | 实验性 |
+| 显卡 | 帧生成 | Smooth Motion | Neural Rendering | Fast super resolution |
+| :--- | :--- | :--- | :--- | :--- |
+| RTX 40 | 支持。已在 RTX 4090 上测试 DirectX 12 和 Vulkan。 | 由 NVIDIA 提供 | 支持 | 未启用 |
+| RTX 30 | 支持。已在 RTX 3070 Ti Laptop 上测试 DirectX 12。 | 支持（需使用下文列出的驱动） | 支持 | DirectX 12，已在 RTX 3070 Ti Laptop 上测量。见[下文](#dlss-超分辨率版本)。 |
+| RTX 20 | 实验性：尚未在真实 RTX 20 显卡上验证。 | 不支持 | 实验性 | 未启用 |
 
 RTX Encore 面向 RTX 20、30 和 40。不支持 GTX 显卡及其他厂商的显卡。
 
@@ -20,6 +20,7 @@ RTX Encore 面向 RTX 20、30 和 40。不支持 GTX 显卡及其他厂商的显
 | :--- | :---: | :---: | :---: |
 | X2 至 X6 帧生成 | — | ✅ | ✅（RTX 20 和 RTX 30 上为实验性） |
 | UI assist | — | ✅ | — |
+| Fast super resolution（RTX 30） | — | ✅ | — |
 | Smooth Motion（RTX 30） | ✅ | ✅ | ✅ |
 | Neural Rendering | 🧪 | 🧪 | 🧪 |
 | 菜单和叠加层 | ✅ | ✅ | ✅ |
@@ -36,11 +37,15 @@ RTX Encore 面向 RTX 20、30 和 40。不支持 GTX 显卡及其他厂商的显
 - 其他版本保持原样，游戏继续使用自己的帧生成。
 - **310.9.0 和 310.9.1** 保留现有画质支持和 Fast frame generation。RTX 20 用户应使用通过资格检查的
   310.9.0、310.9.1 或 310.9.16 文件。
-- **310.9.16** 是 NVIDIA 应用测试版下载的文件，也是唯一提供帧生成预设 C 的版本。**A/B 使用 Normal；选择 C 后重启游戏即可自动启用 Lite。**
+- **310.9.16** 是 NVIDIA 应用测试版下载的文件，也是 Streamline SDK 2.14.16 附带的文件（两者均被接受，功能相同），也是唯一提供帧生成预设 C 的版本。**A/B 使用 Normal；选择 C 后重启游戏即可自动启用 Lite。**
   Fast frame generation 对每个预设都保持独立。Normal 支持防撕裂策略。Lite 保留 NVIDIA
   原生图像策略：Anti-tearing 和 Protection tuning 无效，界面重组不可用，Fast frame generation 仅使用适合 Lite 的优化。
   这些新增功能已通过本地检查，尚待游戏内验证；尚未测得 Lite 的性能增益。
 - 游戏的其他 DLSS 文件（超分辨率、光线重建等）可以使用任意版本。
+
+## DLSS 超分辨率版本
+
+**Fast super resolution (RTX 30)** 适用于游戏中版本为 **310.9.x** 的 `nvngx_dlss.dll`，推荐 **310.9.16**。它要求预设为 **M** 或 **L**。其他任何版本，以及未被识别的游戏，都会保留 NVIDIA 原有的超分辨率，且不显示任何信息。见[超分辨率](SUPER-RESOLUTION.zh-CN.md#fast-super-resolution-rtx-30)。
 
 ## Streamline 版本
 
@@ -59,7 +64,7 @@ Streamline 的支持范围因功能而异。已离线检查从 1.0.0 到 2.14.1 
 本次检查没有找到 2.13 或 2.14.0 的公开 SDK 标签。仅凭中间版本号不能确认所有功能均受支持。
 请保留游戏原有的整套 Streamline 文件；这些说明不建议单独替换其中的文件。
 
-**请在菜单中逐项查看功能可用状态。** Streamline 2.14.16 和 DLSS-G 310.9.16 新增支持尚待游戏内验证。旧版可用功能较少；未经检查的新版本不会自动受支持。请保持 Streamline 文件版本匹配，并确认与游戏兼容。SR/RR 预设仍取决于各自 DLL 和驱动；Neural Rendering 仍明确要求 310.8.0。
+**请在菜单中逐项查看功能可用状态。** Streamline 2.14.16 和 DLSS-G 310.9.16 新增支持尚待游戏内验证。旧版可用功能较少；未经检查的新版本不会自动受支持。请保持 Streamline 文件版本匹配，并确认与游戏兼容。SR/RR 预设仍取决于各自 DLL 和驱动；Neural Rendering 明确要求 310.8.0 或 310.9.16。
 
 **DirectX 11：** 不提供 DLSS MFG 或动态模式。独立的 Smooth Motion 路径仅支持 X2，无法切换 X3/X4，仍需满足显卡与驱动要求。
 
@@ -70,7 +75,7 @@ RTX 30 上的 Smooth Motion 仅接受 NVIDIA 驱动 **620.12**、**617.42**、**
 
 ## Neural Rendering 文件
 
-Neural Rendering 需要 NVIDIA 的 `nvngx_dlssnr.dll` **310.8.0**，由你自行提供，或由 [RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub) 获取。
+Neural Rendering 需要 NVIDIA 的 `nvngx_dlssnr.dll` **310.8.0** 或 **310.9.16**，由你自行提供，或由 [RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub) 获取。
 见 [Neural Rendering](NEURAL-RENDERING.zh-CN.md)。
 
 ## 游戏说明

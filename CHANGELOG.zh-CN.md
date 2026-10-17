@@ -2,6 +2,34 @@
 
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
+## 1.1.0
+
+这个版本迎来了 RTX Encore 的**第一份赞助**。衷心感谢：对一个利用业余时间制作的项目来说，这意义重大。
+
+### 新增
+
+- **Fast super resolution (RTX 30)**，默认关闭：在 RTX 30 显卡上的 DirectX 12 游戏中，DLSS Super Resolution 的预设 **M** 和 **L** 会使用更快版本的 NVIDIA 模型。在 RTX 3070 Ti Laptop 上，我们的测试台测得放大所用的 GPU 时间 **M 减少约 18%，L 减少约 15%**；在游戏中，**The Witcher 3 减少 22%，Black Myth: Wukong 减少 25%**（均为 M）。画面与 NVIDIA 的非常接近，在我们的测试中看不出差别。这些是初步数据，来自一台笔记本和两款游戏：实际收益取决于你的显卡和游戏。见[超分辨率](docs/SUPER-RESOLUTION.zh-CN.md#fast-super-resolution-rtx-30)。
+- **即使游戏的 NVIDIA 驱动配置文件强制使用其他预设（NVIDIA 应用的 DLSS 覆盖），在 RTX Encore 中选择的 SR 模型预设现在也会生效**，适用于 DLSS Super Resolution 310.9.1 和 310.9.16。其他版本下仍由驱动优先。
+- **Neural Rendering 现在除 310.8.0 外也接受 NVIDIA 的 `nvngx_dlssnr.dll` 310.9.16**。该文件包含两个网络，可在新的 **NR model preset**（位于 SR 和 RR 模型预设旁边）中选择：**B**（默认），更小且快得多；**A**，即 310.8.0 所运行的网络。在 RTX 3070 Ti Laptop 上的 1080p 本地测试中，B 的 NR 时间约 15 ms，A 约 27 ms。RTX Encore 针对 RTX 20 和 30 的优化现在同样适用于该文件的两个网络，画面相同。使用 310.8.0 时没有任何变化。对 310.9.16 的支持是实验性的，测试有限。见 [Neural Rendering](docs/NEURAL-RENDERING.zh-CN.md)。
+- 同样接受 Streamline SDK 2.14.16 附带的 DLSS-G 310.9.16，功能与 NVIDIA 应用下载的版本相同：预设 A、B 和 C、Lite、Fast frame generation 以及 UI recomposition。
+- 同样识别 Streamline SDK 2.14.16 附带的 Super Resolution 310.9.16（与 NVIDIA DLSS GitHub 上的文件相同）：即使驱动配置文件强制使用其他预设，在 RTX Encore 中选择的 SR 模型预设仍然生效。该文件运行的是 310.9.1 的代码，因此不包含预设 A 至 D；Fast super resolution 可以与它配合使用。
+- **开关 Neural Rendering 的快捷键**：默认 **Ctrl+Alt+N**，可在菜单的快捷键编辑器中修改（[#47](https://github.com/SilyNoMeta/rtx-encore/issues/47)，由 @SiTWulf 提出）。
+- **RTX 30 上的 Smooth Motion 也接受 NVIDIA 591.86 驱动**（[#52](https://github.com/SilyNoMeta/rtx-encore/issues/52)，由 @SanyaGames227 提出）。仅在游戏外检查过：尚未在游戏中确认。
+
+- `rtx-encore-logs` 文件夹中还有 `rtx-encore-status.json`，即当前会话的状态，供 RTX Encore Hub 读取。
+
+### 变更
+
+- `nrPreset` 更名为 `dlssNrPreset`，位于 `dlssPresets` 部分，与其他模型预设并列，取值为 `"auto"`、`"a"` 或 `"b"`（默认 `"b"`）。旧版本的设置文件仍然有效：其中的 `nrPreset` 会连同取值一起改名，`0` 读作 auto，`1` 读作 a，`2` 读作 b，`3` 读作 auto。
+- 菜单中的 **Component compatibility** 区块并入 **Session details**，后者现在还列出 Streamline 帧生成、SR 和 RR 的版本，以及已加载文件不支持的每项功能及其原因。
+
+### 修复
+
+- **同一游戏中的两份 RTX Encore**（以两个文件名存在，例如 `version.dll` 和 `dxgi.dll`）都会修改游戏；同时开启 Ray Reconstruction 和 Neural Rendering 时，画面严重劣化。现在只有第一份运行，日志会指出另一份，请将其删除。
+- **DLSS Super Resolution 和 Ray Reconstruction 的尺寸**：现在在 DLSS 创建功能之前，按游戏提交的原样读取输入和输出尺寸；在 Starfield 中，日志可能显示为互换（[#51](https://github.com/SilyNoMeta/rtx-encore/issues/51)，日志由 @Avictuu 提供）。该问题中报告的功耗升高不在此修改的范围内。
+- **RTX 30 上使用 616.64 和 620.12 驱动的 Smooth Motion**：在这些驱动下，Smooth Motion 所需的部分工作被拒绝。这可能是 [#35](https://github.com/SilyNoMeta/rtx-encore/issues/35)（由 @CorwinMaximus 报告）的原因；尚未在游戏中确认。
+- 文档现在说明：使用 Ray Reconstruction 时，Neural Rendering 处理的是 RR 降噪后的图像，而不是光线追踪的原始图像（[#48](https://github.com/SilyNoMeta/rtx-encore/issues/48)，由 @wisecase2 提出）。
+
 ## 1.0.0
 
 **RTX Encore** 的首个稳定版本。它接替以 DLSSG-Transfusion 名义发布的 `v1.4.5.3-rtx20-30-40` 并取而代之；版本号从 1.0.0 重新开始。本条目汇总了自那以后的全部变化，包括各测试版和候选版带来的内容。

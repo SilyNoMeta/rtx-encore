@@ -18,7 +18,7 @@ comment le corriger.
 | Onglet | Ce qu'il contient |
 | :--- | :--- |
 | **Frames** | La génération d'images avec son preset de modèle (A/B Normal, C Lite), son option Fast indépendante et ses options de qualité et d'interface, Smooth Motion, la limite d'images calculées, la V-Sync |
-| **Image** | La résolution de rendu DLSS, les presets de modèles SR/RR, Neural Rendering |
+| **Image** | La résolution de rendu DLSS, les presets de modèles SR/RR/NR, Fast super resolution (RTX 30), Neural Rendering |
 | **Overlay** | Un aperçu de l'overlay, sa position, la taille de son texte et les lignes qu'il affiche |
 | **System** | Les raccourcis, la compatibilité, les diagnostics et les détails de la session, avec un bouton **Copy** pour les rapports de bug |
 
@@ -43,7 +43,7 @@ sans bordure est recommandé dans ce cas. Les réglages et leur effet sont les m
 
 ### Disponibilité des fonctions
 
-**System → Component compatibility** affiche les versions chargées de Streamline, DLSS-G, SR et RR, les fonctions disponibles et la raison de chaque limite. Les choix indisponibles ou non qualifiés sont grisés. Un composant pas encore chargé est indiqué en attente ; cela peut changer après activation de DLSS/FG dans le jeu. Il reste possible de désactiver un forçage enregistré ou de revenir aux réglages du jeu. Une demande de preset disponible ne prouve pas quel modèle le pilote utilise réellement.
+**System → Session details** affiche les versions chargées de Streamline, DLSS-G, SR et RR, et liste chaque fonction que les composants chargés ne permettent pas, avec la raison. Les choix indisponibles ou non qualifiés sont grisés. Un composant pas encore chargé est indiqué comme non chargé, et les fonctions qui en dépendent en attente ; cela peut changer après activation de DLSS/FG dans le jeu. Il reste possible de désactiver un forçage enregistré ou de revenir aux réglages du jeu. Une demande de preset disponible ne prouve pas quel modèle le pilote utilise réellement.
 
 ## L'overlay
 
@@ -60,7 +60,7 @@ Lignes optionnelles, toutes désactivées par défaut :
 
 | Ligne | Affiche |
 | :--- | :--- |
-| Neural Rendering | Son état et la taille à laquelle il travaille |
+| Neural Rendering | Son état et la taille à laquelle il travaille ; avec 310.9.16, le réseau NVIDIA (preset A, B ou Auto) |
 | Régularité des images | Temps d'image : moyenne, 99e centile et gigue |
 | GPU | Charge, température, puissance et fréquences |
 | VRAM | Utilisée / totale sur la carte, tous programmes confondus |
@@ -74,6 +74,7 @@ La position (quatre coins) et la taille du texte (10 à 32 px) sont dans le mêm
 | Réglage | Onglet | Ce qu'il fait |
 | :--- | :--- | :--- |
 | **Render resolution** | Image | Force la résolution à laquelle le jeu calcule l'image avant DLSS : DLAA, Quality, Balanced, Performance, Ultra Performance, ou une échelle personnalisée de 50 à 100 %. Le jeu doit déjà utiliser DLSS. Le menu montre la résolution observée et si le jeu suit la demande ; revenez à *Game* si un jeu se comporte mal. Dans les jeux Unreal Engine 4 et 5, le pourcentage d'écran est ajusté en direct quand c'est possible. |
+| **Fast super resolution (RTX 30)** | Image | Désactivée par défaut. Sur les cartes RTX 30, dans les jeux DirectX 12 qui utilisent DLSS Super Resolution avec le preset M ou L, exécute une version plus rapide de la montée en résolution : environ 16 à 20 % de temps GPU en moins par image upscalée sur le système mesuré, pour une image très proche de l'originale. Sans effet sur les autres cartes. Voir [Super Resolution](SUPER-RESOLUTION.fr.md#fast-super-resolution-rtx-30). |
 | **Frame limit (FPS)** | Frames | Demande un plafond via NVIDIA Reflex compatible. 0 restaure les réglages du jeu. Les images générées peuvent compter dans ce plafond selon le jeu et le pilote. Suspendu en mode Dynamic. |
 | **Request V-Sync off** | Frames | Demande aux jeux DirectX de présenter sans V-Sync. Un réglage forcé dans le panneau de configuration NVIDIA garde la priorité. Sans effet dans les jeux Vulkan. |
 | **Compatible ray-traced hair** | System | The Witcher 3 (DirectX 12, versions du jeu 25575366 et 25646871) : rend les cheveux en ray tracing du jeu disponibles sur les cartes RTX 20, 30 et 40. Les réglages de cheveux du jeu décident toujours s'ils sont affichés. Pas encore validé en jeu sur RTX 20 et RTX 30. Relancez pour appliquer. |

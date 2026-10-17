@@ -35,6 +35,7 @@ Aucune clé ne contient de chemin ni de commande : un fichier de réglages peut 
 | :--- | :---: | :--- |
 | `dlssRenderScale` | `"game"` | `"game"`, `"dlaa"`, `"quality"`, `"balanced"`, `"performance"`, `"ultra-performance"`, `"custom"` |
 | `dlssCustomScale` | `67` | Pourcentage, `50` à `100`, avec `"custom"` |
+| `fastSuperResolution` | `false` | RTX 30, DirectX 12 : DLSS Super Resolution plus rapide avec le preset M ou L, environ 16 à 20 % de temps GPU en moins par image upscalée sur le système mesuré, image très proche de l'originale. Inactive sur les autres cartes. Relancez pour appliquer. Voir [Super Resolution](SUPER-RESOLUTION.fr.md#fast-super-resolution-rtx-30). |
 
 ### `dlssPresets`
 
@@ -48,11 +49,15 @@ ni le multiplicateur d'images, ni le preset NR.
 | `dlssRrPreset` | `"game"` | `"game"`, `"default"`, `"a"`–`"c"` (anciens), `"d"`, `"e"` |
 | `dlssFgPreset` | `"game"` | `"game"`, `"a"`, `"b"`, `"c"` |
 | `dlssFgLite` | `"game"` | Diagnostic uniquement, JSON : `"game"`, `"off"`, `"on"` |
+| `dlssNrPreset` | `"b"` | Réseau de Neural Rendering avec `nvngx_dlssnr.dll` 310.9.16 : `"b"` (plus petit, bien plus rapide), `"a"` (le réseau de 310.8.0) ou `"auto"` (le choix du fichier, B). Un seul réseau avec 310.8.0. S'applique en direct. Le `nrPreset` des anciens fichiers est lu sous ce nom, avec sa valeur ; ses valeurs `0` à `3` sont encore lues. |
 
 Pour les clés de preset, `"game"` conserve le choix du jeu. Les choix SR/RR s'appliquent à tous les modes de qualité, DLAA compris ;
 `"default"` demande explicitement le choix par défaut de la DLL DLSS. Les modèles disponibles dépendent
 de la DLL installée ; les réglages NVIDIA ou un modèle de repli peuvent prendre le dessus.
 Choisir un preset RR n'active pas RR.
+Avec DLSS Super Resolution **310.9.1.0** et **310.9.16.0**, le preset SR choisi dans Encore s'applique même si
+le profil du pilote NVIDIA en impose un autre (310.9.1.0, ainsi que la 310.9.16.0 du SDK Streamline et du GitHub DLSS
+de NVIDIA, n'ont pas les presets A à D).
 
 Le choix du preset FG prend en charge les **binaires release NVIDIA DLSS-G** vérifiés individuellement ci-dessous :
 
@@ -100,7 +105,6 @@ Laissez `"game"` pour conserver le comportement actuel.
 | `nrSkinStructure` | `1` | `0` à `2` |
 | `nrHdrExposure` | `1` | Jeux HDR : luminosité donnée à NR |
 | `nrPrecision` | `"exact"` | `"exact"` ou `"fast"` (RTX 20 et RTX 30). Relancez pour appliquer. |
-| `nrPreset` | `0` | Profil de modèle NVIDIA : `0` automatique (recommandé), `1` à `3` |
 
 #### Options de performance NR
 

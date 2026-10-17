@@ -17,7 +17,7 @@ to go to its settings. When a problem lasts, a card under the strip names it and
 | Tab | What it holds |
 | :--- | :--- |
 | **Frames** | Frame generation with its model preset (A/B Normal, C Lite), independent Fast option, quality and interface options, Smooth Motion, the Reflex frame limit, V-Sync |
-| **Image** | DLSS render resolution, SR/RR model presets, Neural Rendering |
+| **Image** | DLSS render resolution, SR/RR/NR model presets, Fast super resolution (RTX 30), Neural Rendering |
 | **Overlay** | A preview of the overlay, its position, its text size and the lines it shows |
 | **System** | Shortcuts, compatibility, diagnostics and the session details, with a **Copy** button for bug reports |
 
@@ -41,7 +41,7 @@ The settings and their effect are the same.
 
 ### Component availability
 
-**System → Component compatibility** shows the loaded Streamline, DLSS-G, SR and RR versions, plus feature availability and the reason for each limitation. Unavailable or unqualified choices are greyed out. A component that has not loaded yet is shown as waiting; this can change after enabling DLSS/FG in the game. You can still disable a saved override or return to the game’s settings. An available preset request does not prove which model the driver actually selected.
+**System → Session details** shows the loaded Streamline, DLSS-G, SR and RR versions, and lists each feature the loaded components do not allow, with the reason. Unavailable or unqualified choices are greyed out. A component that has not loaded yet is shown as not loaded, and the features that depend on it as waiting; this can change after enabling DLSS/FG in the game. You can still disable a saved override or return to the game’s settings. An available preset request does not prove which model the driver actually selected.
 
 ## The overlay
 
@@ -58,7 +58,7 @@ Optional lines, all off by default:
 
 | Line | Shows |
 | :--- | :--- |
-| Neural Rendering | Its state and the size it works at |
+| Neural Rendering | Its state and the size it works at; with 310.9.16, the NVIDIA network (preset A, B or Auto) |
 | Frame pacing | Frame time: average, 99th percentile and jitter |
 | GPU | Load, temperature, power and clocks |
 | VRAM | Used / total on the card, all programs included |
@@ -72,6 +72,7 @@ Position (four corners) and text size (10 to 32 px) are in the same tab.
 | Setting | Tab | What it does |
 | :--- | :--- | :--- |
 | **Render resolution** | Image | Forces the resolution the game renders at before DLSS: DLAA, Quality, Balanced, Performance, Ultra Performance, or a custom scale from 50 to 100 %. The game must already use DLSS. The menu shows the resolution observed and whether the game follows the request; set it back to *Game* if a game misbehaves. In Unreal Engine 4 and 5 games the screen percentage is adjusted live when possible. |
+| **Fast super resolution (RTX 30)** | Image | Off by default. On RTX 30 cards, in DirectX 12 games using DLSS Super Resolution with preset M or L, runs a faster version of the upscaling: about 16 to 20 % less GPU time per upscaled frame on the system measured, with an image very close to the original. No effect on other cards. See [Super Resolution](SUPER-RESOLUTION.md#fast-super-resolution-rtx-30). |
 | **Frame limit (FPS)** | Frames | Requests a frame limit through NVIDIA Reflex when supported. 0 restores the game's settings. Generated frames may count toward the limit depending on the game/driver. Suspended in Dynamic mode. |
 | **Request V-Sync off** | Frames | Asks DirectX games to present without V-Sync. A setting forced in the NVIDIA control panel keeps priority. No effect in Vulkan games. |
 | **Compatible ray-traced hair** | System | The Witcher 3 (DirectX 12, game builds 25575366 and 25646871): makes the game's ray-traced hair available on RTX 20, 30 and 40 cards. The game's own hair settings still decide whether hair is rendered. Not validated in game on RTX 20 and RTX 30 yet. Restart to apply. |

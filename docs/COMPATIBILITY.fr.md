@@ -7,11 +7,11 @@ autre pilote ou un autre mod peut changer le résultat.
 
 ## Cartes graphiques
 
-| Carte | Génération d'images | Smooth Motion | Neural Rendering |
-| :--- | :--- | :--- | :--- |
-| RTX 40 | Prise en charge. DirectX 12 et Vulkan éprouvés sur une RTX 4090. | Fourni par NVIDIA | Pris en charge |
-| RTX 30 | Prise en charge. DirectX 12 éprouvé sur un RTX 3070 Ti Laptop. | Pris en charge avec les pilotes listés plus bas | Pris en charge |
-| RTX 20 | Expérimentale : pas encore validée sur une vraie carte RTX 20. | Non pris en charge | Expérimental |
+| Carte | Génération d'images | Smooth Motion | Neural Rendering | Fast super resolution |
+| :--- | :--- | :--- | :--- | :--- |
+| RTX 40 | Prise en charge. DirectX 12 et Vulkan éprouvés sur une RTX 4090. | Fourni par NVIDIA | Pris en charge | Inactive |
+| RTX 30 | Prise en charge. DirectX 12 éprouvé sur un RTX 3070 Ti Laptop. | Pris en charge avec les pilotes listés plus bas | Pris en charge | DirectX 12, mesurée sur un RTX 3070 Ti Laptop. Voir [plus bas](#versions-de-dlss-super-resolution). |
+| RTX 20 | Expérimentale : pas encore validée sur une vraie carte RTX 20. | Non pris en charge | Expérimental | Inactive |
 
 RTX Encore est fait pour les cartes RTX 20, 30 et 40. Les cartes GTX et celles d'autres fabricants ne sont pas
 prises en charge.
@@ -22,6 +22,7 @@ prises en charge.
 | :--- | :---: | :---: | :---: |
 | Génération d'images X2 à X6 | — | ✅ | ✅ (expérimental sur RTX 20 et RTX 30) |
 | UI assist | — | ✅ | — |
+| Fast super resolution (RTX 30) | — | ✅ | — |
 | Smooth Motion (RTX 30) | ✅ | ✅ | ✅ |
 | Neural Rendering | 🧪 | 🧪 | 🧪 |
 | Menu et overlay | ✅ | ✅ | ✅ |
@@ -38,7 +39,8 @@ La génération d'images fonctionne avec ces versions du fichier `nvngx_dlssg.dl
 - Toute autre version est laissée telle quelle : le jeu garde sa propre génération d'images.
 - **310.9.0 et 310.9.1** conservent leurs correctifs de qualité et Fast frame generation. Sur RTX 20, utilisez
   un fichier 310.9.0, 310.9.1 ou 310.9.16 qualifié.
-- **310.9.16** est le fichier que télécharge la bêta de l'application NVIDIA ; c'est le seul qui propose le
+- **310.9.16** est le fichier que télécharge la bêta de l'application NVIDIA, et celui que livre le SDK
+  Streamline 2.14.16 (les deux sont acceptés, avec les mêmes fonctions) ; c'est la seule version qui propose le
   preset C de génération d'images. **A/B utilisent Normal ; choisir C active automatiquement Lite après redémarrage.**
   Fast frame generation reste indépendant pour chaque preset. Normal prend en charge les politiques anti-tearing.
   Lite conserve la politique d'image native de NVIDIA : Anti-tearing et Protection tuning sont sans effet, la recomposition de l'interface est indisponible,
@@ -46,6 +48,13 @@ La génération d'images fonctionne avec ces versions du fichier `nvngx_dlssg.dl
   localement, pas encore en jeu ; aucun gain de performance n'est mesuré pour Lite.
 - Les autres fichiers DLSS du jeu (Super Resolution, Ray Reconstruction, ...) peuvent avoir n'importe quelle
   version.
+
+## Versions de DLSS Super Resolution
+
+**Fast super resolution (RTX 30)** fonctionne avec le `nvngx_dlss.dll` du jeu en version **310.9.x** ; **310.9.16**
+est recommandée. Elle demande le preset **M** ou **L**. Toute autre version, et tout jeu non reconnu, garde la
+super-résolution d'origine de NVIDIA, sans message. Voir
+[Super Resolution](SUPER-RESOLUTION.fr.md#fast-super-resolution-rtx-30).
 
 ## Versions de Streamline
 
@@ -66,7 +75,7 @@ Il n'existe pas de tag SDK public pour 2.13 ou 2.14.0 dans cet examen. Un numér
 ne suffit pas à établir la prise en charge de toutes les fonctions. Conservez les fichiers Streamline du jeu
 ensemble ; ces notes ne recommandent pas de remplacer des fichiers individuellement.
 
-**Consultez la disponibilité de chaque fonction dans le menu.** Les ajouts Streamline 2.14.16 et DLSS-G 310.9.16 restent à valider en jeu. Les anciennes versions offrent moins de fonctions ; un fichier plus récent non examiné n'est pas automatiquement compatible. Gardez un ensemble Streamline cohérent et compatible avec le jeu. Les presets SR/RR dépendent de leurs DLL et du pilote ; Neural Rendering exige toujours spécifiquement 310.8.0.
+**Consultez la disponibilité de chaque fonction dans le menu.** Les ajouts Streamline 2.14.16 et DLSS-G 310.9.16 restent à valider en jeu. Les anciennes versions offrent moins de fonctions ; un fichier plus récent non examiné n'est pas automatiquement compatible. Gardez un ensemble Streamline cohérent et compatible avec le jeu. Les presets SR/RR dépendent de leurs DLL et du pilote ; Neural Rendering exige spécifiquement 310.8.0 ou 310.9.16.
 
 **DirectX 11 :** DLSS MFG et son mode Dynamique sont indisponibles. Le chemin distinct Smooth Motion produit uniquement du X2, sans bascule X3/X4. Ses exigences de GPU et de pilote restent applicables.
 
@@ -77,7 +86,7 @@ Smooth Motion sur RTX 30 accepte les pilotes NVIDIA **620.12**, **617.42**, **61
 
 ## Fichier pour Neural Rendering
 
-Neural Rendering demande le fichier `nvngx_dlssnr.dll` **310.8.0** de NVIDIA, que vous fournissez ou que [RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub) va chercher. Voir
+Neural Rendering demande le fichier `nvngx_dlssnr.dll` **310.8.0** ou **310.9.16** de NVIDIA, que vous fournissez ou que [RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub) va chercher. Voir
 [Neural Rendering](NEURAL-RENDERING.fr.md).
 
 ## Notes par jeu

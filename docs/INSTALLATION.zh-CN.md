@@ -65,6 +65,7 @@
 
 - `rtx-encore.jsonc`：你的设置，首次启动时创建。见[设置文件](SETTINGS.zh-CN.md)。
 - `rtx-encore-logs\`：会话日志，默认保留最近三份，以及最多三份异常日志。仍在使用的文件不会删除。
+  其中还有 `rtx-encore-status.json`，即当前会话的状态，供 RTX Encore Hub 读取。
 
 ## 更新
 

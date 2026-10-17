@@ -22,7 +22,7 @@ le temps NR de **48 %** dans la comparaison Wukong ci-dessous.
 | | |
 | :--- | :--- |
 | **Trois générations de cartes** | RTX 40, RTX 30 et, à titre expérimental, RTX 20, dans les jeux DirectX 11, DirectX 12 et Vulkan. |
-| **Traitement plus rapide, à image identique** | Des optimisations activées par défaut pour le moteur NVIDIA sur RTX 20 et RTX 30, avec une sortie identique dans les tests locaux de référence. Performances mesurées sur RTX 30 ; la validation sur une RTX 20 physique reste à faire. |
+| **Traitement plus rapide, à image identique** | Des optimisations activées par défaut pour le moteur NVIDIA sur RTX 20 et RTX 30, avec une sortie identique dans les tests locaux de référence. Performances mesurées sur RTX 30 ; la validation sur une RTX 20 physique reste à faire. Une partie est propre à 310.8.0 : avec 310.9.16, le réseau A prend un peu plus de temps qu'avec 310.8.0. |
 | **Précision Fast** | Moteur NVIDIA : environ 17 % de temps NR en moins mesurés sur RTX 30, avec de petites différences d'image. Open a aussi sa propre précision Fast pour RTX 30, désactivée par défaut. |
 | **Résolution NR indépendante** | NR peut travailler sous la résolution de l'écran, tandis que DLSS conserve sa résolution de rendu et les détails reconstruits. Performance et Ultra Performance réduisent le travail NR sans imposer un réglage DLSS inférieur. |
 | **D'autres réglages Open pour RTX 30** | L'option **More speed for more VRAM** réduit le temps NR à image identique, contre davantage de VRAM ; **Fast projection** privilégie la vitesse avec de petites différences d'image. Voir [Réglages de performance](#réglages-de-performance-sur-rtx-30). |
@@ -37,10 +37,13 @@ Les options qui consomment davantage de VRAM sont désactivées par défaut.
 
 ## Prérequis
 
-- Le fichier NR de NVIDIA, **`nvngx_dlssnr.dll` version 310.8.0**. Il n'est pas inclus dans RTX Encore :
+- Le fichier NR de NVIDIA, **`nvngx_dlssnr.dll` version 310.8.0 ou 310.9.16**. Il n'est pas inclus dans RTX Encore :
   fournissez-le vous-même et placez-le à côté du fichier du mod, normalement dans le dossier de l'exécutable du jeu.
   Toute autre version est refusée. [RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub) télécharge ce fichier, le vérifie et le place là pour vous.
 - Un jeu avec **DLSS Super Resolution ou DLAA activé**. NR s'applique à son résultat.
+  Avec **Ray Reconstruction**, NR s'applique au résultat de RR, après son débruitage : jamais à l'image brute du
+  ray tracing. Le jeu doit fournir l'entrée de profondeur dont NR a besoin ; sinon l'image reste telle que DLSS l'a
+  produite et le menu l'indique.
 - Une carte RTX 40 ou RTX 30. RTX 20 est expérimental.
 
 ## L'activer
@@ -48,6 +51,10 @@ Les options qui consomment davantage de VRAM sont désactivées par défaut.
 1. Placez `nvngx_dlssnr.dll` à côté du fichier du mod.
 2. Activez DLSS ou DLAA dans le jeu.
 3. Ouvrez le menu (**Inser**), onglet **Image**, et activez **Neural Rendering**.
+
+**Ctrl + Alt + N** active ou désactive NR en cours de jeu, pour comparer l'image et la fréquence d'images avec et
+sans. Le choix est enregistré comme celui de l'interrupteur du menu. Le raccourci se change ou se désactive dans le
+menu (onglet **System**).
 
 NR se prépare en arrière-plan : les premières images peuvent rester telles que DLSS les a produites. La pastille
 **Neural Rendering** en haut du menu indique si NR tourne réellement, et pourquoi quand ce n'est pas le cas.
@@ -61,6 +68,10 @@ NR se prépare en arrière-plan : les premières images peuvent rester telles qu
 | **Style** | Default | Le rendu de l'image : Default, Natural ou Cinematic. |
 | **Passes** | 1 | NR peut être appliqué de nouveau à son propre résultat, jusqu'à quatre fois. Chaque passe coûte du temps GPU et de la VRAM, et davantage de passes ne garantit pas une meilleure image. |
 | **Precision** | Exact | Moteur NVIDIA, RTX 20 et RTX 30 : *Fast* réduit le temps NR, avec environ 17 % mesurés sur RTX 30 et de petites différences d'image. Open a un choix Exact/Fast séparé pour RTX 30. Relancez le jeu pour appliquer. |
+| **NR model preset** | B | Avec `nvngx_dlssnr.dll` 310.9.16 : **B** est un réseau plus petit et bien plus rapide, **A** le plus grand, celui que 310.8.0 exécute, **DLL default** laisse le fichier choisir (B). Avec 310.8.0, chaque choix exécute son unique réseau. Il se trouve à côté des presets de modèle SR et RR (onglet **Image**, Upscaling) et s'applique en direct ; Open l'ignore. |
+
+Dans un test local en 1080p sur une RTX 3070 Ti Laptop, le réseau B a pris environ 15 ms de temps NR et le réseau A
+environ 27 ms. B donne une image différente de A. La prise en charge de 310.9.16 est expérimentale et peu testée.
 
 ### Réglages de performance sur RTX 30
 
@@ -98,9 +109,8 @@ en jeu.
 
 ### Réglages fins
 
-Le ton local, la structure locale, un masque des personnages avec son propre réglage de structure de la peau, la
-luminosité donnée à NR dans les jeux HDR, et le profil de modèle NVIDIA (**Automatic** est recommandé) sont dans les
-groupes qui s'ouvrent sous les réglages principaux. Chacun a sa description dans le menu.
+Le ton local, la structure locale, un masque des personnages avec son propre réglage de structure de la peau, et la
+luminosité donnée à NR dans les jeux HDR sont dans les groupes qui s'ouvrent sous les réglages principaux. Chacun a sa description dans le menu.
 
 ## Moteurs
 
@@ -186,9 +196,10 @@ d'images. Activer **More speed for more VRAM** ajoute de nouveau de la VRAM en �
 
 | Symptôme | Première vérification |
 | :--- | :--- |
-| L'interrupteur ne peut pas être activé | `nvngx_dlssnr.dll` manque à côté du fichier du mod, ou n'est pas en version 310.8.0. |
+| L'interrupteur ne peut pas être activé | `nvngx_dlssnr.dll` manque à côté du fichier du mod, ou n'est ni en version 310.8.0 ni en version 310.9.16. |
 | La pastille dit attendre DLSS | Activez DLSS ou DLAA dans le jeu et chargez une scène 3D. |
 | Les premières images n'ont pas NR | NR se prépare en arrière-plan ; c'est normal. |
+| L'image est dégradée, floue ou délavée | Vérifiez qu'il n'y a qu'une seule copie de RTX Encore dans le jeu : deux copies sous deux noms abîment l'image. |
 | L'image reste telle que DLSS l'a produite | Lisez la raison affichée dans le menu : quand le jeu ne fournit pas ce dont NR a besoin, l'image est laissée intacte. |
 | Les réglages reviennent aussitôt en arrière | Le fichier de réglages n'a pas pu être enregistré : vérifiez qu'il n'est ni en lecture seule ni verrouillé par un éditeur. |
 | La fréquence d'images chute | NR coûte cher. Réduisez **Resolution**, et comparez dans la même scène. |

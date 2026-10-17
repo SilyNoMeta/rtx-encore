@@ -3,14 +3,14 @@
 RTX Encore releases include, or are built with, the components listed here. Each remains under its own
 license, and these notices must stay with any copy of a release.
 
-No NVIDIA software, driver file, model or game file is included in a release. NVIDIA software and games remain
+No NVIDIA software, driver file or game file is included in a release. NVIDIA software and games remain
 subject to their own terms.
 
 | Component | Copyright | License |
 | :--- | :--- | :--- |
 | [DLSSG-Transfusion](https://github.com/TonyJoaca/DLSSG-Transfusion) | Copyright (c) 2026 Michael Robles | MIT |
 | [RTX40MFG-Unlock](https://github.com/dashdogy/RTX40MFG-Unlock) | Copyright (c) 2026 Michael Robles | MIT |
-| [dlssg_for_sm86](https://github.com/sdli1995/dlssg_for_sm86) | Copyright (c) its authors | MIT |
+| [dlssg_for_sm86](https://github.com/sdli1995/dlssg_for_sm86) | Copyright (c) 2026 sdli1995 | MIT |
 | RTX-Unlocker-RenoDX | Copyright (c) 2026 ImDreamt | MIT |
 | [OpenDLSS-NR](https://github.com/maanHimself/OpenDLSS-NR) | Copyright (c) 2026 maan | MIT |
 | [dlss5-bridge](https://github.com/Yukikaze20170315/dlss5-bridge) | Copyright (c) 2026 NIGos | MIT |

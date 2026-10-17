@@ -2,6 +2,34 @@
 
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.1.0
+
+Cette version arrive avec le **premier sponsoring** de RTX Encore. Merci, sincèrement : c'est beaucoup pour un projet fait sur des soirées libres.
+
+### Nouveautés
+
+- **Fast super resolution (RTX 30)**, désactivée par défaut : sur les cartes RTX 30 en DirectX 12, les presets **M** et **L** de DLSS Super Resolution utilisent une version plus rapide du modèle de NVIDIA. Sur un RTX 3070 Ti Laptop, l'upscaling a pris environ **18 % de temps GPU en moins en M et 15 % en moins en L** sur notre banc, et **22 % de moins dans The Witcher 3 et 25 % de moins dans Black Myth: Wukong** en jeu (les deux en M). L'image reste très proche de celle de NVIDIA, sans différence visible dans nos essais. Ce sont des premiers chiffres, sur un portable et deux jeux : le gain dépendra de votre carte et du jeu. Voir [Super Resolution](docs/SUPER-RESOLUTION.fr.md#fast-super-resolution-rtx-30).
+- **Le preset de modèle SR choisi dans RTX Encore s'applique désormais même si le profil du pilote NVIDIA du jeu en impose un autre** (le forçage DLSS de l'application NVIDIA), avec DLSS Super Resolution 310.9.1 et 310.9.16. Avec les autres versions, le pilote garde la main.
+- **Neural Rendering accepte le `nvngx_dlssnr.dll` 310.9.16 de NVIDIA** en plus de 310.8.0. Ce fichier a deux réseaux, au choix dans le nouveau **NR model preset**, à côté des presets de modèle SR et RR : **B** (par défaut), plus petit et bien plus rapide, et **A**, le réseau qu'exécute 310.8.0. Dans un test local en 1080p sur une RTX 3070 Ti Laptop, B a pris environ 15 ms de temps NR et A environ 27 ms. Les optimisations de RTX Encore pour les RTX 20 et 30 s’appliquent maintenant aussi aux deux réseaux de ce fichier, avec la même image. Avec 310.8.0, rien ne change. La prise en charge de 310.9.16 est expérimentale et peu testée. Voir [Neural Rendering](docs/NEURAL-RENDERING.fr.md).
+- La DLSS-G 310.9.16 du SDK Streamline 2.14.16 est acceptée elle aussi, avec les mêmes fonctions que celle que télécharge l'application NVIDIA : presets A, B et C, Lite, Fast frame generation et UI recomposition.
+- La Super Resolution 310.9.16 du SDK Streamline 2.14.16, le même fichier que sur le GitHub DLSS de NVIDIA, est reconnue elle aussi : le preset de modèle SR choisi dans RTX Encore s'applique même si le profil du pilote en impose un autre. Ce fichier exécute le code de la 310.9.1 : il n'a donc pas les presets A à D. Fast super resolution fonctionne avec lui.
+- **Un raccourci pour activer et couper le Neural Rendering** : **Ctrl+Alt+N** par défaut, modifiable dans l'éditeur de raccourcis du menu ([#47](https://github.com/SilyNoMeta/rtx-encore/issues/47), demandé par @SiTWulf).
+- **Smooth Motion sur RTX 30 accepte aussi le pilote NVIDIA 591.86** ([#52](https://github.com/SilyNoMeta/rtx-encore/issues/52), demandé par @SanyaGames227). Vérifié hors jeu seulement : pas encore confirmé en jeu.
+
+- Le dossier `rtx-encore-logs` contient aussi `rtx-encore-status.json`, l’état de la session en cours, que lit RTX Encore Hub.
+
+### Changements
+
+- `nrPreset` devient `dlssNrPreset`, dans la section `dlssPresets` à côté des autres presets de modèle, et prend `"auto"`, `"a"` ou `"b"` (par défaut `"b"`). Les fichiers de réglages des versions précédentes restent valables : leur `nrPreset` est renommé avec sa valeur, et `0` se lit auto, `1` a, `2` b, `3` auto.
+- Le bloc **Component compatibility** du menu est regroupé dans **Session details**, qui liste aussi les versions Streamline Frame Generation, SR et RR et chaque fonction que les fichiers chargés ne permettent pas, avec la raison.
+
+### Corrections
+
+- **Deux copies de RTX Encore dans le même jeu**, sous deux noms de fichier (par exemple `version.dll` et `dxgi.dll`), le modifiaient toutes les deux ; avec Ray Reconstruction et le Neural Rendering actifs, l'image était très dégradée. La première copie tourne désormais seule et le journal nomme l'autre, à retirer.
+- **Tailles de DLSS Super Resolution et Ray Reconstruction** : les tailles d'entrée et de sortie sont désormais lues telles que le jeu les soumet, avant que DLSS crée la fonction ; dans Starfield, le journal pouvait les montrer inversées ([#51](https://github.com/SilyNoMeta/rtx-encore/issues/51), journal fourni par @Avictuu). La hausse de consommation signalée dans cette issue n'est pas traitée par ce changement.
+- **Smooth Motion sur RTX 30 avec les pilotes 616.64 et 620.12** : une partie du travail dont Smooth Motion a besoin était refusée avec ces pilotes. Cela peut expliquer [#35](https://github.com/SilyNoMeta/rtx-encore/issues/35) (signalé par @CorwinMaximus) ; pas encore confirmé en jeu.
+- La documentation précise qu'avec Ray Reconstruction, le Neural Rendering travaille sur l'image débruitée par RR, jamais sur l'image brute du ray tracing ([#48](https://github.com/SilyNoMeta/rtx-encore/issues/48), soulevé par @wisecase2).
+
 ## 1.0.0
 
 La première version stable de **RTX Encore**. Elle fait suite à `v1.4.5.3-rtx20-30-40`, publiée sous le nom DLSSG-Transfusion, et la remplace ; la numérotation repart de 1.0.0. Cette entrée rassemble tout ce qui a changé depuis, y compris ce qu’ont apporté les bêtas et les versions candidates.

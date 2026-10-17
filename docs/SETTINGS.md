@@ -34,6 +34,7 @@ No key holds a path or a command: a settings file can be shared with someone els
 | :--- | :---: | :--- |
 | `dlssRenderScale` | `"game"` | `"game"`, `"dlaa"`, `"quality"`, `"balanced"`, `"performance"`, `"ultra-performance"`, `"custom"` |
 | `dlssCustomScale` | `67` | Percent, `50` to `100`, with `"custom"` |
+| `fastSuperResolution` | `false` | RTX 30, DirectX 12: faster DLSS Super Resolution with preset M or L, about 16 to 20 % less GPU time per upscaled frame on the system measured, image very close to the original. Inactive on other cards. Restart to apply. See [Super Resolution](SUPER-RESOLUTION.md#fast-super-resolution-rtx-30). |
 
 ### `dlssPresets`
 
@@ -46,10 +47,14 @@ FG is in **Frames → Frame generation**. They do not change render resolution, 
 | `dlssRrPreset` | `"game"` | `"game"`, `"default"`, `"a"`–`"c"` (legacy), `"d"`, `"e"` |
 | `dlssFgPreset` | `"game"` | `"game"`, `"a"`, `"b"`, `"c"` |
 | `dlssFgLite` | `"game"` | Diagnostic only, JSON: `"game"`, `"off"`, `"on"` |
+| `dlssNrPreset` | `"b"` | Neural Rendering network with `nvngx_dlssnr.dll` 310.9.16: `"b"` (smaller, much faster), `"a"` (the network of 310.8.0) or `"auto"` (the file's choice, B). One network with 310.8.0. Applies live. The `nrPreset` of earlier files is read under this name, with its value; its `0` to `3` still read. |
 
 For the preset keys, `"game"` leaves the game's choice intact. SR/RR choices apply to every quality mode, including DLAA;
 `"default"` explicitly requests the DLSS DLL's default. Available models depend on the installed DLL,
 and NVIDIA driver overrides or model fallback can take priority. Choosing an RR preset does not enable RR.
+With DLSS Super Resolution **310.9.1.0** and **310.9.16.0**, the SR preset chosen in Encore applies even when
+the NVIDIA driver profile forces another one (310.9.1.0, and the 310.9.16.0 of the Streamline SDK and of NVIDIA's
+DLSS GitHub, have no presets A to D).
 
 FG preset selection supports the individually verified NVIDIA **DLSS-G release binaries** listed below:
 
@@ -96,7 +101,6 @@ model executed. Leave `"game"` selected to preserve the existing behavior.
 | `nrSkinStructure` | `1` | `0` to `2` |
 | `nrHdrExposure` | `1` | HDR games: brightness given to NR |
 | `nrPrecision` | `"exact"` | `"exact"` or `"fast"` (RTX 20 and RTX 30). Restart to apply. |
-| `nrPreset` | `0` | NVIDIA model profile: `0` automatic (recommended), `1` to `3` |
 
 #### NR performance options
 

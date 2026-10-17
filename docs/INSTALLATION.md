@@ -68,6 +68,7 @@ renaming the DLL.
 
 - `rtx-encore.jsonc`: your settings, created on first launch. See [Settings file](SETTINGS.md).
 - `rtx-encore-logs\`: the session logs, the three most recent by default, plus up to three exception logs. Files still in use are preserved.
+  It also holds `rtx-encore-status.json`, the current session's state, which RTX Encore Hub reads.
 
 ## Update
 

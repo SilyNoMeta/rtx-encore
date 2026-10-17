@@ -21,7 +21,7 @@ the Wukong comparison below.
 | | |
 | :--- | :--- |
 | **Three generations of cards** | RTX 40, RTX 30 and, experimentally, RTX 20, in DirectX 11, DirectX 12 and Vulkan games. |
-| **Faster processing, same image** | Optimizations enabled by default for the NVIDIA engine on RTX 20 and RTX 30, with identical output in the local reference tests. Performance measured on RTX 30; physical RTX 20 validation is still pending. |
+| **Faster processing, same image** | Optimizations enabled by default for the NVIDIA engine on RTX 20 and RTX 30, with identical output in the local reference tests. Performance measured on RTX 30; physical RTX 20 validation is still pending. Part of it is specific to 310.8.0: with 310.9.16, network A takes slightly longer than with 310.8.0. |
 | **Fast precision** | NVIDIA engine: about 17 % less NR processing time measured on RTX 30, with small image differences. Open also has its own Fast precision for RTX 30, off by default. |
 | **Independent NR resolution** | NR can work below the screen resolution while DLSS keeps its own render resolution and reconstructed detail. Performance and Ultra Performance reduce the amount of NR work without requiring a lower DLSS setting. |
 | **More Open performance controls on RTX 30** | **More speed for more VRAM** reduces NR time with the same image, at the cost of VRAM; **Fast projection** favors speed with small image differences. See [Performance controls](#performance-controls-on-rtx-30). |
@@ -36,10 +36,12 @@ Options that use more VRAM are off by default.
 
 ## Requirements
 
-- NVIDIA's NR file, **`nvngx_dlssnr.dll` version 310.8.0**. It is not included in RTX Encore: supply it
+- NVIDIA's NR file, **`nvngx_dlssnr.dll` version 310.8.0 or 310.9.16**. It is not included in RTX Encore: supply it
   yourself and put it beside the mod's file, normally in the folder of the game's executable. Any other version is
   refused. [RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub) downloads this file, checks it and puts it there for you.
 - A game with **DLSS Super Resolution or DLAA turned on**. NR is applied to its result.
+  With **Ray Reconstruction**, NR is applied to RR's result, after its denoising: never to the raw ray-traced image.
+  The game must provide the depth input NR needs; otherwise the image stays as DLSS made it and the menu says so.
 - An RTX 40 or RTX 30 card. RTX 20 is experimental.
 
 ## Turn it on
@@ -47,6 +49,9 @@ Options that use more VRAM are off by default.
 1. Put `nvngx_dlssnr.dll` beside the mod's file.
 2. Turn DLSS or DLAA on in the game.
 3. Open the menu (**Insert**), **Image** tab, and turn **Neural Rendering** on.
+
+**Ctrl + Alt + N** turns NR on or off during the game, to compare the image and the frame rate with and without it.
+The choice is saved like the menu's switch. The shortcut can be changed or turned off in the menu (**System** tab).
 
 NR gets ready in the background: the first frames can stay as DLSS made them. The **Neural Rendering** chip at the
 top of the menu shows whether NR is really running, and why not when it is not.
@@ -60,6 +65,10 @@ top of the menu shows whether NR is really running, and why not when it is not.
 | **Style** | Default | The look of the image: Default, Natural or Cinematic. |
 | **Passes** | 1 | NR can be applied again to its own result, up to four times. Each pass costs GPU time and VRAM, and more passes do not guarantee a better image. |
 | **Precision** | Exact | NVIDIA engine, RTX 20 and RTX 30: *Fast* reduces NR time, with about 17 % measured on RTX 30 and small image differences. Open has a separate Exact/Fast choice for RTX 30. Restart the game to apply. |
+| **NR model preset** | B | With `nvngx_dlssnr.dll` 310.9.16: **B** is a smaller, much faster network, **A** the larger one that 310.8.0 runs, **DLL default** lets the file choose (B). With 310.8.0, every choice runs its single network. It sits beside the SR and RR model presets (**Image** tab, Upscaling) and applies live; Open ignores it. |
+
+In a local test at 1080p on an RTX 3070 Ti Laptop, network B took about 15 ms of NR time and network A about
+27 ms. B gives a different image from A. Support for 310.9.16 is experimental and lightly tested.
 
 ### Performance controls on RTX 30
 
@@ -95,9 +104,8 @@ yet.
 
 ### Fine tuning
 
-Local tone, local structure, a character mask with its own skin structure setting, the brightness given to NR in
-HDR games, and the NVIDIA model profile (**Automatic** is recommended) are in the groups that open under the main
-settings. Each has a description in the menu.
+Local tone, local structure, a character mask with its own skin structure setting, and the brightness given to NR
+in HDR games are in the groups that open under the main settings. Each has a description in the menu.
 
 ## Engines
 
@@ -181,9 +189,10 @@ adds VRAM again in exchange for less NR time.
 
 | Symptom | First check |
 | :--- | :--- |
-| The switch cannot be turned on | `nvngx_dlssnr.dll` is missing beside the mod's file, or is not version 310.8.0. |
+| The switch cannot be turned on | `nvngx_dlssnr.dll` is missing beside the mod's file, or is neither version 310.8.0 nor 310.9.16. |
 | The chip says it is waiting for DLSS | Turn DLSS or DLAA on in the game and load a 3D scene. |
 | The first frames have no NR | NR is getting ready in the background; this is expected. |
+| The image is degraded, blurry or washed out | Check that there is only one copy of RTX Encore in the game: two copies under two names spoil the image. |
 | The image stays as DLSS made it | Read the reason shown in the menu: when the game does not give NR what it needs, the image is left untouched. |
 | Settings revert at once | The settings file could not be saved: check that it is not read-only or locked by an editor. |
 | The frame rate drops | NR is costly. Lower **Resolution**, and compare in the same scene. |

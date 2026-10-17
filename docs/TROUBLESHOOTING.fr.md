@@ -6,8 +6,8 @@
 
 1. **Le mod est-il chargé ?** Un dossier `rtx-encore-logs` apparaît à côté du fichier du mod quand il l'est, et
    **Inser** ouvre le menu. Si ni l'un ni l'autre ne se produit, le jeu n'a pas chargé le fichier.
-2. **N'y a-t-il qu'une seule copie ?** Deux copies du mod dans le même jeu, sous deux noms, provoquent des plantages
-   et des comportements étranges.
+2. **N'y a-t-il qu'une seule copie ?** Deux copies du mod dans le même jeu, sous deux noms, provoquent des plantages,
+   des comportements étranges et une image dégradée avec Neural Rendering.
 3. **Que dit le menu ?** Les quatre pastilles du haut donnent l'état de chaque fonction, et une carte nomme tout
    problème durable avec sa correction.
 
