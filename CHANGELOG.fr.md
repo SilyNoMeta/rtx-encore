@@ -2,6 +2,25 @@
 
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.1.2-beta.2 — pré-version
+
+### Nouveautés
+
+- **Le contournement du flip metering fonctionne aussi dans les jeux Vulkan** ([#56](https://github.com/SilyNoMeta/rtx-encore/issues/56)). Dans certains jeux Vulkan, X3 et X4 affichaient les images générées par rafales, si bien que le mouvement paraissait plus saccadé qu'en X2 : Baldur's Gate 3 avec bg3fgvk, par exemple. Avec le réglage activé, Streamline espace lui-même les images générées au lieu de laisser faire le pilote NVIDIA. Il reste désactivé par défaut : activez-le dans le menu (**Compatibility** > **Flip metering bypass**) ou avec `flipMeteringBypass`, puis relancez le jeu. Voir [Génération d'images](docs/FRAME-GENERATION.fr.md#options-de-compatibilité).
+
+  Vérifié en jeu sur le PC du mainteneur (RTX 3070 Ti Laptop, X4) : dans No Man's Sky, les rafales disparaissent avec le réglage ; dans DOOM: The Dark Ages, le pilote espaçait déjà bien les images et le réglage ne change rien de visible. Baldur's Gate 3 n'est pas encore confirmé.
+
+### Changements
+
+- Le réglage s'appelle maintenant **Flip metering bypass**, et sa description dit quand l'essayer.
+- **Ligne des versions de l'overlay** : elle liste maintenant toutes les DLL NVIDIA chargées par le jeu, Ray Reconstruction et Neural Rendering compris. Les DLL de même version partagent une ligne (`SR-RR-FG-NR 310.9.16`), et une DLL non chargée n'apparaît pas.
+
+Build Windows Release, les six variantes distribuées ; les tests de régression automatiques passent hors du jeu.
+
+### Merci
+
+- [@deusimperatork](https://github.com/deusimperatork) — le signalement Baldur's Gate 3, avec des logs et des captures PresentMon qui ont montré les images générées arrivant par rafales en X4 ([#56](https://github.com/SilyNoMeta/rtx-encore/issues/56)).
+
 ## 1.1.2-beta.1 — pré-version
 
 ### Corrections

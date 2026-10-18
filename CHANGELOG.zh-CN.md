@@ -2,6 +2,25 @@
 
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
+## 1.1.2-beta.2 — 预发布版
+
+### 新增
+
+- **Flip metering 绕过现在也适用于 Vulkan 游戏**（[#56](https://github.com/SilyNoMeta/rtx-encore/issues/56)）。在部分 Vulkan 游戏中，X3 和 X4 会成批显示生成帧，画面运动看起来比 X2 更卡顿，例如搭配 bg3fgvk 的 Baldur's Gate 3。开启该设置后，由 Streamline 自行安排生成帧的间隔，而不是交给 NVIDIA 驱动。默认关闭：可在菜单中开启（**Compatibility** > **Flip metering bypass**），或使用 `flipMeteringBypass`，然后重启游戏。参见[帧生成](docs/FRAME-GENERATION.zh-CN.md#兼容性选项)。
+
+  已在维护者的电脑（RTX 3070 Ti Laptop，X4）上进行游戏内验证：在 No Man's Sky 中，开启该设置后成批显示的问题消失；在 DOOM: The Dark Ages 中，驱动原本就能正确安排帧间隔，该设置没有可见差异。Baldur's Gate 3 尚未确认。
+
+### 变更
+
+- 该设置现在名为 **Flip metering bypass**，其说明会告诉你何时值得尝试。
+- **覆盖层的版本行**：现在列出游戏加载的所有 NVIDIA DLL，包括 Ray Reconstruction 和 Neural Rendering。版本相同的 DLL 共用一行（`SR-RR-FG-NR 310.9.16`），未加载的 DLL 不显示。
+
+Windows Release 构建，全部六个发行变体；自动回归测试在游戏外通过。
+
+### 致谢
+
+- [@deusimperatork](https://github.com/deusimperatork) — 提供 Baldur's Gate 3 报告，附带日志和 PresentMon 捕获，显示 X4 下生成帧成批到达（[#56](https://github.com/SilyNoMeta/rtx-encore/issues/56)）。
+
 ## 1.1.2-beta.1 — 预发布版
 
 ### 修复

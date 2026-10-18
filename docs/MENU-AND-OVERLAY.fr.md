@@ -64,7 +64,7 @@ Lignes optionnelles, toutes désactivées par défaut :
 | Régularité des images | Temps d'image : moyenne, 99e centile et gigue |
 | GPU | Charge, température, puissance et fréquences |
 | VRAM | Utilisée / totale sur la carte, tous programmes confondus |
-| Versions | Versions de DLSS, DLSS Frame Generation et Streamline chargées par le jeu. `SL` est le cœur Streamline du jeu, que les mises à jour des plugins laissent en place ; quand les plugins sont d'une autre version, une seconde ligne donne les deux (`SL 2.7.11.0 PLUGINS 2.14.16.0`) |
+| Versions | Versions des DLL NVIDIA chargées par le jeu : Super Resolution (`SR`), Ray Reconstruction (`RR`), Frame Generation (`FG`), Neural Rendering (`NR`) et Streamline (`SL`). Les DLL de même version partagent une ligne (`SR-RR-FG-NR 310.9.16`) ; une DLL non chargée n'apparaît pas. `SL` est le cœur Streamline du jeu, que les mises à jour des plugins laissent en place ; quand les plugins sont d'une autre version, sa ligne donne les deux (`SL 2.7.11 PLUGINS 2.14.16`) |
 | Interface | Si le traitement séparé de l'interface est actif, et d'où viennent la scène sans interface et la couche d'interface |
 
 La position (quatre coins) et la taille du texte (10 à 32 px) sont dans le même onglet.

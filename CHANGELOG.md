@@ -2,6 +2,25 @@
 
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.1.2-beta.2 — pre-release
+
+### New
+
+- **Flip metering bypass now works in Vulkan games too** ([#56](https://github.com/SilyNoMeta/rtx-encore/issues/56)). In some Vulkan games, X3 and X4 showed the generated frames in bursts, so motion looked choppier than at X2: Baldur's Gate 3 with bg3fgvk, for example. With the setting on, Streamline spaces the generated frames itself instead of leaving it to the NVIDIA driver. It stays off by default: turn it on in the menu (**Compatibility** > **Flip metering bypass**) or with `flipMeteringBypass`, then restart the game. See [Frame generation](docs/FRAME-GENERATION.md#compatibility-options).
+
+  Checked in game on the maintainer's PC (RTX 3070 Ti Laptop, X4): in No Man's Sky the bursts are gone with the setting on; in DOOM: The Dark Ages the driver already spaced the frames well and the setting makes no visible difference. Baldur's Gate 3 is not yet confirmed.
+
+### Changed
+
+- The setting is now called **Flip metering bypass**, and its description says when to try it.
+- **Versions line of the overlay**: it now lists every NVIDIA DLL the game loaded, Ray Reconstruction and Neural Rendering included. DLLs of the same version share a line (`SR-RR-FG-NR 310.9.16`), and a DLL that is not loaded is not shown.
+
+Windows Release build, all six distribution variants; the automated regression tests pass outside the game.
+
+### Thanks
+
+- [@deusimperatork](https://github.com/deusimperatork) — the Baldur's Gate 3 report, with logs and PresentMon captures that showed the generated frames arriving in bursts at X4 ([#56](https://github.com/SilyNoMeta/rtx-encore/issues/56)).
+
 ## 1.1.2-beta.1 — pre-release
 
 ### Fixed

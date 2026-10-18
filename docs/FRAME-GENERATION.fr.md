@@ -104,7 +104,7 @@ Dans l'onglet **System** :
 | :--- | :---: | :--- |
 | **Disable menu detection** | désactivé | Désactivé : la génération d'images se met en veille dans les menus et les écrans de chargement, ce qui y évite des plantages. Laissez-le désactivé. |
 | **Force NVIDIA OTA models** | désactivé | Utilise les modèles de génération d'images téléchargés par l'application NVIDIA. Relancez le jeu pour appliquer. |
-| **OptiScaler flip metering bypass** | désactivé | Seulement pour les installations avec OptiScaler qui en ont besoin. Relancez le jeu pour appliquer. |
+| **Flip metering bypass** | désactivé | Streamline espace lui-même les images générées au lieu du flip metering de NVIDIA (DirectX 12 et Vulkan). À essayer quand X3 ou X4 saccade alors que X2 est fluide. Relancez le jeu pour appliquer. |
 | **Graphics card series** | auto | Laissez sur auto, sauf si la carte n'est pas reconnue. |
 
 ## Lire l'overlay

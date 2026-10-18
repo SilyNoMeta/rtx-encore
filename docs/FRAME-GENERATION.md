@@ -102,7 +102,7 @@ In the **System** tab:
 | :--- | :---: | :--- |
 | **Disable menu detection** | off | Off: frame generation idles in menus and loading screens, which avoids crashes there. Leave it off. |
 | **Force NVIDIA OTA models** | off | Uses the frame generation models downloaded by the NVIDIA app. Restart the game to apply. |
-| **OptiScaler flip metering bypass** | off | Only for setups with OptiScaler that need it. Restart the game to apply. |
+| **Flip metering bypass** | off | Streamline paces the generated frames itself instead of NVIDIA's flip metering (DirectX 12 and Vulkan). Try it when X3 or X4 looks choppy while X2 is smooth. Restart the game to apply. |
 | **Graphics card series** | auto | Leave on auto unless the card is not recognized. |
 
 ## Reading the overlay

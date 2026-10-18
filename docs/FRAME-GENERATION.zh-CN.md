@@ -93,7 +93,7 @@ Lite 保留 NVIDIA 的原生图像策略，因此 Anti-tearing 和 Protection tu
 | :--- | :---: | :--- |
 | **Disable menu detection** | 关闭 | 关闭时：帧生成会在菜单和加载画面中暂停，可避免在这些地方崩溃。请保持关闭。 |
 | **Force NVIDIA OTA models** | 关闭 | 使用 NVIDIA 应用下载的帧生成模型。需重启游戏生效。 |
-| **OptiScaler flip metering bypass** | 关闭 | 仅用于需要它的 OptiScaler 配置。需重启游戏生效。 |
+| **Flip metering bypass** | 关闭 | 由 Streamline 自行安排生成帧的节奏，而不使用 NVIDIA 的 flip metering（DirectX 12 和 Vulkan）。当 X3 或 X4 卡顿而 X2 流畅时可尝试。需重启游戏生效。 |
 | **Graphics card series** | auto | 除非显卡未被识别，否则保持 auto。 |
 
 ## 读懂叠加层
