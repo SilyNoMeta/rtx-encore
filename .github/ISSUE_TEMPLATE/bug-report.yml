@@ -1,0 +1,88 @@
+name: Bug report
+description: Report a crash, a launch failure, a visual artifact or a feature that does not work in a game.
+title: "[Bug] <game>: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **You can write in any language.** The form is in English, but reports in French, Chinese or any other language are welcome: write in the one you are most comfortable with.
+
+        Read [Troubleshooting](https://github.com/SilyNoMeta/rtx-encore/blob/main/docs/TROUBLESHOOTING.md) first. One problem per issue. For a problem with the RTX Encore Hub program itself, use the [Hub issue tracker](https://github.com/SilyNoMeta/rtx-encore-hub/issues). Logs can contain folder names from your PC: read them before posting.
+  - type: input
+    id: version
+    attributes:
+      label: RTX Encore version
+      description: The version shown in the menu, and where you downloaded it (GitHub release, Hub, other).
+      placeholder: "1.1.0, GitHub release"
+    validations:
+      required: true
+  - type: input
+    id: game
+    attributes:
+      label: Game
+      description: Name, version, store (Steam, Epic, GOG, Xbox, Ubisoft...) and graphics API (DirectX 11, DirectX 12, Vulkan).
+      placeholder: "Cyberpunk 2077 2.3, Steam, DirectX 12"
+    validations:
+      required: true
+  - type: input
+    id: hardware
+    attributes:
+      label: GPU, driver and Windows
+      description: Graphics card, NVIDIA driver version and Windows version. Laptop or desktop.
+      placeholder: "RTX 3080 laptop, 620.12, Windows 11 24H2"
+    validations:
+      required: true
+  - type: input
+    id: install
+    attributes:
+      label: How the mod is installed
+      description: The name you gave the file (version.dll, dinput8.dll, winmm.dll, dxgi.dll, ASI...), its folder, and whether the Hub installed it.
+      placeholder: "version.dll beside the game's .exe, installed by hand"
+    validations:
+      required: true
+  - type: checkboxes
+    id: features
+    attributes:
+      label: Features in use when it happens
+      description: Tick everything that was on.
+      options:
+        - label: Super Resolution
+        - label: Ray Reconstruction
+        - label: Frame Generation (write the multiplier below)
+        - label: Smooth Motion
+        - label: Neural Rendering
+        - label: The problem also happens with the mod removed
+  - type: textarea
+    id: other-mods
+    attributes:
+      label: Other mods and overlays
+      description: OptiScaler, Special K, ReShade, RivaTuner, Cyber Engine Tweaks, other frame generators, DLL replacements... Write "none" if there are none.
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happens
+      description: Steps to reproduce, what you expected, what you saw instead, and any exact error message. Say whether it happens every time.
+      placeholder: |
+        1. Start the game, load a save
+        2. Turn on Frame Generation X4 in the menu
+        3. ...
+        Expected: ...
+        Actual: ...
+    validations:
+      required: true
+  - type: textarea
+    id: report
+    attributes:
+      label: Report copied from the menu
+      description: In the menu, open the **System** tab and click **Copy**, then paste it here. Leave empty if the menu does not open.
+      render: text
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs, screenshots and videos
+      description: Zip the whole `rtx-encore-logs` folder from the launch where the problem happened and drop the zip here. Screenshots or a short video help for visual problems; with Frame Generation, compare the same scene with it off and on.
+    validations:
+      required: true

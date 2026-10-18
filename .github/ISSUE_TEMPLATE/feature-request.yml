@@ -1,0 +1,31 @@
+name: Feature request
+description: Suggest a new feature, a game to support or an improvement.
+title: "[Request] "
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **You can write in any language.** The form is in English, but requests in French, Chinese or any other language are welcome: write in the one you are most comfortable with.
+
+        Check [Compatibility](https://github.com/SilyNoMeta/rtx-encore/blob/main/docs/COMPATIBILITY.md) and the existing issues first: your request may already be there.
+  - type: textarea
+    id: need
+    attributes:
+      label: What would this help you do?
+      description: The game or situation, and what gets in the way today.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Suggested behavior
+      description: What the mod should do, and any example that helps.
+    validations:
+      required: true
+  - type: input
+    id: hardware
+    attributes:
+      label: GPU and driver
+      description: Useful when the request depends on your card or driver.
+      placeholder: "RTX 2070, 620.12"
