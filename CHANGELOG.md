@@ -2,6 +2,21 @@
 
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.1.2-beta.1 — pre-release
+
+### Fixed
+
+- **The RTX Encore menu did not appear** (Insert did nothing) in more games:
+  - **Games with an older version of NVIDIA Streamline**, such as The Last of Us Part I ([#52](https://github.com/SilyNoMeta/rtx-encore/issues/52)) and Dying Light 2. Smooth Motion and DLSS already worked there; only the menu was missing. In Dying Light 2, install RTX Encore as `winmm.dll`.
+  - **DirectX 11 games** that create their display in ways the menu did not follow before, including games whose graphics are handled by a separate part of the game loaded after startup.
+- **Overlays** (RivaTuner Statistics Server, Steam, Epic, Rockstar Social Club, Overwolf, GOG Galaxy, Discord, Ubisoft Connect): the RTX Encore menu no longer attaches to their own windows or tiny helper surfaces, only to the game's.
+
+Checked in game on the maintainer's PC (RTX 30): the menu now opens in Dying Light 2 (DirectX 11); it still opens in Rise of the Tomb Raider (Epic Games Store) and The Blood of Dawnwalker. The Last of Us Part I could not be tested here and is not yet confirmed. Windows Release build, all six distribution variants; the automated regression tests pass outside the game.
+
+### Thanks
+
+- [@SanyaGames227](https://github.com/SanyaGames227) — The Last of Us Part I logs on driver 591.86 that showed the menu never attaching ([#52](https://github.com/SilyNoMeta/rtx-encore/issues/52)).
+
 ## 1.1.1
 
 ### Fixed

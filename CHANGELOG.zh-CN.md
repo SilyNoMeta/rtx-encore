@@ -2,6 +2,21 @@
 
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
+## 1.1.2-beta.1 — 预发布版
+
+### 修复
+
+- **RTX Encore 菜单不显示**（按 Insert 没有反应）的问题在更多游戏中得到修复：
+  - **使用旧版 NVIDIA Streamline 的游戏**，例如 The Last of Us Part I（[#52](https://github.com/SilyNoMeta/rtx-encore/issues/52)）和 Dying Light 2。这些游戏中 Smooth Motion 和 DLSS 原本就能工作，只是缺少菜单。在 Dying Light 2 中，请将 RTX Encore 安装为 `winmm.dll`。
+  - **DirectX 11 游戏**：以菜单此前无法跟踪的方式创建画面的游戏，包括在启动后才加载其图形部分的游戏。
+- **覆盖层**（RivaTuner Statistics Server、Steam、Epic、Rockstar Social Club、Overwolf、GOG Galaxy、Discord、Ubisoft Connect）：RTX Encore 菜单不再附着到它们自己的窗口或微小的辅助画面上，只附着到游戏画面。
+
+已在维护者的电脑（RTX 30）上进行游戏内验证：Dying Light 2（DirectX 11）现在可以打开菜单；Rise of the Tomb Raider（Epic Games Store）和 The Blood of Dawnwalker 仍可正常打开菜单。The Last of Us Part I 无法在此测试，尚未确认。Windows Release 构建，全部六个发行变体；自动回归测试在游戏外通过。
+
+### 致谢
+
+- [@SanyaGames227](https://github.com/SanyaGames227) — 提供 The Last of Us Part I 在 591.86 驱动下的日志，显示菜单从未附着（[#52](https://github.com/SilyNoMeta/rtx-encore/issues/52)）。
+
 ## 1.1.1
 
 ### 修复
