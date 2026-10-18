@@ -2,6 +2,23 @@
 
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.1.2-beta.3 — pré-version
+
+### Corrections
+
+- **Neural Rendering avec l'indicateur DLSS de NVIDIA activé** ([#58](https://github.com/SilyNoMeta/rtx-encore/issues/58)). Avec l'indicateur DLSS de NVIDIA affiché à l'écran, activer Neural Rendering pouvait faire planter le jeu environ deux secondes plus tard sur les cartes RTX 20, 30 et 40 (signalé dans Resident Evil Requiem sur une RTX 3090 Ti). Neural Rendering dispose maintenant de tout ce dont l'indicateur a besoin. Si une étape échoue encore au démarrage de Neural Rendering, le journal indique laquelle et comment désactiver l'indicateur.
+
+  Vérifié en jeu sur le PC du mainteneur (RTX 3070 Ti Laptop, Black Myth: Wukong, DirectX 12) avec l'indicateur activé : Neural Rendering démarre et fonctionne. La version 1.1.1 ne plantait pas non plus sur ce PC, la correction n'est donc pas encore confirmée dans Resident Evil Requiem.
+
+- **Le menu de RTX Encore ne s'affichait pas avec RTX Encore installé sous le nom `dxgi.dll`** dans les jeux qui y prennent leur affichage, comme Pillars of Eternity II: Deadfire (DirectX 11, [#57](https://github.com/SilyNoMeta/rtx-encore/issues/57)). Pas encore confirmé en jeu : Pillars of Eternity II n'a pas pu être testé sur le PC du mainteneur.
+
+Build Windows Release, les six variantes distribuées ; les tests de régression automatiques passent hors du jeu.
+
+### Merci
+
+- [@Theoryedz](https://github.com/Theoryedz) — le signalement dans Resident Evil Requiem, avec les journaux et les relevés de crash qui ont montré où le jeu s'arrêtait au démarrage de Neural Rendering ([#58](https://github.com/SilyNoMeta/rtx-encore/issues/58)).
+- [@sewer86](https://github.com/sewer86) — le signalement de Pillars of Eternity II, avec des logs de 1.1.2-beta.1 qui ont montré où le menu se perdait ([#57](https://github.com/SilyNoMeta/rtx-encore/issues/57)).
+
 ## 1.1.2-beta.2 — pré-version
 
 ### Nouveautés

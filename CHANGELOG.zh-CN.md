@@ -2,6 +2,23 @@
 
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
+## 1.1.2-beta.3 — 预发布版
+
+### 修复
+
+- **开启 NVIDIA DLSS 指示器时的 Neural Rendering**（[#58](https://github.com/SilyNoMeta/rtx-encore/issues/58)）。在开启 NVIDIA 屏幕 DLSS 指示器的情况下，于 RTX 20、30 和 40 显卡上启用 Neural Rendering 后，游戏可能在约两秒后崩溃（在 Resident Evil Requiem、RTX 3090 Ti 上报告）。现在 Neural Rendering 已具备指示器所需的全部内容。如果 Neural Rendering 启动时仍有步骤失败，日志会指出是哪一步，以及如何关闭指示器。
+
+  已在维护者的电脑（RTX 3070 Ti Laptop，Black Myth: Wukong，DirectX 12）上开启指示器进行游戏内验证：Neural Rendering 可以启动并运行。1.1.1 版本在该电脑上同样没有崩溃，因此该修复尚未在 Resident Evil Requiem 中得到确认。
+
+- **以 `dxgi.dll` 安装 RTX Encore 时菜单不显示**：在从它获取画面的游戏中，例如 Pillars of Eternity II: Deadfire（DirectX 11，[#57](https://github.com/SilyNoMeta/rtx-encore/issues/57)）。尚未在游戏中确认：维护者的电脑上无法测试 Pillars of Eternity II。
+
+Windows Release 构建，全部六个发行变体；自动回归测试在游戏外通过。
+
+### 致谢
+
+- [@Theoryedz](https://github.com/Theoryedz) — Resident Evil Requiem 的报告，附带的日志和崩溃记录显示了启动 Neural Rendering 时游戏停在何处（[#58](https://github.com/SilyNoMeta/rtx-encore/issues/58)）。
+- [@sewer86](https://github.com/sewer86) — 提供 Pillars of Eternity II 的报告，以及 1.1.2-beta.1 的日志，显示菜单在何处丢失（[#57](https://github.com/SilyNoMeta/rtx-encore/issues/57)）。
+
 ## 1.1.2-beta.2 — 预发布版
 
 ### 新增
