@@ -2,6 +2,16 @@
 
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
+## 1.1.1
+
+### 修复
+
+- **带有 Epic Online Services 覆盖层的游戏**：使用 Epic 在线服务的游戏都会附带这个覆盖层，无论你在哪个商店购买。与它相关的两个问题已修复：
+  - **RTX 30 在 DirectX 12 下的 Smooth Motion**：游戏启动后不久、覆盖层一出现，就可能以“Device removed”（`0x887A002B`）退出。Rise of the Tomb Raider（Epic Games Store）在使用条款之后退出；现在开启 Smooth Motion 也能进入主菜单。
+  - **RTX Encore 菜单不显示**（按 Insert 没有反应，首次启动提示也从不出现）：出现在以某种方式初始化图形的游戏中，例如 Rise of the Tomb Raider，无论是否开启 Smooth Motion（[#50](https://github.com/SilyNoMeta/rtx-encore/issues/50)，感谢 @kakaroto-cmd 指出问题并提供日志）。
+
+  两项修复都已在 Rise of the Tomb Raider（Epic Games Store、DirectX 12、RTX 3070 Ti Laptop）中验证。菜单是在关闭 Smooth Motion 的情况下验证的；其他带有该覆盖层的游戏尚未确认。
+
 ## 1.1.0
 
 这个版本迎来了 RTX Encore 的**第一份赞助**。衷心感谢：对一个利用业余时间制作的项目来说，这意义重大。

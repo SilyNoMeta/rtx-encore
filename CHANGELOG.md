@@ -2,6 +2,16 @@
 
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.1.1
+
+### Fixed
+
+- **Games with the Epic Online Services overlay**: this overlay comes with games built on Epic's online services, whatever the store you bought them from. Two problems with it are fixed:
+  - **Smooth Motion on RTX 30 in DirectX 12**: the game could stop with "Device removed" (`0x887A002B`) shortly after starting, as soon as the overlay appeared. Rise of the Tomb Raider (Epic Games Store) quit after the terms of use; it now reaches the menu with Smooth Motion on.
+  - **The RTX Encore menu did not appear** (Insert did nothing and the first-launch message never showed) in games that set up their graphics in a certain way, such as Rise of the Tomb Raider, with or without Smooth Motion ([#50](https://github.com/SilyNoMeta/rtx-encore/issues/50), thanks to @kakaroto-cmd for pointing out the problem and for the logs).
+
+  Both fixes were checked in Rise of the Tomb Raider (Epic Games Store, DirectX 12, RTX 3070 Ti Laptop). The menu was checked with Smooth Motion off; other games with this overlay are not yet confirmed.
+
 ## 1.1.0
 
 This release arrives with RTX Encore's **first sponsorship**. Thank you, sincerely: it means a lot for a project made on free evenings.
