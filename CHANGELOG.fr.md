@@ -2,6 +2,22 @@
 
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.1.3
+
+### Corrections
+
+- **The Witcher 3: Wild Hunt (DirectX 12) plantait au démarrage avec la 1.1.2** ([#60](https://github.com/SilyNoMeta/rtx-encore/issues/60)). Cette version corrige cette régression tout en conservant les améliorations du menu de la 1.1.2.
+
+Vérifié localement sur la copie GOG du mainteneur : le démarrage réussit avec le menu actif, sous `version.dll` comme sous `dxgi.dll`. Il s'agit de vérifications automatisées du démarrage, sans test de jeu prolongé. L'auteur du signalement Steam n'a pas encore testé la correction.
+
+### Problème connu
+
+- **007 First Light** peut encore planter au démarrage de façon intermittente. Cette version ne corrige pas ce problème ; une nouvelle tentative peut réussir.
+
+### Remerciements
+
+- [@Herror7](https://github.com/Herror7) — a signalé la régression au démarrage de The Witcher 3 et fourni les logs qui ont aidé à en identifier la cause ([#60](https://github.com/SilyNoMeta/rtx-encore/issues/60)).
+
 ## 1.1.2
 
 Tout ce qu'ont apporté les pré-versions 1.1.2, et les corrections venues après 1.1.2-beta.3.

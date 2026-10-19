@@ -2,6 +2,22 @@
 
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
+## 1.1.3
+
+### 修复
+
+- **The Witcher 3: Wild Hunt（DirectX 12）在使用 1.1.2 时启动崩溃**（[#60](https://github.com/SilyNoMeta/rtx-encore/issues/60)）。本版修复了这一回归问题，并保留 1.1.2 的菜单改进。
+
+已在维护者的 GOG 版本上进行本地检查：以 `version.dll` 或 `dxgi.dll` 安装时，均能成功启动并启用菜单。这些是自动化启动检查，并非长时间游戏测试。Steam 报告者尚未测试此修复。
+
+### 已知问题
+
+- **007 First Light** 仍可能在启动时偶发崩溃。本版未修复此问题；再次启动可能成功。
+
+### 致谢
+
+- [@Herror7](https://github.com/Herror7) — 报告了 The Witcher 3 的启动回归问题，并提供了帮助定位原因的日志（[#60](https://github.com/SilyNoMeta/rtx-encore/issues/60)）。
+
 ## 1.1.2
 
 包含 1.1.2 各预发布版的全部内容，以及 1.1.2-beta.3 之后的修复。

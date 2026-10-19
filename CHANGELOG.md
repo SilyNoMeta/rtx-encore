@@ -2,6 +2,22 @@
 
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.1.3
+
+### Fixed
+
+- **The Witcher 3: Wild Hunt (DirectX 12) crashed at startup with 1.1.2** ([#60](https://github.com/SilyNoMeta/rtx-encore/issues/60)). This release fixes that regression while keeping the menu improvements from 1.1.2.
+
+Checked locally on the maintainer's GOG copy: startup succeeds with the menu active, installed as either `version.dll` or `dxgi.dll`. These are automated startup checks, not extended gameplay tests. The Steam reporter has not yet tested the fix.
+
+### Known issue
+
+- **007 First Light** can still crash intermittently at startup. This release does not fix that issue; another launch may succeed.
+
+### Thanks
+
+- [@Herror7](https://github.com/Herror7) — reported the Witcher 3 startup regression and supplied the logs that helped identify it ([#60](https://github.com/SilyNoMeta/rtx-encore/issues/60)).
+
 ## 1.1.2
 
 Everything from the 1.1.2 pre-releases, and the fixes that came after 1.1.2-beta.3.
