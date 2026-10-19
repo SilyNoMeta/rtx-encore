@@ -132,4 +132,4 @@ bEnableDLSSD3D12=True
 
 - 把 `dxgi.dll` 留给提供它的工具，为 RTX Encore 另选一个文件名。
 - 使用 DXVK 时，菜单会附着在 Vulkan 的画面输出上。
-- 使用 OptiScaler 时，请参阅[帧生成](FRAME-GENERATION.zh-CN.md#兼容性选项)中的 flip metering 选项。
+- 使用 OptiScaler 时，请参阅[帧生成](FRAME-GENERATION.zh-CN.md#平滑-x3--x4)中的 flip metering 选项。

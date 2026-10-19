@@ -29,6 +29,10 @@ RTX Encore 为 RTX 20、RTX 30 和 RTX 40 显卡带来 X2 至 X6 的 DLSS 多帧
 - 在 Vulkan 游戏中，动态模式根据实测帧率和目标在 X2 到 X6 之间选择。
 - 8 GB 显存的显卡请从 X2 或 X3 开始，或在高/中纹理质量下使用 X4。
 
+### 平滑 X3 / X4
+
+在部分游戏中，X3 和 X4 看起来比 X2 更卡顿：生成帧成批到达屏幕，而不是依次显示。**Smooth out X3 / X4**（`flipMeteringBypass`，默认关闭）让 Streamline 自行安排生成帧的间隔，而不是交给 NVIDIA 驱动，适用于 DirectX 12 和 Vulkan。可在菜单中倍率下方或在 RTX Encore Hub 中开启，然后重启游戏。在驱动已能正确安排帧间隔的游戏中，它没有可见效果。
+
 在符合条件的旧 Streamline 中，DX12 动态模式使用 Encore 自适应 X2–X4。从 X2 开始，依据游戏源帧率调整，在切换之间等待，并在游戏拒绝请求时暂停。符合条件的新版保留原生动态 MFG。见[版本矩阵](COMPATIBILITY.zh-CN.md#streamline-版本)。D3D11 仅提供独立的 Smooth Motion X2。
 
 ## 快捷键
@@ -93,7 +97,6 @@ Lite 保留 NVIDIA 的原生图像策略，因此 Anti-tearing 和 Protection tu
 | :--- | :---: | :--- |
 | **Disable menu detection** | 关闭 | 关闭时：帧生成会在菜单和加载画面中暂停，可避免在这些地方崩溃。请保持关闭。 |
 | **Force NVIDIA OTA models** | 关闭 | 使用 NVIDIA 应用下载的帧生成模型。需重启游戏生效。 |
-| **Flip metering bypass** | 关闭 | 由 Streamline 自行安排生成帧的节奏，而不使用 NVIDIA 的 flip metering（DirectX 12 和 Vulkan）。当 X3 或 X4 卡顿而 X2 流畅时可尝试。需重启游戏生效。 |
 | **Graphics card series** | auto | 除非显卡未被识别，否则保持 auto。 |
 
 ## 读懂叠加层

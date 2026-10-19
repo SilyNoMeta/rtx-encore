@@ -2,6 +2,36 @@
 
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.1.2
+
+Everything from the 1.1.2 pre-releases, and the fixes that came after 1.1.2-beta.3.
+
+### New
+
+- **Smooth out X3 / X4** ([#56](https://github.com/SilyNoMeta/rtx-encore/issues/56)). In some games, X3 and X4 showed the generated frames in bursts, so motion looked choppier than at X2: Baldur's Gate 3 with bg3fgvk, for example. With this setting on, Streamline spaces the generated frames itself instead of leaving it to the NVIDIA driver, now in Vulkan games as well as DirectX 12. It stays off by default: turn it on in the menu, in the Frame generation section under the multiplier, in RTX Encore Hub, or with `flipMeteringBypass` in the `frameGeneration` section, then restart the game. An existing setting is kept. See [Frame generation](docs/FRAME-GENERATION.md#smooth-out-x3--x4).
+- **Versions line of the overlay**: it now lists every NVIDIA DLL the game loaded, Ray Reconstruction and Neural Rendering included. DLLs of the same version share a line (`SR-RR-FG-NR 310.9.16`), and a DLL that is not loaded is not shown.
+
+### Fixed
+
+- **Neural Rendering crashed some DirectX 12 games** ([#58](https://github.com/SilyNoMeta/rtx-encore/issues/58)). Turning Neural Rendering on could crash the game a moment later on RTX 20, 30 and 40 GPUs, whatever the driver: Resident Evil Requiem, Pragmata and 007 First Light, for example. Neural Rendering now leaves the game's rendering state as it found it. NVIDIA's on-screen DLSS indicator could also make it fail; Neural Rendering now has everything the indicator needs. If a step still fails when Neural Rendering starts, the log says which one.
+- **The RTX Encore menu did not appear** (Insert did nothing) in more games:
+  - **Pillars of Eternity II: Deadfire** and other DirectX 11 games that run their graphics on a single thread, whatever the name RTX Encore is installed under ([#57](https://github.com/SilyNoMeta/rtx-encore/issues/57)).
+  - **With RTX Encore installed as `dxgi.dll`**, in games that take their display from it ([#57](https://github.com/SilyNoMeta/rtx-encore/issues/57)).
+  - **Games with an older version of NVIDIA Streamline**, such as The Last of Us Part I ([#52](https://github.com/SilyNoMeta/rtx-encore/issues/52)) and Dying Light 2. In Dying Light 2, install RTX Encore as `winmm.dll`.
+  - **DirectX 11 games** that create their display in ways the menu did not follow before, including games whose graphics are handled by a separate part of the game loaded after startup.
+- **Overlays** (RivaTuner Statistics Server, Steam, Epic, Rockstar Social Club, Overwolf, GOG Galaxy, Discord, Ubisoft Connect): the RTX Encore menu no longer attaches to their own windows or tiny helper surfaces, only to the game's.
+
+Checked in game on the maintainer's PC (RTX 3070 Ti Laptop): Resident Evil Requiem crashed as soon as Neural Rendering started and now runs with it; Black Myth: Wukong still works, with and without the DLSS indicator; the menu opens in Dying Light 2, Rise of the Tomb Raider and The Blood of Dawnwalker; in No Man's Sky the bursts at X4 are gone with Smooth out X3 / X4 on. Not yet confirmed in game: Pragmata, 007 First Light, Pillars of Eternity II, The Last of Us Part I and Baldur's Gate 3.
+
+Windows Release build, all six distribution variants; the automated regression tests pass outside the game.
+
+### Thanks
+
+- [@Theoryedz](https://github.com/Theoryedz) — the Resident Evil Requiem report, then tests in Pragmata and 007 First Light with and without the DLSS indicator, with the logs and crash records that showed where the game stopped when Neural Rendering started ([#58](https://github.com/SilyNoMeta/rtx-encore/issues/58)).
+- [@sewer86](https://github.com/sewer86) — the Pillars of Eternity II report, with logs from 1.1.2-beta.1 and 1.1.2-beta.3 that showed where the menu was lost ([#57](https://github.com/SilyNoMeta/rtx-encore/issues/57)).
+- [@deusimperatork](https://github.com/deusimperatork) — the Baldur's Gate 3 report, with logs and PresentMon captures that showed the generated frames arriving in bursts at X4 ([#56](https://github.com/SilyNoMeta/rtx-encore/issues/56)).
+- [@SanyaGames227](https://github.com/SanyaGames227) — The Last of Us Part I logs on driver 591.86 that showed the menu never attaching ([#52](https://github.com/SilyNoMeta/rtx-encore/issues/52)).
+
 ## 1.1.2-beta.3 — pre-release
 
 ### Fixed

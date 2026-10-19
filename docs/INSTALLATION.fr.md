@@ -144,4 +144,4 @@ le dossier du jeu. Ce panneau est expérimental et demande que le plugin `.asi` 
 - Laissez `dxgi.dll` à l'outil qui le fournit et donnez un autre nom à RTX Encore.
 - Avec DXVK, le menu s'attache à la présentation Vulkan.
 - Avec OptiScaler, voir l'option de flip metering dans
-  [Génération d'images](FRAME-GENERATION.fr.md#options-de-compatibilité).
+  [Génération d'images](FRAME-GENERATION.fr.md#lisser-x3--x4).

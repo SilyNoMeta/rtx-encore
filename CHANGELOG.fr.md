@@ -2,6 +2,36 @@
 
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.1.2
+
+Tout ce qu'ont apporté les pré-versions 1.1.2, et les corrections venues après 1.1.2-beta.3.
+
+### Nouveautés
+
+- **Smooth out X3 / X4** ([#56](https://github.com/SilyNoMeta/rtx-encore/issues/56)). Dans certains jeux, X3 et X4 affichaient les images générées par rafales, si bien que le mouvement paraissait plus saccadé qu'en X2 : Baldur's Gate 3 avec bg3fgvk, par exemple. Avec ce réglage activé, Streamline espace lui-même les images générées au lieu de laisser faire le pilote NVIDIA, désormais dans les jeux Vulkan comme en DirectX 12. Il reste désactivé par défaut : activez-le dans le menu, section Frame generation sous le multiplicateur, dans RTX Encore Hub, ou avec `flipMeteringBypass` dans la section `frameGeneration`, puis relancez le jeu. Un réglage existant est conservé. Voir [Génération d'images](docs/FRAME-GENERATION.fr.md#lisser-x3--x4).
+- **Ligne des versions de l'overlay** : elle liste maintenant toutes les DLL NVIDIA chargées par le jeu, Ray Reconstruction et Neural Rendering compris. Les DLL de même version partagent une ligne (`SR-RR-FG-NR 310.9.16`), et une DLL non chargée n'apparaît pas.
+
+### Corrections
+
+- **Neural Rendering faisait planter certains jeux DirectX 12** ([#58](https://github.com/SilyNoMeta/rtx-encore/issues/58)). Activer Neural Rendering pouvait faire planter le jeu un instant plus tard sur les cartes RTX 20, 30 et 40, quel que soit le pilote : Resident Evil Requiem, Pragmata et 007 First Light, par exemple. Neural Rendering laisse désormais l'état de rendu du jeu tel qu'il l'a trouvé. L'indicateur DLSS de NVIDIA affiché à l'écran pouvait aussi le faire échouer ; Neural Rendering dispose maintenant de tout ce dont l'indicateur a besoin. Si une étape échoue encore au démarrage de Neural Rendering, le journal indique laquelle.
+- **Le menu de RTX Encore ne s'affichait pas** (Insert ne faisait rien) dans d'autres jeux :
+  - **Pillars of Eternity II: Deadfire** et les autres jeux DirectX 11 qui font leur rendu sur un seul thread, quel que soit le nom sous lequel RTX Encore est installé ([#57](https://github.com/SilyNoMeta/rtx-encore/issues/57)).
+  - **Avec RTX Encore installé sous le nom `dxgi.dll`**, dans les jeux qui y prennent leur affichage ([#57](https://github.com/SilyNoMeta/rtx-encore/issues/57)).
+  - **Les jeux avec une ancienne version de NVIDIA Streamline**, comme The Last of Us Part I ([#52](https://github.com/SilyNoMeta/rtx-encore/issues/52)) et Dying Light 2. Dans Dying Light 2, installez RTX Encore sous le nom `winmm.dll`.
+  - **Les jeux DirectX 11** qui créent leur affichage d'une manière que le menu ne suivait pas, y compris ceux dont le rendu est confié à une partie du jeu chargée après le démarrage.
+- **Overlays** (RivaTuner Statistics Server, Steam, Epic, Rockstar Social Club, Overwolf, GOG Galaxy, Discord, Ubisoft Connect) : le menu de RTX Encore ne s'attache plus à leurs propres fenêtres ni à leurs petites surfaces auxiliaires, seulement à celles du jeu.
+
+Vérifié en jeu sur le PC du mainteneur (RTX 3070 Ti Laptop) : Resident Evil Requiem plantait dès le démarrage de Neural Rendering et fonctionne maintenant avec ; Black Myth: Wukong fonctionne toujours, avec et sans l'indicateur DLSS ; le menu s'ouvre dans Dying Light 2, Rise of the Tomb Raider et The Blood of Dawnwalker ; dans No Man's Sky, les rafales en X4 disparaissent avec Smooth out X3 / X4. Pas encore confirmés en jeu : Pragmata, 007 First Light, Pillars of Eternity II, The Last of Us Part I et Baldur's Gate 3.
+
+Build Windows Release, les six variantes distribuées ; les tests de régression automatiques passent hors jeu.
+
+### Merci
+
+- [@Theoryedz](https://github.com/Theoryedz) — le signalement dans Resident Evil Requiem, puis des tests dans Pragmata et 007 First Light avec et sans l'indicateur DLSS, avec les journaux et les relevés de crash qui ont montré où le jeu s'arrêtait au démarrage de Neural Rendering ([#58](https://github.com/SilyNoMeta/rtx-encore/issues/58)).
+- [@sewer86](https://github.com/sewer86) — le signalement de Pillars of Eternity II, avec des logs de 1.1.2-beta.1 et 1.1.2-beta.3 qui ont montré où le menu se perdait ([#57](https://github.com/SilyNoMeta/rtx-encore/issues/57)).
+- [@deusimperatork](https://github.com/deusimperatork) — le signalement de Baldur's Gate 3, avec des logs et des captures PresentMon qui ont montré les images générées arrivant par rafales en X4 ([#56](https://github.com/SilyNoMeta/rtx-encore/issues/56)).
+- [@SanyaGames227](https://github.com/SanyaGames227) — des logs de The Last of Us Part I avec le pilote 591.86 qui ont montré que le menu ne s'attachait jamais ([#52](https://github.com/SilyNoMeta/rtx-encore/issues/52)).
+
 ## 1.1.2-beta.3 — pré-version
 
 ### Corrections

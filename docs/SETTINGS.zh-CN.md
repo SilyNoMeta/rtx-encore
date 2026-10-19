@@ -25,6 +25,7 @@
 | `multiplier` | `4` | `2` 至 `6`，用于固定模式。`5` 和 `6` 是实验性的。 |
 | `dynamicTargetFrameRate` | `0` | 动态模式的目标 FPS。`0` 跟随显示游戏的显示器的刷新率。 |
 | `dynamicExperimental56` | `false` | 允许动态模式达到 X5 和 X6。 |
+| `flipMeteringBypass` | `false` | 平滑 X3 / X4：由 Streamline 自行安排生成帧的间隔，而不是交给 NVIDIA 驱动。需重启游戏生效。 |
 
 ### `dlssSuperResolution`
 

@@ -28,6 +28,7 @@ Aucune clé ne contient de chemin ni de commande : un fichier de réglages peut 
 | `multiplier` | `4` | `2` à `6`, utilisé en mode fixe. `5` et `6` sont expérimentaux. |
 | `dynamicTargetFrameRate` | `0` | FPS visés en mode dynamique. `0` suit la fréquence de rafraîchissement de l'écran qui affiche le jeu. |
 | `dynamicExperimental56` | `false` | Laisse le mode dynamique monter à X5 et X6. |
+| `flipMeteringBypass` | `false` | Lisser X3 / X4 : Streamline espace lui-même les images générées au lieu du pilote NVIDIA. Relancez le jeu pour appliquer. |
 
 ### `dlssSuperResolution`
 

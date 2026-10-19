@@ -2,6 +2,36 @@
 
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
+## 1.1.2
+
+包含 1.1.2 各预发布版的全部内容，以及 1.1.2-beta.3 之后的修复。
+
+### 新功能
+
+- **Smooth out X3 / X4**（[#56](https://github.com/SilyNoMeta/rtx-encore/issues/56)）。在部分游戏中，X3 和 X4 会成批显示生成帧，画面看起来比 X2 更卡顿：例如使用 bg3fgvk 的 Baldur's Gate 3。开启此设置后，由 Streamline 自行安排生成帧的间隔，而不交给 NVIDIA 驱动，现在 Vulkan 游戏和 DirectX 12 游戏均适用。默认关闭：可在菜单的 Frame generation 部分（倍数设置下方）、RTX Encore Hub 中，或在 `frameGeneration` 部分设置 `flipMeteringBypass` 来开启，然后重启游戏。已有的设置会被保留。参见[帧生成](docs/FRAME-GENERATION.zh-CN.md#平滑-x3--x4)。
+- **覆盖层的版本行**：现在会列出游戏加载的所有 NVIDIA DLL，包括 Ray Reconstruction 和 Neural Rendering。相同版本的 DLL 共用一行（`SR-RR-FG-NR 310.9.16`），未加载的 DLL 不显示。
+
+### 修复
+
+- **Neural Rendering 导致部分 DirectX 12 游戏崩溃**（[#58](https://github.com/SilyNoMeta/rtx-encore/issues/58)）。在 RTX 20、30 和 40 显卡上启用 Neural Rendering 后，无论使用哪个驱动版本，游戏都可能随即崩溃：例如 Resident Evil Requiem、Pragmata 和 007 First Light。现在 Neural Rendering 会将游戏的渲染状态恢复原样。NVIDIA 屏幕 DLSS 指示器也可能导致其失败；现在 Neural Rendering 已具备指示器所需的全部内容。如果 Neural Rendering 启动时仍有步骤失败，日志会指出是哪一步。
+- **RTX Encore 菜单不显示**（按 Insert 没有反应）的问题在更多游戏中得到修复：
+  - **Pillars of Eternity II: Deadfire** 以及其他在单线程上进行渲染的 DirectX 11 游戏，无论 RTX Encore 以何种文件名安装（[#57](https://github.com/SilyNoMeta/rtx-encore/issues/57)）。
+  - **RTX Encore 安装为 `dxgi.dll` 时**，在从它获取画面的游戏中（[#57](https://github.com/SilyNoMeta/rtx-encore/issues/57)）。
+  - **使用旧版 NVIDIA Streamline 的游戏**，例如 The Last of Us Part I（[#52](https://github.com/SilyNoMeta/rtx-encore/issues/52)）和 Dying Light 2。在 Dying Light 2 中，请将 RTX Encore 安装为 `winmm.dll`。
+  - **DirectX 11 游戏**：以菜单此前无法跟踪的方式创建画面的游戏，包括在启动后才加载其图形部分的游戏。
+- **覆盖层**（RivaTuner Statistics Server、Steam、Epic、Rockstar Social Club、Overwolf、GOG Galaxy、Discord、Ubisoft Connect）：RTX Encore 菜单不再附着到它们自己的窗口或微小的辅助画面上，只附着到游戏画面。
+
+已在维护者的电脑（RTX 3070 Ti Laptop）上进行游戏内验证：Resident Evil Requiem 以前在 Neural Rendering 启动时立即崩溃，现在可以正常运行；Black Myth: Wukong 在开启和关闭 DLSS 指示器时仍然正常；Dying Light 2、Rise of the Tomb Raider 和 The Blood of Dawnwalker 中可以打开菜单；在 No Man's Sky 中开启 Smooth out X3 / X4 后，X4 的成批现象消失。尚未在游戏内确认：Pragmata、007 First Light、Pillars of Eternity II、The Last of Us Part I 和 Baldur's Gate 3。
+
+Windows Release 构建，全部六个发行变体；自动回归测试在游戏外通过。
+
+### 致谢
+
+- [@Theoryedz](https://github.com/Theoryedz) — 报告 Resident Evil Requiem 的问题，随后在 Pragmata 和 007 First Light 中开启和关闭 DLSS 指示器进行测试，提供的日志和崩溃记录显示了 Neural Rendering 启动时游戏停止的位置（[#58](https://github.com/SilyNoMeta/rtx-encore/issues/58)）。
+- [@sewer86](https://github.com/sewer86) — 报告 Pillars of Eternity II 的问题，提供 1.1.2-beta.1 和 1.1.2-beta.3 的日志，显示了菜单丢失的位置（[#57](https://github.com/SilyNoMeta/rtx-encore/issues/57)）。
+- [@deusimperatork](https://github.com/deusimperatork) — 报告 Baldur's Gate 3 的问题，提供的日志和 PresentMon 捕获显示 X4 时生成帧成批到达（[#56](https://github.com/SilyNoMeta/rtx-encore/issues/56)）。
+- [@SanyaGames227](https://github.com/SanyaGames227) — 提供 The Last of Us Part I 在 591.86 驱动下的日志，显示菜单从未附着（[#52](https://github.com/SilyNoMeta/rtx-encore/issues/52)）。
+
 ## 1.1.2-beta.3 — 预发布版
 
 ### 修复

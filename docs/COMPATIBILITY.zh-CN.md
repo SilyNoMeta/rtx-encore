@@ -103,7 +103,7 @@ Neural Rendering 需要 NVIDIA 的 `nvngx_dlssnr.dll` **310.8.0** 或 **310.9.16
 | :--- | :--- |
 | ReShade、Special K | 保留它们自己的 `dxgi.dll`，给 RTX Encore 选择其他名称。菜单不需要 ReShade。 |
 | DXVK | 不要把 RTX Encore 命名为 `dxgi.dll`：DXVK 提供该文件。菜单会绘制在它的 Vulkan 输出中。 |
-| OptiScaler | 有用于特定配置的专用选项：见[帧生成](FRAME-GENERATION.zh-CN.md#兼容性选项)。 |
+| OptiScaler | 有用于特定配置的专用选项：见[帧生成](FRAME-GENERATION.zh-CN.md#平滑-x3--x4)。 |
 | Cyber Engine Tweaks、RED4ext | 保留它们自己的文件名。Cyber Engine Tweaks 有可选的实验性面板。 |
 | NVIDIA Profile Inspector | 在 **Game decides** 模式中遵循它设置的倍率。 |
 

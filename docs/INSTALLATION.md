@@ -140,4 +140,4 @@ experimental and needs the `.asi` plugin to be installed.
 
 - Leave `dxgi.dll` to the tool that provides it and give RTX Encore another name.
 - With DXVK, the menu attaches to the Vulkan presentation.
-- With OptiScaler, see the flip metering option in [Frame generation](FRAME-GENERATION.md#compatibility-options).
+- With OptiScaler, see the flip metering option in [Frame generation](FRAME-GENERATION.md#smooth-out-x3--x4).

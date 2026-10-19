@@ -31,6 +31,10 @@ each rendered one.
 - In Vulkan games, Dynamic mode chooses between X2 and X6 from the measured frame rate and the target.
 - On an 8 GB card, start with X2 or X3, or X4 with High or Medium textures.
 
+### Smooth out X3 / X4
+
+In some games, X3 and X4 look choppier than X2: the generated frames reach the screen in bursts instead of one after the other. **Smooth out X3 / X4** (`flipMeteringBypass`, off by default) lets Streamline space the generated frames itself instead of leaving it to the NVIDIA driver, in DirectX 12 and Vulkan. Turn it on in the menu, under the multiplier, or in RTX Encore Hub, then restart the game. Where the driver already spaces the frames well, it brings nothing visible.
+
 On qualified older Streamline versions, DX12 Dynamic uses Encore’s adaptive X2–X4 mode. It starts at X2, reacts to the measured source-frame cadence, waits between changes and suspends adaptation if the game refuses a request. Modern qualified providers retain native Dynamic MFG. See [the version matrix](COMPATIBILITY.md#streamline-versions). D3D11 uses the separate Smooth Motion X2 path only.
 
 ## Shortcuts
@@ -102,7 +106,6 @@ In the **System** tab:
 | :--- | :---: | :--- |
 | **Disable menu detection** | off | Off: frame generation idles in menus and loading screens, which avoids crashes there. Leave it off. |
 | **Force NVIDIA OTA models** | off | Uses the frame generation models downloaded by the NVIDIA app. Restart the game to apply. |
-| **Flip metering bypass** | off | Streamline paces the generated frames itself instead of NVIDIA's flip metering (DirectX 12 and Vulkan). Try it when X3 or X4 looks choppy while X2 is smooth. Restart the game to apply. |
 | **Graphics card series** | auto | Leave on auto unless the card is not recognized. |
 
 ## Reading the overlay

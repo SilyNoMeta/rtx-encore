@@ -31,6 +31,10 @@ générées après chaque image calculée.
 - Dans les jeux Vulkan, le mode Dynamique choisit entre X2 et X6 d'après la fréquence mesurée et la cible.
 - Sur une carte de 8 Go, commencez par X2 ou X3, ou X4 avec des textures Élevées ou Moyennes.
 
+### Lisser X3 / X4
+
+Dans certains jeux, X3 et X4 paraissent plus saccadés que X2 : les images générées arrivent à l'écran par rafales au lieu de se suivre. **Smooth out X3 / X4** (`flipMeteringBypass`, désactivé par défaut) laisse Streamline espacer lui-même les images générées au lieu du pilote NVIDIA, en DirectX 12 et en Vulkan. Activez-le dans le menu, sous le multiplicateur, ou dans RTX Encore Hub, puis relancez le jeu. Là où le pilote espace déjà bien les images, il n'apporte rien de visible.
+
 Avec les anciennes versions Streamline qualifiées, le mode Dynamique DX12 utilise l’adaptation Encore X2–X4. Il démarre à X2, suit la cadence des images calculées par le jeu, attend entre les changements et se suspend si le jeu refuse une demande. Les fournisseurs récents qualifiés gardent le DMFG natif. Voir [la matrice des versions](COMPATIBILITY.fr.md#versions-de-streamline). En D3D11, seul le chemin distinct Smooth Motion X2 est proposé.
 
 ## Raccourcis
@@ -104,7 +108,6 @@ Dans l'onglet **System** :
 | :--- | :---: | :--- |
 | **Disable menu detection** | désactivé | Désactivé : la génération d'images se met en veille dans les menus et les écrans de chargement, ce qui y évite des plantages. Laissez-le désactivé. |
 | **Force NVIDIA OTA models** | désactivé | Utilise les modèles de génération d'images téléchargés par l'application NVIDIA. Relancez le jeu pour appliquer. |
-| **Flip metering bypass** | désactivé | Streamline espace lui-même les images générées au lieu du flip metering de NVIDIA (DirectX 12 et Vulkan). À essayer quand X3 ou X4 saccade alors que X2 est fluide. Relancez le jeu pour appliquer. |
 | **Graphics card series** | auto | Laissez sur auto, sauf si la carte n'est pas reconnue. |
 
 ## Lire l'overlay

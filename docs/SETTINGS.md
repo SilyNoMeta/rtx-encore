@@ -27,6 +27,7 @@ No key holds a path or a command: a settings file can be shared with someone els
 | `multiplier` | `4` | `2` to `6`, used in fixed mode. `5` and `6` are experimental. |
 | `dynamicTargetFrameRate` | `0` | Target FPS of dynamic mode. `0` follows the refresh rate of the monitor showing the game. |
 | `dynamicExperimental56` | `false` | Lets dynamic mode go up to X5 and X6. |
+| `flipMeteringBypass` | `false` | Smooth out X3 / X4: Streamline spaces the generated frames itself instead of the NVIDIA driver. Restart the game to apply. |
 
 ### `dlssSuperResolution`
 

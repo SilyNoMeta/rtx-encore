@@ -111,7 +111,7 @@ Tell us what you observe in other games by opening an
 | :--- | :--- |
 | ReShade, Special K | Leave them their `dxgi.dll` and give RTX Encore another name. ReShade is not needed for the menu. |
 | DXVK | Do not name RTX Encore `dxgi.dll`: DXVK provides that file. The menu is drawn in its Vulkan output. |
-| OptiScaler | A dedicated option exists for setups that need it: see [Frame generation](FRAME-GENERATION.md#compatibility-options). |
+| OptiScaler | A dedicated option exists for setups that need it: see [Frame generation](FRAME-GENERATION.md#smooth-out-x3--x4). |
 | Cyber Engine Tweaks, RED4ext | Keep their files under their own names. An optional, experimental panel exists for Cyber Engine Tweaks. |
 | NVIDIA Profile Inspector | In **Game decides** mode, the multiplier it sets is followed. |
 
