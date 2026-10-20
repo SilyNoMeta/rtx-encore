@@ -2,6 +2,25 @@
 
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
+## 1.1.4
+
+包含 1.1.3 的全部内容。
+
+### 修复
+
+- **Neural Rendering 在两遍或更多遍时闪烁**（[#62](https://github.com/SilyNoMeta/rtx-encore/issues/62)）。在 Aion 2 中，画面会闪烁，在角色创建等繁忙菜单中尤其明显，同时 Neural Rendering 指示灯先变黄再变绿。使用两遍或更多遍时，如果游戏恰好在同一时刻提交自己的工作，某一帧可能不会应用 Neural Rendering。现在已不会再发生。
+- **Aion 2：菜单光标卡在屏幕中央**，导致无法修改设置。菜单打开时，游戏不再把光标拉回中央。
+
+已在维护者的电脑上用 Aion 2 和两遍进行检查：角色创建界面不再闪烁。报告者尚未测试此版本，光标修复也尚未在游戏中得到确认。其他游戏、其他显卡以及三遍或四遍均未测试。
+
+### 已知问题
+
+- **007 First Light** 仍可能在启动时偶发崩溃。本版未修复此问题；再次启动可能成功。
+
+### 致谢
+
+- [@unsungloser](https://github.com/unsungloser) — 报告了 Aion 2 中多遍 Neural Rendering 的闪烁问题，并提供了日志和视频（[#62](https://github.com/SilyNoMeta/rtx-encore/issues/62)）。
+
 ## 1.1.3
 
 ### 修复

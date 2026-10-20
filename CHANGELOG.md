@@ -2,6 +2,25 @@
 
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.1.4
+
+Includes everything from 1.1.3.
+
+### Fixed
+
+- **Neural Rendering flickered with two or more passes** ([#62](https://github.com/SilyNoMeta/rtx-encore/issues/62)). In Aion 2, the picture flickered, mostly in busy menus such as character creation, while the Neural Rendering indicator turned yellow and then green. With two or more passes, a frame could be left without Neural Rendering when the game was submitting its own work at the same moment. That no longer happens.
+- **Aion 2: the menu cursor stayed stuck in the middle of the screen**, so the settings could not be changed. The game no longer pulls the cursor back while the menu is open.
+
+Checked on the maintainer's PC in Aion 2 with two passes: the flicker no longer appears on the character creation screen. The reporters have not tested this release, and the cursor fix has not been confirmed in the game yet. Other games, other GPUs and three or four passes were not tested.
+
+### Known issue
+
+- **007 First Light** can still crash intermittently at startup. This release does not fix that issue; another launch may succeed.
+
+### Thanks
+
+- [@unsungloser](https://github.com/unsungloser) — reported the flicker with several Neural Rendering passes in Aion 2 and supplied the logs and a video ([#62](https://github.com/SilyNoMeta/rtx-encore/issues/62)).
+
 ## 1.1.3
 
 ### Fixed

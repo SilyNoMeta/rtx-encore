@@ -2,6 +2,25 @@
 
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.1.4
+
+Reprend tout le contenu de la 1.1.3.
+
+### Corrections
+
+- **Neural Rendering scintillait avec deux passes ou plus** ([#62](https://github.com/SilyNoMeta/rtx-encore/issues/62)). Dans Aion 2, l'image scintillait, surtout dans les menus chargés comme la création de personnage, pendant que l'indicateur Neural Rendering passait au jaune puis au vert. Avec deux passes ou plus, une image pouvait rester sans Neural Rendering quand le jeu soumettait son propre travail au même moment. Ce n'est plus le cas.
+- **Aion 2 : le curseur du menu restait bloqué au milieu de l'écran**, ce qui empêchait de modifier les réglages. Le jeu ne ramène plus le curseur au centre tant que le menu est ouvert.
+
+Vérifié sur le PC du mainteneur dans Aion 2 avec deux passes : le scintillement n'apparaît plus sur l'écran de création de personnage. Les auteurs des signalements n'ont pas testé cette version, et la correction du curseur n'est pas encore confirmée en jeu. Les autres jeux, les autres cartes graphiques et trois ou quatre passes n'ont pas été testés.
+
+### Problème connu
+
+- **007 First Light** peut encore planter au démarrage de façon intermittente. Cette version ne corrige pas ce problème ; une nouvelle tentative peut réussir.
+
+### Remerciements
+
+- [@unsungloser](https://github.com/unsungloser) — a signalé le scintillement avec plusieurs passes Neural Rendering dans Aion 2 et fourni les logs et une vidéo ([#62](https://github.com/SilyNoMeta/rtx-encore/issues/62)).
+
 ## 1.1.3
 
 ### Corrections
