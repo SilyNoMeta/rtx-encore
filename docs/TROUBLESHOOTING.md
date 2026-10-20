@@ -2,6 +2,12 @@
 
 *[Français](TROUBLESHOOTING.fr.md) · [中文](TROUBLESHOOTING.zh-CN.md)*
 
+## Intel XeSS and XeFG (experimental)
+
+RTX Encore 1.2.0-beta.1 adds a choice of reconstruction and frame-generation engines. Leave **Game** selected to keep the game’s normal engine. Intel modes are experimental, off by default and require compatible game inputs; choosing an engine does not prove it became active.
+
+[Intel XeSS and XeFG (experimental)](INTEL-ENGINES.md)
+
 ## First checks
 
 1. **Is the mod loaded?** A `rtx-encore-logs` folder appears beside the mod's file when it is, and **Insert** opens

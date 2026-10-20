@@ -2,6 +2,12 @@
 
 *[Français](INSTALLATION.fr.md) · [中文](INSTALLATION.zh-CN.md)*
 
+## Intel XeSS and XeFG (experimental)
+
+Use **RTX Encore Hub 1.2.0-beta.1 or later** to install or update the mod and its Intel dependencies together. The Hub verifies the files, includes the accompanying Intel license, and keeps the operation reversible. Disabling NVIDIA downloads does not remove the Intel dependencies required by this mod. Intel files already supplied by the game are kept separate.
+
+[Intel XeSS and XeFG (experimental)](INTEL-ENGINES.md)
+
 ## What you need
 
 - Windows 10 or 11, 64-bit.

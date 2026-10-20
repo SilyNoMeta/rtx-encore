@@ -2,6 +2,28 @@
 
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.2.0-beta.1
+
+**XeSS / XeFG: VERY EXPERIMENTAL.** Getting this integration working was a particularly difficult and frustrating part of development :) Expect bugs, crashes, visual artifacts and differences between games and graphics APIs. Please report problems: in RTX Encore Hub, open the game’s **Health** page, choose **Prepare a diagnostic**, review the archive for personal information, then attach it to an [RTX Encore issue](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose). Include your engine choices, graphics API and requested multiplier. The Hub does not upload the archive for you.
+
+- Existing JSONC settings files are reordered by feature, with Intel options near the engine selectors. Selected values, comments and custom settings are kept.
+- **Ray Reconstruction + Neural Rendering (Direct3D 12)** — Compatible linear-depth games can now run NR after RR. Checked locally in 007 First Light with path tracing on an RTX 3070 Ti Laptop: NR runs; image quality and cost have not been measured. Direct3D 11 and Vulkan still do not support this linear-depth case.
+
+- **Intel XeSS and XeFG (experimental)** — RTX Encore 1.2.0-beta.1 adds a choice of reconstruction and frame-generation engines. Leave **Game** selected to keep the game’s normal engine. Intel modes are experimental, off by default and require compatible game inputs; choosing an engine does not prove it became active.
+- Each of up to four NR passes can override intensity, local tone, local structure, skin structure and the character mask, or inherit the global value. Numeric overrides are 0 to 2; the mask is `inherit`, `true` or `false`. Passes after the first inherit their tone from `nrLaterPassLocalTone`. An intensity of zero still evaluates the pass and does not remove its GPU/VRAM cost.
+- HDR input and auto exposure use the common `srHdr` and `srAutoExposure` controls for the selected reconstruction engine. Both default to `game`; restart after changing them. They do not turn on display HDR or convert SDR to HDR. Incorrect input assumptions can damage image quality. DLSS models may impose auto exposure; XeSS auto exposure has a GPU cost and is not recommended for LDR input. XeSS Vulkan LDR with manual exposure remains unsupported. RR and frame generation are unchanged.
+- The local `providerPatchPolicy` setting defaults to `heuristic`. `exact` restricts NVIDIA provider compatibility to reviewed files; `heuristic` also permits guarded compatibility with other eligible signed NVIDIA files. That admission remains unqualified and is reported as such. Restart after changing the policy. The Hub keeps it out of shared profiles; it is not a promise of game compatibility.
+
+Limited local Vulkan trials in No Man’s Sky and DOOM: The Dark Ages support the XeFG X2 route; the DOOM test was accepted by the maintainer in borderless mode with NR off. This does not qualify exclusive fullscreen, DirectX 11, XeFG with NR, all higher multipliers or other games. The menu/overlay can be unavailable on an Intel route; use the Hub to change settings and review its session findings.
+
+007 First Light’s intermittent startup crash remains unresolved. New HDR/exposure overrides and provider admissions have static/local automated checks; this is not broad visual or in-game validation.
+
+Thanks to [@SanyaGames227](https://github.com/SanyaGames227) for requesting HDR-input and auto-exposure controls ([#63](https://github.com/SilyNoMeta/rtx-encore/issues/63)). This is a feature request, not reporter validation of the final beta.
+
+[Intel XeSS and XeFG (experimental)](docs/INTEL-ENGINES.md)
+
+Thanks to [@Theoryedz](https://github.com/Theoryedz) for reporting the issue in [#58](https://github.com/SilyNoMeta/rtx-encore/issues/58). The reporter has not tested the updated build.
+
 ## 1.1.4
 
 Includes everything from 1.1.3.

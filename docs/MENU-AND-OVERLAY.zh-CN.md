@@ -4,6 +4,12 @@
 
 RTX Encore 在 DirectX 11、DirectX 12 和 Vulkan 游戏中绘制自己的菜单和叠加层，无需安装其他软件。
 
+## Intel XeSS 与 XeFG（实验性）
+
+修改引擎、XeFG 帧间隔或界面设置后请重启游戏。使用 XeFG 时，修改 FPS 上限也需要重启。FPS 上限不能证明源帧节奏。
+
+[Intel XeSS 与 XeFG（实验性）](INTEL-ENGINES.zh-CN.md)
+
 ## 菜单
 
 在游戏窗口中按 **Insert** 打开或关闭菜单。首次启动时菜单会自动打开一次。快捷键可以在菜单中修改。

@@ -14,7 +14,7 @@ body:
     attributes:
       label: RTX Encore version
       description: The version shown in the menu, and where you downloaded it (GitHub release, Hub, other).
-      placeholder: "1.1.0, GitHub release"
+      placeholder: "1.2.0-beta.1, GitHub release"
     validations:
       required: true
   - type: input
@@ -47,6 +47,8 @@ body:
       label: Features in use when it happens
       description: Tick everything that was on.
       options:
+        - label: Intel XeSS reconstruction (very experimental)
+        - label: Intel XeFG frame generation (very experimental)
         - label: Super Resolution
         - label: Ray Reconstruction
         - label: Frame Generation (write the multiplier below)
@@ -82,7 +84,8 @@ body:
   - type: textarea
     id: logs
     attributes:
-      label: Logs, screenshots and videos
-      description: Zip the whole `rtx-encore-logs` folder from the launch where the problem happened and drop the zip here. Screenshots or a short video help for visual problems; with Frame Generation, compare the same scene with it off and on.
+      label: Hub diagnostic archive, screenshots and videos
+      description: |
+        After reproducing the problem, open this game in RTX Encore Hub, go to Health and choose Prepare a diagnostic. Review the archive for personal information, then drag and drop it here. It includes the mod logs, settings and game-folder listing; the Hub does not upload it automatically. State your Hub version. If you cannot generate it, explain why and attach the whole rtx-encore-logs folder plus rtx-encore.jsonc instead. For XeSS/XeFG, include engine choices, graphics API and requested multiplier. Screenshots or a short video help for visual problems.
     validations:
       required: true

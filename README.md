@@ -26,6 +26,12 @@ One file next to the game, a built-in menu, nothing else to install.
 > It loads inside the game: do not use it in online or anti-cheat protected games, where it can be blocked or get an
 > account flagged. Back up every file you replace.
 
+## 1.2.0-beta.1
+
+**XeSS / XeFG: VERY EXPERIMENTAL.** Getting this integration working was a particularly difficult and frustrating part of development :) Expect bugs, crashes, visual artifacts and differences between games and graphics APIs. Please report problems: in RTX Encore Hub, open the game’s **Health** page, choose **Prepare a diagnostic**, review the archive for personal information, then attach it to an [RTX Encore issue](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose). Include your engine choices, graphics API and requested multiplier. The Hub does not upload the archive for you.
+
+[Intel XeSS and XeFG (experimental)](docs/INTEL-ENGINES.md) · NR controls per pass, common HDR/exposure inputs and explicit provider compatibility policy.
+
 ## What it does
 
 | | Feature | In short |
@@ -151,6 +157,7 @@ TonyJoaca and has since grown into a project of its own. It also owes much to th
 - [dashdogy/RTX40MFG-Unlock](https://github.com/dashdogy/RTX40MFG-Unlock): frame-generation research, menu rendering and input handling;
 - [mavismmg/MFGAdaUnlock-RenoDx](https://github.com/mavismmg/MFGAdaUnlock-RenoDx): frame-generation quality research;
 - [sdli1995/dlssg_for_sm86](https://github.com/sdli1995/dlssg_for_sm86): frame-generation research on RTX 20 and RTX 30;
+- [Intel XeSS](https://github.com/intel/xess): XeSS, XeFG and XeLL SDK interfaces;
 - [maanHimself/OpenDLSS-NR](https://github.com/maanHimself/OpenDLSS-NR): the open Neural Rendering engine;
 - everyone who tests a build and reports a bug: several fixes exist only because of those reports.
 

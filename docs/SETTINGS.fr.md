@@ -20,6 +20,20 @@ Aucune clé ne contient de chemin ni de commande : un fichier de réglages peut 
 
 ## Clés principales
 
+### `renderingEngines` / `xefg`
+
+| Réglage | Défaut | Effet |
+| :--- | :---: | :--- |
+| `reconstructionEngine` | `game` | `game` ou `xess` ; remplace le traitement Super Resolution/DLAA compatible par XeSS. Ray Reconstruction garde son moteur original. |
+| `frameGenerationEngine` | `game` | `game` ou `xefg` ; utilise XeFG sur les routes DirectX 12 ou Vulkan prises en charge. DirectX 11 reste expérimental et non qualifié en jeu ici. |
+| `xefgMfg4VariablePacing` | `true` | Espacement expérimental des images XeFG au-delà de X2 ; le désactiver peut rendre les facteurs élevés indisponibles. |
+| `xefgUiHandling` | `interpolate` | `interpolate` ou `game` ; le traitement séparé de l’interface du jeu exige des entrées compatibles. |
+| `xefgUiAlpha` | `unknown` | `unknown`, `straight` ou `premultiplied` ; laissez unknown si le format de l’interface est inconnu. |
+
+Redémarrez après un changement de moteur, d’espacement XeFG ou de réglage d’interface. Avec XeFG, changer la limite FPS demande aussi un redémarrage. Une limite FPS ne prouve pas la cadence des images source.
+
+[Intel XeSS et XeFG (expérimental)](INTEL-ENGINES.fr.md)
+
 ### `frameGeneration`
 
 | Clé | Défaut | Valeurs |
@@ -30,6 +44,8 @@ Aucune clé ne contient de chemin ni de commande : un fichier de réglages peut 
 | `dynamicExperimental56` | `false` | Laisse le mode dynamique monter à X5 et X6. |
 | `flipMeteringBypass` | `false` | Lisser X3 / X4 : Streamline espace lui-même les images générées au lieu du pilote NVIDIA. Relancez le jeu pour appliquer. |
 
+La politique locale `providerPatchPolicy` vaut `heuristic` par défaut. `exact` limite la compatibilité des fournisseurs NVIDIA aux fichiers examinés ; `heuristic` permet aussi une compatibilité encadrée avec d’autres fichiers NVIDIA signés et admissibles. Cette admission reste non qualifiée et est signalée comme telle. Redémarrez après un changement. Le Hub exclut ce réglage des profils partagés ; ce n’est pas une promesse de compatibilité en jeu.
+
 ### `dlssSuperResolution`
 
 | Clé | Défaut | Valeurs |
@@ -37,6 +53,19 @@ Aucune clé ne contient de chemin ni de commande : un fichier de réglages peut 
 | `dlssRenderScale` | `"game"` | `"game"`, `"dlaa"`, `"quality"`, `"balanced"`, `"performance"`, `"ultra-performance"`, `"custom"` |
 | `dlssCustomScale` | `67` | Pourcentage, `50` à `100`, avec `"custom"` |
 | `fastSuperResolution` | `false` | RTX 30, DirectX 12 : DLSS Super Resolution plus rapide avec le preset M ou L, environ 16 à 20 % de temps GPU en moins par image upscalée sur le système mesuré, image très proche de l'originale. Inactive sur les autres cartes. Relancez pour appliquer. Voir [Super Resolution](SUPER-RESOLUTION.fr.md#fast-super-resolution-rtx-30). |
+
+### `superResolutionInputs`
+
+| Clé | Défaut | Valeurs |
+| :--- | :---: | :--- |
+| `srHdr` | `"game"` | `"game"`, `"on"`, `"off"` |
+| `srAutoExposure` | `"game"` | `"game"`, `"on"`, `"off"` |
+
+Ces réglages SR/DLAA communs suivent le moteur de reconstruction sélectionné. Redémarrage requis. Game conserve les indications du jeu. HDR on attend une entrée HDR linéaire, off une entrée LDR. Aucune conversion des couleurs ni activation du HDR de l’écran. Un forçage incorrect peut dégrader l’image. RR et la génération d’images restent inchangés.
+
+L’exposition automatique peut aider le ghosting lié à l’exposition sans corriger tout le ghosting. DLSS peut l’imposer (preset L). XeSS ajoute un coût GPU et la déconseille en LDR. XeSS Vulkan LDR avec exposition manuelle reste non pris en charge. Un mode XeSS explicite refusé à l’initialisation conserve le fournisseur original sans lui appliquer le forçage. L’amélioration visuelle des modes forcés reste à valider.
+
+Les anciennes clés DLSS/XeSS sont migrées selon le moteur de reconstruction sélectionné ; les clés communes ont priorité si elles existent.
 
 ### `dlssPresets`
 
@@ -187,3 +216,15 @@ Chaque clé `hotkey…` prend une ou plusieurs combinaisons séparées par des v
 Le fichier contient plus de clés que cette page n'en liste : Smooth Motion, les interrupteurs de qualité d'image et
 de compatibilité, et les options expérimentales du moteur Open. Chacune a son commentaire dans le fichier et une
 commande libellée dans le menu, qui est l'endroit recommandé pour les changer.
+
+### `neuralRendering.passTuning`
+
+Chacune des quatre passes NR possibles peut remplacer l’intensité, le ton local, la structure locale, la structure de peau et le masque de personnage, ou suivre la valeur globale. Les valeurs numériques vont de 0 à 2 ; le masque prend `inherit`, `true` ou `false`. Après la première passe, le ton hérité vient de `nrLaterPassLocalTone`. Une intensité à zéro laisse la passe tourner et ne supprime pas son coût GPU/VRAM.
+
+| Clés | Défaut | Valeurs |
+| :--- | :---: | :--- |
+| `nrPass1Intensity` … `nrPass4Intensity` | `"inherit"` | `"inherit"`, 0–2 |
+| `nrPass1LocalStructure` … `nrPass4LocalStructure` | `"inherit"` | `"inherit"`, 0–2 |
+| `nrPass1LocalTone` … `nrPass4LocalTone` | `"inherit"` | `"inherit"`, 0–2 |
+| `nrPass1SkinStructure` … `nrPass4SkinStructure` | `"inherit"` | `"inherit"`, 0–2 |
+| `nrPass1AutoMask` … `nrPass4AutoMask` | `"inherit"` | `"inherit"`, `true`, `false` |

@@ -26,6 +26,12 @@ Un seul fichier à côté du jeu, un menu intégré, rien d'autre à installer.
 > Il se charge dans le jeu : ne l'utilisez pas dans un jeu en ligne ou protégé par un anti-triche, où il peut être
 > bloqué ou faire signaler un compte. Sauvegardez chaque fichier que vous remplacez.
 
+## 1.2.0-beta.1
+
+**XeSS / XeFG : TRÈS EXPÉRIMENTAL.** Cette intégration a été particulièrement pénible à mettre au point :) Attendez-vous à des bugs, crashs, artefacts et différences entre jeux et API graphiques. N’hésitez pas à remonter les problèmes : dans RTX Encore Hub, ouvrez la page **Santé** du jeu, choisissez **Préparer un diagnostic**, relisez l’archive pour retirer les informations personnelles, puis joignez-la à une [issue RTX Encore](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose). Indiquez les moteurs choisis, l’API graphique et le multiplicateur demandé. Le Hub ne téléverse pas l’archive à votre place.
+
+[Intel XeSS et XeFG (expérimental)](docs/INTEL-ENGINES.fr.md) · Réglages NR par passe, entrée HDR/exposition commune et politique explicite de compatibilité des fournisseurs.
+
 ## Ce qu'il fait
 
 | | Fonction | En bref |
@@ -155,6 +161,7 @@ TonyJoaca et est devenu depuis un projet à part entière. Il doit aussi beaucou
 - [dashdogy/RTX40MFG-Unlock](https://github.com/dashdogy/RTX40MFG-Unlock) : recherche sur la génération d'images, rendu du menu et gestion des entrées ;
 - [mavismmg/MFGAdaUnlock-RenoDx](https://github.com/mavismmg/MFGAdaUnlock-RenoDx) : recherche sur la qualité de la génération d'images ;
 - [sdli1995/dlssg_for_sm86](https://github.com/sdli1995/dlssg_for_sm86) : recherche sur la génération d'images pour RTX 20 et RTX 30 ;
+- [Intel XeSS](https://github.com/intel/xess) : interfaces SDK XeSS, XeFG et XeLL ;
 - [maanHimself/OpenDLSS-NR](https://github.com/maanHimself/OpenDLSS-NR) : le moteur ouvert de Neural Rendering ;
 - toutes les personnes qui testent une version et signalent un bug : plusieurs corrections n'existent que grâce à ces rapports.
 
