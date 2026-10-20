@@ -5,6 +5,12 @@
 Ces notes consignent ce qui a été testé et observé. Elles ne valent pas certification : une mise à jour du jeu, un
 autre pilote ou un autre mod peut changer le résultat.
 
+## Intel XeSS et XeFG (expérimental)
+
+XeFG ne permet pas d’ajouter la génération d’images à tous les jeux. Les facteurs élevés dépendent du runtime Intel accepté et de toute la configuration du jeu ; X5/X6 restent expérimentaux et cette bêta ne qualifie pas X6 en jeu. Un multiplicateur demandé, une dépendance installée ou un compteur d’images générées ne mesure ni le contenu réellement affiché ni la latence physique. Activer NR ou Smooth Motion pendant un essai XeFG ne rend pas cette combinaison qualifiée.
+
+[Intel XeSS et XeFG (expérimental)](INTEL-ENGINES.fr.md)
+
 ## Cartes graphiques
 
 | Carte | Génération d'images | Smooth Motion | Neural Rendering | Fast super resolution |

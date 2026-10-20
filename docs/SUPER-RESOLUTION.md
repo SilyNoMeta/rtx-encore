@@ -3,11 +3,17 @@
 *[Français](SUPER-RESOLUTION.fr.md) · [中文](SUPER-RESOLUTION.zh-CN.md)*
 
 DLSS Super Resolution is the game's own upscaler: the game renders at a lower resolution and DLSS rebuilds the
-full image. RTX Encore does not replace it. It lets you choose the render resolution and the model preset, and, on
+full image. With the Game engine selected, RTX Encore keeps it. It lets you choose the render resolution and the model preset, and, on
 RTX 30 cards, offers an option that makes the upscaling cheaper for the GPU.
 
 For the render resolution, see [Menu and overlay](MENU-AND-OVERLAY.md#other-controls). For the preset choice, see
 [Settings](SETTINGS.md#dlsspresets).
+
+## Intel XeSS and XeFG (experimental)
+
+RTX Encore 1.2.0-beta.1 adds a choice of reconstruction and frame-generation engines. Leave **Game** selected to keep the game’s normal engine. Intel modes are experimental, off by default and require compatible game inputs; choosing an engine does not prove it became active. HDR input and auto exposure use the common `srHdr` and `srAutoExposure` controls for the selected reconstruction engine. Both default to `game`; restart after changing them. They do not turn on display HDR or convert SDR to HDR. Incorrect input assumptions can damage image quality. DLSS models may impose auto exposure; XeSS auto exposure has a GPU cost and is not recommended for LDR input. XeSS Vulkan LDR with manual exposure remains unsupported. RR and frame generation are unchanged.
+
+[Intel XeSS and XeFG (experimental)](INTEL-ENGINES.md)
 
 ## Fast super resolution (RTX 30)
 

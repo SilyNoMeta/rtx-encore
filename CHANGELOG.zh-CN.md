@@ -2,6 +2,28 @@
 
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
+## 1.2.0-beta.1
+
+**XeSS / XeFG：高度实验性。** 这部分集成的开发过程非常艰难，也相当折腾 :) 请预期可能出现错误、崩溃、画面伪影，以及不同游戏和图形 API 之间的行为差异。欢迎报告问题：在 RTX Encore Hub 中打开游戏的 **健康** 页面，选择 **生成诊断包**，检查并移除个人信息后，将诊断压缩包附加到 [RTX Encore issue](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose)。请注明选择的引擎、图形 API 和请求的倍率。Hub 不会自动上传该压缩包。
+
+- 现有 JSONC 设置文件按功能重新排序，Intel 选项位于引擎选择附近。保留已选值、注释和自定义设置。
+- **Ray Reconstruction + Neural Rendering（Direct3D 12）** — 使用兼容线性深度输入的游戏现在可在 RR 之后运行 NR。已在 RTX 3070 Ti Laptop 上用 007 First Light 路径追踪进行本地检查：NR 可以运行，但尚未测量画质和开销。Direct3D 11 和 Vulkan 仍不支持此线性深度情况。
+
+- **Intel XeSS 与 XeFG（实验性）** — RTX Encore 1.2.0-beta.1 可选择重建和帧生成引擎。保留 **Game** 可继续使用游戏原有引擎。Intel 模式仍属实验性，默认关闭，需要兼容的游戏输入；选择某个引擎不能证明它已激活。
+- 四轮 NR 处理中的每一轮都可替代强度、局部色调、局部结构、皮肤结构和角色遮罩，也可继承全局值。数值范围为 0 至 2；遮罩可选 `inherit`、`true` 或 `false`。首轮之后继承的色调来自 `nrLaterPassLocalTone`。强度为零仍会运行该轮处理，不会消除 GPU/VRAM 开销。
+- HDR 输入和自动曝光使用所选重建引擎共用的 `srHdr` 与 `srAutoExposure`。默认 `game` 跟随游戏，修改后需重启。它们不会启用显示器 HDR，也不会将 SDR 转换为 HDR。错误的输入格式会损害画质。某些 DLSS 模型强制使用自动曝光；XeSS 自动曝光有 GPU 开销，不推荐用于 LDR。XeSS Vulkan 的 LDR 与手动曝光组合仍不受支持。RR 和帧生成保持不变。
+- 本地策略 `providerPatchPolicy` 默认为 `heuristic`。`exact` 仅接受已审查的 NVIDIA 提供程序文件；`heuristic` 还允许与其他符合条件的签名 NVIDIA 文件进行受限兼容。该准入仍未经认证，并会明确报告。修改后需重启。Hub 不会在社区配置中分享此设置；它不是游戏兼容性承诺。
+
+No Man’s Sky 和 DOOM: The Dark Ages 的有限本地 Vulkan 测试支持 XeFG X2 路径；维护者已接受 DOOM 在无边框模式、关闭 NR 时的测试。这不认证独占全屏、DirectX 11、XeFG 与 NR 组合、所有更高倍率或其他游戏。某些 Intel 路径上菜单或叠加层可能不可用；可使用 Hub 调整设置并查看会话报告。
+
+007 First Light 偶发启动崩溃仍未解决。新的 HDR/曝光覆盖设置和提供程序准入有静态及本地自动化检查，但不代表广泛的视觉或游戏验证。
+
+感谢 [@SanyaGames227](https://github.com/SanyaGames227) 提出 HDR 输入与自动曝光设置请求（[#63](https://github.com/SilyNoMeta/rtx-encore/issues/63)）。这是功能请求，不代表报告者验证了最终测试版。
+
+[Intel XeSS 与 XeFG（实验性）](docs/INTEL-ENGINES.zh-CN.md)
+
+感谢 [@Theoryedz](https://github.com/Theoryedz) 在 [#58](https://github.com/SilyNoMeta/rtx-encore/issues/58) 中提供问题报告。报告者尚未测试更新后的版本。
+
 ## 1.1.4
 
 包含 1.1.3 的全部内容。

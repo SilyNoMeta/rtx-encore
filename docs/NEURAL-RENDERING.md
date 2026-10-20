@@ -42,6 +42,7 @@ Options that use more VRAM are off by default.
 - A game with **DLSS Super Resolution or DLAA turned on**. NR is applied to its result.
   With **Ray Reconstruction**, NR is applied to RR's result, after its denoising: never to the raw ray-traced image.
   The game must provide the depth input NR needs; otherwise the image stays as DLSS made it and the menu says so.
+- With the 1.2 beta, compatible linear-depth inputs are also supported after RR on Direct3D 12. Invalid or unsupported depth inputs leave NR inactive; Direct3D 11 and Vulkan still do not support this linear-depth case. Local testing in 007 First Light with path tracing confirmed that NR runs, without measuring image quality or cost.
 - An RTX 40 or RTX 30 card. RTX 20 is experimental.
 
 ## Turn it on
@@ -199,3 +200,7 @@ adds VRAM again in exchange for less NR time.
 
 When you report a problem, include the game and its graphics API, the engine chosen, and the menu's report
 (**System** tab, **Copy**).
+
+## Per-pass controls in 1.2.0-beta.1
+
+Each of up to four NR passes can override intensity, local tone, local structure, skin structure and the character mask, or inherit the global value. Numeric overrides are 0 to 2; the mask is `inherit`, `true` or `false`. Passes after the first inherit their tone from `nrLaterPassLocalTone`. An intensity of zero still evaluates the pass and does not remove its GPU/VRAM cost.

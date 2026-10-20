@@ -19,6 +19,20 @@ No key holds a path or a command: a settings file can be shared with someone els
 
 ## Main keys
 
+### `renderingEngines` / `xefg`
+
+| Setting | Default | Effect |
+| :--- | :---: | :--- |
+| `reconstructionEngine` | `game` | `game` or `xess`; replaces compatible Super Resolution/DLAA processing with XeSS; Ray Reconstruction stays with its original engine. |
+| `frameGenerationEngine` | `game` | `game` or `xefg`; uses XeFG on supported DirectX 12 or Vulkan routes. DirectX 11 remains experimental and is not game-qualified here. |
+| `xefgMfg4VariablePacing` | `true` | Experimental pacing for XeFG above X2; disabling it can make higher factors unavailable. |
+| `xefgUiHandling` | `interpolate` | `interpolate` or `game`; requesting separate game UI handling only works with supported inputs. |
+| `xefgUiAlpha` | `unknown` | `unknown`, `straight` or `premultiplied`; leave unknown unless the game’s UI format is known. |
+
+Restart the game after changing the engine, XeFG pacing or UI settings. With XeFG, changing the FPS limit also requires a restart. Do not infer source-frame cadence from an FPS cap.
+
+[Intel XeSS and XeFG (experimental)](INTEL-ENGINES.md)
+
 ### `frameGeneration`
 
 | Key | Default | Values |
@@ -29,6 +43,8 @@ No key holds a path or a command: a settings file can be shared with someone els
 | `dynamicExperimental56` | `false` | Lets dynamic mode go up to X5 and X6. |
 | `flipMeteringBypass` | `false` | Smooth out X3 / X4: Streamline spaces the generated frames itself instead of the NVIDIA driver. Restart the game to apply. |
 
+The local `providerPatchPolicy` setting defaults to `heuristic`. `exact` restricts NVIDIA provider compatibility to reviewed files; `heuristic` also permits guarded compatibility with other eligible signed NVIDIA files. That admission remains unqualified and is reported as such. Restart after changing the policy. The Hub keeps it out of shared profiles; it is not a promise of game compatibility.
+
 ### `dlssSuperResolution`
 
 | Key | Default | Values |
@@ -36,6 +52,19 @@ No key holds a path or a command: a settings file can be shared with someone els
 | `dlssRenderScale` | `"game"` | `"game"`, `"dlaa"`, `"quality"`, `"balanced"`, `"performance"`, `"ultra-performance"`, `"custom"` |
 | `dlssCustomScale` | `67` | Percent, `50` to `100`, with `"custom"` |
 | `fastSuperResolution` | `false` | RTX 30, DirectX 12: faster DLSS Super Resolution with preset M or L, about 16 to 20 % less GPU time per upscaled frame on the system measured, image very close to the original. Inactive on other cards. Restart to apply. See [Super Resolution](SUPER-RESOLUTION.md#fast-super-resolution-rtx-30). |
+
+### `superResolutionInputs`
+
+| Key | Default | Values |
+| :--- | :---: | :--- |
+| `srHdr` | `"game"` | `"game"`, `"on"`, `"off"` |
+| `srAutoExposure` | `"game"` | `"game"`, `"on"`, `"off"` |
+
+These common SR/DLAA controls apply to the selected reconstruction engine. Restart to apply. Game preserves the game's input flags. HDR on expects HDR linear input; off expects LDR input. This does not convert colors or enable HDR display output. An incorrect override can degrade the image. RR and frame generation are unchanged.
+
+Auto exposure may help exposure-related ghosting; it is not a general ghosting fix. DLSS models may impose it (preset L). XeSS auto exposure has an extra GPU cost and is not recommended for LDR input. XeSS Vulkan LDR manual exposure remains unsupported. An explicit XeSS mode rejected at initialization retains the original provider without applying that override to the fallback. Visual improvement from forced modes has not been validated.
+
+Earlier DLSS/XeSS input keys are migrated using the selected reconstruction engine; the common keys take precedence when present.
 
 ### `dlssPresets`
 
@@ -183,3 +212,15 @@ Each `hotkey…` key takes one or more combinations separated by commas, such as
 The file holds more keys than this page lists: Smooth Motion, image-quality and compatibility switches, and the
 experimental options of the Open engine. Each has its comment in the file and a labelled control in the menu, which
 is the recommended place to change them.
+
+### `neuralRendering.passTuning`
+
+Each of up to four NR passes can override intensity, local tone, local structure, skin structure and the character mask, or inherit the global value. Numeric overrides are 0 to 2; the mask is `inherit`, `true` or `false`. Passes after the first inherit their tone from `nrLaterPassLocalTone`. An intensity of zero still evaluates the pass and does not remove its GPU/VRAM cost.
+
+| Keys | Default | Values |
+| :--- | :---: | :--- |
+| `nrPass1Intensity` … `nrPass4Intensity` | `"inherit"` | `"inherit"`, 0–2 |
+| `nrPass1LocalStructure` … `nrPass4LocalStructure` | `"inherit"` | `"inherit"`, 0–2 |
+| `nrPass1LocalTone` … `nrPass4LocalTone` | `"inherit"` | `"inherit"`, 0–2 |
+| `nrPass1SkinStructure` … `nrPass4SkinStructure` | `"inherit"` | `"inherit"`, 0–2 |
+| `nrPass1AutoMask` … `nrPass4AutoMask` | `"inherit"` | `"inherit"`, `true`, `false` |

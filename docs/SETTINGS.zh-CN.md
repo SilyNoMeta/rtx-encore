@@ -17,6 +17,20 @@
 
 ## 主要键
 
+### `renderingEngines` / `xefg`
+
+| 设置 | 默认 | 作用 |
+| :--- | :---: | :--- |
+| `reconstructionEngine` | `game` | `game` 或 `xess`：以 XeSS 替代兼容的 Super Resolution/DLAA 处理；Ray Reconstruction 保留原引擎。 |
+| `frameGenerationEngine` | `game` | `game` 或 `xefg`：在受支持的 DirectX 12 或 Vulkan 路径上使用 XeFG。DirectX 11 仍属实验性，此处未完成游戏认证。 |
+| `xefgMfg4VariablePacing` | `true` | XeFG 高于 X2 的实验性帧间隔控制；关闭后，较高倍率可能不可用。 |
+| `xefgUiHandling` | `interpolate` | `interpolate` 或 `game`；请求单独处理游戏界面需要兼容输入。 |
+| `xefgUiAlpha` | `unknown` | `unknown`、`straight` 或 `premultiplied`；不清楚界面格式时请保留 unknown。 |
+
+修改引擎、XeFG 帧间隔或界面设置后请重启游戏。使用 XeFG 时，修改 FPS 上限也需要重启。FPS 上限不能证明源帧节奏。
+
+[Intel XeSS 与 XeFG（实验性）](INTEL-ENGINES.zh-CN.md)
+
 ### `frameGeneration`
 
 | 键 | 默认 | 值 |
@@ -27,6 +41,8 @@
 | `dynamicExperimental56` | `false` | 允许动态模式达到 X5 和 X6。 |
 | `flipMeteringBypass` | `false` | 平滑 X3 / X4：由 Streamline 自行安排生成帧的间隔，而不是交给 NVIDIA 驱动。需重启游戏生效。 |
 
+本地策略 `providerPatchPolicy` 默认为 `heuristic`。`exact` 仅接受已审查的 NVIDIA 提供程序文件；`heuristic` 还允许与其他符合条件的签名 NVIDIA 文件进行受限兼容。该准入仍未经认证，并会明确报告。修改后需重启。Hub 不会在社区配置中分享此设置；它不是游戏兼容性承诺。
+
 ### `dlssSuperResolution`
 
 | 键 | 默认 | 值 |
@@ -34,6 +50,19 @@
 | `dlssRenderScale` | `"game"` | `"game"`、`"dlaa"`、`"quality"`、`"balanced"`、`"performance"`、`"ultra-performance"`、`"custom"` |
 | `dlssCustomScale` | `67` | `"custom"` 时的百分比，`50` 至 `100` |
 | `fastSuperResolution` | `false` | RTX 30、DirectX 12：在预设为 M 或 L 时加速 DLSS 超分辨率，在测量的系统上每个放大帧约减少 16% 至 20% 的 GPU 时间，画面与原版非常接近。在其他显卡上不起作用。需重启游戏。见[超分辨率](SUPER-RESOLUTION.zh-CN.md#fast-super-resolution-rtx-30)。 |
+
+### `superResolutionInputs`
+
+| 键 | 默认值 | 值 |
+| :--- | :---: | :--- |
+| `srHdr` | `"game"` | `"game"`, `"on"`, `"off"` |
+| `srAutoExposure` | `"game"` | `"game"`, `"on"`, `"off"` |
+
+这两个通用 SR/DLAA 设置适用于所选重建引擎，需要重启。game 保留游戏输入标志。HDR 的 on 使用 HDR 线性输入，off 使用 LDR 输入，不会转换颜色或启用显示器 HDR。错误的强制设置可能降低画质。不改变 RR 或帧生成。
+
+自动曝光可能改善与曝光有关的拖影，但不是通用修复。DLSS 可能强制启用（预设 L）。XeSS 自动曝光增加 GPU 开销，不推荐用于 LDR。XeSS Vulkan LDR 手动曝光仍不受支持。显式模式初始化被拒绝时，保留原提供程序且不对其应用覆盖。强制模式的画质改善尚未验证。
+
+旧 DLSS/XeSS 输入键根据所选重建引擎迁移；存在通用键时优先使用通用键。
 
 ### `dlssPresets`
 
@@ -171,3 +200,15 @@ Open 的性能键位于此独立分组。请先在菜单中选择引擎和适合
 
 文件中的键比本页列出的更多，包括 Smooth Motion、画质和兼容性开关，以及 Open 引擎的实验性选项。
 每个键在文件中有注释，在菜单中有对应的设置；推荐从菜单修改。
+
+### `neuralRendering.passTuning`
+
+四轮 NR 处理中的每一轮都可替代强度、局部色调、局部结构、皮肤结构和角色遮罩，也可继承全局值。数值范围为 0 至 2；遮罩可选 `inherit`、`true` 或 `false`。首轮之后继承的色调来自 `nrLaterPassLocalTone`。强度为零仍会运行该轮处理，不会消除 GPU/VRAM 开销。
+
+| 键 | 默认 | 值 |
+| :--- | :---: | :--- |
+| `nrPass1Intensity` … `nrPass4Intensity` | `"inherit"` | `"inherit"`, 0–2 |
+| `nrPass1LocalStructure` … `nrPass4LocalStructure` | `"inherit"` | `"inherit"`, 0–2 |
+| `nrPass1LocalTone` … `nrPass4LocalTone` | `"inherit"` | `"inherit"`, 0–2 |
+| `nrPass1SkinStructure` … `nrPass4SkinStructure` | `"inherit"` | `"inherit"`, 0–2 |
+| `nrPass1AutoMask` … `nrPass4AutoMask` | `"inherit"` | `"inherit"`, `true`, `false` |

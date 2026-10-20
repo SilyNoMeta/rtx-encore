@@ -5,6 +5,12 @@
 RTX Encore dessine son propre menu et son overlay dans les jeux DirectX 11, DirectX 12 et Vulkan. Rien d'autre n'est
 à installer.
 
+## Intel XeSS et XeFG (expérimental)
+
+Redémarrez après un changement de moteur, d’espacement XeFG ou de réglage d’interface. Avec XeFG, changer la limite FPS demande aussi un redémarrage. Une limite FPS ne prouve pas la cadence des images source.
+
+[Intel XeSS et XeFG (expérimental)](INTEL-ENGINES.fr.md)
+
 ## Le menu
 
 Appuyez sur **Inser** dans la fenêtre du jeu pour l'ouvrir ou le fermer. Il s'ouvre une fois de lui-même au premier

@@ -4,6 +4,12 @@
 
 RTX Encore brings DLSS Multi Frame Generation, from X2 to X6, to RTX 20, RTX 30 and RTX 40 cards.
 
+## Intel XeSS and XeFG (experimental)
+
+RTX Encore 1.2.0-beta.1 adds a choice of reconstruction and frame-generation engines. Leave **Game** selected to keep the game’s normal engine. Intel modes are experimental, off by default and require compatible game inputs; choosing an engine does not prove it became active.
+
+[Intel XeSS and XeFG (experimental)](INTEL-ENGINES.md)
+
 ## Requirements
 
 - A game that offers **DLSS Frame Generation**, in DirectX 12 or Vulkan. RTX Encore extends the frame generation the

@@ -5,6 +5,12 @@
 These notes record what was tested and observed. They are not a certification: a game update, another driver or
 another mod can change the result.
 
+## Intel XeSS and XeFG (experimental)
+
+XeFG is not a way to add frame generation to every game. Higher factors depend on the accepted Intel runtime and the complete game configuration; X5/X6 remain experimental, and this beta does not establish X6 game support. A requested multiplier, an installed dependency or a generated-frame counter is not a measurement of displayed content or physical latency. Do not combine an experimental XeFG test with NR or Smooth Motion and assume that combination is covered.
+
+[Intel XeSS and XeFG (experimental)](INTEL-ENGINES.md)
+
 ## Graphics cards
 
 | GPU | Frame generation | Smooth Motion | Neural Rendering | Fast super resolution |

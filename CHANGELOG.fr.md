@@ -2,6 +2,28 @@
 
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.2.0-beta.1
+
+**XeSS / XeFG : TRÈS EXPÉRIMENTAL.** Cette intégration a été particulièrement pénible à mettre au point :) Attendez-vous à des bugs, crashs, artefacts et différences entre jeux et API graphiques. N’hésitez pas à remonter les problèmes : dans RTX Encore Hub, ouvrez la page **Santé** du jeu, choisissez **Préparer un diagnostic**, relisez l’archive pour retirer les informations personnelles, puis joignez-la à une [issue RTX Encore](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose). Indiquez les moteurs choisis, l’API graphique et le multiplicateur demandé. Le Hub ne téléverse pas l’archive à votre place.
+
+- Les fichiers JSONC existants sont réordonnés par fonction, avec les options Intel près du choix des moteurs. Les valeurs choisies, commentaires et réglages personnels sont conservés.
+- **Ray Reconstruction + Neural Rendering (Direct3D 12)** — Les jeux compatibles utilisant une profondeur linéaire peuvent désormais appliquer NR après RR. Vérifié localement dans 007 First Light en path tracing sur RTX 3070 Ti Laptop : NR fonctionne ; la qualité d’image et le coût n’ont pas été mesurés. Direct3D 11 et Vulkan ne prennent toujours pas en charge ce cas de profondeur linéaire.
+
+- **Intel XeSS et XeFG (expérimental)** — RTX Encore 1.2.0-beta.1 permet de choisir les moteurs de reconstruction et de génération d’images. Laissez **Game** pour conserver le moteur habituel du jeu. Les modes Intel sont expérimentaux, désactivés par défaut et demandent des entrées de jeu compatibles ; le choix d’un moteur ne prouve pas son activation.
+- Chacune des quatre passes NR possibles peut remplacer l’intensité, le ton local, la structure locale, la structure de peau et le masque de personnage, ou suivre la valeur globale. Les valeurs numériques vont de 0 à 2 ; le masque prend `inherit`, `true` ou `false`. Après la première passe, le ton hérité vient de `nrLaterPassLocalTone`. Une intensité à zéro laisse la passe tourner et ne supprime pas son coût GPU/VRAM.
+- L’entrée HDR et l’exposition automatique utilisent les réglages communs `srHdr` et `srAutoExposure`, pour le moteur de reconstruction sélectionné. Ils suivent le jeu par défaut (`game`) et demandent un redémarrage. Ils n’activent pas le HDR de l’écran et ne convertissent pas une image SDR en HDR. Un format d’entrée incorrect peut dégrader l’image. Certains modèles DLSS imposent l’exposition automatique ; celle de XeSS a un coût GPU et est déconseillée en LDR. XeSS Vulkan LDR avec exposition manuelle reste non pris en charge. RR et la génération d’images ne changent pas.
+- La politique locale `providerPatchPolicy` vaut `heuristic` par défaut. `exact` limite la compatibilité des fournisseurs NVIDIA aux fichiers examinés ; `heuristic` permet aussi une compatibilité encadrée avec d’autres fichiers NVIDIA signés et admissibles. Cette admission reste non qualifiée et est signalée comme telle. Redémarrez après un changement. Le Hub exclut ce réglage des profils partagés ; ce n’est pas une promesse de compatibilité en jeu.
+
+Des essais Vulkan locaux limités dans No Man’s Sky et DOOM: The Dark Ages étayent la route XeFG X2 ; l’essai DOOM a été accepté par le mainteneur en plein écran fenêtré, NR coupé. Cela ne qualifie ni le plein écran exclusif, ni DirectX 11, ni XeFG avec NR, ni tous les multiplicateurs élevés ou les autres jeux. Le menu et l’overlay peuvent être indisponibles sur une route Intel ; utilisez le Hub pour régler le mod et relire les constats de session.
+
+Le crash intermittent de 007 First Light au démarrage reste non résolu. Les nouveaux forçages HDR/exposition et les admissions de fournisseurs ont des contrôles statiques et automatisés locaux ; cela ne constitue pas une validation visuelle ou en jeu généralisée.
+
+Merci à [@SanyaGames227](https://github.com/SanyaGames227) pour la demande de réglages d’entrée HDR et d’exposition automatique ([#63](https://github.com/SilyNoMeta/rtx-encore/issues/63)). Il s’agit d’une demande de fonction, pas d’une validation de la bêta finale par le rapporteur.
+
+[Intel XeSS et XeFG (expérimental)](docs/INTEL-ENGINES.fr.md)
+
+Merci à [@Theoryedz](https://github.com/Theoryedz) pour le signalement dans [#58](https://github.com/SilyNoMeta/rtx-encore/issues/58). Le rapporteur n’a pas testé la version corrigée.
+
 ## 1.1.4
 
 Reprend tout le contenu de la 1.1.3.

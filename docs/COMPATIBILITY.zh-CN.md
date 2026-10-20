@@ -4,6 +4,12 @@
 
 这些说明记录测试和观察结果，并非兼容性认证。游戏更新、其他驱动或其他模组都可能改变结果。
 
+## Intel XeSS 与 XeFG（实验性）
+
+XeFG 不能为所有游戏添加帧生成。更高倍率取决于获准的 Intel 运行库和完整游戏配置；X5/X6 仍属实验性，本测试版没有建立 X6 游戏支持证明。请求倍率、依赖已安装或生成帧计数，都不能测量实际显示内容或物理延迟。在 XeFG 测试中启用 NR 或 Smooth Motion，并不能证明这些组合已获认证。
+
+[Intel XeSS 与 XeFG（实验性）](INTEL-ENGINES.zh-CN.md)
+
 ## 显卡
 
 | 显卡 | 帧生成 | Smooth Motion | Neural Rendering | Fast super resolution |

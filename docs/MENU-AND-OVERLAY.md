@@ -5,6 +5,12 @@
 RTX Encore draws its own menu and overlay in DirectX 11, DirectX 12 and Vulkan games. Nothing else has to be
 installed.
 
+## Intel XeSS and XeFG (experimental)
+
+Restart the game after changing the engine, XeFG pacing or UI settings. With XeFG, changing the FPS limit also requires a restart. Do not infer source-frame cadence from an FPS cap.
+
+[Intel XeSS and XeFG (experimental)](INTEL-ENGINES.md)
+
 ## The menu
 
 Press **Insert** in the game window to open or close it. It opens once by itself on first launch. The shortcut can

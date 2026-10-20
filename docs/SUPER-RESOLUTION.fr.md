@@ -3,11 +3,17 @@
 *[English](SUPER-RESOLUTION.md) · [中文](SUPER-RESOLUTION.zh-CN.md)*
 
 DLSS Super Resolution est le suréchantillonneur du jeu : le jeu calcule l'image à une résolution plus basse et DLSS
-reconstruit l'image complète. RTX Encore ne le remplace pas. Il permet de choisir la résolution de rendu et le
+reconstruit l'image complète. Lorsque le moteur Game est choisi, RTX Encore le conserve. Il permet de choisir la résolution de rendu et le
 preset du modèle, et propose, sur les cartes RTX 30, une option qui rend ce travail moins coûteux pour le GPU.
 
 Pour la résolution de rendu, voir [Menu et overlay](MENU-AND-OVERLAY.fr.md#autres-commandes). Pour le choix du
 preset, voir [Réglages](SETTINGS.fr.md#dlsspresets).
+
+## Intel XeSS et XeFG (expérimental)
+
+RTX Encore 1.2.0-beta.1 permet de choisir les moteurs de reconstruction et de génération d’images. Laissez **Game** pour conserver le moteur habituel du jeu. Les modes Intel sont expérimentaux, désactivés par défaut et demandent des entrées de jeu compatibles ; le choix d’un moteur ne prouve pas son activation. L’entrée HDR et l’exposition automatique utilisent les réglages communs `srHdr` et `srAutoExposure`, pour le moteur de reconstruction sélectionné. Ils suivent le jeu par défaut (`game`) et demandent un redémarrage. Ils n’activent pas le HDR de l’écran et ne convertissent pas une image SDR en HDR. Un format d’entrée incorrect peut dégrader l’image. Certains modèles DLSS imposent l’exposition automatique ; celle de XeSS a un coût GPU et est déconseillée en LDR. XeSS Vulkan LDR avec exposition manuelle reste non pris en charge. RR et la génération d’images ne changent pas.
+
+[Intel XeSS et XeFG (expérimental)](INTEL-ENGINES.fr.md)
 
 ## Fast super resolution (RTX 30)
 

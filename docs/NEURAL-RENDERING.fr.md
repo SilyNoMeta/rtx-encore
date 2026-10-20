@@ -44,6 +44,7 @@ Les options qui consomment davantage de VRAM sont désactivées par défaut.
   Avec **Ray Reconstruction**, NR s'applique au résultat de RR, après son débruitage : jamais à l'image brute du
   ray tracing. Le jeu doit fournir l'entrée de profondeur dont NR a besoin ; sinon l'image reste telle que DLSS l'a
   produite et le menu l'indique.
+- Avec la bêta 1.2, les entrées de profondeur linéaire compatibles sont également prises en charge après RR sous Direct3D 12. Une profondeur invalide ou non prise en charge laisse NR inactif ; Direct3D 11 et Vulkan ne prennent toujours pas en charge ce cas. Un essai local dans 007 First Light en path tracing confirme que NR fonctionne, sans mesure de qualité d’image ni de coût.
 - Une carte RTX 40 ou RTX 30. RTX 20 est expérimental.
 
 ## L'activer
@@ -206,3 +207,7 @@ d'images. Activer **More speed for more VRAM** ajoute de nouveau de la VRAM en �
 
 Quand vous signalez un problème, indiquez le jeu et son API graphique, le moteur choisi, et joignez le rapport du
 menu (onglet **System**, **Copy**).
+
+## Réglages par passe en 1.2.0-beta.1
+
+Chacune des quatre passes NR possibles peut remplacer l’intensité, le ton local, la structure locale, la structure de peau et le masque de personnage, ou suivre la valeur globale. Les valeurs numériques vont de 0 à 2 ; le masque prend `inherit`, `true` ou `false`. Après la première passe, le ton hérité vient de `nrLaterPassLocalTone`. Une intensité à zéro laisse la passe tourner et ne supprime pas son coût GPU/VRAM.
