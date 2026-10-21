@@ -12,8 +12,9 @@ Smooth Motion 是 NVIDIA 驱动的插帧功能：在 DirectX 11、DirectX 12 和
 ## 要求
 
 - 一块 **RTX 30** 显卡。RTX 40 显卡的 Smooth Motion 由 NVIDIA 提供；不支持 RTX 20 显卡。
-- NVIDIA 驱动必须恰好是以下版本之一：**620.12**、**617.42**、**617.14**、**616.92** 或 **616.64**。
-  目前只有 617.14 在游戏中得到过验证。使用其他任何驱动时，该功能保持关闭并说明原因；RTX Encore 的其余功能
+- NVIDIA 驱动必须恰好是以下版本之一：**621.01**、**620.12**、**617.42**、**617.14**、**616.92**、**616.64** 或
+  **591.86**。
+  617.14 和 621.01 已在游戏中得到验证。使用其他任何驱动时，该功能保持关闭并说明原因；RTX Encore 的其余功能
   照常工作。
 
 ## 开启方法
@@ -35,7 +36,7 @@ Smooth Motion 是 NVIDIA 驱动的插帧功能：在 DirectX 11、DirectX 12 和
 | DirectX 11 | Shadows of Doubt | 游戏限制在 60 FPS 时显示 120 FPS |
 | Vulkan | Enshrouded | 插值帧正常显示，游戏的 NVIDIA 配置文件设为 Off |
 
-这些是少数用户在 617.14 驱动下的观察结果，并不保证在其他游戏中的兼容性、延迟或画质。
+这些是少数用户在 617.14 驱动下的观察结果；Enshrouded 也已在 621.01 驱动下得到确认。它们并不保证在其他游戏中的兼容性、延迟或画质。
 
 ## 在叠加层中
 
@@ -51,26 +52,25 @@ Smooth Motion 的数值是估算值：驱动可能暂停插帧，而且叠加层
 | 提示行 | 含义 |
 | :--- | :--- |
 | `SM OFF: SET GRAPHICS API TO VULKAN` | 游戏使用 Vulkan 呈现，而 **Graphics API** 设为 Direct3D |
-| `SM NOT RUNNING: TRY FORCE SMOOTH MOTION` | Vulkan 游戏：驱动没有为它启动 Smooth Motion；见下文 |
 | `SM NOT RUNNING: NO DRIVER MODULE LOADED` | 驱动已就绪，但尚未开始插帧 |
 
-## 在 Vulkan 游戏中强制启用 Smooth Motion
+## 被驱动排除的 Vulkan 游戏
 
-在 Vulkan 游戏中，NVIDIA 驱动会按游戏决定是否允许 Smooth Motion 运行。当驱动拒绝时，菜单会显示
-**Not running**，并建议启用 **Force Smooth Motion**（**Frames** 选项卡，**Smooth Motion** 部分），即
-`rtx-encore.jsonc` 中的 `"smoothMotionForce": true`。该设置默认关闭；修改后请重启游戏。
+在 Vulkan 游戏中，NVIDIA 驱动会按游戏决定是否允许 Smooth Motion 运行。开启 Smooth Motion 并把
+**Graphics API** 设为 Vulkan 后，RTX Encore 会解除这一按游戏的限制：即使驱动配置文件排除了某个游戏，
+Smooth Motion 也会运行。为此不再有单独的设置。
 
 > [!WARNING]
-> NVIDIA 排除某个游戏可能是有原因的。在这类游戏中强制启用 Smooth Motion 可能产生意外结果：鼠标指针重影、
-> 画面瑕疵或崩溃。如果游戏表现异常，请将其关闭。
+> NVIDIA 排除某个游戏可能是有原因的。在这类游戏中，Smooth Motion 可能产生意外结果：鼠标指针重影、画面瑕疵或
+> 崩溃。如果游戏表现异常，请为该游戏关闭 Smooth Motion。
 
-它对 DirectX 游戏没有作用。如果启用后 Smooth Motion 仍未启动，说明它无法在该游戏中运行。
+如果 Smooth Motion 在某个 Vulkan 游戏中仍未启动，说明它无法在该游戏中运行。
 
 ## 如果不起作用
 
-- **菜单提示驱动不受支持**：请安装上述四个版本之一。
+- **菜单提示驱动不受支持**：请安装上述版本之一。
 - **游戏中没有任何变化**，或菜单显示 **Wrong API** 或 **Not running**：检查 **Graphics API** 的选择，并在
   每次修改后重启游戏。模拟器通常使用 Vulkan。
-- **Vulkan**：尝试在 NVIDIA 应用的游戏配置文件中把 Smooth Motion 设为 Off。如果菜单提示驱动没有为该游戏
-  启动它，请参阅[强制启用 Smooth Motion](#在-vulkan-游戏中强制启用-smooth-motion)。
+- **Vulkan**：尝试在 NVIDIA 应用的游戏配置文件中把 Smooth Motion 设为 Off。另请参阅
+  [被驱动排除的 Vulkan 游戏](#被驱动排除的-vulkan-游戏)。
 - 提交 issue 时请附上菜单的报告（**System** 选项卡，**Copy**）。

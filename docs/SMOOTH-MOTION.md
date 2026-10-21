@@ -13,9 +13,9 @@ cards.
 ## Requirements
 
 - An **RTX 30** card. RTX 40 cards have Smooth Motion from NVIDIA; RTX 20 cards are not supported.
-- One of these NVIDIA driver versions, exactly: **620.12**, **617.42**, **617.14**, **616.92** or
-  **616.64**.
-  Only 617.14 has been verified in a game so far. With any other driver the feature stays off and says why; the
+- One of these NVIDIA driver versions, exactly: **621.01**, **620.12**, **617.42**, **617.14**, **616.92**,
+  **616.64** or **591.86**.
+  617.14 and 621.01 have been verified in a game. With any other driver the feature stays off and says why; the
   rest of RTX Encore keeps working.
 
 ## Turn it on
@@ -38,8 +38,8 @@ measures displayed frames, such as NVIDIA FrameView.
 | DirectX 11 | Shadows of Doubt | 120 FPS displayed from a game capped at 60 FPS |
 | Vulkan | Enshrouded | Interpolated frames displayed, with the game's NVIDIA profile set to Off |
 
-These are a few user observations on driver 617.14. They are not a guarantee of compatibility, latency or image
-quality in other games.
+These are a few user observations on driver 617.14; Enshrouded was also confirmed on driver 621.01. They are not a
+guarantee of compatibility, latency or image quality in other games.
 
 ## In the overlay
 
@@ -55,26 +55,25 @@ shows the game's frame rate alone, with one of these lines, and the menu shows t
 | Line | Meaning |
 | :--- | :--- |
 | `SM OFF: SET GRAPHICS API TO VULKAN` | The game presents with Vulkan while **Graphics API** is set to Direct3D |
-| `SM NOT RUNNING: TRY FORCE SMOOTH MOTION` | Vulkan game: the driver did not start Smooth Motion for it; see below |
 | `SM NOT RUNNING: NO DRIVER MODULE LOADED` | The driver is prepared but has not started interpolating |
 
-## Forcing Smooth Motion in a Vulkan game
+## Vulkan games the driver excludes
 
-In Vulkan games, the NVIDIA driver decides per game whether Smooth Motion may run. Where it refuses, the menu shows
-**Not running** and suggests **Force Smooth Motion** (**Frames** tab, **Smooth Motion** section), which is the
-`"smoothMotionForce": true` setting of `rtx-encore.jsonc`. It is off by default; restart the game after changing it.
+In Vulkan games, the NVIDIA driver decides per game whether Smooth Motion may run. With Smooth Motion on and
+**Graphics API** set to Vulkan, RTX Encore lifts that per-game decision: Smooth Motion runs even in a game the
+driver's profile excludes. There is no separate setting for it any more.
 
 > [!WARNING]
-> NVIDIA may exclude a game for a reason. Forcing Smooth Motion there can give unexpected results: a duplicated
-> mouse cursor, visual artifacts or a crash. Turn it back off if the game misbehaves.
+> NVIDIA may exclude a game for a reason. There, Smooth Motion can give unexpected results: a duplicated mouse
+> cursor, visual artifacts or a crash. Turn Smooth Motion off for that game if it misbehaves.
 
-It has no effect in DirectX games. If Smooth Motion still does not start with it, it cannot run in that game.
+If Smooth Motion still does not start in a Vulkan game, it cannot run in that game.
 
 ## If it does not work
 
-- **The menu reports an unsupported driver**: install one of the four versions above.
+- **The menu reports an unsupported driver**: install one of the versions above.
 - **Nothing changes in game**, or the menu says **Wrong API** or **Not running**: check the **Graphics API**
   choice, and restart the game after every change. Emulators are often Vulkan.
-- **Vulkan**: try with Smooth Motion set to Off in the game's profile of the NVIDIA app. If the menu says the
-  driver does not start it for this game, see [Forcing Smooth Motion](#forcing-smooth-motion-in-a-vulkan-game).
+- **Vulkan**: try with Smooth Motion set to Off in the game's profile of the NVIDIA app. See also
+  [Vulkan games the driver excludes](#vulkan-games-the-driver-excludes).
 - Include the menu's report (**System** tab, **Copy**) when you open an issue.

@@ -4,7 +4,7 @@
 
 ## Intel XeSS 与 XeFG（实验性）
 
-使用 **RTX Encore Hub 1.2.0-beta.1 或更高版本**，一起安装或更新模组和 Intel 依赖。Hub 会验证文件，保留随附的 Intel 许可证，并支持撤销操作。关闭 NVIDIA 下载不会省略此模组必需的 Intel 依赖。游戏自身提供的 Intel 文件保持独立。
+使用 **RTX Encore Hub 1.2.0 或更高版本**，一起安装或更新模组和 Intel 依赖。Hub 会验证文件，保留随附的 Intel 许可证，并支持撤销操作。关闭 NVIDIA 下载不会省略此模组必需的 Intel 依赖。游戏自身提供的 Intel 文件保持独立。
 
 [Intel XeSS 与 XeFG（实验性）](INTEL-ENGINES.zh-CN.md)
 

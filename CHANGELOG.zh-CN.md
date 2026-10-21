@@ -2,6 +2,39 @@
 
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
+## 1.2.0
+
+包含 1.2.0-beta.1 的全部内容。Intel XeSS 和 XeFG 仍属**实验性**功能。
+
+### 新增
+
+- **游戏运行中即可切换 DLSS 预设和重建引擎。** Super Resolution 与 Ray Reconstruction 预设，以及 DLSS 与 XeSS Super
+  Resolution 之间的选择，现在在 Direct3D 12、Direct3D 11 和 Vulkan 游戏中无需重启即可生效。帧生成预设和帧生成引擎仍需
+  重启。在 Vulkan 游戏中，必须在游戏启动时就已选择 XeSS。
+- **NVIDIA 621.01 驱动上的 Smooth Motion**（RTX 30）。已在维护者电脑上的 Enshrouded（Vulkan）中验证。
+- **Vulkan 游戏中的 Smooth Motion** 现在在游戏的 NVIDIA 配置文件排除它时也始终运行。**Force Smooth Motion** 设置已移除；
+  `rtx-encore.jsonc` 中残留的 `smoothMotionForce` 会被忽略。NVIDIA 排除某个游戏可能是有原因的：在这类游戏中仍可能出现
+  意外结果。见 [Smooth Motion](docs/SMOOTH-MOTION.zh-CN.md)。
+- **菜单会显示引擎和预设。** Upscaling 标签显示 DLSS SR、DLSS RR 或 XeSS-SR，以及 DLSS 功能创建时请求的预设；Frame
+  Generation 标签显示 DLSS-G 和 RTX Encore 提供的 FG 预设。驱动不会报告它实际运行的模型。
+- 菜单现在可以识别 NVIDIA 驱动提供的 DLSS 模型（例如通过 NVIDIA 应用的 DLSS 覆盖）。
+
+### 修复
+
+- **Vulkan 游戏中的 Smooth Motion 可能保持关闭**：现在即使驱动在游戏启动期间被重新加载，它也能可靠启动。
+- **XeFG**：Cyberpunk 2077 窗口大小调整、无边框窗口尺寸、由游戏控制的多帧生成（已在 GTA V Enhanced 中验证 X4）、在
+  XeFG 呈现画面上绘制菜单，以及在游戏初始化 Streamline 之前创建 XeFG。
+- **XeSS Super Resolution**：在自身命令列表上录制的 Direct3D 12 游戏、XeSS 之后恢复游戏的计算状态、将旧式 Vulkan 集成
+  导向 XeSS，以及实时更新 DLSS 回退预设。
+- 只有在游戏实际运行 Ray Reconstruction 时，菜单才会提示 XeSS 与 Ray Reconstruction 的组合问题。
+
+维护者已验证：Enshrouded 在 621.01 驱动上的 Smooth Motion、Cyberpunk 2077 中的 XeFG X2 和 X4、GTA V Enhanced 中的
+XeFG X4、007 First Light 中的 XeSS SR。运行中切换预设只有自动化测试；其他游戏、GPU 和驱动未经测试。
+
+### 已知问题
+
+- **007 First Light** 仍可能在启动时间歇性崩溃；再次启动可能成功。
+
 ## 1.2.0-beta.1
 
 **XeSS / XeFG：高度实验性。** 这部分集成的开发过程非常艰难，也相当折腾 :) 请预期可能出现错误、崩溃、画面伪影，以及不同游戏和图形 API 之间的行为差异。欢迎报告问题：在 RTX Encore Hub 中打开游戏的 **健康** 页面，选择 **生成诊断包**，检查并移除个人信息后，将诊断压缩包附加到 [RTX Encore issue](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose)。请注明选择的引擎、图形 API 和请求的倍率。Hub 不会自动上传该压缩包。

@@ -208,6 +208,6 @@ d'images. Activer **More speed for more VRAM** ajoute de nouveau de la VRAM en �
 Quand vous signalez un problème, indiquez le jeu et son API graphique, le moteur choisi, et joignez le rapport du
 menu (onglet **System**, **Copy**).
 
-## Réglages par passe en 1.2.0-beta.1
+## Réglages par passe (depuis la 1.2.0)
 
 Chacune des quatre passes NR possibles peut remplacer l’intensité, le ton local, la structure locale, la structure de peau et le masque de personnage, ou suivre la valeur globale. Les valeurs numériques vont de 0 à 2 ; le masque prend `inherit`, `true` ou `false`. Après la première passe, le ton hérité vient de `nrLaterPassLocalTone`. Une intensité à zéro laisse la passe tourner et ne supprime pas son coût GPU/VRAM.

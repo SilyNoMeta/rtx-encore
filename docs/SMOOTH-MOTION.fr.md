@@ -13,9 +13,9 @@ les cartes RTX 30.
 ## Prérequis
 
 - Une carte **RTX 30**. Les RTX 40 tiennent Smooth Motion de NVIDIA ; les RTX 20 ne sont pas prises en charge.
-- L'une de ces versions du pilote NVIDIA, exactement : **620.12**, **617.42**, **617.14**, **616.92**
-  ou **616.64**.
-  Seule la 617.14 a été vérifiée en jeu à ce jour. Avec tout autre pilote, la fonction reste désactivée et dit
+- L'une de ces versions du pilote NVIDIA, exactement : **621.01**, **620.12**, **617.42**, **617.14**,
+  **616.92**, **616.64** ou **591.86**.
+  Les 617.14 et 621.01 ont été vérifiées en jeu. Avec tout autre pilote, la fonction reste désactivée et dit
   pourquoi ; le reste de RTX Encore continue de fonctionner.
 
 ## L'activer
@@ -39,8 +39,8 @@ mesure les images affichées, comme NVIDIA FrameView.
 | DirectX 11 | Shadows of Doubt | 120 FPS affichés pour un jeu limité à 60 FPS |
 | Vulkan | Enshrouded | Images interpolées affichées, le profil NVIDIA du jeu étant sur Off |
 
-Ce sont quelques observations d'utilisateurs avec le pilote 617.14. Elles ne garantissent ni la compatibilité, ni
-la latence, ni la qualité d'image dans d'autres jeux.
+Ce sont quelques observations d'utilisateurs avec le pilote 617.14 ; Enshrouded a aussi été confirmé avec le pilote
+621.01. Elles ne garantissent ni la compatibilité, ni la latence, ni la qualité d'image dans d'autres jeux.
 
 ## Dans l'overlay
 
@@ -57,29 +57,25 @@ affiche la seule fréquence d'images du jeu, avec l'une de ces lignes, et le men
 | Ligne | Signification |
 | :--- | :--- |
 | `SM OFF: SET GRAPHICS API TO VULKAN` | Le jeu affiche en Vulkan alors que **Graphics API** est sur Direct3D |
-| `SM NOT RUNNING: TRY FORCE SMOOTH MOTION` | Jeu Vulkan : le pilote n'y a pas démarré Smooth Motion ; voir ci-dessous |
 | `SM NOT RUNNING: NO DRIVER MODULE LOADED` | Le pilote est prêt mais n'a pas commencé à interpoler |
 
-## Forcer Smooth Motion dans un jeu Vulkan
+## Jeux Vulkan exclus par le pilote
 
-Dans les jeux Vulkan, le pilote NVIDIA décide jeu par jeu si Smooth Motion peut fonctionner. Là où il refuse, le menu
-affiche **Not running** et propose **Force Smooth Motion** (onglet **Frames**, section **Smooth Motion**), qui est
-le réglage `"smoothMotionForce": true` de `rtx-encore.jsonc`. Il est désactivé par défaut ; relancez le jeu après
-l'avoir changé.
+Dans les jeux Vulkan, le pilote NVIDIA décide jeu par jeu si Smooth Motion peut fonctionner. Avec Smooth Motion
+activé et **Graphics API** sur Vulkan, RTX Encore lève cette décision : Smooth Motion fonctionne même dans un jeu
+que le profil du pilote exclut. Il n'y a plus de réglage séparé pour cela.
 
 > [!WARNING]
-> NVIDIA peut exclure un jeu pour une raison. Y forcer Smooth Motion peut donner des résultats inattendus : curseur
-> de souris dédoublé, artefacts visuels ou plantage. Désactivez-le si le jeu se comporte mal.
+> NVIDIA peut exclure un jeu pour une raison. Smooth Motion peut y donner des résultats inattendus : curseur de
+> souris dédoublé, artefacts visuels ou plantage. Désactivez Smooth Motion pour ce jeu s'il se comporte mal.
 
-Il n'a aucun effet dans les jeux DirectX. Si Smooth Motion ne démarre toujours pas avec lui, il ne peut pas
-fonctionner dans ce jeu.
+Si Smooth Motion ne démarre toujours pas dans un jeu Vulkan, il ne peut pas fonctionner dans ce jeu.
 
 ## Si cela ne fonctionne pas
 
-- **Le menu signale un pilote non pris en charge** : installez l'une des quatre versions ci-dessus.
+- **Le menu signale un pilote non pris en charge** : installez l'une des versions ci-dessus.
 - **Rien ne change en jeu**, ou le menu indique **Wrong API** ou **Not running** : vérifiez le choix
   **Graphics API**, et relancez le jeu après chaque changement. Les émulateurs sont souvent en Vulkan.
-- **Vulkan** : essayez avec Smooth Motion sur Off dans le profil du jeu de l'application NVIDIA. Si le menu indique
-  que le pilote ne le démarre pas pour ce jeu, voir
-  [Forcer Smooth Motion](#forcer-smooth-motion-dans-un-jeu-vulkan).
+- **Vulkan** : essayez avec Smooth Motion sur Off dans le profil du jeu de l'application NVIDIA. Voir aussi
+  [Jeux Vulkan exclus par le pilote](#jeux-vulkan-exclus-par-le-pilote).
 - Joignez le rapport du menu (onglet **System**, **Copy**) quand vous ouvrez un ticket.

@@ -76,8 +76,8 @@ Streamline 的支持范围因功能而异。已离线检查从 1.0.0 到 2.14.1 
 
 ## Smooth Motion 驱动
 
-RTX 30 上的 Smooth Motion 仅接受 NVIDIA 驱动 **620.12**、**617.42**、**617.14**、**616.92** 和 **616.64**。
-只有 **617.14** 已在游戏中验证。见 [Smooth Motion](SMOOTH-MOTION.zh-CN.md)。
+RTX 30 上的 Smooth Motion 仅接受 NVIDIA 驱动 **621.01**、**620.12**、**617.42**、**617.14**、**616.92**、**616.64** 和 **591.86**。
+**617.14** 和 **621.01** 已在游戏中验证。见 [Smooth Motion](SMOOTH-MOTION.zh-CN.md)。
 
 ## Neural Rendering 文件
 
