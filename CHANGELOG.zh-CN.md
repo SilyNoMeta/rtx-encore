@@ -40,6 +40,8 @@ XeFG X4、007 First Light 中的 XeSS SR。运行中切换预设只有自动化�
   **Settings** 中关闭 **Record in all compatible games**（如果曾在该游戏页面单独开启录制，也一并关闭），然后重启游戏。
   其他拦截 DXGI 交换链创建的工具也可能造成同样的结果。
 
+感谢 [@dashdogy](https://github.com/dashdogy)（MFG Unlocker）提出在游戏运行时切换 DLSS 预设和重建引擎的想法。
+
 ## 1.2.0-beta.1
 
 **XeSS / XeFG：高度实验性。** 这部分集成的开发过程非常艰难，也相当折腾 :) 请预期可能出现错误、崩溃、画面伪影，以及不同游戏和图形 API 之间的行为差异。欢迎报告问题：在 RTX Encore Hub 中打开游戏的 **健康** 页面，选择 **生成诊断包**，检查并移除个人信息后，将诊断压缩包附加到 [RTX Encore issue](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose)。请注明选择的引擎、图形 API 和请求的倍率。Hub 不会自动上传该压缩包。

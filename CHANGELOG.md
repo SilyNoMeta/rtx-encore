@@ -47,6 +47,8 @@ drivers were not tested.
   (and recording on the game's own page if you turned it on there), then restart the game. Other tools that hook
   DXGI's swap chain creation can have the same effect.
 
+Thanks to [@dashdogy](https://github.com/dashdogy) (MFG Unlocker) for the idea of changing DLSS presets and the reconstruction engine while the game runs.
+
 ## 1.2.0-beta.1
 
 **XeSS / XeFG: VERY EXPERIMENTAL.** Getting this integration working was a particularly difficult and frustrating part of development :) Expect bugs, crashes, visual artifacts and differences between games and graphics APIs. Please report problems: in RTX Encore Hub, open the game’s **Health** page, choose **Prepare a diagnostic**, review the archive for personal information, then attach it to an [RTX Encore issue](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose). Include your engine choices, graphics API and requested multiplier. The Hub does not upload the archive for you.
