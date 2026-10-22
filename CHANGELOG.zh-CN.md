@@ -2,6 +2,20 @@
 
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
+## 1.2.1
+
+- 在启动前安装兼容的 Intel 运行库后，No Man’s Sky 可在游戏中直接切换 DLSS 与 XeSS，无需重启。
+
+- **Elden Ring 与 ERSS-FG：** 改善启动与菜单兼容性。感谢
+  [@mennogreg](https://github.com/mennogreg) 提供[问题报告](https://github.com/SilyNoMeta/rtx-encore/issues/64)。
+- **菜单兼容性：** 改善 Quarantine Zone 与 OptiScaler、HumanitZ 与 ReShade 的兼容性。感谢
+  [@PhantomGamers](https://github.com/PhantomGamers)（[#54](https://github.com/SilyNoMeta/rtx-encore/issues/54)）和
+  [@sweddd](https://github.com/sweddd)（[#68](https://github.com/SilyNoMeta/rtx-encore/issues/68)）提供报告。
+- **Neural Rendering** 在渲染分辨率变化时保留配置的处理轮次。感谢
+  [@amernet91](https://github.com/amernet91) 提供[报告](https://github.com/SilyNoMeta/rtx-encore/issues/65)。
+- 更新 Intel 运行库版本兼容性。
+- **NVIDIA 运行库兼容性**不再要求文件位于预设列表中。旧的 `providerPatchPolicy` 设置将被忽略。Intel 运行库检查保持不变。
+
 ## 1.2.0
 
 **Intel XeSS 和 XeFG 是新增的实验性功能。** 请预期可能出现错误、崩溃、画面伪影，以及不同游戏和图形 API 之间的行为差异。
@@ -22,8 +36,6 @@
 - **HDR 输入和自动曝光** 使用所选重建引擎共用的 `srHdr` 与 `srAutoExposure`。默认 `game` 跟随游戏，修改后需重启。
   它们不会启用显示器 HDR，也不会将 SDR 转换为 HDR；错误的输入格式会损害画质。某些 DLSS 模型强制使用自动曝光；XeSS
   自动曝光有 GPU 开销，不推荐用于 LDR。XeSS Vulkan 的 LDR 与手动曝光组合仍不受支持。
-- **`providerPatchPolicy`**（本地设置，默认 `heuristic`）。`exact` 仅接受已审查的 NVIDIA 提供程序文件；`heuristic`
-  还允许与其他符合条件的签名 NVIDIA 文件进行受限兼容，并报告为未经认证。修改后需重启。Hub 不会在社区配置中分享此设置。
 - 现有 JSONC 设置文件按功能重新排序，Intel 选项位于引擎选择附近。保留已选值、注释和自定义设置。
 - **游戏运行中即可切换 DLSS 预设和重建引擎。** Super Resolution 与 Ray Reconstruction 预设，以及 DLSS 与 XeSS Super
   Resolution 之间的选择，现在在 Direct3D 12、Direct3D 11 和 Vulkan 游戏中无需重启即可生效。帧生成预设和帧生成引擎仍需

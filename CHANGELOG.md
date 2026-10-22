@@ -2,6 +2,21 @@
 
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.2.1
+
+- Switch between DLSS and XeSS without restarting in No Man's Sky, with compatible Intel runtimes installed before launch.
+
+- **Elden Ring with ERSS-FG:** improved startup and menu compatibility. Thanks to
+  [@mennogreg](https://github.com/mennogreg) for the [report](https://github.com/SilyNoMeta/rtx-encore/issues/64).
+- **Menu compatibility** with OptiScaler in Quarantine Zone and ReShade in HumanitZ. Thanks to
+  [@PhantomGamers](https://github.com/PhantomGamers) ([#54](https://github.com/SilyNoMeta/rtx-encore/issues/54)) and
+  [@sweddd](https://github.com/sweddd) ([#68](https://github.com/SilyNoMeta/rtx-encore/issues/68)) for their reports.
+- **Neural Rendering** keeps the configured passes when the render resolution changes. Thanks to
+  [@amernet91](https://github.com/amernet91) for the [report](https://github.com/SilyNoMeta/rtx-encore/issues/65).
+- Updated Intel runtime version compatibility.
+- **NVIDIA runtime compatibility** no longer requires a file to appear in a fixed list. An old
+  `providerPatchPolicy` entry is ignored. Intel runtime checks remain unchanged.
+
 ## 1.2.0
 
 **Intel XeSS and XeFG are new and experimental.** Expect bugs, crashes, visual artifacts and differences
@@ -28,9 +43,6 @@ graphics API and requested multiplier. The Hub does not upload the archive for y
   convert SDR to HDR, and incorrect input assumptions can damage image quality. DLSS models may impose auto
   exposure; XeSS auto exposure has a GPU cost and is not recommended for LDR input. XeSS Vulkan LDR with manual
   exposure remains unsupported.
-- **`providerPatchPolicy`** (local setting, default `heuristic`). `exact` restricts NVIDIA provider compatibility
-  to reviewed files; `heuristic` also permits guarded compatibility with other eligible signed NVIDIA files, an
-  admission reported as unqualified. Restart after changing it. The Hub keeps it out of shared profiles.
 - Existing JSONC settings files are reordered by feature, with Intel options near the engine selectors. Selected
   values, comments and custom settings are kept.
 - **DLSS presets and the reconstruction engine change while the game runs.** The Super Resolution and Ray
@@ -71,8 +83,8 @@ drivers were not tested. On an Intel route the menu can be unavailable: use the 
   the game's swap chain creation before RTX Encore, so XeFG is refused and the game's DLSS-G stays in use (the Frame
   Generation chip shows DLSS-G). In The Witcher 3 the game could also freeze while loading, with a GPU reset when frame
   generation started. You can keep using SCSKiller: in its **Settings**, turn off **Record in all compatible games**
-  (and recording on the game's own page if you turned it on there), then restart the game. Other tools that hook
-  DXGI's swap chain creation can have the same effect.
+  (and recording on the game's own page if you turned it on there), then restart the game. Other recording tools
+  and overlays can have the same effect.
 
 Thanks to [@SanyaGames227](https://github.com/SanyaGames227) for requesting HDR-input and auto-exposure controls
 ([#63](https://github.com/SilyNoMeta/rtx-encore/issues/63)), and to [@Theoryedz](https://github.com/Theoryedz) for

@@ -2,6 +2,21 @@
 
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.2.1
+
+- Passez de DLSS à XeSS et inversement sans redémarrer dans No Man’s Sky, avec des runtimes Intel compatibles installés avant le lancement.
+
+- **Elden Ring avec ERSS-FG :** meilleure compatibilité au démarrage et pour les menus. Merci à
+  [@mennogreg](https://github.com/mennogreg) pour le [signalement](https://github.com/SilyNoMeta/rtx-encore/issues/64).
+- **Compatibilité du menu** avec OptiScaler dans Quarantine Zone et ReShade dans HumanitZ. Merci à
+  [@PhantomGamers](https://github.com/PhantomGamers) ([#54](https://github.com/SilyNoMeta/rtx-encore/issues/54)) et
+  [@sweddd](https://github.com/sweddd) ([#68](https://github.com/SilyNoMeta/rtx-encore/issues/68)) pour leurs signalements.
+- **Neural Rendering** conserve les passes configurées quand la résolution de rendu change. Merci à
+  [@amernet91](https://github.com/amernet91) pour le [signalement](https://github.com/SilyNoMeta/rtx-encore/issues/65).
+- Mise à jour de la compatibilité des versions des runtimes Intel.
+- **La compatibilité des runtimes NVIDIA** n'exige plus que le fichier figure dans une liste prédéfinie.
+  Une ancienne entrée `providerPatchPolicy` est ignorée. Les contrôles Intel restent inchangés.
+
 ## 1.2.0
 
 **Intel XeSS et XeFG sont nouveaux et expérimentaux.** Attendez-vous à des bugs, crashs, artefacts et
@@ -30,10 +45,6 @@ votre place.
   n'activent pas le HDR de l'écran et ne convertissent pas une image SDR en HDR ; un format d'entrée incorrect peut
   dégrader l'image. Certains modèles DLSS imposent l'exposition automatique ; celle de XeSS a un coût GPU et est
   déconseillée en LDR. XeSS Vulkan LDR avec exposition manuelle reste non pris en charge.
-- **`providerPatchPolicy`** (réglage local, `heuristic` par défaut). `exact` limite la compatibilité des
-  fournisseurs NVIDIA aux fichiers examinés ; `heuristic` permet aussi une compatibilité encadrée avec d'autres
-  fichiers NVIDIA signés et admissibles, signalée comme non qualifiée. Redémarrez après un changement. Le Hub
-  exclut ce réglage des profils partagés.
 - Les fichiers JSONC existants sont réordonnés par fonction, avec les options Intel près du choix des moteurs. Les
   valeurs choisies, commentaires et réglages personnels sont conservés.
 - **Les presets DLSS et le moteur de reconstruction changent en cours de jeu.** Les presets de Super Resolution et
@@ -78,7 +89,7 @@ peut être indisponible : utilisez le Hub pour régler le mod.
   utilisé (le chip Frame Generation affiche DLSS-G). Dans The Witcher 3, le jeu pouvait aussi se figer au chargement,
   avec un reset du GPU au démarrage de la génération d'images. Vous pouvez garder SCSKiller : dans ses **Settings**, désactivez **Record in all
   compatible games** (et l'enregistrement sur la page du jeu si vous l'y avez activé), puis relancez le jeu. D'autres
-  outils qui interceptent la création de swap chain de DXGI peuvent avoir le même effet.
+  outils d'enregistrement et overlays peuvent avoir le même effet.
 
 Merci à [@SanyaGames227](https://github.com/SanyaGames227) pour la demande de réglages d'entrée HDR et
 d'exposition automatique ([#63](https://github.com/SilyNoMeta/rtx-encore/issues/63)), et à

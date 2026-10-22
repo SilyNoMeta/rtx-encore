@@ -27,7 +27,7 @@
 | `xefgUiHandling` | `interpolate` | `interpolate` 或 `game`；请求单独处理游戏界面需要兼容输入。 |
 | `xefgUiAlpha` | `unknown` | `unknown`、`straight` 或 `premultiplied`；不清楚界面格式时请保留 unknown。 |
 
-修改引擎、XeFG 帧间隔或界面设置后请重启游戏。使用 XeFG 时，修改 FPS 上限也需要重启。FPS 上限不能证明源帧节奏。
+兼容游戏可在运行中切换 DLSS 与 XeSS 重建。Vulkan 游戏需要在启动前安装兼容的 Intel 运行库；添加或替换运行库后必须重启游戏。修改帧生成引擎、XeFG 帧间隔或界面设置后仍需重启。使用 XeFG 时，修改 FPS 上限也需要重启。FPS 上限不能证明源帧节奏。
 
 [Intel XeSS 与 XeFG（实验性）](INTEL-ENGINES.zh-CN.md)
 
@@ -41,7 +41,7 @@
 | `dynamicExperimental56` | `false` | 允许动态模式达到 X5 和 X6。 |
 | `flipMeteringBypass` | `false` | 平滑 X3 / X4：由 Streamline 自行安排生成帧的间隔，而不是交给 NVIDIA 驱动。需重启游戏生效。 |
 
-本地策略 `providerPatchPolicy` 默认为 `heuristic`。`exact` 仅接受已审查的 NVIDIA 提供程序文件；`heuristic` 还允许与其他符合条件的签名 NVIDIA 文件进行受限兼容。该准入仍未经认证，并会明确报告。修改后需重启。Hub 不会在社区配置中分享此设置；它不是游戏兼容性承诺。
+NVIDIA 运行库的兼容性不再要求文件位于预设列表中。旧的 `providerPatchPolicy` 设置将被忽略。Intel 运行库检查保持不变。兼容性仍取决于运行库和游戏提供的功能。
 
 ### `dlssSuperResolution`
 

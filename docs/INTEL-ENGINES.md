@@ -2,7 +2,7 @@
 
 [English](INTEL-ENGINES.md) · [Français](INTEL-ENGINES.fr.md) · [简体中文](INTEL-ENGINES.zh-CN.md)
 
-This documentation is prepared for the upcoming beta; it does not announce a published package. Available versions are listed on the [releases page](https://github.com/SilyNoMeta/rtx-encore/releases).
+For RTX Encore 1.2.1. Available versions are listed on the [releases page](https://github.com/SilyNoMeta/rtx-encore/releases).
 
 RTX Encore 1.2.0 adds a choice of reconstruction and frame-generation engines. Leave **Game** selected to keep the game’s normal engine. Intel modes are experimental, off by default and require compatible game inputs; choosing an engine does not prove it became active.
 
@@ -16,7 +16,7 @@ Use **RTX Encore Hub 1.2.0 or later** to install or update the mod and its Intel
 | `xefgUiHandling` | `interpolate` | `interpolate` or `game`; requesting separate game UI handling only works with supported inputs. |
 | `xefgUiAlpha` | `unknown` | `unknown`, `straight` or `premultiplied`; leave unknown unless the game’s UI format is known. |
 
-Restart the game after changing the engine, XeFG pacing or UI settings. With XeFG, changing the FPS limit also requires a restart. Do not infer source-frame cadence from an FPS cap.
+Reconstruction can switch between DLSS and XeSS while playing in compatible games. For Vulkan, install compatible Intel runtimes before starting the game; adding or replacing them requires a restart. Restart after changing the frame-generation engine, XeFG pacing or UI settings. With XeFG, changing the FPS limit also requires a restart. A requested FPS cap does not prove source-frame cadence.
 
 HDR input and auto exposure use the common `srHdr` and `srAutoExposure` controls for the selected reconstruction engine. Both default to `game`; restart after changing them. They do not turn on display HDR or convert SDR to HDR. Incorrect input assumptions can damage image quality. DLSS models may impose auto exposure; XeSS auto exposure has a GPU cost and is not recommended for LDR input. XeSS Vulkan LDR with manual exposure remains unsupported. RR and frame generation are unchanged.
 
