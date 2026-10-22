@@ -2,7 +2,7 @@
 
 [English](INTEL-ENGINES.md) · [Français](INTEL-ENGINES.fr.md) · [简体中文](INTEL-ENGINES.zh-CN.md)
 
-本文档为即将推出的测试版做准备，不代表安装包已发布。可用版本请查看[发布页面](https://github.com/SilyNoMeta/rtx-encore/releases)。
+适用于 RTX Encore 1.2.1。可用版本请查看[发布页面](https://github.com/SilyNoMeta/rtx-encore/releases)。
 
 RTX Encore 1.2.0 可选择重建和帧生成引擎。保留 **Game** 可继续使用游戏原有引擎。Intel 模式仍属实验性，默认关闭，需要兼容的游戏输入；选择某个引擎不能证明它已激活。
 
@@ -16,7 +16,7 @@ RTX Encore 1.2.0 可选择重建和帧生成引擎。保留 **Game** 可继续�
 | `xefgUiHandling` | `interpolate` | `interpolate` 或 `game`；请求单独处理游戏界面需要兼容输入。 |
 | `xefgUiAlpha` | `unknown` | `unknown`、`straight` 或 `premultiplied`；不清楚界面格式时请保留 unknown。 |
 
-修改引擎、XeFG 帧间隔或界面设置后请重启游戏。使用 XeFG 时，修改 FPS 上限也需要重启。FPS 上限不能证明源帧节奏。
+兼容游戏可在运行中切换 DLSS 与 XeSS 重建。Vulkan 游戏需要在启动前安装兼容的 Intel 运行库；添加或替换运行库后必须重启游戏。修改帧生成引擎、XeFG 帧间隔或界面设置后仍需重启。使用 XeFG 时，修改 FPS 上限也需要重启。FPS 上限不能证明源帧节奏。
 
 HDR 输入和自动曝光使用所选重建引擎共用的 `srHdr` 与 `srAutoExposure`。默认 `game` 跟随游戏，修改后需重启。它们不会启用显示器 HDR，也不会将 SDR 转换为 HDR。错误的输入格式会损害画质。某些 DLSS 模型强制使用自动曝光；XeSS 自动曝光有 GPU 开销，不推荐用于 LDR。XeSS Vulkan 的 LDR 与手动曝光组合仍不受支持。RR 和帧生成保持不变。
 

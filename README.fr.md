@@ -26,14 +26,13 @@ Un seul fichier à côté du jeu, un menu intégré, rien d'autre à installer.
 > Il se charge dans le jeu : ne l'utilisez pas dans un jeu en ligne ou protégé par un anti-triche, où il peut être
 > bloqué ou faire signaler un compte. Sauvegardez chaque fichier que vous remplacez.
 
-## 1.2.0
+## 1.2.1
 
-Presets DLSS et changement de moteur en cours de jeu, Smooth Motion avec le pilote NVIDIA 621.01, et le moteur et le
-preset affichés dans le menu. Voir le [journal des modifications](CHANGELOG.fr.md).
+Corrections de compatibilité des menus, bascule DLSS/XeSS à chaud dans No Man’s Sky et compatibilité élargie des runtimes NVIDIA. Voir le [journal des modifications](CHANGELOG.fr.md).
 
 **XeSS / XeFG : TRÈS EXPÉRIMENTAL.** Cette intégration a été particulièrement pénible à mettre au point :) Attendez-vous à des bugs, crashs, artefacts et différences entre jeux et API graphiques. N’hésitez pas à remonter les problèmes : dans RTX Encore Hub, ouvrez la page **Santé** du jeu, choisissez **Préparer un diagnostic**, relisez l’archive pour retirer les informations personnelles, puis joignez-la à une [issue RTX Encore](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose). Indiquez les moteurs choisis, l’API graphique et le multiplicateur demandé. Le Hub ne téléverse pas l’archive à votre place.
 
-[Intel XeSS et XeFG (expérimental)](docs/INTEL-ENGINES.fr.md) · Réglages NR par passe, entrée HDR/exposition commune et politique explicite de compatibilité des fournisseurs.
+[Intel XeSS et XeFG (expérimental)](docs/INTEL-ENGINES.fr.md) · Réglages NR par passe et entrées HDR/exposition communes.
 
 ## Ce qu'il fait
 

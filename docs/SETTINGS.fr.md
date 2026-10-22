@@ -30,7 +30,7 @@ Aucune clé ne contient de chemin ni de commande : un fichier de réglages peut 
 | `xefgUiHandling` | `interpolate` | `interpolate` ou `game` ; le traitement séparé de l’interface du jeu exige des entrées compatibles. |
 | `xefgUiAlpha` | `unknown` | `unknown`, `straight` ou `premultiplied` ; laissez unknown si le format de l’interface est inconnu. |
 
-Redémarrez après un changement de moteur, d’espacement XeFG ou de réglage d’interface. Avec XeFG, changer la limite FPS demande aussi un redémarrage. Une limite FPS ne prouve pas la cadence des images source.
+La reconstruction peut passer de DLSS à XeSS en cours de jeu dans les jeux compatibles. En Vulkan, installez des runtimes Intel compatibles avant de lancer le jeu ; leur ajout ou remplacement demande un redémarrage. Redémarrez après un changement de moteur de génération d’images, d’espacement XeFG ou de réglage d’interface. Avec XeFG, changer la limite FPS demande aussi un redémarrage. Une limite FPS ne prouve pas la cadence des images source.
 
 [Intel XeSS et XeFG (expérimental)](INTEL-ENGINES.fr.md)
 
@@ -44,7 +44,7 @@ Redémarrez après un changement de moteur, d’espacement XeFG ou de réglage d
 | `dynamicExperimental56` | `false` | Laisse le mode dynamique monter à X5 et X6. |
 | `flipMeteringBypass` | `false` | Lisser X3 / X4 : Streamline espace lui-même les images générées au lieu du pilote NVIDIA. Relancez le jeu pour appliquer. |
 
-La politique locale `providerPatchPolicy` vaut `heuristic` par défaut. `exact` limite la compatibilité des fournisseurs NVIDIA aux fichiers examinés ; `heuristic` permet aussi une compatibilité encadrée avec d’autres fichiers NVIDIA signés et admissibles. Cette admission reste non qualifiée et est signalée comme telle. Redémarrez après un changement. Le Hub exclut ce réglage des profils partagés ; ce n’est pas une promesse de compatibilité en jeu.
+La compatibilité des runtimes NVIDIA n’exige plus que le fichier figure dans une liste prédéfinie. Une ancienne entrée `providerPatchPolicy` est ignorée. Les contrôles Intel restent inchangés. La compatibilité dépend toujours des fonctions disponibles dans le runtime et le jeu.
 
 ### `dlssSuperResolution`
 

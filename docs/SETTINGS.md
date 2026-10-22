@@ -29,7 +29,7 @@ No key holds a path or a command: a settings file can be shared with someone els
 | `xefgUiHandling` | `interpolate` | `interpolate` or `game`; requesting separate game UI handling only works with supported inputs. |
 | `xefgUiAlpha` | `unknown` | `unknown`, `straight` or `premultiplied`; leave unknown unless the game’s UI format is known. |
 
-Restart the game after changing the engine, XeFG pacing or UI settings. With XeFG, changing the FPS limit also requires a restart. Do not infer source-frame cadence from an FPS cap.
+Reconstruction can switch between DLSS and XeSS while playing in compatible games. For Vulkan, install compatible Intel runtimes before starting the game; adding or replacing them requires a restart. Restart after changing the frame-generation engine, XeFG pacing or UI settings. With XeFG, changing the FPS limit also requires a restart. A requested FPS cap does not prove source-frame cadence.
 
 [Intel XeSS and XeFG (experimental)](INTEL-ENGINES.md)
 
@@ -43,7 +43,7 @@ Restart the game after changing the engine, XeFG pacing or UI settings. With XeF
 | `dynamicExperimental56` | `false` | Lets dynamic mode go up to X5 and X6. |
 | `flipMeteringBypass` | `false` | Smooth out X3 / X4: Streamline spaces the generated frames itself instead of the NVIDIA driver. Restart the game to apply. |
 
-The local `providerPatchPolicy` setting defaults to `heuristic`. `exact` restricts NVIDIA provider compatibility to reviewed files; `heuristic` also permits guarded compatibility with other eligible signed NVIDIA files. That admission remains unqualified and is reported as such. Restart after changing the policy. The Hub keeps it out of shared profiles; it is not a promise of game compatibility.
+NVIDIA runtime compatibility no longer requires a file to appear in a fixed list. An old `providerPatchPolicy` entry is ignored. Intel runtime checks remain unchanged. Compatibility still depends on the features available in the runtime and game.
 
 ### `dlssSuperResolution`
 
