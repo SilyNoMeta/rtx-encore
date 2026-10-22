@@ -4,10 +4,27 @@
 
 ## 1.2.0
 
-包含 1.2.0-beta.1 的全部内容。Intel XeSS 和 XeFG 仍属**实验性**功能。
+**Intel XeSS 和 XeFG 是新增的实验性功能。** 请预期可能出现错误、崩溃、画面伪影，以及不同游戏和图形 API 之间的行为差异。
+欢迎报告问题：在 RTX Encore Hub 中打开游戏的 **健康** 页面，选择 **生成诊断包**，检查并移除个人信息后，将诊断压缩包
+附加到 [RTX Encore issue](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose)。请注明选择的引擎、图形 API
+和请求的倍率。Hub 不会自动上传该压缩包。
 
 ### 新增
 
+- **Intel XeSS 与 XeFG（实验性）。** 可选择重建引擎（DLSS 或 XeSS Super Resolution）和帧生成引擎（DLSS-G 或搭配 XeLL
+  的 XeFG）。保留 **Game** 可继续使用游戏原有引擎。Intel 模式默认关闭，需要兼容的游戏输入；选择某个引擎不能证明它已
+  激活。请通过 RTX Encore Hub 安装 Intel 运行库。见 [Intel XeSS 与 XeFG（实验性）](docs/INTEL-ENGINES.zh-CN.md)。
+- **Ray Reconstruction + Neural Rendering（Direct3D 12）。** 使用兼容线性深度输入的游戏现在可在 RR 之后运行 NR。
+  Direct3D 11 和 Vulkan 仍不支持此线性深度情况。
+- **按轮设置 Neural Rendering。** 四轮 NR 处理中的每一轮都可替代强度、局部色调、局部结构、皮肤结构和角色遮罩，也可
+  继承全局值。数值范围为 0 至 2；遮罩可选 `inherit`、`true` 或 `false`。首轮之后继承的色调来自 `nrLaterPassLocalTone`。
+  强度为零仍会运行该轮处理，不会消除 GPU/VRAM 开销。
+- **HDR 输入和自动曝光** 使用所选重建引擎共用的 `srHdr` 与 `srAutoExposure`。默认 `game` 跟随游戏，修改后需重启。
+  它们不会启用显示器 HDR，也不会将 SDR 转换为 HDR；错误的输入格式会损害画质。某些 DLSS 模型强制使用自动曝光；XeSS
+  自动曝光有 GPU 开销，不推荐用于 LDR。XeSS Vulkan 的 LDR 与手动曝光组合仍不受支持。
+- **`providerPatchPolicy`**（本地设置，默认 `heuristic`）。`exact` 仅接受已审查的 NVIDIA 提供程序文件；`heuristic`
+  还允许与其他符合条件的签名 NVIDIA 文件进行受限兼容，并报告为未经认证。修改后需重启。Hub 不会在社区配置中分享此设置。
+- 现有 JSONC 设置文件按功能重新排序，Intel 选项位于引擎选择附近。保留已选值、注释和自定义设置。
 - **游戏运行中即可切换 DLSS 预设和重建引擎。** Super Resolution 与 Ray Reconstruction 预设，以及 DLSS 与 XeSS Super
   Resolution 之间的选择，现在在 Direct3D 12、Direct3D 11 和 Vulkan 游戏中无需重启即可生效。帧生成预设和帧生成引擎仍需
   重启。在 Vulkan 游戏中，必须在游戏启动时就已选择 XeSS。
@@ -29,7 +46,9 @@
 - 只有在游戏实际运行 Ray Reconstruction 时，菜单才会提示 XeSS 与 Ray Reconstruction 的组合问题。
 
 维护者已验证：Enshrouded 在 621.01 驱动上的 Smooth Motion、Cyberpunk 2077 中的 XeFG X2 和 X4、GTA V Enhanced 中的
-XeFG X4、007 First Light 中的 XeSS SR。运行中切换预设只有自动化测试；其他游戏、GPU 和驱动未经测试。
+XeFG X4、007 First Light 中的 XeSS SR、No Man's Sky 和 DOOM: The Dark Ages 中的 XeFG X2（Vulkan、无边框、关闭 NR）、
+007 First Light 路径追踪下 RR 之后的 NR（尚未测量画质和开销）。运行中切换预设、HDR/曝光覆盖设置和提供程序准入只有
+自动化测试；其他游戏、GPU 和驱动未经测试。在 Intel 路径上菜单可能不可用：请使用 Hub 调整设置。
 
 ### 已知问题
 
@@ -39,6 +58,10 @@ XeFG X4、007 First Light 中的 XeSS SR。运行中切换预设只有自动化�
   加载时卡住，并在帧生成启动时出现 GPU 重置。仍可继续使用 SCSKiller：在其
   **Settings** 中关闭 **Record in all compatible games**（如果曾在该游戏页面单独开启录制，也一并关闭），然后重启游戏。
   其他拦截 DXGI 交换链创建的工具也可能造成同样的结果。
+
+感谢 [@SanyaGames227](https://github.com/SanyaGames227) 提出 HDR 输入与自动曝光设置请求
+（[#63](https://github.com/SilyNoMeta/rtx-encore/issues/63)），以及 [@Theoryedz](https://github.com/Theoryedz) 在
+[#58](https://github.com/SilyNoMeta/rtx-encore/issues/58) 中提供问题报告。报告者尚未测试此版本。
 
 感谢 [@dashdogy](https://github.com/dashdogy)（MFG Unlocker）提出在游戏运行时切换 DLSS 预设和重建引擎的想法。
 

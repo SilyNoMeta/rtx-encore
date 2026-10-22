@@ -4,10 +4,38 @@
 
 ## 1.2.0
 
-Contient tout ce qu'apporte la 1.2.0-beta.1. Intel XeSS et XeFG restent **expérimentaux**.
+**Intel XeSS et XeFG sont nouveaux et expérimentaux.** Attendez-vous à des bugs, crashs, artefacts et
+différences entre jeux et API graphiques. N'hésitez pas à remonter les problèmes : dans RTX Encore Hub, ouvrez la
+page **Santé** du jeu, choisissez **Préparer un diagnostic**, relisez l'archive pour retirer les informations
+personnelles, puis joignez-la à une [issue RTX Encore](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose).
+Indiquez les moteurs choisis, l'API graphique et le multiplicateur demandé. Le Hub ne téléverse pas l'archive à
+votre place.
 
 ### Nouveautés
 
+- **Intel XeSS et XeFG (expérimental).** Choisissez le moteur de reconstruction (DLSS ou XeSS Super Resolution) et
+  le moteur de génération d'images (DLSS-G ou XeFG avec XeLL). Laissez **Game** pour conserver le moteur habituel
+  du jeu. Les modes Intel sont désactivés par défaut et demandent des entrées de jeu compatibles ; le choix d'un
+  moteur ne prouve pas son activation. Installez les runtimes Intel avec RTX Encore Hub. Voir
+  [Intel XeSS et XeFG (expérimental)](docs/INTEL-ENGINES.fr.md).
+- **Ray Reconstruction + Neural Rendering (Direct3D 12).** Les jeux compatibles utilisant une profondeur linéaire
+  peuvent désormais appliquer NR après RR. Direct3D 11 et Vulkan ne prennent toujours pas en charge ce cas.
+- **Réglages Neural Rendering par passe.** Chacune des quatre passes NR possibles peut remplacer l'intensité, le ton
+  local, la structure locale, la structure de peau et le masque de personnage, ou suivre la valeur globale. Les
+  valeurs numériques vont de 0 à 2 ; le masque prend `inherit`, `true` ou `false`. Après la première passe, le ton
+  hérité vient de `nrLaterPassLocalTone`. Une intensité à zéro laisse la passe tourner et ne supprime pas son coût
+  GPU/VRAM.
+- **L'entrée HDR et l'exposition automatique** utilisent les réglages communs `srHdr` et `srAutoExposure`, pour le
+  moteur de reconstruction sélectionné. Ils suivent le jeu par défaut (`game`) et demandent un redémarrage. Ils
+  n'activent pas le HDR de l'écran et ne convertissent pas une image SDR en HDR ; un format d'entrée incorrect peut
+  dégrader l'image. Certains modèles DLSS imposent l'exposition automatique ; celle de XeSS a un coût GPU et est
+  déconseillée en LDR. XeSS Vulkan LDR avec exposition manuelle reste non pris en charge.
+- **`providerPatchPolicy`** (réglage local, `heuristic` par défaut). `exact` limite la compatibilité des
+  fournisseurs NVIDIA aux fichiers examinés ; `heuristic` permet aussi une compatibilité encadrée avec d'autres
+  fichiers NVIDIA signés et admissibles, signalée comme non qualifiée. Redémarrez après un changement. Le Hub
+  exclut ce réglage des profils partagés.
+- Les fichiers JSONC existants sont réordonnés par fonction, avec les options Intel près du choix des moteurs. Les
+  valeurs choisies, commentaires et réglages personnels sont conservés.
 - **Les presets DLSS et le moteur de reconstruction changent en cours de jeu.** Les presets de Super Resolution et
   de Ray Reconstruction, et le choix entre DLSS et XeSS Super Resolution, s'appliquent désormais sans redémarrage
   dans les jeux Direct3D 12, Direct3D 11 et Vulkan. Les presets de Frame Generation et le moteur de génération
@@ -36,8 +64,11 @@ Contient tout ce qu'apporte la 1.2.0-beta.1. Intel XeSS et XeFG restent **expér
 - Le menu avertit de XeSS avec Ray Reconstruction seulement quand le jeu exécute réellement Ray Reconstruction.
 
 Vérifié par le mainteneur : Smooth Motion dans Enshrouded avec le pilote 621.01, XeFG X2 et X4 dans Cyberpunk 2077,
-XeFG X4 dans GTA V Enhanced, XeSS SR dans 007 First Light. Le changement de preset en cours de jeu n'a que des tests
-automatisés ; les autres jeux, GPU et pilotes n'ont pas été testés.
+XeFG X4 dans GTA V Enhanced, XeSS SR dans 007 First Light, XeFG X2 dans No Man's Sky et DOOM: The Dark Ages (Vulkan,
+fenêtre sans bordure, NR coupé), NR après RR dans 007 First Light en path tracing (qualité d'image et coût non
+mesurés). Le changement de preset en cours de jeu, les forçages HDR/exposition et les admissions de fournisseurs
+n'ont que des tests automatisés ; les autres jeux, GPU et pilotes n'ont pas été testés. Sur une route Intel, le menu
+peut être indisponible : utilisez le Hub pour régler le mod.
 
 ### Problème connu
 
@@ -48,6 +79,11 @@ automatisés ; les autres jeux, GPU et pilotes n'ont pas été testés.
   avec un reset du GPU au démarrage de la génération d'images. Vous pouvez garder SCSKiller : dans ses **Settings**, désactivez **Record in all
   compatible games** (et l'enregistrement sur la page du jeu si vous l'y avez activé), puis relancez le jeu. D'autres
   outils qui interceptent la création de swap chain de DXGI peuvent avoir le même effet.
+
+Merci à [@SanyaGames227](https://github.com/SanyaGames227) pour la demande de réglages d'entrée HDR et
+d'exposition automatique ([#63](https://github.com/SilyNoMeta/rtx-encore/issues/63)), et à
+[@Theoryedz](https://github.com/Theoryedz) pour le signalement dans
+[#58](https://github.com/SilyNoMeta/rtx-encore/issues/58). Les rapporteurs n'ont pas testé cette version.
 
 Merci à [@dashdogy](https://github.com/dashdogy) (MFG Unlocker) pour l'idée de changer les presets DLSS et le moteur de reconstruction pendant que le jeu tourne.
 

@@ -4,10 +4,35 @@
 
 ## 1.2.0
 
-Includes everything from 1.2.0-beta.1. Intel XeSS and XeFG remain **experimental**.
+**Intel XeSS and XeFG are new and experimental.** Expect bugs, crashes, visual artifacts and differences
+between games and graphics APIs. Please report problems: in RTX Encore Hub, open the game's **Health** page,
+choose **Prepare a diagnostic**, review the archive for personal information, then attach it to an
+[RTX Encore issue](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose). Include your engine choices,
+graphics API and requested multiplier. The Hub does not upload the archive for you.
 
 ### New
 
+- **Intel XeSS and XeFG (experimental).** Choose the reconstruction engine (DLSS or XeSS Super Resolution) and
+  the frame-generation engine (DLSS-G or XeFG with XeLL). Leave **Game** selected to keep the game's normal engine.
+  Intel modes are off by default and require compatible game inputs; choosing an engine does not prove it became
+  active. Install the Intel runtimes through RTX Encore Hub. See
+  [Intel XeSS and XeFG (experimental)](docs/INTEL-ENGINES.md).
+- **Ray Reconstruction + Neural Rendering (Direct3D 12).** Compatible linear-depth games can now run NR after RR.
+  Direct3D 11 and Vulkan still do not support this linear-depth case.
+- **Per-pass Neural Rendering settings.** Each of up to four NR passes can override intensity, local tone, local
+  structure, skin structure and the character mask, or inherit the global value. Numeric overrides are 0 to 2;
+  the mask is `inherit`, `true` or `false`. Passes after the first inherit their tone from `nrLaterPassLocalTone`.
+  An intensity of zero still evaluates the pass and does not remove its GPU/VRAM cost.
+- **HDR input and auto exposure** use the common `srHdr` and `srAutoExposure` controls for the selected
+  reconstruction engine. Both default to `game`; restart after changing them. They do not turn on display HDR or
+  convert SDR to HDR, and incorrect input assumptions can damage image quality. DLSS models may impose auto
+  exposure; XeSS auto exposure has a GPU cost and is not recommended for LDR input. XeSS Vulkan LDR with manual
+  exposure remains unsupported.
+- **`providerPatchPolicy`** (local setting, default `heuristic`). `exact` restricts NVIDIA provider compatibility
+  to reviewed files; `heuristic` also permits guarded compatibility with other eligible signed NVIDIA files, an
+  admission reported as unqualified. Restart after changing it. The Hub keeps it out of shared profiles.
+- Existing JSONC settings files are reordered by feature, with Intel options near the engine selectors. Selected
+  values, comments and custom settings are kept.
 - **DLSS presets and the reconstruction engine change while the game runs.** The Super Resolution and Ray
   Reconstruction presets, and the choice between DLSS and XeSS Super Resolution, now apply without a restart in
   Direct3D 12, Direct3D 11 and Vulkan games. Frame Generation presets and the frame-generation engine still need a
@@ -34,8 +59,10 @@ Includes everything from 1.2.0-beta.1. Intel XeSS and XeFG remain **experimental
 - The menu warns about XeSS with Ray Reconstruction only while the game actually runs Ray Reconstruction.
 
 Checked by the maintainer: Smooth Motion in Enshrouded on driver 621.01, XeFG X2 and X4 in Cyberpunk 2077, XeFG X4 in
-GTA V Enhanced, XeSS SR in 007 First Light. Live preset switching has automated checks only; other games, GPUs and
-drivers were not tested.
+GTA V Enhanced, XeSS SR in 007 First Light, XeFG X2 in No Man's Sky and DOOM: The Dark Ages (Vulkan, borderless,
+NR off), NR after RR in 007 First Light with path tracing (image quality and cost not measured). Live preset
+switching, HDR/exposure overrides and provider admissions have automated checks only; other games, GPUs and
+drivers were not tested. On an Intel route the menu can be unavailable: use the Hub to change settings.
 
 ### Known issue
 
@@ -46,6 +73,10 @@ drivers were not tested.
   generation started. You can keep using SCSKiller: in its **Settings**, turn off **Record in all compatible games**
   (and recording on the game's own page if you turned it on there), then restart the game. Other tools that hook
   DXGI's swap chain creation can have the same effect.
+
+Thanks to [@SanyaGames227](https://github.com/SanyaGames227) for requesting HDR-input and auto-exposure controls
+([#63](https://github.com/SilyNoMeta/rtx-encore/issues/63)), and to [@Theoryedz](https://github.com/Theoryedz) for
+the report in [#58](https://github.com/SilyNoMeta/rtx-encore/issues/58). The reporters have not tested this release.
 
 Thanks to [@dashdogy](https://github.com/dashdogy) (MFG Unlocker) for the idea of changing DLSS presets and the reconstruction engine while the game runs.
 
