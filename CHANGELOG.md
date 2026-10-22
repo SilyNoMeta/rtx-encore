@@ -40,6 +40,12 @@ drivers were not tested.
 ### Known issue
 
 - **007 First Light** can still crash intermittently at startup; another launch may succeed.
+- **SCSKiller's recorder is not compatible with RTX Encore.** When SCSKiller records a game, its recorder takes over
+  the game's swap chain creation before RTX Encore, so XeFG is refused and the game's DLSS-G stays in use (the Frame
+  Generation chip shows DLSS-G). In The Witcher 3 the game could also freeze while loading, with a GPU reset when frame
+  generation started. You can keep using SCSKiller: in its **Settings**, turn off **Record in all compatible games**
+  (and recording on the game's own page if you turned it on there), then restart the game. Other tools that hook
+  DXGI's swap chain creation can have the same effect.
 
 ## 1.2.0-beta.1
 

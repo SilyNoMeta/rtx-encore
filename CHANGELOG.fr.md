@@ -42,6 +42,12 @@ automatisés ; les autres jeux, GPU et pilotes n'ont pas été testés.
 ### Problème connu
 
 - **007 First Light** peut encore planter par intermittence au démarrage ; un autre lancement peut réussir.
+- **L'enregistreur de SCSKiller n'est pas compatible avec RTX Encore.** Quand SCSKiller enregistre un jeu, son
+  enregistreur prend la création de la swap chain du jeu avant RTX Encore : XeFG est refusé et le DLSS-G du jeu reste
+  utilisé (le chip Frame Generation affiche DLSS-G). Dans The Witcher 3, le jeu pouvait aussi se figer au chargement,
+  avec un reset du GPU au démarrage de la génération d'images. Vous pouvez garder SCSKiller : dans ses **Settings**, désactivez **Record in all
+  compatible games** (et l'enregistrement sur la page du jeu si vous l'y avez activé), puis relancez le jeu. D'autres
+  outils qui interceptent la création de swap chain de DXGI peuvent avoir le même effet.
 
 ## 1.2.0-beta.1
 

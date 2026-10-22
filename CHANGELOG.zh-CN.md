@@ -34,6 +34,11 @@ XeFG X4、007 First Light 中的 XeSS SR。运行中切换预设只有自动化�
 ### 已知问题
 
 - **007 First Light** 仍可能在启动时间歇性崩溃；再次启动可能成功。
+- **SCSKiller 录制器与 RTX Encore 不兼容。** SCSKiller 录制某个游戏时，其录制器会先于 RTX Encore 接管游戏的交换链创建，
+  因此 XeFG 被拒绝，游戏继续使用自己的 DLSS-G（Frame Generation 标签显示 DLSS-G）。在 The Witcher 3 中，游戏还可能在
+  加载时卡住，并在帧生成启动时出现 GPU 重置。仍可继续使用 SCSKiller：在其
+  **Settings** 中关闭 **Record in all compatible games**（如果曾在该游戏页面单独开启录制，也一并关闭），然后重启游戏。
+  其他拦截 DXGI 交换链创建的工具也可能造成同样的结果。
 
 ## 1.2.0-beta.1
 
