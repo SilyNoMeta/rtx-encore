@@ -2,6 +2,45 @@
 
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.2.0
+
+Includes everything from 1.2.0-beta.1. Intel XeSS and XeFG remain **experimental**.
+
+### New
+
+- **DLSS presets and the reconstruction engine change while the game runs.** The Super Resolution and Ray
+  Reconstruction presets, and the choice between DLSS and XeSS Super Resolution, now apply without a restart in
+  Direct3D 12, Direct3D 11 and Vulkan games. Frame Generation presets and the frame-generation engine still need a
+  restart. In Vulkan games, XeSS must already be selected when the game starts.
+- **Smooth Motion on NVIDIA driver 621.01** (RTX 30). Verified in Enshrouded (Vulkan) on the maintainer's PC.
+- **Smooth Motion in Vulkan games** now always runs where the game's NVIDIA profile excludes it. The
+  **Force Smooth Motion** setting is gone; a `smoothMotionForce` line left in `rtx-encore.jsonc` is ignored. NVIDIA
+  may exclude a game for a reason: unexpected results remain possible there. See [Smooth Motion](docs/SMOOTH-MOTION.md).
+- **The menu names the engine and the preset.** The Upscaling chip shows DLSS SR, DLSS RR or XeSS-SR and, for DLSS,
+  the preset requested when the feature was created; the Frame Generation chip shows DLSS-G and the FG preset RTX
+  Encore supplies. The driver does not report the model it actually runs.
+- DLSS models delivered by the NVIDIA driver (for example through the NVIDIA app's DLSS override) are now recognized
+  by the menu.
+
+### Fixed
+
+- **Smooth Motion could stay off in Vulkan games**: it now starts reliably when the driver is reloaded during the
+  game's startup.
+- **XeFG**: Cyberpunk 2077 window resizing, borderless window size, game-controlled multi-frame generation
+  (X4 checked in GTA V Enhanced), the menu drawn over XeFG's presentation, and XeFG created before the game's
+  Streamline setup.
+- **XeSS Super Resolution**: Direct3D 12 games recording on their own command lists, the game's compute state
+  restored after XeSS, legacy Vulkan integrations routed to XeSS, and the DLSS fallback presets updated live.
+- The menu warns about XeSS with Ray Reconstruction only while the game actually runs Ray Reconstruction.
+
+Checked by the maintainer: Smooth Motion in Enshrouded on driver 621.01, XeFG X2 and X4 in Cyberpunk 2077, XeFG X4 in
+GTA V Enhanced, XeSS SR in 007 First Light. Live preset switching has automated checks only; other games, GPUs and
+drivers were not tested.
+
+### Known issue
+
+- **007 First Light** can still crash intermittently at startup; another launch may succeed.
+
 ## 1.2.0-beta.1
 
 **XeSS / XeFG: VERY EXPERIMENTAL.** Getting this integration working was a particularly difficult and frustrating part of development :) Expect bugs, crashes, visual artifacts and differences between games and graphics APIs. Please report problems: in RTX Encore Hub, open the game’s **Health** page, choose **Prepare a diagnostic**, review the archive for personal information, then attach it to an [RTX Encore issue](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose). Include your engine choices, graphics API and requested multiplier. The Hub does not upload the archive for you.

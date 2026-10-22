@@ -16,7 +16,9 @@ RTX Encore 在 DirectX 11、DirectX 12 和 Vulkan 游戏中绘制自己的菜单
 
 每个页面顶部都有四个状态标签：**Upscaling**、**Frame Generation**、**Smooth Motion** 和 **Neural Rendering**。
 每个标签通过彩色圆点和一个数值显示相应功能的状态；悬停查看详情，点击进入设置。持续存在的问题会显示在标签下方的
-卡片中，并给出处理方法。
+卡片中，并给出处理方法。**Upscaling** 还会显示正在使用的引擎（DLSS SR、DLSS RR 或 XeSS-SR），以及 DLSS 功能创建时由游戏
+或 RTX Encore 请求的预设；**Frame Generation** 会显示 DLSS-G 或 XeSS-FG，以及 RTX Encore 提供的 FG 预设。驱动不会报告
+它实际运行的模型，因此驱动覆盖仍可能替换它。
 
 | 选项卡 | 内容 |
 | :--- | :--- |

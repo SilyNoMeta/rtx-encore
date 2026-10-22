@@ -87,8 +87,8 @@ ensemble ; ces notes ne recommandent pas de remplacer des fichiers individuellem
 
 ## Pilotes pour Smooth Motion
 
-Smooth Motion sur RTX 30 accepte les pilotes NVIDIA **620.12**, **617.42**, **617.14**, **616.92** et
-**616.64**, et aucun autre. Seul le **617.14** a été vérifié en jeu. Voir [Smooth Motion](SMOOTH-MOTION.fr.md).
+Smooth Motion sur RTX 30 accepte les pilotes NVIDIA **621.01**, **620.12**, **617.42**, **617.14**, **616.92**,
+**616.64** et **591.86**, et aucun autre. Les **617.14** et **621.01** ont été vérifiés en jeu. Voir [Smooth Motion](SMOOTH-MOTION.fr.md).
 
 ## Fichier pour Neural Rendering
 

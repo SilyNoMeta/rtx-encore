@@ -201,6 +201,6 @@ adds VRAM again in exchange for less NR time.
 When you report a problem, include the game and its graphics API, the engine chosen, and the menu's report
 (**System** tab, **Copy**).
 
-## Per-pass controls in 1.2.0-beta.1
+## Per-pass controls (since 1.2.0)
 
 Each of up to four NR passes can override intensity, local tone, local structure, skin structure and the character mask, or inherit the global value. Numeric overrides are 0 to 2; the mask is `inherit`, `true` or `false`. Passes after the first inherit their tone from `nrLaterPassLocalTone`. An intensity of zero still evaluates the pass and does not remove its GPU/VRAM cost.

@@ -19,7 +19,10 @@ lancement. Le raccourci se change dans le menu.
 Une rangée de quatre pastilles coiffe chaque page : **Upscaling**, **Frame Generation**, **Smooth Motion** et
 **Neural Rendering**. Chacune montre l'état de sa fonction par un point de couleur et un chiffre ; survolez-la pour
 le détail, cliquez pour aller à ses réglages. Quand un problème dure, une carte sous la rangée le nomme et dit
-comment le corriger.
+comment le corriger. **Upscaling** nomme aussi le moteur à l'œuvre (DLSS SR, DLSS RR ou XeSS-SR) et, pour DLSS, le
+preset demandé par le jeu ou par RTX Encore à la création ; **Frame Generation** nomme DLSS-G ou XeSS-FG et le preset
+FG fourni par RTX Encore. Le pilote n'indique pas le modèle qu'il exécute réellement : une surcharge du pilote peut
+encore le remplacer.
 
 | Onglet | Ce qu'il contient |
 | :--- | :--- |

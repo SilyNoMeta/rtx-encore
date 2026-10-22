@@ -19,6 +19,9 @@ be changed in the menu.
 A strip of four chips heads every page: **Upscaling**, **Frame Generation**, **Smooth Motion** and **Neural
 Rendering**. Each shows the state of its feature with a colored dot and one figure; hover it for the detail, click it
 to go to its settings. When a problem lasts, a card under the strip names it and says how to fix it.
+**Upscaling** also names the engine at work (DLSS SR, DLSS RR or XeSS-SR) and, for DLSS, the preset the game or RTX
+Encore asked for when the feature was created; **Frame Generation** names DLSS-G or XeSS-FG and the FG preset RTX
+Encore supplies. The driver does not report the model it actually runs, so a driver override can still replace it.
 
 | Tab | What it holds |
 | :--- | :--- |

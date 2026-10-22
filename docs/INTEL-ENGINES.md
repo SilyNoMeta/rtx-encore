@@ -4,9 +4,9 @@
 
 This documentation is prepared for the upcoming beta; it does not announce a published package. Available versions are listed on the [releases page](https://github.com/SilyNoMeta/rtx-encore/releases).
 
-RTX Encore 1.2.0-beta.1 adds a choice of reconstruction and frame-generation engines. Leave **Game** selected to keep the game’s normal engine. Intel modes are experimental, off by default and require compatible game inputs; choosing an engine does not prove it became active.
+RTX Encore 1.2.0 adds a choice of reconstruction and frame-generation engines. Leave **Game** selected to keep the game’s normal engine. Intel modes are experimental, off by default and require compatible game inputs; choosing an engine does not prove it became active.
 
-Use **RTX Encore Hub 1.2.0-beta.1 or later** to install or update the mod and its Intel dependencies together. The Hub verifies the files, includes the accompanying Intel license, and keeps the operation reversible. Disabling NVIDIA downloads does not remove the Intel dependencies required by this mod. Intel files already supplied by the game are kept separate.
+Use **RTX Encore Hub 1.2.0 or later** to install or update the mod and its Intel dependencies together. The Hub verifies the files, includes the accompanying Intel license, and keeps the operation reversible. Disabling NVIDIA downloads does not remove the Intel dependencies required by this mod. Intel files already supplied by the game are kept separate.
 
 | Setting | Default | Effect |
 | :--- | :---: | :--- |

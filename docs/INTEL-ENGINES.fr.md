@@ -4,9 +4,9 @@
 
 Cette documentation prépare la prochaine bêta ; elle n’annonce pas la publication d’un paquet. Les versions disponibles figurent sur la [page des publications](https://github.com/SilyNoMeta/rtx-encore/releases).
 
-RTX Encore 1.2.0-beta.1 permet de choisir les moteurs de reconstruction et de génération d’images. Laissez **Game** pour conserver le moteur habituel du jeu. Les modes Intel sont expérimentaux, désactivés par défaut et demandent des entrées de jeu compatibles ; le choix d’un moteur ne prouve pas son activation.
+RTX Encore 1.2.0 permet de choisir les moteurs de reconstruction et de génération d’images. Laissez **Game** pour conserver le moteur habituel du jeu. Les modes Intel sont expérimentaux, désactivés par défaut et demandent des entrées de jeu compatibles ; le choix d’un moteur ne prouve pas son activation.
 
-Utilisez **RTX Encore Hub 1.2.0-beta.1 ou ultérieur** pour installer ou mettre à jour ensemble le mod et ses dépendances Intel. Le Hub vérifie les fichiers, conserve la licence Intel qui les accompagne et permet de défaire l’opération. Désactiver les téléchargements NVIDIA ne supprime pas les dépendances Intel requises par ce mod. Les fichiers Intel fournis par le jeu restent distincts.
+Utilisez **RTX Encore Hub 1.2.0 ou ultérieur** pour installer ou mettre à jour ensemble le mod et ses dépendances Intel. Le Hub vérifie les fichiers, conserve la licence Intel qui les accompagne et permet de défaire l’opération. Désactiver les téléchargements NVIDIA ne supprime pas les dépendances Intel requises par ce mod. Les fichiers Intel fournis par le jeu restent distincts.
 
 | Réglage | Défaut | Effet |
 | :--- | :---: | :--- |
