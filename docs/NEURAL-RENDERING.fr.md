@@ -14,20 +14,12 @@ d'images.
 
 ## Ce que RTX Encore lui apporte
 
-RTX Encore développe ses propres options de performance NR pour **Ampere (RTX 30)**, en parallèle de la prise en
-charge des RTX 40 et du support expérimental des RTX 20. Elles concernent le moteur NVIDIA et notre intégration
-d'OpenDLSS-NR : traitement plus rapide, résolution de travail NR indépendante, et **mode ultra-rapide** qui a réduit
-le temps NR de **48 %** dans la comparaison Wukong ci-dessous.
-
 | | |
 | :--- | :--- |
 | **Trois générations de cartes** | RTX 40, RTX 30 et, à titre expérimental, RTX 20, dans les jeux DirectX 11, DirectX 12 et Vulkan. |
 | **Traitement plus rapide, à image identique** | Des optimisations activées par défaut pour le moteur NVIDIA sur RTX 20 et RTX 30, avec une sortie identique dans les tests locaux de référence. Performances mesurées sur RTX 30 ; la validation sur une RTX 20 physique reste à faire. Une partie est propre à 310.8.0 : avec 310.9.16, le réseau A prend un peu plus de temps qu'avec 310.8.0. |
-| **Précision Fast** | Moteur NVIDIA : environ 17 % de temps NR en moins mesurés sur RTX 30, avec de petites différences d'image. Open a aussi sa propre précision Fast pour RTX 30, désactivée par défaut. |
+| **Précision Fast** | Moteur NVIDIA : environ 17 % de temps NR en moins mesurés sur RTX 30, avec de petites différences d'image. |
 | **Résolution NR indépendante** | NR peut travailler sous la résolution de l'écran, tandis que DLSS conserve sa résolution de rendu et les détails reconstruits. Performance et Ultra Performance réduisent le travail NR sans imposer un réglage DLSS inférieur. |
-| **D'autres réglages Open pour RTX 30** | L'option **More speed for more VRAM** réduit le temps NR à image identique, contre davantage de VRAM ; **Fast projection** privilégie la vitesse avec de petites différences d'image. Voir [Réglages de performance](#réglages-de-performance-sur-rtx-30). |
-| **Moins de mémoire pour Open** | Environ 41–43 % de mémoire allouée en moins par le moteur NR Open dans les tests locaux de son chemin RTX 30, à sortie identique. Voir [Mémoire](#mémoire-du-moteur-open). |
-| **Mode ultra-rapide** | L'option **Ultra-fast mode** développée par RTX Encore pour Open : 18,7 → 9,8 ms de temps NR et 73,8 → 94,9 FPS affichés dans la comparaison Wukong. Voir [Mode ultra-rapide](#mode-ultra-rapide). |
 | **Conçu pour cohabiter avec la génération d'images** | NR s'exécute une fois par image calculée, jamais sur les images générées. |
 | **Plusieurs passes, un style pour chacune** | Une à quatre passes, chacune avec son rendu. |
 | **Jeux HDR** | Pris en charge, avec un réglage de luminosité. |
@@ -68,8 +60,8 @@ NR se prépare en arrière-plan : les premières images peuvent rester telles qu
 | **Strength** | 100 % | L'intensité de l'effet, de 0 à 200 %. |
 | **Style** | Default | Le rendu de l'image : Default, Natural ou Cinematic. |
 | **Passes** | 1 | NR peut être appliqué de nouveau à son propre résultat, jusqu'à quatre fois. Chaque passe coûte du temps GPU et de la VRAM, et davantage de passes ne garantit pas une meilleure image. |
-| **Precision** | Exact | Moteur NVIDIA, RTX 20 et RTX 30 : *Fast* réduit le temps NR, avec environ 17 % mesurés sur RTX 30 et de petites différences d'image. Open a un choix Exact/Fast séparé pour RTX 30. Relancez le jeu pour appliquer. |
-| **NR model preset** | B | Avec `nvngx_dlssnr.dll` 310.9.16 : **B** est un réseau plus petit et bien plus rapide, **A** le plus grand, celui que 310.8.0 exécute, **DLL default** laisse le fichier choisir (B). Avec 310.8.0, chaque choix exécute son unique réseau. Il se trouve à côté des presets de modèle SR et RR (onglet **Image**, Upscaling) et s'applique en direct ; Open l'ignore. |
+| **Precision** | Exact | Moteur NVIDIA, RTX 20 et RTX 30 : *Fast* réduit le temps NR, avec environ 17 % mesurés sur RTX 30 et de petites différences d'image. |
+| **NR model preset** | B | Avec `nvngx_dlssnr.dll` 310.9.16 : **B** est un réseau plus petit et bien plus rapide, **A** le plus grand, celui que 310.8.0 exécute, **DLL default** laisse le fichier choisir (B). Avec 310.8.0, chaque choix exécute son unique réseau. Il se trouve à côté des presets de modèle SR et RR (onglet **Image**, Upscaling) et s'applique en direct. |
 
 Dans un test local en 1080p sur une RTX 3070 Ti Laptop, le réseau B a pris environ 15 ms de temps NR et le réseau A
 environ 27 ms. B donne une image différente de A. La prise en charge de 310.9.16 est expérimentale et peu testée.
@@ -81,22 +73,9 @@ NR. Ces options ont des compromis différents ; leurs gains ne sont pas des pour
 
 | Réglage | Moteur | Défaut | Gain et compromis |
 | :--- | :--- | :---: | :--- |
-| **Precision : Fast** | NVIDIA ou Open sur RTX 30 | Exact | Traitement plus rapide, avec une image légèrement différente. Les 17 % mesurés ci-dessus concernent NVIDIA, pas Open. Relancez le jeu pour appliquer. |
-| **More speed for more VRAM** | Open sur RTX 30 | Désactivé | Temps NR plus court, à image identique, contre environ 160 Mo de VRAM en plus en 1440p avec DLSS Balanced. Laissez désactivé si la VRAM est presque pleine. Redémarrage requis. |
-| **Fast projection** | Open sur RTX 30 | Activé | Traitement plus rapide, avec de petites différences d'image. Redémarrage requis. |
-| **Avoid NR padding** | NVIDIA ou Open | Désactivé | Autorise une taille NR voisine plus petite, au plus 2 % de moins par axe. Peut changer l'image NR ; ne change pas la taille de rendu DLSS. S'applique en direct. |
+| **Precision : Fast** | NVIDIA sur RTX 30 | Exact | Traitement plus rapide, avec une image légèrement différente. Les 17 % mesurés ci-dessus concernent NVIDIA, uniquement. Relancez le jeu pour appliquer. |
+| **Avoid NR padding** | NVIDIA | Désactivé | Autorise une taille NR voisine plus petite, au plus 2 % de moins par axe. Peut changer l'image NR ; ne change pas la taille de rendu DLSS. S'applique en direct. |
 | **NR frames in flight** | NVIDIA, DirectX 12 avec Reflex | 0 | Limite les images NR en attente à 1 ou 2 ; la génération d'images active utilise au moins 2. S'applique en direct ; son effet sur les performances en jeu reste à vérifier. |
-| **Ultra-fast mode** | Open, une passe NR | Désactivé | Environ moitié moins de temps NR dans la comparaison ci-dessous, avec une couche NR plus ancienne et des défauts possibles en mouvement. Redémarrage requis. |
-
-Pour comparer les performances, conservez une passe, la même scène, la même résolution de sortie et le même
-multiplicateur de génération d'images. Réduisez d'abord **NR Resolution** à Performance ou Ultra Performance en
-gardant votre réglage DLSS préféré. Comparez ensuite la précision Fast. Pour essayer le mode ultra-rapide,
-choisissez Open et le backend marqué **RTX 30**, activez **Ultra-fast mode**, puis relancez le jeu. Changez
-une option à la fois et vérifiez les personnages en mouvement et les surfaces qui apparaissent, ainsi que les FPS.
-
-**Ultra Performance** est le préréglage de résolution NR (33 % de la largeur et de la hauteur de sortie).
-**Ultra-fast mode** est le mode ultra-rapide d'Open. On peut les combiner, mais choisir l'un n'active pas
-l'autre.
 
 ### Passes et styles
 
@@ -115,15 +94,7 @@ luminosité donnée à NR dans les jeux HDR sont dans les groupes qui s'ouvrent 
 
 ## Moteurs
 
-| Moteur | État | Notes |
-| :--- | :--- | :--- |
-| **NVIDIA** (par défaut) | Expérimental | Fait tourner le NR de NVIDIA. |
-| **Open** | Très expérimental | Une implémentation ouverte de NR ([OpenDLSS-NR](https://github.com/maanHimself/OpenDLSS-NR)). Attendez-vous à des plantages, du scintillement, des défauts d'image et des incompatibilités. Il a quand même besoin de `nvngx_dlssnr.dll` à côté du fichier du mod. |
-
-Changer de moteur demande de relancer le jeu, et il n'y a pas de bascule automatique d'un moteur à l'autre. Avec
-**Open**, le menu demande de choisir le backend adapté à votre carte et comment il s'exécute ; ses options y sont
-décrites. Open ne fonctionne pas sur RTX 20. Son chemin RTX 30 et ses options de performance font partie du travail
-Ampere de RTX Encore ; il n'est pas garanti de produire la même image que le moteur NVIDIA.
+OpenNR est retiré en 1.3.0. Neural Rendering utilise le runtime NVIDIA. Une configuration OpenNR migre avec NR désactivé ; réactivez-le pour utiliser NVIDIA NR.
 
 ## Coût
 
@@ -141,57 +112,6 @@ Il s'agit des **FPS affichés avec la génération d'images X3**, avec le moteur
 réglages par défaut à Precision Fast et Resolution Performance augmente les FPS affichés de 18 % (76 à 90 FPS).
 Cela ne mesure pas une hausse de 17 % des FPS du jeu : ce chiffre concerne le temps de traitement NR. Avec la
 génération d'images, NR s'applique aux images que le jeu calcule, jamais aux images générées.
-
-Deux options expérimentales vont plus loin, dans le groupe **Performance** : **Avoid NR padding** et, pour les jeux
-DirectX 12, **NR frames in flight**. Chacune est décrite dans le menu. Le gain le plus important est le mode
-ultra-rapide ci-dessous.
-
-## Mode ultra-rapide
-
-**Ultra-fast mode** est le mode ultra-rapide développé par RTX Encore pour le moteur Open. Il répartit le
-travail NR sur deux images calculées et maintient la couche NR alignée sur la scène entre les mises à jour. Il
-réduit ainsi le travail NR par image avec un rendu temporel différent, au lieu de simplement réduire la résolution.
-
-Mesuré dans le benchmark intégré de Black Myth: Wukong sur un **RTX 3070 Ti Laptop (Ampere)**, avec la génération
-d'images X3 (**un passage par configuration**) :
-
-| | Moteur Open | Moteur Open, ultra-rapide |
-| :--- | ---: | ---: |
-| Temps NR par image calculée | 18,7 ms | 9,8 ms |
-| Fréquence d'images affichée | 73,8 FPS | 94,9 FPS |
-
-Soit **48 % de temps NR en moins** et **29 % de FPS affichés en plus** dans cette comparaison. Le mode répartit le
-travail pour éviter d'alterner une image avec tout le coût NR et une image sans travail NR. Le démarrage et les
-réinitialisations d'historique peuvent encore coûter davantage ; ce résultat ne garantit ni un gain ni des temps
-d'image réguliers dans tous les jeux. Ces mesures existantes ne sont pas le benchmark d'une nouvelle build de
-publication ; cette page ne consigne pas d'identifiant exact de build.
-
-- **L'activer** : onglet **Image**, moteur **Open**, puis **Ultra-fast mode** dans le groupe **Performance**.
-  Relancez le jeu. Il fonctionne avec une passe NR, dans les jeux DirectX 11, DirectX 12 et Vulkan, et a été vu en
-  jeu dans Black Myth: Wukong, Palworld et Shadows of Doubt.
-- **Ce qui change dans l'image** : la couche NR suit l'image avec une image de retard. Dans les mouvements rapides,
-  elle peut traîner ou baver, et une surface qui vient d'apparaître reçoit son NR un instant plus tard.
-- **Deux réglages l'ajustent en direct** : **Ghost tolerance** (plus bas : moins de fantômes derrière ce qui bouge,
-  plus de surface en attente de NR) et **Fill tolerance** (la facilité avec laquelle une surface qui vient
-  d'apparaître emprunte le NR de surfaces semblables autour d'elle ; 0 désactive ce remplissage).
-- Il utilise quelques Mo de VRAM en plus.
-
-Ce mode appartient au moteur Open, qui reste très expérimental : voir [Moteurs](#moteurs).
-
-## Mémoire du moteur Open
-
-Nos travaux Ampere réduisent aussi l'empreinte mémoire d'Open. Des tests automatisés locaux existants du chemin
-RTX 30, avec **More speed for more VRAM** désactivé, ont relevé ces allocations GPU propres au moteur NR :
-
-| Taille de travail NR | Avant | Après |
-| :--- | ---: | ---: |
-| 1472×828 | 601 MiB | 345 MiB |
-| 1920×1080 | 846 MiB | 501 MiB |
-
-Soit environ **41–43 % de mémoire NR en moins**, avec une sortie identique dans les comparaisons de référence.
-Ces chiffres comptent les allocations du moteur Open, pas la VRAM totale du jeu ; ce sont des résultats automatisés
-locaux, pas une mesure de FPS en jeu. Ils ne décrivent pas la mémoire du moteur NVIDIA ni celle de la génération
-d'images. Activer **More speed for more VRAM** ajoute de nouveau de la VRAM en échange de moins de temps NR.
 
 ## Quand quelque chose ne fonctionne pas
 

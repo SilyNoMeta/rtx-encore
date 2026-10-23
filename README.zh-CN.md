@@ -26,13 +26,15 @@ Smooth Motion 和 Neural Rendering。**
 > 它在游戏进程内加载：请勿在联机游戏或受反作弊保护的游戏中使用，否则可能被拦截，或导致账号被标记。
 > 替换任何文件之前请先备份。
 
-## 1.2.2 新功能
+## 1.3.0 新功能
 
-- **重建后实时锐化。** 在 **Image > Super Resolution** 中为 DLSS、DLAA、光线重建及替代 XeSS 选择 Off、Game 或 Custom。默认关闭，Custom 默认 30%；启用 NR 时在其后锐化。高强度可能产生光晕并放大噪点；Vulkan 运行及实际游戏画质仍待验证。[设置与限制](docs/SUPER-RESOLUTION.zh-CN.md)。
-- **兼容性修复。** 修复 SurrounDead（DirectX 12）的 Smooth Motion 启动、Baldur’s Gate 3 与 bg3fgvk / OptiScaler F5 的 Vulkan 内置菜单，以及 OptiScaler F5 的 DLSS 帧生成兼容性。贡献者与验证范围见[更新日志](CHANGELOG.zh-CN.md)。
+- **中央优先 Neural Rendering（实验性，默认关闭）。** NR 在图像中央以全强度运行，越靠近边缘越轻，以换取更高 FPS。在菜单中开启 **Foveated NR** 并选择 Light、Balanced 或 Strong。[设置](docs/SETTINGS.zh-CN.md)。
+- **RTX 20 上的 Smooth Motion（实验性）。** 需要 NVIDIA 621.01 与 DirectX 12；可按游戏选择 V1 或 V2。[兼容性](docs/COMPATIBILITY.zh-CN.md)。
+- **修复。** 在运动矢量为输出分辨率的游戏中（Unreal Engine 5、Black Myth: Wukong），Neural Rendering 现在能正确跟随运动；Vulkan 模式下搭配 bg3fgvk 的 Baldur’s Gate 3 不再崩溃，Neural Rendering 也可运行。
+- **移除。** 可选的 Cyber Engine Tweaks 面板和实验性 OpenNR 引擎。贡献者与验证范围见[更新日志](CHANGELOG.zh-CN.md)。
 - **1.2 系列功能。** 选择 DLSS 或实验性 XeSS 重建、DLSS-G 或实验性 XeFG 帧生成，在兼容游戏中实时切换重建引擎及 DLSS 预设，并逐轮调整 NR 和共用 HDR/曝光输入。
 
-模组与 Hub 分别发布。Hub 1.2.2 新增 Hub 日志导出、经验证的压缩备份和游戏页面选择记忆。锐化现已可在模组菜单中使用；Hub 中的对应控制项正在开发，将随后续版本提供。
+模组与 Hub 分别发布。Hub 1.3.0 提供本版本新设置的控制项。
 
 **XeSS / XeFG：高度实验性。** 这部分集成的开发过程非常艰难，也相当折腾 :) 请预期可能出现错误、崩溃、画面伪影，以及不同游戏和图形 API 之间的行为差异。欢迎报告问题：在 RTX Encore Hub 中打开游戏的 **健康** 页面，选择 **生成诊断包**，检查并移除个人信息后，将诊断压缩包附加到 [RTX Encore issue](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose)。请注明选择的引擎、图形 API 和请求的倍率。Hub 不会自动上传该压缩包。
 
@@ -48,7 +50,7 @@ Smooth Motion 和 Neural Rendering。**
 | 🛡️ | **更干净的生成帧** | 防止细小几何体（栅栏、电线、植被）撕裂，减少移动阴影中的瑕疵；界面和文字保持清晰。 |
 | ⚡ | **更轻量的帧生成** | 一个性能选项，在不改变画面的前提下降低每个生成帧的 GPU 开销。 |
 | 🌀 | **[RTX 30 上的 Smooth Motion](docs/SMOOTH-MOTION.zh-CN.md)** | NVIDIA 驱动的插帧功能，适用于 DirectX 11、DirectX 12 和 Vulkan 游戏，包括没有 DLSS 的游戏。默认关闭。 |
-| ✨ | **[Neural Rendering](docs/NEURAL-RENDERING.zh-CN.md)** | 在 RTX 20、30 和 40 上运行 NR，并提供 RTX Encore 自行开发的 Ampere 性能选项：优化处理、Fast 精度、独立的 NR 分辨率和 Open 超快模式。支持一至四遍处理、每遍独立风格以及 HDR。实验性功能，默认关闭。 |
+| ✨ | **[Neural Rendering](docs/NEURAL-RENDERING.zh-CN.md)** | 在 RTX 20、30 和 40 上运行 NR，并提供 RTX Encore 自行开发的 Ampere 性能选项：优化处理、Fast 精度、独立的 NR 分辨率。支持一至四遍处理、每遍独立风格以及 HDR。实验性功能，默认关闭。 |
 | 🎛️ | **[内置菜单和叠加层](docs/MENU-AND-OVERLAY.zh-CN.md)** | 在游戏中按 **Insert**：所有设置、每项功能的状态，以及显示帧率、倍率、帧时间稳定性、GPU 和显存的叠加层。支持 DirectX 11、DirectX 12 和 Vulkan。 |
 | 🚀 | **[RTX 30 上的 Fast super resolution](docs/SUPER-RESOLUTION.zh-CN.md)** | 为 RTX 30 在预设为 M 或 L 的 DirectX 12 游戏中提供更快的 DLSS 超分辨率：在测量的系统上每个放大帧约减少 16% 至 20% 的 GPU 时间，画面与原版非常接近。默认关闭。 |
 | 🔍 | **DLSS 渲染分辨率** | 在已使用 DLSS 的游戏中选择 DLAA、质量、平衡、性能、超级性能或自定义比例。 |
@@ -56,17 +58,7 @@ Smooth Motion 和 Neural Rendering。**
 
 ## 面向 Ampere 优化的 Neural Rendering
 
-**让 RTX 30 上的 NR 更实用，是 RTX Encore 开发的重点之一。** 我们的工作包括在本地参考测试中保持输出一致的
-加速处理、可选的 Fast 精度、独立于 DLSS 的 NR 分辨率、降低 Open 内存占用，以及为我们集成的 OpenDLSS-NR 开发的性能选项。
-
-Open 的**超快模式** **Ultra-fast mode** 在 RTX 3070 Ti Laptop、帧生成 X3 的《黑神话：悟空》内置
-基准测试中，将 NR 时间从 **18.7 ms 降至 9.8 ms（−48 %）**，显示帧率从 **73.8 FPS 提升至 94.9 FPS（+29 %）**。
-这是已有对比，每种配置各运行一次，并不保证所有情况下的收益。该模式是实验性的，只支持一遍 NR；运动时可能出现
-NR 效果滞后或拖影。
-
-**Ultra Performance 分辨率**是另一项独立选项：在保留你偏好的 DLSS 渲染设置时，降低 NR 的工作尺寸。
-Open 的其他 RTX 30 设置也可以用轻微的画面差异或额外显存换取更短的 NR 时间。
-**[查看测量结果、设置和取舍](docs/NEURAL-RENDERING.zh-CN.md)。**
+RTX Encore 提供优化的 NVIDIA NR 处理、可选 Fast 精度和独立于 DLSS 的 NR 分辨率。仍支持一至四遍处理及逐遍画面设置。[查看设置和测量结果](docs/NEURAL-RENDERING.zh-CN.md)。
 
 ## 支持的硬件
 
@@ -162,7 +154,7 @@ RTX Encore 最初是 TonyJoaca 的 [DLSSG-Transfusion](https://github.com/TonyJo
 - [mavismmg/MFGAdaUnlock-RenoDx](https://github.com/mavismmg/MFGAdaUnlock-RenoDx)：帧生成画质研究；
 - [sdli1995/dlssg_for_sm86](https://github.com/sdli1995/dlssg_for_sm86)：RTX 20 和 RTX 30 上的帧生成研究；
 - [Intel XeSS](https://github.com/intel/xess)：XeSS、XeFG 和 XeLL SDK 接口；
-- [maanHimself/OpenDLSS-NR](https://github.com/maanHimself/OpenDLSS-NR)：开放的 Neural Rendering 引擎；
+- [maximedgoulet/FoveatedDLSS5](https://github.com/maximedgoulet/FoveatedDLSS5)：中央优先 Neural Rendering 的构想；
 - 所有测试版本并报告问题的人：有好几项修复正是因为这些报告才得以完成。
 
 发布包中包含的组件及其许可证列在 [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) 中。

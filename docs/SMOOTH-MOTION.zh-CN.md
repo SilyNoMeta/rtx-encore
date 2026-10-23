@@ -1,4 +1,4 @@
-# RTX 30 上的 Smooth Motion
+# RTX 20 / RTX 30 上的 Smooth Motion
 
 *[English](SMOOTH-MOTION.md) · [Français](SMOOTH-MOTION.fr.md)*
 
@@ -11,7 +11,7 @@ Smooth Motion 是 NVIDIA 驱动的插帧功能：在 DirectX 11、DirectX 12 和
 
 ## 要求
 
-- 一块 **RTX 30** 显卡。RTX 40 显卡的 Smooth Motion 由 NVIDIA 提供；不支持 RTX 20 显卡。
+- 一块 **RTX 30** 显卡。RTX 40 显卡的 Smooth Motion 由 NVIDIA 提供；从 RTX Encore 1.3.0 起实验性支持 RTX 20，详见下文。
 - NVIDIA 驱动必须恰好是以下版本之一：**621.01**、**620.12**、**617.42**、**617.14**、**616.92**、**616.64** 或
   **591.86**。
   617.14 和 621.01 已在游戏中得到验证。使用其他任何驱动时，该功能保持关闭并说明原因；RTX Encore 的其余功能
@@ -27,6 +27,17 @@ Smooth Motion 是 NVIDIA 驱动的插帧功能：在 DirectX 11、DirectX 12 和
 
 菜单顶部的 **Smooth Motion** 标签会显示状态。“Driver prepared”表示驱动已就绪；仅凭这一点并不能确认插值帧
 已经显示出来。请用能测量显示帧数的工具（例如 NVIDIA FrameView）检查结果。
+
+## RTX 20：V1 或 V2（从 1.3.0 起）
+
+RTX 20 需要 **NVIDIA 621.01** 驱动和 **DirectX 12** 游戏。在 Hub 的 Smooth Motion 设置中，
+或游戏内菜单的 **RTX 20 variant** 选项中，选择 **V1（测试版 1）** 或 **V2（测试版 2）**。
+默认使用 V1。每次更改后需重启游戏。配置键为 `smoothMotionTuringVariant`，值为 `"v1"` 或 `"v2"`。
+
+请在相同场景和设置下使用 FrameView 或叠加层比较，同时观察画质、响应和流畅度。
+没有始终更快的版本：RTX 2070 用户在 Resident Evil Requiem 中偏好 V1，RTX 2060 用户在
+The Witcher 3 中偏好 V2。这些反馈针对实验测试版，并非对最终 1.3.0 DLL 的验证。
+此选项不影响 RTX 30、40 或 50。
 
 ## 已观察到的结果
 

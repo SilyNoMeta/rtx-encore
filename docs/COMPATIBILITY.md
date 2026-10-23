@@ -17,7 +17,9 @@ XeFG is not a way to add frame generation to every game. Higher factors depend o
 | :--- | :--- | :--- | :--- | :--- |
 | RTX 40 | Supported. DirectX 12 and Vulkan exercised on an RTX 4090. | Provided by NVIDIA | Supported | Inactive |
 | RTX 30 | Supported. DirectX 12 exercised on an RTX 3070 Ti Laptop. | Supported with the drivers listed below | Supported | DirectX 12, measured on an RTX 3070 Ti Laptop. See [below](#dlss-super-resolution-versions). |
-| RTX 20 | Experimental: not validated on a physical RTX 20 card yet. | Not supported | Experimental | Inactive |
+| RTX 20 | Experimental: not validated on a physical RTX 20 card yet. | Experimental from 1.3.0: 621.01 / DX12, V1 or V2 | Experimental | Inactive |
+
+RTX 20 requires mod **1.3.0**, driver **621.01**, and **DirectX 12**; V1/V2 can be selected per game.
 
 RTX Encore is made for RTX 20, 30 and 40 cards. GTX cards and cards from other vendors are not supported.
 
@@ -118,7 +120,7 @@ Tell us what you observe in other games by opening an
 | ReShade, Special K | Leave them their `dxgi.dll` and give RTX Encore another name. ReShade is not needed for the menu. |
 | DXVK | Do not name RTX Encore `dxgi.dll`: DXVK provides that file. The menu is drawn in its Vulkan output. |
 | OptiScaler | A dedicated option exists for setups that need it: see [Frame generation](FRAME-GENERATION.md#smooth-out-x3--x4). |
-| Cyber Engine Tweaks, RED4ext | Keep their files under their own names. An optional, experimental panel exists for Cyber Engine Tweaks. |
+| Cyber Engine Tweaks, RED4ext | Keep their files under their own names. |
 | NVIDIA Profile Inspector | In **Game decides** mode, the multiplier it sets is followed. |
 
 ## Anti-cheat and online games

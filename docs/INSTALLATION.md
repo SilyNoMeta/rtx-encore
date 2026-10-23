@@ -36,7 +36,6 @@ The rest of this page is the installation by hand, which works exactly as before
 | `rtx-encore.dll` | The mod. Copy it next to the game and give it the name the game loads (below). |
 | `alternative-proxies\rtx-encore.asi` | The same mod as a plugin, for games that have an ASI loader. |
 | `alternative-proxies\version.dll`, `winmm.dll`, `dxgi.dll`, `dinput8.dll` | Ready-named copies, for the rare game that does not accept the renamed main file. |
-| `cyberpunk-2077-cet-panel\` | Optional panel for Cyber Engine Tweaks (see [Cyberpunk 2077](#cyberpunk-2077)). |
 | `README.md`, `docs\`, `THIRD-PARTY-NOTICES.md` | This documentation and the third-party notices. |
 
 Install **one** copy of the mod per game, never two.
@@ -138,9 +137,8 @@ Use either `bin\x64\version.dll`, or `bin\x64\plugins\rtx-encore.asi` with the A
 Engine Tweaks. Keep the files your other mods need under their own names: `version.dll` for Cyber Engine Tweaks,
 `winmm.dll` for RED4ext, `dxgi.dll` for ReShade.
 
-The menu (**Insert**) works on its own. If you use Cyber Engine Tweaks, an optional panel shows the main controls
-inside its overlay too: copy the `bin` folder found in `cyberpunk-2077-cet-panel` into the game folder. The panel is
-experimental and needs the `.asi` plugin to be installed.
+
+The optional Cyber Engine Tweaks panel was removed in 1.3.0. Use the built-in menu (**Insert**) or the Hub. Old panel settings are imported beside the mod on first launch, preserving the original. After upgrading, remove only the old RTX Encore panel folder from your CET mods if it remains.
 
 ### DXVK, ReShade, Special K, OptiScaler
 

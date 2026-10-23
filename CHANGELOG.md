@@ -2,6 +2,37 @@
 
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
+
+## 1.3.0
+
+- Foveated Neural Rendering (experimental, off by default): NR runs at full strength in the middle of the
+  image and lighter towards the edges, for more FPS with a softer NR effect near the edges. In the menu,
+  turn on **Foveated NR** and pick a preset (Light, Balanced, Strong); the values behind them are under
+  **Foveated NR: custom values**. Strong gave +27% average FPS in Cyberpunk 2077 on an RTX 3070 Ti Laptop.
+  Thanks to [maximedgoulet](https://github.com/maximedgoulet) for the idea
+  ([FoveatedDLSS5](https://github.com/maximedgoulet/FoveatedDLSS5)).
+
+- Neural Rendering follows motion correctly in games whose motion vectors are at output resolution
+  (Unreal Engine 5, Black Myth: Wukong): it used to see only part of the motion.
+
+- **Baldur's Gate 3 (Vulkan) with bg3fgvk:** no longer crashes at startup, and Neural Rendering, DLSS and DLSS Frame Generation now work there together. Thanks to [@deusimperatork](https://github.com/deusimperatork) for the detailed reports and logs ([#72](https://github.com/SilyNoMeta/rtx-encore/issues/72)). Using OptiScaler at the same time is not supported in this game.
+
+- Removed the optional Cyber Engine Tweaks panel. Use the built-in menu (Insert) or the Hub. Existing panel settings are copied beside the mod on first launch when no current file exists; the original is kept.
+
+- Removed the experimental OpenNR engine and its settings. NVIDIA Neural Rendering remains available. Older OpenNR configurations upgrade with NR off; enable it again to use NVIDIA NR.
+
+- Smooth Motion on RTX 20 with NVIDIA 621.01 and DirectX 12. Enable Smooth Motion;
+  RTX Encore selects the card automatically. Choose **V1 (test 1, default)** or
+  **V2 (test 2)** in the Hub or the RTX 20 in-game menu, then restart the game.
+  Thanks to [@aziznasrimay45-sys](https://github.com/aziznasrimay45-sys) for RTX 2070
+  testing in five games and the V1 preference in Resident Evil Requiem, and
+  [@MxHassan195](https://github.com/MxHassan195) for testing both on RTX 2060 in
+  The Witcher 3 and preferring V2's smoothness
+  ([#53](https://github.com/SilyNoMeta/rtx-encore/issues/53)). Performance depends on
+  the card and game; these reports concern experimental builds, not the final DLL.
+
+Foveated NR was measured in Cyberpunk 2077 and the Baldur's Gate 3 fix was checked in that game, both on an RTX 3070 Ti Laptop. Smooth Motion on RTX 20 and Intel XeSS / XeFG remain experimental. RTX Encore installed alone through the Hub is the supported setup; combinations with OptiScaler are not supported.
+
 ## 1.2.2
 
 - **Sharpening after reconstruction.** Choose Off, Game or Custom for DLSS, DLAA, Ray Reconstruction and replacement XeSS. Off by default; Custom defaults to 30% and changes apply live. High strengths can create halos and amplify noise. Original DLSS older than 2.5.1 keeps its own sharpening. Thanks to [@aziznasrimay45-sys](https://github.com/aziznasrimay45-sys) for the request ([#70](https://github.com/SilyNoMeta/rtx-encore/issues/70)).

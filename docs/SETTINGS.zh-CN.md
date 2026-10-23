@@ -118,7 +118,6 @@ FG 预设选择支持以下经过逐一验证的 NVIDIA **DLSS-G 正式版二进
 | 键 | 默认 | 值 |
 | :--- | :---: | :--- |
 | `nrEnabled` | `false` | 开启 Neural Rendering。 |
-| `nrEngine` | `"nvidia"` | `"nvidia"` 或 `"opendlss"`（高度实验性）。需重启。 |
 | `nrPasses` | `1` | `1` 至 `4` |
 | `nrLaterPassLocalTone` | `0` | 第一遍之后应用的色调，`0` 至 `2` |
 | `nrResolution` | `"render"` | `"render"`、`"output"`、`"quality"`、`"balanced"`、`"performance"`、`"ultra-performance"`、`"custom"` |
@@ -132,6 +131,26 @@ FG 预设选择支持以下经过逐一验证的 NVIDIA **DLSS-G 正式版二进
 | `nrHdrExposure` | `1` | HDR 游戏：提供给 NR 的亮度 |
 | `nrPrecision` | `"exact"` | `"exact"` 或 `"fast"`（RTX 20 和 RTX 30）。需重启。 |
 
+#### 中央优先 NR（实验性）
+
+需要启用 `nrEnabled`。NR 在屏幕中央以全强度运行，越靠近边缘越轻，因为视线较少停留在边缘：速度更快，图像边缘附近的 NR 效果更柔和。菜单（**Image → Neural Rendering**）中只显示开关和预设；预设背后的四个数值位于 **Foveated NR: custom values** 中。实时生效。无法使用中央优先处理时，NR 照常运行。
+
+| 预设 | 效果 |
+| :--- | :--- |
+| `"light"` | 大部分图像保持全强度；收益最小。 |
+| `"balanced"` | 默认的折中方案。 |
+| `"strong"` | 收益最大：在一款游戏中于 RTX 3070 Ti Laptop 上测得平均 FPS 提升 27%，仔细观察时边缘明显更柔和。 |
+| `"custom"` | 使用下面的四个数值。 |
+
+| 键 | 默认 | 效果 |
+| :--- | :---: | :--- |
+| `nrFoveation` | `false` | 启用中央优先 NR。 |
+| `nrFoveaPreset` | `"balanced"` | `"light"`、`"balanced"`、`"strong"` 或 `"custom"`。 |
+| `nrFoveaWidth` | `55` | 使用 `"custom"` 时：全强度中央区域的宽度，占屏幕的 1–100%。 |
+| `nrFoveaHeight` | `55` | 使用 `"custom"` 时：全强度中央区域的高度，占屏幕的 1–100%。 |
+| `nrFoveaFalloff` | `8` | 使用 `"custom"` 时：每侧过渡宽度，占屏幕的 0–100%。 |
+| `nrFoveaEdge` | `50` | 使用 `"custom"` 时：边缘保留的 NR 细节，25–100%；越低越快、越柔和。 |
+
 #### NR 性能选项
 
 这些设置也在 **Image → Neural Rendering → Performance** 分组中。
@@ -142,22 +161,6 @@ FG 预设选择支持以下经过逐一验证的 NVIDIA **DLSS-G 正式版二进
 | :--- | :---: | :--- |
 | `nrPaddingAware` | `false` | 允许 NR 使用略小的相邻尺寸，每个方向最多减少 2 %，不改变 DLSS 渲染尺寸。可能改变画面。实时生效。 |
 | `nrMaxInFlight` | `0` | 支持 Reflex 的 DirectX 12 游戏中的 NVIDIA 引擎：`0` 不限制，`1` 或 `2` 个待完成的 NR 帧；帧生成启用时至少使用 `2`。实时生效，游戏内性能影响仍待验证。 |
-
-### `openExperimental`
-
-Open 的性能键位于此独立分组。请先在菜单中选择引擎和适合显卡的后端；这些键本身不会开启 Open。
-
-| 键 | 默认 | 收益与取舍 |
-| :--- | :---: | :--- |
-| `nrOpenFast` | `false` | RTX 30 上的 Open：Fast 精度，NR 时间更短，画面有轻微差异，不增加显存。需重启。 |
-| `nrOpenVramForSpeed` | `false` | RTX 30 上的 Open：NR 时间更短，画面一致；在 1440p、DLSS Balanced 下约多占 160 MB 显存。需重启。 |
-| `nrOpenFastProjection` | `true` | RTX 30 上的 Open：处理更快，画面有轻微差异。需重启。 |
-| `nrOpenUltraFast` | `false` | Open，一遍 NR：**Ultra-fast mode**，在文档中的对比里 NR 时间约减半。NR 层更新较晚，运动时可能出现瑕疵，多占几 MB 显存。需重启。 |
-| `nrOpenUltraFastGhostTolerance` | `0.03` | `0` 至 `0.3`；越低，重影越少，但更多表面暂时等待 NR。实时生效。 |
-| `nrOpenUltraFastFillTolerance` | `0.03` | `0` 至 `0.3`；控制刚出现的表面用相似表面的 NR 效果填充的程度。`0` 关闭填充。实时生效。 |
-
-`nrResolution: "ultra-performance"` 将 NR 设置为输出宽度和高度的 33 %。它与 `nrOpenUltraFast` 和
-`dlssRenderScale` 相互独立，这些设置不会自动开启彼此。
 
 ### `overlay`
 
@@ -207,7 +210,7 @@ Open 的性能键位于此独立分组。请先在菜单中选择引擎和适合
 
 ## 其他键
 
-文件中的键比本页列出的更多，包括 Smooth Motion、画质和兼容性开关，以及 Open 引擎的实验性选项。
+文件中的键比本页列出的更多，包括 Smooth Motion、画质和兼容性开关，以及其他性能选项。
 每个键在文件中有注释，在菜单中有对应的设置；推荐从菜单修改。
 
 ### `neuralRendering.passTuning`

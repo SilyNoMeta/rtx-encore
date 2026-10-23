@@ -1,4 +1,4 @@
-# Smooth Motion sur RTX 30
+# Smooth Motion sur RTX 20 / RTX 30
 
 *[English](SMOOTH-MOTION.md) · [中文](SMOOTH-MOTION.zh-CN.md)*
 
@@ -12,7 +12,7 @@ les cartes RTX 30.
 
 ## Prérequis
 
-- Une carte **RTX 30**. Les RTX 40 tiennent Smooth Motion de NVIDIA ; les RTX 20 ne sont pas prises en charge.
+- Une carte **RTX 30**. Les RTX 40 tiennent Smooth Motion de NVIDIA ; les RTX 20 sont prises en charge expérimentalement à partir de RTX Encore 1.3.0 (voir ci-dessous).
 - L'une de ces versions du pilote NVIDIA, exactement : **621.01**, **620.12**, **617.42**, **617.14**,
   **616.92**, **616.64** ou **591.86**.
   Les 617.14 et 621.01 ont été vérifiées en jeu. Avec tout autre pilote, la fonction reste désactivée et dit
@@ -30,6 +30,19 @@ les cartes RTX 30.
 La pastille **Smooth Motion** en haut du menu montre l'état. « Driver prepared » signifie que le pilote est prêt ;
 cela ne confirme pas à soi seul que des images interpolées sont affichées. Vérifiez le résultat avec un outil qui
 mesure les images affichées, comme NVIDIA FrameView.
+
+## RTX 20 : V1 ou V2 (à partir de 1.3.0)
+
+Les RTX 20 nécessitent **NVIDIA 621.01** et un jeu **DirectX 12**. Dans les réglages Smooth Motion
+ du Hub ou le contrôle **RTX 20 variant** du menu en jeu, choisissez **V1 (test 1)** ou **V2 (test 2)**.
+V1 est le défaut. Redémarrez le jeu après chaque changement. La clé de configuration est
+`smoothMotionTuringVariant`, avec la valeur `"v1"` ou `"v2"`.
+
+Comparez la même scène et les mêmes réglages avec FrameView ou l'overlay, en jugeant aussi
+l'image, la réactivité et la fluidité. Aucune variante ne gagne partout : les retours préfèrent
+V1 sur RTX 2070 dans Resident Evil Requiem et V2 sur RTX 2060 dans The Witcher 3.
+Ces observations concernent les builds expérimentaux, pas la DLL finale 1.3.0.
+Ce choix est sans effet sur les RTX 30, 40 et 50.
 
 ## Ce qui a été observé
 

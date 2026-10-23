@@ -131,7 +131,6 @@ Laissez `"game"` pour conserver le comportement actuel.
 | Clé | Défaut | Valeurs |
 | :--- | :---: | :--- |
 | `nrEnabled` | `false` | Active Neural Rendering. |
-| `nrEngine` | `"nvidia"` | `"nvidia"` ou `"opendlss"` (très expérimental). Relancez pour appliquer. |
 | `nrPasses` | `1` | `1` à `4` |
 | `nrLaterPassLocalTone` | `0` | Ton appliqué après la première passe, `0` à `2` |
 | `nrResolution` | `"render"` | `"render"`, `"output"`, `"quality"`, `"balanced"`, `"performance"`, `"ultra-performance"`, `"custom"` |
@@ -145,6 +144,26 @@ Laissez `"game"` pour conserver le comportement actuel.
 | `nrHdrExposure` | `1` | Jeux HDR : luminosité donnée à NR |
 | `nrPrecision` | `"exact"` | `"exact"` ou `"fast"` (RTX 20 et RTX 30). Relancez pour appliquer. |
 
+#### NR fovéal (expérimental)
+
+Nécessite `nrEnabled`. Le NR travaille à pleine force au milieu de l'écran et plus légèrement vers les bords, là où l'œil s'attarde moins : c'est plus rapide, avec un effet NR plus doux près des bords de l'image. Dans le menu (**Image → Neural Rendering**), seuls l'interrupteur et le préréglage sont affichés ; les quatre valeurs derrière les préréglages sont dans **Foveated NR: custom values**. Appliqué en direct. Là où la fovéation ne peut pas tourner, le NR continue normalement.
+
+| Préréglage | Effet |
+| :--- | :--- |
+| `"light"` | La plus grande partie de l'image à pleine force ; le gain le plus faible. |
+| `"balanced"` | Le compromis par défaut. |
+| `"strong"` | Le plus grand gain : +27 % de FPS moyen mesuré dans un jeu sur une RTX 3070 Ti Laptop, bords visiblement plus doux de près. |
+| `"custom"` | Utilise les quatre valeurs ci-dessous. |
+
+| Clé | Défaut | Effet |
+| :--- | :---: | :--- |
+| `nrFoveation` | `false` | Active le NR fovéal. |
+| `nrFoveaPreset` | `"balanced"` | `"light"`, `"balanced"`, `"strong"` ou `"custom"`. |
+| `nrFoveaWidth` | `55` | Avec `"custom"` : largeur du centre à pleine force, 1–100 % de l'écran. |
+| `nrFoveaHeight` | `55` | Avec `"custom"` : hauteur du centre à pleine force, 1–100 % de l'écran. |
+| `nrFoveaFalloff` | `8` | Avec `"custom"` : transition de chaque côté, 0–100 % de l'écran. |
+| `nrFoveaEdge` | `50` | Avec `"custom"` : détail NR conservé sur les bords, 25–100 % ; plus bas est plus rapide et plus doux. |
+
 #### Options de performance NR
 
 Ces réglages se trouvent aussi dans **Image → Neural Rendering → Performance**. Voir
@@ -156,23 +175,6 @@ d'option lue au démarrage demande de relancer le jeu.
 | :--- | :---: | :--- |
 | `nrPaddingAware` | `false` | Autorise une taille NR voisine plus petite, au plus 2 % de moins par axe, sans changer la taille de rendu DLSS. Peut changer l'image. S'applique en direct. |
 | `nrMaxInFlight` | `0` | NVIDIA, DirectX 12 avec Reflex : `0` sans limite, `1` ou `2` images NR en attente ; la génération d'images active utilise au moins `2`. S'applique en direct ; effet sur les performances en jeu à vérifier. |
-
-### `openExperimental`
-
-Les clés de performance Open sont dans cette section distincte. Choisissez d'abord le moteur et le backend adapté
-à votre carte depuis le menu ; ces clés n'activent pas Open à elles seules.
-
-| Clé | Défaut | Gain et compromis |
-| :--- | :---: | :--- |
-| `nrOpenFast` | `false` | Open sur RTX 30 : précision Fast, temps NR plus court avec de petites différences d'image et sans VRAM supplémentaire. Redémarrage requis. |
-| `nrOpenVramForSpeed` | `false` | Open sur RTX 30 : temps NR plus court, à image identique, contre environ 160 Mo de VRAM en plus en 1440p DLSS Balanced. Redémarrage requis. |
-| `nrOpenFastProjection` | `true` | Open sur RTX 30 : traitement plus rapide, avec de petites différences d'image. Redémarrage requis. |
-| `nrOpenUltraFast` | `false` | Open, une passe NR : **Ultra-fast mode**, environ moitié moins de temps NR dans la comparaison documentée. Couche NR plus ancienne, défauts possibles en mouvement, quelques Mo de VRAM en plus. Redémarrage requis. |
-| `nrOpenUltraFastGhostTolerance` | `0.03` | `0` à `0.3` ; plus bas : moins de fantômes, davantage de surfaces en attente temporaire de NR. S'applique en direct. |
-| `nrOpenUltraFastFillTolerance` | `0.03` | `0` à `0.3` ; règle le remplissage des surfaces qui apparaissent avec le NR de surfaces semblables. `0` désactive le remplissage. S'applique en direct. |
-
-`nrResolution: "ultra-performance"` règle NR à 33 % de la largeur et de la hauteur de sortie. Ce choix est
-indépendant de `nrOpenUltraFast` et de `dlssRenderScale` ; ces réglages ne s'activent pas mutuellement.
 
 ### `overlay`
 
@@ -223,7 +225,7 @@ Chaque clé `hotkey…` prend une ou plusieurs combinaisons séparées par des v
 ## Autres clés
 
 Le fichier contient plus de clés que cette page n'en liste : Smooth Motion, les interrupteurs de qualité d'image et
-de compatibilité, et les options expérimentales du moteur Open. Chacune a son commentaire dans le fichier et une
+de compatibilité, et les autres options de performance. Chacune a son commentaire dans le fichier et une
 commande libellée dans le menu, qui est l'endroit recommandé pour les changer.
 
 ### `neuralRendering.passTuning`

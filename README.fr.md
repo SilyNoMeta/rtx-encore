@@ -26,13 +26,15 @@ Un seul fichier à côté du jeu, un menu intégré, rien d'autre à installer.
 > Il se charge dans le jeu : ne l'utilisez pas dans un jeu en ligne ou protégé par un anti-triche, où il peut être
 > bloqué ou faire signaler un compte. Sauvegardez chaque fichier que vous remplacez.
 
-## Les nouveautés de 1.2.2
+## Les nouveautés de 1.3.0
 
-- **Netteté à chaud après reconstruction.** Dans **Image > Super Resolution**, choisissez Off, Game ou Custom pour DLSS, DLAA, Ray Reconstruction et le remplacement XeSS. Désactivée par défaut ; Custom démarre à 30 %. Elle passe après NR quand il est actif. Une force élevée peut créer des halos et amplifier le bruit ; le fonctionnement Vulkan et le rendu en jeu restent à valider. [Réglages et limites](docs/SUPER-RESOLUTION.fr.md).
-- **Correctifs de compatibilité.** Démarrage de Smooth Motion dans SurrounDead (DirectX 12), menu Vulkan intégré dans Baldur’s Gate 3 avec bg3fgvk / OptiScaler F5 et DLSS Frame Generation avec OptiScaler F5. Le [journal des changements](CHANGELOG.fr.md) détaille les contributions et la portée des validations.
+- **Neural Rendering fovéal (expérimental, désactivé par défaut).** NR travaille à pleine force au centre de l’image et plus légèrement vers les bords, pour plus d’images par seconde. Activez **Foveated NR** dans le menu et choisissez Light, Balanced ou Strong. [Réglages](docs/SETTINGS.fr.md).
+- **Smooth Motion sur RTX 20 (expérimental).** Pilote NVIDIA 621.01 et DirectX 12 ; V1 ou V2 au choix par jeu. [Compatibilité](docs/COMPATIBILITY.fr.md).
+- **Correctifs.** Le Neural Rendering suit correctement le mouvement dans les jeux dont les vecteurs de mouvement sont à la résolution de sortie (Unreal Engine 5, Black Myth: Wukong), et Baldur’s Gate 3 en Vulkan avec bg3fgvk ne plante plus, avec le Neural Rendering qui y fonctionne.
+- **Retraits.** Le panneau optionnel Cyber Engine Tweaks et le moteur expérimental OpenNR. Le [journal des changements](CHANGELOG.fr.md) détaille les contributions et la portée des validations.
 - **Les fonctions de la version 1.2.** Reconstruction DLSS ou XeSS expérimental, génération d’images DLSS-G ou XeFG expérimental, changements de moteur de reconstruction compatible et de presets DLSS en jouant, réglages NR par passe et entrées HDR/exposition communes.
 
-Le mod et le Hub ont des publications distinctes. Hub 1.2.2 ajoute les journaux du Hub exportables, les sauvegardes compressées vérifiées et les choix de fiche jeu mémorisés. La netteté est déjà disponible dans le menu du mod ; ses commandes dans le Hub sont en développement pour une prochaine version.
+Le mod et le Hub ont des publications distinctes. Hub 1.3.0 apporte les commandes des nouveaux réglages de cette version.
 
 **XeSS / XeFG : TRÈS EXPÉRIMENTAL.** Cette intégration a été particulièrement pénible à mettre au point :) Attendez-vous à des bugs, crashs, artefacts et différences entre jeux et API graphiques. N’hésitez pas à remonter les problèmes : dans RTX Encore Hub, ouvrez la page **Santé** du jeu, choisissez **Préparer un diagnostic**, relisez l’archive pour retirer les informations personnelles, puis joignez-la à une [issue RTX Encore](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose). Indiquez les moteurs choisis, l’API graphique et le multiplicateur demandé. Le Hub ne téléverse pas l’archive à votre place.
 
@@ -48,7 +50,7 @@ Le mod et le Hub ont des publications distinctes. Hub 1.2.2 ajoute les journaux 
 | 🛡️ | **Images générées plus propres** | Protection contre les déchirures sur la géométrie fine (grillages, câbles, feuillages) et contre les défauts dans les ombres en mouvement ; interface et texte nets. |
 | ⚡ | **Génération d'images plus légère** | Une option de performance qui réduit le coût GPU de chaque image générée sans changer l'image. |
 | 🌀 | **[Smooth Motion sur RTX 30](docs/SMOOTH-MOTION.fr.md)** | L'interpolation d'images du pilote NVIDIA, pour les jeux DirectX 11, DirectX 12 et Vulkan, y compris sans DLSS. Désactivé par défaut. |
-| ✨ | **[Neural Rendering](docs/NEURAL-RENDERING.fr.md)** | NR sur RTX 20, 30 et 40, avec les options de performance Ampere développées par RTX Encore : traitement optimisé, précision Fast, résolution NR indépendante et mode ultra-rapide Open. Une à quatre passes, un style pour chacune, prise en charge du HDR. Expérimental, désactivé par défaut. |
+| ✨ | **[Neural Rendering](docs/NEURAL-RENDERING.fr.md)** | NR sur RTX 20, 30 et 40, avec les options de performance Ampere développées par RTX Encore : traitement optimisé, précision Fast, résolution NR indépendante. Une à quatre passes, un style pour chacune, prise en charge du HDR. Expérimental, désactivé par défaut. |
 | 🎛️ | **[Menu et overlay intégrés](docs/MENU-AND-OVERLAY.fr.md)** | Appuyez sur **Inser** dans le jeu : tous les réglages, l'état de chaque fonction, et un overlay avec la fréquence d'images, le multiplicateur, la régularité des images, le GPU et la VRAM. DirectX 11, DirectX 12 et Vulkan. |
 | 🚀 | **[Fast super resolution sur RTX 30](docs/SUPER-RESOLUTION.fr.md)** | Un DLSS Super Resolution plus rapide pour RTX 30 dans les jeux DirectX 12 avec le preset M ou L : environ 16 à 20 % de temps GPU en moins par image upscalée sur le système mesuré, pour une image très proche de l'originale. Désactivée par défaut. |
 | 🔍 | **Résolution de rendu DLSS** | Choisissez DLAA, Qualité, Équilibré, Performance, Ultra Performance ou une échelle personnalisée dans les jeux qui utilisent déjà DLSS. |
@@ -56,21 +58,7 @@ Le mod et le Hub ont des publications distinctes. Hub 1.2.2 ajoute les journaux 
 
 ## Neural Rendering pensé pour Ampere
 
-**Rendre NR plus exploitable sur RTX 30 est un axe majeur du développement de RTX Encore.** Nos travaux couvrent
-un traitement plus rapide avec une sortie identique dans les tests locaux de référence, une précision Fast
-optionnelle, une résolution NR indépendante du DLSS, une empreinte mémoire Open réduite et des options de
-performance pour notre intégration d'OpenDLSS-NR.
-
-Le **mode ultra-rapide** Open, **Ultra-fast mode**, a réduit le temps NR de **18,7 à 9,8 ms (−48 %)** et porté
-les FPS affichés de **73,8 à 94,9 (+29 %)** dans le benchmark de Black Myth: Wukong sur un RTX 3070 Ti Laptop avec
-génération d'images X3. C'est une comparaison existante avec un passage par configuration, pas un gain garanti.
-Ce mode est expérimental, demande une seule passe NR et peut introduire du retard ou des traînées dans la couche NR
-en mouvement.
-
-La **résolution Ultra Performance** est une option distincte : réduisez la taille de travail NR en conservant votre
-réglage de rendu DLSS préféré. Les autres réglages Open pour RTX 30 permettent d'échanger de petites différences
-d'image ou davantage de VRAM contre moins de temps NR.
-**[Voir les mesures, les réglages et les compromis](docs/NEURAL-RENDERING.fr.md).**
+RTX Encore propose un traitement NVIDIA NR optimisé, une précision Fast optionnelle et une résolution NR indépendante du DLSS. Une à quatre passes et les réglages de rendu par passe restent disponibles. [Voir les réglages et mesures](docs/NEURAL-RENDERING.fr.md).
 
 ## Matériel pris en charge
 
@@ -169,7 +157,7 @@ TonyJoaca et est devenu depuis un projet à part entière. Il doit aussi beaucou
 - [mavismmg/MFGAdaUnlock-RenoDx](https://github.com/mavismmg/MFGAdaUnlock-RenoDx) : recherche sur la qualité de la génération d'images ;
 - [sdli1995/dlssg_for_sm86](https://github.com/sdli1995/dlssg_for_sm86) : recherche sur la génération d'images pour RTX 20 et RTX 30 ;
 - [Intel XeSS](https://github.com/intel/xess) : interfaces SDK XeSS, XeFG et XeLL ;
-- [maanHimself/OpenDLSS-NR](https://github.com/maanHimself/OpenDLSS-NR) : le moteur ouvert de Neural Rendering ;
+- [maximedgoulet/FoveatedDLSS5](https://github.com/maximedgoulet/FoveatedDLSS5) : l’idée du Neural Rendering fovéal ;
 - toutes les personnes qui testent une version et signalent un bug : plusieurs corrections n'existent que grâce à ces rapports.
 
 Les composants inclus dans les versions publiées et leurs licences sont listés dans

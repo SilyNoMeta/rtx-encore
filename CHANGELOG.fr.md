@@ -2,6 +2,35 @@
 
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
+
+## 1.3.0
+
+- Neural Rendering fovéal (expérimental, désactivé par défaut) : le NR travaille à pleine force au milieu de
+  l’image et plus légèrement vers les bords, pour plus de FPS avec un effet NR plus doux près des bords. Dans le
+  menu, activez **Foveated NR** et choisissez un préréglage (Light, Balanced, Strong) ; les valeurs derrière se
+  trouvent sous **Foveated NR: custom values**. Strong a donné +27 % de FPS moyen dans Cyberpunk 2077 sur une
+  RTX 3070 Ti Laptop. Merci à [maximedgoulet](https://github.com/maximedgoulet) pour l’idée
+  ([FoveatedDLSS5](https://github.com/maximedgoulet/FoveatedDLSS5)).
+
+- Le Neural Rendering suit correctement le mouvement dans les jeux dont les vecteurs de mouvement sont en pleine
+  résolution (Unreal Engine 5, Black Myth: Wukong) : il n’en voyait qu’une partie.
+
+- **Baldur's Gate 3 (Vulkan) avec bg3fgvk :** ne plante plus au lancement, et le Neural Rendering, DLSS et DLSS Frame Generation y fonctionnent désormais ensemble. Merci à [@deusimperatork](https://github.com/deusimperatork) pour ses rapports et journaux détaillés ([#72](https://github.com/SilyNoMeta/rtx-encore/issues/72)). L'utilisation simultanée d'OptiScaler n'est pas prise en charge dans ce jeu.
+
+- Retrait du panneau optionnel Cyber Engine Tweaks. Utilisez le menu intégré (Inser) ou le Hub. Au premier lancement, les anciens réglages du panneau sont copiés à côté du mod si aucun fichier actuel n’existe ; l’original est conservé.
+
+- Retrait du moteur expérimental OpenNR et de ses réglages. Neural Rendering NVIDIA reste disponible. Les anciennes configurations OpenNR migrent avec NR désactivé ; réactivez-le pour utiliser NVIDIA NR.
+
+- Smooth Motion sur RTX 20 avec NVIDIA 621.01 et DirectX 12. Activez Smooth Motion ;
+  RTX Encore sélectionne automatiquement la carte. Choisissez **V1 (test 1, défaut)**
+  ou **V2 (test 2)** dans le Hub ou le menu en jeu des RTX 20, puis relancez le jeu.
+  Merci à [@aziznasrimay45-sys](https://github.com/aziznasrimay45-sys) pour les tests
+  sur RTX 2070 dans cinq jeux et sa préférence V1 dans Resident Evil Requiem, et à
+  [@MxHassan195](https://github.com/MxHassan195) pour les deux essais sur RTX 2060
+  dans The Witcher 3 et sa préférence pour la fluidité de V2
+  ([#53](https://github.com/SilyNoMeta/rtx-encore/issues/53)). Les performances dépendent
+  de la carte et du jeu ; ces retours portent sur les builds expérimentaux, pas la DLL finale.
+
 ## 1.2.2
 
 - **Netteté après reconstruction.** Choisissez Off, Game ou Custom pour DLSS, DLAA, Ray Reconstruction et le remplacement XeSS. Désactivée par défaut ; Custom démarre à 30 % et les changements sont immédiats. Une intensité élevée peut créer des halos et amplifier le bruit. Un DLSS d'origine antérieur à 2.5.1 conserve sa propre netteté. Merci à [@aziznasrimay45-sys](https://github.com/aziznasrimay45-sys) pour la demande ([#70](https://github.com/SilyNoMeta/rtx-encore/issues/70)).

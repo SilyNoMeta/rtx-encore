@@ -127,7 +127,6 @@ model executed. Leave `"game"` selected to preserve the existing behavior.
 | Key | Default | Values |
 | :--- | :---: | :--- |
 | `nrEnabled` | `false` | Turns Neural Rendering on. |
-| `nrEngine` | `"nvidia"` | `"nvidia"` or `"opendlss"` (highly experimental). Restart to apply. |
 | `nrPasses` | `1` | `1` to `4` |
 | `nrLaterPassLocalTone` | `0` | Tone applied after pass one, `0` to `2` |
 | `nrResolution` | `"render"` | `"render"`, `"output"`, `"quality"`, `"balanced"`, `"performance"`, `"ultra-performance"`, `"custom"` |
@@ -141,6 +140,26 @@ model executed. Leave `"game"` selected to preserve the existing behavior.
 | `nrHdrExposure` | `1` | HDR games: brightness given to NR |
 | `nrPrecision` | `"exact"` | `"exact"` or `"fast"` (RTX 20 and RTX 30). Restart to apply. |
 
+#### Foveated NR (experimental)
+
+Requires `nrEnabled`. NR runs at full strength in the middle of the screen and lighter towards the edges, where the eye rests less: faster, with a softer NR effect near the edges of the image. In the menu (**Image → Neural Rendering**), only the switch and the preset are shown; the four values behind the presets are under **Foveated NR: custom values**. Applied live. Where foveation cannot run, NR keeps running normally.
+
+| Preset | What it does |
+| :--- | :--- |
+| `"light"` | Most of the image at full strength; the smallest gain. |
+| `"balanced"` | The default trade-off. |
+| `"strong"` | The largest gain: +27% average FPS measured in one game on an RTX 3070 Ti Laptop, edges visibly softer on close inspection. |
+| `"custom"` | Uses the four values below. |
+
+| Key | Default | Effect |
+| :--- | :---: | :--- |
+| `nrFoveation` | `false` | Turns foveated NR on. |
+| `nrFoveaPreset` | `"balanced"` | `"light"`, `"balanced"`, `"strong"` or `"custom"`. |
+| `nrFoveaWidth` | `55` | With `"custom"`: width of the full-strength centre, 1–100% of the screen. |
+| `nrFoveaHeight` | `55` | With `"custom"`: height of the full-strength centre, 1–100% of the screen. |
+| `nrFoveaFalloff` | `8` | With `"custom"`: transition on each side, 0–100% of the screen. |
+| `nrFoveaEdge` | `50` | With `"custom"`: NR detail kept at the edges, 25–100%; lower is faster and softer. |
+
 #### NR performance options
 
 These controls are also in **Image → Neural Rendering → Performance**. See
@@ -152,23 +171,6 @@ game restart.
 | :--- | :---: | :--- |
 | `nrPaddingAware` | `false` | Allows a nearby smaller NR size, at most 2 % less per axis, without changing the DLSS render size. Can change the image. Applies live. |
 | `nrMaxInFlight` | `0` | NVIDIA, DirectX 12 with Reflex: `0` no limit, `1` or `2` outstanding NR frames; active frame generation uses at least `2`. Applies live; in-game performance effect unverified. |
-
-### `openExperimental`
-
-Open's performance keys are in this separate section. Choose the engine and the backend matching your card from
-the menu first; these keys do not turn Open on by themselves.
-
-| Key | Default | Benefit and tradeoff |
-| :--- | :---: | :--- |
-| `nrOpenFast` | `false` | Open on RTX 30: Fast precision, shorter NR time with small image differences and no extra VRAM. Restart to apply. |
-| `nrOpenVramForSpeed` | `false` | Open on RTX 30: shorter NR time, same image, for about 160 MB more VRAM at 1440p DLSS Balanced. Restart to apply. |
-| `nrOpenFastProjection` | `true` | Open on RTX 30: faster processing with small image differences. Restart to apply. |
-| `nrOpenUltraFast` | `false` | Open, one NR pass: **Ultra-fast mode**, about half the NR time in the documented comparison. Older NR layer, possible motion artifacts, a few MB more VRAM. Restart to apply. |
-| `nrOpenUltraFastGhostTolerance` | `0.03` | `0` to `0.3`; lower: fewer ghosts, more surfaces temporarily waiting for NR. Applies live. |
-| `nrOpenUltraFastFillTolerance` | `0.03` | `0` to `0.3`; controls filling newly visible surfaces with NR from similar surfaces. `0` turns filling off. Applies live. |
-
-`nrResolution: "ultra-performance"` sets NR to 33 % of output width and height. It is independent of
-`nrOpenUltraFast` and of the `dlssRenderScale` setting; these choices do not enable one another.
 
 ### `overlay`
 
@@ -219,7 +221,7 @@ Each `hotkey…` key takes one or more combinations separated by commas, such as
 ## Other keys
 
 The file holds more keys than this page lists: Smooth Motion, image-quality and compatibility switches, and the
-experimental options of the Open engine. Each has its comment in the file and a labelled control in the menu, which
+other performance options. Each has its comment in the file and a labelled control in the menu, which
 is the recommended place to change them.
 
 ### `neuralRendering.passTuning`

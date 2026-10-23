@@ -12,7 +12,6 @@ subject to their own terms.
 | [RTX40MFG-Unlock](https://github.com/dashdogy/RTX40MFG-Unlock) | Copyright (c) 2026 Michael Robles | MIT |
 | [dlssg_for_sm86](https://github.com/sdli1995/dlssg_for_sm86) | Copyright (c) 2026 sdli1995 | MIT |
 | RTX-Unlocker-RenoDX | Copyright (c) 2026 ImDreamt | MIT |
-| [OpenDLSS-NR](https://github.com/maanHimself/OpenDLSS-NR) | Copyright (c) 2026 maan | MIT |
 | [dlss5-bridge](https://github.com/Yukikaze20170315/dlss5-bridge) | Copyright (c) 2026 NIGos | MIT |
 | [RenoDX-DLSS5-Generic](https://github.com/PEQHUB/RenoDX-DLSS5-Generic) | Copyright (c) 2025 Carlos Lopez Jr. | MIT |
 | [Ultimate ASI Loader](https://github.com/ThirteenAG/Ultimate-ASI-Loader) | Copyright (c) 2023 ThirteenAG | MIT |
@@ -218,3 +217,31 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+## FoveatedDLSS5
+
+Foveated NR grid mathematics, adapted from [FoveatedDLSS5](https://github.com/maximedgoulet/FoveatedDLSS5).
+
+```text
+MIT License
+
+Copyright (c) 2025 Carlos Lopez Jr.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```

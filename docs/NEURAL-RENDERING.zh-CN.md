@@ -13,19 +13,12 @@ DLSS Neural Rendering（NR）增强 DLSS 超分辨率或 DLAA 生成的画面。
 
 ## RTX Encore 带来的改进
 
-RTX Encore 为 **Ampere（RTX 30）**自行开发 NR 性能选项，同时支持 RTX 40，并为 RTX 20 提供实验性支持。
-这些工作覆盖 NVIDIA 引擎及我们集成的 OpenDLSS-NR：更快的处理、独立的 NR 工作分辨率，以及在下方悟空对比中
-将 NR 时间降低 **48 %** 的**超快模式**。
-
 | 改进 | 作用 |
 | :--- | :--- |
 | **三代显卡** | 在 DirectX 11、DirectX 12 和 Vulkan 游戏中支持 RTX 40、RTX 30，以及实验性的 RTX 20。 |
 | **处理更快，画面一致** | NVIDIA 引擎在 RTX 20 和 RTX 30 上默认启用优化，本地参考测试中的输出一致。性能已在 RTX 30 上测量；真实 RTX 20 显卡的验证仍待完成。其中一部分仅适用于 310.8.0：使用 310.9.16 时，网络 A 比使用 310.8.0 时稍慢。 |
-| **Fast 精度** | NVIDIA 引擎在 RTX 30 上实测 NR 处理时间约减少 17 %，画面有轻微差异。Open 也有自己的 RTX 30 Fast 精度，默认关闭。 |
+| **Fast 精度** | NVIDIA 引擎在 RTX 30 上实测 NR 处理时间约减少 17 %，画面有轻微差异。 |
 | **独立的 NR 分辨率** | NR 可在低于屏幕分辨率的尺寸上工作，同时 DLSS 保留自己的渲染分辨率和重建细节。Performance 和 Ultra Performance 减少 NR 工作量，无需降低 DLSS 设置。 |
-| **更多 RTX 30 Open 性能设置** | 可选的 **More speed for more VRAM** 以额外显存换取更短的 NR 时间，画面不变；**Fast projection** 以轻微画面差异换取速度。见[性能设置](#rtx-30-性能设置)。 |
-| **降低 Open 内存占用** | RTX 30 路径的本地测试中，Open NR 引擎分配的内存约减少 41–43 %，输出一致。见[内存占用](#open-内存占用)。 |
-| **超快模式** | RTX Encore 为 Open 开发的 **Ultra-fast mode**：悟空对比中 NR 时间从 18.7 降至 9.8 ms，显示帧率从 73.8 提升至 94.9 FPS。见[超快模式](#超快模式)。 |
 | **与帧生成配合** | NR 作用于游戏渲染的帧，不对生成帧执行 NR。 |
 | **多遍处理，各有风格** | 一至四遍，每一遍可使用不同的画面风格。 |
 | **HDR 游戏** | 支持 HDR，并提供亮度设置。 |
@@ -63,8 +56,8 @@ NR 在后台准备：最初几帧可能保留 DLSS 原本的画面。菜单顶�
 | **Strength** | 100 % | 效果强度，0 至 200 %。 |
 | **Style** | Default | 画面风格：Default、Natural 或 Cinematic。 |
 | **Passes** | 1 | NR 可以对自己的输出再次处理，最多四遍。每遍都会消耗 GPU 时间和显存，更多遍不保证画面更好。 |
-| **Precision** | Exact | NVIDIA 引擎的 RTX 20 和 RTX 30：Fast 减少 NR 时间，在 RTX 30 上实测约 17 %，画面有轻微差异。Open 有独立的 RTX 30 Exact/Fast 选项。需重启游戏生效。 |
-| **NR model preset** | B | 使用 `nvngx_dlssnr.dll` 310.9.16 时：**B** 是更小、快得多的网络，**A** 是 310.8.0 所运行的较大网络，**DLL default** 由该文件自行选择（B）。使用 310.8.0 时，任何选项都运行其唯一的网络。它位于 SR 和 RR 模型预设旁边（**Image** 页，Upscaling），实时生效；Open 引擎忽略此设置。 |
+| **Precision** | Exact | NVIDIA 引擎的 RTX 20 和 RTX 30：Fast 减少 NR 时间，在 RTX 30 上实测约 17 %，画面有轻微差异。需重启游戏生效。 |
+| **NR model preset** | B | 使用 `nvngx_dlssnr.dll` 310.9.16 时：**B** 是更小、快得多的网络，**A** 是 310.8.0 所运行的较大网络，**DLL default** 由该文件自行选择（B）。使用 310.8.0 时，任何选项都运行其唯一的网络。它位于 SR 和 RR 模型预设旁边（**Image** 页，Upscaling），实时生效。 |
 
 在 RTX 3070 Ti Laptop 上的 1080p 本地测试中，网络 B 的 NR 时间约 15 ms，网络 A 约 27 ms。B 的画面与 A 不同。
 对 310.9.16 的支持是实验性的，测试有限。
@@ -76,20 +69,9 @@ NR 在后台准备：最初几帧可能保留 DLSS 原本的画面。菜单顶�
 
 | 设置 | 引擎 | 默认 | 收益与取舍 |
 | :--- | :--- | :---: | :--- |
-| **Precision：Fast** | RTX 30 上的 NVIDIA 或 Open | Exact | 处理更快，画面略有差异。上述 17 % 测量针对 NVIDIA 引擎，不适用于 Open。需重启。 |
-| **More speed for more VRAM** | RTX 30 上的 Open | 关闭 | NR 时间更短、画面不变；在 1440p、DLSS Balanced 下约多占 160 MB 显存。显存接近用满时请保持关闭。需重启。 |
-| **Fast projection** | RTX 30 上的 Open | 开启 | 更快的处理，画面有轻微差异。需重启。 |
-| **Avoid NR padding** | NVIDIA 或 Open | 关闭 | 允许 NR 使用略小的相邻尺寸，每个方向最多减少 2 %。可能改变 NR 画面，不改变 DLSS 渲染尺寸。实时生效。 |
+| **Precision：Fast** | RTX 30 上的 NVIDIA | Exact | 处理更快，画面略有差异。上述 17 % 测量针对 NVIDIA 引擎，需重启。 |
+| **Avoid NR padding** | NVIDIA | 关闭 | 允许 NR 使用略小的相邻尺寸，每个方向最多减少 2 %。可能改变 NR 画面，不改变 DLSS 渲染尺寸。实时生效。 |
 | **NR frames in flight** | 支持 Reflex 的 DirectX 12 游戏中的 NVIDIA 引擎 | 0 | 将待完成的 NR 帧数限制为 1 或 2；帧生成启用时至少使用 2。实时生效，游戏内性能影响仍待验证。 |
-| **Ultra-fast mode** | Open，一遍 NR | 关闭 | 在下方对比中，NR 处理时间约减半，但 NR 层更新较晚，运动时可能出现画面瑕疵。需重启。 |
-
-比较性能时，请保持一遍处理、相同场景、输出分辨率和帧生成倍率。先将 **NR Resolution** 降至 Performance
-或 Ultra Performance，同时保留你偏好的 DLSS 设置，再比较 Fast 精度。要试用超快模式，请选择 Open 和标有
-**RTX 30** 的后端，开启 **Ultra-fast mode**，然后重启。一次只改一个选项；除了 FPS，还要检查运动中的
-人物以及刚显露的表面。
-
-**Ultra Performance** 是 NR 分辨率预设（输出宽度和高度的 33 %）。**Ultra-fast mode** 是 Open 超快模式。
-两者可以一起使用，但选择其中一项不会自动开启另一项。
 
 ### 处理遍数和风格
 
@@ -106,14 +88,7 @@ NR 在后台准备：最初几帧可能保留 DLSS 原本的画面。菜单顶�
 
 ## 引擎
 
-| 引擎 | 状态 | 说明 |
-| :--- | :--- | :--- |
-| **NVIDIA**（默认） | 实验性 | 运行 NVIDIA 的 NR。 |
-| **Open** | 高度实验性 | NR 的开放实现（[OpenDLSS-NR](https://github.com/maanHimself/OpenDLSS-NR)）。可能出现崩溃、闪烁、画面瑕疵和兼容性问题。仍需要模组文件旁边的 `nvngx_dlssnr.dll`。 |
-
-切换引擎需要重启游戏，不会自动从一个引擎切换到另一个。使用 **Open** 时，菜单要求选择适合显卡的后端以及运行方式，
-各项都有说明。Open 不支持 RTX 20。其 RTX 30 路径和性能选项属于 RTX Encore 的 Ampere 优化工作；不保证与
-NVIDIA 引擎生成相同画面。
+1.3.0 已移除 OpenNR。Neural Rendering 使用 NVIDIA 运行时。升级旧 OpenNR 配置时会关闭 NR；请重新开启以使用 NVIDIA NR。
 
 ## 性能开销
 
@@ -132,48 +107,7 @@ Resolution Performance，显示帧率提高 18 %（76 至 90 FPS）。这不是�
 处理时间的减少。使用帧生成时，NR 作用于游戏渲染的帧，不作用于生成帧。
 
 **Performance** 分组还有两项实验性选项：**Avoid NR padding**，以及 DirectX 12 游戏的 **NR frames in flight**。
-菜单提供各自说明。最大的收益来自下方的超快模式。
-
-## 超快模式
-
-**Ultra-fast mode** 是 RTX Encore 为 Open 引擎开发的超快模式。它将 NR 工作分散到两个渲染帧中，
-并在更新之间让 NR 层跟随场景。这通过不同的时间更新方式减少每帧 NR 工作量，而不只是降低分辨率。
-
-在 **RTX 3070 Ti Laptop（Ampere）**、帧生成 X3 下，《黑神话：悟空》内置基准测试测得
-（**每种配置各运行一次**）：
-
-| 项目 | Open 引擎 | Open 引擎，超快模式 |
-| :--- | ---: | ---: |
-| 每个渲染帧的 NR 时间 | 18.7 ms | 9.8 ms |
-| 显示帧率 | 73.8 FPS | 94.9 FPS |
-
-在此对比中，**NR 时间减少 48 %**，**显示 FPS 增加 29 %**。该模式分散工作，避免完整 NR 开销的一帧和完全不执行 NR
-工作的一帧交替出现。启动和历史重置时仍可能开销更高；此结果不保证所有游戏都有收益或平稳的帧时间。
-这些已有测量不是新发布构建的基准测试；本页未记录确切的构建标识。
-
-- **开启方法**：**Image** 选项卡选择 **Open** 引擎，然后在 **Performance** 分组开启 **Ultra-fast mode**。
-  重启游戏。只支持一遍 NR，可用于 DirectX 11、DirectX 12 和 Vulkan 游戏；已在《黑神话：悟空》、Palworld 和
-  Shadows of Doubt 中观察到运行。
-- **画面变化**：NR 层的更新延后一帧。快速运动时可能滞后或拖影，刚出现的表面会稍后才得到 NR 效果。
-- **两项实时调节**：**Ghost tolerance** 越低，运动后的重影越少，但更多表面暂时等待 NR；**Fill tolerance**
-  控制刚出现的表面借用周围相似表面的 NR 效果的程度，0 关闭填充。
-- 多占用几 MB 显存。
-
-此模式属于 Open 引擎，该引擎仍是高度实验性的：见[引擎](#引擎)。
-
-## Open 内存占用
-
-我们的 Ampere 优化也降低了 Open 的内存占用。RTX 30 路径已有的本地自动化测试，在 **More speed for more VRAM** 关闭时，
-记录了以下属于 NR 引擎的 GPU 内存分配：
-
-| NR 工作尺寸 | 优化前 | 优化后 |
-| :--- | ---: | ---: |
-| 1472×828 | 601 MiB | 345 MiB |
-| 1920×1080 | 846 MiB | 501 MiB |
-
-即 **NR 内存约减少 41–43 %**，参考对比中的输出一致。这些数据统计 Open 引擎自身的分配，不是游戏的总显存占用；
-它们是本地自动化测试结果，不是游戏内 FPS 测量，也不代表 NVIDIA 引擎或帧生成的内存使用。
-开启 **More speed for more VRAM** 会再次增加显存占用，以换取更短的 NR 时间。
+菜单提供各自说明。
 
 ## 如果不起作用
 

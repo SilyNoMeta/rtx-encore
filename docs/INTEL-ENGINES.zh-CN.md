@@ -2,7 +2,7 @@
 
 [English](INTEL-ENGINES.md) · [Français](INTEL-ENGINES.fr.md) · [简体中文](INTEL-ENGINES.zh-CN.md)
 
-适用于 RTX Encore 1.2.2。可用版本请查看[发布页面](https://github.com/SilyNoMeta/rtx-encore/releases)。
+适用于 RTX Encore 1.3.0。可用版本请查看[发布页面](https://github.com/SilyNoMeta/rtx-encore/releases)。
 
 RTX Encore 1.2.0 可选择重建和帧生成引擎。保留 **Game** 可继续使用游戏原有引擎。Intel 模式仍属实验性，默认关闭，需要兼容的游戏输入；选择某个引擎不能证明它已激活。
 

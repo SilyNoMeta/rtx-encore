@@ -34,7 +34,6 @@
 | `rtx-encore.dll` | 模组本体。复制到游戏旁边，并改成游戏会加载的文件名（见下文）。 |
 | `alternative-proxies\rtx-encore.asi` | 同一个模组的插件形式，适用于带有 ASI 加载器的游戏。 |
 | `alternative-proxies\version.dll`、`winmm.dll`、`dxgi.dll`、`dinput8.dll` | 已命名好的副本，用于少数不接受改名后主文件的游戏。 |
-| `cyberpunk-2077-cet-panel\` | Cyber Engine Tweaks 的可选面板（见 [Cyberpunk 2077](#cyberpunk-2077)）。 |
 | `README.md`、`docs\`、`THIRD-PARTY-NOTICES.md` | 本文档和第三方组件声明。 |
 
 每个游戏只安装**一份**模组，切勿安装两份。
@@ -130,9 +129,8 @@ bEnableDLSSD3D12=True
 `bin\x64\plugins\rtx-encore.asi`。请让其他模组保留它们各自需要的文件名：Cyber Engine Tweaks 使用
 `version.dll`，RED4ext 使用 `winmm.dll`，ReShade 使用 `dxgi.dll`。
 
-菜单（**Insert**）可以独立工作。如果你使用 Cyber Engine Tweaks，还有一个可选面板会在它的界面中显示主要控制项：
-把 `cyberpunk-2077-cet-panel` 中的 `bin` 文件夹复制到游戏文件夹即可。该面板是实验性的，并且需要安装 `.asi`
-插件。
+
+1.3.0 已移除可选的 Cyber Engine Tweaks 面板。请使用内置菜单（**Insert**）或 Hub。首次启动时会将旧面板设置导入模组旁并保留原文件。升级后，如旧 RTX Encore 面板文件夹仍在 CET mods 中，请仅删除该面板文件夹。
 
 ### DXVK、ReShade、Special K、OptiScaler
 

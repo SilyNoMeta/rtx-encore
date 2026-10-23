@@ -2,6 +2,32 @@
 
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
+
+## 1.3.0
+
+- 中央优先 Neural Rendering（实验性，默认关闭）：NR 在图像中央以全强度运行，越靠近边缘越轻，
+  以更柔和的边缘 NR 效果换取更高 FPS。在菜单中开启 **Foveated NR** 并选择预设（Light、Balanced、Strong）；
+  预设背后的数值位于 **Foveated NR: custom values**。在 RTX 3070 Ti Laptop 上，Strong 在 Cyberpunk 2077 中
+  带来平均 FPS 提升 27%。感谢 [maximedgoulet](https://github.com/maximedgoulet) 提供这一构想
+  （[FoveatedDLSS5](https://github.com/maximedgoulet/FoveatedDLSS5)）。
+
+- 在运动矢量为输出分辨率的游戏中（Unreal Engine 5、Black Myth: Wukong），Neural Rendering 现在能正确跟随运动：
+  此前它只能看到部分运动。
+
+- **《博德之门 3》（Vulkan）搭配 bg3fgvk：** 不再在启动时崩溃，Neural Rendering、DLSS 与 DLSS 帧生成现在可以同时运行。感谢 [@deusimperatork](https://github.com/deusimperatork) 提供详细的报告和日志（[#72](https://github.com/SilyNoMeta/rtx-encore/issues/72)）。不支持在该游戏中同时使用 OptiScaler。
+
+- 移除可选的 Cyber Engine Tweaks 面板。请使用内置菜单（Insert）或 Hub。首次启动时，若模组旁没有现有配置，将复制旧面板的配置并保留原文件。
+
+- 移除实验性的 OpenNR 引擎及其设置。NVIDIA Neural Rendering 仍可使用。升级旧 OpenNR 配置时会关闭 NR；重新开启即可使用 NVIDIA NR。
+
+- RTX 20 可在 NVIDIA 621.01 驱动和 DirectX 12 下使用 Smooth Motion，启用后自动选择显卡。
+  在 Hub 或 RTX 20 的游戏内菜单中选择 **V1（测试版 1，默认）** 或 **V2（测试版 2）**，然后重启游戏。
+  感谢 [@aziznasrimay45-sys](https://github.com/aziznasrimay45-sys) 在 RTX 2070 上测试五款游戏，
+  并在 Resident Evil Requiem 中偏好 V1；感谢 [@MxHassan195](https://github.com/MxHassan195)
+  在 RTX 2060 的 The Witcher 3 中比较两版，并认为 V2 更流畅
+  （[#53](https://github.com/SilyNoMeta/rtx-encore/issues/53)）。性能取决于显卡和游戏；
+  这些反馈针对实验测试版，并非最终 DLL 的验证。
+
 ## 1.2.2
 
 - **重建后的锐化。** DLSS、DLAA、Ray Reconstruction 和替代 XeSS 可选择 Off、Game 或 Custom。默认关闭；Custom 默认强度为 30%，修改即时生效。强度过高可能产生光晕并放大噪点。原始 DLSS 版本低于 2.5.1 时保留其自身锐化。感谢 [@aziznasrimay45-sys](https://github.com/aziznasrimay45-sys) 提出需求（[#70](https://github.com/SilyNoMeta/rtx-encore/issues/70)）。

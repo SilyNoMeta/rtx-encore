@@ -2,7 +2,7 @@
 
 [English](INTEL-ENGINES.md) · [Français](INTEL-ENGINES.fr.md) · [简体中文](INTEL-ENGINES.zh-CN.md)
 
-Pour RTX Encore 1.2.2. Les versions disponibles figurent sur la [page des publications](https://github.com/SilyNoMeta/rtx-encore/releases).
+Pour RTX Encore 1.3.0. Les versions disponibles figurent sur la [page des publications](https://github.com/SilyNoMeta/rtx-encore/releases).
 
 RTX Encore 1.2.0 permet de choisir les moteurs de reconstruction et de génération d’images. Laissez **Game** pour conserver le moteur habituel du jeu. Les modes Intel sont expérimentaux, désactivés par défaut et demandent des entrées de jeu compatibles ; le choix d’un moteur ne prouve pas son activation.
 

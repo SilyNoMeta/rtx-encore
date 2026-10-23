@@ -17,7 +17,9 @@ XeFG ne permet pas d’ajouter la génération d’images à tous les jeux. Les 
 | :--- | :--- | :--- | :--- | :--- |
 | RTX 40 | Prise en charge. DirectX 12 et Vulkan éprouvés sur une RTX 4090. | Fourni par NVIDIA | Pris en charge | Inactive |
 | RTX 30 | Prise en charge. DirectX 12 éprouvé sur un RTX 3070 Ti Laptop. | Pris en charge avec les pilotes listés plus bas | Pris en charge | DirectX 12, mesurée sur un RTX 3070 Ti Laptop. Voir [plus bas](#versions-de-dlss-super-resolution). |
-| RTX 20 | Expérimentale : pas encore validée sur une vraie carte RTX 20. | Non pris en charge | Expérimental | Inactive |
+| RTX 20 | Expérimentale : pas encore validée sur une vraie carte RTX 20. | Expérimental dès 1.3.0 : 621.01 / DX12, V1 ou V2 | Expérimental | Inactive |
+
+Les RTX 20 nécessitent le mod **1.3.0**, le pilote **621.01** et **DirectX 12** ; V1/V2 se choisit par jeu.
 
 RTX Encore est fait pour les cartes RTX 20, 30 et 40. Les cartes GTX et celles d'autres fabricants ne sont pas
 prises en charge.
@@ -122,7 +124,7 @@ ou non.
 | ReShade, Special K | Laissez-leur leur `dxgi.dll` et donnez un autre nom à RTX Encore. ReShade n'est pas nécessaire pour le menu. |
 | DXVK | Ne nommez pas RTX Encore `dxgi.dll` : DXVK fournit ce fichier. Le menu est dessiné dans sa sortie Vulkan. |
 | OptiScaler | Une option dédiée existe pour les installations qui en ont besoin : voir [Génération d'images](FRAME-GENERATION.fr.md#lisser-x3--x4). |
-| Cyber Engine Tweaks, RED4ext | Laissez-leur leurs fichiers sous leur nom. Un panneau optionnel et expérimental existe pour Cyber Engine Tweaks. |
+| Cyber Engine Tweaks, RED4ext | Laissez-leur leurs fichiers sous leur nom. |
 | NVIDIA Profile Inspector | En mode **Game decides**, le multiplicateur qu'il fixe est suivi. |
 
 ## Anti-triche et jeux en ligne
