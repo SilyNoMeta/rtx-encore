@@ -26,9 +26,13 @@ One file next to the game, a built-in menu, nothing else to install.
 > It loads inside the game: do not use it in online or anti-cheat protected games, where it can be blocked or get an
 > account flagged. Back up every file you replace.
 
-## 1.2.2
+## What is new in 1.2.2
 
-Sharpening after reconstruction, Smooth Motion startup in SurrounDead, and Vulkan menu / DLSS Frame Generation compatibility fixes. See the [changelog](CHANGELOG.md).
+- **Live sharpening after reconstruction.** In **Image > Super Resolution**, choose Off, Game or Custom for DLSS, DLAA, Ray Reconstruction and replacement XeSS. Off by default; Custom starts at 30%. It runs after NR when enabled. High strengths can create halos and amplify noise; Vulkan operation and real-game appearance remain unvalidated. [Settings and limits](docs/SUPER-RESOLUTION.md).
+- **Compatibility fixes.** Smooth Motion startup in SurrounDead (DirectX 12), the integrated Vulkan menu in Baldur’s Gate 3 with bg3fgvk / OptiScaler F5, and DLSS Frame Generation with OptiScaler F5. See the [changelog](CHANGELOG.md) for credits and validation scope.
+- **The 1.2 feature set.** Choose DLSS or experimental XeSS reconstruction, DLSS-G or experimental XeFG frame generation, switch supported reconstruction engines and DLSS presets while playing, and tune NR pass by pass with common HDR/exposure inputs.
+
+The mod and the Hub have separate releases. Hub 1.2.2 adds exportable Hub logs, verified compressed backups and remembered game-page choices. Sharpening is available now in the mod’s menu; its Hub controls are in development for a later Hub release.
 
 **XeSS / XeFG: VERY EXPERIMENTAL.** Getting this integration working was a particularly difficult and frustrating part of development :) Expect bugs, crashes, visual artifacts and differences between games and graphics APIs. Please report problems: in RTX Encore Hub, open the game’s **Health** page, choose **Prepare a diagnostic**, review the archive for personal information, then attach it to an [RTX Encore issue](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose). Include your engine choices, graphics API and requested multiplier. The Hub does not upload the archive for you.
 
@@ -38,6 +42,8 @@ Sharpening after reconstruction, Smooth Motion startup in SurrounDead, and Vulka
 
 | | Feature | In short |
 | :---: | :--- | :--- |
+| 🧪 | **[Intel engines (experimental)](docs/INTEL-ENGINES.md)** | XeSS reconstruction or XeFG frame generation with XeLL, where compatible game inputs and runtimes allow them. Off by default. |
+| 🔆 | **[Live sharpening](docs/SUPER-RESOLUTION.md)** | Off / Game / Custom, after reconstruction and NR. Custom 0–100%, default 30%; appearance and Vulkan operation remain unvalidated. |
 | 🎞️ | **[Frame generation X2 to X6](docs/FRAME-GENERATION.md)** | DLSS Multi Frame Generation on RTX 20, 30 and 40, in the games that ship DLSS Frame Generation. Fixed multiplier, Dynamic mode with a target frame rate, or the game's own choice. |
 | 🛡️ | **Cleaner generated frames** | Protection against tearing on thin geometry (fences, wires, foliage) and against artifacts in moving shadows; sharp HUD and text. |
 | ⚡ | **Lighter frame generation** | A performance option that lowers the GPU cost of each generated frame without changing the image. |
@@ -89,8 +95,7 @@ keep it and the NVIDIA files it works with up to date.
 | 🩺 | **A first check.** **Launch and verify** watches the game's first minute and says whether the mod loaded. |
 | 👥 | **Community profiles.** Settings per game shared by other players, ranked for your machine, to import with a way back, or to share your own. New since Hub 1.0.0-rc.2, and experimental. |
 
-Download it from **[its releases](https://github.com/SilyNoMeta/rtx-encore-hub/releases)**. The Hub is a release candidate: installing by hand, below,
-works exactly as before.
+Download the stable Hub from **[its releases](https://github.com/SilyNoMeta/rtx-encore-hub/releases)**, as an installer or portable ZIP. Manual installation, below, remains available.
 
 ## Quick start
 

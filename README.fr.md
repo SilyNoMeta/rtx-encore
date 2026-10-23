@@ -26,9 +26,13 @@ Un seul fichier à côté du jeu, un menu intégré, rien d'autre à installer.
 > Il se charge dans le jeu : ne l'utilisez pas dans un jeu en ligne ou protégé par un anti-triche, où il peut être
 > bloqué ou faire signaler un compte. Sauvegardez chaque fichier que vous remplacez.
 
-## 1.2.2
+## Les nouveautés de 1.2.2
 
-Netteté après reconstruction, démarrage de Smooth Motion dans SurrounDead et correctifs de compatibilité du menu Vulkan et de DLSS Frame Generation. Voir le [journal des changements](CHANGELOG.fr.md).
+- **Netteté à chaud après reconstruction.** Dans **Image > Super Resolution**, choisissez Off, Game ou Custom pour DLSS, DLAA, Ray Reconstruction et le remplacement XeSS. Désactivée par défaut ; Custom démarre à 30 %. Elle passe après NR quand il est actif. Une force élevée peut créer des halos et amplifier le bruit ; le fonctionnement Vulkan et le rendu en jeu restent à valider. [Réglages et limites](docs/SUPER-RESOLUTION.fr.md).
+- **Correctifs de compatibilité.** Démarrage de Smooth Motion dans SurrounDead (DirectX 12), menu Vulkan intégré dans Baldur’s Gate 3 avec bg3fgvk / OptiScaler F5 et DLSS Frame Generation avec OptiScaler F5. Le [journal des changements](CHANGELOG.fr.md) détaille les contributions et la portée des validations.
+- **Les fonctions de la version 1.2.** Reconstruction DLSS ou XeSS expérimental, génération d’images DLSS-G ou XeFG expérimental, changements de moteur de reconstruction compatible et de presets DLSS en jouant, réglages NR par passe et entrées HDR/exposition communes.
+
+Le mod et le Hub ont des publications distinctes. Hub 1.2.2 ajoute les journaux du Hub exportables, les sauvegardes compressées vérifiées et les choix de fiche jeu mémorisés. La netteté est déjà disponible dans le menu du mod ; ses commandes dans le Hub sont en développement pour une prochaine version.
 
 **XeSS / XeFG : TRÈS EXPÉRIMENTAL.** Cette intégration a été particulièrement pénible à mettre au point :) Attendez-vous à des bugs, crashs, artefacts et différences entre jeux et API graphiques. N’hésitez pas à remonter les problèmes : dans RTX Encore Hub, ouvrez la page **Santé** du jeu, choisissez **Préparer un diagnostic**, relisez l’archive pour retirer les informations personnelles, puis joignez-la à une [issue RTX Encore](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose). Indiquez les moteurs choisis, l’API graphique et le multiplicateur demandé. Le Hub ne téléverse pas l’archive à votre place.
 
@@ -38,6 +42,8 @@ Netteté après reconstruction, démarrage de Smooth Motion dans SurrounDead et 
 
 | | Fonction | En bref |
 | :---: | :--- | :--- |
+| 🧪 | **[Moteurs Intel (expérimental)](docs/INTEL-ENGINES.fr.md)** | Reconstruction XeSS ou génération d’images XeFG avec XeLL, selon les entrées du jeu et les runtimes compatibles. Désactivés par défaut. |
+| 🔆 | **[Netteté à chaud](docs/SUPER-RESOLUTION.fr.md)** | Off / Game / Custom, après reconstruction et NR. Custom de 0 à 100 %, défaut 30 % ; rendu et fonctionnement Vulkan encore à valider. |
 | 🎞️ | **[Génération d'images X2 à X6](docs/FRAME-GENERATION.fr.md)** | DLSS Multi Frame Generation sur RTX 20, 30 et 40, dans les jeux qui proposent DLSS Frame Generation. Multiplicateur fixe, mode Dynamique avec une fréquence cible, ou choix laissé au jeu. |
 | 🛡️ | **Images générées plus propres** | Protection contre les déchirures sur la géométrie fine (grillages, câbles, feuillages) et contre les défauts dans les ombres en mouvement ; interface et texte nets. |
 | ⚡ | **Génération d'images plus légère** | Une option de performance qui réduit le coût GPU de chaque image générée sans changer l'image. |
@@ -92,8 +98,7 @@ de le tenir à jour avec les fichiers NVIDIA qui vont avec.
 | 🩺 | **Une première vérification.** **Lancer et vérifier** observe la première minute du jeu et dit si le mod s'est chargé. |
 | 👥 | **Des profils de la communauté.** Des réglages par jeu partagés par d'autres joueurs, classés pour votre machine, à importer avec un retour arrière, ou à partager. Nouveaux depuis le Hub 1.0.0-rc.2, et expérimentaux. |
 
-Téléchargez-le depuis **[ses publications](https://github.com/SilyNoMeta/rtx-encore-hub/releases)**. Le Hub est une version candidate : l'installation à
-la main, ci-dessous, fonctionne exactement comme avant.
+Téléchargez le Hub stable depuis **[ses publications](https://github.com/SilyNoMeta/rtx-encore-hub/releases)**, en installateur ou ZIP portable. L’installation manuelle, ci-dessous, reste disponible.
 
 ## Démarrage rapide
 

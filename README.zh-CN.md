@@ -26,9 +26,13 @@ Smooth Motion 和 Neural Rendering。**
 > 它在游戏进程内加载：请勿在联机游戏或受反作弊保护的游戏中使用，否则可能被拦截，或导致账号被标记。
 > 替换任何文件之前请先备份。
 
-## 1.2.2
+## 1.2.2 新功能
 
-新增重建后锐化，修复 SurrounDead 的 Smooth Motion 启动及 Vulkan 菜单、DLSS Frame Generation 兼容性问题。请参阅[更新日志](CHANGELOG.zh-CN.md)。
+- **重建后实时锐化。** 在 **Image > Super Resolution** 中为 DLSS、DLAA、光线重建及替代 XeSS 选择 Off、Game 或 Custom。默认关闭，Custom 默认 30%；启用 NR 时在其后锐化。高强度可能产生光晕并放大噪点；Vulkan 运行及实际游戏画质仍待验证。[设置与限制](docs/SUPER-RESOLUTION.zh-CN.md)。
+- **兼容性修复。** 修复 SurrounDead（DirectX 12）的 Smooth Motion 启动、Baldur’s Gate 3 与 bg3fgvk / OptiScaler F5 的 Vulkan 内置菜单，以及 OptiScaler F5 的 DLSS 帧生成兼容性。贡献者与验证范围见[更新日志](CHANGELOG.zh-CN.md)。
+- **1.2 系列功能。** 选择 DLSS 或实验性 XeSS 重建、DLSS-G 或实验性 XeFG 帧生成，在兼容游戏中实时切换重建引擎及 DLSS 预设，并逐轮调整 NR 和共用 HDR/曝光输入。
+
+模组与 Hub 分别发布。Hub 1.2.2 新增 Hub 日志导出、经验证的压缩备份和游戏页面选择记忆。锐化现已可在模组菜单中使用；Hub 中的对应控制项正在开发，将随后续版本提供。
 
 **XeSS / XeFG：高度实验性。** 这部分集成的开发过程非常艰难，也相当折腾 :) 请预期可能出现错误、崩溃、画面伪影，以及不同游戏和图形 API 之间的行为差异。欢迎报告问题：在 RTX Encore Hub 中打开游戏的 **健康** 页面，选择 **生成诊断包**，检查并移除个人信息后，将诊断压缩包附加到 [RTX Encore issue](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose)。请注明选择的引擎、图形 API 和请求的倍率。Hub 不会自动上传该压缩包。
 
@@ -38,6 +42,8 @@ Smooth Motion 和 Neural Rendering。**
 
 | | 功能 | 简介 |
 | :---: | :--- | :--- |
+| 🧪 | **[Intel 引擎（实验性）](docs/INTEL-ENGINES.zh-CN.md)** | 兼容游戏输入和运行库允许时，使用 XeSS 重建或搭配 XeLL 的 XeFG 帧生成。默认关闭。 |
+| 🔆 | **[实时锐化](docs/SUPER-RESOLUTION.zh-CN.md)** | Off / Game / Custom，在重建及 NR 之后执行。Custom 为 0–100%，默认 30%；画质与 Vulkan 运行仍待验证。 |
 | 🎞️ | **[X2 至 X6 帧生成](docs/FRAME-GENERATION.zh-CN.md)** | 在自带 DLSS 帧生成的游戏中，为 RTX 20、30 和 40 提供 DLSS 多帧生成。可选固定倍率、带目标帧率的动态模式，或交给游戏决定。 |
 | 🛡️ | **更干净的生成帧** | 防止细小几何体（栅栏、电线、植被）撕裂，减少移动阴影中的瑕疵；界面和文字保持清晰。 |
 | ⚡ | **更轻量的帧生成** | 一个性能选项，在不改变画面的前提下降低每个生成帧的 GPU 开销。 |
@@ -87,7 +93,7 @@ RTX Encore 面向 RTX 20、30 和 40；RTX 50 显卡的帧生成和 Smooth Motio
 | 🩺 | **首次检查。** **启动并验证**会观察游戏的第一分钟，并说明模组是否已加载。 |
 | 👥 | **社区配置。** 其他玩家分享的各游戏设置，按你的机器排序，可导入并可回退，也可以分享你自己的设置。自 Hub 1.0.0-rc.2 起提供，仍是实验性的。 |
 
-请从**[它的发布页面](https://github.com/SilyNoMeta/rtx-encore-hub/releases)**下载。Hub 目前是候选发布版：下面的手动安装方式与以前完全一样。
+请从**[发布页面](https://github.com/SilyNoMeta/rtx-encore-hub/releases)**下载稳定版 Hub，可选择安装程序或便携 ZIP。下面的手动安装方式仍然可用。
 
 ## 快速开始
 
