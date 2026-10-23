@@ -2,7 +2,7 @@
 
 [English](INTEL-ENGINES.md) · [Français](INTEL-ENGINES.fr.md) · [简体中文](INTEL-ENGINES.zh-CN.md)
 
-For RTX Encore 1.2.1. Available versions are listed on the [releases page](https://github.com/SilyNoMeta/rtx-encore/releases).
+For RTX Encore 1.2.2. Available versions are listed on the [releases page](https://github.com/SilyNoMeta/rtx-encore/releases).
 
 RTX Encore 1.2.0 adds a choice of reconstruction and frame-generation engines. Leave **Game** selected to keep the game’s normal engine. Intel modes are experimental, off by default and require compatible game inputs; choosing an engine does not prove it became active.
 

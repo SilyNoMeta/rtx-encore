@@ -2,6 +2,15 @@
 
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
+## 1.2.2
+
+- **重建后的锐化。** DLSS、DLAA、Ray Reconstruction 和替代 XeSS 可选择 Off、Game 或 Custom。默认关闭；Custom 默认强度为 30%，修改即时生效。强度过高可能产生光晕并放大噪点。原始 DLSS 版本低于 2.5.1 时保留其自身锐化。感谢 [@aziznasrimay45-sys](https://github.com/aziznasrimay45-sys) 提出需求（[#70](https://github.com/SilyNoMeta/rtx-encore/issues/70)）。
+- **Smooth Motion 可在 SurrounDead（DirectX 12）中正常启动。** 维护者已在 RTX 3070 Ti Laptop、NVIDIA 621.01 驱动上确认游戏内正常工作。
+- **Baldur's Gate 3（Vulkan）：** 修复使用 bg3fgvk 和 OptiScaler F5 时，内置菜单在特定情况下退回独立窗口的问题。感谢 [@deusimperatork](https://github.com/deusimperatork) 提供报告（[#72](https://github.com/SilyNoMeta/rtx-encore/issues/72)）。
+- **DLSS Frame Generation 与 OptiScaler F5 的兼容性：** 修复 RTX 20/30 上帧生成在特定情况下不可用的问题，包括 Final Fantasy VII Rebirth。感谢 [@lovebabyx](https://github.com/lovebabyx) 提供报告（[#73](https://github.com/SilyNoMeta/rtx-encore/issues/73)）。
+
+锐化已有本地自动化检查；Vulkan 运行、实际游戏画质和性能仍待验证。#72 和 #73 的报告者尚未确认此版本中的修复。Intel XeSS 和 XeFG 仍为实验性功能。[锐化设置](docs/SUPER-RESOLUTION.zh-CN.md)。
+
 ## 1.2.1
 
 - 在启动前安装兼容的 Intel 运行库后，No Man’s Sky 可在游戏中直接切换 DLSS 与 XeSS，无需重启。

@@ -66,6 +66,15 @@ Auto exposure may help exposure-related ghosting; it is not a general ghosting f
 
 Earlier DLSS/XeSS input keys are migrated using the selected reconstruction engine; the common keys take precedence when present.
 
+### `superResolutionSharpening`
+
+| Key | Default | Effect |
+| :--- | :---: | :--- |
+| `srSharpening` | `"off"` | Mode: `off` (default), `game` or `custom`. Applied live. |
+| `srSharpness` | `30` | Custom strength: 0 to 100%, default 30%. 0 disables the effect. |
+
+It adds to any sharpening the game performs afterwards. High strengths can create halos and amplify noise. Appearance varies with each game's later image processing, including HDR. Unsupported output formats and graphics paths leave the image unchanged. Original DLSS versions older than 2.5.1 keep their own sharpening; the extra pass also stays off when that version cannot be identified. Vulkan and real-game image quality have not yet been validated.
+
 ### `dlssPresets`
 
 These independent model choices require a **game restart**. SR/RR are in **Image → DLSS Super Resolution**;
