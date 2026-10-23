@@ -2,6 +2,15 @@
 
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.2.2
+
+- **Netteté après reconstruction.** Choisissez Off, Game ou Custom pour DLSS, DLAA, Ray Reconstruction et le remplacement XeSS. Désactivée par défaut ; Custom démarre à 30 % et les changements sont immédiats. Une intensité élevée peut créer des halos et amplifier le bruit. Un DLSS d'origine antérieur à 2.5.1 conserve sa propre netteté. Merci à [@aziznasrimay45-sys](https://github.com/aziznasrimay45-sys) pour la demande ([#70](https://github.com/SilyNoMeta/rtx-encore/issues/70)).
+- **Smooth Motion démarre correctement dans SurrounDead (DirectX 12).** Le mainteneur a confirmé son fonctionnement en jeu sur une RTX 3070 Ti Laptop avec le pilote NVIDIA 621.01.
+- **Baldur's Gate 3 (Vulkan) :** correction d'un cas où le menu intégré basculait dans une fenêtre séparée avec bg3fgvk et OptiScaler F5. Merci à [@deusimperatork](https://github.com/deusimperatork) pour le signalement ([#72](https://github.com/SilyNoMeta/rtx-encore/issues/72)).
+- **Compatibilité de DLSS Frame Generation avec OptiScaler F5 :** correction d'un cas où Frame Generation devenait indisponible sur RTX 20/30, notamment dans Final Fantasy VII Rebirth. Merci à [@lovebabyx](https://github.com/lovebabyx) pour le signalement ([#73](https://github.com/SilyNoMeta/rtx-encore/issues/73)).
+
+La netteté dispose de contrôles automatisés locaux ; son fonctionnement Vulkan, son aspect en jeu et ses performances restent à valider. Les auteurs des signalements #72 et #73 n'ont pas confirmé les correctifs sur cette release. Intel XeSS et XeFG restent expérimentaux. [Réglages de netteté](docs/SUPER-RESOLUTION.fr.md).
+
 ## 1.2.1
 
 - Passez de DLSS à XeSS et inversement sans redémarrer dans No Man’s Sky, avec des runtimes Intel compatibles installés avant le lancement.

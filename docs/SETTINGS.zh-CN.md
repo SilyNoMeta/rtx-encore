@@ -64,6 +64,15 @@ NVIDIA 运行库的兼容性不再要求文件位于预设列表中。旧的 `pr
 
 旧 DLSS/XeSS 输入键根据所选重建引擎迁移；存在通用键时优先使用通用键。
 
+### `superResolutionSharpening`
+
+| Key | Default | Effect |
+| :--- | :---: | :--- |
+| `srSharpening` | `"off"` | 模式：`off`（默认）、`game` 或 `custom`，即时生效。 |
+| `srSharpness` | `30` | Custom 强度：0–100%，默认 30%。0 禁用效果。 |
+
+会与游戏后续锐化叠加，高强度可能产生光晕并放大噪点。实际效果取决于游戏后续图像处理，包括 HDR。不支持的输出格式或图形路径会保持图像不变。2.5.1 之前的原版 DLSS 保留其自身锐化；无法识别版本时，额外锐化也保持关闭。Vulkan 与实际游戏画质尚未经验证。
+
 ### `dlssPresets`
 
 三个模型选项相互独立，均需**重启游戏**。SR/RR 位于 **Image → DLSS Super Resolution**，FG 位于

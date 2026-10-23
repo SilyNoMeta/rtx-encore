@@ -2,6 +2,15 @@
 
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 1.2.2
+
+- **Sharpening after reconstruction.** Choose Off, Game or Custom for DLSS, DLAA, Ray Reconstruction and replacement XeSS. Off by default; Custom defaults to 30% and changes apply live. High strengths can create halos and amplify noise. Original DLSS older than 2.5.1 keeps its own sharpening. Thanks to [@aziznasrimay45-sys](https://github.com/aziznasrimay45-sys) for the request ([#70](https://github.com/SilyNoMeta/rtx-encore/issues/70)).
+- **Smooth Motion starts correctly in SurrounDead (DirectX 12).** The maintainer confirmed it working in game on an RTX 3070 Ti Laptop with NVIDIA driver 621.01.
+- **Baldur's Gate 3 (Vulkan):** fixes a case where the integrated menu fell back to a separate window with bg3fgvk and OptiScaler F5. Thanks to [@deusimperatork](https://github.com/deusimperatork) for the report ([#72](https://github.com/SilyNoMeta/rtx-encore/issues/72)).
+- **DLSS Frame Generation compatibility with OptiScaler F5:** fixes a case where Frame Generation became unavailable on RTX 20/30, including Final Fantasy VII Rebirth. Thanks to [@lovebabyx](https://github.com/lovebabyx) for the report ([#73](https://github.com/SilyNoMeta/rtx-encore/issues/73)).
+
+Sharpening has local automated checks; Vulkan operation, real-game appearance and performance remain unvalidated. The fixes for #72 and #73 have not been confirmed by their reporters on this release. Intel XeSS and XeFG remain experimental. [Sharpening settings](docs/SUPER-RESOLUTION.md).
+
 ## 1.2.1
 
 - Switch between DLSS and XeSS without restarting in No Man's Sky, with compatible Intel runtimes installed before launch.

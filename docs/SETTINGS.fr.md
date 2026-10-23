@@ -67,6 +67,15 @@ L’exposition automatique peut aider le ghosting lié à l’exposition sans co
 
 Les anciennes clés DLSS/XeSS sont migrées selon le moteur de reconstruction sélectionné ; les clés communes ont priorité si elles existent.
 
+### `superResolutionSharpening`
+
+| Key | Default | Effect |
+| :--- | :---: | :--- |
+| `srSharpening` | `"off"` | Mode : `off` (défaut), `game` ou `custom`. Appliqué à chaud. |
+| `srSharpness` | `30` | Force Custom : 0 à 100 %, défaut 30 %. 0 désactive l’effet. |
+
+Elle se cumule avec la netteté ajoutée ensuite par le jeu. Une force élevée crée des halos et accentue le bruit. Le rendu dépend des traitements ultérieurs du jeu, y compris en HDR. Un format ou un chemin graphique non pris en charge laisse l'image inchangée. Les versions originales de DLSS antérieures à 2.5.1 gardent leur propre netteté ; la passe supplémentaire reste aussi inactive si cette version ne peut pas être identifiée. Vulkan et la qualité d'image en jeu ne sont pas encore validés.
+
 ### `dlssPresets`
 
 Ces choix de modèles sont indépendants et demandent de **relancer le jeu**. SR/RR se trouvent dans

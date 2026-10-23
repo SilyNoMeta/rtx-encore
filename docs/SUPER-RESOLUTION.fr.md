@@ -9,6 +9,14 @@ preset du modèle, et propose, sur les cartes RTX 30, une option qui rend ce tra
 Pour la résolution de rendu, voir [Menu et overlay](MENU-AND-OVERLAY.fr.md#autres-commandes). Pour le choix du
 preset, voir [Réglages](SETTINGS.fr.md#dlsspresets).
 
+## Netteté après reconstruction
+
+Désactivée par défaut. Dans **Image > Super Resolution**, choisissez **Off**, **Game** ou **Custom**. Custom règle une force de 0 à 100 %, 30 % par défaut ; les changements s'appliquent à chaud. Game suit la valeur de netteté envoyée par le jeu et ne fait rien s'il n'en envoie pas. Un réglage invalide désactive l'effet.
+
+La netteté concerne DLSS Super Resolution, DLAA, Ray Reconstruction et le remplacement XeSS, y compris Super Resolution rapide. Si Neural Rendering est actif, la netteté passe après. Elle ne touche pas l'overlay ni le HUD dessiné ensuite. Off et une force nulle n'ajoutent aucune passe de netteté.
+
+Elle se cumule avec la netteté ajoutée ensuite par le jeu. Une force élevée crée des halos et accentue le bruit. Le rendu dépend des traitements ultérieurs du jeu, y compris en HDR. Un format ou un chemin graphique non pris en charge laisse l'image inchangée. Les versions originales de DLSS antérieures à 2.5.1 gardent leur propre netteté ; la passe supplémentaire reste aussi inactive si cette version ne peut pas être identifiée. Vulkan et la qualité d'image en jeu ne sont pas encore validés.
+
 ## Intel XeSS et XeFG (expérimental)
 
 RTX Encore 1.2.0 permet de choisir les moteurs de reconstruction et de génération d’images. Laissez **Game** pour conserver le moteur habituel du jeu. Les modes Intel sont expérimentaux, désactivés par défaut et demandent des entrées de jeu compatibles ; le choix d’un moteur ne prouve pas son activation. L’entrée HDR et l’exposition automatique utilisent les réglages communs `srHdr` et `srAutoExposure`, pour le moteur de reconstruction sélectionné. Ils suivent le jeu par défaut (`game`) et demandent un redémarrage. Ils n’activent pas le HDR de l’écran et ne convertissent pas une image SDR en HDR. Un format d’entrée incorrect peut dégrader l’image. Certains modèles DLSS imposent l’exposition automatique ; celle de XeSS a un coût GPU et est déconseillée en LDR. XeSS Vulkan LDR avec exposition manuelle reste non pris en charge. RR et la génération d’images ne changent pas.

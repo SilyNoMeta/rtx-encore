@@ -26,9 +26,9 @@ One file next to the game, a built-in menu, nothing else to install.
 > It loads inside the game: do not use it in online or anti-cheat protected games, where it can be blocked or get an
 > account flagged. Back up every file you replace.
 
-## 1.2.1
+## 1.2.2
 
-Menu compatibility fixes, live DLSS/XeSS switching in No Man's Sky, and broader NVIDIA runtime compatibility. See the [changelog](CHANGELOG.md).
+Sharpening after reconstruction, Smooth Motion startup in SurrounDead, and Vulkan menu / DLSS Frame Generation compatibility fixes. See the [changelog](CHANGELOG.md).
 
 **XeSS / XeFG: VERY EXPERIMENTAL.** Getting this integration working was a particularly difficult and frustrating part of development :) Expect bugs, crashes, visual artifacts and differences between games and graphics APIs. Please report problems: in RTX Encore Hub, open the game’s **Health** page, choose **Prepare a diagnostic**, review the archive for personal information, then attach it to an [RTX Encore issue](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose). Include your engine choices, graphics API and requested multiplier. The Hub does not upload the archive for you.
 
