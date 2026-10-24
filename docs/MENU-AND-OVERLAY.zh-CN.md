@@ -14,6 +14,8 @@ RTX Encore 在 DirectX 11、DirectX 12 和 Vulkan 游戏中绘制自己的菜单
 
 在游戏窗口中按 **Insert** 打开或关闭菜单。首次启动时菜单会自动打开一次。快捷键可以在菜单中修改。
 
+在语言选择器中选择 **English**、**Français** 或 **简体中文**。选择立即生效并按游戏保存；未翻译消息保持英语。复制用于报告问题的会话报告保持英语。**关于**选项卡显示构建版本、项目与 Hub 链接、网站、问题报告、GitHub Sponsors、Ko-fi、第三方声明及公开赞助者致谢。选择链接时将在默认浏览器中打开。
+
 每个页面顶部都有四个状态标签：**Upscaling**、**Frame Generation**、**Smooth Motion** 和 **Neural Rendering**。
 每个标签通过彩色圆点和一个数值显示相应功能的状态；悬停查看详情，点击进入设置。持续存在的问题会显示在标签下方的
 卡片中，并给出处理方法。**Upscaling** 还会显示正在使用的引擎（DLSS SR、DLSS RR 或 XeSS-SR），以及 DLSS 功能创建时由游戏
@@ -26,6 +28,7 @@ RTX Encore 在 DirectX 11、DirectX 12 和 Vulkan 游戏中绘制自己的菜单
 | **Image** | DLSS 渲染分辨率、SR/RR/NR 模型预设、Fast super resolution（RTX 30）、Neural Rendering |
 | **Overlay** | 叠加层预览、位置、文字大小和显示项目 |
 | **System** | 快捷键、兼容性、诊断和会话详情，以及用于报告问题的 **Copy** 按钮 |
+| **关于** | 构建版本、项目链接、支持链接、致谢和公开赞助者 |
 
 使用提示：
 

@@ -16,6 +16,8 @@ Restart the game after changing the engine, XeFG pacing or UI settings. With XeF
 Press **Insert** in the game window to open or close it. It opens once by itself on first launch. The shortcut can
 be changed in the menu.
 
+Choose **English**, **Français** or **简体中文** in the language selector. The choice applies immediately and is saved per game; untranslated messages stay in English. The session report copied for a bug report stays in English. The **About** tab shows the build version, project and Hub links, website, issue reporting, GitHub Sponsors, Ko-fi, third-party notices and public sponsor thanks. Links open in your default browser when selected.
+
 A strip of four chips heads every page: **Upscaling**, **Frame Generation**, **Smooth Motion** and **Neural
 Rendering**. Each shows the state of its feature with a colored dot and one figure; hover it for the detail, click it
 to go to its settings. When a problem lasts, a card under the strip names it and says how to fix it.
@@ -29,6 +31,7 @@ Encore supplies. The driver does not report the model it actually runs, so a dri
 | **Image** | DLSS render resolution, SR/RR/NR model presets, Fast super resolution (RTX 30), Neural Rendering |
 | **Overlay** | A preview of the overlay, its position, its text size and the lines it shows |
 | **System** | Shortcuts, compatibility, diagnostics and the session details, with a **Copy** button for bug reports |
+| **About** | Build version, project links, support links, credits and public sponsor thanks |
 
 Good to know:
 

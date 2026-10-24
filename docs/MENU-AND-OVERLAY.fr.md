@@ -16,6 +16,8 @@ Redémarrez après un changement de moteur, d’espacement XeFG ou de réglage d
 Appuyez sur **Inser** dans la fenêtre du jeu pour l'ouvrir ou le fermer. Il s'ouvre une fois de lui-même au premier
 lancement. Le raccourci se change dans le menu.
 
+Choisissez **English**, **Français** ou **简体中文** dans le sélecteur de langue. Le choix s’applique aussitôt et se conserve par jeu ; les messages non traduits restent en anglais. Le rapport de session copié pour un signalement reste en anglais. L’onglet **À propos** montre la version du build, les liens du projet et du Hub, le site, les signalements, GitHub Sponsors, Ko-fi, les mentions tierces et les remerciements aux sponsors publics. Les liens sélectionnés s’ouvrent dans votre navigateur par défaut.
+
 Une rangée de quatre pastilles coiffe chaque page : **Upscaling**, **Frame Generation**, **Smooth Motion** et
 **Neural Rendering**. Chacune montre l'état de sa fonction par un point de couleur et un chiffre ; survolez-la pour
 le détail, cliquez pour aller à ses réglages. Quand un problème dure, une carte sous la rangée le nomme et dit
@@ -30,6 +32,7 @@ encore le remplacer.
 | **Image** | La résolution de rendu DLSS, les presets de modèles SR/RR/NR, Fast super resolution (RTX 30), Neural Rendering |
 | **Overlay** | Un aperçu de l'overlay, sa position, la taille de son texte et les lignes qu'il affiche |
 | **System** | Les raccourcis, la compatibilité, les diagnostics et les détails de la session, avec un bouton **Copy** pour les rapports de bug |
+| **À propos** | Version du build, liens du projet, soutien, crédits et sponsors publics |
 
 À savoir :
 
