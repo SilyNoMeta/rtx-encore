@@ -33,6 +33,9 @@ RTX Encore 面向 RTX 20、30 和 40。不支持 GTX 显卡及其他厂商的显
 | Neural Rendering | 🧪 | 🧪 | 🧪 |
 | 菜单和叠加层 | ✅ | ✅ | ✅ |
 
+Vulkan Neural Rendering 接受 RTX 20、RTX 30、RTX 40 和 RTX 50。使用官方构建在真实 RTX 20、RTX 40 和 RTX 50
+显卡上的 Vulkan 验证仍待完成；见 [Neural Rendering](NEURAL-RENDERING.zh-CN.md)。
+
 不支持 DirectX 9 和 OpenGL 游戏。
 
 ## DLSS 帧生成版本

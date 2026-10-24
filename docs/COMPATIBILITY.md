@@ -34,6 +34,9 @@ RTX Encore is made for RTX 20, 30 and 40 cards. GTX cards and cards from other v
 | Neural Rendering | 🧪 | 🧪 | 🧪 |
 | Menu and overlay | ✅ | ✅ | ✅ |
 
+Vulkan Neural Rendering admits RTX 20, RTX 30, RTX 40 and RTX 50. Physical Vulkan validation with an official
+build is still pending on RTX 20, RTX 40 and RTX 50; see [Neural Rendering](NEURAL-RENDERING.md).
+
 DirectX 9 and OpenGL games are not supported.
 
 ## DLSS Frame Generation versions

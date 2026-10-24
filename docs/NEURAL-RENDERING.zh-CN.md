@@ -4,6 +4,8 @@
 
 DLSS Neural Rendering（NR）增强 DLSS 超分辨率或 DLAA 生成的画面。RTX Encore 让它在 RTX 20、RTX 30
 和 RTX 40 显卡上的 DirectX 11、DirectX 12 和 Vulkan 游戏中运行。
+Vulkan 还实验性地接受 RTX 50。使用官方构建在真实 RTX 20、RTX 40 和 RTX 50 显卡上的 Vulkan 验证仍待完成；
+接受显卡并不代表画质或性能已经得到验证。
 
 > [!NOTE]
 > Neural Rendering 是实验性功能，默认关闭。它需要大量 GPU 时间：见[性能开销](#性能开销)。
@@ -34,7 +36,7 @@ DLSS Neural Rendering（NR）增强 DLSS 超分辨率或 DLAA 生成的画面。
   使用 **Ray Reconstruction** 时，NR 应用于 RR 降噪之后的输出，而不会作用于未降噪的光线追踪原始画面。
   游戏必须提供 NR 所需的深度输入；否则画面保持 DLSS 原样，菜单会说明原因。
 - 1.2 测试版还支持在 Direct3D 12 下对兼容线性深度输入的 RR 结果应用 NR。无效或不受支持的深度输入会使 NR 保持停用；Direct3D 11 和 Vulkan 仍不支持此情况。007 First Light 路径追踪的本地测试确认 NR 可以运行，尚未测量画质或开销。
-- RTX 40 或 RTX 30 显卡。RTX 20 支持是实验性的。
+- RTX 40 或 RTX 30 显卡。RTX 20 支持是实验性的；Vulkan 下也实验性地接受 RTX 50。
 
 ## 开启方法
 

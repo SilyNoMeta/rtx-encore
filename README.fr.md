@@ -26,7 +26,11 @@ Un seul fichier à côté du jeu, un menu intégré, rien d'autre à installer.
 > Il se charge dans le jeu : ne l'utilisez pas dans un jeu en ligne ou protégé par un anti-triche, où il peut être
 > bloqué ou faire signaler un compte. Sauvegardez chaque fichier que vous remplacez.
 
-## Les nouveautés de 1.3.0
+## Les nouveautés de 1.3.1
+
+Correctifs pour Alan Wake 2, les formats d'exposition du Neural Rendering, NR Vulkan sur davantage de générations RTX, la compatibilité avec les autres mods Vulkan et WRC Generations. Contributions et limites dans le [journal des changements](CHANGELOG.fr.md).
+
+Les fonctions de la version 1.3 restent disponibles :
 
 - **Neural Rendering fovéal (expérimental, désactivé par défaut).** NR travaille à pleine force au centre de l’image et plus légèrement vers les bords, pour plus d’images par seconde. Activez **Foveated NR** dans le menu et choisissez Light, Balanced ou Strong. [Réglages](docs/SETTINGS.fr.md).
 - **Smooth Motion sur RTX 20 (expérimental).** Pilote NVIDIA 621.01 et DirectX 12 ; V1 ou V2 au choix par jeu. [Compatibilité](docs/COMPATIBILITY.fr.md).

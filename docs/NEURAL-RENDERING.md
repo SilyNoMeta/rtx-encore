@@ -4,6 +4,8 @@
 
 DLSS Neural Rendering (NR) enhances the image made by DLSS Super Resolution or DLAA. RTX Encore runs it on RTX 20,
 RTX 30 and RTX 40 cards, in DirectX 11, DirectX 12 and Vulkan games.
+Vulkan also admits RTX 50 cards experimentally. Vulkan validation on physical RTX 20, RTX 40 and RTX 50 hardware
+with an official build is still pending; accepting the card does not establish image quality or performance.
 
 > [!NOTE]
 > Neural Rendering is experimental and off by default. It costs a lot of GPU time: see [Cost](#cost).
@@ -35,7 +37,7 @@ Options that use more VRAM are off by default.
   With **Ray Reconstruction**, NR is applied to RR's result, after its denoising: never to the raw ray-traced image.
   The game must provide the depth input NR needs; otherwise the image stays as DLSS made it and the menu says so.
 - With the 1.2 beta, compatible linear-depth inputs are also supported after RR on Direct3D 12. Invalid or unsupported depth inputs leave NR inactive; Direct3D 11 and Vulkan still do not support this linear-depth case. Local testing in 007 First Light with path tracing confirmed that NR runs, without measuring image quality or cost.
-- An RTX 40 or RTX 30 card. RTX 20 is experimental.
+- An RTX 40 or RTX 30 card. RTX 20 is experimental; RTX 50 is also admitted experimentally under Vulkan.
 
 ## Turn it on
 

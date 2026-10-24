@@ -3,6 +3,16 @@
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
 
+## 1.3.1
+
+- **Alan Wake 2 :** corrige le Neural Rendering qui ne démarrait pas avec l'exposition du jeu et améliore la gestion de la souris lorsque le menu est ouvert. Merci à [@SymbioticTortoise](https://github.com/SymbioticTortoise) pour le rapport et les journaux ([#76](https://github.com/SilyNoMeta/rtx-encore/issues/76)).
+- **Neural Rendering :** accepte davantage de formats d'exposition flottants (RG16, RG32 et RGB32) sous DirectX 11, DirectX 12 et Vulkan, selon les formats disponibles dans chaque API.
+- **Neural Rendering Vulkan :** active les chemins RTX 20, RTX 40 et RTX 50 en plus des RTX 30. Merci à [@Yukk1No](https://github.com/Yukk1No) pour le rapport sur RTX 4070 SUPER ([#74](https://github.com/SilyNoMeta/rtx-encore/issues/74)). Ces générations supplémentaires restent expérimentales et n'ont pas été validées sur de vraies cartes avec cette version.
+- **Compatibilité Vulkan :** améliore la compatibilité avec les autres mods graphiques, à la suite des rapports Baldur's Gate 3 / bg3fgvk de [@deusimperatork](https://github.com/deusimperatork) ([#72](https://github.com/SilyNoMeta/rtx-encore/issues/72)). Les combinaisons avec OptiScaler restent non prises en charge.
+- **WRC Generations :** prend en charge l'intégration Streamline 1.3.3 d'origine et corrige l'état Frame Generation qui restait sur Waiting dans le menu quand le jeu activait la FG. Conservez ensemble les fichiers Streamline d'origine ; le mélange de composants anciens et récents n'est pas pris en charge. Merci à [@dm1z0r](https://github.com/dm1z0r) pour le rapport ([#75](https://github.com/SilyNoMeta/rtx-encore/issues/75)).
+
+Le mainteneur a confirmé le fonctionnement d'Alan Wake 2 et l'état FG du menu de WRC sur des builds de test. Le menu de WRC indique le mode activé, sans mesurer le multiplicateur affiché. Les binaires finaux 1.3.1 n'ont pas été retestés en jeu. Les formats d'exposition supplémentaires ont des tests automatisés locaux, sans validation visuelle ou de performances sur chaque API. Intel XeSS / XeFG et Smooth Motion sur RTX 20 restent expérimentaux.
+
 ## 1.3.0
 
 - Neural Rendering fovéal (expérimental, désactivé par défaut) : le NR travaille à pleine force au milieu de

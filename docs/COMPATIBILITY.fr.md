@@ -35,6 +35,9 @@ prises en charge.
 | Neural Rendering | 🧪 | 🧪 | 🧪 |
 | Menu et overlay | ✅ | ✅ | ✅ |
 
+Neural Rendering sous Vulkan accepte les RTX 20, RTX 30, RTX 40 et RTX 50. La validation Vulkan sur des cartes
+physiques avec une build officielle reste à faire sur RTX 20, RTX 40 et RTX 50 ; voir [Neural Rendering](NEURAL-RENDERING.fr.md).
+
 Les jeux DirectX 9 et OpenGL ne sont pas pris en charge.
 
 ## Versions de DLSS Frame Generation

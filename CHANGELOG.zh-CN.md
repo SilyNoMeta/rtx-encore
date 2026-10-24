@@ -3,6 +3,16 @@
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
 
+## 1.3.1
+
+- **Alan Wake 2：**修复游戏曝光输入导致 Neural Rendering 无法启动的问题，并改善菜单打开时的鼠标处理。感谢 [@SymbioticTortoise](https://github.com/SymbioticTortoise) 提供报告和日志（[#76](https://github.com/SilyNoMeta/rtx-encore/issues/76)）。
+- **Neural Rendering：**在 DirectX 11、DirectX 12 和 Vulkan 中支持更多浮点曝光格式（RG16、RG32 和 RGB32），具体取决于各 API 的格式支持。
+- **Vulkan Neural Rendering：**在 RTX 30 之外启用 RTX 20、RTX 40 和 RTX 50 路径。感谢 [@Yukk1No](https://github.com/Yukk1No) 提供 RTX 4070 SUPER 报告（[#74](https://github.com/SilyNoMeta/rtx-encore/issues/74)）。新增显卡世代仍属实验性，本版本尚未在这些实体显卡上验证。
+- **Vulkan 兼容性：**改善与其他图形模组的兼容性，跟进 [@deusimperatork](https://github.com/deusimperatork) 的 Baldur's Gate 3 / bg3fgvk 报告（[#72](https://github.com/SilyNoMeta/rtx-encore/issues/72)）。仍不支持与 OptiScaler 组合使用。
+- **WRC Generations：**支持游戏原版 Streamline 1.3.3 集成，并修复游戏启用帧生成后菜单仍显示 Waiting 的问题。请保留整套原版 Streamline 文件；不支持混用新旧组件。感谢 [@dm1z0r](https://github.com/dm1z0r) 的报告（[#75](https://github.com/SilyNoMeta/rtx-encore/issues/75)）。
+
+维护者已在测试版本中确认 Alan Wake 2 正常运行及 WRC 的 FG 菜单状态。WRC 菜单只表示已启用的模式，不测量实际显示倍率。最终 1.3.1 二进制文件尚未在游戏中复测。新增曝光格式已有本地自动化测试，但未在每种 API 上验证画质与性能。Intel XeSS / XeFG 和 RTX 20 上的 Smooth Motion 仍属实验性。
+
 ## 1.3.0
 
 - 中央优先 Neural Rendering（实验性，默认关闭）：NR 在图像中央以全强度运行，越靠近边缘越轻，

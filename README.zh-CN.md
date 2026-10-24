@@ -26,7 +26,11 @@ Smooth Motion 和 Neural Rendering。**
 > 它在游戏进程内加载：请勿在联机游戏或受反作弊保护的游戏中使用，否则可能被拦截，或导致账号被标记。
 > 替换任何文件之前请先备份。
 
-## 1.3.0 新功能
+## 1.3.1 更新
+
+修复 Alan Wake 2、Neural Rendering 曝光格式、更多 RTX 世代的 Vulkan NR、与其他 Vulkan 模组的兼容性和 WRC Generations。贡献者及验证限制见[更新日志](CHANGELOG.zh-CN.md)。
+
+1.3 系列功能继续提供：
 
 - **中央优先 Neural Rendering（实验性，默认关闭）。** NR 在图像中央以全强度运行，越靠近边缘越轻，以换取更高 FPS。在菜单中开启 **Foveated NR** 并选择 Light、Balanced 或 Strong。[设置](docs/SETTINGS.zh-CN.md)。
 - **RTX 20 上的 Smooth Motion（实验性）。** 需要 NVIDIA 621.01 与 DirectX 12；可按游戏选择 V1 或 V2。[兼容性](docs/COMPATIBILITY.zh-CN.md)。

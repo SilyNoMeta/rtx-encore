@@ -3,6 +3,16 @@
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
 
+## 1.3.1
+
+- **Alan Wake 2:** fixes Neural Rendering failing to start with the game's exposure input and improves mouse handling while the menu is open. Thanks to [@SymbioticTortoise](https://github.com/SymbioticTortoise) for the report and logs ([#76](https://github.com/SilyNoMeta/rtx-encore/issues/76)).
+- **Neural Rendering:** accepts additional floating-point exposure formats (RG16, RG32 and RGB32) across DirectX 11, DirectX 12 and Vulkan, where the API supports the format.
+- **Vulkan Neural Rendering:** enables the RTX 20, RTX 40 and RTX 50 paths alongside RTX 30. Thanks to [@Yukk1No](https://github.com/Yukk1No) for the RTX 4070 SUPER report ([#74](https://github.com/SilyNoMeta/rtx-encore/issues/74)). These additional generations remain experimental and have not been validated on physical cards with this release.
+- **Vulkan compatibility:** improves compatibility with other graphics mods, following the Baldur's Gate 3 / bg3fgvk reports from [@deusimperatork](https://github.com/deusimperatork) ([#72](https://github.com/SilyNoMeta/rtx-encore/issues/72)). Combinations with OptiScaler remain unsupported.
+- **WRC Generations:** supports the game's original Streamline 1.3.3 integration and fixes the Frame Generation menu staying on Waiting when the game enables FG. Keep the original Streamline files together; mixing old and new components is unsupported. Thanks to [@dm1z0r](https://github.com/dm1z0r) for the report ([#75](https://github.com/SilyNoMeta/rtx-encore/issues/75)).
+
+The maintainer confirmed Alan Wake 2 working and WRC's FG menu status on test builds. WRC's menu reports the enabled mode; it does not measure the displayed multiplier. The final 1.3.1 binaries have not been retested in game. Additional exposure formats have local automated coverage, without visual or performance validation on every API. Intel XeSS / XeFG and Smooth Motion on RTX 20 remain experimental.
+
 ## 1.3.0
 
 - Foveated Neural Rendering (experimental, off by default): NR runs at full strength in the middle of the
