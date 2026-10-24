@@ -38,7 +38,7 @@ Les fonctions de la version 1.3 restent disponibles :
 - **Retraits.** Le panneau optionnel Cyber Engine Tweaks et le moteur expérimental OpenNR. Le [journal des changements](CHANGELOG.fr.md) détaille les contributions et la portée des validations.
 - **Les fonctions de la version 1.2.** Reconstruction DLSS ou XeSS expérimental, génération d’images DLSS-G ou XeFG expérimental, changements de moteur de reconstruction compatible et de presets DLSS en jouant, réglages NR par passe et entrées HDR/exposition communes.
 
-Le mod et le Hub ont des publications distinctes. Hub 1.3.0 apporte les commandes des nouveaux réglages de cette version.
+Le mod et le Hub ont des publications distinctes. **[Hub 1.3.1](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.3.1)** sécurise les mises à jour Streamline et NVIDIA dans les jeux anciens, dont WRC Generations. Les réglages introduits en 1.3 restent disponibles.
 
 **XeSS / XeFG : TRÈS EXPÉRIMENTAL.** Cette intégration a été particulièrement pénible à mettre au point :) Attendez-vous à des bugs, crashs, artefacts et différences entre jeux et API graphiques. N’hésitez pas à remonter les problèmes : dans RTX Encore Hub, ouvrez la page **Santé** du jeu, choisissez **Préparer un diagnostic**, relisez l’archive pour retirer les informations personnelles, puis joignez-la à une [issue RTX Encore](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose). Indiquez les moteurs choisis, l’API graphique et le multiplicateur demandé. Le Hub ne téléverse pas l’archive à votre place.
 
