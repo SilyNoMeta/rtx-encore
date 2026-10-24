@@ -3,6 +3,17 @@
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
 
+## 1.4.0
+
+- **Experimental NR before reconstruction (Pre-SR):** apply Neural Rendering before ordinary DLSS Super Resolution, with one to four passes and an independent model profile and appearance for each pass. Post-SR remains the default. Pre-SR requires uniform render-size inputs; RR, DLAA, foveation, padding-aware sizing and jittered motion inputs are unavailable. Unsupported inputs keep the original SR image.
+- **Image and performance lab:** collect separate Post-SR and Pre-SR series, inspect captures with zoom or an A/B wipe, and export JSON, CSV and a local image viewer. Missing measurements stay unavailable. Memory counters retain their separate scopes; they do not establish savings caused by Pre-SR. A pair is comparable only when the observed SR/FG conditions and viewport association are qualified. Current routes without that association can show individual measurements and captures, but no relative gain.
+- **NR pass editor:** responsive pass cards, processing-order display and independent per-pass model and appearance controls. [Requirements and comparison limits](docs/NEURAL-RENDERING.md).
+- **DLSS-G controls:** fixes Encore's ownership of Fixed, Dynamic and Game modes and applies Encore's requested dynamic target instead of retaining the game's target. A target is not a strict limit on displayed FPS.
+- **In-game menu languages:** English, French and Simplified Chinese, with a saved per-game choice and English fallback for untranslated messages. Thanks to [@pandaligx](https://github.com/pandaligx) for the request ([#78](https://github.com/SilyNoMeta/rtx-encore/issues/78)).
+- **About tab:** version, project and Hub links, GitHub Sponsors, Ko-fi and public sponsor acknowledgements, including [@mennogreg](https://github.com/mennogreg).
+
+The new Pre-SR paths, multipass changes, comparison instrumentation and DLSS-G controls have local compilation and CPU test coverage; GPU, in-game image quality, performance and physical latency remain unvalidated for this release. Sequential captures are different frames and cannot establish temporal stability. Intel XeSS / XeFG and Smooth Motion on RTX 20 remain experimental. [Hub 1.4.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.0) adds the matching settings and report reader.
+
 ## 1.3.1
 
 - **Alan Wake 2:** fixes Neural Rendering failing to start with the game's exposure input and improves mouse handling while the menu is open. Thanks to [@SymbioticTortoise](https://github.com/SymbioticTortoise) for the report and logs ([#76](https://github.com/SilyNoMeta/rtx-encore/issues/76)).

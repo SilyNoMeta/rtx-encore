@@ -26,9 +26,9 @@ Un seul fichier à côté du jeu, un menu intégré, rien d'autre à installer.
 > Il se charge dans le jeu : ne l'utilisez pas dans un jeu en ligne ou protégé par un anti-triche, où il peut être
 > bloqué ou faire signaler un compte. Sauvegardez chaque fichier que vous remplacez.
 
-## Les nouveautés de 1.3.1
+## Nouveautés de la 1.4.0
 
-Correctifs pour Alan Wake 2, les formats d'exposition du Neural Rendering, NR Vulkan sur davantage de générations RTX, la compatibilité avec les autres mods Vulkan et WRC Generations. Contributions et limites dans le [journal des changements](CHANGELOG.fr.md).
+Neural Rendering Pre-SR expérimental, laboratoire de comparaison image/performances, réglages NR indépendants par passe, commandes DLSS-G de mode et cible corrigées, et menu anglais/français/chinois simplifié avec onglet À propos. Post-SR reste le défaut. Les nouveaux chemins GPU et les binaires finaux ne sont pas validés en jeu. Voir le [changelog](CHANGELOG.fr.md) pour les prérequis, crédits et limites.
 
 Les fonctions de la version 1.3 restent disponibles :
 
@@ -38,7 +38,7 @@ Les fonctions de la version 1.3 restent disponibles :
 - **Retraits.** Le panneau optionnel Cyber Engine Tweaks et le moteur expérimental OpenNR. Le [journal des changements](CHANGELOG.fr.md) détaille les contributions et la portée des validations.
 - **Les fonctions de la version 1.2.** Reconstruction DLSS ou XeSS expérimental, génération d’images DLSS-G ou XeFG expérimental, changements de moteur de reconstruction compatible et de presets DLSS en jouant, réglages NR par passe et entrées HDR/exposition communes.
 
-Le mod et le Hub ont des publications distinctes. **[Hub 1.3.1](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.3.1)** sécurise les mises à jour Streamline et NVIDIA dans les jeux anciens, dont WRC Generations. Les réglages introduits en 1.3 restent disponibles.
+Le mod et le Hub ont des versions distinctes. Le **[Hub 1.4.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.0)** ajoute les réglages Pre-SR et la lecture des rapports de comparaison exportés. Les protections des mises à jour de runtimes et des sauvegardes restent en place.
 
 **XeSS / XeFG : TRÈS EXPÉRIMENTAL.** Cette intégration a été particulièrement pénible à mettre au point :) Attendez-vous à des bugs, crashs, artefacts et différences entre jeux et API graphiques. N’hésitez pas à remonter les problèmes : dans RTX Encore Hub, ouvrez la page **Santé** du jeu, choisissez **Préparer un diagnostic**, relisez l’archive pour retirer les informations personnelles, puis joignez-la à une [issue RTX Encore](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose). Indiquez les moteurs choisis, l’API graphique et le multiplicateur demandé. Le Hub ne téléverse pas l’archive à votre place.
 
@@ -162,6 +162,7 @@ TonyJoaca et est devenu depuis un projet à part entière. Il doit aussi beaucou
 - [sdli1995/dlssg_for_sm86](https://github.com/sdli1995/dlssg_for_sm86) : recherche sur la génération d'images pour RTX 20 et RTX 30 ;
 - [Intel XeSS](https://github.com/intel/xess) : interfaces SDK XeSS, XeFG et XeLL ;
 - [maximedgoulet/FoveatedDLSS5](https://github.com/maximedgoulet/FoveatedDLSS5) : l’idée du Neural Rendering fovéal ;
+- [Noto Sans SC](https://github.com/google/fonts/tree/main/ofl/notosanssc) : police du menu ;
 - toutes les personnes qui testent une version et signalent un bug : plusieurs corrections n'existent que grâce à ces rapports.
 
 Les composants inclus dans les versions publiées et leurs licences sont listés dans

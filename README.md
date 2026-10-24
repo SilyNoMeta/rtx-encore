@@ -26,9 +26,9 @@ One file next to the game, a built-in menu, nothing else to install.
 > It loads inside the game: do not use it in online or anti-cheat protected games, where it can be blocked or get an
 > account flagged. Back up every file you replace.
 
-## What is new in 1.3.1
+## What is new in 1.4.0
 
-Fixes for Alan Wake 2, Neural Rendering exposure formats, Vulkan NR on more RTX generations, compatibility with other Vulkan mods and WRC Generations. See the [changelog](CHANGELOG.md) for credits and validation limits.
+Experimental Pre-SR Neural Rendering, an image/performance comparison lab, independent NR pass controls, corrected DLSS-G mode and target controls, and an English/French/Simplified Chinese menu with an About tab. Post-SR remains the default. New GPU paths and final binaries have not been validated in game. See the [changelog](CHANGELOG.md) for requirements, credits and limits.
 
 The 1.3 feature set remains available:
 
@@ -38,7 +38,7 @@ The 1.3 feature set remains available:
 - **Removed.** The optional Cyber Engine Tweaks panel and the experimental OpenNR engine. See the [changelog](CHANGELOG.md) for credits and validation scope.
 - **The 1.2 feature set.** Choose DLSS or experimental XeSS reconstruction, DLSS-G or experimental XeFG frame generation, switch supported reconstruction engines and DLSS presets while playing, and tune NR pass by pass with common HDR/exposure inputs.
 
-The mod and the Hub have separate releases. **[Hub 1.3.1](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.3.1)** adds safer Streamline and NVIDIA runtime updates for older games, including WRC Generations. The settings introduced in 1.3 remain available.
+The mod and the Hub have separate releases. **[Hub 1.4.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.0)** adds Pre-SR settings and a reader for exported comparison reports. Existing runtime-update and backup protections remain in place.
 
 **XeSS / XeFG: VERY EXPERIMENTAL.** Getting this integration working was a particularly difficult and frustrating part of development :) Expect bugs, crashes, visual artifacts and differences between games and graphics APIs. Please report problems: in RTX Encore Hub, open the game’s **Health** page, choose **Prepare a diagnostic**, review the archive for personal information, then attach it to an [RTX Encore issue](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose). Include your engine choices, graphics API and requested multiplier. The Hub does not upload the archive for you.
 
@@ -161,6 +161,7 @@ TonyJoaca and has since grown into a project of its own. It also owes much to th
 - [sdli1995/dlssg_for_sm86](https://github.com/sdli1995/dlssg_for_sm86): frame-generation research on RTX 20 and RTX 30;
 - [Intel XeSS](https://github.com/intel/xess): XeSS, XeFG and XeLL SDK interfaces;
 - [maximedgoulet/FoveatedDLSS5](https://github.com/maximedgoulet/FoveatedDLSS5): the foveated Neural Rendering idea;
+- [Noto Sans SC](https://github.com/google/fonts/tree/main/ofl/notosanssc): menu typeface;
 - everyone who tests a build and reports a bug: several fixes exist only because of those reports.
 
 The components included in the releases and their licenses are listed in

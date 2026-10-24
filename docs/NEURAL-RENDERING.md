@@ -28,6 +28,42 @@ how it looks, **frame generation** adds frames in between. Turning NR on does no
 
 Options that use more VRAM are off by default.
 
+## Experimental Pre-SR and A/B comparison
+
+**Post-SR** remains the default. **Pre-SR** applies NR to the render input before
+DLSS Super Resolution. It uses render size and supports one to four passes, with
+an independent model profile and appearance for each pass. The processing ribbon
+shows the requested order; check the effective mode before comparing results.
+Pre-SR requires ordinary DLSS SR with uniform input. RR, DLAA, foveation,
+padding-aware sizing and jittered motion inputs are unavailable in this mode.
+Unsupported inputs keep the original SR image. These paths still require GPU
+and in-game qualification; the new controls do not establish compatibility.
+
+Open **Image and performance lab** in the NR menu. Keep a reproducible scene
+and camera, then measure Post-SR (A) and Pre-SR (B) separately. Each series
+excludes 60 warmup frames and collects 240 completed source frames. Capture
+each mode, then enable **Inspect captures** for zoom, side-by-side or an A/B
+wipe. Captures come after configured sharpening and before frame generation
+and Encore's menu; later game effects are outside this comparison.
+
+The panel reports GPU NR/SR time, available model timings, source intervals
+and memory in MiB. Memory scopes are separate: tracked NR allocations,
+process-local usage on node 0 of the render adapter, and global NVIDIA
+framebuffer usage. Missing counters remain **N/D**; D3D11 bridge model timings
+and its complete private allocation count are unavailable. Tracked allocations
+exclude opaque NVIDIA allocations and are not a residency measurement. Global
+changes are context, not proof of savings caused by Pre-SR.
+
+Export to a folder outside the game directory for JSON, CSV, original image
+samples, SDR BMP previews and `compare.html`, a full-resolution pixel viewer.
+HDR originals retain their numeric format; their preview uses tone mapping.
+Routes, formats or sizes that cannot be captured report a reason. Sequential
+live captures are different frames, and still images cannot establish temporal
+stability. Compare camera motion, disocclusions and fine moving detail as well.
+Cancel is available; restoring the starting mode preserves later manual edits.
+No relative gain is presented for incompatible series. Stopping comparison
+stops new instrumentation; existing GPU work retires through its completion.
+
 ## Requirements
 
 - NVIDIA's NR file, **`nvngx_dlssnr.dll` version 310.8.0 or 310.9.16**. It is not included in RTX Encore: supply it

@@ -29,6 +29,41 @@ d'images.
 
 Les options qui consomment davantage de VRAM sont désactivées par défaut.
 
+## Pre-SR expérimental et comparaison A/B
+
+**Post-SR** reste le défaut. **Pre-SR** applique NR à l’entrée avant DLSS Super
+Resolution, à la taille de rendu, en une à quatre passes avec profil de modèle
+et apparence indépendants. Le ruban indique l’ordre demandé ; vérifier le mode
+effectif. Pre-SR exige DLSS SR et une entrée uniforme : RR, DLAA, fovéation,
+taille évitant le padding et mouvements jitterés sont indisponibles. Une entrée
+incompatible conserve le SR original. La qualification GPU et en jeu reste à faire.
+
+Dans **Atelier image et performances**, garder une scène et une caméra
+reproductibles. Mesurer Post-SR (A), puis Pre-SR (B) : 60 images source de
+chauffe exclues, puis 240 images terminées par série. Capturer chaque mode et
+activer **Examiner les captures** pour le zoom, la vue côte à côte ou la
+séparation A/B. Les captures suivent le sharpening configuré et précèdent FG
+et le menu Encore ; les effets ajoutés ensuite par le jeu sont hors comparaison.
+
+Le panneau sépare temps GPU NR/SR, modèles mesurables, intervalles source et
+mémoire en MiB. Les allocations NR suivies, l’usage local du processus sur le
+nœud 0 de l’adaptateur de rendu et l’usage global NVIDIA restent distincts.
+Une mesure absente reste **N/D**. Le détail des modèles du pont D3D11 et son
+compte complet d’allocations privées sont indisponibles. Le suivi exclut les
+allocations opaques NVIDIA et ne mesure pas la résidence. Une variation globale
+ne prouve pas une économie causée par Pre-SR.
+
+Exporter hors du dossier du jeu produit JSON, CSV, pixels originaux, aperçus
+SDR BMP et `compare.html` pour examiner les pixels à pleine résolution. Le HDR
+original garde son format numérique ; son aperçu est tonemappé. Une capture
+incompatible indique sa raison. Les captures successives sont des images
+différentes ; une image fixe ne prouve pas la stabilité temporelle. Comparer
+aussi mouvements de caméra, désocclusions et détails fins en mouvement.
+L’annulation reste possible. La restauration du mode initial conserve les
+modifications manuelles ultérieures. Aucun gain relatif n’est présenté pour
+des séries incompatibles. L’arrêt cesse les nouvelles mesures ; les travaux
+GPU déjà engagés attendent leur complétion pour libérer leurs ressources.
+
 ## Prérequis
 
 - Le fichier NR de NVIDIA, **`nvngx_dlssnr.dll` version 310.8.0 ou 310.9.16**. Il n'est pas inclus dans RTX Encore :

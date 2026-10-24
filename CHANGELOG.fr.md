@@ -3,6 +3,17 @@
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
 
+## 1.4.0
+
+- **NR avant reconstruction expérimental (Pre-SR) :** applique le Neural Rendering avant DLSS Super Resolution classique, avec une à quatre passes et un profil de modèle et une apparence indépendants par passe. Post-SR reste le défaut. Pre-SR exige une entrée uniforme à la taille de rendu ; RR, DLAA, fovéation, tailles avec marges et mouvements avec jitter ne sont pas disponibles. Une entrée non prise en charge conserve l'image SR d'origine.
+- **Laboratoire image et performances :** mesure séparément Post-SR et Pre-SR, inspecte les captures avec zoom ou balayage A/B, et exporte JSON, CSV et une visionneuse locale. Les mesures manquantes restent indisponibles. Les compteurs mémoire gardent leurs périmètres distincts ; ils ne prouvent pas une économie causée par Pre-SR. Une paire n'est comparable que si les conditions SR/FG observées et leur association au viewport sont qualifiées. Les routes actuelles sans cette association affichent des mesures individuelles et captures, sans gain relatif.
+- **Éditeur des passes NR :** cartes adaptatives, ordre de traitement affiché, modèle et apparence indépendants par passe. [Prérequis et limites des comparaisons](docs/NEURAL-RENDERING.fr.md).
+- **Commandes DLSS-G :** corrige la priorité des modes Fixe, Dynamique et Jeu choisis dans Encore et applique sa cible dynamique au lieu de conserver celle du jeu. Une cible n'est pas un plafond strict de FPS affichés.
+- **Langues du menu en jeu :** anglais, français et chinois simplifié, choix enregistré par jeu et repli anglais pour les messages non traduits. Merci à [@pandaligx](https://github.com/pandaligx) pour la demande ([#78](https://github.com/SilyNoMeta/rtx-encore/issues/78)).
+- **Onglet À propos :** version, liens du projet et du Hub, GitHub Sponsors, Ko-fi et remerciements aux sponsors publics, dont [@mennogreg](https://github.com/mennogreg).
+
+Les nouveaux chemins Pre-SR, changements multipasses, instruments de comparaison et commandes DLSS-G ont une compilation locale et des tests CPU ; GPU, qualité en jeu, performances et latence physique restent non validés pour cette version. Les captures séquentielles sont des images différentes et ne prouvent pas la stabilité temporelle. Intel XeSS / XeFG et Smooth Motion sur RTX 20 restent expérimentaux. Le [Hub 1.4.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.0) ajoute les réglages correspondants et la lecture des rapports.
+
 ## 1.3.1
 
 - **Alan Wake 2 :** corrige le Neural Rendering qui ne démarrait pas avec l'exposition du jeu et améliore la gestion de la souris lorsque le menu est ouvert. Merci à [@SymbioticTortoise](https://github.com/SymbioticTortoise) pour le rapport et les journaux ([#76](https://github.com/SilyNoMeta/rtx-encore/issues/76)).

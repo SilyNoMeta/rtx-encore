@@ -3,6 +3,17 @@
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
 
+## 1.4.0
+
+- **实验性重建前 NR（Pre-SR）：** 在普通 DLSS Super Resolution 之前应用 Neural Rendering，支持一至四轮，每轮可独立选择模型配置和外观。Post-SR 仍为默认模式。Pre-SR 需要渲染尺寸的均匀输入；不支持 RR、DLAA、中央优先处理、带填充的尺寸和带抖动的运动输入。不支持的输入保留原始 SR 图像。
+- **图像与性能实验室：** 分别采集 Post-SR 和 Pre-SR 数据，使用缩放或 A/B 滑动查看截图，并导出 JSON、CSV 和本地图像查看器。缺失的测量保持不可用。内存计数保留各自范围，不能证明 Pre-SR 带来的节省。只有观测到的 SR/FG 条件及其视口关联均已确认，才允许比较两组数据。当前缺少该关联的路径仅显示各组测量和截图，不报告相对提升。
+- **NR 逐轮编辑器：** 自适应轮次卡片、处理顺序显示，以及各轮独立的模型和外观控制。[要求与比较限制](docs/NEURAL-RENDERING.zh-CN.md)。
+- **DLSS-G 控制：** 修复 Encore 对固定、动态和游戏模式的控制，并应用 Encore 请求的动态目标，避免继续使用游戏目标。目标并非实际显示 FPS 的严格上限。
+- **游戏内菜单语言：** 英语、法语和简体中文，可按游戏保存选择，未翻译消息回退到英语。感谢 [@pandaligx](https://github.com/pandaligx) 提出请求（[#78](https://github.com/SilyNoMeta/rtx-encore/issues/78)）。
+- **关于选项卡：** 版本、项目与 Hub 链接、GitHub Sponsors、Ko-fi，以及对公开赞助者的致谢，包括 [@mennogreg](https://github.com/mennogreg)。
+
+新的 Pre-SR 路径、多轮处理变更、比较工具和 DLSS-G 控制经过本地编译及 CPU 测试；本版本的 GPU、游戏内画质、性能及物理延迟仍未验证。连续截图来自不同帧，不能证明时间稳定性。Intel XeSS / XeFG 和 RTX 20 的 Smooth Motion 仍为实验性。[Hub 1.4.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.0) 提供相应设置和报告读取功能。
+
 ## 1.3.1
 
 - **Alan Wake 2：**修复游戏曝光输入导致 Neural Rendering 无法启动的问题，并改善菜单打开时的鼠标处理。感谢 [@SymbioticTortoise](https://github.com/SymbioticTortoise) 提供报告和日志（[#76](https://github.com/SilyNoMeta/rtx-encore/issues/76)）。

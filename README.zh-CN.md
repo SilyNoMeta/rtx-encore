@@ -26,9 +26,9 @@ Smooth Motion 和 Neural Rendering。**
 > 它在游戏进程内加载：请勿在联机游戏或受反作弊保护的游戏中使用，否则可能被拦截，或导致账号被标记。
 > 替换任何文件之前请先备份。
 
-## 1.3.1 更新
+## 1.4.0 更新
 
-修复 Alan Wake 2、Neural Rendering 曝光格式、更多 RTX 世代的 Vulkan NR、与其他 Vulkan 模组的兼容性和 WRC Generations。贡献者及验证限制见[更新日志](CHANGELOG.zh-CN.md)。
+实验性 Pre-SR Neural Rendering、图像与性能比较实验室、各轮独立 NR 设置、修复的 DLSS-G 模式和目标控制，以及带关于选项卡的英/法/简体中文菜单。Post-SR 仍为默认模式。新的 GPU 路径和最终二进制文件尚未在游戏中验证。要求、贡献者和限制见[更新日志](CHANGELOG.zh-CN.md)。
 
 1.3 系列功能继续提供：
 
@@ -38,7 +38,7 @@ Smooth Motion 和 Neural Rendering。**
 - **移除。** 可选的 Cyber Engine Tweaks 面板和实验性 OpenNR 引擎。贡献者与验证范围见[更新日志](CHANGELOG.zh-CN.md)。
 - **1.2 系列功能。** 选择 DLSS 或实验性 XeSS 重建、DLSS-G 或实验性 XeFG 帧生成，在兼容游戏中实时切换重建引擎及 DLSS 预设，并逐轮调整 NR 和共用 HDR/曝光输入。
 
-模组与 Hub 分别发布。**[Hub 1.3.1](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.3.1)** 为 WRC Generations 等旧游戏提供更安全的 Streamline 和 NVIDIA 运行库更新，1.3 引入的设置继续可用。
+模组与 Hub 分别发布。**[Hub 1.4.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.0)** 新增 Pre-SR 设置和已导出比较报告的读取功能。现有运行库更新及备份保护继续保留。
 
 **XeSS / XeFG：高度实验性。** 这部分集成的开发过程非常艰难，也相当折腾 :) 请预期可能出现错误、崩溃、画面伪影，以及不同游戏和图形 API 之间的行为差异。欢迎报告问题：在 RTX Encore Hub 中打开游戏的 **健康** 页面，选择 **生成诊断包**，检查并移除个人信息后，将诊断压缩包附加到 [RTX Encore issue](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose)。请注明选择的引擎、图形 API 和请求的倍率。Hub 不会自动上传该压缩包。
 
@@ -159,6 +159,7 @@ RTX Encore 最初是 TonyJoaca 的 [DLSSG-Transfusion](https://github.com/TonyJo
 - [sdli1995/dlssg_for_sm86](https://github.com/sdli1995/dlssg_for_sm86)：RTX 20 和 RTX 30 上的帧生成研究；
 - [Intel XeSS](https://github.com/intel/xess)：XeSS、XeFG 和 XeLL SDK 接口；
 - [maximedgoulet/FoveatedDLSS5](https://github.com/maximedgoulet/FoveatedDLSS5)：中央优先 Neural Rendering 的构想；
+- [Noto Sans SC](https://github.com/google/fonts/tree/main/ofl/notosanssc)：菜单字体；
 - 所有测试版本并报告问题的人：有好几项修复正是因为这些报告才得以完成。
 
 发布包中包含的组件及其许可证列在 [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) 中。
