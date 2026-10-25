@@ -3,6 +3,22 @@
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
 
+## 1.4.2
+
+- **Comparaison Pre-SR / Post-SR :** corrige l'aperçu des captures fortement pixellisé dans le jeu. Affichez l'image entière dans le panneau, ou décochez **Fit to panel** pour l'inspecter à **1x**, avec un pixel capturé par pixel écran, puis zoomez et déplacez le cadrage pour examiner les détails.
+- **Inspection des captures :** actualise l'aperçu après une nouvelle capture et affiche côte à côte les captures de dimensions différentes au lieu de superposer des images qui ne correspondent pas.
+
+Le placement des pixels, l'échelle d'affichage et l'actualisation des captures disposent de tests CPU automatisés locaux et d'aperçus synthétiques du panneau. Les binaires finaux 1.4.2 ne sont pas validés en jeu ; qualité d'image, performances, coûts mémoire et latence restent à mesurer. Les captures sont des images successives, et le HDR est présenté en aperçu SDR. Les réglages et rapports de comparaison existants du Hub restent compatibles.
+
+## 1.4.1
+
+- **Stabilité :** améliore la gestion des changements de résolution, des réglages de reconstruction, de la capture du HUD et de la génération d'images lorsqu'une opération graphique échoue.
+- **Gestion des erreurs :** corrige des problèmes de conservation des ressources, de chargement et d'allocation mémoire susceptibles de laisser un état périmé ou d'interrompre le jeu.
+- **Réglages et diagnostics :** améliore la validation de la configuration, l'état du menu et la fiabilité des diagnostics optionnels.
+- **Archives :** renforce les contrôles lors de la préparation des fichiers d'installation.
+
+Les correctifs disposent de compilation locale et de tests CPU automatisés. Les binaires finaux 1.4.1 ne sont pas validés en jeu ; qualité d'image, performances, latence et coûts mémoire restent à mesurer. Certains risques de synchronisation et de durée de vie des composants restent ouverts. Intel XeSS / XeFG, Pre-SR et Smooth Motion sur RTX 20 restent expérimentaux.
+
 ## 1.4.0
 
 - **NR avant reconstruction expérimental (Pre-SR) :** applique le Neural Rendering avant DLSS Super Resolution classique, avec une à quatre passes et un profil de modèle et une apparence indépendants par passe. Post-SR reste le défaut. Pre-SR exige une entrée uniforme à la taille de rendu ; RR, DLAA, fovéation, tailles avec marges et mouvements avec jitter ne sont pas disponibles. Une entrée non prise en charge conserve l'image SR d'origine.
