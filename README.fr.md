@@ -26,7 +26,11 @@ Un seul fichier à côté du jeu, un menu intégré, rien d'autre à installer.
 > Il se charge dans le jeu : ne l'utilisez pas dans un jeu en ligne ou protégé par un anti-triche, où il peut être
 > bloqué ou faire signaler un compte. Sauvegardez chaque fichier que vous remplacez.
 
-## Nouveautés de la 1.4.2
+## Nouveautés de la 1.4.3
+
+Correctifs XeFG, menu intégré et démarrage du Neural Rendering dans Zenless Zone Zero, reconnaissance des runtimes Intel natifs et formats NR de profondeur et de mouvement supplémentaires, dont la profondeur flottante R16 signalée dans Alan Wake 2. Conservez les fichiers Streamline d’origine du jeu. Les binaires finaux restent à valider en jeu ; voir le [changelog](CHANGELOG.fr.md) pour les crédits et le périmètre.
+
+## Inspection des captures introduite dans la 1.4.2
 
 Inspection plus nette des captures Pre-SR / Post-SR : image entière ajustée au panneau ou véritable vue 1x avec zoom et déplacement. Les nouvelles captures actualisent l'aperçu, et les images de tailles différentes s'affichent côte à côte. Les binaires finaux restent à valider en jeu. Voir le [changelog](CHANGELOG.fr.md).
 
@@ -46,7 +50,7 @@ Les fonctions de la version 1.3 restent disponibles :
 - **Retraits.** Le panneau optionnel Cyber Engine Tweaks et le moteur expérimental OpenNR. Le [journal des changements](CHANGELOG.fr.md) détaille les contributions et la portée des validations.
 - **Les fonctions de la version 1.2.** Reconstruction DLSS ou XeSS expérimental, génération d’images DLSS-G ou XeFG expérimental, changements de moteur de reconstruction compatible et de presets DLSS en jouant, réglages NR par passe et entrées HDR/exposition communes.
 
-Le mod et le Hub ont des versions distinctes. Le **[Hub 1.4.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.0)** ajoute les réglages Pre-SR et la lecture des rapports de comparaison exportés. Les protections des mises à jour de runtimes et des sauvegardes restent en place.
+Le mod et le Hub ont des versions distinctes. Le **[Hub 1.4.1](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.1)** ajoute les réglages Pre-SR et la lecture des rapports de comparaison exportés. Les protections des mises à jour de runtimes et des sauvegardes restent en place.
 
 **XeSS / XeFG : TRÈS EXPÉRIMENTAL.** Cette intégration a été particulièrement pénible à mettre au point :) Attendez-vous à des bugs, crashs, artefacts et différences entre jeux et API graphiques. N’hésitez pas à remonter les problèmes : dans RTX Encore Hub, ouvrez la page **Santé** du jeu, choisissez **Préparer un diagnostic**, relisez l’archive pour retirer les informations personnelles, puis joignez-la à une [issue RTX Encore](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose). Indiquez les moteurs choisis, l’API graphique et le multiplicateur demandé. Le Hub ne téléverse pas l’archive à votre place.
 
