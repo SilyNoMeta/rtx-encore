@@ -3,6 +3,15 @@
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
 
+## 1.4.1
+
+- **Stability:** improves handling of resolution changes, reconstruction settings, HUD capture and frame generation when graphics operations fail.
+- **Error handling:** fixes resource ownership, loading and memory-allocation failures that could leave stale state or interrupt the game.
+- **Settings and diagnostics:** improves configuration validation, menu state and the reliability of optional diagnostics.
+- **Archives:** strengthens checks when preparing installation packages.
+
+Local compilation and automated CPU tests cover the corrective changes. The final 1.4.1 binaries have not been validated in game; image quality, performance, latency and memory costs remain unmeasured. Some synchronization and runtime-lifetime risks remain unresolved. Intel XeSS / XeFG, Pre-SR and Smooth Motion on RTX 20 remain experimental.
+
 ## 1.4.0
 
 - **Experimental NR before reconstruction (Pre-SR):** apply Neural Rendering before ordinary DLSS Super Resolution, with one to four passes and an independent model profile and appearance for each pass. Post-SR remains the default. Pre-SR requires uniform render-size inputs; RR, DLAA, foveation, padding-aware sizing and jittered motion inputs are unavailable. Unsupported inputs keep the original SR image.
