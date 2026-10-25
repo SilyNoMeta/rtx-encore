@@ -26,7 +26,15 @@ Un seul fichier à côté du jeu, un menu intégré, rien d'autre à installer.
 > Il se charge dans le jeu : ne l'utilisez pas dans un jeu en ligne ou protégé par un anti-triche, où il peut être
 > bloqué ou faire signaler un compte. Sauvegardez chaque fichier que vous remplacez.
 
-## Nouveautés de la 1.4.0
+## Nouveautés de la 1.4.2
+
+Inspection plus nette des captures Pre-SR / Post-SR : image entière ajustée au panneau ou véritable vue 1x avec zoom et déplacement. Les nouvelles captures actualisent l'aperçu, et les images de tailles différentes s'affichent côte à côte. Les binaires finaux restent à valider en jeu. Voir le [changelog](CHANGELOG.fr.md).
+
+## Correctifs introduits dans la 1.4.1
+
+Correctifs pour les changements de résolution, la reconstruction, la capture du HUD, la configuration et la gestion des erreurs. Les contrôles automatisés locaux des correctifs ont réussi ; les binaires finaux restent à valider en jeu. Voir le [changelog](CHANGELOG.fr.md) pour le périmètre et les limites.
+
+## Fonctions introduites dans la 1.4.0
 
 Neural Rendering Pre-SR expérimental, laboratoire de comparaison image/performances, réglages NR indépendants par passe, commandes DLSS-G de mode et cible corrigées, et menu anglais/français/chinois simplifié avec onglet À propos. Post-SR reste le défaut. Les nouveaux chemins GPU et les binaires finaux ne sont pas validés en jeu. Voir le [changelog](CHANGELOG.fr.md) pour les prérequis, crédits et limites.
 

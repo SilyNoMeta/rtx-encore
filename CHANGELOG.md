@@ -3,6 +3,22 @@
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
 
+## 1.4.2
+
+- **Pre-SR / Post-SR comparison:** fixes the heavily pixelated in-game capture preview. Fit the complete image to the panel, or turn off **Fit to panel** to inspect at **1x**, with one captured pixel per screen pixel, then zoom and pan for detail.
+- **Capture inspection:** refreshes the preview after a new capture and shows captures of different dimensions side by side instead of overlaying mismatched images.
+
+Pixel mapping, display scaling and capture refresh have local automated CPU coverage, with synthetic panel previews. The final 1.4.2 binaries have not been validated in game; image quality, performance, memory costs and latency remain unmeasured. Captures are sequential frames, and HDR is displayed as an SDR preview. The existing Hub settings and comparison reports remain compatible.
+
+## 1.4.1
+
+- **Stability:** improves handling of resolution changes, reconstruction settings, HUD capture and frame generation when graphics operations fail.
+- **Error handling:** fixes resource ownership, loading and memory-allocation failures that could leave stale state or interrupt the game.
+- **Settings and diagnostics:** improves configuration validation, menu state and the reliability of optional diagnostics.
+- **Archives:** strengthens checks when preparing installation packages.
+
+Local compilation and automated CPU tests cover the corrective changes. The final 1.4.1 binaries have not been validated in game; image quality, performance, latency and memory costs remain unmeasured. Some synchronization and runtime-lifetime risks remain unresolved. Intel XeSS / XeFG, Pre-SR and Smooth Motion on RTX 20 remain experimental.
+
 ## 1.4.0
 
 - **Experimental NR before reconstruction (Pre-SR):** apply Neural Rendering before ordinary DLSS Super Resolution, with one to four passes and an independent model profile and appearance for each pass. Post-SR remains the default. Pre-SR requires uniform render-size inputs; RR, DLAA, foveation, padding-aware sizing and jittered motion inputs are unavailable. Unsupported inputs keep the original SR image.

@@ -26,7 +26,15 @@ One file next to the game, a built-in menu, nothing else to install.
 > It loads inside the game: do not use it in online or anti-cheat protected games, where it can be blocked or get an
 > account flagged. Back up every file you replace.
 
-## What is new in 1.4.0
+## What is new in 1.4.2
+
+Clearer Pre-SR / Post-SR capture inspection: fit the complete image to the panel, or switch to true 1x pixel inspection with zoom and pan. New captures refresh the preview, and different image sizes are shown side by side. The final binaries still require in-game validation. See the [changelog](CHANGELOG.md).
+
+## Corrective changes in 1.4.1
+
+Corrective changes for resolution transitions, reconstruction, HUD capture, configuration and error handling. Local automated checks passed for the corrective work; the final binaries still require in-game validation. See the [changelog](CHANGELOG.md) for scope and limits.
+
+## Features introduced in 1.4.0
 
 Experimental Pre-SR Neural Rendering, an image/performance comparison lab, independent NR pass controls, corrected DLSS-G mode and target controls, and an English/French/Simplified Chinese menu with an About tab. Post-SR remains the default. New GPU paths and final binaries have not been validated in game. See the [changelog](CHANGELOG.md) for requirements, credits and limits.
 
