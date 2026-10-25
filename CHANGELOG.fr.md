@@ -3,6 +3,14 @@
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
 
+## 1.4.3
+
+- **Zenless Zone Zero :** corrige la compatibilité XeFG avec les fichiers Streamline d'origine du jeu et améliore le démarrage du menu intégré et du Neural Rendering. Conservez les fichiers d'origine du jeu. Merci à [@WBW333](https://github.com/WBW333) pour son signalement ([#83](https://github.com/SilyNoMeta/rtx-encore/issues/83)).
+- **Composants Intel :** reconnaît les composants compatibles déjà installés dans les dossiers natifs du jeu. Le [Hub 1.4.1](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.1) apporte les changements correspondants d'installation et de réparation.
+- **Neural Rendering :** accepte la profondeur flottante R16, dont le format signalé dans Alan Wake 2, ainsi que des formats supplémentaires de mouvement normalisé et d'entrées flottantes selon l'API graphique. Merci à [@MrMicko](https://github.com/MrMicko) pour son signalement et son journal Alan Wake 2 ([#76](https://github.com/SilyNoMeta/rtx-encore/issues/76)).
+
+Les correctifs ZZZ ont été vérifiés localement en jeu avec XeFG, le menu intégré et NR sur un build de test. Le nettoyage final au démarrage et les binaires finaux 1.4.3 n'ont pas de validation en jeu distincte. La conversion des entrées NR dispose de tests automatisés locaux, dont WARP et Vulkan sur RTX 4090 ; ils ne valident pas la qualité d'image ou les performances du NR NVIDIA. Aucune confirmation du correctif Alan Wake 2 par son auteur n'est revendiquée. Intel XeSS / XeFG et Pre-SR restent expérimentaux.
+
 ## 1.4.2
 
 - **Comparaison Pre-SR / Post-SR :** corrige l'aperçu des captures fortement pixellisé dans le jeu. Affichez l'image entière dans le panneau, ou décochez **Fit to panel** pour l'inspecter à **1x**, avec un pixel capturé par pixel écran, puis zoomez et déplacez le cadrage pour examiner les détails.

@@ -3,6 +3,14 @@
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
 
+## 1.4.3
+
+- **绝区零：**修复 XeFG 与游戏原有 Streamline 文件的兼容性，并改进内置菜单及 Neural Rendering 的启动。请保留游戏原有文件。感谢 [@WBW333](https://github.com/WBW333) 的报告（[#83](https://github.com/SilyNoMeta/rtx-encore/issues/83)）。
+- **Intel 运行库：**识别游戏原生目录中的兼容组件。[Hub 1.4.1](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.1) 提供对应的安装和修复改进。
+- **Neural Rendering：**支持 R16 浮点深度，包括心灵杀手 2 报告的格式，并根据图形 API 支持更多归一化运动及浮点输入格式。感谢 [@MrMicko](https://github.com/MrMicko) 提供报告和日志（[#76](https://github.com/SilyNoMeta/rtx-encore/issues/76)）。
+
+绝区零修复已在本地测试版本中通过 XeFG、内置菜单和 NR 的游戏内检查。最终启动清理及最终 1.4.3 文件尚无单独的游戏内验证。NR 输入转换已有本地自动化检查，包括 WARP 和 RTX 4090 上的 Vulkan；这些测试不验证 NVIDIA NR 的画质或性能。尚未获得报告者对心灵杀手 2 修复的确认。Intel XeSS / XeFG 和 Pre-SR 仍属实验性。
+
 ## 1.4.2
 
 - **Pre-SR / Post-SR 比较：**修复游戏内截图预览严重像素化的问题。可将完整图像适配面板，或取消 **Fit to panel**，以 **1x** 检查，每个截图像素对应一个屏幕像素，并通过缩放和平移查看细节。
