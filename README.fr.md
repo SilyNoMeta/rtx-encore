@@ -31,7 +31,7 @@ Un seul fichier à côté du jeu, un menu intégré, rien d'autre à installer.
 
 ## Nouveautés de la 1.4.4
 
-Corrige le grain coloré NR dans les scènes HDR sombres d’Avatar: Frontiers of Pandora et le démarrage NR avec les anciens compilateurs des jeux, dont Where Winds Meet. Conservez les fichiers d’origine du jeu. Le propriétaire a confirmé des builds de test dans ces jeux ; les binaires finaux n’ont pas de retest distinct en jeu. Voir le [changelog](CHANGELOG.fr.md) pour les crédits et limites.
+Corrige le grain coloré et les artefacts verts du NR dans Avatar: Frontiers of Pandora. Le défaut peut aussi toucher l’affichage SDR et ne se limite pas aux zones visiblement sombres. Corrige également le démarrage NR avec les anciens compilateurs des jeux, dont Where Winds Meet. Conservez les fichiers d’origine du jeu. Le propriétaire a confirmé des builds de test dans ces jeux ; les binaires finaux n’ont pas de retest distinct en jeu. Voir le [changelog](CHANGELOG.fr.md) pour les crédits et limites.
 
 ## Nouveautés de la 1.4.3
 
