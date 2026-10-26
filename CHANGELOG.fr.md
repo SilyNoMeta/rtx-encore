@@ -3,6 +3,14 @@
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
 
+## 1.4.4
+
+- **Avatar: Frontiers of Pandora :** corrige le grain coloré et les artefacts verts du Neural Rendering dans les scènes HDR très sombres. L'effet NR est volontairement atténué dans les ombres les plus faibles pour préserver l'image d'origine. Merci à [@DangerousBerries](https://github.com/DangerousBerries) pour son signalement ([#80](https://github.com/SilyNoMeta/rtx-encore/issues/80)).
+- **Where Winds Meet et compatibilité NR Direct3D :** corrige le démarrage du Neural Rendering lorsqu'un jeu embarque un ancien compilateur de shaders. Conservez les fichiers d'origine du jeu ; il n'est pas nécessaire de renommer ou remplacer son compilateur. Merci à [@mikotorz](https://github.com/mikotorz) pour son signalement ([#85](https://github.com/SilyNoMeta/rtx-encore/issues/85)).
+- Le [Hub 1.4.2](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.2) détecte l'exécutable de Where Winds Meet et demande confirmation des destinations d'installation incertaines.
+
+Le propriétaire a confirmé l'amélioration dans la scène Avatar testée et le fonctionnement du NR dans Where Winds Meet sur des builds de test. Ces confirmations ne couvrent pas toutes les scènes ou configurations ; les binaires finaux 1.4.4 n'ont pas de nouveau test en jeu distinct. Les tests automatisés locaux couvrent la recomposition des ombres HDR et la compatibilité des shaders Direct3D. Qualité d'image, performances et stabilité temporelle ne sont pas qualifiées de façon générale. Intel XeSS / XeFG et Pre-SR restent expérimentaux.
+
 ## 1.4.3
 
 - **Zenless Zone Zero :** corrige la compatibilité XeFG avec les fichiers Streamline d'origine du jeu et améliore le démarrage du menu intégré et du Neural Rendering. Conservez les fichiers d'origine du jeu. Merci à [@WBW333](https://github.com/WBW333) pour son signalement ([#83](https://github.com/SilyNoMeta/rtx-encore/issues/83)).

@@ -29,6 +29,10 @@ One file next to the game, a built-in menu, nothing else to install.
 > It loads inside the game: do not use it in online or anti-cheat protected games, where it can be blocked or get an
 > account flagged. Back up every file you replace.
 
+## What is new in 1.4.4
+
+Fixes colored NR grain in dark HDR scenes in Avatar: Frontiers of Pandora and NR startup with older game shader compilers, including Where Winds Meet. Keep the game’s original files. The maintainer confirmed test builds in these games; final binaries have no separate in-game retest. See the [changelog](CHANGELOG.md) for credits and limits.
+
 ## What is new in 1.4.3
 
 XeFG, the integrated menu and Neural Rendering startup fixes for Zenless Zone Zero, recognition of native Intel runtimes, and additional NR depth and motion formats, including the R16 floating-point depth reported in Alan Wake 2. Keep the game’s original Streamline files. The final binaries still require in-game validation; see the [changelog](CHANGELOG.md) for credits and scope.
@@ -53,7 +57,7 @@ The 1.3 feature set remains available:
 - **Removed.** The optional Cyber Engine Tweaks panel and the experimental OpenNR engine. See the [changelog](CHANGELOG.md) for credits and validation scope.
 - **The 1.2 feature set.** Choose DLSS or experimental XeSS reconstruction, DLSS-G or experimental XeFG frame generation, switch supported reconstruction engines and DLSS presets while playing, and tune NR pass by pass with common HDR/exposure inputs.
 
-The mod and the Hub have separate releases. **[Hub 1.4.1](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.1)** adds Pre-SR settings and a reader for exported comparison reports. Existing runtime-update and backup protections remain in place.
+The mod and the Hub have separate releases. **[Hub 1.4.2](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.2)** adds Pre-SR settings and a reader for exported comparison reports. Existing runtime-update and backup protections remain in place.
 
 **XeSS / XeFG: VERY EXPERIMENTAL.** Getting this integration working was a particularly difficult and frustrating part of development :) Expect bugs, crashes, visual artifacts and differences between games and graphics APIs. Please report problems: in RTX Encore Hub, open the game’s **Health** page, choose **Prepare a diagnostic**, review the archive for personal information, then attach it to an [RTX Encore issue](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose). Include your engine choices, graphics API and requested multiplier. The Hub does not upload the archive for you.
 

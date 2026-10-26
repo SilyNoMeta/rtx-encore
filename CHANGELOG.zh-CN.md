@@ -3,6 +3,14 @@
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
 
+## 1.4.4
+
+- **阿凡达：潘多拉边境：**修复 Neural Rendering 在极暗 HDR 场景中产生的彩色噪点及绿色伪影。为保留原始图像，最暗阴影中的 NR 效果会适当减弱。感谢 [@DangerousBerries](https://github.com/DangerousBerries) 的报告（[#80](https://github.com/SilyNoMeta/rtx-encore/issues/80)）。
+- **燕云十六声及 Direct3D NR 兼容性：**修复游戏自带旧版着色器编译器时 Neural Rendering 无法启动的问题。请保留游戏原有文件，无需重命名或替换其编译器。感谢 [@mikotorz](https://github.com/mikotorz) 的报告（[#85](https://github.com/SilyNoMeta/rtx-encore/issues/85)）。
+- [Hub 1.4.2](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.2) 可识别燕云十六声的游戏程序，并要求确认不确定的安装目标。
+
+维护者已使用测试版本确认所测阿凡达场景的改善，以及燕云十六声中的 NR 可用。这不覆盖所有场景或配置，最终 1.4.4 文件尚未单独在游戏中复测。本地自动化测试覆盖 HDR 阴影重建及 Direct3D 着色器兼容性；不代表普遍验证了画质、性能或时间稳定性。Intel XeSS / XeFG 和 Pre-SR 仍属实验性。
+
 ## 1.4.3
 
 - **绝区零：**修复 XeFG 与游戏原有 Streamline 文件的兼容性，并改进内置菜单及 Neural Rendering 的启动。请保留游戏原有文件。感谢 [@WBW333](https://github.com/WBW333) 的报告（[#83](https://github.com/SilyNoMeta/rtx-encore/issues/83)）。
