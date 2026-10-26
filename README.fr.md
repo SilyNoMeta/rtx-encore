@@ -9,6 +9,7 @@ Un seul fichier à côté du jeu, un menu intégré, rien d'autre à installer.
 
 [![Dernière version](https://img.shields.io/github/v/release/SilyNoMeta/rtx-encore?include_prereleases&style=for-the-badge&label=Version&color=76b900)](https://github.com/SilyNoMeta/rtx-encore/releases)
 [![Téléchargements](https://img.shields.io/github/downloads/SilyNoMeta/rtx-encore/total?style=for-the-badge&label=T%C3%A9l%C3%A9chargements&color=2f81f7)](https://github.com/SilyNoMeta/rtx-encore/releases)
+[![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4-db61a2?style=for-the-badge&logo=githubsponsors&logoColor=white)](https://github.com/sponsors/SilyNoMeta)
 
 [![Cartes](https://img.shields.io/badge/Cartes-RTX%2020%20%7C%2030%20%7C%2040-76b900?style=flat-square&logo=nvidia&logoColor=white)](docs/COMPATIBILITY.fr.md)
 [![API graphiques](https://img.shields.io/badge/API-DirectX%2011%20%7C%2012%20%7C%20Vulkan-0078d4?style=flat-square)](docs/COMPATIBILITY.fr.md)
@@ -18,6 +19,8 @@ Un seul fichier à côté du jeu, un menu intégré, rien d'autre à installer.
 **[Installation](docs/INSTALLATION.fr.md)** ·
 **[English](README.md)** ·
 **[中文](README.zh-CN.md)**
+
+<sub>Gratuit, développé sur du temps personnel. S'il vous est utile, vous pouvez <a href="https://github.com/sponsors/SilyNoMeta">soutenir le projet sur GitHub Sponsors</a> ❤</sub>
 
 </div>
 

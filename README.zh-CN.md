@@ -9,6 +9,7 @@ Smooth Motion 和 Neural Rendering。**
 
 [![最新版本](https://img.shields.io/github/v/release/SilyNoMeta/rtx-encore?include_prereleases&style=for-the-badge&label=Latest&color=76b900)](https://github.com/SilyNoMeta/rtx-encore/releases)
 [![下载量](https://img.shields.io/github/downloads/SilyNoMeta/rtx-encore/total?style=for-the-badge&color=2f81f7)](https://github.com/SilyNoMeta/rtx-encore/releases)
+[![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4-db61a2?style=for-the-badge&logo=githubsponsors&logoColor=white)](https://github.com/sponsors/SilyNoMeta)
 
 [![显卡](https://img.shields.io/badge/GPUs-RTX%2020%20%7C%2030%20%7C%2040-76b900?style=flat-square&logo=nvidia&logoColor=white)](docs/COMPATIBILITY.zh-CN.md)
 [![图形 API](https://img.shields.io/badge/APIs-DirectX%2011%20%7C%2012%20%7C%20Vulkan-0078d4?style=flat-square)](docs/COMPATIBILITY.zh-CN.md)
@@ -18,6 +19,8 @@ Smooth Motion 和 Neural Rendering。**
 **[安装](docs/INSTALLATION.zh-CN.md)** ·
 **[English](README.md)** ·
 **[Français](README.fr.md)**
+
+<sub>免费，利用业余时间开发。如果它对你有帮助，欢迎<a href="https://github.com/sponsors/SilyNoMeta">在 GitHub Sponsors 上支持本项目</a> ❤</sub>
 
 </div>
 
