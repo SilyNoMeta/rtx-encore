@@ -29,6 +29,10 @@ Un seul fichier à côté du jeu, un menu intégré, rien d'autre à installer.
 > Il se charge dans le jeu : ne l'utilisez pas dans un jeu en ligne ou protégé par un anti-triche, où il peut être
 > bloqué ou faire signaler un compte. Sauvegardez chaque fichier que vous remplacez.
 
+## Nouveautés de la 1.4.5
+
+Réglages Smooth Motion natifs sur RTX 40/50, compteur FPS 2x explicitement estimé, correctif du menu DirectX 11 et corrections des presets à chaud, des ressources et du HUD. Les binaires finaux n’ont pas de retest distinct en jeu. Voir le [changelog](CHANGELOG.fr.md).
+
 ## Nouveautés de la 1.4.4
 
 Corrige le grain coloré et les artefacts verts du NR dans Avatar: Frontiers of Pandora. Le défaut peut aussi toucher l’affichage SDR et ne se limite pas aux zones visiblement sombres. Corrige également le démarrage NR avec les anciens compilateurs des jeux, dont Where Winds Meet. Conservez les fichiers d’origine du jeu. Le propriétaire a confirmé des builds de test dans ces jeux ; les binaires finaux n’ont pas de retest distinct en jeu. Voir le [changelog](CHANGELOG.fr.md) pour les crédits et limites.
@@ -57,7 +61,7 @@ Les fonctions de la version 1.3 restent disponibles :
 - **Retraits.** Le panneau optionnel Cyber Engine Tweaks et le moteur expérimental OpenNR. Le [journal des changements](CHANGELOG.fr.md) détaille les contributions et la portée des validations.
 - **Les fonctions de la version 1.2.** Reconstruction DLSS ou XeSS expérimental, génération d’images DLSS-G ou XeFG expérimental, changements de moteur de reconstruction compatible et de presets DLSS en jouant, réglages NR par passe et entrées HDR/exposition communes.
 
-Le mod et le Hub ont des versions distinctes. Le **[Hub 1.4.2](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.2)** ajoute les réglages Pre-SR et la lecture des rapports de comparaison exportés. Les protections des mises à jour de runtimes et des sauvegardes restent en place.
+Le mod et le Hub ont des versions distinctes. Le **[Hub 1.4.4](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.4)** ajoute les réglages Pre-SR et la lecture des rapports de comparaison exportés. Les protections des mises à jour de runtimes et des sauvegardes restent en place.
 
 **XeSS / XeFG : TRÈS EXPÉRIMENTAL.** Cette intégration a été particulièrement pénible à mettre au point :) Attendez-vous à des bugs, crashs, artefacts et différences entre jeux et API graphiques. N’hésitez pas à remonter les problèmes : dans RTX Encore Hub, ouvrez la page **Santé** du jeu, choisissez **Préparer un diagnostic**, relisez l’archive pour retirer les informations personnelles, puis joignez-la à une [issue RTX Encore](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose). Indiquez les moteurs choisis, l’API graphique et le multiplicateur demandé. Le Hub ne téléverse pas l’archive à votre place.
 

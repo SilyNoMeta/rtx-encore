@@ -3,6 +3,16 @@
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
 
+## 1.4.5
+
+- **RTX 40 / RTX 50 原生 Smooth Motion：**现有开关可在受支持的驱动上启用 NVIDIA 原生路径。请选择游戏实际使用的图形 API，并重启。RTX 20/30 的行为及精确驱动要求保持不变。[要求](docs/SMOOTH-MOTION.zh-CN.md)。
+- **计数与状态：**使用所要求的简单 2x FPS 估算，包括原生支持的显卡。这不是对实际显示或插值帧的测量。状态会区分驱动已准备与图形 API 不匹配。
+- **DirectX 11 菜单：**修复部分 DirectX 11 游戏中菜单不显示的问题，包括战争之人 II。
+- **实时设置与稳定性：**改进 DLSS 预设切换、延迟图形工作、资源处理及缺少完成跟踪时的处理。部分 DirectX 12 配置最多支持四次实时预设替换；菜单提示时，请重启后再继续切换。保留资源的内存成本尚未在游戏中测量。
+- **HUD 与控制：**在有限时间内重试暂时失败的 HUD 纹理分配，并修复待处理帧生成设置未重新应用的问题。
+
+维护者已使用测试版本在战争之人 II 中确认菜单可见，并在 RTX 4090、621.01 驱动上确认原生 Smooth Motion 的准备及呈现路径。这不证明插值帧数量、画质、延迟或长时间稳定性。RTX 50 与原生 Vulkan 尚无相应硬件验证。本地自动化测试覆盖修正路径；最终 1.4.5 文件尚未单独在游戏中复测。Intel XeSS / XeFG、Pre-SR 和 RTX 20 实验性 Smooth Motion 仍保留既有限制。[Hub 1.4.4](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.4) 提供对应设置。
+
 ## 1.4.4
 
 - **阿凡达：潘多拉边境：**修复 Neural Rendering 在极暗 HDR 场景中产生的彩色噪点及绿色伪影。为保留原始图像，最暗阴影中的 NR 效果会适当减弱。感谢 [@DangerousBerries](https://github.com/DangerousBerries) 的报告（[#80](https://github.com/SilyNoMeta/rtx-encore/issues/80)）。

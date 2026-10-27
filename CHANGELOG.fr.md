@@ -3,6 +3,16 @@
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
 
+## 1.4.5
+
+- **Smooth Motion natif sur RTX 40 / RTX 50 :** le réglage existant peut activer le chemin natif du pilote NVIDIA avec un pilote pris en charge. Choisissez l'API réelle du jeu puis redémarrez-le. Le comportement RTX 20/30 et les versions exactes des pilotes restent inchangés. [Conditions](docs/SMOOTH-MOTION.fr.md).
+- **Compteur et statut :** utilise l'estimation simple 2x demandée, y compris sur les cartes natives. Il ne s'agit pas d'une mesure des images affichées ou interpolées. Le statut distingue un pilote préparé d'une API graphique mal choisie.
+- **Menu DirectX 11 :** corrige l'absence du menu dans certains jeux DirectX 11, notamment Men of War II.
+- **Réglages à chaud et stabilité :** améliore les changements de preset DLSS, les travaux graphiques différés, la gestion des ressources et l'absence de suivi de fin d'exécution. Certaines configurations DirectX 12 autorisent au plus quatre remplacements à chaud ; redémarrez lorsque le menu le demande avant d'en effectuer d'autres. Le coût mémoire des ressources conservées n'a pas été mesuré en jeu.
+- **HUD et commandes :** réessaie les allocations de textures HUD temporairement refusées pendant une durée limitée et corrige la réapplication des commandes de génération d'images en attente.
+
+Le propriétaire a confirmé le menu dans Men of War II et la préparation/présentation Smooth Motion native sur RTX 4090 avec le pilote 621.01, sur des builds de test. Cela ne mesure pas les images interpolées, la qualité, la latence ou la stabilité prolongée. RTX 50 et Vulkan natif n'ont pas de qualification matérielle correspondante. Les tests automatisés couvrent les chemins corrigés ; les binaires finaux 1.4.5 n'ont pas de retest distinct en jeu. Intel XeSS / XeFG, Pre-SR et Smooth Motion expérimental sur RTX 20 conservent leurs limites. Le [Hub 1.4.4](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.4) ajoute les réglages natifs correspondants.
+
 ## 1.4.4
 
 - **Avatar: Frontiers of Pandora :** corrige le grain coloré et les artefacts verts du Neural Rendering dans les scènes HDR très sombres. L'effet NR est volontairement atténué dans les ombres les plus faibles pour préserver l'image d'origine. Merci à [@DangerousBerries](https://github.com/DangerousBerries) pour son signalement ([#80](https://github.com/SilyNoMeta/rtx-encore/issues/80)).

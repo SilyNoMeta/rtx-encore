@@ -29,6 +29,10 @@ Smooth Motion 和 Neural Rendering。**
 > 它在游戏进程内加载：请勿在联机游戏或受反作弊保护的游戏中使用，否则可能被拦截，或导致账号被标记。
 > 替换任何文件之前请先备份。
 
+## 1.4.5 更新
+
+新增 RTX 40/50 原生 Smooth Motion 设置及明确标注的 2x FPS 估算，修复 DirectX 11 菜单，并改进实时预设、资源生命周期及 HUD 恢复。最终文件尚未单独在游戏中复测。参阅[更新日志](CHANGELOG.zh-CN.md)。
+
 ## 1.4.4 更新
 
 修复阿凡达：潘多拉边境的 NR 彩色噪点和绿色伪影。此问题也可能影响 SDR 输出，并不限于画面中明显较暗的区域。同时修复燕云十六声等游戏自带旧编译器时 NR 无法启动的问题。请保留游戏原有文件。维护者已在这些游戏中确认测试版本；最终文件尚未单独复测。贡献者及限制请参阅[更新日志](CHANGELOG.zh-CN.md)。
@@ -57,7 +61,7 @@ Smooth Motion 和 Neural Rendering。**
 - **移除。** 可选的 Cyber Engine Tweaks 面板和实验性 OpenNR 引擎。贡献者与验证范围见[更新日志](CHANGELOG.zh-CN.md)。
 - **1.2 系列功能。** 选择 DLSS 或实验性 XeSS 重建、DLSS-G 或实验性 XeFG 帧生成，在兼容游戏中实时切换重建引擎及 DLSS 预设，并逐轮调整 NR 和共用 HDR/曝光输入。
 
-模组与 Hub 分别发布。**[Hub 1.4.2](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.2)** 新增 Pre-SR 设置和已导出比较报告的读取功能。现有运行库更新及备份保护继续保留。
+模组与 Hub 分别发布。**[Hub 1.4.4](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.4)** 新增 Pre-SR 设置和已导出比较报告的读取功能。现有运行库更新及备份保护继续保留。
 
 **XeSS / XeFG：高度实验性。** 这部分集成的开发过程非常艰难，也相当折腾 :) 请预期可能出现错误、崩溃、画面伪影，以及不同游戏和图形 API 之间的行为差异。欢迎报告问题：在 RTX Encore Hub 中打开游戏的 **健康** 页面，选择 **生成诊断包**，检查并移除个人信息后，将诊断压缩包附加到 [RTX Encore issue](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose)。请注明选择的引擎、图形 API 和请求的倍率。Hub 不会自动上传该压缩包。
 

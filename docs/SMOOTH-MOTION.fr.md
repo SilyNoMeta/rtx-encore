@@ -1,4 +1,4 @@
-# Smooth Motion sur RTX 20 / RTX 30
+# Smooth Motion sur RTX 20 / RTX 30 / RTX 40 / RTX 50
 
 *[English](SMOOTH-MOTION.md) · [中文](SMOOTH-MOTION.zh-CN.md)*
 
@@ -12,7 +12,7 @@ les cartes RTX 30.
 
 ## Prérequis
 
-- Une carte **RTX 30**. Les RTX 40 tiennent Smooth Motion de NVIDIA ; les RTX 20 sont prises en charge expérimentalement à partir de RTX Encore 1.3.0 (voir ci-dessous).
+- Une carte **RTX 30**, ou **RTX 40 / RTX 50** avec RTX Encore **1.4.5 ou ultérieur**. Les RTX 40/50 utilisent le moteur natif du pilote et le même interrupteur Smooth Motion dans le Hub ou le menu en jeu. Les RTX 20 sont prises en charge expérimentalement à partir de RTX Encore 1.3.0 (voir ci-dessous).
 - L'une de ces versions du pilote NVIDIA, exactement : **621.01**, **620.12**, **617.42**, **617.14**,
   **616.92**, **616.64** ou **591.86**.
   Les 617.14 et 621.01 ont été vérifiées en jeu. Avec tout autre pilote, la fonction reste désactivée et dit
@@ -30,6 +30,8 @@ les cartes RTX 30.
 La pastille **Smooth Motion** en haut du menu montre l'état. « Driver prepared » signifie que le pilote est prêt ;
 cela ne confirme pas à soi seul que des images interpolées sont affichées. Vérifiez le résultat avec un outil qui
 mesure les images affichées, comme NVIDIA FrameView.
+
+Le compteur estime les FPS avec Smooth Motion à **2x** et affiche `2x sm` (par exemple `148/74 fps 2x sm`). Il s’agit d’une estimation, pas d’une mesure des images interpolées affichées.
 
 ## RTX 20 : V1 ou V2 (à partir de 1.3.0)
 

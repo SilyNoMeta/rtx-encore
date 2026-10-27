@@ -3,6 +3,16 @@
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
 
+## 1.4.5
+
+- **Native Smooth Motion on RTX 40 / RTX 50:** the existing switch can activate the NVIDIA driver's native path with a supported driver. Select the game's actual graphics API and restart. RTX 20/30 behavior and exact driver requirements remain unchanged. [Requirements](docs/SMOOTH-MOTION.md).
+- **Counter and status:** uses the requested simple 2x FPS estimate, including on native hardware. This is not a measurement of displayed or interpolated frames. Status reporting distinguishes a prepared driver from a mismatched graphics API.
+- **DirectX 11 menu:** fixes the integrated menu not appearing in some DirectX 11 games, including Men of War II.
+- **Live settings and stability:** improves live DLSS preset changes, delayed graphics work, graphics-resource handling and unavailable completion tracking. Some DirectX 12 configurations permit at most four live preset replacements; restart when the menu asks before making more changes. Retained resources can have a memory cost that has not been measured in games.
+- **HUD and controls:** retries transient HUD texture-allocation failures within a bounded window and fixes pending frame-generation controls not being reapplied.
+
+The maintainer confirmed the menu in Men of War II and native Smooth Motion preparation/presentation on RTX 4090 with driver 621.01 using test builds. This does not establish interpolated-frame counts, image quality, latency or long-session stability. RTX 50 and native Vulkan have no corresponding hardware qualification. Local automated tests cover the corrected paths; the final 1.4.5 binaries have no separate in-game retest. Intel XeSS / XeFG, Pre-SR and experimental RTX 20 Smooth Motion retain their limits. [Hub 1.4.4](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.4) adds matching native Smooth Motion controls.
+
 ## 1.4.4
 
 - **Avatar: Frontiers of Pandora:** fixes colored grain and green artifacts from Neural Rendering in very dark HDR scenes. The NR effect is intentionally reduced in the darkest shadows to preserve the original image. Thanks to [@DangerousBerries](https://github.com/DangerousBerries) for the report ([#80](https://github.com/SilyNoMeta/rtx-encore/issues/80)).

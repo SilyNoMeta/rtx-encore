@@ -1,4 +1,4 @@
-# RTX 20 / RTX 30 上的 Smooth Motion
+# RTX 20 / RTX 30 / RTX 40 / RTX 50 上的 Smooth Motion
 
 *[English](SMOOTH-MOTION.md) · [Français](SMOOTH-MOTION.fr.md)*
 
@@ -11,7 +11,7 @@ Smooth Motion 是 NVIDIA 驱动的插帧功能：在 DirectX 11、DirectX 12 和
 
 ## 要求
 
-- 一块 **RTX 30** 显卡。RTX 40 显卡的 Smooth Motion 由 NVIDIA 提供；从 RTX Encore 1.3.0 起实验性支持 RTX 20，详见下文。
+- 一块 **RTX 30** 显卡，或搭配 RTX Encore **1.4.5 或更高版本**的 **RTX 40 / RTX 50**。RTX 40/50 使用驱动原生引擎，可通过 Hub 或游戏内菜单的同一 Smooth Motion 开关启用。从 RTX Encore 1.3.0 起实验性支持 RTX 20，详见下文。
 - NVIDIA 驱动必须恰好是以下版本之一：**621.01**、**620.12**、**617.42**、**617.14**、**616.92**、**616.64** 或
   **591.86**。
   617.14 和 621.01 已在游戏中得到验证。使用其他任何驱动时，该功能保持关闭并说明原因；RTX Encore 的其余功能
@@ -27,6 +27,8 @@ Smooth Motion 是 NVIDIA 驱动的插帧功能：在 DirectX 11、DirectX 12 和
 
 菜单顶部的 **Smooth Motion** 标签会显示状态。“Driver prepared”表示驱动已就绪；仅凭这一点并不能确认插值帧
 已经显示出来。请用能测量显示帧数的工具（例如 NVIDIA FrameView）检查结果。
+
+FPS 计数器按 **2 倍**估算 Smooth Motion 输出，并显示 `2x sm`（例如 `148/74 fps 2x sm`）。这是估算值，并非对实际显示插值帧的测量。
 
 ## RTX 20：V1 或 V2（从 1.3.0 起）
 
