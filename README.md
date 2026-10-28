@@ -114,14 +114,17 @@ Other file names, the `.asi` plugin, updating and removing: **[Installation](doc
 | Shortcut | Action |
 | :--- | :--- |
 | `Insert` | Open or close the menu |
-| `Ctrl + Alt + 2…6` | Fixed multiplier X2 to X6 |
+| `Ctrl + Alt + 2…6` (also numpad) | Fixed multiplier X2 to X6 |
 | `Ctrl + Alt + PageUp / PageDown` | Raise or lower the multiplier |
 | `Ctrl + Alt + D` | Switch between Fixed and Dynamic mode |
-| `Ctrl + Alt + Up / Down` | Raise or lower the Dynamic target by 5 FPS (`Shift`: 1 FPS) |
+| `Ctrl + Alt + Up / Down` or `Ctrl + Alt + Plus / Minus` (also numpad `+` / `−`) | Raise or lower the Dynamic target by 5 FPS (hold `Shift` as well: 1 FPS) |
 | `Ctrl + Alt + G` | Give the choice back to the game |
-| `Ctrl + Alt + O` / `P` | Show or hide the overlay / move it to the next corner |
+| `Ctrl + Alt + O` | Show or hide the overlay |
+| `Ctrl + Alt + P` | Move the overlay to the next corner |
+| `Ctrl + Alt + N` | Turn Neural Rendering on or off |
+| `Ctrl + Alt + F9` | Record an SR capture burst (DirectX 12; enable SR capture in the menu first) |
 
-Every shortcut can be changed in the menu. They only act while the game window has focus.
+These are the default shortcuts; each can be changed in the menu. They only act while the game window has focus.
 
 ## Documentation
 

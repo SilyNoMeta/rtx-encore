@@ -114,14 +114,17 @@ Autres noms de fichier, plugin `.asi`, mise à jour et désinstallation : **[Ins
 | Raccourci | Action |
 | :--- | :--- |
 | `Inser` | Ouvrir ou fermer le menu |
-| `Ctrl + Alt + 2…6` | Multiplicateur fixe X2 à X6 |
+| `Ctrl + Alt + 2…6` (pavé numérique également) | Multiplicateur fixe X2 à X6 |
 | `Ctrl + Alt + Page préc. / Page suiv.` | Augmenter ou réduire le multiplicateur |
 | `Ctrl + Alt + D` | Basculer entre les modes Fixe et Dynamique |
-| `Ctrl + Alt + Haut / Bas` | Augmenter ou réduire la cible du mode Dynamique de 5 FPS (`Maj` : 1 FPS) |
+| `Ctrl + Alt + Haut / Bas` ou `Ctrl + Alt + Plus / Moins` (également `+` / `−` du pavé numérique) | Augmenter ou réduire la cible du mode Dynamique de 5 FPS (maintenir aussi `Maj` : 1 FPS) |
 | `Ctrl + Alt + G` | Rendre le choix au jeu |
-| `Ctrl + Alt + O` / `P` | Afficher ou masquer l'overlay / le déplacer dans le coin suivant |
+| `Ctrl + Alt + O` | Afficher ou masquer l'overlay |
+| `Ctrl + Alt + P` | Déplacer l'overlay dans le coin suivant |
+| `Ctrl + Alt + N` | Activer ou désactiver le Neural Rendering |
+| `Ctrl + Alt + F9` | Enregistrer une rafale de captures SR (DirectX 12 ; activer d'abord la capture SR dans le menu) |
 
-Chaque raccourci se change dans le menu. Ils n'agissent que lorsque la fenêtre du jeu a le focus.
+Ce sont les raccourcis par défaut ; chacun se change dans le menu. Ils n'agissent que lorsque la fenêtre du jeu a le focus.
 
 ## Documentation
 

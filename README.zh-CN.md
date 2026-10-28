@@ -113,14 +113,17 @@ RTX Encore 面向 RTX 20、30 和 40；RTX 50 显卡的帧生成和 Smooth Motio
 | 快捷键 | 作用 |
 | :--- | :--- |
 | `Insert` | 打开或关闭菜单 |
-| `Ctrl + Alt + 2…6` | 固定倍率 X2 至 X6 |
+| `Ctrl + Alt + 2…6`（也支持数字小键盘） | 固定倍率 X2 至 X6 |
 | `Ctrl + Alt + PageUp / PageDown` | 提高或降低倍率 |
 | `Ctrl + Alt + D` | 在固定模式和动态模式之间切换 |
-| `Ctrl + Alt + ↑ / ↓` | 将动态模式的目标帧率提高或降低 5 FPS（按住 `Shift`：1 FPS） |
+| `Ctrl + Alt + ↑ / ↓` 或 `Ctrl + Alt + Plus / Minus`（也支持数字小键盘的 `+` / `−`） | 将动态模式的目标帧率提高或降低 5 FPS（同时按住 `Shift`：1 FPS） |
 | `Ctrl + Alt + G` | 把选择权交还给游戏 |
-| `Ctrl + Alt + O` / `P` | 显示或隐藏叠加层 / 把它移到下一个角落 |
+| `Ctrl + Alt + O` | 显示或隐藏叠加层 |
+| `Ctrl + Alt + P` | 把叠加层移到下一个角落 |
+| `Ctrl + Alt + N` | 开启或关闭 Neural Rendering |
+| `Ctrl + Alt + F9` | 记录一组 SR 捕获（DirectX 12；须先在菜单中启用 SR 捕获） |
 
-所有快捷键都可以在菜单中修改。只有游戏窗口处于焦点时它们才会生效。
+以上为默认快捷键，均可在菜单中修改。只有游戏窗口处于焦点时它们才会生效。
 
 ## 文档
 
