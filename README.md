@@ -55,7 +55,7 @@ XeSS, XeFG and the native XeFG → DLSS FG adapter are experimental and require 
 | 🎞️ | **[Frame generation X2 to X6](docs/FRAME-GENERATION.md)** | DLSS Multi Frame Generation on RTX 20, 30 and 40, in games with compatible DLSS or native Intel frame generation. Fixed multiplier, Dynamic mode with a target frame rate, or the game's own choice. |
 | 🛡️ | **Cleaner generated frames** | Protection against tearing on thin geometry (fences, wires, foliage) and against artifacts in moving shadows; sharp HUD and text. |
 | ⚡ | **Lighter frame generation** | A performance option that lowers the GPU cost of each generated frame without changing the image. |
-| 🌀 | **[Smooth Motion on RTX 30](docs/SMOOTH-MOTION.md)** | NVIDIA's driver frame interpolation, for DirectX 11, DirectX 12 and Vulkan games, including games without DLSS. Off by default. |
+| 🌀 | **[Smooth Motion on RTX 20 / 30](docs/SMOOTH-MOTION.md)** | NVIDIA's driver frame interpolation, including games without DLSS: DirectX 11, DirectX 12 and Vulkan on RTX 30; **experimental RTX 20 support** in DirectX 12 with driver 621.01 and V1 / V2 variants. Off by default. |
 | ✨ | **[Neural Rendering](docs/NEURAL-RENDERING.md)** | NR on RTX 20, 30 and 40, with RTX Encore's own performance options for Ampere: optimized processing, Fast precision, independent NR resolution. One to four passes, a style for each, HDR support. Experimental, off by default. |
 | 🎛️ | **[Built-in menu and overlay](docs/MENU-AND-OVERLAY.md)** | Press **Insert** in the game: every setting, the state of each feature, and an overlay with frame rate, multiplier, frame pacing, GPU and VRAM. DirectX 11, DirectX 12 and Vulkan. |
 | 🚀 | **[Fast super resolution on RTX 30](docs/SUPER-RESOLUTION.md)** | A faster DLSS Super Resolution for RTX 30 in DirectX 12 games with preset M or L: about 16 to 20 % less GPU time per upscaled frame on the system measured, with an image very close to the original. Off by default. |
@@ -72,7 +72,7 @@ RTX Encore offers optimized NVIDIA NR processing, optional Fast precision and an
 | :--- | :---: | :---: | :---: |
 | RTX 40 | ✅ | provided by NVIDIA | ✅ |
 | RTX 30 | ✅ | ✅ | ✅ |
-| RTX 20 | 🧪 experimental | — | 🧪 experimental |
+| RTX 20 | 🧪 experimental | 🧪 experimental (DirectX 12, driver 621.01) | 🧪 experimental |
 
 RTX Encore is made for RTX 20, 30 and 40; RTX 50 cards get frame generation and Smooth Motion from NVIDIA.
 Details, graphics APIs, driver and game notes: **[Compatibility](docs/COMPATIBILITY.md)**.
@@ -133,7 +133,7 @@ These are the default shortcuts; each can be changed in the menu. They only act 
 | Installation, updating, removing | [Open](docs/INSTALLATION.md) | [Ouvrir](docs/INSTALLATION.fr.md) | [打开](docs/INSTALLATION.zh-CN.md) |
 | Frame generation | [Open](docs/FRAME-GENERATION.md) | [Ouvrir](docs/FRAME-GENERATION.fr.md) | [打开](docs/FRAME-GENERATION.zh-CN.md) |
 | Super Resolution | [Open](docs/SUPER-RESOLUTION.md) | [Ouvrir](docs/SUPER-RESOLUTION.fr.md) | [打开](docs/SUPER-RESOLUTION.zh-CN.md) |
-| Smooth Motion on RTX 30 | [Open](docs/SMOOTH-MOTION.md) | [Ouvrir](docs/SMOOTH-MOTION.fr.md) | [打开](docs/SMOOTH-MOTION.zh-CN.md) |
+| Smooth Motion on RTX 20 / 30 | [Open](docs/SMOOTH-MOTION.md) | [Ouvrir](docs/SMOOTH-MOTION.fr.md) | [打开](docs/SMOOTH-MOTION.zh-CN.md) |
 | Neural Rendering | [Open](docs/NEURAL-RENDERING.md) | [Ouvrir](docs/NEURAL-RENDERING.fr.md) | [打开](docs/NEURAL-RENDERING.zh-CN.md) |
 | Menu and overlay | [Open](docs/MENU-AND-OVERLAY.md) | [Ouvrir](docs/MENU-AND-OVERLAY.fr.md) | [打开](docs/MENU-AND-OVERLAY.zh-CN.md) |
 | Settings file | [Open](docs/SETTINGS.md) | [Ouvrir](docs/SETTINGS.fr.md) | [打开](docs/SETTINGS.zh-CN.md) |

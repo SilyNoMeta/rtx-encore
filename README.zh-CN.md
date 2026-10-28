@@ -55,7 +55,7 @@ XeSS、XeFG 和原生 XeFG → DLSS FG 适配器仍属实验功能，需要兼�
 | 🎞️ | **[X2 至 X6 帧生成](docs/FRAME-GENERATION.zh-CN.md)** | 在自带 DLSS 帧生成的游戏中，为 RTX 20、30 和 40 提供 DLSS 多帧生成。可选固定倍率、带目标帧率的动态模式，或交给游戏决定。 |
 | 🛡️ | **更干净的生成帧** | 防止细小几何体（栅栏、电线、植被）撕裂，减少移动阴影中的瑕疵；界面和文字保持清晰。 |
 | ⚡ | **更轻量的帧生成** | 一个性能选项，在不改变画面的前提下降低每个生成帧的 GPU 开销。 |
-| 🌀 | **[RTX 30 上的 Smooth Motion](docs/SMOOTH-MOTION.zh-CN.md)** | NVIDIA 驱动的插帧功能，适用于 DirectX 11、DirectX 12 和 Vulkan 游戏，包括没有 DLSS 的游戏。默认关闭。 |
+| 🌀 | **[RTX 20 / 30 上的 Smooth Motion](docs/SMOOTH-MOTION.zh-CN.md)** | NVIDIA 驱动的插帧功能，也适用于没有 DLSS 的游戏：RTX 30 支持 DirectX 11、DirectX 12 和 Vulkan；**RTX 20 为实验性支持**，限 DirectX 12、621.01 驱动，可选 V1 / V2。默认关闭。 |
 | ✨ | **[Neural Rendering](docs/NEURAL-RENDERING.zh-CN.md)** | 在 RTX 20、30 和 40 上运行 NR，并提供 RTX Encore 自行开发的 Ampere 性能选项：优化处理、Fast 精度、独立的 NR 分辨率。支持一至四遍处理、每遍独立风格以及 HDR。实验性功能，默认关闭。 |
 | 🎛️ | **[内置菜单和叠加层](docs/MENU-AND-OVERLAY.zh-CN.md)** | 在游戏中按 **Insert**：所有设置、每项功能的状态，以及显示帧率、倍率、帧时间稳定性、GPU 和显存的叠加层。支持 DirectX 11、DirectX 12 和 Vulkan。 |
 | 🚀 | **[RTX 30 上的 Fast super resolution](docs/SUPER-RESOLUTION.zh-CN.md)** | 为 RTX 30 在预设为 M 或 L 的 DirectX 12 游戏中提供更快的 DLSS 超分辨率：在测量的系统上每个放大帧约减少 16% 至 20% 的 GPU 时间，画面与原版非常接近。默认关闭。 |
@@ -72,7 +72,7 @@ RTX Encore 提供优化的 NVIDIA NR 处理、可选 Fast 精度和独立于 DLS
 | :--- | :---: | :---: | :---: |
 | RTX 40 | ✅ | 由 NVIDIA 提供 | ✅ |
 | RTX 30 | ✅ | ✅ | ✅ |
-| RTX 20 | 🧪 实验性 | — | 🧪 实验性 |
+| RTX 20 | 🧪 实验性 | 🧪 实验性（DirectX 12、621.01 驱动） | 🧪 实验性 |
 
 RTX Encore 面向 RTX 20、30 和 40；RTX 50 显卡的帧生成和 Smooth Motion 由 NVIDIA 提供。
 详细信息、图形 API、驱动和游戏说明见 **[兼容性](docs/COMPATIBILITY.zh-CN.md)**。
@@ -132,7 +132,7 @@ RTX Encore 面向 RTX 20、30 和 40；RTX 50 显卡的帧生成和 Smooth Motio
 | 安装、更新、卸载 | [Open](docs/INSTALLATION.md) | [Ouvrir](docs/INSTALLATION.fr.md) | [打开](docs/INSTALLATION.zh-CN.md) |
 | 帧生成 | [Open](docs/FRAME-GENERATION.md) | [Ouvrir](docs/FRAME-GENERATION.fr.md) | [打开](docs/FRAME-GENERATION.zh-CN.md) |
 | 超分辨率 | [Open](docs/SUPER-RESOLUTION.md) | [Ouvrir](docs/SUPER-RESOLUTION.fr.md) | [打开](docs/SUPER-RESOLUTION.zh-CN.md) |
-| RTX 30 上的 Smooth Motion | [Open](docs/SMOOTH-MOTION.md) | [Ouvrir](docs/SMOOTH-MOTION.fr.md) | [打开](docs/SMOOTH-MOTION.zh-CN.md) |
+| RTX 20 / 30 上的 Smooth Motion | [Open](docs/SMOOTH-MOTION.md) | [Ouvrir](docs/SMOOTH-MOTION.fr.md) | [打开](docs/SMOOTH-MOTION.zh-CN.md) |
 | Neural Rendering | [Open](docs/NEURAL-RENDERING.md) | [Ouvrir](docs/NEURAL-RENDERING.fr.md) | [打开](docs/NEURAL-RENDERING.zh-CN.md) |
 | 菜单和叠加层 | [Open](docs/MENU-AND-OVERLAY.md) | [Ouvrir](docs/MENU-AND-OVERLAY.fr.md) | [打开](docs/MENU-AND-OVERLAY.zh-CN.md) |
 | 设置文件 | [Open](docs/SETTINGS.md) | [Ouvrir](docs/SETTINGS.fr.md) | [打开](docs/SETTINGS.zh-CN.md) |
