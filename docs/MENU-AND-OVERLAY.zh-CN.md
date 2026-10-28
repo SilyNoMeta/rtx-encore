@@ -66,6 +66,7 @@ RTX Encore 在 DirectX 11、DirectX 12 和 Vulkan 游戏中绘制自己的菜单
 | :--- | :--- |
 | Neural Rendering | 状态和工作尺寸；使用 310.9.16 时还显示 NVIDIA 网络（preset A、B 或 Auto） |
 | Frame pacing | 帧时间：平均值、第 99 百分位和抖动 |
+| Latency report | `PCL avg/max RQ GPU`：NVIDIA Reflex 对游戏已渲染帧的报告，由驱动填写：从帧开始计算到 GPU 渲染结束、渲染等待和 GPU 时间。使用 XeSS-FG 时为 `XELL avg/max SIM>PRESENT`：XeLL 的报告，从帧开始计算到 Present 调用结束（XeLL 不记录 GPU 或等待时间）。不是显示延迟；生成帧不计时；没有延迟标记的游戏不显示 |
 | GPU | 负载、温度、功耗和频率 |
 | VRAM | 显卡已用 / 总显存，包含所有程序 |
 | Versions | 游戏加载的 NVIDIA DLL 版本：Super Resolution（`SR`）、Ray Reconstruction（`RR`）、Frame Generation（`FG`）、Neural Rendering（`NR`）和 Streamline（`SL`）。版本相同的 DLL 共用一行（`SR-RR-FG-NR 310.9.16`）；未加载的 DLL 不显示。`SL` 是游戏自带的 Streamline 核心，更新插件时它保持不变；插件版本不同时，该行同时显示两者（`SL 2.7.11 PLUGINS 2.14.16`） |
@@ -90,6 +91,8 @@ Reflex 限制器接受 DLL 版本 2.1.1–2.14.1，以及 2.14.16；其他版本
 没有公开标签的中间版本（包括 2.13 和 2.14.0）尚无公开 SDK 验证。
 实际限帧仍取决于游戏的 Reflex 集成和驱动支持。
 不会添加基于 CPU 等待的备用限制器。
+
+**Reflex mode** — `game` 跟随游戏模式（默认）；`on` / `on-boost` 请求 On / On+Boost，绝不低于游戏模式。可实时修改，与帧率上限独立；Dynamic 模式及 XeLL 拥有延迟控制权时暂停覆盖。改回 `game` 会在下一个安全时机恢复游戏模式。CPU 限制帧率时 Boost 保持 GPU 高频率；请比较延迟报告，不保证改善。菜单显示游戏请求及已接受的模式；调用成功不证明驱动实际应用该模式。XeLL 始终开启低延迟，其运行库不支持 Boost。
 
 在 **Frames → Frame pacing** 中，**For this display** 建议 `刷新率 - 刷新率² / 3600`（向下取整），
 例如 120 Hz 时请求 **116 FPS**，144 Hz 时为 138，240 Hz 时为 224，不再除以 FG 倍率。生成帧是否计入上限取决于游戏和驱动。

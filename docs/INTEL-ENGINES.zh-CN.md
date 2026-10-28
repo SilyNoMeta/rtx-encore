@@ -2,7 +2,7 @@
 
 [English](INTEL-ENGINES.md) · [Français](INTEL-ENGINES.fr.md) · [简体中文](INTEL-ENGINES.zh-CN.md)
 
-适用于 RTX Encore 1.3.1。可用版本请查看[发布页面](https://github.com/SilyNoMeta/rtx-encore/releases)。
+适用于 RTX Encore 1.4.6。可用版本请查看[发布页面](https://github.com/SilyNoMeta/rtx-encore/releases)。
 
 RTX Encore 1.2.0 可选择重建和帧生成引擎。保留 **Game** 可继续使用游戏原有引擎。Intel 模式仍属实验性，默认关闭，需要兼容的游戏输入；选择某个引擎不能证明它已激活。
 
@@ -11,7 +11,7 @@ RTX Encore 1.2.0 可选择重建和帧生成引擎。保留 **Game** 可继续�
 | 设置 | 默认 | 作用 |
 | :--- | :---: | :--- |
 | `reconstructionEngine` | `game` | `game` 或 `xess`：以 XeSS 替代兼容的 Super Resolution/DLAA 处理；Ray Reconstruction 保留原引擎。 |
-| `frameGenerationEngine` | `game` | `game` 或 `xefg`：在受支持的 DirectX 12 或 Vulkan 路径上使用 XeFG。DirectX 11 仍属实验性，此处未完成游戏认证。 |
+| `frameGenerationEngine` | `game` | `game`、`dlss-fg` 或 `xefg`。游戏保留原生 FG；DLSS-FG 将经过资格检查的原生 Intel FG 替换为 NVIDIA DLSS FG；XeFG 将兼容 DLSS FG 替换为 Intel XeFG。需要重启。 |
 | `xefgMfg4VariablePacing` | `true` | XeFG 高于 X2 的实验性帧间隔控制；关闭后，较高倍率可能不可用。 |
 | `xefgUiHandling` | `interpolate` | `interpolate` 或 `game`；请求单独处理游戏界面需要兼容输入。 |
 | `xefgUiAlpha` | `unknown` | `unknown`、`straight` 或 `premultiplied`；不清楚界面格式时请保留 unknown。 |
@@ -25,3 +25,5 @@ XeFG 不能为所有游戏添加帧生成。更高倍率取决于获准的 Intel
 No Man’s Sky 和 DOOM: The Dark Ages 的有限本地 Vulkan 测试支持 XeFG X2 路径；维护者已接受 DOOM 在无边框模式、关闭 NR 时的测试。这不认证独占全屏、DirectX 11、XeFG 与 NR 组合、所有更高倍率或其他游戏。某些 Intel 路径上菜单或叠加层可能不可用；可使用 Hub 调整设置并查看会话报告。
 
 [设置参考](SETTINGS.zh-CN.md) · [RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub)
+
+在 Mirage 等使用原生 Intel FG 的游戏中，通过 Hub 安装兼容运行库，在 Encore 选择 **DLSS-FG** 并重启，再在游戏中启用 **Intel FG**。使用 **Fixed** 选择允许的倍率；此适配器的 **Game** 使用 X2，动态模式不可用。原生 FSR 和已有原生 DLSS FG 保持不变。维护者已确认 Mirage 的修复测试版本；最终发布文件尚未在游戏中单独复测。

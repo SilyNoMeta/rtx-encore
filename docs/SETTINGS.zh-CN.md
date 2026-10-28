@@ -22,7 +22,7 @@
 | 设置 | 默认 | 作用 |
 | :--- | :---: | :--- |
 | `reconstructionEngine` | `game` | `game` 或 `xess`：以 XeSS 替代兼容的 Super Resolution/DLAA 处理；Ray Reconstruction 保留原引擎。 |
-| `frameGenerationEngine` | `game` | `game` 或 `xefg`：在受支持的 DirectX 12 或 Vulkan 路径上使用 XeFG。DirectX 11 仍属实验性，此处未完成游戏认证。 |
+| `frameGenerationEngine` | `game` | `game`、`dlss-fg` 或 `xefg`。游戏保留原生 FG；DLSS-FG 将经过资格检查的原生 Intel FG 替换为 NVIDIA DLSS FG；XeFG 将兼容 DLSS FG 替换为 Intel XeFG。需要重启。 |
 | `xefgMfg4VariablePacing` | `true` | XeFG 高于 X2 的实验性帧间隔控制；关闭后，较高倍率可能不可用。 |
 | `xefgUiHandling` | `interpolate` | `interpolate` 或 `game`；请求单独处理游戏界面需要兼容输入。 |
 | `xefgUiAlpha` | `unknown` | `unknown`、`straight` 或 `premultiplied`；不清楚界面格式时请保留 unknown。 |
@@ -169,7 +169,7 @@ FG 预设选择支持以下经过逐一验证的 NVIDIA **DLSS-G 正式版二进
 | `showOverlay` | `false` | 显示叠加层。 |
 | `overlayPosition` | `"top-left"` | `"top-left"`、`"top-right"`、`"bottom-left"`、`"bottom-right"` |
 | `overlayFontSize` | `14` | 文字大小，`10` 至 `32` 像素 |
-| `overlayShowNr`、`overlayShowFramePacing`、`overlayShowGpu`、`overlayShowVram`、`overlayShowVersions` | `false` | 可选显示项目 |
+| `overlayShowNr`、`overlayShowFramePacing`、`overlayShowLatency`、`overlayShowGpu`、`overlayShowVram`、`overlayShowVersions` | `false` | 可选显示项目 |
 
 ### `hudUi`
 
@@ -184,6 +184,7 @@ FG 预设选择支持以下经过逐一验证的 NVIDIA **DLSS-G 正式版二进
 | 键 | 默认 | 值 |
 | :--- | :---: | :--- |
 | `reflexFrameLimit` | `0` | `0` 恢复游戏的 Reflex 设置；`1` 至 `1000` 请求帧率上限。FG 的计入方式取决于游戏与驱动 |
+| `reflexMode` | `game` | `game` 跟随游戏（默认），`on` / `on-boost` 请求 Reflex On / On+Boost，绝不低于游戏；实时生效，与上限独立，Dynamic 及 XeLL 下暂停覆盖。不保证降低延迟 |
 | `vsyncOff` | `false` | 请求 DirectX 游戏关闭 V-Sync |
 | `hairEnabled` | `true` | 在具备该功能的游戏中启用兼容的光线追踪毛发。需重启。 |
 

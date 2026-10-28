@@ -12,12 +12,9 @@ RTX Encore 1.2.0 adds a choice of reconstruction and frame-generation engines. L
 
 ## Requirements
 
-- A game that offers **DLSS Frame Generation**, in DirectX 12 or Vulkan. RTX Encore extends the frame generation the
-  game already has; it cannot add one to a game that has none. For those games, see
-  [Smooth Motion](SMOOTH-MOTION.md).
-- The game's frame generation file, `nvngx_dlssg.dll`, in a supported version: see
-  [Compatibility](COMPATIBILITY.md#dlss-frame-generation-versions). Feature coverage depends on the exact file.
-- Frame generation turned on in the game's settings.
+- A game with native **DLSS Frame Generation** in DirectX 12 or Vulkan, or a compatible native **Intel FG** route in DirectX 12. For the latter, use the experimental [DLSS-FG engine](INTEL-ENGINES.md), install the qualified runtimes through the Hub, restart, and enable Intel FG in the game. Native FSR is preserved.
+- A supported `nvngx_dlssg.dll` and compatible runtimes: see [Compatibility](COMPATIBILITY.md#dlss-frame-generation-versions). Exact versions determine available features.
+- Frame generation enabled in the game's settings. For games with no compatible native FG inputs, see [Smooth Motion](SMOOTH-MOTION.md).
 
 ## Modes
 

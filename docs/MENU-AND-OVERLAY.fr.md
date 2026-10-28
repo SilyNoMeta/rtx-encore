@@ -74,6 +74,7 @@ Lignes optionnelles, toutes désactivées par défaut :
 | :--- | :--- |
 | Neural Rendering | Son état et la taille à laquelle il travaille ; avec 310.9.16, le réseau NVIDIA (preset A, B ou Auto) |
 | Régularité des images | Temps d'image : moyenne, 99e centile et gigue |
+| Rapport de latence | `PCL moy/max RQ GPU` : le rapport de NVIDIA Reflex sur les images rendues du jeu, tel que le pilote le remplit : du début de la simulation à la fin du rendu GPU, attente dans la file de rendu et temps GPU. Avec XeSS-FG, `XELL moy/max SIM>PRESENT` : le rapport de XeLL, du début de la simulation à la fin de l'appel Present (XeLL n'enregistre ni temps GPU ni file). Pas la latence d'affichage ; les images générées ne sont pas chronométrées ; un jeu sans marqueurs de latence n'affiche rien |
 | GPU | Charge, température, puissance et fréquences |
 | VRAM | Utilisée / totale sur la carte, tous programmes confondus |
 | Versions | Versions des DLL NVIDIA chargées par le jeu : Super Resolution (`SR`), Ray Reconstruction (`RR`), Frame Generation (`FG`), Neural Rendering (`NR`) et Streamline (`SL`). Les DLL de même version partagent une ligne (`SR-RR-FG-NR 310.9.16`) ; une DLL non chargée n'apparaît pas. `SL` est le cœur Streamline du jeu, que les mises à jour des plugins laissent en place ; quand les plugins sont d'une autre version, sa ligne donne les deux (`SL 2.7.11 PLUGINS 2.14.16`) |
@@ -97,6 +98,8 @@ Le limiteur Reflex accepte les versions de DLL 2.1.1–2.14.1, et 2.14.16. Avec 
 Les SDK publiés dans cette plage ont été examinés hors ligne ; chaque version n'a pas été validée en jeu.
 Les versions intermédiaires sans tag public, dont 2.13 et 2.14.0, n'ont pas été vérifiées avec un SDK public.
 Son effet dépend toujours de l'intégration Reflex du jeu et du pilote. Aucun limiteur de repli par attente CPU n'est ajouté.
+
+**Reflex mode** — `game` suit le mode du jeu (défaut) ; `on` / `on-boost` demandent On / On+Boost, jamais plus bas que le jeu. Application en direct indépendante du plafond, suspendue en Dynamic et quand XeLL possède la latence. Revenir à `game` restaure le mode du jeu à la prochaine frontière sûre. Boost maintient les fréquences GPU élevées quand le CPU limite le débit ; comparez la ligne de latence, aucun gain n'est garanti. Le menu montre les modes du jeu et acceptés : un appel accepté ne prouve pas que le pilote applique ce mode. XeLL utilise toujours la basse latence et son runtime ne prend pas en charge Boost.
 
 Dans **Frames → Frame pacing**, **For this display** propose `fréquence - fréquence² / 3600`, arrondi à l’entier inférieur :
 par exemple **116 FPS à 120 Hz**, 138 à 144 Hz et 224 à 240 Hz, sans division par le multiplicateur FG. Selon le jeu et le pilote, les images

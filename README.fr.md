@@ -29,43 +29,22 @@ Un seul fichier à côté du jeu, un menu intégré, rien d'autre à installer.
 > Il se charge dans le jeu : ne l'utilisez pas dans un jeu en ligne ou protégé par un anti-triche, où il peut être
 > bloqué ou faire signaler un compte. Sauvegardez chaque fichier que vous remplacez.
 
-## Nouveautés de la 1.4.5
+**[Dernière version : 1.4.6](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.4.6)** · [Notes de version](CHANGELOG.fr.md) · [Hub 1.4.5](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.5)
 
-Réglages Smooth Motion natifs sur RTX 40/50, compteur FPS 2x explicitement estimé, correctif du menu DirectX 11 et corrections des presets à chaud, des ressources et du HUD. Les binaires finaux n’ont pas de retest distinct en jeu. Voir le [changelog](CHANGELOG.fr.md).
+| 🎞️ **[Génération d’images](docs/FRAME-GENERATION.fr.md)** | 🌀 **[Smooth Motion](docs/SMOOTH-MOTION.fr.md)** | ✨ **[Neural Rendering](docs/NEURAL-RENDERING.fr.md)** |
+| :--- | :--- | :--- |
+| Choisissez le multiplicateur dans les jeux compatibles. | Interpolation pour les jeux sans FG natif. | Ajustez l’image avec des réglages NR indépendants. |
 
-## Nouveautés de la 1.4.4
+## Lancer le jeu
 
-Corrige le grain coloré et les artefacts verts du NR dans Avatar: Frontiers of Pandora. Le défaut peut aussi toucher l’affichage SDR et ne se limite pas aux zones visiblement sombres. Corrige également le démarrage NR avec les anciens compilateurs des jeux, dont Where Winds Meet. Conservez les fichiers d’origine du jeu. Le propriétaire a confirmé des builds de test dans ces jeux ; les binaires finaux n’ont pas de retest distinct en jeu. Voir le [changelog](CHANGELOG.fr.md) pour les crédits et limites.
+Installez avec **[RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub)**, choisissez votre jeu, puis appuyez sur **Inser** en jeu. Installation manuelle ? [Les quatre étapes sont ici](#démarrage-rapide).
 
-## Nouveautés de la 1.4.3
+<details>
+<summary>Moteurs expérimentaux et aide</summary>
 
-Correctifs XeFG, menu intégré et démarrage du Neural Rendering dans Zenless Zone Zero, reconnaissance des runtimes Intel natifs et formats NR de profondeur et de mouvement supplémentaires, dont la profondeur flottante R16 signalée dans Alan Wake 2. Conservez les fichiers Streamline d’origine du jeu. Les binaires finaux restent à valider en jeu ; voir le [changelog](CHANGELOG.fr.md) pour les crédits et le périmètre.
+XeSS, XeFG et l’adaptateur XeFG natif → DLSS FG sont expérimentaux et exigent des entrées et runtimes compatibles. Dans Mirage, choisissez DLSS-FG dans Encore, redémarrez, puis activez le FG Intel dans le jeu. Le FSR reste natif. [Guide des moteurs](docs/INTEL-ENGINES.fr.md). En cas de problème, préparez un diagnostic depuis la page Santé du Hub, relisez-le, puis joignez-le à une [issue](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose).
 
-## Inspection des captures introduite dans la 1.4.2
-
-Inspection plus nette des captures Pre-SR / Post-SR : image entière ajustée au panneau ou véritable vue 1x avec zoom et déplacement. Les nouvelles captures actualisent l'aperçu, et les images de tailles différentes s'affichent côte à côte. Les binaires finaux restent à valider en jeu. Voir le [changelog](CHANGELOG.fr.md).
-
-## Correctifs introduits dans la 1.4.1
-
-Correctifs pour les changements de résolution, la reconstruction, la capture du HUD, la configuration et la gestion des erreurs. Les contrôles automatisés locaux des correctifs ont réussi ; les binaires finaux restent à valider en jeu. Voir le [changelog](CHANGELOG.fr.md) pour le périmètre et les limites.
-
-## Fonctions introduites dans la 1.4.0
-
-Neural Rendering Pre-SR expérimental, laboratoire de comparaison image/performances, réglages NR indépendants par passe, commandes DLSS-G de mode et cible corrigées, et menu anglais/français/chinois simplifié avec onglet À propos. Post-SR reste le défaut. Les nouveaux chemins GPU et les binaires finaux ne sont pas validés en jeu. Voir le [changelog](CHANGELOG.fr.md) pour les prérequis, crédits et limites.
-
-Les fonctions de la version 1.3 restent disponibles :
-
-- **Neural Rendering fovéal (expérimental, désactivé par défaut).** NR travaille à pleine force au centre de l’image et plus légèrement vers les bords, pour plus d’images par seconde. Activez **Foveated NR** dans le menu et choisissez Light, Balanced ou Strong. [Réglages](docs/SETTINGS.fr.md).
-- **Smooth Motion sur RTX 20 (expérimental).** Pilote NVIDIA 621.01 et DirectX 12 ; V1 ou V2 au choix par jeu. [Compatibilité](docs/COMPATIBILITY.fr.md).
-- **Correctifs.** Le Neural Rendering suit correctement le mouvement dans les jeux dont les vecteurs de mouvement sont à la résolution de sortie (Unreal Engine 5, Black Myth: Wukong), et Baldur’s Gate 3 en Vulkan avec bg3fgvk ne plante plus, avec le Neural Rendering qui y fonctionne.
-- **Retraits.** Le panneau optionnel Cyber Engine Tweaks et le moteur expérimental OpenNR. Le [journal des changements](CHANGELOG.fr.md) détaille les contributions et la portée des validations.
-- **Les fonctions de la version 1.2.** Reconstruction DLSS ou XeSS expérimental, génération d’images DLSS-G ou XeFG expérimental, changements de moteur de reconstruction compatible et de presets DLSS en jouant, réglages NR par passe et entrées HDR/exposition communes.
-
-Le mod et le Hub ont des versions distinctes. Le **[Hub 1.4.4](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.4)** propose les réglages Pre-SR et la lecture des rapports de comparaison exportés. Les protections des mises à jour de runtimes et des sauvegardes restent en place.
-
-**XeSS / XeFG : TRÈS EXPÉRIMENTAL.** Cette intégration a été particulièrement pénible à mettre au point :) Attendez-vous à des bugs, crashs, artefacts et différences entre jeux et API graphiques. N’hésitez pas à remonter les problèmes : dans RTX Encore Hub, ouvrez la page **Santé** du jeu, choisissez **Préparer un diagnostic**, relisez l’archive pour retirer les informations personnelles, puis joignez-la à une [issue RTX Encore](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose). Indiquez les moteurs choisis, l’API graphique et le multiplicateur demandé. Le Hub ne téléverse pas l’archive à votre place.
-
-[Intel XeSS et XeFG (expérimental)](docs/INTEL-ENGINES.fr.md) · Réglages NR par passe et entrées HDR/exposition communes.
+</details>
 
 ## Ce qu'il fait
 
@@ -73,7 +52,7 @@ Le mod et le Hub ont des versions distinctes. Le **[Hub 1.4.4](https://github.co
 | :---: | :--- | :--- |
 | 🧪 | **[Moteurs Intel (expérimental)](docs/INTEL-ENGINES.fr.md)** | Reconstruction XeSS ou génération d’images XeFG avec XeLL, selon les entrées du jeu et les runtimes compatibles. Désactivés par défaut. |
 | 🔆 | **[Netteté à chaud](docs/SUPER-RESOLUTION.fr.md)** | Off / Game / Custom, après reconstruction et NR. Custom de 0 à 100 %, défaut 30 % ; rendu et fonctionnement Vulkan encore à valider. |
-| 🎞️ | **[Génération d'images X2 à X6](docs/FRAME-GENERATION.fr.md)** | DLSS Multi Frame Generation sur RTX 20, 30 et 40, dans les jeux qui proposent DLSS Frame Generation. Multiplicateur fixe, mode Dynamique avec une fréquence cible, ou choix laissé au jeu. |
+| 🎞️ | **[Génération d'images X2 à X6](docs/FRAME-GENERATION.fr.md)** | DLSS Multi Frame Generation sur RTX 20, 30 et 40, dans les jeux à génération DLSS ou Intel native compatible. Multiplicateur fixe, mode Dynamique avec une fréquence cible, ou choix laissé au jeu. |
 | 🛡️ | **Images générées plus propres** | Protection contre les déchirures sur la géométrie fine (grillages, câbles, feuillages) et contre les défauts dans les ombres en mouvement ; interface et texte nets. |
 | ⚡ | **Génération d'images plus légère** | Une option de performance qui réduit le coût GPU de chaque image générée sans changer l'image. |
 | 🌀 | **[Smooth Motion sur RTX 30](docs/SMOOTH-MOTION.fr.md)** | L'interpolation d'images du pilote NVIDIA, pour les jeux DirectX 11, DirectX 12 et Vulkan, y compris sans DLSS. Désactivé par défaut. |

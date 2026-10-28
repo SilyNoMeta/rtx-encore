@@ -29,43 +29,22 @@ Smooth Motion 和 Neural Rendering。**
 > 它在游戏进程内加载：请勿在联机游戏或受反作弊保护的游戏中使用，否则可能被拦截，或导致账号被标记。
 > 替换任何文件之前请先备份。
 
-## 1.4.5 更新
+**[最新版本：1.4.6](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.4.6)** · [版本说明](CHANGELOG.zh-CN.md) · [Hub 1.4.5](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.5)
 
-新增 RTX 40/50 原生 Smooth Motion 设置及明确标注的 2x FPS 估算，修复 DirectX 11 菜单，并改进实时预设、资源生命周期及 HUD 恢复。最终文件尚未单独在游戏中复测。参阅[更新日志](CHANGELOG.zh-CN.md)。
+| 🎞️ **[帧生成](docs/FRAME-GENERATION.zh-CN.md)** | 🌀 **[Smooth Motion](docs/SMOOTH-MOTION.zh-CN.md)** | ✨ **[Neural Rendering](docs/NEURAL-RENDERING.zh-CN.md)** |
+| :--- | :--- | :--- |
+| 在兼容的游戏中选择帧倍率。 | 为没有原生帧生成的游戏提供插帧。 | 使用独立 NR 控件调整画面。 |
 
-## 1.4.4 更新
+## 开始游戏
 
-修复阿凡达：潘多拉边境的 NR 彩色噪点和绿色伪影。此问题也可能影响 SDR 输出，并不限于画面中明显较暗的区域。同时修复燕云十六声等游戏自带旧编译器时 NR 无法启动的问题。请保留游戏原有文件。维护者已在这些游戏中确认测试版本；最终文件尚未单独复测。贡献者及限制请参阅[更新日志](CHANGELOG.zh-CN.md)。
+使用 **[RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub)** 安装，选择游戏，在游戏内按 **Insert**。也可按[手动安装步骤](#快速开始)操作。
 
-## 1.4.3 更新
+<details>
+<summary>实验引擎与支持</summary>
 
-修复绝区零的 XeFG、内置菜单及 Neural Rendering 启动，识别原生 Intel 运行库，并支持更多 NR 深度和运动格式，包括心灵杀手 2 报告的 R16 浮点深度。请保留游戏原有 Streamline 文件。最终文件仍需游戏内验证；贡献者及范围请参阅[更新日志](CHANGELOG.zh-CN.md)。
+XeSS、XeFG 和原生 XeFG → DLSS FG 适配器仍属实验功能，需要兼容的输入和运行库。在 Mirage 中，在 Encore 选择 DLSS-FG 并重启，然后在游戏中开启 Intel 帧生成。FSR 保持原生。参阅[引擎指南](docs/INTEL-ENGINES.zh-CN.md)。遇到问题时，请从 Hub 健康页面生成诊断，检查后附在 [issue](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose) 中。
 
-## 1.4.2 引入的截图检查
-
-更清晰的 Pre-SR / Post-SR 截图检查：完整图像适配面板，或使用真正的 1x 像素视图进行缩放和平移。重新截图会更新预览，不同尺寸的图像并排显示。最终二进制文件仍需游戏内验证。请参阅[更新日志](CHANGELOG.zh-CN.md)。
-
-## 1.4.1 修复
-
-修正分辨率切换、重建、HUD 捕获、配置和错误处理。修正内容已通过本地自动化检查；最终二进制文件仍需游戏内验证。范围及限制请参阅[更新日志](CHANGELOG.zh-CN.md)。
-
-## 1.4.0 引入的功能
-
-实验性 Pre-SR Neural Rendering、图像与性能比较实验室、各轮独立 NR 设置、修复的 DLSS-G 模式和目标控制，以及带关于选项卡的英/法/简体中文菜单。Post-SR 仍为默认模式。新的 GPU 路径和最终二进制文件尚未在游戏中验证。要求、贡献者和限制见[更新日志](CHANGELOG.zh-CN.md)。
-
-1.3 系列功能继续提供：
-
-- **中央优先 Neural Rendering（实验性，默认关闭）。** NR 在图像中央以全强度运行，越靠近边缘越轻，以换取更高 FPS。在菜单中开启 **Foveated NR** 并选择 Light、Balanced 或 Strong。[设置](docs/SETTINGS.zh-CN.md)。
-- **RTX 20 上的 Smooth Motion（实验性）。** 需要 NVIDIA 621.01 与 DirectX 12；可按游戏选择 V1 或 V2。[兼容性](docs/COMPATIBILITY.zh-CN.md)。
-- **修复。** 在运动矢量为输出分辨率的游戏中（Unreal Engine 5、Black Myth: Wukong），Neural Rendering 现在能正确跟随运动；Vulkan 模式下搭配 bg3fgvk 的 Baldur’s Gate 3 不再崩溃，Neural Rendering 也可运行。
-- **移除。** 可选的 Cyber Engine Tweaks 面板和实验性 OpenNR 引擎。贡献者与验证范围见[更新日志](CHANGELOG.zh-CN.md)。
-- **1.2 系列功能。** 选择 DLSS 或实验性 XeSS 重建、DLSS-G 或实验性 XeFG 帧生成，在兼容游戏中实时切换重建引擎及 DLSS 预设，并逐轮调整 NR 和共用 HDR/曝光输入。
-
-模组与 Hub 分别发布。**[Hub 1.4.4](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.4)** 提供 Pre-SR 设置和已导出比较报告的读取功能。现有运行库更新及备份保护继续保留。
-
-**XeSS / XeFG：高度实验性。** 这部分集成的开发过程非常艰难，也相当折腾 :) 请预期可能出现错误、崩溃、画面伪影，以及不同游戏和图形 API 之间的行为差异。欢迎报告问题：在 RTX Encore Hub 中打开游戏的 **健康** 页面，选择 **生成诊断包**，检查并移除个人信息后，将诊断压缩包附加到 [RTX Encore issue](https://github.com/SilyNoMeta/rtx-encore/issues/new/choose)。请注明选择的引擎、图形 API 和请求的倍率。Hub 不会自动上传该压缩包。
-
-[Intel XeSS 与 XeFG（实验性）](docs/INTEL-ENGINES.zh-CN.md) · 逐轮 NR 设置以及共用 HDR/曝光输入。
+</details>
 
 ## 功能
 

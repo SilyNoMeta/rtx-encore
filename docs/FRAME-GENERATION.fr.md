@@ -12,12 +12,9 @@ RTX Encore 1.2.0 permet de choisir les moteurs de reconstruction et de générat
 
 ## Prérequis
 
-- Un jeu qui propose **DLSS Frame Generation**, en DirectX 12 ou Vulkan. RTX Encore étend la génération d'images
-  que le jeu possède déjà ; il ne peut pas en ajouter une à un jeu qui n'en a pas. Pour ces jeux, voir
-  [Smooth Motion](SMOOTH-MOTION.fr.md).
-- Le fichier de génération d'images du jeu, `nvngx_dlssg.dll`, dans une version prise en charge : voir
-  [Compatibilité](COMPATIBILITY.fr.md#versions-de-dlss-frame-generation). Les fonctions disponibles dépendent du fichier exact.
-- La génération d'images activée dans les réglages du jeu.
+- Un jeu proposant **DLSS Frame Generation** en DirectX 12 ou Vulkan, ou une entrée **FG Intel** native compatible en DirectX 12. Pour cette dernière, choisissez le [moteur DLSS-FG expérimental](INTEL-ENGINES.fr.md), installez les runtimes qualifiés avec le Hub, redémarrez puis activez le FG Intel dans le jeu. Le FSR natif est conservé.
+- `nvngx_dlssg.dll` et des runtimes compatibles : voir la [compatibilité](COMPATIBILITY.fr.md#versions-de-dlss-frame-generation). Les versions exactes déterminent les fonctions disponibles.
+- La génération d'images activée dans le jeu. Sans entrées FG natives compatibles, voir [Smooth Motion](SMOOTH-MOTION.fr.md).
 
 ## Modes
 

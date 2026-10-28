@@ -3,6 +3,15 @@
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
 
+## 1.4.6
+
+- **更简洁的菜单：**高级控件仅在其主功能启用时显示，包括注视点 NR、叠加层详情和捕获设置。已保存的值保持不变。
+- **Mirage 与 Shadows：**修复 Mirage 菜单缺失及 Shadows 倍率报告。在 Mirage 等兼容的 DirectX 12 游戏中，在 Encore 选择 **DLSS-FG**，并启用游戏的 **Intel 帧生成**，即可使用 NVIDIA 帧生成及经过资格检查的固定倍率。原生 FSR 和已有原生 DLSS FG 保持原引擎。感谢 [@kisoo8](https://github.com/kisoo8) 提供报告和日志（[#89](https://github.com/SilyNoMeta/rtx-encore/issues/89)）。维护者已在 Mirage 确认最终测试版本及运动伪影修复；发布文件尚未单独在游戏中复测。
+- **Reflex 与延迟：**菜单和叠加层增加游戏 / On / On+Boost 控件及延迟报告。不会降低游戏的选择，在动态模式或 XeLL 管理延迟时暂停。不保证降低延迟。感谢 [@kisoo8](https://github.com/kisoo8) 提供日志（[#87](https://github.com/SilyNoMeta/rtx-encore/issues/87)）；维护者已在游戏中测试控件。
+- **REFramework：**改进通过重定向路径加载相同兼容 NR 运行库时的识别。感谢 [@aziznasrimay45-sys](https://github.com/aziznasrimay45-sys) 提供报告（[#90](https://github.com/SilyNoMeta/rtx-encore/issues/90)）。已通过自动化检查，无单独游戏验证。
+
+- **巫师 3：**修复 NR 在快速旅行后出现的阴影闪烁，报告指出此问题始于 1.4.3。感谢 [@Scarhead666](https://github.com/Scarhead666) 提供报告和版本对比（[#88](https://github.com/SilyNoMeta/rtx-encore/issues/88)）。维护者已在本地复现问题，使用隔离回归的测试版本进行多次快速旅行后未再次复现。最终整合的改动尚未在游戏中重新测试。
+
 ## 1.4.5
 
 - **RTX 40 / RTX 50 原生 Smooth Motion：**现有开关可在受支持的驱动上启用 NVIDIA 原生路径。请选择游戏实际使用的图形 API，并重启。RTX 20/30 的行为及精确驱动要求保持不变。[要求](docs/SMOOTH-MOTION.zh-CN.md)。

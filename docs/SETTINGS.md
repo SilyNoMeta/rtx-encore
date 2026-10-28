@@ -24,7 +24,7 @@ No key holds a path or a command: a settings file can be shared with someone els
 | Setting | Default | Effect |
 | :--- | :---: | :--- |
 | `reconstructionEngine` | `game` | `game` or `xess`; replaces compatible Super Resolution/DLAA processing with XeSS; Ray Reconstruction stays with its original engine. |
-| `frameGenerationEngine` | `game` | `game` or `xefg`; uses XeFG on supported DirectX 12 or Vulkan routes. DirectX 11 remains experimental and is not game-qualified here. |
+| `frameGenerationEngine` | `game` | `game`, `dlss-fg` or `xefg`. Game preserves native FG; DLSS-FG replaces qualified native Intel FG with NVIDIA DLSS FG; XeFG replaces compatible DLSS FG with Intel XeFG. Restart required. |
 | `xefgMfg4VariablePacing` | `true` | Experimental pacing for XeFG above X2; disabling it can make higher factors unavailable. |
 | `xefgUiHandling` | `interpolate` | `interpolate` or `game`; requesting separate game UI handling only works with supported inputs. |
 | `xefgUiAlpha` | `unknown` | `unknown`, `straight` or `premultiplied`; leave unknown unless the game’s UI format is known. |
@@ -179,7 +179,7 @@ game restart.
 | `showOverlay` | `false` | Shows the overlay. |
 | `overlayPosition` | `"top-left"` | `"top-left"`, `"top-right"`, `"bottom-left"`, `"bottom-right"` |
 | `overlayFontSize` | `14` | Text size in pixels, `10` to `32` |
-| `overlayShowNr`, `overlayShowFramePacing`, `overlayShowGpu`, `overlayShowVram`, `overlayShowVersions` | `false` | Optional lines |
+| `overlayShowNr`, `overlayShowFramePacing`, `overlayShowLatency`, `overlayShowGpu`, `overlayShowVram`, `overlayShowVersions` | `false` | Optional lines |
 
 ### `hudUi`
 
@@ -194,6 +194,7 @@ game restart.
 | Key | Default | Values |
 | :--- | :---: | :--- |
 | `reflexFrameLimit` | `0` | `0` restores the game's Reflex settings; `1` to `1000` requests an FPS cap. FG counting depends on the game/driver |
+| `reflexMode` | `game` | `game`; `on`; `on-boost`: follow the game or request Reflex On / On+Boost, never lower than the game; live, independent of the cap, suspended in Dynamic and under XeLL. No guaranteed latency gain |
 | `vsyncOff` | `false` | Asks DirectX games to present without V-Sync |
 | `hairEnabled` | `true` | Compatible ray-traced hair, in the games that have it. Restart to apply. |
 

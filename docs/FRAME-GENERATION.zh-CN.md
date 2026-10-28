@@ -12,11 +12,9 @@ RTX Encore 1.2.0 可选择重建和帧生成引擎。保留 **Game** 可继续�
 
 ## 要求
 
-- 游戏必须提供 **DLSS 帧生成**，并运行在 DirectX 12 或 Vulkan 下。RTX Encore 扩展的是游戏已有的帧生成；
-  它无法为没有帧生成的游戏添加这一功能。对于这类游戏，请参阅 [Smooth Motion](SMOOTH-MOTION.zh-CN.md)。
-- 游戏的帧生成文件 `nvngx_dlssg.dll` 须为受支持的版本：见
-  [兼容性](COMPATIBILITY.zh-CN.md#dlss-帧生成版本)。可用功能取决于具体文件。
-- 在游戏设置中开启帧生成。
+- 游戏提供 DirectX 12 或 Vulkan 原生 **DLSS 帧生成**，或兼容的 DirectX 12 原生 **Intel FG** 输入。后者请使用实验性 [DLSS-FG 引擎](INTEL-ENGINES.zh-CN.md)，通过 Hub 安装符合要求的运行库，重启后在游戏中启用 Intel FG。原生 FSR 保持不变。
+- 受支持的 `nvngx_dlssg.dll` 和兼容运行库：[兼容性](COMPATIBILITY.zh-CN.md#dlss-帧生成版本)。可用功能取决于精确版本。
+- 在游戏中启用帧生成。游戏没有兼容的原生 FG 输入时，请参阅 [Smooth Motion](SMOOTH-MOTION.zh-CN.md)。
 
 ## 模式
 

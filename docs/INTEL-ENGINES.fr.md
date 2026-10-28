@@ -2,7 +2,7 @@
 
 [English](INTEL-ENGINES.md) · [Français](INTEL-ENGINES.fr.md) · [简体中文](INTEL-ENGINES.zh-CN.md)
 
-Pour RTX Encore 1.3.1. Les versions disponibles figurent sur la [page des publications](https://github.com/SilyNoMeta/rtx-encore/releases).
+Pour RTX Encore 1.4.6. Les versions disponibles figurent sur la [page des publications](https://github.com/SilyNoMeta/rtx-encore/releases).
 
 RTX Encore 1.2.0 permet de choisir les moteurs de reconstruction et de génération d’images. Laissez **Game** pour conserver le moteur habituel du jeu. Les modes Intel sont expérimentaux, désactivés par défaut et demandent des entrées de jeu compatibles ; le choix d’un moteur ne prouve pas son activation.
 
@@ -11,7 +11,7 @@ Utilisez **RTX Encore Hub 1.2.0 ou ultérieur** pour installer ou mettre à jour
 | Réglage | Défaut | Effet |
 | :--- | :---: | :--- |
 | `reconstructionEngine` | `game` | `game` ou `xess` ; remplace le traitement Super Resolution/DLAA compatible par XeSS. Ray Reconstruction garde son moteur original. |
-| `frameGenerationEngine` | `game` | `game` ou `xefg` ; utilise XeFG sur les routes DirectX 12 ou Vulkan prises en charge. DirectX 11 reste expérimental et non qualifié en jeu ici. |
+| `frameGenerationEngine` | `game` | `game`, `dlss-fg` ou `xefg`. Jeu conserve le FG natif ; DLSS-FG remplace le FG Intel natif qualifié par le DLSS FG NVIDIA ; XeFG remplace le DLSS FG compatible par Intel XeFG. Redémarrage requis. |
 | `xefgMfg4VariablePacing` | `true` | Espacement expérimental des images XeFG au-delà de X2 ; le désactiver peut rendre les facteurs élevés indisponibles. |
 | `xefgUiHandling` | `interpolate` | `interpolate` ou `game` ; le traitement séparé de l’interface du jeu exige des entrées compatibles. |
 | `xefgUiAlpha` | `unknown` | `unknown`, `straight` ou `premultiplied` ; laissez unknown si le format de l’interface est inconnu. |
@@ -25,3 +25,5 @@ XeFG ne permet pas d’ajouter la génération d’images à tous les jeux. Les 
 Des essais Vulkan locaux limités dans No Man’s Sky et DOOM: The Dark Ages étayent la route XeFG X2 ; l’essai DOOM a été accepté par le mainteneur en plein écran fenêtré, NR coupé. Cela ne qualifie ni le plein écran exclusif, ni DirectX 11, ni XeFG avec NR, ni tous les multiplicateurs élevés ou les autres jeux. Le menu et l’overlay peuvent être indisponibles sur une route Intel ; utilisez le Hub pour régler le mod et relire les constats de session.
 
 [Référence des réglages](SETTINGS.fr.md) · [RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub)
+
+Pour les jeux à FG Intel natif comme Mirage, installez les runtimes compatibles avec le Hub, choisissez **DLSS-FG** dans Encore, redémarrez, puis activez le **FG Intel** du jeu. **Fixed** permet les multiplicateurs qualifiés ; **Game** utilise X2 sur cet adaptateur et Dynamic est indisponible. Le FSR natif et les jeux déjà en DLSS FG conservent leur moteur. Le mainteneur a validé le build de test corrigé dans Mirage ; les binaires finaux n’ont pas de retest distinct en jeu.

@@ -3,6 +3,15 @@
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
 
+## 1.4.6
+
+- **Cleaner settings menu:** advanced controls appear only when their parent feature is enabled, including Foveated NR, overlay details and capture controls. Their saved values are preserved.
+- **Mirage and Shadows:** fixes the missing Mirage menu and multiplier reporting in Shadows. In compatible DirectX 12 games such as Mirage, choose **DLSS-FG** in Encore and enable the game's **Intel FG** to use NVIDIA frame generation with qualified fixed multipliers. Native FSR and games already using DLSS FG retain their original engine. Thanks to [@kisoo8](https://github.com/kisoo8) for the report and logs ([#89](https://github.com/SilyNoMeta/rtx-encore/issues/89)). The maintainer confirmed the final test build in Mirage, including the corrected motion artifacts; release binaries have no separate in-game retest.
+- **Reflex controls and latency:** adds Game / On / On+Boost and the latency report in the menu and overlay. Overrides do not lower the game's choice and are suspended in Dynamic mode or while XeLL owns latency. They do not guarantee lower latency. Thanks to [@kisoo8](https://github.com/kisoo8) for the logs ([#87](https://github.com/SilyNoMeta/rtx-encore/issues/87)); the maintainer tested the controls in game.
+- **REFramework:** improves NR runtime recognition when the same compatible runtime is loaded through a redirected path. Thanks to [@aziznasrimay45-sys](https://github.com/aziznasrimay45-sys) for the report ([#90](https://github.com/SilyNoMeta/rtx-encore/issues/90)). Automated checks cover this fix; no separate in-game validation is claimed.
+
+- **The Witcher 3:** addresses NR shadow flickering after fast travel, reported from 1.4.3 onward. Thanks to [@Scarhead666](https://github.com/Scarhead666) for the report and version comparison ([#88](https://github.com/SilyNoMeta/rtx-encore/issues/88)). The maintainer reproduced the problem and could no longer reproduce it after several fast travels with an isolation test build. The final integrated change has not yet been retested in game.
+
 ## 1.4.5
 
 - **Native Smooth Motion on RTX 40 / RTX 50:** the existing switch can activate the NVIDIA driver's native path with a supported driver. Select the game's actual graphics API and restart. RTX 20/30 behavior and exact driver requirements remain unchanged. [Requirements](docs/SMOOTH-MOTION.md).

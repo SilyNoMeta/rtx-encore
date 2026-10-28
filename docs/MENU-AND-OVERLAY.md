@@ -72,6 +72,7 @@ Optional lines, all off by default:
 | :--- | :--- |
 | Neural Rendering | Its state and the size it works at; with 310.9.16, the NVIDIA network (preset A, B or Auto) |
 | Frame pacing | Frame time: average, 99th percentile and jitter |
+| Latency report | `PCL avg/max RQ GPU`: NVIDIA Reflex's own report for the game's rendered frames, as the driver fills it: simulation start to GPU render end, render queue wait and GPU time. With XeSS-FG, `XELL avg/max SIM>PRESENT`: XeLL's report, simulation start to the end of the Present call (XeLL records no GPU or queue time). Not display latency; generated frames are not timed; a game without latency markers shows nothing |
 | GPU | Load, temperature, power and clocks |
 | VRAM | Used / total on the card, all programs included |
 | Versions | Versions of the NVIDIA DLLs the game loaded: Super Resolution (`SR`), Ray Reconstruction (`RR`), Frame Generation (`FG`), Neural Rendering (`NR`) and Streamline (`SL`). DLLs of the same version share a line (`SR-RR-FG-NR 310.9.16`); a DLL that is not loaded is not shown. `SL` is the game's own Streamline core, which plugin updates leave in place; when the plugins are of another version, its line shows both (`SL 2.7.11 PLUGINS 2.14.16`) |
@@ -95,6 +96,8 @@ The Reflex limiter accepts DLL versions 2.1.1–2.14.1, and 2.14.16. Other versi
 The published SDKs in this range have been examined offline; this is not in-game validation of every version.
 Untagged intermediate versions, including 2.13 and 2.14.0, have no public SDK validation.
 Actual limiting still depends on the game's Reflex integration and driver support. This does not add a CPU-wait fallback.
+
+**Reflex mode** — `game` follows the game's mode (default); `on` / `on-boost` request On / On+Boost, never lower than the game. Applied live independently of the cap, suspended in Dynamic and while XeLL owns latency. Returning to `game` restores the game's mode at the next safe boundary. Boost keeps GPU clocks high when CPU limited; compare the latency report, since no gain is guaranteed. The menu shows the game and accepted modes: an accepted options call does not prove the driver applies it. XeLL always uses Low Latency and its runtime does not support Boost.
 
 In **Frames → Frame pacing**, **For this display** suggests `refresh rate - refresh rate² / 3600`, rounded down:
 for example, **116 FPS at 120 Hz**, 138 at 144 Hz and 224 at 240 Hz. It does not divide the request by the FG multiplier. Depending on the

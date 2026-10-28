@@ -2,7 +2,7 @@
 
 [English](INTEL-ENGINES.md) · [Français](INTEL-ENGINES.fr.md) · [简体中文](INTEL-ENGINES.zh-CN.md)
 
-For RTX Encore 1.3.1. Available versions are listed on the [releases page](https://github.com/SilyNoMeta/rtx-encore/releases).
+For RTX Encore 1.4.6. Available versions are listed on the [releases page](https://github.com/SilyNoMeta/rtx-encore/releases).
 
 RTX Encore 1.2.0 adds a choice of reconstruction and frame-generation engines. Leave **Game** selected to keep the game’s normal engine. Intel modes are experimental, off by default and require compatible game inputs; choosing an engine does not prove it became active.
 
@@ -11,7 +11,7 @@ Use **RTX Encore Hub 1.2.0 or later** to install or update the mod and its Intel
 | Setting | Default | Effect |
 | :--- | :---: | :--- |
 | `reconstructionEngine` | `game` | `game` or `xess`; replaces compatible Super Resolution/DLAA processing with XeSS; Ray Reconstruction stays with its original engine. |
-| `frameGenerationEngine` | `game` | `game` or `xefg`; uses XeFG on supported DirectX 12 or Vulkan routes. DirectX 11 remains experimental and is not game-qualified here. |
+| `frameGenerationEngine` | `game` | `game`, `dlss-fg` or `xefg`. Game preserves native FG; DLSS-FG replaces qualified native Intel FG with NVIDIA DLSS FG; XeFG replaces compatible DLSS FG with Intel XeFG. Restart required. |
 | `xefgMfg4VariablePacing` | `true` | Experimental pacing for XeFG above X2; disabling it can make higher factors unavailable. |
 | `xefgUiHandling` | `interpolate` | `interpolate` or `game`; requesting separate game UI handling only works with supported inputs. |
 | `xefgUiAlpha` | `unknown` | `unknown`, `straight` or `premultiplied`; leave unknown unless the game’s UI format is known. |
@@ -25,3 +25,5 @@ XeFG is not a way to add frame generation to every game. Higher factors depend o
 Limited local Vulkan trials in No Man’s Sky and DOOM: The Dark Ages support the XeFG X2 route; the DOOM test was accepted by the maintainer in borderless mode with NR off. This does not qualify exclusive fullscreen, DirectX 11, XeFG with NR, all higher multipliers or other games. The menu/overlay can be unavailable on an Intel route; use the Hub to change settings and review its session findings.
 
 [Settings reference](SETTINGS.md) · [RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub)
+
+For native Intel FG games such as Mirage, install compatible runtimes through the Hub, select **DLSS-FG** in Encore, restart, then enable **Intel FG** in the game. Use **Fixed** for the qualified multiplier range; **Game** uses X2 on this adapter and Dynamic is unavailable. Native FSR and games already using native DLSS FG keep their engine. The maintainer validated the corrected test build in Mirage; final release binaries have no separate in-game retest.

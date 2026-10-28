@@ -3,6 +3,15 @@
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
 
+## 1.4.6
+
+- **Menu plus lisible :** les contrôles avancés n'apparaissent que lorsque leur fonction maîtresse est activée, notamment pour le NR fovéal, les détails de l'overlay et les captures. Leurs valeurs enregistrées sont conservées.
+- **Mirage et Shadows :** corrige le menu absent dans Mirage et la remontée du multiplicateur dans Shadows. Dans les jeux DirectX 12 compatibles comme Mirage, choisissez **DLSS-FG** dans Encore et activez le **FG Intel** du jeu pour utiliser la génération NVIDIA avec les multiplicateurs fixes qualifiés. Le FSR natif et les jeux déjà en DLSS FG conservent leur moteur. Merci à [@kisoo8](https://github.com/kisoo8) pour le signalement et les logs ([#89](https://github.com/SilyNoMeta/rtx-encore/issues/89)). Le mainteneur a confirmé le dernier build de test dans Mirage, avec les artefacts de mouvement corrigés ; les binaires de release n'ont pas de retest distinct en jeu.
+- **Reflex et latence :** ajoute Jeu / On / On+Boost et le rapport de latence dans le menu et l'overlay. Le réglage ne diminue pas le choix du jeu et se suspend en Dynamic ou lorsque XeLL gère la latence. Aucun gain de latence n'est garanti. Merci à [@kisoo8](https://github.com/kisoo8) pour les logs ([#87](https://github.com/SilyNoMeta/rtx-encore/issues/87)) ; le mainteneur a testé les commandes en jeu.
+- **REFramework :** améliore la reconnaissance du runtime NR lorsqu'un même runtime compatible est chargé depuis un chemin redirigé. Merci à [@aziznasrimay45-sys](https://github.com/aziznasrimay45-sys) pour le signalement ([#90](https://github.com/SilyNoMeta/rtx-encore/issues/90)). Correctif couvert par des tests automatisés, sans validation distincte en jeu.
+
+- **The Witcher 3 :** corrige le scintillement des ombres avec NR après un voyage rapide, signalé depuis la 1.4.3. Merci à [@Scarhead666](https://github.com/Scarhead666) pour le signalement et la comparaison des versions ([#88](https://github.com/SilyNoMeta/rtx-encore/issues/88)). Le mainteneur a reproduit le problème, puis n'a plus pu le reproduire après plusieurs voyages rapides avec un build de test isolant la régression. Le correctif final intégré n'a pas encore été retesté en jeu.
+
 ## 1.4.5
 
 - **Smooth Motion natif sur RTX 40 / RTX 50 :** le réglage existant peut activer le chemin natif du pilote NVIDIA avec un pilote pris en charge. Choisissez l'API réelle du jeu puis redémarrez-le. Le comportement RTX 20/30 et les versions exactes des pilotes restent inchangés. [Conditions](docs/SMOOTH-MOTION.fr.md).

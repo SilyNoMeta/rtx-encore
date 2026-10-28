@@ -25,7 +25,7 @@ Aucune clé ne contient de chemin ni de commande : un fichier de réglages peut 
 | Réglage | Défaut | Effet |
 | :--- | :---: | :--- |
 | `reconstructionEngine` | `game` | `game` ou `xess` ; remplace le traitement Super Resolution/DLAA compatible par XeSS. Ray Reconstruction garde son moteur original. |
-| `frameGenerationEngine` | `game` | `game` ou `xefg` ; utilise XeFG sur les routes DirectX 12 ou Vulkan prises en charge. DirectX 11 reste expérimental et non qualifié en jeu ici. |
+| `frameGenerationEngine` | `game` | `game`, `dlss-fg` ou `xefg`. Jeu conserve le FG natif ; DLSS-FG remplace le FG Intel natif qualifié par le DLSS FG NVIDIA ; XeFG remplace le DLSS FG compatible par Intel XeFG. Redémarrage requis. |
 | `xefgMfg4VariablePacing` | `true` | Espacement expérimental des images XeFG au-delà de X2 ; le désactiver peut rendre les facteurs élevés indisponibles. |
 | `xefgUiHandling` | `interpolate` | `interpolate` ou `game` ; le traitement séparé de l’interface du jeu exige des entrées compatibles. |
 | `xefgUiAlpha` | `unknown` | `unknown`, `straight` ou `premultiplied` ; laissez unknown si le format de l’interface est inconnu. |
@@ -183,7 +183,7 @@ d'option lue au démarrage demande de relancer le jeu.
 | `showOverlay` | `false` | Affiche l'overlay. |
 | `overlayPosition` | `"top-left"` | `"top-left"`, `"top-right"`, `"bottom-left"`, `"bottom-right"` |
 | `overlayFontSize` | `14` | Taille du texte en pixels, `10` à `32` |
-| `overlayShowNr`, `overlayShowFramePacing`, `overlayShowGpu`, `overlayShowVram`, `overlayShowVersions` | `false` | Lignes optionnelles |
+| `overlayShowNr`, `overlayShowFramePacing`, `overlayShowLatency`, `overlayShowGpu`, `overlayShowVram`, `overlayShowVersions` | `false` | Lignes optionnelles |
 
 ### `hudUi`
 
@@ -198,6 +198,7 @@ d'option lue au démarrage demande de relancer le jeu.
 | Clé | Défaut | Valeurs |
 | :--- | :---: | :--- |
 | `reflexFrameLimit` | `0` | `0` restaure les réglages Reflex du jeu ; `1` à `1000` demande un plafond FPS. Le comptage de FG dépend du jeu et du pilote |
+| `reflexMode` | `game` | `game` (jeu), `on` ou `on-boost` : demande Reflex On / On+Boost, jamais plus bas que le jeu ; en direct, indépendant du plafond, suspendu en Dynamic et sous XeLL. Aucun gain de latence garanti |
 | `vsyncOff` | `false` | Demande aux jeux DirectX de présenter sans V-Sync |
 | `hairEnabled` | `true` | Cheveux en ray tracing compatibles, dans les jeux qui en ont. Relancez pour appliquer. |
 
