@@ -3,6 +3,16 @@
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
 
+## 1.5.0
+
+- **XeSS Tensor Cores :** nouvelle option NVIDIA Tensor indépendante, désactivée par défaut, pour XeSS Super Resolution, avec bascule à chaud et optimisation de la reconstruction finale. Inclut les corrections d’exposition automatique et de dimensions de rendu fractionnaires.
+- **XeFG Tensor Cores :** nouvelle option NVIDIA Tensor indépendante, désactivée par défaut, pour XeFG, avec facteurs fixes X2–X6 dans la capacité admise et activation/désactivation à chaud. Améliore la récupération après changement de Ray Reconstruction dans les configurations compatibles.
+- **Hub 1.5.0 et profils :** expose les deux interrupteurs, explique leur périmètre matériel initial et les conserve dans les profils communautaires. Installez le nouveau mod jeu fermé ; changer de moteur FG demande toujours un redémarrage.
+
+Qualification initiale : RTX 4090, NVIDIA 621.01, DirectX 12 et runtimes Intel compatibles fournis par le Hub. Une préparation non prise en charge conserve le chemin Intel classique ; une erreur d’exécution Tensor impose un redémarrage. Les deux options restent expérimentales.
+
+Des mesures XeSS TW3 sur un build antérieur montrent environ −30,7 % de temps GPU XeSS et +2,8 à +3,2 % de FPS source rendus dans la scène mesurée. Les changements finaux ultérieurs ont été qualifiés par replays déterministes, sans nouvelle comparaison en jeu. Aucun gain général de FPS ou de latence XeFG n’est établi. Le mainteneur a confirmé les commandes XeFG à chaud et la récupération RR sur des builds de test ; les binaires finaux 1.5.0 n’ont pas de retest distinct en jeu. [Conditions et commandes](docs/INTEL-ENGINES.fr.md).
+
 ## 1.4.7
 
 - **The Witcher 3 :** corrige le scintillement persistant des ombres avec NR après un voyage rapide, encore présent en 1.4.6. Le mainteneur a testé le build corrigé sans scintillement, puis reproduit le problème après réinstallation de la 1.4.6 d’origine. Merci à [@Scarhead666](https://github.com/Scarhead666) pour le signalement et les comparaisons de versions ([#88](https://github.com/SilyNoMeta/rtx-encore/issues/88)). Le rapporteur n’a pas encore testé ce nouveau correctif.

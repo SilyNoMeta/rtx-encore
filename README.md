@@ -29,7 +29,11 @@ One file next to the game, a built-in menu, nothing else to install.
 > It loads inside the game: do not use it in online or anti-cheat protected games, where it can be blocked or get an
 > account flagged. Back up every file you replace.
 
-**[Latest: 1.4.7](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.4.7)** · [Release notes](CHANGELOG.md) · [Hub 1.4.7](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.7)
+**[Latest: 1.5.0](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.5.0)** · [Release notes](CHANGELOG.md) · [Hub 1.5.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.5.0)
+
+## 1.5.0: XeSS and XeFG on NVIDIA Tensor Cores
+
+Two independent experimental options bring NVIDIA Tensor Cores to XeSS reconstruction and XeFG frame generation. Toggle each live in the in-game menu or **Hub 1.5.0**. Both are off by default. Initial qualification: **RTX 4090, NVIDIA 621.01, DirectX 12, and the Intel runtimes supplied by Hub**. [Setup and measured results](docs/INTEL-ENGINES.md).
 
 | 🎞️ **[Frame generation](docs/FRAME-GENERATION.md)** | 🌀 **[Smooth Motion](docs/SMOOTH-MOTION.md)** | ✨ **[Neural Rendering](docs/NEURAL-RENDERING.md)** |
 | :--- | :--- | :--- |
@@ -50,6 +54,8 @@ XeSS, XeFG and the native XeFG → DLSS FG adapter are experimental and require 
 
 | | Feature | In short |
 | :---: | :--- | :--- |
+| ⚡ | **[XeSS Tensor Cores](docs/INTEL-ENGINES.md)** | Experimental NVIDIA Tensor Cores for XeSS Super Resolution; toggle live at the next XeSS execution. Initial qualification: RTX 4090, NVIDIA 621.01, DirectX 12 and the Intel runtime supplied by Hub. Refused preparation retains standard XeSS. |
+| ⚡ | **[XeFG Tensor Cores](docs/INTEL-ENGINES.md)** | Experimental NVIDIA Tensor Cores for XeFG; fixed X2–X6 within initialized capacity. Toggle live as command recordings renew. Initial qualification: RTX 4090, NVIDIA 621.01, DirectX 12 and the Intel runtime supplied by Hub. Refused preparation retains standard XeFG; an execution fault requires a restart. |
 | 🧪 | **[Intel engines (experimental)](docs/INTEL-ENGINES.md)** | XeSS reconstruction or XeFG frame generation with XeLL, where compatible game inputs and runtimes allow them. Off by default. |
 | 🔆 | **[Live sharpening](docs/SUPER-RESOLUTION.md)** | Off / Game / Custom, after reconstruction and NR. Custom 0–100%, default 30%; appearance and Vulkan operation remain unvalidated. |
 | 🎞️ | **[Frame generation X2 to X6](docs/FRAME-GENERATION.md)** | DLSS Multi Frame Generation on RTX 20, 30 and 40, in games with compatible DLSS or native Intel frame generation. Fixed multiplier, Dynamic mode with a target frame rate, or the game's own choice. |

@@ -2,16 +2,24 @@
 
 [English](INTEL-ENGINES.md) · [Français](INTEL-ENGINES.fr.md) · [简体中文](INTEL-ENGINES.zh-CN.md)
 
-Pour RTX Encore 1.4.6. Les versions disponibles figurent sur la [page des publications](https://github.com/SilyNoMeta/rtx-encore/releases).
+Pour RTX Encore 1.5.0. Les versions disponibles figurent sur la [page des publications](https://github.com/SilyNoMeta/rtx-encore/releases).
 
 RTX Encore 1.2.0 permet de choisir les moteurs de reconstruction et de génération d’images. Laissez **Game** pour conserver le moteur habituel du jeu. Les modes Intel sont expérimentaux, désactivés par défaut et demandent des entrées de jeu compatibles ; le choix d’un moteur ne prouve pas son activation.
 
 Utilisez **RTX Encore Hub 1.2.0 ou ultérieur** pour installer ou mettre à jour ensemble le mod et ses dépendances Intel. Le Hub vérifie les fichiers, conserve la licence Intel qui les accompagne et permet de défaire l’opération. Désactiver les téléchargements NVIDIA ne supprime pas les dépendances Intel requises par ce mod. Les fichiers Intel fournis par le jeu restent distincts.
 
+## Tensor Cores : deux commandes indépendantes
+
+Sélectionnez la reconstruction XeSS pour **XeSS Tensor Cores**, et la génération XeFG pour **XeFG Tensor Cores**. Les interrupteurs sont indépendants : activer l’un n’active pas l’autre et ne change pas le moteur. Utilisez le Hub 1.5.0 pour installer les runtimes compatibles et accéder aux nouvelles commandes. Fermez le jeu pour installer la nouvelle DLL ; après ce lancement, les deux interrupteurs et les multiplicateurs fixes XeFG qualifiés se changent à chaud. Changer de moteur FG demande toujours de redémarrer le jeu.
+
+Sur un build de test antérieur dans The Witcher 3, RTX 4090 / 621.01 en 4K, le temps GPU XeSS est passé de 1,243 ms à 0,861 ms (environ −30,7 %), pour environ +2,8 à +3,2 % de FPS source rendus. Ce n’est **pas un gain global de 31 % de FPS**. L’optimisation finale ultérieure a été validée par replays déterministes, dont exposition automatique et dimensions d’entrée fractionnaires ; ce dernier build n’a pas de retest distinct en jeu. Aucun gain général de FPS ou de latence XeFG n’est établi.
+
 | Réglage | Défaut | Effet |
 | :--- | :---: | :--- |
 | `reconstructionEngine` | `game` | `game` ou `xess` ; remplace le traitement Super Resolution/DLAA compatible par XeSS. Ray Reconstruction garde son moteur original. |
 | `frameGenerationEngine` | `game` | `game`, `dlss-fg` ou `xefg`. Jeu conserve le FG natif ; DLSS-FG remplace le FG Intel natif qualifié par le DLSS FG NVIDIA ; XeFG remplace le DLSS FG compatible par Intel XeFG. Redémarrage requis. |
+| `xessTensorCores` | `false` | Tensor Cores NVIDIA expérimentaux pour XeSS Super Resolution ; bascule à chaud au prochain calcul XeSS. Qualification initiale : RTX 4090, NVIDIA 621.01, DirectX 12 et runtime Intel fourni par le Hub. Une préparation refusée conserve le XeSS classique. |
+| `xefgTensorCores` | `false` | Tensor Cores NVIDIA expérimentaux pour XeFG ; facteurs fixes X2–X6 dans la capacité initialisée. Bascule à chaud au renouvellement des commandes. Qualification initiale : RTX 4090, NVIDIA 621.01, DirectX 12 et runtime Intel fourni par le Hub. Une préparation refusée conserve le XeFG classique ; une erreur d’exécution impose un redémarrage. |
 | `xefgMfg4VariablePacing` | `true` | Espacement expérimental des images XeFG au-delà de X2 ; le désactiver peut rendre les facteurs élevés indisponibles. |
 | `xefgUiHandling` | `interpolate` | `interpolate` ou `game` ; le traitement séparé de l’interface du jeu exige des entrées compatibles. |
 | `xefgUiAlpha` | `unknown` | `unknown`, `straight` ou `premultiplied` ; laissez unknown si le format de l’interface est inconnu. |

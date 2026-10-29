@@ -3,6 +3,16 @@
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
 
+## 1.5.0
+
+- **XeSS Tensor Core：**新增独立、默认关闭的 NVIDIA Tensor XeSS Super Resolution 选项，支持即时切换及最终重建优化，并修复自动曝光和非整数渲染尺寸。
+- **XeFG Tensor Core：**新增独立、默认关闭的 NVIDIA Tensor XeFG 选项，在支持容量内即时切换固定 X2–X6 及开关状态。改善兼容配置在切换 Ray Reconstruction 后的恢复。
+- **Hub 1.5.0 与配置：**提供两个开关，说明初始硬件范围，并在社区配置中保留其值。安装新模组前请关闭游戏；切换 FG 引擎仍需重启。
+
+初始验证范围为 RTX 4090、NVIDIA 621.01、DirectX 12 和 Hub 提供的兼容 Intel 运行库。准备不受支持时保留标准 Intel 路径；Tensor 执行故障后须重启。两个选项均属实验性质。
+
+较早巫师 3 测量在同一场景中显示 XeSS GPU 时间约减少 30.7%，渲染源帧 FPS 约提高 2.8–3.2%。后续最终重建更改通过确定性重放验证，没有新的游戏内对比。尚未证明 XeFG 的普遍 FPS 或延迟收益。维护者在测试版本中确认了 XeFG 即时控制与 RR 恢复；最终 1.5.0 二进制文件未单独在游戏内复测。[条件与控制](docs/INTEL-ENGINES.zh-CN.md)。
+
 ## 1.4.7
 
 - **巫师 3：**修复 1.4.6 中仍然存在的 NR 快速旅行后阴影闪烁。维护者测试修复版本时未见闪烁，随后重新安装原版 1.4.6 再次复现问题。感谢 [@Scarhead666](https://github.com/Scarhead666) 提供报告和版本对比（[#88](https://github.com/SilyNoMeta/rtx-encore/issues/88)）。报告者尚未测试此次新修复。

@@ -29,7 +29,11 @@ Un seul fichier à côté du jeu, un menu intégré, rien d'autre à installer.
 > Il se charge dans le jeu : ne l'utilisez pas dans un jeu en ligne ou protégé par un anti-triche, où il peut être
 > bloqué ou faire signaler un compte. Sauvegardez chaque fichier que vous remplacez.
 
-**[Dernière version : 1.4.7](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.4.7)** · [Notes de version](CHANGELOG.fr.md) · [Hub 1.4.7](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.7)
+**[Dernière version : 1.5.0](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.5.0)** · [Notes de version](CHANGELOG.fr.md) · [Hub 1.5.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.5.0)
+
+## 1.5.0 : XeSS et XeFG sur les Tensor Cores NVIDIA
+
+Deux options expérimentales indépendantes utilisent les Tensor Cores NVIDIA pour la reconstruction XeSS et la génération d’images XeFG. Activez-les séparément à chaud dans le menu en jeu ou le **Hub 1.5.0**. Elles sont désactivées par défaut. Qualification initiale : **RTX 4090, NVIDIA 621.01, DirectX 12 et runtimes Intel fournis par le Hub**. [Activation et mesures](docs/INTEL-ENGINES.fr.md).
 
 | 🎞️ **[Génération d’images](docs/FRAME-GENERATION.fr.md)** | 🌀 **[Smooth Motion](docs/SMOOTH-MOTION.fr.md)** | ✨ **[Neural Rendering](docs/NEURAL-RENDERING.fr.md)** |
 | :--- | :--- | :--- |
@@ -50,6 +54,8 @@ XeSS, XeFG et l’adaptateur XeFG natif → DLSS FG sont expérimentaux et exige
 
 | | Fonction | En bref |
 | :---: | :--- | :--- |
+| ⚡ | **[XeSS Tensor Cores](docs/INTEL-ENGINES.fr.md)** | Tensor Cores NVIDIA expérimentaux pour XeSS Super Resolution ; bascule à chaud au prochain calcul XeSS. Qualification initiale : RTX 4090, NVIDIA 621.01, DirectX 12 et runtime Intel fourni par le Hub. Une préparation refusée conserve le XeSS classique. |
+| ⚡ | **[XeFG Tensor Cores](docs/INTEL-ENGINES.fr.md)** | Tensor Cores NVIDIA expérimentaux pour XeFG ; facteurs fixes X2–X6 dans la capacité initialisée. Bascule à chaud au renouvellement des commandes. Qualification initiale : RTX 4090, NVIDIA 621.01, DirectX 12 et runtime Intel fourni par le Hub. Une préparation refusée conserve le XeFG classique ; une erreur d’exécution impose un redémarrage. |
 | 🧪 | **[Moteurs Intel (expérimental)](docs/INTEL-ENGINES.fr.md)** | Reconstruction XeSS ou génération d’images XeFG avec XeLL, selon les entrées du jeu et les runtimes compatibles. Désactivés par défaut. |
 | 🔆 | **[Netteté à chaud](docs/SUPER-RESOLUTION.fr.md)** | Off / Game / Custom, après reconstruction et NR. Custom de 0 à 100 %, défaut 30 % ; rendu et fonctionnement Vulkan encore à valider. |
 | 🎞️ | **[Génération d'images X2 à X6](docs/FRAME-GENERATION.fr.md)** | DLSS Multi Frame Generation sur RTX 20, 30 et 40, dans les jeux à génération DLSS ou Intel native compatible. Multiplicateur fixe, mode Dynamique avec une fréquence cible, ou choix laissé au jeu. |

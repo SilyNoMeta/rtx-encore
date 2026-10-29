@@ -3,6 +3,16 @@
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
 
+## 1.5.0
+
+- **XeSS Tensor Cores:** new independent, default-off NVIDIA Tensor option for XeSS Super Resolution, with live switching and an optimized final reconstruction pass. Includes corrections for automatic exposure and fractional render sizes.
+- **XeFG Tensor Cores:** new independent, default-off NVIDIA Tensor option for XeFG, with live fixed factors X2–X6 within admitted capacity and live On/Off changes. Improves recovery after Ray Reconstruction changes in compatible configurations.
+- **Hub 1.5.0 and profiles:** exposes both switches, explains their initial hardware scope, and preserves them in community profiles. Install the new mod with the game closed; changing the FG engine still requires restarting.
+
+Initial qualification is RTX 4090, NVIDIA 621.01, DirectX 12 and the compatible Intel runtimes supplied by Hub. Unsupported preparation retains the standard Intel path; a Tensor execution fault requires a restart. Both options remain experimental.
+
+Earlier TW3 XeSS measurements showed about 30.7% lower XeSS GPU time and 2.8–3.2% more rendered-source FPS in the measured scene. Later final-pass changes were qualified in deterministic replays, not a new game comparison. No general XeFG FPS or latency improvement is established. The maintainer confirmed live XeFG changes and RR recovery on test builds; final 1.5.0 binaries have no separate in-game retest. [Requirements and controls](docs/INTEL-ENGINES.md).
+
 ## 1.4.7
 
 - **The Witcher 3:** fixes persistent NR shadow flickering after fast travel that remained in 1.4.6. The maintainer tested the corrected build without flickering, then reproduced the problem again after reinstalling the original 1.4.6. Thanks to [@Scarhead666](https://github.com/Scarhead666) for the report and version comparisons ([#88](https://github.com/SilyNoMeta/rtx-encore/issues/88)). The reporter has not yet tested this new fix.

@@ -26,6 +26,8 @@ Aucune clé ne contient de chemin ni de commande : un fichier de réglages peut 
 | :--- | :---: | :--- |
 | `reconstructionEngine` | `game` | `game` ou `xess` ; remplace le traitement Super Resolution/DLAA compatible par XeSS. Ray Reconstruction garde son moteur original. |
 | `frameGenerationEngine` | `game` | `game`, `dlss-fg` ou `xefg`. Jeu conserve le FG natif ; DLSS-FG remplace le FG Intel natif qualifié par le DLSS FG NVIDIA ; XeFG remplace le DLSS FG compatible par Intel XeFG. Redémarrage requis. |
+| `xessTensorCores` | `false` | Tensor Cores NVIDIA expérimentaux pour XeSS Super Resolution ; bascule à chaud au prochain calcul XeSS. Qualification initiale : RTX 4090, NVIDIA 621.01, DirectX 12 et runtime Intel fourni par le Hub. Une préparation refusée conserve le XeSS classique. |
+| `xefgTensorCores` | `false` | Tensor Cores NVIDIA expérimentaux pour XeFG ; facteurs fixes X2–X6 dans la capacité initialisée. Bascule à chaud au renouvellement des commandes. Qualification initiale : RTX 4090, NVIDIA 621.01, DirectX 12 et runtime Intel fourni par le Hub. Une préparation refusée conserve le XeFG classique ; une erreur d’exécution impose un redémarrage. |
 | `xefgMfg4VariablePacing` | `true` | Espacement expérimental des images XeFG au-delà de X2 ; le désactiver peut rendre les facteurs élevés indisponibles. |
 | `xefgUiHandling` | `interpolate` | `interpolate` ou `game` ; le traitement séparé de l’interface du jeu exige des entrées compatibles. |
 | `xefgUiAlpha` | `unknown` | `unknown`, `straight` ou `premultiplied` ; laissez unknown si le format de l’interface est inconnu. |

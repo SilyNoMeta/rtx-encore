@@ -25,6 +25,8 @@ No key holds a path or a command: a settings file can be shared with someone els
 | :--- | :---: | :--- |
 | `reconstructionEngine` | `game` | `game` or `xess`; replaces compatible Super Resolution/DLAA processing with XeSS; Ray Reconstruction stays with its original engine. |
 | `frameGenerationEngine` | `game` | `game`, `dlss-fg` or `xefg`. Game preserves native FG; DLSS-FG replaces qualified native Intel FG with NVIDIA DLSS FG; XeFG replaces compatible DLSS FG with Intel XeFG. Restart required. |
+| `xessTensorCores` | `false` | Experimental NVIDIA Tensor Cores for XeSS Super Resolution; toggle live at the next XeSS execution. Initial qualification: RTX 4090, NVIDIA 621.01, DirectX 12 and the Intel runtime supplied by Hub. Refused preparation retains standard XeSS. |
+| `xefgTensorCores` | `false` | Experimental NVIDIA Tensor Cores for XeFG; fixed X2–X6 within initialized capacity. Toggle live as command recordings renew. Initial qualification: RTX 4090, NVIDIA 621.01, DirectX 12 and the Intel runtime supplied by Hub. Refused preparation retains standard XeFG; an execution fault requires a restart. |
 | `xefgMfg4VariablePacing` | `true` | Experimental pacing for XeFG above X2; disabling it can make higher factors unavailable. |
 | `xefgUiHandling` | `interpolate` | `interpolate` or `game`; requesting separate game UI handling only works with supported inputs. |
 | `xefgUiAlpha` | `unknown` | `unknown`, `straight` or `premultiplied`; leave unknown unless the game’s UI format is known. |
