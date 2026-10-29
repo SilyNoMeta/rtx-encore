@@ -29,7 +29,7 @@ Smooth Motion 和 Neural Rendering。**
 > 它在游戏进程内加载：请勿在联机游戏或受反作弊保护的游戏中使用，否则可能被拦截，或导致账号被标记。
 > 替换任何文件之前请先备份。
 
-**[最新版本：1.4.6](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.4.6)** · [版本说明](CHANGELOG.zh-CN.md) · [Hub 1.4.5](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.5)
+**[最新版本：1.4.7](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.4.7)** · [版本说明](CHANGELOG.zh-CN.md) · [Hub 1.4.7](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.7)
 
 | 🎞️ **[帧生成](docs/FRAME-GENERATION.zh-CN.md)** | 🌀 **[Smooth Motion](docs/SMOOTH-MOTION.zh-CN.md)** | ✨ **[Neural Rendering](docs/NEURAL-RENDERING.zh-CN.md)** |
 | :--- | :--- | :--- |

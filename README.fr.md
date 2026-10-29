@@ -29,7 +29,7 @@ Un seul fichier à côté du jeu, un menu intégré, rien d'autre à installer.
 > Il se charge dans le jeu : ne l'utilisez pas dans un jeu en ligne ou protégé par un anti-triche, où il peut être
 > bloqué ou faire signaler un compte. Sauvegardez chaque fichier que vous remplacez.
 
-**[Dernière version : 1.4.6](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.4.6)** · [Notes de version](CHANGELOG.fr.md) · [Hub 1.4.5](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.5)
+**[Dernière version : 1.4.7](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.4.7)** · [Notes de version](CHANGELOG.fr.md) · [Hub 1.4.7](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.7)
 
 | 🎞️ **[Génération d’images](docs/FRAME-GENERATION.fr.md)** | 🌀 **[Smooth Motion](docs/SMOOTH-MOTION.fr.md)** | ✨ **[Neural Rendering](docs/NEURAL-RENDERING.fr.md)** |
 | :--- | :--- | :--- |

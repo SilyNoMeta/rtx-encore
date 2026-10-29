@@ -29,7 +29,7 @@ One file next to the game, a built-in menu, nothing else to install.
 > It loads inside the game: do not use it in online or anti-cheat protected games, where it can be blocked or get an
 > account flagged. Back up every file you replace.
 
-**[Latest: 1.4.6](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.4.6)** · [Release notes](CHANGELOG.md) · [Hub 1.4.5](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.5)
+**[Latest: 1.4.7](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.4.7)** · [Release notes](CHANGELOG.md) · [Hub 1.4.7](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.4.7)
 
 | 🎞️ **[Frame generation](docs/FRAME-GENERATION.md)** | 🌀 **[Smooth Motion](docs/SMOOTH-MOTION.md)** | ✨ **[Neural Rendering](docs/NEURAL-RENDERING.md)** |
 | :--- | :--- | :--- |

@@ -3,6 +3,14 @@
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
 
+## 1.4.7
+
+- **The Witcher 3:** fixes persistent NR shadow flickering after fast travel that remained in 1.4.6. The maintainer tested the corrected build without flickering, then reproduced the problem again after reinstalling the original 1.4.6. Thanks to [@Scarhead666](https://github.com/Scarhead666) for the report and version comparisons ([#88](https://github.com/SilyNoMeta/rtx-encore/issues/88)). The reporter has not yet tested this new fix.
+
+- **Documentation:** updates the default shortcut tables and marks RTX 20 Smooth Motion as experimental, with its DirectX 12 and driver requirements.
+
+Local automated tests cover the corrected paths. The maintainer’s game comparison used a test build; the final 1.4.7 release binaries have no separate in-game retest.
+
 ## 1.4.6
 
 - **Cleaner settings menu:** advanced controls appear only when their parent feature is enabled, including Foveated NR, overlay details and capture controls. Their saved values are preserved.
@@ -10,7 +18,7 @@
 - **Reflex controls and latency:** adds Game / On / On+Boost and the latency report in the menu and overlay. Overrides do not lower the game's choice and are suspended in Dynamic mode or while XeLL owns latency. They do not guarantee lower latency. Thanks to [@kisoo8](https://github.com/kisoo8) for the logs ([#87](https://github.com/SilyNoMeta/rtx-encore/issues/87)); the maintainer tested the controls in game.
 - **REFramework:** improves NR runtime recognition when the same compatible runtime is loaded through a redirected path. Thanks to [@aziznasrimay45-sys](https://github.com/aziznasrimay45-sys) for the report ([#90](https://github.com/SilyNoMeta/rtx-encore/issues/90)). Automated checks cover this fix; no separate in-game validation is claimed.
 
-- **The Witcher 3:** addresses NR shadow flickering after fast travel, reported from 1.4.3 onward. Thanks to [@Scarhead666](https://github.com/Scarhead666) for the report and version comparison ([#88](https://github.com/SilyNoMeta/rtx-encore/issues/88)). The maintainer reproduced the problem and could no longer reproduce it after several fast travels with an isolation test build. The final integrated change has not yet been retested in game.
+- **The Witcher 3:** attempted to fix NR shadow flickering after fast travel, reported by [@Scarhead666](https://github.com/Scarhead666) from 1.4.3 onward ([#88](https://github.com/SilyNoMeta/rtx-encore/issues/88)). This attempt was insufficient: both the reporter and the maintainer subsequently confirmed flickering with 1.4.6.
 
 ## 1.4.5
 

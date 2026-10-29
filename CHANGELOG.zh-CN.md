@@ -3,6 +3,14 @@
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
 
+## 1.4.7
+
+- **巫师 3：**修复 1.4.6 中仍然存在的 NR 快速旅行后阴影闪烁。维护者测试修复版本时未见闪烁，随后重新安装原版 1.4.6 再次复现问题。感谢 [@Scarhead666](https://github.com/Scarhead666) 提供报告和版本对比（[#88](https://github.com/SilyNoMeta/rtx-encore/issues/88)）。报告者尚未测试此次新修复。
+
+- **文档：**补全默认快捷键表，并标明 RTX 20 Smooth Motion 的实验性质以及 DirectX 12 和驱动要求。
+
+本地自动化测试覆盖修复路径。维护者的游戏内对比使用测试版本；最终 1.4.7 发布二进制文件未经过单独的游戏内复测。
+
 ## 1.4.6
 
 - **更简洁的菜单：**高级控件仅在其主功能启用时显示，包括注视点 NR、叠加层详情和捕获设置。已保存的值保持不变。
@@ -10,7 +18,7 @@
 - **Reflex 与延迟：**菜单和叠加层增加游戏 / On / On+Boost 控件及延迟报告。不会降低游戏的选择，在动态模式或 XeLL 管理延迟时暂停。不保证降低延迟。感谢 [@kisoo8](https://github.com/kisoo8) 提供日志（[#87](https://github.com/SilyNoMeta/rtx-encore/issues/87)）；维护者已在游戏中测试控件。
 - **REFramework：**改进通过重定向路径加载相同兼容 NR 运行库时的识别。感谢 [@aziznasrimay45-sys](https://github.com/aziznasrimay45-sys) 提供报告（[#90](https://github.com/SilyNoMeta/rtx-encore/issues/90)）。已通过自动化检查，无单独游戏验证。
 
-- **巫师 3：**修复 NR 在快速旅行后出现的阴影闪烁，报告指出此问题始于 1.4.3。感谢 [@Scarhead666](https://github.com/Scarhead666) 提供报告和版本对比（[#88](https://github.com/SilyNoMeta/rtx-encore/issues/88)）。维护者已在本地复现问题，使用隔离回归的测试版本进行多次快速旅行后未再次复现。最终整合的改动尚未在游戏中重新测试。
+- **巫师 3：**尝试修复 NR 快速旅行后的阴影闪烁；[@Scarhead666](https://github.com/Scarhead666) 报告此问题始于 1.4.3（[#88](https://github.com/SilyNoMeta/rtx-encore/issues/88)）。此次尝试未完全解决问题：报告者和维护者随后均确认 1.4.6 仍会闪烁。
 
 ## 1.4.5
 
