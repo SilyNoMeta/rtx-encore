@@ -3,6 +3,10 @@
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
 
+## Unreleased
+
+- **Support:** thank you to [@Scarhead666](https://github.com/Scarhead666) for sponsoring the development of RTX Encore. Public sponsor acknowledgements are shown in the About tab and the project READMEs.
+
 ## 1.5.0
 
 - **XeSS Tensor Cores:** new independent, default-off NVIDIA Tensor option for XeSS Super Resolution, with live switching and an optimized final reconstruction pass. Includes corrections for automatic exposure and fractional render sizes.

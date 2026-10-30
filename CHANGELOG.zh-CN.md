@@ -3,6 +3,10 @@
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
 
+## 尚未发布
+
+- **赞助支持：**感谢 [@Scarhead666](https://github.com/Scarhead666) 赞助 RTX Encore 的开发。公开赞助者致谢显示在“关于”选项卡和项目 README 中。
+
 ## 1.5.0
 
 - **XeSS Tensor Core：**新增独立、默认关闭的 NVIDIA Tensor XeSS Super Resolution 选项，支持即时切换及最终重建优化，并修复自动曝光和非整数渲染尺寸。
