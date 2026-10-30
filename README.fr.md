@@ -22,6 +22,8 @@ Un seul fichier à côté du jeu, un menu intégré, rien d'autre à installer.
 
 <sub>Gratuit, développé sur du temps personnel. S'il vous est utile, vous pouvez <a href="https://github.com/sponsors/SilyNoMeta">soutenir le projet sur GitHub Sponsors</a> ❤</sub>
 
+<p>❤️ Merci à <a href="https://github.com/mennogreg">@mennogreg</a> et <a href="https://github.com/Scarhead666">@Scarhead666</a> pour leur soutien au développement de RTX Encore.</p>
+
 </div>
 
 > [!IMPORTANT]
