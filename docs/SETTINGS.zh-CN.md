@@ -187,7 +187,7 @@ FG 预设选择支持以下经过逐一验证的 NVIDIA **DLSS-G 正式版二进
 | :--- | :---: | :--- |
 | `reflexFrameLimit` | `0` | `0` 恢复游戏的 Reflex 设置；`1` 至 `1000` 请求帧率上限。FG 的计入方式取决于游戏与驱动 |
 | `reflexMode` | `game` | `game` 跟随游戏（默认），`on` / `on-boost` 请求 Reflex On / On+Boost，绝不低于游戏；实时生效，与上限独立，Dynamic 及 XeLL 下暂停覆盖。不保证降低延迟 |
-| `vsyncOff` | `false` | 请求 DirectX 游戏关闭 V-Sync |
+| `vsync` | `game` | `game`：使用游戏自身的 V-Sync；`off`：请求 DirectX 游戏关闭 V-Sync；`on`：请求其开启 V-Sync，包括游戏在启用帧生成后禁用自身 V-Sync 选项，或 NVIDIA 控制面板 V-Sync 在笔记本上无效的情况。NVIDIA 控制面板强制设置的优先级更高。对 Vulkan 游戏和 XeSS-FG 无效。在 60 Hz 屏幕上使用高倍数时，`on` 可能增加延迟。即时生效。取代 `vsyncOff`，其值会被保留 |
 | `hairEnabled` | `true` | 在具备该功能的游戏中启用兼容的光线追踪毛发。需重启。 |
 
 ### `compatibility`

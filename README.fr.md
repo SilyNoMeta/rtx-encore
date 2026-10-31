@@ -31,9 +31,9 @@ Un seul fichier à côté du jeu, un menu intégré, rien d'autre à installer.
 > Il se charge dans le jeu : ne l'utilisez pas dans un jeu en ligne ou protégé par un anti-triche, où il peut être
 > bloqué ou faire signaler un compte. Sauvegardez chaque fichier que vous remplacez.
 
-**[Dernière version : 1.5.1](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.5.1)** · [Notes de version](CHANGELOG.fr.md) · [Hub 1.5.2](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.5.2)
+**[Dernière version : 1.5.2](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.5.2)** · [Notes de version](CHANGELOG.fr.md) · [Hub 1.5.2](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.5.2)
 
-**1.5.1 :** correctifs du menu et du démarrage, Smooth Motion V2 par défaut sur RTX 20. [Notes de version](CHANGELOG.fr.md).
+**1.5.2 :** V-Sync Jeu / Désactivée / Activée à chaud dans le menu des jeux DirectX compatibles. [Notes de version](CHANGELOG.fr.md).
 
 ## 1.5.0 : XeSS et XeFG sur les Tensor Cores NVIDIA
 

@@ -201,7 +201,7 @@ d'option lue au démarrage demande de relancer le jeu.
 | :--- | :---: | :--- |
 | `reflexFrameLimit` | `0` | `0` restaure les réglages Reflex du jeu ; `1` à `1000` demande un plafond FPS. Le comptage de FG dépend du jeu et du pilote |
 | `reflexMode` | `game` | `game` (jeu), `on` ou `on-boost` : demande Reflex On / On+Boost, jamais plus bas que le jeu ; en direct, indépendant du plafond, suspendu en Dynamic et sous XeLL. Aucun gain de latence garanti |
-| `vsyncOff` | `false` | Demande aux jeux DirectX de présenter sans V-Sync |
+| `vsync` | `game` | `game` : la V-Sync du jeu ; `off` : demande aux jeux DirectX de présenter sans V-Sync ; `on` : leur demande de présenter avec V-Sync, y compris quand le jeu grise sa V-Sync avec la génération d’images ou sur les portables où la V-Sync du panneau de configuration NVIDIA est sans effet. Un réglage forcé dans le panneau NVIDIA garde la priorité. Sans effet dans les jeux Vulkan ou avec XeSS-FG. `on` peut ajouter de la latence avec un multiplicateur élevé sur un écran 60 Hz. Appliqué en direct. Remplace `vsyncOff`, dont la valeur est reprise |
 | `hairEnabled` | `true` | Cheveux en ray tracing compatibles, dans les jeux qui en ont. Relancez pour appliquer. |
 
 ### `compatibility`

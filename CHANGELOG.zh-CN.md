@@ -3,6 +3,14 @@
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
 
+## 1.5.2
+
+- **开启 V-Sync：**Frames → Frame pacing 中的 V-Sync 设置现在提供 游戏、关闭 和 开启。开启 会请求 DirectX 游戏开启 V-Sync，适用于启用帧生成后禁用自身 V-Sync 选项的游戏，以及 NVIDIA 控制面板 V-Sync 无效的混合显卡笔记本。NVIDIA 控制面板强制设置的优先级更高；对 Vulkan 游戏和 XeSS-FG 无效；在 60 Hz 屏幕上使用高倍数时，开启 可能增加延迟。已保存的“关闭 V-Sync”选择会被保留。感谢 [@pradeepkumar35](https://github.com/pradeepkumar35) 的建议（[#93](https://github.com/SilyNoMeta/rtx-encore/issues/93)）。
+
+维护者在混合显卡 RTX 3070 Ti Laptop、NVIDIA 621.01、D3D12、DLSS-G 310.9.16 上使用 Crimson Desert 检查了即时切换。观察到的会话中，游戏接受了请求的 V-Sync 呈现更改，没有 Present 失败。尚未测量可见撕裂的消除、显示帧节奏或额外延迟；报告者尚未测试此修复。这些观察来自测试版本，最终 1.5.2 文件未单独进行游戏内复测。
+
+请在游戏内菜单使用新的三选项控制：Hub 1.5.2 尚未提供该选项。未重新运行完整自动化测试套件；已验证编译、针对性检查和发布文件完整性。
+
 ## 1.5.1
 
 - **菜单和启动兼容性：**修复通过 Streamline 创建显示的兼容游戏中菜单不出现的问题，以及 MechWarrior 5 使用 `dxgi.dll` 代理时的启动失败。感谢 [@kisoo8](https://github.com/kisoo8) 的报告和日志（[#92](https://github.com/SilyNoMeta/rtx-encore/issues/92)）。维护者使用测试版本确认了 A Plague Tale: Requiem 的菜单和帧生成控制，以及 MechWarrior 5 的 D3D11/D3D12 运行。

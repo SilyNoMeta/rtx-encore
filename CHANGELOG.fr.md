@@ -3,6 +3,14 @@
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
 
+## 1.5.2
+
+- **V-Sync activée :** le réglage V-Sync de Frames → Frame pacing propose désormais Jeu, Désactivé et Activé. Activé demande aux jeux DirectX de présenter avec V-Sync, pour les jeux qui grisent leur V-Sync avec la génération d’images et les portables à graphismes hybrides où la V-Sync du panneau de configuration NVIDIA est sans effet. Un réglage forcé dans le panneau NVIDIA garde la priorité ; sans effet dans les jeux Vulkan ou avec XeSS-FG ; Activé peut ajouter de la latence avec un multiplicateur élevé sur un écran 60 Hz. Un choix « V-Sync désactivée » enregistré est conservé. Merci à [@pradeepkumar35](https://github.com/pradeepkumar35) pour la demande ([#93](https://github.com/SilyNoMeta/rtx-encore/issues/93)).
+
+Le propriétaire a contrôlé les bascules à chaud dans Crimson Desert sur RTX 3070 Ti Laptop avec graphiques hybrides, NVIDIA 621.01, D3D12 et DLSS-G 310.9.16. Le jeu a accepté les changements de présentation V-Sync demandés sans échec de Present pendant les sessions observées. La disparition visible du tearing, la régularité des images affichées et la latence ajoutée n’ont pas été mesurées ; le rapporteur n’a pas encore testé le correctif. Ces observations concernent un build de test ; les binaires finaux 1.5.2 n’ont pas de retest distinct en jeu.
+
+Utilisez le menu en jeu pour le nouveau choix à trois valeurs : le Hub 1.5.2 ne le propose pas encore. La suite automatisée complète n’a pas été relancée ; compilation, contrôles ciblés et intégrité des livrables ont été vérifiés.
+
 ## 1.5.1
 
 - **Compatibilité du menu et du démarrage :** corrige le menu absent dans les jeux compatibles qui créent leur affichage via Streamline, ainsi qu’un échec au démarrage avec le proxy `dxgi.dll` dans MechWarrior 5. Merci à [@kisoo8](https://github.com/kisoo8) pour le signalement et les journaux ([#92](https://github.com/SilyNoMeta/rtx-encore/issues/92)). Le propriétaire a confirmé le menu et les commandes de génération d’images dans A Plague Tale: Requiem, ainsi que le fonctionnement D3D11/D3D12 dans MechWarrior 5, sur des builds de test.

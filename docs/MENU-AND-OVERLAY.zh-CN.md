@@ -81,7 +81,7 @@ RTX Encore 在 DirectX 11、DirectX 12 和 Vulkan 游戏中绘制自己的菜单
 | **Render resolution** | Image | 指定游戏在 DLSS 处理前的渲染分辨率：DLAA、Quality、Balanced、Performance、Ultra Performance，或 50 至 100 % 的自定义比例。游戏必须已使用 DLSS。菜单显示实际观察到的分辨率，以及游戏是否遵从请求；出现问题时改回 Game。Unreal Engine 4 和 5 游戏会在可行时实时调整分辨率比例。 |
 | **Fast super resolution (RTX 30)** | Image | 默认关闭。在 RTX 30 显卡上，对使用预设为 M 或 L 的 DLSS 超分辨率的 DirectX 12 游戏，改用更快的放大版本：在测量的系统上每个放大帧约减少 16% 至 20% 的 GPU 时间，画面与原版非常接近。在其他显卡上不起作用。见[超分辨率](SUPER-RESOLUTION.zh-CN.md#fast-super-resolution-rtx-30)。 |
 | **Frame limit (FPS)** | Frames | 通过受支持的 NVIDIA Reflex 请求帧率上限。0 恢复游戏设置。生成帧是否计入上限取决于游戏与驱动。在 Dynamic 模式下暂停。 |
-| **Request V-Sync off** | Frames | 请求 DirectX 游戏关闭 V-Sync。NVIDIA 控制面板强制设置的优先级更高。对 Vulkan 游戏无效。 |
+| **V-Sync** | Frames | 游戏：使用游戏自身的 V-Sync。关闭：请求 DirectX 游戏关闭 V-Sync。开启：请求其开启 V-Sync，适用于启用帧生成后禁用 V-Sync 选项的游戏，以及 NVIDIA 控制面板 V-Sync 无效的笔记本。NVIDIA 控制面板强制设置的优先级更高。对 Vulkan 游戏和 XeSS-FG 无效（XeSS-FG 呈现画面时该选项为灰色）。在 60 Hz 屏幕上使用高倍数时，开启可能增加延迟：请降低倍数或使用帧率限制。 |
 | **Compatible ray-traced hair** | System | The Witcher 3（DirectX 12，游戏构建 25575366 和 25646871）：使游戏的光线追踪毛发可用于 RTX 20、30 和 40。游戏自身的毛发设置仍决定是否渲染毛发。尚未在 RTX 20 和 RTX 30 上进行游戏内验证。需重启游戏。 |
 
 ### 建议的 Reflex 帧率上限

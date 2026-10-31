@@ -31,9 +31,9 @@ Smooth Motion 和 Neural Rendering。**
 > 它在游戏进程内加载：请勿在联机游戏或受反作弊保护的游戏中使用，否则可能被拦截，或导致账号被标记。
 > 替换任何文件之前请先备份。
 
-**[最新版本：1.5.1](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.5.1)** · [版本说明](CHANGELOG.zh-CN.md) · [Hub 1.5.2](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.5.2)
+**[最新版本：1.5.2](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.5.2)** · [版本说明](CHANGELOG.zh-CN.md) · [Hub 1.5.2](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.5.2)
 
-**1.5.1：**菜单与启动兼容性修复，RTX 20 默认使用 Smooth Motion V2。[版本说明](CHANGELOG.zh-CN.md)。
+**1.5.2：**在兼容 DirectX 游戏的游戏内菜单中即时切换 V-Sync 游戏 / 关闭 / 开启。[版本说明](CHANGELOG.zh-CN.md)。
 
 ## 1.5.0：使用 NVIDIA Tensor Core 的 XeSS 与 XeFG
 

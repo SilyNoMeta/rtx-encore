@@ -3,6 +3,14 @@
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
 
+## 1.5.2
+
+- **V-Sync On:** the V-Sync setting in Frames → Frame pacing now offers Game, Off and On. On asks DirectX games to present with V-Sync, for games that gray out their V-Sync with frame generation and laptops with hybrid graphics where the NVIDIA control panel V-Sync has no effect. A setting forced in the NVIDIA control panel keeps priority; no effect in Vulkan games or with XeSS-FG; On can add latency with high multipliers on a 60 Hz screen. A saved "V-Sync off" choice is kept. Thanks to [@pradeepkumar35](https://github.com/pradeepkumar35) for the request ([#93](https://github.com/SilyNoMeta/rtx-encore/issues/93)).
+
+The maintainer checked live switching in Crimson Desert on an RTX 3070 Ti Laptop with hybrid graphics, NVIDIA 621.01, D3D12 and DLSS-G 310.9.16. The game accepted the requested V-Sync presentation changes without a Present failure in the observed sessions. Visible tearing removal, displayed-frame pacing and added latency were not measured, and the reporter has not tested this fix. These observations used a test build; final 1.5.2 binaries have no separate in-game retest.
+
+Use the in-game menu for the new three-way control: Hub 1.5.2 does not yet expose it. The full automated suite was not rerun; compilation, focused checks and distribution integrity were verified.
+
 ## 1.5.1
 
 - **Menu and startup compatibility:** fixes the missing menu in compatible games that create their display through Streamline, and a startup failure with the `dxgi.dll` proxy in MechWarrior 5. Thanks to [@kisoo8](https://github.com/kisoo8) for the report and logs ([#92](https://github.com/SilyNoMeta/rtx-encore/issues/92)). The maintainer confirmed the menu and frame-generation controls in A Plague Tale: Requiem, and D3D11/D3D12 operation in MechWarrior 5, using test builds.
