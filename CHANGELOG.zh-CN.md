@@ -3,7 +3,13 @@
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
 
-## 尚未发布
+## 1.5.1
+
+- **菜单和启动兼容性：**修复通过 Streamline 创建显示的兼容游戏中菜单不出现的问题，以及 MechWarrior 5 使用 `dxgi.dll` 代理时的启动失败。感谢 [@kisoo8](https://github.com/kisoo8) 的报告和日志（[#92](https://github.com/SilyNoMeta/rtx-encore/issues/92)）。维护者使用测试版本确认了 A Plague Tale: Requiem 的菜单和帧生成控制，以及 MechWarrior 5 的 D3D11/D3D12 运行。
+- **RTX 20 Smooth Motion：**现在始终使用 V2。移除 V1/V2 选择器及不再使用的 V1 文件，忽略旧配置中的选择。功能仍为实验性，图形 API 和驱动要求不变。Hub 1.5.2 对 mod 1.5.1 及更高版本隐藏已移除的选择器。
+- **项目名称：**统一菜单和诊断标识为 RTX Encore。
+
+最终发布文件未单独进行游戏内复测。发布验证仅包括编译、针对性检查和文件完整性；未重新运行完整自动化测试套件。
 
 - **赞助支持：**感谢 [@Scarhead666](https://github.com/Scarhead666) 赞助 RTX Encore 的开发。公开赞助者致谢显示在“关于”选项卡和项目 README 中。
 

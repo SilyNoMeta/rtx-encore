@@ -32,18 +32,12 @@ measures displayed frames, such as NVIDIA FrameView.
 
 The FPS counter estimates Smooth Motion output at **2x** and shows `2x sm` (for example, `148/74 fps 2x sm`). This is an estimate, not a measurement of displayed interpolated frames.
 
-## RTX 20: V1 or V2 (from 1.3.0)
+## RTX 20
 
-RTX 20 requires **NVIDIA 621.01** and a **DirectX 12** game. In the Hub's Smooth Motion settings,
-or the in-game menu's **RTX 20 variant** control, choose **V1 (test 1)** or **V2 (test 2)**.
-V1 is the default. Restart the game after changing the variant. The configuration key is
-`smoothMotionTuringVariant`, with `"v1"` or `"v2"` as its value.
-
-Compare the same scene and settings using FrameView or the overlay, and judge image quality,
-responsiveness and smoothness too. Neither variant is always faster: reports preferred V1 on
-RTX 2070 in Resident Evil Requiem and V2 on RTX 2060 in The Witcher 3. These are tester
-observations of the experimental builds, not validation of the final 1.3.0 DLL.
-The selector has no effect on RTX 30, 40 or 50.
+RTX 20 requires **NVIDIA 621.01** and a **DirectX 12** game. From 1.5.1, RTX 20 always uses
+V2, which users found the faster of the two; there is no variant to choose any
+more. A `smoothMotionTuringVariant` line left in an older configuration file is ignored.
+This has no effect on RTX 30, 40 or 50.
 
 ## What was observed
 

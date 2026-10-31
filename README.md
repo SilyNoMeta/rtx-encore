@@ -31,7 +31,9 @@ One file next to the game, a built-in menu, nothing else to install.
 > It loads inside the game: do not use it in online or anti-cheat protected games, where it can be blocked or get an
 > account flagged. Back up every file you replace.
 
-**[Latest: 1.5.0](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.5.0)** · [Release notes](CHANGELOG.md) · [Hub 1.5.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.5.0)
+**[Latest: 1.5.1](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.5.1)** · [Release notes](CHANGELOG.md) · [Hub 1.5.2](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.5.2)
+
+**1.5.1:** menu/startup compatibility fixes and Smooth Motion V2 by default on RTX 20. [Release notes](CHANGELOG.md).
 
 ## 1.5.0: XeSS and XeFG on NVIDIA Tensor Cores
 

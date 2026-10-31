@@ -30,16 +30,11 @@ Smooth Motion 是 NVIDIA 驱动的插帧功能：在 DirectX 11、DirectX 12 和
 
 FPS 计数器按 **2 倍**估算 Smooth Motion 输出，并显示 `2x sm`（例如 `148/74 fps 2x sm`）。这是估算值，并非对实际显示插值帧的测量。
 
-## RTX 20：V1 或 V2（从 1.3.0 起）
+## RTX 20
 
-RTX 20 需要 **NVIDIA 621.01** 驱动和 **DirectX 12** 游戏。在 Hub 的 Smooth Motion 设置中，
-或游戏内菜单的 **RTX 20 variant** 选项中，选择 **V1（测试版 1）** 或 **V2（测试版 2）**。
-默认使用 V1。每次更改后需重启游戏。配置键为 `smoothMotionTuringVariant`，值为 `"v1"` 或 `"v2"`。
-
-请在相同场景和设置下使用 FrameView 或叠加层比较，同时观察画质、响应和流畅度。
-没有始终更快的版本：RTX 2070 用户在 Resident Evil Requiem 中偏好 V1，RTX 2060 用户在
-The Witcher 3 中偏好 V2。这些反馈针对实验测试版，并非对最终 1.3.0 DLL 的验证。
-此选项不影响 RTX 30、40 或 50。
+RTX 20 需要 **NVIDIA 621.01** 驱动和 **DirectX 12** 游戏。从 1.5.1 起，RTX 20 始终使用
+V2（用户反馈中速度更快的版本），不再需要选择版本。旧配置文件中残留的
+`smoothMotionTuringVariant` 会被忽略。此变更不影响 RTX 30、40 或 50。
 
 ## 已观察到的结果
 

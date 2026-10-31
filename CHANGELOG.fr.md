@@ -3,7 +3,13 @@
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
 
-## À paraître
+## 1.5.1
+
+- **Compatibilité du menu et du démarrage :** corrige le menu absent dans les jeux compatibles qui créent leur affichage via Streamline, ainsi qu’un échec au démarrage avec le proxy `dxgi.dll` dans MechWarrior 5. Merci à [@kisoo8](https://github.com/kisoo8) pour le signalement et les journaux ([#92](https://github.com/SilyNoMeta/rtx-encore/issues/92)). Le propriétaire a confirmé le menu et les commandes de génération d’images dans A Plague Tale: Requiem, ainsi que le fonctionnement D3D11/D3D12 dans MechWarrior 5, sur des builds de test.
+- **Smooth Motion RTX 20 :** V2 est désormais toujours utilisée. Le sélecteur V1/V2 et les fichiers V1 inutilisés sont retirés ; les anciens choix enregistrés sont ignorés. La fonction reste expérimentale, avec les mêmes conditions d’API graphique et de pilote. Le Hub 1.5.2 masque le sélecteur retiré pour le mod 1.5.1 et les suivants.
+- **Nom du projet :** harmonise les identifiants du menu et des diagnostics avec RTX Encore.
+
+Les binaires finaux n’ont pas de retest distinct en jeu. La validation de publication se limite à la compilation, aux contrôles ciblés et à l’intégrité des livrables ; la suite automatisée complète n’a pas été relancée.
 
 - **Soutien :** merci à [@Scarhead666](https://github.com/Scarhead666) pour son soutien au développement de RTX Encore. Les remerciements aux sponsors publics figurent dans l’onglet À propos et les README du projet.
 
