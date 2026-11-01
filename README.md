@@ -31,9 +31,9 @@ One file next to the game, a built-in menu, nothing else to install.
 > It loads inside the game: do not use it in online or anti-cheat protected games, where it can be blocked or get an
 > account flagged. Back up every file you replace.
 
-**[Latest: 1.5.2](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.5.2)** · [Release notes](CHANGELOG.md) · [Hub 1.5.2](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.5.2)
+**[Latest: 1.5.3](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.5.3)** · [Release notes](CHANGELOG.md) · [Hub 1.5.3](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.5.3)
 
-**1.5.2:** live V-Sync Game / Off / On in the in-game menu for compatible DirectX games. [Release notes](CHANGELOG.md).
+**1.5.3:** experimental Tensor admission on RTX 30/40/50 and driver 621.12, RR preset F, XeFG compatibility and the MSFS 2024 menu fix. [Release notes](CHANGELOG.md).
 
 ## 1.5.0: XeSS and XeFG on NVIDIA Tensor Cores
 
@@ -58,8 +58,8 @@ XeSS, XeFG and the native XeFG → DLSS FG adapter are experimental and require 
 
 | | Feature | In short |
 | :---: | :--- | :--- |
-| ⚡ | **[XeSS Tensor Cores](docs/INTEL-ENGINES.md)** | Experimental NVIDIA Tensor Cores for XeSS Super Resolution; toggle live at the next XeSS execution. Initial qualification: RTX 4090, NVIDIA 621.01, DirectX 12 and the Intel runtime supplied by Hub. Refused preparation retains standard XeSS. |
-| ⚡ | **[XeFG Tensor Cores](docs/INTEL-ENGINES.md)** | Experimental NVIDIA Tensor Cores for XeFG; fixed X2–X6 within initialized capacity. Toggle live as command recordings renew. Initial qualification: RTX 4090, NVIDIA 621.01, DirectX 12 and the Intel runtime supplied by Hub. Refused preparation retains standard XeFG; an execution fault requires a restart. |
+| ⚡ | **[XeSS Tensor Cores](docs/INTEL-ENGINES.md)** | Experimental NVIDIA Tensor Cores for XeSS Super Resolution; toggle live at the next XeSS execution. Initial qualification: RTX 4090, NVIDIA 621.01, DirectX 12 and the Intel runtime supplied by Hub. Other RTX 40, RTX 30 and RTX 50 adapters, on NVIDIA 621.01 or the 621.12 hotfix, are admitted with the same acceleration built for their architecture, not yet validated in-game. Refused preparation retains standard XeSS. |
+| ⚡ | **[XeFG Tensor Cores](docs/INTEL-ENGINES.md)** | Experimental NVIDIA Tensor Cores for XeFG; fixed X2–X6 within initialized capacity. Toggle live as command recordings renew. Initial qualification: RTX 4090, NVIDIA 621.01, DirectX 12 and the Intel runtime supplied by Hub. Other RTX 40, RTX 30 and RTX 50 adapters, on NVIDIA 621.01 or the 621.12 hotfix, are admitted with the same acceleration built for their architecture, not yet validated in-game. Refused preparation retains standard XeFG; an execution fault requires a restart. |
 | 🧪 | **[Intel engines (experimental)](docs/INTEL-ENGINES.md)** | XeSS reconstruction or XeFG frame generation with XeLL, where compatible game inputs and runtimes allow them. Off by default. |
 | 🔆 | **[Live sharpening](docs/SUPER-RESOLUTION.md)** | Off / Game / Custom, after reconstruction and NR. Custom 0–100%, default 30%; appearance and Vulkan operation remain unvalidated. |
 | 🎞️ | **[Frame generation X2 to X6](docs/FRAME-GENERATION.md)** | DLSS Multi Frame Generation on RTX 20, 30 and 40, in games with compatible DLSS or native Intel frame generation. Fixed multiplier, Dynamic mode with a target frame rate, or the game's own choice. |

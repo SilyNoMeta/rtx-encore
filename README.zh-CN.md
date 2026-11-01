@@ -31,9 +31,9 @@ Smooth Motion 和 Neural Rendering。**
 > 它在游戏进程内加载：请勿在联机游戏或受反作弊保护的游戏中使用，否则可能被拦截，或导致账号被标记。
 > 替换任何文件之前请先备份。
 
-**[最新版本：1.5.2](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.5.2)** · [版本说明](CHANGELOG.zh-CN.md) · [Hub 1.5.2](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.5.2)
+**[最新版本：1.5.3](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.5.3)** · [版本说明](CHANGELOG.zh-CN.md) · [Hub 1.5.3](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.5.3)
 
-**1.5.2：**在兼容 DirectX 游戏的游戏内菜单中即时切换 V-Sync 游戏 / 关闭 / 开启。[版本说明](CHANGELOG.zh-CN.md)。
+**1.5.3：**RTX 30/40/50 与 621.12 驱动的实验性 Tensor 准入、RR 预设 F、XeFG 兼容性及 MSFS 2024 菜单修复。[版本说明](CHANGELOG.zh-CN.md)。
 
 ## 1.5.0：使用 NVIDIA Tensor Core 的 XeSS 与 XeFG
 
@@ -58,8 +58,8 @@ XeSS、XeFG 和原生 XeFG → DLSS FG 适配器仍属实验功能，需要兼�
 
 | | 功能 | 简介 |
 | :---: | :--- | :--- |
-| ⚡ | **[XeSS Tensor Cores](docs/INTEL-ENGINES.zh-CN.md)** | 实验性 NVIDIA Tensor Core XeSS Super Resolution，在下次 XeSS 执行时即时切换。初始验证：RTX 4090、NVIDIA 621.01、DirectX 12 和 Hub 提供的 Intel 运行库。准备未通过时保留标准 XeSS。 |
-| ⚡ | **[XeFG Tensor Cores](docs/INTEL-ENGINES.zh-CN.md)** | 实验性 NVIDIA Tensor Core XeFG；在初始化容量内支持固定 X2–X6。切换在命令重新记录时生效。初始验证：RTX 4090、NVIDIA 621.01、DirectX 12 和 Hub 提供的 Intel 运行库。准备未通过时保留标准 XeFG；执行故障后须重启。 |
+| ⚡ | **[XeSS Tensor Cores](docs/INTEL-ENGINES.zh-CN.md)** | 实验性 NVIDIA Tensor Core XeSS Super Resolution，在下次 XeSS 执行时即时切换。初始验证：RTX 4090、NVIDIA 621.01、DirectX 12 和 Hub 提供的 Intel 运行库。其他 RTX 40、RTX 30 与 RTX 50 显卡在 NVIDIA 621.01 或 621.12 热修复驱动下以为各架构编译的同一加速路径准入，尚未在该硬件上完成游戏内验证。准备未通过时保留标准 XeSS。 |
+| ⚡ | **[XeFG Tensor Cores](docs/INTEL-ENGINES.zh-CN.md)** | 实验性 NVIDIA Tensor Core XeFG；在初始化容量内支持固定 X2–X6。切换在命令重新记录时生效。初始验证：RTX 4090、NVIDIA 621.01、DirectX 12 和 Hub 提供的 Intel 运行库。其他 RTX 40、RTX 30 与 RTX 50 显卡在 NVIDIA 621.01 或 621.12 热修复驱动下以为各架构编译的同一加速路径准入，尚未在该硬件上完成游戏内验证。准备未通过时保留标准 XeFG；执行故障后须重启。 |
 | 🧪 | **[Intel 引擎（实验性）](docs/INTEL-ENGINES.zh-CN.md)** | 兼容游戏输入和运行库允许时，使用 XeSS 重建或搭配 XeLL 的 XeFG 帧生成。默认关闭。 |
 | 🔆 | **[实时锐化](docs/SUPER-RESOLUTION.zh-CN.md)** | Off / Game / Custom，在重建及 NR 之后执行。Custom 为 0–100%，默认 30%；画质与 Vulkan 运行仍待验证。 |
 | 🎞️ | **[X2 至 X6 帧生成](docs/FRAME-GENERATION.zh-CN.md)** | 在自带 DLSS 帧生成的游戏中，为 RTX 20、30 和 40 提供 DLSS 多帧生成。可选固定倍率、带目标帧率的动态模式，或交给游戏决定。 |

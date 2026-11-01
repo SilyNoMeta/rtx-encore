@@ -26,8 +26,8 @@ Aucune clé ne contient de chemin ni de commande : un fichier de réglages peut 
 | :--- | :---: | :--- |
 | `reconstructionEngine` | `game` | `game` ou `xess` ; remplace le traitement Super Resolution/DLAA compatible par XeSS. Ray Reconstruction garde son moteur original. |
 | `frameGenerationEngine` | `game` | `game`, `dlss-fg` ou `xefg`. Jeu conserve le FG natif ; DLSS-FG remplace le FG Intel natif qualifié par le DLSS FG NVIDIA ; XeFG remplace le DLSS FG compatible par Intel XeFG. Redémarrage requis. |
-| `xessTensorCores` | `false` | Tensor Cores NVIDIA expérimentaux pour XeSS Super Resolution ; bascule à chaud au prochain calcul XeSS. Qualification initiale : RTX 4090, NVIDIA 621.01, DirectX 12 et runtime Intel fourni par le Hub. Une préparation refusée conserve le XeSS classique. |
-| `xefgTensorCores` | `false` | Tensor Cores NVIDIA expérimentaux pour XeFG ; facteurs fixes X2–X6 dans la capacité initialisée. Bascule à chaud au renouvellement des commandes. Qualification initiale : RTX 4090, NVIDIA 621.01, DirectX 12 et runtime Intel fourni par le Hub. Une préparation refusée conserve le XeFG classique ; une erreur d’exécution impose un redémarrage. |
+| `xessTensorCores` | `false` | Tensor Cores NVIDIA expérimentaux pour XeSS Super Resolution ; bascule à chaud au prochain calcul XeSS. Qualification initiale : RTX 4090, NVIDIA 621.01, DirectX 12 et runtime Intel fourni par le Hub. Les autres RTX 40, les RTX 30 et les RTX 50, avec NVIDIA 621.01 ou le hotfix 621.12, sont admises avec la même accélération compilée pour leur architecture, sans validation en jeu à ce jour. Une préparation refusée conserve le XeSS classique. |
+| `xefgTensorCores` | `false` | Tensor Cores NVIDIA expérimentaux pour XeFG ; facteurs fixes X2–X6 dans la capacité initialisée. Bascule à chaud au renouvellement des commandes. Qualification initiale : RTX 4090, NVIDIA 621.01, DirectX 12 et runtime Intel fourni par le Hub. Les autres RTX 40, les RTX 30 et les RTX 50, avec NVIDIA 621.01 ou le hotfix 621.12, sont admises avec la même accélération compilée pour leur architecture, sans validation en jeu à ce jour. Une préparation refusée conserve le XeFG classique ; une erreur d’exécution impose un redémarrage. |
 | `xefgMfg4VariablePacing` | `true` | Espacement expérimental des images XeFG au-delà de X2 ; le désactiver peut rendre les facteurs élevés indisponibles. |
 | `xefgUiHandling` | `interpolate` | `interpolate` ou `game` ; le traitement séparé de l’interface du jeu exige des entrées compatibles. |
 | `xefgUiAlpha` | `unknown` | `unknown`, `straight` ou `premultiplied` ; laissez unknown si le format de l’interface est inconnu. |
@@ -87,7 +87,7 @@ ni le multiplicateur d'images, ni le preset NR.
 | Clé | Défaut | Valeurs |
 | :--- | :---: | :--- |
 | `dlssSrPreset` | `"game"` | `"game"`, `"default"`, `"a"`–`"f"` (anciens), `"j"`, `"k"`, `"l"`, `"m"` |
-| `dlssRrPreset` | `"game"` | `"game"`, `"default"`, `"a"`–`"c"` (anciens), `"d"`, `"e"` |
+| `dlssRrPreset` | `"game"` | `"game"`, `"default"`, `"a"`–`"c"` (anciens), `"d"`, `"e"`, `"f"` (RR2, DLL Ray Reconstruction 310.9.1 ou plus récente) |
 | `dlssFgPreset` | `"game"` | `"game"`, `"a"`, `"b"`, `"c"` |
 | `dlssFgLite` | `"game"` | Diagnostic uniquement, JSON : `"game"`, `"off"`, `"on"` |
 | `dlssNrPreset` | `"b"` | Réseau de Neural Rendering avec `nvngx_dlssnr.dll` 310.9.16 : `"b"` (plus petit, bien plus rapide), `"a"` (le réseau de 310.8.0) ou `"auto"` (le choix du fichier, B). Un seul réseau avec 310.8.0. S'applique en direct. Le `nrPreset` des anciens fichiers est lu sous ce nom, avec sa valeur ; ses valeurs `0` à `3` sont encore lues. |

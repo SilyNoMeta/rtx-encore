@@ -3,6 +3,17 @@
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
 
+## 1.5.3
+
+- **Microsoft Flight Simulator 2024 menu:** fixes menu attachment in compatible Streamline configurations where the menu did not open. Thanks to [@jtsorlinis](https://github.com/jtsorlinis) for the report and detailed logs ([#94](https://github.com/SilyNoMeta/rtx-encore/issues/94)). Reporter confirmation of this fix is still pending.
+
+- **XeFG with ReShade add-ons and hand-installed games:** the XeFG engine refused to start when the game's device reached Streamline through a ReShade proxy (RenoDX and other add-ons), and when the mod was installed by hand without the Hub, even though the game shipped the qualified Intel runtimes. Both cases now proceed; the Hub-installed runtimes keep priority when present. Reported in Crimson Desert ([issue 93](https://github.com/SilyNoMeta/rtx-encore/issues/93)); not yet confirmed in-game by the reporter.
+- **NVIDIA 621.12 hotfix:** the XeFG and XeSS Tensor Cores options, previously refused on any driver other than 621.01, also accept the 621.12 hotfix of 27 October. Its driver file was identified from the package itself and has not been validated in-game; if the driver does not behave exactly as expected, the options fall back to the standard Intel path. Driver Smooth Motion on RTX 20/30 still requires one of its listed drivers.
+- **Ray Reconstruction preset F:** the RR model preset now offers F, the second-generation transformer (RR2) shipped with Ray Reconstruction DLL 310.9.1 and later. Older DLLs ignore it and keep their default ([issue 95](https://github.com/SilyNoMeta/rtx-encore/issues/95)).
+- **XeFG and XeSS Tensor Cores on RTX 30, every RTX 40 and RTX 50:** both options were admitted on the RTX 4090 only. They now accept every NVIDIA RTX 30, RTX 40 and RTX 50 adapter on NVIDIA 621.01, with the same acceleration built for each architecture. RTX 20 remains refused and keeps the standard Intel path. Only the RTX 4090 has been validated in-game so far; please report your GPU, driver and game when you try it ([issue 99](https://github.com/SilyNoMeta/rtx-encore/issues/99)).
+
+Thanks also to [@pradeepkumar35](https://github.com/pradeepkumar35) (#93), [@dm1z0r](https://github.com/dm1z0r) (#95) and [@Edward24RD](https://github.com/Edward24RD) (#99) for their reports and requests. The new Tensor admissions and 621.12 remain experimental; in-game qualification is still limited to the earlier RTX 4090 / 621.01 setup. No new performance gain is claimed. Final 1.5.3 binaries have no separate game retest. Release checks cover compilation, focused regressions and archive integrity; the full suite was not rerun.
+
 ## 1.5.2
 
 - **V-Sync On:** the V-Sync setting in Frames → Frame pacing now offers Game, Off and On. On asks DirectX games to present with V-Sync, for games that gray out their V-Sync with frame generation and laptops with hybrid graphics where the NVIDIA control panel V-Sync has no effect. A setting forced in the NVIDIA control panel keeps priority; no effect in Vulkan games or with XeSS-FG; On can add latency with high multipliers on a 60 Hz screen. A saved "V-Sync off" choice is kept. Thanks to [@pradeepkumar35](https://github.com/pradeepkumar35) for the request ([#93](https://github.com/SilyNoMeta/rtx-encore/issues/93)).

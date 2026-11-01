@@ -3,6 +3,17 @@
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
 
+## 1.5.3
+
+- **Microsoft Flight Simulator 2024 菜单：**修复兼容 Streamline 配置中菜单无法打开的问题。感谢 [@jtsorlinis](https://github.com/jtsorlinis) 提供报告与详细日志（[#94](https://github.com/SilyNoMeta/rtx-encore/issues/94)）。仍待报告者确认修复。
+
+- **XeFG 与 ReShade 插件及手动安装：**当游戏的设备经由 ReShade 代理（RenoDX 等插件）到达 Streamline，或在未使用 Hub 手动安装 Mod 时，即使游戏自带合格的 Intel 运行库，XeFG 引擎也会拒绝启动。两种情况现在均可正常进行；存在 Hub 安装的运行库时仍优先使用。于 Crimson Desert 报告（[issue 93](https://github.com/SilyNoMeta/rtx-encore/issues/93)）；报告者尚未在游戏内确认。
+- **NVIDIA 621.12 热修复驱动：**XeFG 与 XeSS Tensor Core 选项此前在 621.01 之外的任何驱动上都会被拒绝，现在也接受 10 月 27 日的 621.12 热修复驱动。其驱动文件从安装包本身识别，尚未经游戏内验证；若驱动行为与预期不完全一致，选项将回退到标准 Intel 路径。RTX 20/30 的驱动 Smooth Motion 仍需其列出的驱动之一。
+- **Ray Reconstruction 预设 F：**RR 模型预设现在提供 F，即 Ray Reconstruction DLL 310.9.1 及更新版本附带的第二代 transformer（RR2）。旧版 DLL 会忽略它并保留默认值（[issue 95](https://github.com/SilyNoMeta/rtx-encore/issues/95)）。
+- **XeFG 与 XeSS Tensor Core 支持 RTX 30、全部 RTX 40 与 RTX 50：**两个选项此前仅在 RTX 4090 上准入。现在在 NVIDIA 621.01 下接受所有 NVIDIA RTX 30、RTX 40 和 RTX 50 显卡，并使用为各架构编译的同一加速路径。RTX 20 仍被拒绝并保留标准 Intel 路径。目前仅 RTX 4090 完成了游戏内验证；试用时请报告你的 GPU、驱动和游戏（[issue 99](https://github.com/SilyNoMeta/rtx-encore/issues/99)）。
+
+也感谢 [@pradeepkumar35](https://github.com/pradeepkumar35)（#93）、[@dm1z0r](https://github.com/dm1z0r)（#95）及 [@Edward24RD](https://github.com/Edward24RD)（#99）的报告与建议。新增 Tensor 准入和 621.12 仍属实验性；游戏内验证仍限于较早的 RTX 4090 / 621.01 配置。不宣称新的性能提升。最终 1.5.3 文件未单独进行游戏内复测。发布检查涵盖编译、针对性回归与压缩包完整性；未重新运行完整测试套件。
+
 ## 1.5.2
 
 - **开启 V-Sync：**Frames → Frame pacing 中的 V-Sync 设置现在提供 游戏、关闭 和 开启。开启 会请求 DirectX 游戏开启 V-Sync，适用于启用帧生成后禁用自身 V-Sync 选项的游戏，以及 NVIDIA 控制面板 V-Sync 无效的混合显卡笔记本。NVIDIA 控制面板强制设置的优先级更高；对 Vulkan 游戏和 XeSS-FG 无效；在 60 Hz 屏幕上使用高倍数时，开启 可能增加延迟。已保存的“关闭 V-Sync”选择会被保留。感谢 [@pradeepkumar35](https://github.com/pradeepkumar35) 的建议（[#93](https://github.com/SilyNoMeta/rtx-encore/issues/93)）。
