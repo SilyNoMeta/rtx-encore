@@ -3,6 +3,28 @@
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
 
+## 1.6.0
+
+La 1.6.0 pousse l'accélération de la génération d'images encore plus loin : chaque image générée coûte encore moins sur RTX 40 et RTX 30, et reste identique à celle de NVIDIA, pixel pour pixel.
+
+RTX 4090, DLSS-G 310.9.16, temps GPU de chaque image générée :
+
+| Cas | Optimisations désactivées | 1.5.3 | 1.6.0 | sur 1.5.3 | sur désactivé |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| 1080p X2 | 0,781 ms | 0,538 ms | 0,512 ms | −4,8 % | −34,4 % |
+| 1080p X6 | 0,330 ms | 0,292 ms | 0,276 ms | −5,5 % | −16,4 % |
+| 4K X2 | 1,406 ms | 1,120 ms | 1,100 ms | −1,8 % | −21,8 % |
+| 4K X6 | 0,766 ms | 0,687 ms | 0,675 ms | −1,7 % | −11,9 % |
+
+RTX 3070 Ti : les étapes réécrites tournent 4 à 5 % (premier réseau) et 21 à 24 % (second réseau) plus vite que dans la 1.5.3 ; le gain sur l'image entière n'a pas encore été mesuré en jeu, ni sur RTX 20.
+
+- **Plantage avec ReShade et le Neural Rendering (Starfield) :** avec des add-ons ReShade 6.8 comme Luma, le jeu pouvait se fermer sur une corruption de tas quelques minutes après le démarrage ou la re-création du Neural Rendering. Le Neural Rendering réutilise désormais ses descriptor heaps au lieu d'en créer et détruire un par image, ce qui sollicitait sans cesse un chemin fragile du proxy ReShade. Reproduit et corrigé sur l'installation Starfield du mainteneur avec les mods du rapporteur ; le mainteneur a ensuite joué 35 minutes avec le correctif et ces mêmes mods (ReShade et Luma), sans plantage. Merci au rapporteur de l'[issue 98](https://github.com/SilyNoMeta/rtx-encore/issues/98) pour ses journaux détaillés.
+- **Curseur du menu dans Starfield et les autres jeux Raw Input :** dans les jeux qui lisent la souris sans déplacer le curseur Windows, le curseur du menu restait figé au milieu de l'écran jusqu'à ce que le menu pause du jeu le libère. Le menu déplace désormais son curseur à partir des paquets souris eux-mêmes. Vérifié dans Starfield ; overlay ReShade ouvert, ReShade garde toujours la souris pour lui, comme pour tout autre overlay.
+
+### Problème connu
+
+- **Starfield avec Luma 2.0 (HDR natif) :** les images générées prennent un aspect en relief, avec des franges rouges et cyan, quand la caméra bouge. Cela vient de la sortie HDR de Luma associée au DLSS Frame Generation, pas de cette version : le défaut apparaît aussi avec les versions précédentes et disparaît quand Luma est désactivé. Désactivez Luma ou sa sortie HDR.
+
 ## 1.5.3
 
 - **Menu Microsoft Flight Simulator 2024 :** corrige l’apparition du menu dans les configurations Streamline compatibles où il restait absent. Merci à [@jtsorlinis](https://github.com/jtsorlinis) pour le signalement et les journaux détaillés ([#94](https://github.com/SilyNoMeta/rtx-encore/issues/94)). La confirmation du correctif par le rapporteur reste attendue.

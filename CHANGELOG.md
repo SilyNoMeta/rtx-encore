@@ -3,6 +3,28 @@
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
 
+## 1.6.0
+
+1.6.0 pushes frame-generation acceleration even further: each generated frame costs less again on RTX 40 and RTX 30, and generated frames stay identical to NVIDIA's, pixel for pixel.
+
+RTX 4090, DLSS-G 310.9.16, GPU time of each generated frame:
+
+| Case | Optimizations off | 1.5.3 | 1.6.0 | vs 1.5.3 | vs off |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| 1080p X2 | 0.781 ms | 0.538 ms | 0.512 ms | −4.8 % | −34.4 % |
+| 1080p X6 | 0.330 ms | 0.292 ms | 0.276 ms | −5.5 % | −16.4 % |
+| 4K X2 | 1.406 ms | 1.120 ms | 1.100 ms | −1.8 % | −21.8 % |
+| 4K X6 | 0.766 ms | 0.687 ms | 0.675 ms | −1.7 % | −11.9 % |
+
+RTX 3070 Ti: the rewritten stages run 4 to 5 % (first network) and 21 to 24 % (second network) faster than in 1.5.3; the gain on the whole frame has not been measured in-game yet, nor on RTX 20.
+
+- **Crash with ReShade and Neural Rendering (Starfield):** with ReShade 6.8 add-ons such as Luma loaded, the game could close with a heap corruption a few minutes after Neural Rendering started or was re-created. Neural Rendering now reuses its descriptor heaps instead of creating and destroying one per frame, which kept exercising a fragile path in the ReShade proxy. Reproduced and fixed on the maintainer's Starfield install with the reporter's mod set; the maintainer then played 35 minutes with the fix and that mod set (ReShade and Luma) without a crash. Thanks to the reporter of [issue 98](https://github.com/SilyNoMeta/rtx-encore/issues/98) for the detailed crash logs.
+- **Menu cursor in Starfield and other Raw Input games:** in games that read the mouse without moving the Windows cursor, the menu cursor stayed stuck in the middle of the screen until the game's own pause menu released it. The menu now moves its cursor from the mouse packets themselves. Checked in Starfield; with the ReShade overlay open, ReShade still keeps the mouse for itself, as it does for every other overlay.
+
+### Known issue
+
+- **Starfield with Luma 2.0 (native HDR):** generated frames look embossed, with red and cyan fringes, while the camera moves. It comes from Luma's HDR output together with DLSS Frame Generation, not from this release: it also appears with earlier versions and goes away when Luma is turned off. Turn off Luma or its HDR output.
+
 ## 1.5.3
 
 - **Microsoft Flight Simulator 2024 menu:** fixes menu attachment in compatible Streamline configurations where the menu did not open. Thanks to [@jtsorlinis](https://github.com/jtsorlinis) for the report and detailed logs ([#94](https://github.com/SilyNoMeta/rtx-encore/issues/94)). Reporter confirmation of this fix is still pending.

@@ -31,9 +31,9 @@ Smooth Motion 和 Neural Rendering。**
 > 它在游戏进程内加载：请勿在联机游戏或受反作弊保护的游戏中使用，否则可能被拦截，或导致账号被标记。
 > 替换任何文件之前请先备份。
 
-**[最新版本：1.5.3](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.5.3)** · [版本说明](CHANGELOG.zh-CN.md) · [Hub 1.5.3](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.5.3)
+**[最新版本：1.6.0](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.6.0)** · [版本说明](CHANGELOG.zh-CN.md) · [Hub 1.6.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.6.0)
 
-**1.5.3：**RTX 30/40/50 与 621.12 驱动的实验性 Tensor 准入、RR 预设 F、XeFG 兼容性及 MSFS 2024 菜单修复。[版本说明](CHANGELOG.zh-CN.md)。
+**1.6.0：**帧生成加速更进一步，生成帧仍与 NVIDIA 一致；修复星空 + ReShade 崩溃（issue 98）；Raw Input 游戏中的菜单光标。[版本说明](CHANGELOG.zh-CN.md)。
 
 ## 1.5.0：使用 NVIDIA Tensor Core 的 XeSS 与 XeFG
 
@@ -64,7 +64,7 @@ XeSS、XeFG 和原生 XeFG → DLSS FG 适配器仍属实验功能，需要兼�
 | 🔆 | **[实时锐化](docs/SUPER-RESOLUTION.zh-CN.md)** | Off / Game / Custom，在重建及 NR 之后执行。Custom 为 0–100%，默认 30%；画质与 Vulkan 运行仍待验证。 |
 | 🎞️ | **[X2 至 X6 帧生成](docs/FRAME-GENERATION.zh-CN.md)** | 在自带 DLSS 帧生成的游戏中，为 RTX 20、30 和 40 提供 DLSS 多帧生成。可选固定倍率、带目标帧率的动态模式，或交给游戏决定。 |
 | 🛡️ | **更干净的生成帧** | 防止细小几何体（栅栏、电线、植被）撕裂，减少移动阴影中的瑕疵；界面和文字保持清晰。 |
-| ⚡ | **更轻量的帧生成** | 一个性能选项，在不改变画面的前提下降低每个生成帧的 GPU 开销。 |
+| ⚡ | **更轻量的帧生成** | 一个性能选项，在不改变画面的前提下降低每个生成帧的 GPU 开销。1.6.0 中进一步提升：在 RTX 4090 上，1080p X2 下每个生成帧的 GPU 时间比关闭该选项少 34%，1080p X6 下少 16%。 |
 | 🌀 | **[RTX 20 / 30 上的 Smooth Motion](docs/SMOOTH-MOTION.zh-CN.md)** | NVIDIA 驱动的插帧功能，也适用于没有 DLSS 的游戏：RTX 30 支持 DirectX 11、DirectX 12 和 Vulkan；**RTX 20 为实验性支持**，限 DirectX 12、621.01 驱动，可选 V1 / V2。默认关闭。 |
 | ✨ | **[Neural Rendering](docs/NEURAL-RENDERING.zh-CN.md)** | 在 RTX 20、30 和 40 上运行 NR，并提供 RTX Encore 自行开发的 Ampere 性能选项：优化处理、Fast 精度、独立的 NR 分辨率。支持一至四遍处理、每遍独立风格以及 HDR。实验性功能，默认关闭。 |
 | 🎛️ | **[内置菜单和叠加层](docs/MENU-AND-OVERLAY.zh-CN.md)** | 在游戏中按 **Insert**：所有设置、每项功能的状态，以及显示帧率、倍率、帧时间稳定性、GPU 和显存的叠加层。支持 DirectX 11、DirectX 12 和 Vulkan。 |

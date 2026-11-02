@@ -52,6 +52,8 @@ See the end of their pages: [Smooth Motion](SMOOTH-MOTION.md#if-it-does-not-work
 | :--- | :--- |
 | **Insert** does nothing | The mod is not loaded (see above), or the shortcut was changed: look at `menuState` in `rtx-encore.jsonc`. |
 | The menu opens in a separate window | Expected in a few games: see [Menu and overlay](MENU-AND-OVERLAY.md#when-the-menu-opens-in-a-separate-window). |
+| The menu cursor stays still in the middle of the screen | Fixed for games that read the mouse without the Windows cursor (Starfield). If it still happens, pressing **Esc** in the game frees the cursor; please report the game. |
+| The mouse ignores the menu while the ReShade overlay is open | ReShade blocks the mouse for every other overlay while its own is open. Close the ReShade overlay to use the menu. |
 | Clicks do not register | Release every mouse button, then click again. Borderless window mode helps. |
 | Settings revert at once | The settings file could not be saved: make sure it is not read-only, nor open and locked in an editor. |
 | A setting has no effect | Settings marked with `*` are read when the game starts: restart the game. |

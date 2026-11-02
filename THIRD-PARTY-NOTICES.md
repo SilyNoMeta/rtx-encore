@@ -10,7 +10,6 @@ subject to their own terms.
 | :--- | :--- | :--- |
 | [DLSSG-Transfusion](https://github.com/TonyJoaca/DLSSG-Transfusion) | Copyright (c) 2026 Michael Robles | MIT |
 | [RTX40MFG-Unlock](https://github.com/dashdogy/RTX40MFG-Unlock) | Copyright (c) 2026 Michael Robles | MIT |
-| [dlssg_for_sm86](https://github.com/sdli1995/dlssg_for_sm86) | Copyright (c) 2026 sdli1995 | MIT |
 | RTX-Unlocker-RenoDX | Copyright (c) 2026 ImDreamt | MIT |
 | [dlss5-bridge](https://github.com/Yukikaze20170315/dlss5-bridge) | Copyright (c) 2026 NIGos | MIT |
 | [RenoDX-DLSS5-Generic](https://github.com/PEQHUB/RenoDX-DLSS5-Generic) | Copyright (c) 2025 Carlos Lopez Jr. | MIT |

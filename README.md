@@ -31,9 +31,9 @@ One file next to the game, a built-in menu, nothing else to install.
 > It loads inside the game: do not use it in online or anti-cheat protected games, where it can be blocked or get an
 > account flagged. Back up every file you replace.
 
-**[Latest: 1.5.3](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.5.3)** · [Release notes](CHANGELOG.md) · [Hub 1.5.3](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.5.3)
+**[Latest: 1.6.0](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.6.0)** · [Release notes](CHANGELOG.md) · [Hub 1.6.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.6.0)
 
-**1.5.3:** experimental Tensor admission on RTX 30/40/50 and driver 621.12, RR preset F, XeFG compatibility and the MSFS 2024 menu fix. [Release notes](CHANGELOG.md).
+**1.6.0:** frame-generation acceleration pushed even further, frames still identical to NVIDIA's; Starfield + ReShade crash fix (issue 98); menu cursor in Raw Input games. [Release notes](CHANGELOG.md).
 
 ## 1.5.0: XeSS and XeFG on NVIDIA Tensor Cores
 
@@ -64,7 +64,7 @@ XeSS, XeFG and the native XeFG → DLSS FG adapter are experimental and require 
 | 🔆 | **[Live sharpening](docs/SUPER-RESOLUTION.md)** | Off / Game / Custom, after reconstruction and NR. Custom 0–100%, default 30%; appearance and Vulkan operation remain unvalidated. |
 | 🎞️ | **[Frame generation X2 to X6](docs/FRAME-GENERATION.md)** | DLSS Multi Frame Generation on RTX 20, 30 and 40, in games with compatible DLSS or native Intel frame generation. Fixed multiplier, Dynamic mode with a target frame rate, or the game's own choice. |
 | 🛡️ | **Cleaner generated frames** | Protection against tearing on thin geometry (fences, wires, foliage) and against artifacts in moving shadows; sharp HUD and text. |
-| ⚡ | **Lighter frame generation** | A performance option that lowers the GPU cost of each generated frame without changing the image. |
+| ⚡ | **Lighter frame generation** | A performance option that lowers the GPU cost of each generated frame without changing the image. Pushed even further in 1.6.0: on an RTX 4090, a generated frame costs 34 % less GPU time than with the option off at 1080p X2, 16 % at 1080p X6. |
 | 🌀 | **[Smooth Motion on RTX 20 / 30](docs/SMOOTH-MOTION.md)** | NVIDIA's driver frame interpolation, including games without DLSS: DirectX 11, DirectX 12 and Vulkan on RTX 30; **experimental RTX 20 support** in DirectX 12 with driver 621.01 and V1 / V2 variants. Off by default. |
 | ✨ | **[Neural Rendering](docs/NEURAL-RENDERING.md)** | NR on RTX 20, 30 and 40, with RTX Encore's own performance options for Ampere: optimized processing, Fast precision, independent NR resolution. One to four passes, a style for each, HDR support. Experimental, off by default. |
 | 🎛️ | **[Built-in menu and overlay](docs/MENU-AND-OVERLAY.md)** | Press **Insert** in the game: every setting, the state of each feature, and an overlay with frame rate, multiplier, frame pacing, GPU and VRAM. DirectX 11, DirectX 12 and Vulkan. |

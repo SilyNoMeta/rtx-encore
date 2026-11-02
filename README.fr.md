@@ -31,9 +31,9 @@ Un seul fichier à côté du jeu, un menu intégré, rien d'autre à installer.
 > Il se charge dans le jeu : ne l'utilisez pas dans un jeu en ligne ou protégé par un anti-triche, où il peut être
 > bloqué ou faire signaler un compte. Sauvegardez chaque fichier que vous remplacez.
 
-**[Dernière version : 1.5.3](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.5.3)** · [Notes de version](CHANGELOG.fr.md) · [Hub 1.5.3](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.5.3)
+**[Dernière version : 1.6.0](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.6.0)** · [Notes de version](CHANGELOG.fr.md) · [Hub 1.6.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.6.0)
 
-**1.5.3 :** admission Tensor expérimentale sur RTX 30/40/50 et pilote 621.12, preset RR F, compatibilité XeFG et correctif du menu MSFS 2024. [Notes de version](CHANGELOG.fr.md).
+**1.6.0 :** accélération de la génération d'images poussée encore plus loin, images toujours identiques à NVIDIA ; correctif Starfield + ReShade (issue 98) ; curseur du menu dans les jeux Raw Input. [Notes de version](CHANGELOG.fr.md).
 
 ## 1.5.0 : XeSS et XeFG sur les Tensor Cores NVIDIA
 
@@ -64,7 +64,7 @@ XeSS, XeFG et l’adaptateur XeFG natif → DLSS FG sont expérimentaux et exige
 | 🔆 | **[Netteté à chaud](docs/SUPER-RESOLUTION.fr.md)** | Off / Game / Custom, après reconstruction et NR. Custom de 0 à 100 %, défaut 30 % ; rendu et fonctionnement Vulkan encore à valider. |
 | 🎞️ | **[Génération d'images X2 à X6](docs/FRAME-GENERATION.fr.md)** | DLSS Multi Frame Generation sur RTX 20, 30 et 40, dans les jeux à génération DLSS ou Intel native compatible. Multiplicateur fixe, mode Dynamique avec une fréquence cible, ou choix laissé au jeu. |
 | 🛡️ | **Images générées plus propres** | Protection contre les déchirures sur la géométrie fine (grillages, câbles, feuillages) et contre les défauts dans les ombres en mouvement ; interface et texte nets. |
-| ⚡ | **Génération d'images plus légère** | Une option de performance qui réduit le coût GPU de chaque image générée sans changer l'image. |
+| ⚡ | **Génération d'images plus légère** | Une option de performance qui réduit le coût GPU de chaque image générée sans changer l'image. Poussée encore plus loin dans la 1.6.0 : sur RTX 4090, une image générée coûte 34 % de temps GPU de moins qu'option désactivée en 1080p X2, 16 % en 1080p X6. |
 | 🌀 | **[Smooth Motion sur RTX 20 / 30](docs/SMOOTH-MOTION.fr.md)** | L'interpolation d'images du pilote NVIDIA, y compris sans DLSS : DirectX 11, DirectX 12 et Vulkan sur RTX 30 ; prise en charge **expérimentale sur RTX 20**, en DirectX 12 avec le pilote 621.01 et les variantes V1 / V2. Désactivé par défaut. |
 | ✨ | **[Neural Rendering](docs/NEURAL-RENDERING.fr.md)** | NR sur RTX 20, 30 et 40, avec les options de performance Ampere développées par RTX Encore : traitement optimisé, précision Fast, résolution NR indépendante. Une à quatre passes, un style pour chacune, prise en charge du HDR. Expérimental, désactivé par défaut. |
 | 🎛️ | **[Menu et overlay intégrés](docs/MENU-AND-OVERLAY.fr.md)** | Appuyez sur **Inser** dans le jeu : tous les réglages, l'état de chaque fonction, et un overlay avec la fréquence d'images, le multiplicateur, la régularité des images, le GPU et la VRAM. DirectX 11, DirectX 12 et Vulkan. |

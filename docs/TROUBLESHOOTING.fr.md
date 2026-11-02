@@ -52,6 +52,8 @@ Voir la fin de leurs pages : [Smooth Motion](SMOOTH-MOTION.fr.md#si-cela-ne-fonc
 | :--- | :--- |
 | **Inser** ne fait rien | Le mod n'est pas chargé (voir plus haut), ou le raccourci a été changé : regardez `menuState` dans `rtx-encore.jsonc`. |
 | Le menu s'ouvre dans une fenêtre séparée | Normal dans quelques jeux : voir [Menu et overlay](MENU-AND-OVERLAY.fr.md#quand-le-menu-souvre-dans-une-fenêtre-séparée). |
+| Le curseur du menu reste figé au milieu de l'écran | Corrigé pour les jeux qui lisent la souris sans le curseur Windows (Starfield). Si cela se reproduit, **Échap** dans le jeu libère le curseur ; signalez le jeu. |
+| La souris ignore le menu quand l'overlay ReShade est ouvert | ReShade bloque la souris pour tout autre overlay tant que le sien est ouvert. Fermez l'overlay ReShade pour utiliser le menu. |
 | Les clics ne sont pas pris en compte | Relâchez tous les boutons de la souris, puis cliquez de nouveau. Le mode fenêtré sans bordure aide. |
 | Les réglages reviennent aussitôt en arrière | Le fichier de réglages n'a pas pu être enregistré : vérifiez qu'il n'est ni en lecture seule, ni ouvert et verrouillé dans un éditeur. |
 | Un réglage n'a aucun effet | Les réglages marqués `*` sont lus au démarrage du jeu : relancez le jeu. |

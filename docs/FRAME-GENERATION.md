@@ -74,13 +74,19 @@ leave it at its default. See [settings](SETTINGS.md#dlsspresets).
 
 ### Fast frame generation
 
-**Fast frame generation** reduces GPU work while preserving the intended image. Earlier measurements with
-DLSS-G 310.9.1 on an RTX 3070 Ti Laptop at 1080p:
+**Fast frame generation** reduces GPU work and keeps generated frames identical to NVIDIA's, pixel for pixel.
+1.6.0 pushes it even further. RTX 4090, DLSS-G 310.9.16, GPU time of each generated frame:
 
-| Multiplier | Option off | Option on | Difference |
-| :---: | ---: | ---: | ---: |
-| X2 | 2.33 ms | 1.57 ms | −33 % |
-| X6 | 6.38 ms | 5.23 ms | −18 % |
+| Case | Optimizations off | 1.5.3 | 1.6.0 | vs 1.5.3 | vs off |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| 1080p X2 | 0.781 ms | 0.538 ms | 0.512 ms | −4.8 % | −34.4 % |
+| 1080p X6 | 0.330 ms | 0.292 ms | 0.276 ms | −5.5 % | −16.4 % |
+| 4K X2 | 1.406 ms | 1.120 ms | 1.100 ms | −1.8 % | −21.8 % |
+| 4K X6 | 0.766 ms | 0.687 ms | 0.675 ms | −1.7 % | −11.9 % |
+
+RTX 3070 Ti: the rewritten stages run 4 to 5 % (first network) and 21 to 24 % (second network) faster than in
+1.5.3; the gain on the whole frame has not been measured in-game yet. Earlier measurement of the option with
+DLSS-G 310.9.1 on an RTX 3070 Ti Laptop at 1080p, whole frame: X2 2.33 → 1.57 ms (−33 %), X6 6.38 → 5.23 ms (−18 %).
 
 These figures come from one system; they are not a promise for every card or game and do not apply to Lite.
 The option is available for individually qualified 310.9.0, 310.9.1 and 310.9.16 files. With 310.9.16 it follows

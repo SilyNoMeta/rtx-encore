@@ -3,6 +3,28 @@
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
 
+## 1.6.0
+
+1.6.0 将帧生成加速推向更进一步：在 RTX 40 和 RTX 30 上，每一帧生成帧的开销再次降低，且与 NVIDIA 的输出逐像素一致。
+
+RTX 4090，DLSS-G 310.9.16，每一帧生成帧的 GPU 时间：
+
+| 场景 | 关闭优化 | 1.5.3 | 1.6.0 | 相比 1.5.3 | 相比关闭 |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| 1080p X2 | 0.781 ms | 0.538 ms | 0.512 ms | −4.8 % | −34.4 % |
+| 1080p X6 | 0.330 ms | 0.292 ms | 0.276 ms | −5.5 % | −16.4 % |
+| 4K X2 | 1.406 ms | 1.120 ms | 1.100 ms | −1.8 % | −21.8 % |
+| 4K X6 | 0.766 ms | 0.687 ms | 0.675 ms | −1.7 % | −11.9 % |
+
+RTX 3070 Ti：重写后的各阶段比 1.5.3 快 4% 到 5%（第一网络）和 21% 到 24%（第二网络）；整帧收益尚未在游戏中实测，RTX 20 也尚未测量。
+
+- **ReShade 与 Neural Rendering 同时使用时崩溃（星空）：** 加载 Luma 等 ReShade 6.8 插件时，Neural Rendering 启动或重建几分钟后，游戏可能因堆损坏而关闭。Neural Rendering 现在复用其描述符堆，而不再每帧创建并销毁一个，后者会不断触发 ReShade 代理中一条脆弱的路径。已在维护者的星空安装上用报告者的模组组合复现并修复；维护者随后使用该修复和同一模组组合（ReShade 与 Luma）游玩了 35 分钟，未出现崩溃。感谢 [issue 98](https://github.com/SilyNoMeta/rtx-encore/issues/98) 的报告者提供详细的崩溃日志。
+- **星空及其他 Raw Input 游戏中的菜单光标：** 在不移动 Windows 光标就读取鼠标的游戏中，菜单光标会停在屏幕中央，直到游戏自己的暂停菜单释放它。菜单现在直接根据鼠标数据包移动光标。已在星空中验证；ReShade 叠加层打开时，ReShade 仍会像对待其他叠加层一样独占鼠标。
+
+### 已知问题
+
+- **星空搭配 Luma 2.0（原生 HDR）：** 镜头移动时，生成的帧呈现浮雕般的效果，并带有红色和青色边缘。这是 Luma 的 HDR 输出与 DLSS 帧生成共同造成的，并非本版本引入：旧版本同样出现，关闭 Luma 后即消失。请关闭 Luma 或其 HDR 输出。
+
 ## 1.5.3
 
 - **Microsoft Flight Simulator 2024 菜单：**修复兼容 Streamline 配置中菜单无法打开的问题。感谢 [@jtsorlinis](https://github.com/jtsorlinis) 提供报告与详细日志（[#94](https://github.com/SilyNoMeta/rtx-encore/issues/94)）。仍待报告者确认修复。
