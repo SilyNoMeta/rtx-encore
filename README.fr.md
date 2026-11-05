@@ -144,7 +144,7 @@ Ce que RTX Encore ajoute aux jeux sans DLSS ou sans génération d'images foncti
 | Pour | Fichiers | Téléchargement | Où les mettre |
 |---|---|---|---|
 | DLSS Frame Generation 310.9.16 et Streamline 2.14.16 | `nvngx_dlssg.dll` et les fichiers `sl.*.dll`, dans `bin/x64` (pas `development`) | [SDK NVIDIA Streamline 2.14.16](https://github.com/NVIDIA-RTX/Streamline/releases/download/v2.14.16/streamline-sdk-v2.14.16.zip) (tout le dossier `bin/x64` convient) | à côté de l'exécutable du jeu |
-| DLSS / DLAA 310.9.16 | `nvngx_dlss.dll` | [nvngx_dlss-310.9.16.zip](https://encore-dl.nometa.fr/nvngx_dlss-310.9.16.zip) | à côté de l'exécutable du jeu |
+| DLSS / DLAA 310.9.16 | `nvngx_dlss.dll` | [SDK NVIDIA DLSS 310.9.16](https://github.com/NVIDIA/DLSS/raw/v310.9.16/lib/Windows_x86_64/rel/nvngx_dlss.dll) | à côté de l'exécutable du jeu |
 | Neural Rendering 310.9.16 | `nvngx_dlssnr.dll` | [nvngx_dlssnr-310.9.16.zip](https://encore-dl.nometa.fr/nvngx_dlssnr-310.9.16.zip) | à côté de la DLL de RTX Encore |
 | XeSS-SR 2.0.2.68, XeFG 1.3.1.78, XeLL 1.3.2.10 | `libxess.dll`, `libxess_fg.dll`, `libxell.dll`, dans `bin` | [SDK Intel XeSS 3.0.2](https://github.com/intel/xess/releases/download/v3.0.2/XeSS_SDK_3.0.2.zip) | à côté de la DLL de RTX Encore, ou dans `rtx-encore-runtimes\intel` à côté d'elle |
 

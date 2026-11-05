@@ -143,7 +143,7 @@ RTX Encore 为没有 DLSS 或没有帧生成的游戏添加的功能，使用经
 | 用途 | 文件 | 下载 | 放置位置 |
 |---|---|---|---|
 | DLSS 帧生成 310.9.16 与 Streamline 2.14.16 | `nvngx_dlssg.dll` 和 `sl.*.dll` 文件，取自 `bin/x64`（不是 `development`） | [NVIDIA Streamline SDK 2.14.16](https://github.com/NVIDIA-RTX/Streamline/releases/download/v2.14.16/streamline-sdk-v2.14.16.zip)（可直接使用整个 `bin/x64` 文件夹） | 游戏可执行文件旁边 |
-| DLSS / DLAA 310.9.16 | `nvngx_dlss.dll` | [nvngx_dlss-310.9.16.zip](https://encore-dl.nometa.fr/nvngx_dlss-310.9.16.zip) | 游戏可执行文件旁边 |
+| DLSS / DLAA 310.9.16 | `nvngx_dlss.dll` | [NVIDIA DLSS SDK 310.9.16](https://github.com/NVIDIA/DLSS/raw/v310.9.16/lib/Windows_x86_64/rel/nvngx_dlss.dll) | 游戏可执行文件旁边 |
 | Neural Rendering 310.9.16 | `nvngx_dlssnr.dll` | [nvngx_dlssnr-310.9.16.zip](https://encore-dl.nometa.fr/nvngx_dlssnr-310.9.16.zip) | RTX Encore 的 DLL 旁边 |
 | XeSS-SR 2.0.2.68、XeFG 1.3.1.78、XeLL 1.3.2.10 | `libxess.dll`、`libxess_fg.dll`、`libxell.dll`，取自 `bin` | [Intel XeSS SDK 3.0.2](https://github.com/intel/xess/releases/download/v3.0.2/XeSS_SDK_3.0.2.zip) | RTX Encore 的 DLL 旁边，或其旁边的 `rtx-encore-runtimes\intel` 中 |
 

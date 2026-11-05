@@ -3,6 +3,12 @@
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
 
+## 2.0.1
+
+- **Installation manuelle avec les fichiers de NVIDIA :** la génération d'images pour les jeux qui n'en ont pas accepte aussi le DLSS Frame Generation 310.9.16 officiel de NVIDIA (le `nvngx_dlssg.dll` du SDK Streamline 2.14.16 et du SDK DLSS) : tous les fichiers peuvent venir des SDK de NVIDIA. Il était refusé par une erreur de détection. Merci à [@Kbx-7](https://github.com/Kbx-7) pour le signalement ([#108](https://github.com/SilyNoMeta/rtx-encore/issues/108)).
+- **Fichiers Intel XeSS à côté de RTX Encore :** XeSS-SR, XeFG et XeLL sont aussi trouvés à côté de la DLL de RTX Encore, pas seulement dans `rtx-encore-runtimes\intel`.
+- Fichiers et liens de téléchargement pour une installation manuelle : [README](README.fr.md#composants-pour-une-installation-manuelle). [RTX Encore Hub 2.0.1](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.0.1) installe les fichiers 310.9.16 officiels de NVIDIA.
+
 ## 2.0.0
 
 Les moteurs proposent Aucun pour la reconstruction et la génération ajoutées ; les runtimes absents sont masqués et les anciennes versions compatibles signalées. Ultra (75 %) rejoint les échelles DLSS SR et XeSS. Le DLSS-FG ajouté prend en charge DirectX 11, DirectX 12 et Vulkan.

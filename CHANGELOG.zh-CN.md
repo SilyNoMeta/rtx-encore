@@ -3,6 +3,12 @@
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
 
+## 2.0.1
+
+- **使用 NVIDIA 官方文件手动安装：**为没有帧生成的游戏提供的帧生成现在也接受 NVIDIA 官方的 DLSS 帧生成 310.9.16（Streamline SDK 2.14.16 和 DLSS SDK 中的 `nvngx_dlssg.dll`），所有文件都可以取自 NVIDIA 的 SDK。此前由于检测错误被拒绝。感谢 [@Kbx-7](https://github.com/Kbx-7) 的报告（[#108](https://github.com/SilyNoMeta/rtx-encore/issues/108)）。
+- **Intel XeSS 文件可放在 RTX Encore 旁边：**XeSS-SR、XeFG 和 XeLL 也会在 RTX Encore 的 DLL 旁边被找到，不再只限于 `rtx-encore-runtimes\intel`。
+- 手动安装所需的文件和下载链接：[README](README.zh-CN.md#手动安装所需的运行库)。[RTX Encore Hub 2.0.1](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.0.1) 会安装 NVIDIA 官方的 310.9.16 文件。
+
 ## 2.0.0
 
 添加的重建与帧生成引擎提供“无”选项；缺失运行库的引擎会隐藏，旧版兼容运行库会显示警告。DLSS SR 和 XeSS 新增 Ultra（75%）渲染比例。添加的 DLSS-FG 支持 DirectX 11、DirectX 12 和 Vulkan。
