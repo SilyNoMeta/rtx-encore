@@ -139,16 +139,16 @@ Other file names, the `.asi` plugin, updating and removing: **[Installation](doc
 
 ### Runtimes for a manual install
 
-What RTX Encore adds to games without DLSS or without frame generation runs on the exact runtimes it was validated with; the Hub puts them in place. By hand, take these files, then restart the game:
+RTX Encore is made and tested with these exact runtimes, in every game; the Hub puts them in place. By hand, take these files, then restart the game:
 
 | For | Files | Download | Put them |
 |---|---|---|---|
-| DLSS Frame Generation 310.9.16 and Streamline 2.14.16 | `nvngx_dlssg.dll` and the `sl.*.dll` files, from `bin/x64` (not `development`) | [NVIDIA Streamline SDK 2.14.16](https://github.com/NVIDIA-RTX/Streamline/releases/download/v2.14.16/streamline-sdk-v2.14.16.zip) (the whole `bin/x64` folder works) | next to the game's executable |
-| DLSS / DLAA 310.9.16 | `nvngx_dlss.dll` | [NVIDIA DLSS SDK 310.9.16](https://github.com/NVIDIA/DLSS/raw/v310.9.16/lib/Windows_x86_64/rel/nvngx_dlss.dll) | next to the game's executable |
+| DLSS Frame Generation 310.9.16 and Streamline 2.14.16 | `nvngx_dlssg.dll` and the `sl.*.dll` files, from `bin/x64` (not `development`) | [NVIDIA Streamline SDK 2.14.16](https://github.com/NVIDIA-RTX/Streamline/releases/download/v2.14.16/streamline-sdk-v2.14.16.zip) (the whole `bin/x64` folder works) | next to the game's executable, or in place of the game's own copies where it keeps them |
+| DLSS / DLAA and Ray Reconstruction 310.9.16 | `nvngx_dlss.dll`, `nvngx_dlssd.dll` | [NVIDIA DLSS SDK 310.9.16](https://github.com/NVIDIA/DLSS/tree/v310.9.16/lib/Windows_x86_64/rel) | next to the game's executable, or in place of the game's own copies where it keeps them |
 | Neural Rendering 310.9.16 | `nvngx_dlssnr.dll` | [nvngx_dlssnr-310.9.16.zip](https://encore-dl.nometa.fr/nvngx_dlssnr-310.9.16.zip) | next to RTX Encore's DLL |
 | XeSS-SR 2.0.2.68, XeFG 1.3.1.78, XeLL 1.3.2.10 | `libxess.dll`, `libxess_fg.dll`, `libxell.dll`, from `bin` | [Intel XeSS SDK 3.0.2](https://github.com/intel/xess/releases/download/v3.0.2/XeSS_SDK_3.0.2.zip) | next to RTX Encore's DLL, or in `rtx-encore-runtimes\intel` beside it |
 
-These exact files only: other builds or versions are refused, and the menu's **Engine** setting lists what it found.
+In games without DLSS or without frame generation, only these exact files are used, and the menu's **Engine** setting lists what it found. In an Unreal Engine game, the game's own copies are often in a `Plugins\...\ThirdParty\Win64` folder rather than next to the executable.
 
 ## Controls
 

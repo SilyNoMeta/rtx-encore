@@ -138,16 +138,16 @@ RTX Encore 面向 RTX 20、30 和 40；RTX 50 显卡的帧生成和 Smooth Motio
 
 ### 手动安装所需的运行库
 
-RTX Encore 为没有 DLSS 或没有帧生成的游戏添加的功能，使用经过验证的精确运行库；Hub 会自动放置它们。手动安装时，请获取以下文件，然后重新启动游戏：
+RTX Encore 在所有游戏中都基于以下精确的运行库开发和测试；Hub 会自动放置它们。手动安装时，请获取以下文件，然后重新启动游戏：
 
 | 用途 | 文件 | 下载 | 放置位置 |
 |---|---|---|---|
-| DLSS 帧生成 310.9.16 与 Streamline 2.14.16 | `nvngx_dlssg.dll` 和 `sl.*.dll` 文件，取自 `bin/x64`（不是 `development`） | [NVIDIA Streamline SDK 2.14.16](https://github.com/NVIDIA-RTX/Streamline/releases/download/v2.14.16/streamline-sdk-v2.14.16.zip)（可直接使用整个 `bin/x64` 文件夹） | 游戏可执行文件旁边 |
-| DLSS / DLAA 310.9.16 | `nvngx_dlss.dll` | [NVIDIA DLSS SDK 310.9.16](https://github.com/NVIDIA/DLSS/raw/v310.9.16/lib/Windows_x86_64/rel/nvngx_dlss.dll) | 游戏可执行文件旁边 |
+| DLSS 帧生成 310.9.16 与 Streamline 2.14.16 | `nvngx_dlssg.dll` 和 `sl.*.dll` 文件，取自 `bin/x64`（不是 `development`） | [NVIDIA Streamline SDK 2.14.16](https://github.com/NVIDIA-RTX/Streamline/releases/download/v2.14.16/streamline-sdk-v2.14.16.zip)（可直接使用整个 `bin/x64` 文件夹） | 游戏可执行文件旁边，或替换游戏自带副本所在位置的文件 |
+| DLSS / DLAA 与光线重建 310.9.16 | `nvngx_dlss.dll`、`nvngx_dlssd.dll` | [NVIDIA DLSS SDK 310.9.16](https://github.com/NVIDIA/DLSS/tree/v310.9.16/lib/Windows_x86_64/rel) | 游戏可执行文件旁边，或替换游戏自带副本所在位置的文件 |
 | Neural Rendering 310.9.16 | `nvngx_dlssnr.dll` | [nvngx_dlssnr-310.9.16.zip](https://encore-dl.nometa.fr/nvngx_dlssnr-310.9.16.zip) | RTX Encore 的 DLL 旁边 |
 | XeSS-SR 2.0.2.68、XeFG 1.3.1.78、XeLL 1.3.2.10 | `libxess.dll`、`libxess_fg.dll`、`libxell.dll`，取自 `bin` | [Intel XeSS SDK 3.0.2](https://github.com/intel/xess/releases/download/v3.0.2/XeSS_SDK_3.0.2.zip) | RTX Encore 的 DLL 旁边，或其旁边的 `rtx-encore-runtimes\intel` 中 |
 
-只接受这些精确文件：其他构建或版本会被拒绝，菜单中的**引擎**设置会列出已找到的内容。
+在没有 DLSS 或没有帧生成的游戏中，只使用这些精确文件，菜单中的**引擎**设置会列出已找到的内容。在 Unreal Engine 游戏中，游戏自带的副本通常位于 `Plugins\...\ThirdParty\Win64` 文件夹中，而不是可执行文件旁边。
 
 ## 操作
 
