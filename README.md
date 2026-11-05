@@ -137,6 +137,19 @@ Other file names, the `.asi` plugin, updating and removing: **[Installation](doc
 > Start with the defaults: the game, or NVIDIA Profile Inspector, chooses the multiplier. On an 8 GB card, X2 or X3
 > (or X4 with High or Medium textures) is the safer starting point.
 
+### Runtimes for a manual install
+
+What RTX Encore adds to games without DLSS or without frame generation runs on the exact runtimes it was validated with; the Hub puts them in place. By hand, take these files, then restart the game:
+
+| For | Files | Download | Put them |
+|---|---|---|---|
+| DLSS Frame Generation 310.9.16 and Streamline 2.14.16 | `nvngx_dlssg.dll` and the `sl.*.dll` files, from `bin/x64` (not `development`) | [NVIDIA Streamline SDK 2.14.16](https://github.com/NVIDIA-RTX/Streamline/releases/download/v2.14.16/streamline-sdk-v2.14.16.zip) (the whole `bin/x64` folder works) | next to the game's executable |
+| DLSS / DLAA 310.9.16 | `nvngx_dlss.dll` | [nvngx_dlss-310.9.16.zip](https://encore-dl.nometa.fr/nvngx_dlss-310.9.16.zip) | next to the game's executable |
+| Neural Rendering 310.9.16 | `nvngx_dlssnr.dll` | [nvngx_dlssnr-310.9.16.zip](https://encore-dl.nometa.fr/nvngx_dlssnr-310.9.16.zip) | next to RTX Encore's DLL |
+| XeSS-SR 2.0.2.68, XeFG 1.3.1.78, XeLL 1.3.2.10 | `libxess.dll`, `libxess_fg.dll`, `libxell.dll`, from `bin` | [Intel XeSS SDK 3.0.2](https://github.com/intel/xess/releases/download/v3.0.2/XeSS_SDK_3.0.2.zip) | next to RTX Encore's DLL, or in `rtx-encore-runtimes\intel` beside it |
+
+These exact files only: other builds or versions are refused, and the menu's **Engine** setting lists what it found.
+
 ## Controls
 
 | Shortcut | Action |

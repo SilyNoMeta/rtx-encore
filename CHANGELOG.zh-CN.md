@@ -19,6 +19,7 @@ RTX Encore 2.0.0 为**没有 DLSS 的游戏带来 NVIDIA DLSS Super Resolution �
 - **运动估计，四种选择：****RTX Encore**，模组自己在显卡上的估计，为默认值（每 2×2 像素一个向量，跟随对象边缘并利用深度缓冲；RTX 4090 上 4K 每帧约 0.8 毫秒）；**着色器 (vort)**，vortigern11 的 vort_Motion 方法（约 0.6 毫秒）；**Optical Flow (质量)** 和 **Optical Flow (快速)**，NVIDIA Optical Flow。可即时切换并对比。
 - **自动找到深度缓冲**：当游戏绘制时使用深度缓冲，三种 API 均可；没有时一切仍会运行，运动稳定性略差。
 - **Hub 安装全部文件：**[RTX Encore Hub 2.0.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.0.0) 在没有 DLSS 的游戏中安装或更新模组时，把该游戏可用的 DLSS、Neural Rendering、帧生成和 Intel 文件放到模组旁边，并通过**还原游戏**移除。这不会开启任何功能。
+- **手动安装：**为没有 DLSS 或没有帧生成的游戏添加的功能使用经过验证的精确运行库（DLSS 帧生成 310.9.16 与 Streamline 2.14.16、DLSS 310.9.16、Neural Rendering 310.9.16、XeSS-SR 2.0.2.68、XeFG 1.3.1.78 + XeLL 1.3.2.10）。Hub 会安装它们；手动安装时，文件及下载链接见 [README](README.zh-CN.md#手动安装所需的运行库)。
 
 维护者已在 RTX 4090（NVIDIA 621.01）上验证：PEAK 的 DirectX 12（DLAA、1440p 放大到 4K、NR、DLSS 帧生成 X2 和 X4、带 Tensor Cores 的 XeFG X4）、DirectX 11（XeFG X2）和 Vulkan（DLAA、放大、NR、DLSS 帧生成 X4、XeFG X4）；The Sims 4 的 DirectX 11（XeFG X2 和 X3，在 144 Hz 屏幕上超过 144 FPS）；Skyrim Special Edition 的 DirectX 11（XeFG X3 至 X6）；Football Life 2027 的 DirectX 11 和 HDR（DLAA 和 NR，1440p 放大到 4K 和 NR）。需要了解的限制：HUD 与画面一起处理和插帧；放大后的画面比游戏自带的 DLSS 稍软，后者拥有游戏的镜头抖动（DLAA 没有这一限制）；Unity 游戏低于屏幕分辨率时请用窗口化而非全屏窗口；以 scRGB（16 位浮点）显示的游戏保留自己的帧，没有帧生成；Tensor Cores 仅适用于 DirectX 12；使用帧生成时请关闭 Smooth Motion。尚未在任何 RTX 20、RTX 30 或 RTX 50 显卡以及其他驱动上测试。
 
