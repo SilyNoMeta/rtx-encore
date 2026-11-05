@@ -41,7 +41,9 @@
 | `multiplier` | `4` | `2` 至 `6`，用于固定模式。`5` 和 `6` 是实验性的。 |
 | `dynamicTargetFrameRate` | `0` | 动态模式的目标 FPS。`0` 跟随显示游戏的显示器的刷新率。 |
 | `dynamicExperimental56` | `false` | 允许动态模式达到 X5 和 X6。 |
-| `flipMeteringBypass` | `false` | 平滑 X3 / X4：由 Streamline 自行安排生成帧的间隔，而不是交给 NVIDIA 驱动。需重启游戏生效。 |
+| `flipMeteringBypass` | `"auto"` | 平滑 X3 / X4：`"auto"`、`true` 或 `false`。`true`：由 Streamline 自行安排生成帧的间隔，而不是交给 NVIDIA 驱动（DirectX 12 和 Vulkan）；`false`：由驱动安排。`"auto"`：RTX Encore 测量 X3 及以上时生成帧到达屏幕的方式，并学习该游戏需要哪一种，写入 `flipMeteringLearned`。需重启游戏生效。参见[帧生成](FRAME-GENERATION.zh-CN.md#平滑-x3--x4)。 |
+| `flipMeteringLearned` | `""` | `flipMeteringBypass` 为 `"auto"` 时由 RTX Encore 写入：`"bypass"`（Streamline 安排帧的节奏）或 `"metering"`（驱动安排）。下次启动生效；清空以重新测量。 |
+| `frameGenerationWithoutGameFg` | `false` | 为没有帧生成的游戏基于显示的画面生成帧：`frameGenerationEngine` 为 `"game"` 或 `"dlss-fg"` 时使用 DLSS 帧生成（DirectX 12 和 Vulkan），为 `"xefg"` 时使用 Intel XeFG（DirectX 12、DirectX 11 和 Vulkan）。`mode` 为 `"game"` 时 X2，为 `"fixed"` 时使用所选倍率。需要游戏可执行文件旁边的帧生成文件（由 Hub 安装）；请关闭 Smooth Motion。实验性功能。需重启生效。参见[没有 DLSS 的游戏](GAMES-WITHOUT-DLSS.zh-CN.md#帧生成)。 |
 
 NVIDIA 运行库的兼容性不再要求文件位于预设列表中。旧的 `providerPatchPolicy` 设置将被忽略。Intel 运行库检查保持不变。兼容性仍取决于运行库和游戏提供的功能。
 
@@ -49,9 +51,13 @@ NVIDIA 运行库的兼容性不再要求文件位于预设列表中。旧的 `pr
 
 | 键 | 默认 | 值 |
 | :--- | :---: | :--- |
-| `dlssRenderScale` | `"game"` | `"game"`、`"dlaa"`、`"quality"`、`"balanced"`、`"performance"`、`"ultra-performance"`、`"custom"` |
+| `dlssRenderScale` | `"game"` | `"game"`、`"dlaa"`、`"ultra"`、`"quality"`、`"balanced"`、`"performance"`、`"ultra-performance"`、`"custom"` |
 | `dlssCustomScale` | `67` | `"custom"` 时的百分比，`50` 至 `100` |
 | `fastSuperResolution` | `false` | RTX 30、DirectX 12：在预设为 M 或 L 时加速 DLSS 超分辨率，在测量的系统上每个放大帧约减少 16% 至 20% 的 GPU 时间，画面与原版非常接近。在其他显卡上不起作用。需重启游戏。见[超分辨率](SUPER-RESOLUTION.zh-CN.md#fast-super-resolution-rtx-30)。 |
+| `dlssWithoutGameDlss` | `false` | 没有 DLSS 的游戏：使用 DLSS 或 XeSS 对显示的画面运行 DLAA 或放大。实验性功能。参见[没有 DLSS 的游戏](GAMES-WITHOUT-DLSS.zh-CN.md)。 |
+| `dlssWithoutGameDlssEngine` | `"dlss"` | `"dlss"` 或 `"xess"`：`dlssWithoutGameDlss` 使用的引擎。XeSS 支持 1x 到 3x（超过时游戏画面直接拉伸显示），需要由 Hub 安装的 Intel 运行库；`xessTensorCores` 适用于 DirectX 12 游戏。即时生效。 |
+| `dlssWithoutGameDlssOutput` | `"game"` | `"game"`（游戏分辨率下的 DLAA）或 `"screen"`（放大到屏幕分辨率；游戏使用较低分辨率的窗口化模式）。 |
+| `presentOpticalFlow` | `"encore"` | 没有 DLSS 的游戏的运动估计：`"encore"`（RTX Encore 自己的着色器估计，更精细的向量，面向帧生成；不需要 Optical Flow），`"shader"`（着色器，vort_Motion 的方法；不需要 Optical Flow），或 `"quality"` 或 `"fast"`（NVIDIA Optical Flow）。 |
 
 ### `superResolutionInputs`
 
@@ -77,8 +83,8 @@ NVIDIA 运行库的兼容性不再要求文件位于预设列表中。旧的 `pr
 
 ### `dlssPresets`
 
-三个模型选项相互独立，均需**重启游戏**。SR/RR 位于 **Image → DLSS Super Resolution**，FG 位于
-**Frames → Frame generation**。这些选项不改变渲染分辨率、插帧倍率或 NR 预设。
+三个模型选项相互独立，均需**重启游戏**。SR/RR 位于 **Image quality → DLSS Super Resolution**，FG 位于
+**Frame rate → Frame generation**。这些选项不改变渲染分辨率、插帧倍率或 NR 预设。
 
 | 键 | 默认 | 值 |
 | :--- | :---: | :--- |
@@ -132,10 +138,11 @@ FG 预设选择支持以下经过逐一验证的 NVIDIA **DLSS-G 正式版二进
 | `nrSkinStructure` | `1` | `0` 至 `2` |
 | `nrHdrExposure` | `1` | HDR 游戏：提供给 NR 的亮度 |
 | `nrPrecision` | `"exact"` | `"exact"` 或 `"fast"`（RTX 20 和 RTX 30）。需重启。 |
+| `nrWithoutGameDlss` | `false` | 没有 DLSS 的游戏：对显示的画面运行 NR。实验性功能。参见[没有 DLSS 的游戏](GAMES-WITHOUT-DLSS.zh-CN.md)。 |
 
 #### 中央优先 NR（实验性）
 
-需要启用 `nrEnabled`。NR 在屏幕中央以全强度运行，越靠近边缘越轻，因为视线较少停留在边缘：速度更快，图像边缘附近的 NR 效果更柔和。菜单（**Image → Neural Rendering**）中只显示开关和预设；预设背后的四个数值位于 **Foveated NR: custom values** 中。实时生效。无法使用中央优先处理时，NR 照常运行。
+需要启用 `nrEnabled`。NR 在屏幕中央以全强度运行，越靠近边缘越轻，因为视线较少停留在边缘：速度更快，图像边缘附近的 NR 效果更柔和。菜单（**Image quality → Neural Rendering**）中只显示开关和预设；预设背后的四个数值位于 **Foveated NR: custom values** 中。实时生效。无法使用中央优先处理时，NR 照常运行。
 
 | 预设 | 效果 |
 | :--- | :--- |
@@ -155,7 +162,7 @@ FG 预设选择支持以下经过逐一验证的 NVIDIA **DLSS-G 正式版二进
 
 #### NR 性能选项
 
-这些设置也在 **Image → Neural Rendering → Performance** 分组中。
+这些设置也在 **Image quality → Neural Rendering → Performance** 分组中。
 测量结果和画面取舍见 [Neural Rendering](NEURAL-RENDERING.zh-CN.md#rtx-30-性能设置)。
 引擎专用选项仅作用于下表所列引擎；切换引擎或修改启动时读取的选项，需要重启游戏。
 

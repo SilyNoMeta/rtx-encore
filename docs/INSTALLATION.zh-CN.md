@@ -12,7 +12,8 @@
 
 - 64 位 Windows 10 或 11。
 - GeForce RTX 20、RTX 30 或 RTX 40 显卡，并安装较新的 NVIDIA 驱动。
-- 帧生成：游戏的设置中必须提供 **DLSS 帧生成（DLSS Frame Generation）**。
+- 帧生成：游戏的设置中必须提供 **DLSS 帧生成（DLSS Frame Generation）**；或者（实验性）完全没有 DLSS 的游戏：参见
+  [没有 DLSS 的游戏](GAMES-WITHOUT-DLSS.zh-CN.md)，Hub 会安装所需文件。
 - Smooth Motion 和 Neural Rendering 请见各自的页面：
   [Smooth Motion](SMOOTH-MOTION.zh-CN.md)、[Neural Rendering](NEURAL-RENDERING.zh-CN.md)。
 

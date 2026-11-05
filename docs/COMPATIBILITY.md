@@ -1,5 +1,7 @@
 # Compatibility
 
+NVIDIA 621.14: Smooth Motion now accepts the exact driver files on RTX 20 (DirectX 12) and RTX 30; RTX 40/50 keep the native driver path. Experimental XeSS/XeFG Tensor Cores also admit this driver. Compatibility checks were performed on the driver files without installing the driver. In-game validation on 621.14 is still pending; this does not extend support to unknown drivers.
+
 *[Français](COMPATIBILITY.fr.md) · [中文](COMPATIBILITY.zh-CN.md)*
 
 These notes record what was tested and observed. They are not a certification: a game update, another driver or
@@ -17,9 +19,9 @@ XeFG is not a way to add frame generation to every game. Higher factors depend o
 | :--- | :--- | :--- | :--- | :--- |
 | RTX 40 | Supported. DirectX 12 and Vulkan exercised on an RTX 4090. | Provided by NVIDIA | Supported | Inactive |
 | RTX 30 | Supported. DirectX 12 exercised on an RTX 3070 Ti Laptop. | Supported with the drivers listed below | Supported | DirectX 12, measured on an RTX 3070 Ti Laptop. See [below](#dlss-super-resolution-versions). |
-| RTX 20 | Experimental: not validated on a physical RTX 20 card yet. | Experimental from 1.3.0: 621.01 / DX12, V1 or V2 | Experimental | Inactive |
+| RTX 20 | Experimental: not validated on a physical RTX 20 card yet. | Experimental from 1.3.0: 621.01 / 621.14 / DX12, V1 or V2 | Experimental | Inactive |
 
-RTX 20 requires mod **1.3.0**, driver **621.01**, and **DirectX 12**; V1/V2 can be selected per game.
+RTX 20 requires mod **1.3.0**, driver **621.01 / 621.14**, and **DirectX 12**; V1/V2 can be selected per game.
 
 RTX Encore is made for RTX 20, 30 and 40 cards. GTX cards and cards from other vendors are not supported.
 
@@ -32,6 +34,8 @@ RTX Encore is made for RTX 20, 30 and 40 cards. GTX cards and cards from other v
 | Fast super resolution (RTX 30) | — | ✅ | — |
 | Smooth Motion (RTX 30) | ✅ | ✅ | ✅ |
 | Neural Rendering | 🧪 | 🧪 | 🧪 |
+| [Games without DLSS](GAMES-WITHOUT-DLSS.md): DLSS or XeSS upscaling, Neural Rendering | 🧪 | 🧪 | 🧪 |
+| [Games without DLSS](GAMES-WITHOUT-DLSS.md): frame generation | 🧪 DLSS FG or XeFG, X2 to X6 | 🧪 DLSS FG or XeFG, X2 to X6 | 🧪 DLSS FG or XeFG, X2 to X6 |
 | Menu and overlay | ✅ | ✅ | ✅ |
 
 Vulkan Neural Rendering admits RTX 20, RTX 30, RTX 40 and RTX 50. Physical Vulkan validation with an official
@@ -88,7 +92,7 @@ recommendation to replace individual files.
 
 ## Smooth Motion drivers
 
-Smooth Motion on RTX 30 accepts NVIDIA drivers **621.01**, **620.12**, **617.42**, **617.14**, **616.92**,
+Smooth Motion on RTX 30 accepts NVIDIA drivers **621.14**, **621.01**, **620.12**, **617.42**, **617.14**, **616.92**,
 **616.64** and **591.86**, and no other.
 **617.14** and **621.01** have been verified in a game. See [Smooth Motion](SMOOTH-MOTION.md).
 
@@ -103,7 +107,11 @@ Neural Rendering needs NVIDIA's `nvngx_dlssnr.dll` **310.8.0** or **310.9.16**, 
 | :--- | :---: | :--- |
 | Cyberpunk 2077 | DX12 | Frame generation tested on an RTX 3070 Ti Laptop. Works as `version.dll` or as an `.asi` plugin; see [Installation](INSTALLATION.md#cyberpunk-2077). |
 | Black Myth: Wukong | DX12 | Frame generation tested on an RTX 4090. Neural Rendering confirmed by users. |
-| No Man's Sky | Vulkan | Frame generation tested on an RTX 4090. **Turn Automatic UI recomposition off**: it causes doubled outlines in camera motion in this game. Neural Rendering with frame generation X2 confirmed at 1080p and 1440p. |
+| No Man's Sky | Vulkan | Frame generation tested on an RTX 4090. **Turn Automatic UI recomposition off**: it causes doubled outlines in camera motion in this game. Neural Rendering with frame generation X2 confirmed at 1080p and 1440p. XeFG replacing the game's DLSS Frame Generation tested at X4 in HDR10 with ReShade 6.8 installed (2.0.0); with the game at **DLAA**, XeFG generates nothing: choose a DLSS quality mode. XeSS Super Resolution runs since 2.0.0. |
+| PEAK | DX12, DX11, Vulkan | Ships no DLSS. [Games without DLSS](GAMES-WITHOUT-DLSS.md) tested on an RTX 4090 in the three APIs: DLAA, upscaling 1440p to 4K, Neural Rendering, DLSS Frame Generation X2 and X4 (DX12, Vulkan), XeFG X4 (DX12 with Tensor Cores, Vulkan) and X2 (DX11). Unity: choose **Windowed**, not Fullscreen Window, below the screen's resolution. |
+| The Sims 4 | DX11 | Ships no DLSS. XeFG X2 and X3 tested on an RTX 4090 in exclusive fullscreen, shown as a borderless window, above 144 FPS on a 144 Hz screen (2.0.0). |
+| The Elder Scrolls V: Skyrim Special Edition | DX11 | Ships no DLSS. XeFG X3 to X6 tested on an RTX 4090 (2.0.0). |
+| Football Life 2027 | DX11 | Ships no DLSS. DLAA, upscaling 1440p to 4K and Neural Rendering tested on an RTX 4090 in HDR (2.0.0). Closed at launch with RTX Encore 1.6.0 and earlier: fixed in 2.0.0. |
 | DOOM: The Dark Ages | Vulkan | Frame generation tested on an RTX 4090. The game keeps its own choice for the interface handling, whatever the setting. |
 | Starfield | DX12 | Works with UI assist on; a crash when loading a save was fixed after a user's report. With Luma 2.0 (native HDR), generated frames look embossed with red and cyan fringes while the camera moves, with or without RTX Encore's latest changes: turn off Luma or its HDR output. |
 | Star Wars Outlaws | DX12 | The full game (Ubisoft Connect) closes at launch when the RTX Encore menu is attached. **Set `"disableInGameMenu": true`** in `rtx-encore.jsonc`, or apply the game's community profile in [RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub). Without the menu, frame generation up to X4 starts, as reported by two users; change settings in the file or with the Hub. The demo runs with the menu. |

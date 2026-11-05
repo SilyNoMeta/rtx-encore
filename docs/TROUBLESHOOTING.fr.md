@@ -31,7 +31,7 @@ RTX Encore 1.2.0 permet de choisir les moteurs de reconstruction et de générat
 
 | Symptôme | Première vérification |
 | :--- | :--- |
-| Le jeu n'a pas d'option Frame Generation | RTX Encore étend DLSS Frame Generation dans les jeux qui l'ont ; il ne peut pas l'ajouter. Voir [Smooth Motion](SMOOTH-MOTION.fr.md) pour les autres jeux. |
+| Le jeu n'a pas d'option Frame Generation | RTX Encore étend DLSS Frame Generation dans les jeux qui l'ont. Dans un jeu qui n'en a aucune, choisissez **DLSS-FG** ou **XeFG** dans **Moteur** dans l'onglet **Fluidité** (expérimental, depuis la 2.0.0) : voir [Jeux sans DLSS](GAMES-WITHOUT-DLSS.fr.md#génération-dimages). [Smooth Motion](SMOOTH-MOTION.fr.md) est l'autre option sur RTX 20 et RTX 30. |
 | L'option existe mais est grisée | Vérifiez que DLSS est activé, que le jeu tourne en DirectX 12 ou Vulkan, et que le mod est chargé. |
 | Le multiplicateur reste à X2 | Désactivez puis réactivez la génération d'images dans le jeu, ou relancez-le. Vérifiez le mode dans le menu : en **Game decides**, c'est le jeu qui choisit. |
 | X5 ou X6 n'est pas atteint en mode Dynamique | Activez **Allow 5x and 6x**. |
@@ -76,7 +76,7 @@ puissance seule ne départage pas un profil du portable, le partage CPU/GPU ou u
 Les événements brefs entre deux relevés peuvent être manqués. Comparer la même scène avant et après la chute
 est particulièrement utile.
 
-Pour une comparaison distincte, essayez **Frames → Frame pacing → Suggested Reflex cap** si disponible,
+Pour une comparaison distincte, essayez **Frame rate → Frame pacing → Suggested Reflex cap** si disponible,
 ou une demande Reflex manuelle. La suggestion utilise une limite sous la fréquence écran (224 FPS à 240 Hz) ; ce n’est pas une cible
 thermique. Le comptage des images FG dépend du jeu et du pilote. Si l’application ne réduit pas la cadence de
 rendu mesurée, essayez une demande plus basse. Comparez les FPS source et les mesures GPU ; `accepted` seul ne

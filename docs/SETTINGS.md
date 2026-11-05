@@ -43,7 +43,9 @@ Reconstruction can switch between DLSS and XeSS while playing in compatible game
 | `multiplier` | `4` | `2` to `6`, used in fixed mode. `5` and `6` are experimental. |
 | `dynamicTargetFrameRate` | `0` | Target FPS of dynamic mode. `0` follows the refresh rate of the monitor showing the game. |
 | `dynamicExperimental56` | `false` | Lets dynamic mode go up to X5 and X6. |
-| `flipMeteringBypass` | `false` | Smooth out X3 / X4: Streamline spaces the generated frames itself instead of the NVIDIA driver. Restart the game to apply. |
+| `flipMeteringBypass` | `"auto"` | Smooth out X3 / X4: `"auto"`, `true` or `false`. `true`: Streamline spaces the generated frames itself instead of the NVIDIA driver (DirectX 12 and Vulkan); `false`: the driver does. `"auto"`: RTX Encore measures how the generated frames reach the screen at X3 and above and learns which one this game needs, written to `flipMeteringLearned`. Restart the game to apply. See [Frame generation](FRAME-GENERATION.md#smooth-out-x3--x4). |
+| `flipMeteringLearned` | `""` | Written by RTX Encore when `flipMeteringBypass` is `"auto"`: `"bypass"` (Streamline paces the frames) or `"metering"` (the driver does). Applies at the next start; empty it to measure again. |
+| `frameGenerationWithoutGameFg` | `false` | Frame generation for games that ship none, from the displayed image: DLSS Frame Generation (DirectX 11, DirectX 12 and Vulkan) with `frameGenerationEngine` `"game"` or `"dlss-fg"`, Intel XeFG (DirectX 12, DirectX 11 and Vulkan) with `"xefg"`. X2 when `mode` is `"game"`, the multiplier when it is `"fixed"`. The menu sets this through **Frame generation → Engine**; choose **None** to disable added generation. Needs the frame generation files beside the game's executable, which the Hub installs; turn Smooth Motion off. Experimental. Restart to apply. See [Games without DLSS](GAMES-WITHOUT-DLSS.md#frame-generation). |
 
 NVIDIA runtime compatibility no longer requires a file to appear in a fixed list. An old `providerPatchPolicy` entry is ignored. Intel runtime checks remain unchanged. Compatibility still depends on the features available in the runtime and game.
 
@@ -51,9 +53,13 @@ NVIDIA runtime compatibility no longer requires a file to appear in a fixed list
 
 | Key | Default | Values |
 | :--- | :---: | :--- |
-| `dlssRenderScale` | `"game"` | `"game"`, `"dlaa"`, `"quality"`, `"balanced"`, `"performance"`, `"ultra-performance"`, `"custom"` |
+| `dlssRenderScale` | `"game"` | `"game"`, `"dlaa"`, `"ultra"`, `"quality"`, `"balanced"`, `"performance"`, `"ultra-performance"`, `"custom"` |
 | `dlssCustomScale` | `67` | Percent, `50` to `100`, with `"custom"` |
 | `fastSuperResolution` | `false` | RTX 30, DirectX 12: faster DLSS Super Resolution with preset M or L, about 16 to 20 % less GPU time per upscaled frame on the system measured, image very close to the original. Inactive on other cards. Restart to apply. See [Super Resolution](SUPER-RESOLUTION.md#fast-super-resolution-rtx-30). |
+| `dlssWithoutGameDlss` | `false` | Games without DLSS: DLAA or upscaling on the displayed image, with DLSS or XeSS. Experimental. See [Games without DLSS](GAMES-WITHOUT-DLSS.md). |
+| `dlssWithoutGameDlssEngine` | `"dlss"` | `"dlss"` or `"xess"`: the engine of `dlssWithoutGameDlss`. XeSS goes from 1x to 3x (beyond, the game's image is shown stretched) and needs the Intel runtimes installed by the Hub; `xessTensorCores` applies to DirectX 12 games. Applied live. |
+| `dlssWithoutGameDlssOutput` | `"game"` | `"game"` (DLAA at the game's resolution) or `"screen"` (upscaling to the screen's resolution; the game in windowed mode at a lower resolution). |
+| `presentOpticalFlow` | `"encore"` | Games without DLSS: motion estimation, `"encore"` (RTX Encore's own estimation in shaders, finer vectors for frame generation; no Optical Flow needed), `"shader"` (shaders, the method of vort_Motion; no Optical Flow needed), or `"quality"` or `"fast"` (NVIDIA Optical Flow). |
 
 ### `superResolutionInputs`
 
@@ -79,8 +85,8 @@ It adds to any sharpening the game performs afterwards. High strengths can creat
 
 ### `dlssPresets`
 
-These independent model choices require a **game restart**. SR/RR are in **Image → DLSS Super Resolution**;
-FG is in **Frames → Frame generation**. They do not change render resolution, the frame multiplier or the NR preset.
+These independent model choices require a **game restart**. SR/RR are in **Image quality → DLSS Super Resolution**;
+FG is in **Frame rate → Frame generation**. They do not change render resolution, the frame multiplier or the NR preset.
 
 | Key | Default | Values |
 | :--- | :---: | :--- |
@@ -141,10 +147,11 @@ model executed. Leave `"game"` selected to preserve the existing behavior.
 | `nrSkinStructure` | `1` | `0` to `2` |
 | `nrHdrExposure` | `1` | HDR games: brightness given to NR |
 | `nrPrecision` | `"exact"` | `"exact"` or `"fast"` (RTX 20 and RTX 30). Restart to apply. |
+| `nrWithoutGameDlss` | `false` | Games without DLSS: NR on the displayed image. Experimental. See [Games without DLSS](GAMES-WITHOUT-DLSS.md). |
 
 #### Foveated NR (experimental)
 
-Requires `nrEnabled`. NR runs at full strength in the middle of the screen and lighter towards the edges, where the eye rests less: faster, with a softer NR effect near the edges of the image. In the menu (**Image → Neural Rendering**), only the switch and the preset are shown; the four values behind the presets are under **Foveated NR: custom values**. Applied live. Where foveation cannot run, NR keeps running normally.
+Requires `nrEnabled`. NR runs at full strength in the middle of the screen and lighter towards the edges, where the eye rests less: faster, with a softer NR effect near the edges of the image. In the menu (**Image quality → Neural Rendering**), only the switch and the preset are shown; the four values behind the presets are under **Foveated NR: custom values**. Applied live. Where foveation cannot run, NR keeps running normally.
 
 | Preset | What it does |
 | :--- | :--- |
@@ -164,7 +171,7 @@ Requires `nrEnabled`. NR runs at full strength in the middle of the screen and l
 
 #### NR performance options
 
-These controls are also in **Image → Neural Rendering → Performance**. See
+These controls are also in **Image quality → Neural Rendering → Performance**. See
 [Neural Rendering](NEURAL-RENDERING.md#performance-controls-on-rtx-30) for measured results and image tradeoffs.
 Engine-specific options apply only to the engine named below; changing an engine or a restart-only option needs a
 game restart.

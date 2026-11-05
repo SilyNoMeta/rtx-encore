@@ -29,7 +29,7 @@ RTX Encore 1.2.0 可选择重建和帧生成引擎。保留 **Game** 可继续�
 
 | 现象 | 首先检查 |
 | :--- | :--- |
-| 游戏没有 Frame Generation 选项 | RTX Encore 扩展游戏已有的 DLSS 帧生成，不能凭空添加。其他游戏可参阅 [Smooth Motion](SMOOTH-MOTION.zh-CN.md)。 |
+| 游戏没有 Frame Generation 选项 | RTX Encore 扩展游戏已有的 DLSS 帧生成。在完全没有帧生成的游戏中，请在**帧率**选项卡开启**为没有帧生成的游戏启用帧生成**（实验性，自 2.0.0 起）：参见[没有 DLSS 的游戏](GAMES-WITHOUT-DLSS.zh-CN.md#帧生成)。在 RTX 20 和 RTX 30 上，[Smooth Motion](SMOOTH-MOTION.zh-CN.md) 是另一种选择。 |
 | 有选项，但呈灰色 | 检查 DLSS 是否开启、游戏是否使用 DirectX 12 或 Vulkan，以及模组是否加载。 |
 | 倍率停留在 X2 | 在游戏中关闭再开启帧生成，或重启。检查菜单模式：Game decides 模式由游戏决定。 |
 | Dynamic 模式达不到 X5 或 X6 | 开启 **Allow 5x and 6x**。 |
@@ -70,7 +70,7 @@ RTX Encore 1.2.0 可选择重建和帧生成引擎。保留 **Game** 可继续�
 报告的温度限制有助于确认与发热有关的降频。仅有功耗限制不能区分笔记本电源配置、CPU/GPU 功率分配或其他供电约束。
 两次采样之间的短暂事件可能被遗漏。比较性能下降前后同一场景的数据尤其有用。
 
-另做一组对比时，可尝试 **Frames → Frame pacing → Suggested Reflex cap**（如可用），
+另做一组对比时，可尝试 **Frame rate → Frame pacing → Suggested Reflex cap**（如可用），
 或手动请求 Reflex 上限。建议值低于显示器刷新率（240 Hz 时为 224 FPS），不是温度目标。FG 的计入方式取决于游戏与驱动。
 若应用后实际渲染帧率没有下降，可尝试更低的请求值。
 请对比实际源帧率和 GPU 读数；仅显示 `accepted` 不能证明有效。保存的上限不会自行变化。

@@ -9,9 +9,14 @@ preset du modèle, et propose, sur les cartes RTX 30, une option qui rend ce tra
 Pour la résolution de rendu, voir [Menu et overlay](MENU-AND-OVERLAY.fr.md#autres-commandes). Pour le choix du
 preset, voir [Réglages](SETTINGS.fr.md#dlsspresets).
 
+**Les jeux sans DLSS** peuvent recevoir une reconstruction DLSS ou XeSS de RTX Encore depuis la 2.0.0 : un DLAA sur
+l'image que le jeu affiche, ou une résolution de jeu plus basse agrandie jusqu'à celle de l'écran, en DirectX 11,
+DirectX 12 et Vulkan. Le preset du modèle SR et la netteté ci-dessous s'y appliquent aussi. Voir
+[Jeux sans DLSS](GAMES-WITHOUT-DLSS.fr.md#reconstruction).
+
 ## Netteté après reconstruction
 
-Désactivée par défaut. Dans **Image > Super Resolution**, choisissez **Off**, **Game** ou **Custom**. Custom règle une force de 0 à 100 %, 30 % par défaut ; les changements s'appliquent à chaud. Game suit la valeur de netteté envoyée par le jeu et ne fait rien s'il n'en envoie pas. Un réglage invalide désactive l'effet.
+Désactivée par défaut. Dans **Image quality > Super Resolution**, choisissez **Off**, **Game** ou **Custom**. Custom règle une force de 0 à 100 %, 30 % par défaut ; les changements s'appliquent à chaud. Game suit la valeur de netteté envoyée par le jeu et ne fait rien s'il n'en envoie pas. Un réglage invalide désactive l'effet.
 
 La netteté concerne DLSS Super Resolution, DLAA, Ray Reconstruction et le remplacement XeSS, y compris Super Resolution rapide. Si Neural Rendering est actif, la netteté passe après. Elle ne touche pas l'overlay ni le HUD dessiné ensuite. Off et une force nulle n'ajoutent aucune passe de netteté.
 
@@ -30,7 +35,7 @@ RTX Encore 1.2.0 permet de choisir les moteurs de reconstruction et de générat
 exécute la montée en résolution avec une version plus rapide du modèle, calibrée sur des captures de vrais jeux. La
 résolution de rendu, le mode de qualité et le preset ne changent pas.
 
-Elle est **désactivée par défaut**. Activez-la dans le menu : **Image → DLSS Super Resolution → Fast super
+Elle est **désactivée par défaut**. Activez-la dans le menu : **Image quality → DLSS Super Resolution → Fast super
 resolution (RTX 30)**. Dans le fichier de réglages, la clé est
 [`fastSuperResolution`](SETTINGS.fr.md#dlsssuperresolution).
 **Relancez le jeu** pour que le changement s'applique, comme pour le preset du modèle.
@@ -64,3 +69,13 @@ Ces chiffres viennent d'un seul système. Ils ne valent pas promesse pour chaque
   place, sans message d'erreur. Le menu et le jeu se comportent comme si l'option était désactivée.
 - L'image n'est pas identique au bit près à celle de NVIDIA : elle en est très proche, sans être la même.
 - Mesures faites sur un seul système : les résultats peuvent différer selon la carte, le jeu et le pilote.
+
+## Échelle de rendu et netteté
+
+**Ultra (75 %)** rejoint DLAA, Qualité, Équilibré, Performance et Ultra Performance pour la reconstruction native DLSS SR et XeSS. Ce mode demande 75 % de la largeur et de la hauteur de sortie (2880 × 1620 pour la 4K). C’est un réglage de résolution, pas un preset de modèle. Le jeu doit respecter la résolution demandée. Pour les jeux sans reconstruction native, utilisez la résolution d’entrée en mode fenêtré décrite dans [Jeux sans DLSS](GAMES-WITHOUT-DLSS.fr.md).
+
+Pour la netteté, choisissez **Netteté → Personnalisé**, puis réglez l’intensité de 0 à 100 % (30 % par défaut). Le réglage s’applique en direct ; la netteté est désactivée par défaut. Elle peut s’ajouter à celle du jeu.
+
+## Disponibilité et versions des runtimes
+
+Les moteurs dont les runtimes manquent ou sont incompatibles ne sont pas proposés dans le menu. Les anciennes versions compatibles restent prises en charge : NVIDIA 310.9.1 n’est pas refusée simplement parce qu’une version plus récente existe. Un avertissement intégré recommande une mise à jour via RTX Encore Hub puis un redémarrage du jeu. Versions recommandées : NVIDIA **310.9.16**, XeSS-SR **2.0.2.68**, XeFG **1.3.1.78**, XeLL **1.3.2.10**. La génération DLSS ajoutée exige précisément **Streamline 2.14.16 + DLSS-G 310.9.16**. Une mise à jour ne rend pas compatible un jeu ou un GPU non pris en charge.

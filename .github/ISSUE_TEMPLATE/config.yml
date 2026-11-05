@@ -3,3 +3,6 @@ contact_links:
   - name: RTX Encore Hub
     url: https://github.com/SilyNoMeta/rtx-encore-hub/issues
     about: Problems and suggestions for the Hub program (install, update, restore). Any language is welcome.
+  - name: RTX Encore Discord
+    url: https://discord.gg/Zwmq4Xc2Br
+    about: Questions, setup help and settings from other players. Confirmed bugs still belong in an issue here.

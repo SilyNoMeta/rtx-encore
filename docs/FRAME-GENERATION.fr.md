@@ -14,11 +14,12 @@ RTX Encore 1.2.0 permet de choisir les moteurs de reconstruction et de générat
 
 - Un jeu proposant **DLSS Frame Generation** en DirectX 12 ou Vulkan, ou une entrée **FG Intel** native compatible en DirectX 12. Pour cette dernière, choisissez le [moteur DLSS-FG expérimental](INTEL-ENGINES.fr.md), installez les runtimes qualifiés avec le Hub, redémarrez puis activez le FG Intel dans le jeu. Le FSR natif est conservé.
 - `nvngx_dlssg.dll` et des runtimes compatibles : voir la [compatibilité](COMPATIBILITY.fr.md#versions-de-dlss-frame-generation). Les versions exactes déterminent les fonctions disponibles.
-- La génération d'images activée dans le jeu. Sans entrées FG natives compatibles, voir [Smooth Motion](SMOOTH-MOTION.fr.md).
+- La génération d'images activée dans le jeu.
+- **Les jeux qui n'ont aucune génération d'images** peuvent la recevoir de RTX Encore depuis la 2.0.0, avec DLSS Frame Generation (DirectX 11, DirectX 12 et Vulkan) ou Intel XeFG (DirectX 12, DirectX 11 et Vulkan), à partir de l'image qu'ils affichent : voir [Jeux sans DLSS](GAMES-WITHOUT-DLSS.fr.md#génération-dimages). Le [Smooth Motion](SMOOTH-MOTION.fr.md) du pilote reste l'autre option pour eux sur RTX 20 et RTX 30.
 
 ## Modes
 
-Choisissez le mode dans le menu (onglet **Frames**) ou avec les raccourcis.
+Choisissez le mode dans le menu (onglet **Frame rate**) ou avec les raccourcis.
 
 | Mode | Ce qu'il fait |
 | :--- | :--- |
@@ -34,9 +35,15 @@ générées après chaque image calculée.
 - Dans les jeux Vulkan, le mode Dynamique choisit entre X2 et X6 d'après la fréquence mesurée et la cible.
 - Sur une carte de 8 Go, commencez par X2 ou X3, ou X4 avec des textures Élevées ou Moyennes.
 
-### Lisser X3 / X4
+### Fluidifier X3 / X4
 
-Dans certains jeux, X3 et X4 paraissent plus saccadés que X2 : les images générées arrivent à l'écran par rafales au lieu de se suivre. **Smooth out X3 / X4** (`flipMeteringBypass`, désactivé par défaut) laisse Streamline espacer lui-même les images générées au lieu du pilote NVIDIA, en DirectX 12 et en Vulkan. Activez-le dans le menu, sous le multiplicateur, ou dans RTX Encore Hub, puis relancez le jeu. Là où le pilote espace déjà bien les images, il n'apporte rien de visible.
+Dans certains jeux, X3 et X4 paraissent plus saccadés que X2 : les images générées arrivent à l'écran par rafales au lieu de se suivre. **Fluidifier X3 / X4** (`flipMeteringBypass`) laisse Streamline espacer lui-même les images générées au lieu du pilote NVIDIA, en DirectX 12 et en Vulkan. Depuis la 2.0.0, le réglage a trois positions, dans le menu sous le multiplicateur ou dans RTX Encore Hub :
+
+- **Automatique** (par défaut) : RTX Encore observe comment les images générées arrivent à l'écran à partir de X3 et apprend, pour ce jeu, si Streamline doit les cadencer. Quand il décide, une notice dit ce qu'il a vu et ce qu'il a changé ; le choix s'applique au prochain lancement et est conservé pour le jeu. Le Hub le montre et peut le remettre à zéro pour que RTX Encore mesure de nouveau.
+- **Activé** : Streamline cadence les images. Relancez le jeu pour appliquer.
+- **Désactivé** : le pilote NVIDIA les cadence. Relancez le jeu pour appliquer.
+
+Là où le pilote espace déjà bien les images, Activé n'apporte rien de visible. La génération d'images pour les [jeux sans génération d'images](GAMES-WITHOUT-DLSS.fr.md#génération-dimages) fait toujours cadencer les images par Streamline ; Automatique le sait.
 
 Avec les anciennes versions Streamline qualifiées, le mode Dynamique DX12 utilise l’adaptation Encore X2–X4. Il démarre à X2, suit la cadence des images calculées par le jeu, attend entre les changements et se suspend si le jeu refuse une demande. Les fournisseurs récents qualifiés gardent le DMFG natif. Voir [la matrice des versions](COMPATIBILITY.fr.md#versions-de-streamline). En D3D11, seul le chemin distinct Smooth Motion X2 est proposé.
 
@@ -56,7 +63,7 @@ par un, dans le menu (onglet **System**).
 
 ## Qualité d'image
 
-Le groupe **Quality** de l'onglet **Frames** réunit les options qui agissent sur les images générées. Elles sont
+Le groupe **Quality** de l'onglet **Frame rate** réunit les options qui agissent sur les images générées. Elles sont
 activées par défaut et sont lues au démarrage du jeu.
 
 - **Anti-tearing / anti-ghosting** : protège la géométrie fine (grillages, câbles, feuillages) et les ombres en
@@ -72,6 +79,10 @@ reste indépendant** et peut rester activé avec chaque preset. Lite conserve la
 Anti-tearing et Protection tuning n'y ont aucun effet, et la recomposition de l'interface est indisponible.
 Un forçage réservé au diagnostic reste accessible uniquement dans le JSON ; laissez sa valeur par défaut.
 Voir les [réglages](SETTINGS.fr.md#dlsspresets).
+
+Le preset C demande DLSS-G 310.9.16. Si le jeu est livré avec une version plus ancienne, mettez ses DLL à jour avec
+RTX Encore Hub, ou activez **Use the NVIDIA App's newest DLSS models** dans l'onglet **System**, puis relancez le jeu
+(voir les [options de compatibilité](#options-de-compatibilité)).
 
 ### Fast frame generation
 
@@ -100,7 +111,7 @@ Les optimisations des réseaux neuronaux demandent DirectX 12 ; Vulkan bénéfic
 ## Interface du jeu
 
 Les images générées sont les plus propres quand l'interface du jeu est traitée à part de la scène 3D. Trois
-interrupteurs, dans l'onglet **Frames** :
+interrupteurs, dans l'onglet **Frame rate** :
 
 | Réglage | Défaut | Ce qu'il fait |
 | :--- | :---: | :--- |
@@ -117,7 +128,7 @@ Dans l'onglet **System** :
 | Réglage | Défaut | Ce qu'il fait |
 | :--- | :---: | :--- |
 | **Disable menu detection** | désactivé | Désactivé : la génération d'images se met en veille dans les menus et les écrans de chargement, ce qui y évite des plantages. Laissez-le désactivé. |
-| **Force NVIDIA OTA models** | désactivé | Utilise les modèles de génération d'images téléchargés par l'application NVIDIA. Relancez le jeu pour appliquer. |
+| **Use the NVIDIA App's newest DLSS models** | désactivé | Utilise les modèles de génération d'images, Super Resolution, Ray Reconstruction et Neural Rendering les plus récents téléchargés par l'application NVIDIA s'ils sont plus récents que ceux du jeu, par exemple pour avoir le preset C de génération d'images dans un jeu livré avec un DLSS-G plus ancien. Rien n'est écrit dans les fichiers du jeu ni dans ceux de l'application NVIDIA. L'application NVIDIA doit avoir téléchargé ces modèles. Relancez le jeu pour appliquer. |
 | **Graphics card series** | auto | Laissez sur auto, sauf si la carte n'est pas reconnue. |
 
 ## Lire l'overlay

@@ -61,6 +61,8 @@ Vulkan 还实验性地接受 RTX 50。使用官方构建在真实 RTX 20、RTX 4
 - 游戏已开启 **DLSS 超分辨率或 DLAA**。NR 应用于其输出。
   使用 **Ray Reconstruction** 时，NR 应用于 RR 降噪之后的输出，而不会作用于未降噪的光线追踪原始画面。
   游戏必须提供 NR 所需的深度输入；否则画面保持 DLSS 原样，菜单会说明原因。
+  自 2.0.0 起，**没有 DLSS 的游戏**是例外：在那里，**Neural Rendering** 开关对游戏显示的画面运行 NR，使用 RTX Encore 估计的运动和游戏的
+  深度缓冲（若有），支持 DirectX 11、DirectX 12 和 Vulkan。参见[没有 DLSS 的游戏](GAMES-WITHOUT-DLSS.zh-CN.md#neural-rendering)。
 - 1.2 测试版还支持在 Direct3D 12 下对兼容线性深度输入的 RR 结果应用 NR。无效或不受支持的深度输入会使 NR 保持停用；Direct3D 11 和 Vulkan 仍不支持此情况。007 First Light 路径追踪的本地测试确认 NR 可以运行，尚未测量画质或开销。
 - RTX 40 或 RTX 30 显卡。RTX 20 支持是实验性的；Vulkan 下也实验性地接受 RTX 50。
 
@@ -68,7 +70,7 @@ Vulkan 还实验性地接受 RTX 50。使用官方构建在真实 RTX 20、RTX 4
 
 1. 把 `nvngx_dlssnr.dll` 放在模组文件旁边。
 2. 在游戏中开启 DLSS 或 DLAA。
-3. 打开菜单（**Insert**），进入 **Image** 选项卡，开启 **Neural Rendering**。
+3. 打开菜单（**Insert**），进入 **Image quality** 选项卡，开启 **Neural Rendering**。
 
 游戏中按 **Ctrl + Alt + N** 可开启或关闭 NR，便于对比开启前后的画面和帧率。该选择与菜单开关一样会被保存。
 可在菜单（**System** 选项卡）中更改或关闭此快捷键。
@@ -85,14 +87,14 @@ NR 在后台准备：最初几帧可能保留 DLSS 原本的画面。菜单顶�
 | **Style** | Default | 画面风格：Default、Natural 或 Cinematic。 |
 | **Passes** | 1 | NR 可以对自己的输出再次处理，最多四遍。每遍都会消耗 GPU 时间和显存，更多遍不保证画面更好。 |
 | **Precision** | Exact | NVIDIA 引擎的 RTX 20 和 RTX 30：Fast 减少 NR 时间，在 RTX 30 上实测约 17 %，画面有轻微差异。需重启游戏生效。 |
-| **NR model preset** | B | 使用 `nvngx_dlssnr.dll` 310.9.16 时：**B** 是更小、快得多的网络，**A** 是 310.8.0 所运行的较大网络，**DLL default** 由该文件自行选择（B）。使用 310.8.0 时，任何选项都运行其唯一的网络。它位于 SR 和 RR 模型预设旁边（**Image** 页，Upscaling），实时生效。 |
+| **NR model preset** | B | 使用 `nvngx_dlssnr.dll` 310.9.16 时：**B** 是更小、快得多的网络，**A** 是 310.8.0 所运行的较大网络，**DLL default** 由该文件自行选择（B）。使用 310.8.0 时，任何选项都运行其唯一的网络。它位于 SR 和 RR 模型预设旁边（**Image quality** 页，Upscaling），实时生效。 |
 
 在 RTX 3070 Ti Laptop 上的 1080p 本地测试中，网络 B 的 NR 时间约 15 ms，网络 A 约 27 ms。B 的画面与 A 不同。
 对 310.9.16 的支持是实验性的，测试有限。
 
 ### RTX 30 性能设置
 
-**Image → Neural Rendering → Performance** 分组提供 RTX Encore 为降低 NR 开销开发的选项。
+**Image quality → Neural Rendering → Performance** 分组提供 RTX Encore 为降低 NR 开销开发的选项。
 各项选项的取舍不同，收益百分比不能直接相加。
 
 | 设置 | 引擎 | 默认 | 收益与取舍 |

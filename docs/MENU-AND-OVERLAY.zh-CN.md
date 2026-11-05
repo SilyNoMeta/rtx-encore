@@ -14,7 +14,7 @@ RTX Encore 在 DirectX 11、DirectX 12 和 Vulkan 游戏中绘制自己的菜单
 
 在游戏窗口中按 **Insert** 打开或关闭菜单。首次启动时菜单会自动打开一次。快捷键可以在菜单中修改。
 
-在语言选择器中选择 **English**、**Français** 或 **简体中文**。选择立即生效并按游戏保存；未翻译消息保持英语。复制用于报告问题的会话报告保持英语。**关于**选项卡显示构建版本、项目与 Hub 链接、网站、问题报告、GitHub Sponsors、Ko-fi、第三方声明及公开赞助者致谢。选择链接时将在默认浏览器中打开。
+在语言选择器中选择 **English**、**Français**、**简体中文**、**Deutsch**、**Español**、**Nederlands**、**Polski**、**Português (Brasil)**、**Tiếng Việt**、**Русский** 或 **日本語**（自 2.0.0 起共十一种语言；阿拉伯语是 Hub 的语言之一，在菜单中显示为英语）。选择立即生效并按游戏保存，Hub 也可以为所有游戏统一设置；未翻译消息保持英语。复制用于报告问题的会话报告保持英语。**关于**选项卡显示构建版本、项目与 Hub 链接、网站、Discord、问题报告、GitHub Sponsors、Ko-fi、第三方声明及公开赞助者致谢。选择链接时将在默认浏览器中打开。
 
 每个页面顶部都有四个状态标签：**Upscaling**、**Frame Generation**、**Smooth Motion** 和 **Neural Rendering**。
 每个标签通过彩色圆点和一个数值显示相应功能的状态；悬停查看详情，点击进入设置。持续存在的问题会显示在标签下方的
@@ -24,8 +24,8 @@ RTX Encore 在 DirectX 11、DirectX 12 和 Vulkan 游戏中绘制自己的菜单
 
 | 选项卡 | 内容 |
 | :--- | :--- |
-| **Frames** | 帧生成及其模型预设（A/B Normal、C Lite）、独立的 Fast 选项、画质和界面选项、Smooth Motion、渲染帧率限制、V-Sync |
-| **Image** | DLSS 渲染分辨率、SR/RR/NR 模型预设、Fast super resolution（RTX 30）、Neural Rendering |
+| **帧率**（Frame rate） | 帧生成及其模型预设（A/B Normal、C Lite）、独立的 Fast 选项、画质和界面选项、Smooth Motion、渲染帧率限制、V-Sync |
+| **画质**（Image quality） | DLSS 渲染分辨率、SR/RR/NR 模型预设、Fast super resolution（RTX 30）、Neural Rendering |
 | **Overlay** | 叠加层预览、位置、文字大小和显示项目 |
 | **System** | 快捷键、兼容性、诊断和会话详情，以及用于报告问题的 **Copy** 按钮 |
 | **关于** | 构建版本、项目链接、支持链接、致谢和公开赞助者 |
@@ -78,10 +78,10 @@ RTX Encore 在 DirectX 11、DirectX 12 和 Vulkan 游戏中绘制自己的菜单
 
 | 设置 | 选项卡 | 作用 |
 | :--- | :--- | :--- |
-| **Render resolution** | Image | 指定游戏在 DLSS 处理前的渲染分辨率：DLAA、Quality、Balanced、Performance、Ultra Performance，或 50 至 100 % 的自定义比例。游戏必须已使用 DLSS。菜单显示实际观察到的分辨率，以及游戏是否遵从请求；出现问题时改回 Game。Unreal Engine 4 和 5 游戏会在可行时实时调整分辨率比例。 |
-| **Fast super resolution (RTX 30)** | Image | 默认关闭。在 RTX 30 显卡上，对使用预设为 M 或 L 的 DLSS 超分辨率的 DirectX 12 游戏，改用更快的放大版本：在测量的系统上每个放大帧约减少 16% 至 20% 的 GPU 时间，画面与原版非常接近。在其他显卡上不起作用。见[超分辨率](SUPER-RESOLUTION.zh-CN.md#fast-super-resolution-rtx-30)。 |
-| **Frame limit (FPS)** | Frames | 通过受支持的 NVIDIA Reflex 请求帧率上限。0 恢复游戏设置。生成帧是否计入上限取决于游戏与驱动。在 Dynamic 模式下暂停。 |
-| **V-Sync** | Frames | 游戏：使用游戏自身的 V-Sync。关闭：请求 DirectX 游戏关闭 V-Sync。开启：请求其开启 V-Sync，适用于启用帧生成后禁用 V-Sync 选项的游戏，以及 NVIDIA 控制面板 V-Sync 无效的笔记本。NVIDIA 控制面板强制设置的优先级更高。对 Vulkan 游戏和 XeSS-FG 无效（XeSS-FG 呈现画面时该选项为灰色）。在 60 Hz 屏幕上使用高倍数时，开启可能增加延迟：请降低倍数或使用帧率限制。 |
+| **Render resolution** | Image quality | 指定游戏在 DLSS 处理前的渲染分辨率：DLAA、Quality、Balanced、Performance、Ultra Performance，或 50 至 100 % 的自定义比例。游戏必须已使用 DLSS。菜单显示实际观察到的分辨率，以及游戏是否遵从请求；出现问题时改回 Game。Unreal Engine 4 和 5 游戏会在可行时实时调整分辨率比例。 |
+| **Fast super resolution (RTX 30)** | Image quality | 默认关闭。在 RTX 30 显卡上，对使用预设为 M 或 L 的 DLSS 超分辨率的 DirectX 12 游戏，改用更快的放大版本：在测量的系统上每个放大帧约减少 16% 至 20% 的 GPU 时间，画面与原版非常接近。在其他显卡上不起作用。见[超分辨率](SUPER-RESOLUTION.zh-CN.md#fast-super-resolution-rtx-30)。 |
+| **Frame limit (FPS)** | Frame rate | 通过受支持的 NVIDIA Reflex 请求帧率上限。0 恢复游戏设置。生成帧是否计入上限取决于游戏与驱动。在 Dynamic 模式下暂停。 |
+| **V-Sync** | Frame rate | 游戏：使用游戏自身的 V-Sync。关闭：请求 DirectX 游戏关闭 V-Sync。开启：请求其开启 V-Sync，适用于启用帧生成后禁用 V-Sync 选项的游戏，以及 NVIDIA 控制面板 V-Sync 无效的笔记本。NVIDIA 控制面板强制设置的优先级更高。对 Vulkan 游戏和 XeSS-FG 无效（XeSS-FG 呈现画面时该选项为灰色）。在 60 Hz 屏幕上使用高倍数时，开启可能增加延迟：请降低倍数或使用帧率限制。 |
 | **Compatible ray-traced hair** | System | The Witcher 3（DirectX 12，游戏构建 25575366 和 25646871）：使游戏的光线追踪毛发可用于 RTX 20、30 和 40。游戏自身的毛发设置仍决定是否渲染毛发。尚未在 RTX 20 和 RTX 30 上进行游戏内验证。需重启游戏。 |
 
 ### 建议的 Reflex 帧率上限
@@ -94,7 +94,7 @@ Reflex 限制器接受 DLL 版本 2.1.1–2.14.1，以及 2.14.16；其他版本
 
 **Reflex mode** — `game` 跟随游戏模式（默认）；`on` / `on-boost` 请求 On / On+Boost，绝不低于游戏模式。可实时修改，与帧率上限独立；Dynamic 模式及 XeLL 拥有延迟控制权时暂停覆盖。改回 `game` 会在下一个安全时机恢复游戏模式。CPU 限制帧率时 Boost 保持 GPU 高频率；请比较延迟报告，不保证改善。菜单显示游戏请求及已接受的模式；调用成功不证明驱动实际应用该模式。XeLL 始终开启低延迟，其运行库不支持 Boost。
 
-在 **Frames → Frame pacing** 中，**For this display** 建议 `刷新率 - 刷新率² / 3600`（向下取整），
+在 **Frame rate → Frame pacing** 中，**For this display** 建议 `刷新率 - 刷新率² / 3600`（向下取整），
 例如 120 Hz 时请求 **116 FPS**，144 Hz 时为 138，240 Hz 时为 224，不再除以 FG 倍率。生成帧是否计入上限取决于游戏和驱动。
 Starfield 搭配 Streamline 2.12 时，请求 90 曾得到约 22.5 FPS 渲染帧率和 ×4 FG。
 请比较实测源帧率与包含 FG 的帧率。点击 **Use … FPS** 保存建议值；更换显示器或倍率不会自动调整上限。

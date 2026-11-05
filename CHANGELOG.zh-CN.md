@@ -3,6 +3,44 @@
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
 
+## 2.0.0
+
+添加的重建与帧生成引擎提供“无”选项；缺失运行库的引擎会隐藏，旧版兼容运行库会显示警告。DLSS SR 和 XeSS 新增 Ultra（75%）渲染比例。添加的 DLSS-FG 支持 DirectX 11、DirectX 12 和 Vulkan。
+
+**RTX Encore 2.0.0 是一个大版本。**完全没有 DLSS 的游戏现在也能获得 DLSS、帧生成和 Neural Rendering，由 RTX Encore 专为它们编写的运动估计引擎驱动。RTX Encore 还换上了全新的视觉形象和标志，并开设了自己的 Discord。
+
+**RTX Encore 的 Discord 服务器现已开放。** 欢迎分享 2.0.0 的测试结果、交流设置，或就模组和 Hub 寻求帮助。[加入 Discord](https://discord.gg/Zwmq4Xc2Br)。
+
+RTX Encore 2.0.0 为**没有 DLSS 的游戏带来 NVIDIA DLSS Super Resolution 和 DLAA、Intel XeSS、Neural Rendering 和帧生成**，支持 DirectX 11、DirectX 12 和 Vulkan，基于游戏显示的画面，无需 ReShade 或任何其他工具。游戏本身不需要任何东西：不需要 DLSS，不需要运动向量，也不需要帧生成。全部为实验性功能，默认关闭；[没有 DLSS 的游戏](docs/GAMES-WITHOUT-DLSS.zh-CN.md)是完整指南。
+
+- **为没有 DLSS 的游戏启用超分辨率：**游戏分辨率下的 DLAA，或把较低的游戏分辨率放大到屏幕分辨率（游戏使用窗口化模式，RTX Encore 以无边框窗口覆盖屏幕），可用 **DLSS** 或 **XeSS**；引擎可即时切换。在 DirectX 12 游戏中 XeSS 运行于 NVIDIA Tensor Cores 上，验证范围与其他地方相同，运行时**超分辨率**卡片显示 **Tensor Cores** 标记。
+- **对显示的画面运行 Neural Rendering：**在没有 DLSS 的游戏中，**Neural Rendering** 开关直接在显示的画面上启动 NR，在超分辨率之后或单独运行，所有 NR 控件均可使用。
+- **为没有帧生成的游戏启用帧生成：****DLSS 帧生成** X2 至 X6（DirectX 11、DirectX 12 和 Vulkan）；**Intel XeFG** X2 至 X6（DirectX 12 可用 NVIDIA Tensor Cores；Vulkan 支持 SDR 和 HDR10；以及 DirectX 11）。游戏决定为 X2，固定为你选择的倍率，可即时更改。在 DirectX 11 中，游戏的下一帧会等待 XeFG 的工作完成，X3 的节奏均匀；在屏幕允许画面撕裂时，输出不再受刷新率限制。HUD 与画面一起插帧。
+- **运动估计，四种选择：****RTX Encore**，模组自己在显卡上的估计，为默认值（每 2×2 像素一个向量，跟随对象边缘并利用深度缓冲；RTX 4090 上 4K 每帧约 0.8 毫秒）；**着色器 (vort)**，vortigern11 的 vort_Motion 方法（约 0.6 毫秒）；**Optical Flow (质量)** 和 **Optical Flow (快速)**，NVIDIA Optical Flow。可即时切换并对比。
+- **自动找到深度缓冲**：当游戏绘制时使用深度缓冲，三种 API 均可；没有时一切仍会运行，运动稳定性略差。
+- **Hub 安装全部文件：**[RTX Encore Hub 2.0.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.0.0) 在没有 DLSS 的游戏中安装或更新模组时，把该游戏可用的 DLSS、Neural Rendering、帧生成和 Intel 文件放到模组旁边，并通过**还原游戏**移除。这不会开启任何功能。
+
+维护者已在 RTX 4090（NVIDIA 621.01）上验证：PEAK 的 DirectX 12（DLAA、1440p 放大到 4K、NR、DLSS 帧生成 X2 和 X4、带 Tensor Cores 的 XeFG X4）、DirectX 11（XeFG X2）和 Vulkan（DLAA、放大、NR、DLSS 帧生成 X4、XeFG X4）；The Sims 4 的 DirectX 11（XeFG X2 和 X3，在 144 Hz 屏幕上超过 144 FPS）；Skyrim Special Edition 的 DirectX 11（XeFG X3 至 X6）；Football Life 2027 的 DirectX 11 和 HDR（DLAA 和 NR，1440p 放大到 4K 和 NR）。需要了解的限制：HUD 与画面一起处理和插帧；放大后的画面比游戏自带的 DLSS 稍软，后者拥有游戏的镜头抖动（DLAA 没有这一限制）；Unity 游戏低于屏幕分辨率时请用窗口化而非全屏窗口；以 scRGB（16 位浮点）显示的游戏保留自己的帧，没有帧生成；Tensor Cores 仅适用于 DirectX 12；使用帧生成时请关闭 Smooth Motion。尚未在任何 RTX 20、RTX 30 或 RTX 50 显卡以及其他驱动上测试。
+
+### 2.0.0 的其他更改
+
+- **菜单支持十一种语言：**德语、西班牙语、荷兰语、波兰语、巴西葡萄牙语、越南语、俄语和日语加入英语、法语和简体中文。阿拉伯语是 Hub 的语言之一，在菜单中显示为英语。菜单现基于 Dear ImGui 1.93。感谢 [@Matarto](https://github.com/Matarto) 提出波兰语的需求（[Hub issue 12](https://github.com/SilyNoMeta/rtx-encore-hub/issues/12)）。
+- **使用 NVIDIA App 最新的 DLSS 模型：**原“Force NVIDIA OTA models”选项（系统选项卡）现在名副其实，适用于帧生成、Super Resolution、Ray Reconstruction 和 Neural Rendering：当 NVIDIA App 已下载比游戏更新且经 RTX Encore 认可的模型时，就使用该模型，不向游戏或 NVIDIA App 的文件写入任何内容。这让自带较旧 DLSS-G 的游戏也能使用帧生成预设 C，FG 预设下方会有提示。帧生成已在 RTX 4090 和 RTX 3070 Ti Laptop 上的赛博朋克 2077 中验证；Super Resolution、Ray Reconstruction 和 Neural Rendering 尚未在游戏中检查。感谢 [@Kbx-7](https://github.com/Kbx-7) 的建议（[#101](https://github.com/SilyNoMeta/rtx-encore/issues/101)）。
+- **Ghost of Tsushima 中的 XeFG：**XeFG 以 X2 被接受却没有生成任何帧：游戏传递深度和运动的方式 RTX Encore 以前不接受。现已支持；维护者在游戏中看到 X2 和 X4 生成。感谢 [@MoDymm-debug](https://github.com/MoDymm-debug) 的报告和日志（[#100](https://github.com/SilyNoMeta/rtx-encore/issues/100)）。
+- **使用 XeFG 时开关帧生成导致崩溃（Crimson Desert）：**以 XeFG 为引擎时切换游戏的帧生成可能导致游戏关闭。已在 RTX 3070 Ti Laptop 上复现并修复；随后连续多次开关均未崩溃。感谢 [@pradeepkumar35](https://github.com/pradeepkumar35) 的报告（[#103](https://github.com/SilyNoMeta/rtx-encore/issues/103)）。报告者尚未复测。
+- **自带 DirectX 12 Agility SDK 的游戏中的 Tensor Cores（Crimson Desert 等）：**自 1.5.3 起，XeFG 和 XeSS Tensor Cores 在所有此类游戏中被拒绝，改走标准 Intel 路径。两者现已恢复，已在 RTX 4090 上的 Crimson Desert 中检查（复现 #103 时发现）。XeSS Tensor Cores 路径还接受 NVIDIA 621.12 热修复驱动，依据驱动包识别，尚未在游戏中验证。
+- **No Man's Sky 无法启动（Vulkan）：**自 1.2.2 起，游戏旁边找到的 Intel XeSS 运行库即使选择了 DLSS 也会在游戏启动时准备，报告者的配置在此处崩溃。现在只有在游戏启动时 XeSS 是所选引擎才会触及它；Vulkan 中不再提供即时切换到 XeSS。维护者的机器上未能复现；感谢 [@sweddd](https://github.com/sweddd) 的报告和日志（[#104](https://github.com/SilyNoMeta/rtx-encore/issues/104)）。报告者尚未确认。
+- **No Man's Sky（Vulkan）中用 XeFG 替换游戏的 DLSS 帧生成：**接受 HDR10 输出（不接受 scRGB：保留游戏的 DLSS-G）；修复了安装 ReShade 6.8 时第一帧崩溃的问题；生成帧不再等待屏幕刷新即显示，与游戏自己的 DLSS-G 相同，游戏帧率因此不再被限制在刷新率除以倍率；倍率可即时更改。维护者已在 HDR 下以 X4 验证。**已知限制：**游戏使用 DLAA 时 XeFG 不生成任何帧（游戏的全分辨率运动不符合 XeFG 的约定）：请选择 DLSS 质量模式。
+- **No Man's Sky（Vulkan）中的 XeSS Super Resolution：**游戏的深度缓冲被拒绝，DLSS 继续运行。XeSS 现已接受它；当选择了 XeSS 却运行了 DLSS 时，菜单会在**引擎**下方说明原因。
+- **平滑 X3 / X4 改为自动：**该设置现在为**自动**（默认）、**开**或**关**。自动模式下，RTX Encore 观察 X3 及以上时生成帧到达屏幕的方式，并为该游戏学习是否应由 Streamline 自行安排帧的节奏；通知会说明它看到了什么、改变了什么，从下次启动生效。Hub 显示学习到的选择并可重置。已在 PEAK 的 DirectX 12 中检查。
+- **Football Life 2027（及其他受保护的可执行文件）安装 RTX Encore 后启动约 1.5 秒即关闭。**已修复；菜单照常附加。
+- **没有 DLSS 的游戏中的菜单文字（Skyrim Special Edition）：**使用 RTX Encore 运动估计时，静止的文字会变形；现在它的运动严格为零。菜单中滚动、淡入淡出或放大的文字在 DLSS 或 XeSS 之后留下的拖影更少。尚未在游戏中确认。当 DirectX 11 游戏把显示移到另一个线程时（如 Skyrim SE），XeFG 也会继续工作。
+- **菜单：**前两个选项卡现在名为**帧率**和**画质**，在每种语言中名称都不同；添加的引擎直接在**引擎**中选择，选择**无**即可关闭；XeSS 或 XeFG 运行于 Tensor Cores 上时，超分辨率和帧生成卡片显示绿色的 **Tensor Cores** 标记；Tensor Cores 开关在 DirectX 11 和 Vulkan 游戏中隐藏，因为那里它们无法起作用；**Fast super resolution** 仅在适用的 RTX 30 显卡上显示。
+
+### 已检查的内容
+
+上述游戏由维护者使用这些更改的测试版本在 RTX 4090 上游玩（#101 和 #103 还使用了 RTX 3070 Ti Laptop）。游戏未使用最终的 2.0.0 二进制文件复测。发布检查涵盖编译、这些功能的回归测试套件和压缩包完整性；完整测试套件未重新运行。
+
 ## 1.6.0
 
 1.6.0 将帧生成加速推向更进一步：在 RTX 40 和 RTX 30 上，每一帧生成帧的开销再次降低，且与 NVIDIA 的输出逐像素一致。

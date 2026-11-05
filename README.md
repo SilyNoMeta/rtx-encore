@@ -1,15 +1,22 @@
 <div align="center">
 
-# RTX Encore
+<h1>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/wordmark-dark-theme.png">
+  <img src="assets/wordmark-light-theme.png" alt="RTX Encore" width="440">
+</picture>
+</h1>
 
 **Frame generation up to X6, Smooth Motion and Neural Rendering\
-for GeForce RTX 20, RTX 30 and RTX 40.**
+for GeForce RTX 20, RTX 30 and RTX 40 — now in games that ship no DLSS too.**
 
-One file next to the game, a built-in menu, nothing else to install.
+A built-in menu, with RTX Encore Hub to install the mod and its required runtimes.
 
 [![Latest release](https://img.shields.io/github/v/release/SilyNoMeta/rtx-encore?include_prereleases&style=for-the-badge&label=Latest&color=76b900)](https://github.com/SilyNoMeta/rtx-encore/releases)
 [![Downloads](https://img.shields.io/github/downloads/SilyNoMeta/rtx-encore/total?style=for-the-badge&color=2f81f7)](https://github.com/SilyNoMeta/rtx-encore/releases)
 [![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4-db61a2?style=for-the-badge&logo=githubsponsors&logoColor=white)](https://github.com/sponsors/SilyNoMeta)
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-Support-ff5e5b?style=for-the-badge&logo=kofi&logoColor=white)](https://ko-fi.com/silynometa)
+[![Join the Discord](https://img.shields.io/badge/Join_Discord-454FC4?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/Zwmq4Xc2Br)
 
 [![GPUs](https://img.shields.io/badge/GPUs-RTX%2020%20%7C%2030%20%7C%2040-76b900?style=flat-square&logo=nvidia&logoColor=white)](docs/COMPATIBILITY.md)
 [![Graphics APIs](https://img.shields.io/badge/APIs-DirectX%2011%20%7C%2012%20%7C%20Vulkan-0078d4?style=flat-square)](docs/COMPATIBILITY.md)
@@ -20,28 +27,38 @@ One file next to the game, a built-in menu, nothing else to install.
 **[Français](README.fr.md)** ·
 **[中文](README.zh-CN.md)**
 
-<sub>Free, made on personal time. If it is useful to you, you can <a href="https://github.com/sponsors/SilyNoMeta">support the project on GitHub Sponsors</a> ❤</sub>
+<sub>Free, made on personal time. If it is useful to you, you can support the project on <a href="https://github.com/sponsors/SilyNoMeta">GitHub Sponsors</a> or <a href="https://ko-fi.com/silynometa">Ko-fi</a> ❤</sub>
 
 <p>❤️ Thank you to <a href="https://github.com/mennogreg">@mennogreg</a> and <a href="https://github.com/Scarhead666">@Scarhead666</a> for supporting the development of RTX Encore.</p>
 
 </div>
+
+**RTX Encore now has a Discord.** Share your 2.0.0 results, compare settings, or get help with the mod and Hub. [Join the Discord](https://discord.gg/Zwmq4Xc2Br).
 
 > [!IMPORTANT]
 > RTX Encore is an independent, experimental mod. It is not affiliated with or endorsed by NVIDIA.
 > It loads inside the game: do not use it in online or anti-cheat protected games, where it can be blocked or get an
 > account flagged. Back up every file you replace.
 
-**[Latest: 1.6.0](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v1.6.0)** · [Release notes](CHANGELOG.md) · [Hub 1.6.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v1.6.0)
+**[Latest: 2.0.0](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v2.0.0)** · [Release notes](CHANGELOG.md) · [Hub 2.0.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.0.0)
 
-**1.6.0:** frame-generation acceleration pushed even further, frames still identical to NVIDIA's; Starfield + ReShade crash fix (issue 98); menu cursor in Raw Input games. [Release notes](CHANGELOG.md).
 
-## 1.5.0: XeSS and XeFG on NVIDIA Tensor Cores
+## 2.0.0: DLSS, XeSS, Neural Rendering and frame generation for games without DLSS
 
-Two independent experimental options bring NVIDIA Tensor Cores to XeSS reconstruction and XeFG frame generation. Toggle each live in the in-game menu or **Hub 1.5.0**. Both are off by default. Initial qualification: **RTX 4090, NVIDIA 621.01, DirectX 12, and the Intel runtimes supplied by Hub**. [Setup and measured results](docs/INTEL-ENGINES.md).
+Many games ship no DLSS at all. RTX Encore 2.0.0 brings them **NVIDIA DLSS Super Resolution or DLAA, Intel XeSS, Neural Rendering and frame generation**, from the image they display, in **DirectX 11, DirectX 12 and Vulkan**, without ReShade or any other tool. The game needs nothing: no DLSS, no motion vectors, no frame generation of its own.
 
-| 🎞️ **[Frame generation](docs/FRAME-GENERATION.md)** | 🌀 **[Smooth Motion](docs/SMOOTH-MOTION.md)** | ✨ **[Neural Rendering](docs/NEURAL-RENDERING.md)** |
-| :--- | :--- | :--- |
-| Choose the multiplier in compatible games. | Interpolation for games without native FG. | Tune the image with independent NR controls. |
+| | |
+| :--- | :--- |
+| 🔍 **Upscaling** | DLAA at the game's resolution, or a lower game resolution upscaled to the screen's, with **DLSS** or **XeSS** (XeSS on NVIDIA Tensor Cores in DirectX 12). |
+| ✨ **Neural Rendering** | NVIDIA's NR on the displayed image, with every RTX Encore NR control. |
+| 🎞️ **Frame generation** | **DLSS Frame Generation** X2 to X6 in DirectX 11, DirectX 12 and Vulkan; **Intel XeFG** up to X6 in DirectX 12 (Tensor Cores), Vulkan (HDR10 included) and DirectX 11. Change the multiplier while playing. |
+| 🧭 **Motion estimation** | RTX Encore's own estimation, on the graphics card, or vort_Motion's shader method, or NVIDIA Optical Flow. |
+
+Press **Insert**, then choose the **Engine** in Upscaling and Frame generation: **None**, **DLSS / XeSS**, or **DLSS-FG / XeFG** as appropriate. Native integrations keep **Game**. [Setup, requirements and limits](docs/GAMES-WITHOUT-DLSS.md).
+
+| 🎞️ **[Frame generation](docs/FRAME-GENERATION.md)** | 🌀 **[Smooth Motion](docs/SMOOTH-MOTION.md)** | ✨ **[Neural Rendering](docs/NEURAL-RENDERING.md)** | 🎮 **[Games without DLSS](docs/GAMES-WITHOUT-DLSS.md)** |
+| :--- | :--- | :--- | :--- |
+| Choose the multiplier in compatible games. | Interpolation for games without native FG. | Tune the image with independent NR controls. | DLSS, XeSS, NR and frame generation where the game ships none. |
 
 ## Start playing
 
@@ -58,8 +75,6 @@ XeSS, XeFG and the native XeFG → DLSS FG adapter are experimental and require 
 
 | | Feature | In short |
 | :---: | :--- | :--- |
-| ⚡ | **[XeSS Tensor Cores](docs/INTEL-ENGINES.md)** | Experimental NVIDIA Tensor Cores for XeSS Super Resolution; toggle live at the next XeSS execution. Initial qualification: RTX 4090, NVIDIA 621.01, DirectX 12 and the Intel runtime supplied by Hub. Other RTX 40, RTX 30 and RTX 50 adapters, on NVIDIA 621.01 or the 621.12 hotfix, are admitted with the same acceleration built for their architecture, not yet validated in-game. Refused preparation retains standard XeSS. |
-| ⚡ | **[XeFG Tensor Cores](docs/INTEL-ENGINES.md)** | Experimental NVIDIA Tensor Cores for XeFG; fixed X2–X6 within initialized capacity. Toggle live as command recordings renew. Initial qualification: RTX 4090, NVIDIA 621.01, DirectX 12 and the Intel runtime supplied by Hub. Other RTX 40, RTX 30 and RTX 50 adapters, on NVIDIA 621.01 or the 621.12 hotfix, are admitted with the same acceleration built for their architecture, not yet validated in-game. Refused preparation retains standard XeFG; an execution fault requires a restart. |
 | 🧪 | **[Intel engines (experimental)](docs/INTEL-ENGINES.md)** | XeSS reconstruction or XeFG frame generation with XeLL, where compatible game inputs and runtimes allow them. Off by default. |
 | 🔆 | **[Live sharpening](docs/SUPER-RESOLUTION.md)** | Off / Game / Custom, after reconstruction and NR. Custom 0–100%, default 30%; appearance and Vulkan operation remain unvalidated. |
 | 🎞️ | **[Frame generation X2 to X6](docs/FRAME-GENERATION.md)** | DLSS Multi Frame Generation on RTX 20, 30 and 40, in games with compatible DLSS or native Intel frame generation. Fixed multiplier, Dynamic mode with a target frame rate, or the game's own choice. |
@@ -67,9 +82,11 @@ XeSS, XeFG and the native XeFG → DLSS FG adapter are experimental and require 
 | ⚡ | **Lighter frame generation** | A performance option that lowers the GPU cost of each generated frame without changing the image. Pushed even further in 1.6.0: on an RTX 4090, a generated frame costs 34 % less GPU time than with the option off at 1080p X2, 16 % at 1080p X6. |
 | 🌀 | **[Smooth Motion on RTX 20 / 30](docs/SMOOTH-MOTION.md)** | NVIDIA's driver frame interpolation, including games without DLSS: DirectX 11, DirectX 12 and Vulkan on RTX 30; **experimental RTX 20 support** in DirectX 12 with driver 621.01 and V1 / V2 variants. Off by default. |
 | ✨ | **[Neural Rendering](docs/NEURAL-RENDERING.md)** | NR on RTX 20, 30 and 40, with RTX Encore's own performance options for Ampere: optimized processing, Fast precision, independent NR resolution. One to four passes, a style for each, HDR support. Experimental, off by default. |
-| 🎛️ | **[Built-in menu and overlay](docs/MENU-AND-OVERLAY.md)** | Press **Insert** in the game: every setting, the state of each feature, and an overlay with frame rate, multiplier, frame pacing, GPU and VRAM. DirectX 11, DirectX 12 and Vulkan. |
+| 🎮 | **[Games without DLSS](docs/GAMES-WITHOUT-DLSS.md)** | DLSS or XeSS upscaling (DLAA or to the screen's resolution), Neural Rendering and frame generation (DLSS Frame Generation or Intel XeFG, X2 to X6) in DirectX 11, DirectX 12 and Vulkan games that ship no DLSS, from the image they display, with RTX Encore's own motion estimation. New in 2.0.0. Experimental, off by default. |
+| ⚡ | **[XeSS and XeFG on NVIDIA Tensor Cores](docs/INTEL-ENGINES.md)** | Two independent experimental options run XeSS reconstruction and XeFG frame generation on NVIDIA Tensor Cores, in DirectX 12, in games with their own DLSS and in games without. Off by default; the menu chips show a **Tensor Cores** badge while they run. Qualified on RTX 4090 / NVIDIA 621.01; other RTX 30, 40 and 50 cards are admitted without in-game validation. |
+| 🎛️ | **[Built-in menu and overlay](docs/MENU-AND-OVERLAY.md)** | Press **Insert** in the game: every setting, the state of each feature, and an overlay with frame rate, multiplier, frame pacing, GPU and VRAM. DirectX 11, DirectX 12 and Vulkan. In eleven languages since 2.0.0. |
 | 🚀 | **[Fast super resolution on RTX 30](docs/SUPER-RESOLUTION.md)** | A faster DLSS Super Resolution for RTX 30 in DirectX 12 games with preset M or L: about 16 to 20 % less GPU time per upscaled frame on the system measured, with an image very close to the original. Off by default. |
-| 🔍 | **DLSS render resolution** | Choose DLAA, Quality, Balanced, Performance, Ultra Performance or a custom scale in games that already use DLSS. |
+| 🔍 | **DLSS render resolution** | Choose DLAA, Ultra (75%), Quality, Balanced, Performance, Ultra Performance or a custom scale in games that already use DLSS. |
 | 🧩 | **One universal file** | `rtx-encore.dll` takes the name the game loads (`version.dll`, `dinput8.dll`, `winmm.dll`, `dxgi.dll` and fifteen others) or runs as an `.asi` plugin. |
 
 ## Neural Rendering built for Ampere
@@ -111,7 +128,8 @@ The simplest way is **[RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-
 1. Download the **[latest release](https://github.com/SilyNoMeta/rtx-encore/releases)** and extract it.
 2. Copy `rtx-encore.dll` next to the game's executable and rename it `version.dll`.
 3. Start the game. The menu opens once on first launch; press **Insert** to bring it back.
-4. Turn DLSS Frame Generation on in the game's settings. If it was already on, turn it off and on again.
+4. Turn DLSS Frame Generation on in the game's settings. If it was already on, turn it off and on again. In a game
+   that ships no DLSS, turn on what you want in the menu instead: see **[Games without DLSS](docs/GAMES-WITHOUT-DLSS.md)**.
 
 Other file names, the `.asi` plugin, updating and removing: **[Installation](docs/INSTALLATION.md)**.
 
@@ -145,6 +163,8 @@ These are the default shortcuts; each can be changed in the menu. They only act 
 | Super Resolution | [Open](docs/SUPER-RESOLUTION.md) | [Ouvrir](docs/SUPER-RESOLUTION.fr.md) | [打开](docs/SUPER-RESOLUTION.zh-CN.md) |
 | Smooth Motion on RTX 20 / 30 | [Open](docs/SMOOTH-MOTION.md) | [Ouvrir](docs/SMOOTH-MOTION.fr.md) | [打开](docs/SMOOTH-MOTION.zh-CN.md) |
 | Neural Rendering | [Open](docs/NEURAL-RENDERING.md) | [Ouvrir](docs/NEURAL-RENDERING.fr.md) | [打开](docs/NEURAL-RENDERING.zh-CN.md) |
+| Games without DLSS | [Open](docs/GAMES-WITHOUT-DLSS.md) | [Ouvrir](docs/GAMES-WITHOUT-DLSS.fr.md) | [打开](docs/GAMES-WITHOUT-DLSS.zh-CN.md) |
+| Intel XeSS and XeFG | [Open](docs/INTEL-ENGINES.md) | [Ouvrir](docs/INTEL-ENGINES.fr.md) | [打开](docs/INTEL-ENGINES.zh-CN.md) |
 | Menu and overlay | [Open](docs/MENU-AND-OVERLAY.md) | [Ouvrir](docs/MENU-AND-OVERLAY.fr.md) | [打开](docs/MENU-AND-OVERLAY.zh-CN.md) |
 | Settings file | [Open](docs/SETTINGS.md) | [Ouvrir](docs/SETTINGS.fr.md) | [打开](docs/SETTINGS.zh-CN.md) |
 | Compatibility | [Open](docs/COMPATIBILITY.md) | [Ouvrir](docs/COMPATIBILITY.fr.md) | [打开](docs/COMPATIBILITY.zh-CN.md) |
@@ -176,6 +196,10 @@ TonyJoaca and has since grown into a project of its own. It also owes much to th
 - [sdli1995/dlssg_for_sm86](https://github.com/sdli1995/dlssg_for_sm86): frame-generation research on RTX 20 and RTX 30;
 - [Intel XeSS](https://github.com/intel/xess): XeSS, XeFG and XeLL SDK interfaces;
 - [maximedgoulet/FoveatedDLSS5](https://github.com/maximedgoulet/FoveatedDLSS5): the foveated Neural Rendering idea;
+- [jlrouzies-fr/DLSS5-Feeder](https://github.com/jlrouzies-fr/DLSS5-Feeder): Neural Rendering fed from the displayed image, and its motion validation;
+- [vortigern11/vort_Shaders](https://github.com/vortigern11/vort_Shaders) (vort_Motion): the shader motion estimation for games without DLSS;
+- [crosire/reshade](https://github.com/crosire/reshade) (Generic Depth add-on): how to find the depth buffer a game draws with;
+- [Dear ImGui](https://github.com/ocornut/imgui) by Omar Cornut: the toolkit the in-game menu and overlay are built with;
 - [Noto Sans SC](https://github.com/google/fonts/tree/main/ofl/notosanssc): menu typeface;
 - everyone who tests a build and reports a bug: several fixes exist only because of those reports.
 

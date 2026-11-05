@@ -12,7 +12,8 @@ Use **RTX Encore Hub 1.2.0 or later** to install or update the mod and its Intel
 
 - Windows 10 or 11, 64-bit.
 - A GeForce RTX 20, RTX 30 or RTX 40 card with a recent NVIDIA driver.
-- For frame generation: a game that offers **DLSS Frame Generation** in its settings.
+- For frame generation: a game that offers **DLSS Frame Generation** in its settings, or, experimentally, a game that
+  ships no DLSS at all: see [Games without DLSS](GAMES-WITHOUT-DLSS.md), where the Hub installs what it needs.
 - For Smooth Motion and Neural Rendering, see their own pages:
   [Smooth Motion](SMOOTH-MOTION.md), [Neural Rendering](NEURAL-RENDERING.md).
 

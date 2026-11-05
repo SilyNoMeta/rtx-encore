@@ -14,11 +14,12 @@ RTX Encore 1.2.0 可选择重建和帧生成引擎。保留 **Game** 可继续�
 
 - 游戏提供 DirectX 12 或 Vulkan 原生 **DLSS 帧生成**，或兼容的 DirectX 12 原生 **Intel FG** 输入。后者请使用实验性 [DLSS-FG 引擎](INTEL-ENGINES.zh-CN.md)，通过 Hub 安装符合要求的运行库，重启后在游戏中启用 Intel FG。原生 FSR 保持不变。
 - 受支持的 `nvngx_dlssg.dll` 和兼容运行库：[兼容性](COMPATIBILITY.zh-CN.md#dlss-帧生成版本)。可用功能取决于精确版本。
-- 在游戏中启用帧生成。游戏没有兼容的原生 FG 输入时，请参阅 [Smooth Motion](SMOOTH-MOTION.zh-CN.md)。
+- 在游戏中启用帧生成。
+- **完全没有帧生成的游戏**自 2.0.0 起可以从 RTX Encore 获得帧生成：DLSS 帧生成（DirectX 12 和 Vulkan）或 Intel XeFG（DirectX 12、DirectX 11 和 Vulkan），基于游戏显示的画面：参见[没有 DLSS 的游戏](GAMES-WITHOUT-DLSS.zh-CN.md#帧生成)。在 RTX 20 和 RTX 30 上，驱动的 [Smooth Motion](SMOOTH-MOTION.zh-CN.md) 仍是另一种选择。
 
 ## 模式
 
-在菜单（**Frames** 选项卡）中或用快捷键选择模式。
+在菜单（**Frame rate** 选项卡）中或用快捷键选择模式。
 
 | 模式 | 作用 |
 | :--- | :--- |
@@ -35,7 +36,13 @@ RTX Encore 1.2.0 可选择重建和帧生成引擎。保留 **Game** 可继续�
 
 ### 平滑 X3 / X4
 
-在部分游戏中，X3 和 X4 看起来比 X2 更卡顿：生成帧成批到达屏幕，而不是依次显示。**Smooth out X3 / X4**（`flipMeteringBypass`，默认关闭）让 Streamline 自行安排生成帧的间隔，而不是交给 NVIDIA 驱动，适用于 DirectX 12 和 Vulkan。可在菜单中倍率下方或在 RTX Encore Hub 中开启，然后重启游戏。在驱动已能正确安排帧间隔的游戏中，它没有可见效果。
+在部分游戏中，X3 和 X4 看起来比 X2 更卡顿：生成帧成批到达屏幕，而不是依次显示。**平滑 X3 / X4**（`flipMeteringBypass`）让 Streamline 自行安排生成帧的间隔，而不是交给 NVIDIA 驱动，适用于 DirectX 12 和 Vulkan。自 2.0.0 起它有三个位置，在菜单中倍率下方或在 RTX Encore Hub 中设置：
+
+- **自动**（默认）：RTX Encore 观察 X3 及以上时生成帧到达屏幕的方式，并为该游戏学习是否应由 Streamline 安排帧的节奏。做出决定时，通知会说明它看到了什么、改变了什么；该选择从下次启动生效并为该游戏保留。Hub 会显示它，并可重置以让 RTX Encore 重新测量。
+- **开**：由 Streamline 安排帧的节奏。需重启游戏生效。
+- **关**：由 NVIDIA 驱动安排。需重启游戏生效。
+
+在驱动已能正确安排帧间隔的游戏中，“开”没有可见效果。为[没有帧生成的游戏](GAMES-WITHOUT-DLSS.zh-CN.md#帧生成)生成帧时始终由 Streamline 安排帧的节奏；自动模式知道这一点。
 
 在符合条件的旧 Streamline 中，DX12 动态模式使用 Encore 自适应 X2–X4。从 X2 开始，依据游戏源帧率调整，在切换之间等待，并在游戏拒绝请求时暂停。符合条件的新版保留原生动态 MFG。见[版本矩阵](COMPATIBILITY.zh-CN.md#streamline-版本)。D3D11 仅提供独立的 Smooth Motion X2。
 
@@ -54,7 +61,7 @@ RTX Encore 1.2.0 可选择重建和帧生成引擎。保留 **Game** 可继续�
 
 ## 画质
 
-**Frames** 选项卡的 **Quality** 分组包含作用于生成帧的选项。它们默认开启，并在游戏启动时读取。
+**Frame rate** 选项卡的 **Quality** 分组包含作用于生成帧的选项。它们默认开启，并在游戏启动时读取。
 
 - **Anti-tearing / anti-ghosting**：保护生成帧中的细小几何体（栅栏、电线、植被）和移动阴影。
 - **Protection tuning**：*Refined*（默认）或 *Classic*。如果某个游戏出现 Refined 无法消除的瑕疵，再尝试 Classic。
@@ -65,6 +72,9 @@ RTX Encore 1.2.0 可选择重建和帧生成引擎。保留 **Game** 可继续�
 DLSS-G 310.9.16.0。无需再选择第二个模式。**Fast frame generation 保持独立**，可与每个预设一起开启。
 Lite 保留 NVIDIA 的原生图像策略，因此 Anti-tearing 和 Protection tuning 在此模式下无效，界面重组也不可用。
 仅供诊断的覆盖选项保留在 JSON 中，请保持默认值。见[设置](SETTINGS.zh-CN.md#dlsspresets)。
+
+预设 C 需要 DLSS-G 310.9.16。如果游戏自带的版本较旧，可以用 RTX Encore Hub 更新其 DLL，或者在 **System**
+选项卡中开启 **Use the NVIDIA App's newest DLSS models** 并重启游戏（见[兼容性选项](#兼容性选项)）。
 
 ### Fast frame generation
 
@@ -88,7 +98,7 @@ RTX 3070 Ti：重写后的各阶段比 1.5.3 快 4% 到 5%（第一网络）和 
 
 ## 游戏界面
 
-当游戏界面与 3D 场景分开处理时，生成帧最为干净。**Frames** 选项卡中有三个开关：
+当游戏界面与 3D 场景分开处理时，生成帧最为干净。**Frame rate** 选项卡中有三个开关：
 
 | 设置 | 默认 | 作用 |
 | :--- | :---: | :--- |
@@ -105,7 +115,7 @@ RTX 3070 Ti：重写后的各阶段比 1.5.3 快 4% 到 5%（第一网络）和 
 | 设置 | 默认 | 作用 |
 | :--- | :---: | :--- |
 | **Disable menu detection** | 关闭 | 关闭时：帧生成会在菜单和加载画面中暂停，可避免在这些地方崩溃。请保持关闭。 |
-| **Force NVIDIA OTA models** | 关闭 | 使用 NVIDIA 应用下载的帧生成模型。需重启游戏生效。 |
+| **Use the NVIDIA App's newest DLSS models** | 关闭 | 如果 NVIDIA 应用下载的帧生成、Super Resolution、Ray Reconstruction 和 Neural Rendering 模型比游戏自带的更新，则使用最新的模型，例如在自带较旧 DLSS-G 的游戏中使用帧生成预设 C。不会写入游戏或 NVIDIA 应用的文件。需要 NVIDIA 应用已下载这些模型。需重启游戏生效。 |
 | **Graphics card series** | auto | 除非显卡未被识别，否则保持 auto。 |
 
 ## 读懂叠加层

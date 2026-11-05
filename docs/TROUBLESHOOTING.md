@@ -31,7 +31,7 @@ RTX Encore 1.2.0 adds a choice of reconstruction and frame-generation engines. L
 
 | Symptom | First check |
 | :--- | :--- |
-| The game has no Frame Generation option | RTX Encore extends DLSS Frame Generation in games that have it; it cannot add one. See [Smooth Motion](SMOOTH-MOTION.md) for the other games. |
+| The game has no Frame Generation option | RTX Encore extends DLSS Frame Generation in games that have it. In a game that ships none, choose **DLSS-FG** or **XeFG** under **Engine** in the **Frame rate** tab (experimental, since 2.0.0): see [Games without DLSS](GAMES-WITHOUT-DLSS.md#frame-generation). [Smooth Motion](SMOOTH-MOTION.md) is the other option on RTX 20 and RTX 30. |
 | The option is there but greyed out | Check that DLSS is on, that the game runs in DirectX 12 or Vulkan, and that the mod is loaded. |
 | The multiplier stays at X2 | Turn frame generation off and on in the game, or restart it. Check the mode in the menu: in **Game decides**, the game chooses. |
 | X5 or X6 is not reached in Dynamic mode | Turn **Allow 5x and 6x** on. |
@@ -74,7 +74,7 @@ A reported thermal limit helps confirm overheating-related slowdown. A power lim
 whether the cause is a laptop power profile, CPU/GPU power sharing, or another power constraint. Brief events
 between samples may be missed. Comparing the same scene before and after the drop is especially useful.
 
-For a separate comparison, try **Frames → Frame pacing → Suggested Reflex cap** when available, or a manual
+For a separate comparison, try **Frame rate → Frame pacing → Suggested Reflex cap** when available, or a manual
 Reflex request. The suggestion uses a limit below the display rate (224 FPS at 240 Hz); it is not a thermal target. FG counting
 depends on the game/driver. If applying it does not reduce the actual render rate, try a lower request.
 Compare measured source FPS and GPU readings; `accepted` alone does not prove a benefit. The saved limit

@@ -16,7 +16,7 @@ Redémarrez après un changement de moteur, d’espacement XeFG ou de réglage d
 Appuyez sur **Inser** dans la fenêtre du jeu pour l'ouvrir ou le fermer. Il s'ouvre une fois de lui-même au premier
 lancement. Le raccourci se change dans le menu.
 
-Choisissez **English**, **Français** ou **简体中文** dans le sélecteur de langue. Le choix s’applique aussitôt et se conserve par jeu ; les messages non traduits restent en anglais. Le rapport de session copié pour un signalement reste en anglais. L’onglet **À propos** montre la version du build, les liens du projet et du Hub, le site, les signalements, GitHub Sponsors, Ko-fi, les mentions tierces et les remerciements aux sponsors publics. Les liens sélectionnés s’ouvrent dans votre navigateur par défaut.
+Choisissez **English**, **Français**, **简体中文**, **Deutsch**, **Español**, **Nederlands**, **Polski**, **Português (Brasil)**, **Tiếng Việt**, **Русский** ou **日本語** dans le sélecteur de langue (onze langues depuis la 2.0.0 ; l’arabe, langue du Hub, s’affiche en anglais dans le menu). Le choix s’applique aussitôt et se conserve par jeu, et le Hub peut le régler pour tous les jeux ; les messages non traduits restent en anglais. Le rapport de session copié pour un signalement reste en anglais. L’onglet **À propos** montre la version du build, les liens du projet et du Hub, le site, le Discord, les signalements, GitHub Sponsors, Ko-fi, les mentions tierces et les remerciements aux sponsors publics. Les liens sélectionnés s’ouvrent dans votre navigateur par défaut.
 
 Une rangée de quatre pastilles coiffe chaque page : **Upscaling**, **Frame Generation**, **Smooth Motion** et
 **Neural Rendering**. Chacune montre l'état de sa fonction par un point de couleur et un chiffre ; survolez-la pour
@@ -28,8 +28,8 @@ encore le remplacer.
 
 | Onglet | Ce qu'il contient |
 | :--- | :--- |
-| **Frames** | La génération d'images avec son preset de modèle (A/B Normal, C Lite), son option Fast indépendante et ses options de qualité et d'interface, Smooth Motion, la limite d'images calculées, la V-Sync |
-| **Image** | La résolution de rendu DLSS, les presets de modèles SR/RR/NR, Fast super resolution (RTX 30), Neural Rendering |
+| **Fluidité** (Frame rate) | La génération d'images avec son preset de modèle (A/B Normal, C Lite), son option Fast indépendante et ses options de qualité et d'interface, Smooth Motion, la limite d'images calculées, la V-Sync |
+| **Qualité d’image** (Image quality) | La résolution de rendu DLSS, les presets de modèles SR/RR/NR, Fast super resolution (RTX 30), Neural Rendering |
 | **Overlay** | Un aperçu de l'overlay, sa position, la taille de son texte et les lignes qu'il affiche |
 | **System** | Les raccourcis, la compatibilité, les diagnostics et les détails de la session, avec un bouton **Copy** pour les rapports de bug |
 | **À propos** | Version du build, liens du projet, soutien, crédits et sponsors publics |
@@ -86,10 +86,10 @@ La position (quatre coins) et la taille du texte (10 à 32 px) sont dans le mêm
 
 | Réglage | Onglet | Ce qu'il fait |
 | :--- | :--- | :--- |
-| **Render resolution** | Image | Force la résolution à laquelle le jeu calcule l'image avant DLSS : DLAA, Quality, Balanced, Performance, Ultra Performance, ou une échelle personnalisée de 50 à 100 %. Le jeu doit déjà utiliser DLSS. Le menu montre la résolution observée et si le jeu suit la demande ; revenez à *Game* si un jeu se comporte mal. Dans les jeux Unreal Engine 4 et 5, le pourcentage d'écran est ajusté en direct quand c'est possible. |
-| **Fast super resolution (RTX 30)** | Image | Désactivée par défaut. Sur les cartes RTX 30, dans les jeux DirectX 12 qui utilisent DLSS Super Resolution avec le preset M ou L, exécute une version plus rapide de la montée en résolution : environ 16 à 20 % de temps GPU en moins par image upscalée sur le système mesuré, pour une image très proche de l'originale. Sans effet sur les autres cartes. Voir [Super Resolution](SUPER-RESOLUTION.fr.md#fast-super-resolution-rtx-30). |
-| **Frame limit (FPS)** | Frames | Demande un plafond via NVIDIA Reflex compatible. 0 restaure les réglages du jeu. Les images générées peuvent compter dans ce plafond selon le jeu et le pilote. Suspendu en mode Dynamic. |
-| **V-Sync** | Frames | Jeu : la V-Sync du jeu. Désactivé : demande aux jeux DirectX de présenter sans V-Sync. Activé : leur demande de présenter avec V-Sync, pour les jeux qui grisent leur V-Sync avec la génération d’images et les portables où la V-Sync du panneau de configuration NVIDIA est sans effet. Un réglage forcé dans le panneau NVIDIA garde la priorité. Sans effet dans les jeux Vulkan ou avec XeSS-FG (le choix est grisé tant que XeSS-FG présente l’image). Activé peut ajouter de la latence avec un multiplicateur élevé sur un écran 60 Hz : baissez le multiplicateur ou utilisez la limite d’images. |
+| **Render resolution** | Image quality | Force la résolution à laquelle le jeu calcule l'image avant DLSS : DLAA, Quality, Balanced, Performance, Ultra Performance, ou une échelle personnalisée de 50 à 100 %. Le jeu doit déjà utiliser DLSS. Le menu montre la résolution observée et si le jeu suit la demande ; revenez à *Game* si un jeu se comporte mal. Dans les jeux Unreal Engine 4 et 5, le pourcentage d'écran est ajusté en direct quand c'est possible. |
+| **Fast super resolution (RTX 30)** | Image quality | Désactivée par défaut. Sur les cartes RTX 30, dans les jeux DirectX 12 qui utilisent DLSS Super Resolution avec le preset M ou L, exécute une version plus rapide de la montée en résolution : environ 16 à 20 % de temps GPU en moins par image upscalée sur le système mesuré, pour une image très proche de l'originale. Sans effet sur les autres cartes. Voir [Super Resolution](SUPER-RESOLUTION.fr.md#fast-super-resolution-rtx-30). |
+| **Frame limit (FPS)** | Frame rate | Demande un plafond via NVIDIA Reflex compatible. 0 restaure les réglages du jeu. Les images générées peuvent compter dans ce plafond selon le jeu et le pilote. Suspendu en mode Dynamic. |
+| **V-Sync** | Frame rate | Jeu : la V-Sync du jeu. Désactivé : demande aux jeux DirectX de présenter sans V-Sync. Activé : leur demande de présenter avec V-Sync, pour les jeux qui grisent leur V-Sync avec la génération d’images et les portables où la V-Sync du panneau de configuration NVIDIA est sans effet. Un réglage forcé dans le panneau NVIDIA garde la priorité. Sans effet dans les jeux Vulkan ou avec XeSS-FG (le choix est grisé tant que XeSS-FG présente l’image). Activé peut ajouter de la latence avec un multiplicateur élevé sur un écran 60 Hz : baissez le multiplicateur ou utilisez la limite d’images. |
 | **Compatible ray-traced hair** | System | The Witcher 3 (DirectX 12, versions du jeu 25575366 et 25646871) : rend les cheveux en ray tracing du jeu disponibles sur les cartes RTX 20, 30 et 40. Les réglages de cheveux du jeu décident toujours s'ils sont affichés. Pas encore validé en jeu sur RTX 20 et RTX 30. Relancez pour appliquer. |
 
 ### Plafond Reflex suggéré
@@ -101,7 +101,7 @@ Son effet dépend toujours de l'intégration Reflex du jeu et du pilote. Aucun l
 
 **Reflex mode** — `game` suit le mode du jeu (défaut) ; `on` / `on-boost` demandent On / On+Boost, jamais plus bas que le jeu. Application en direct indépendante du plafond, suspendue en Dynamic et quand XeLL possède la latence. Revenir à `game` restaure le mode du jeu à la prochaine frontière sûre. Boost maintient les fréquences GPU élevées quand le CPU limite le débit ; comparez la ligne de latence, aucun gain n'est garanti. Le menu montre les modes du jeu et acceptés : un appel accepté ne prouve pas que le pilote applique ce mode. XeLL utilise toujours la basse latence et son runtime ne prend pas en charge Boost.
 
-Dans **Frames → Frame pacing**, **For this display** propose `fréquence - fréquence² / 3600`, arrondi à l’entier inférieur :
+Dans **Frame rate → Frame pacing**, **For this display** propose `fréquence - fréquence² / 3600`, arrondi à l’entier inférieur :
 par exemple **116 FPS à 120 Hz**, 138 à 144 Hz et 224 à 240 Hz, sans division par le multiplicateur FG. Selon le jeu et le pilote, les images
 générées peuvent compter dans le plafond. Dans Starfield avec Streamline 2.12, une demande de 90 a donné environ
 22,5 FPS rendus avec FG ×4. Comparez la cadence source mesurée et celle incluant FG.

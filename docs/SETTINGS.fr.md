@@ -44,7 +44,9 @@ La reconstruction peut passer de DLSS à XeSS en cours de jeu dans les jeux comp
 | `multiplier` | `4` | `2` à `6`, utilisé en mode fixe. `5` et `6` sont expérimentaux. |
 | `dynamicTargetFrameRate` | `0` | FPS visés en mode dynamique. `0` suit la fréquence de rafraîchissement de l'écran qui affiche le jeu. |
 | `dynamicExperimental56` | `false` | Laisse le mode dynamique monter à X5 et X6. |
-| `flipMeteringBypass` | `false` | Lisser X3 / X4 : Streamline espace lui-même les images générées au lieu du pilote NVIDIA. Relancez le jeu pour appliquer. |
+| `flipMeteringBypass` | `"auto"` | Fluidifier X3 / X4 : `"auto"`, `true` ou `false`. `true` : Streamline espace lui-même les images générées au lieu du pilote NVIDIA (DirectX 12 et Vulkan) ; `false` : le pilote s’en charge. `"auto"` : RTX Encore mesure comment les images générées arrivent à l’écran à partir de X3 et apprend ce dont ce jeu a besoin, écrit dans `flipMeteringLearned`. Relancez le jeu pour appliquer. Voir [Génération d’images](FRAME-GENERATION.fr.md#fluidifier-x3--x4). |
+| `flipMeteringLearned` | `""` | Écrit par RTX Encore quand `flipMeteringBypass` vaut `"auto"` : `"bypass"` (Streamline cadence les images) ou `"metering"` (le pilote s’en charge). S’applique au prochain lancement ; videz-le pour mesurer de nouveau. |
+| `frameGenerationWithoutGameFg` | `false` | Génération d’images pour les jeux qui n’en ont pas, à partir de l’image affichée : DLSS Frame Generation (DirectX 11, DirectX 12 et Vulkan) avec `frameGenerationEngine` `"game"` ou `"dlss-fg"`, Intel XeFG (DirectX 12, DirectX 11 et Vulkan) avec `"xefg"`. X2 quand `mode` vaut `"game"`, le multiplicateur quand il vaut `"fixed"`. Nécessite les fichiers de génération d’images à côté de l’exécutable du jeu, que le Hub installe ; désactivez Smooth Motion. Expérimental. Relancez pour appliquer. Voir [Jeux sans DLSS](GAMES-WITHOUT-DLSS.fr.md#génération-dimages). |
 
 La compatibilité des runtimes NVIDIA n’exige plus que le fichier figure dans une liste prédéfinie. Une ancienne entrée `providerPatchPolicy` est ignorée. Les contrôles Intel restent inchangés. La compatibilité dépend toujours des fonctions disponibles dans le runtime et le jeu.
 
@@ -52,9 +54,13 @@ La compatibilité des runtimes NVIDIA n’exige plus que le fichier figure dans 
 
 | Clé | Défaut | Valeurs |
 | :--- | :---: | :--- |
-| `dlssRenderScale` | `"game"` | `"game"`, `"dlaa"`, `"quality"`, `"balanced"`, `"performance"`, `"ultra-performance"`, `"custom"` |
+| `dlssRenderScale` | `"game"` | `"game"`, `"dlaa"`, `"ultra"`, `"quality"`, `"balanced"`, `"performance"`, `"ultra-performance"`, `"custom"` |
 | `dlssCustomScale` | `67` | Pourcentage, `50` à `100`, avec `"custom"` |
 | `fastSuperResolution` | `false` | RTX 30, DirectX 12 : DLSS Super Resolution plus rapide avec le preset M ou L, environ 16 à 20 % de temps GPU en moins par image upscalée sur le système mesuré, image très proche de l'originale. Inactive sur les autres cartes. Relancez pour appliquer. Voir [Super Resolution](SUPER-RESOLUTION.fr.md#fast-super-resolution-rtx-30). |
+| `dlssWithoutGameDlss` | `false` | Jeux sans DLSS : DLAA ou upscaling sur l’image affichée, avec DLSS ou XeSS. Expérimental. Voir [Jeux sans DLSS](GAMES-WITHOUT-DLSS.fr.md). |
+| `dlssWithoutGameDlssEngine` | `"dlss"` | `"dlss"` ou `"xess"` : le moteur de `dlssWithoutGameDlss`. XeSS va de 1x à 3x (au-delà, l’image du jeu est affichée étirée) et nécessite les runtimes Intel installés par le Hub ; `xessTensorCores` s’applique aux jeux DirectX 12. Appliqué à chaud. |
+| `dlssWithoutGameDlssOutput` | `"game"` | `"game"` (DLAA à la résolution du jeu) ou `"screen"` (upscaling jusqu’à la résolution de l’écran ; le jeu en mode fenêtré à une résolution plus basse). |
+| `presentOpticalFlow` | `"encore"` | Jeux sans DLSS : estimation du mouvement, `"encore"` (l’estimation propre à RTX Encore dans des shaders, des vecteurs plus fins pour la génération d’images ; sans Optical Flow), `"shader"` (shaders, méthode de vort_Motion ; sans Optical Flow), ou `"quality"` ou `"fast"` (NVIDIA Optical Flow). |
 
 ### `superResolutionInputs`
 
@@ -81,7 +87,7 @@ Elle se cumule avec la netteté ajoutée ensuite par le jeu. Une force élevée 
 ### `dlssPresets`
 
 Ces choix de modèles sont indépendants et demandent de **relancer le jeu**. SR/RR se trouvent dans
-**Image → DLSS Super Resolution**, FG dans **Frames → Frame generation**. Ils ne changent ni la résolution de rendu,
+**Image quality → DLSS Super Resolution**, FG dans **Frame rate → Frame generation**. Ils ne changent ni la résolution de rendu,
 ni le multiplicateur d'images, ni le preset NR.
 
 | Clé | Défaut | Valeurs |
@@ -145,10 +151,11 @@ Laissez `"game"` pour conserver le comportement actuel.
 | `nrSkinStructure` | `1` | `0` à `2` |
 | `nrHdrExposure` | `1` | Jeux HDR : luminosité donnée à NR |
 | `nrPrecision` | `"exact"` | `"exact"` ou `"fast"` (RTX 20 et RTX 30). Relancez pour appliquer. |
+| `nrWithoutGameDlss` | `false` | Jeux sans DLSS : NR sur l’image affichée. Expérimental. Voir [Jeux sans DLSS](GAMES-WITHOUT-DLSS.fr.md). |
 
 #### NR fovéal (expérimental)
 
-Nécessite `nrEnabled`. Le NR travaille à pleine force au milieu de l'écran et plus légèrement vers les bords, là où l'œil s'attarde moins : c'est plus rapide, avec un effet NR plus doux près des bords de l'image. Dans le menu (**Image → Neural Rendering**), seuls l'interrupteur et le préréglage sont affichés ; les quatre valeurs derrière les préréglages sont dans **Foveated NR: custom values**. Appliqué en direct. Là où la fovéation ne peut pas tourner, le NR continue normalement.
+Nécessite `nrEnabled`. Le NR travaille à pleine force au milieu de l'écran et plus légèrement vers les bords, là où l'œil s'attarde moins : c'est plus rapide, avec un effet NR plus doux près des bords de l'image. Dans le menu (**Image quality → Neural Rendering**), seuls l'interrupteur et le préréglage sont affichés ; les quatre valeurs derrière les préréglages sont dans **Foveated NR: custom values**. Appliqué en direct. Là où la fovéation ne peut pas tourner, le NR continue normalement.
 
 | Préréglage | Effet |
 | :--- | :--- |
@@ -168,7 +175,7 @@ Nécessite `nrEnabled`. Le NR travaille à pleine force au milieu de l'écran et
 
 #### Options de performance NR
 
-Ces réglages se trouvent aussi dans **Image → Neural Rendering → Performance**. Voir
+Ces réglages se trouvent aussi dans **Image quality → Neural Rendering → Performance**. Voir
 [Neural Rendering](NEURAL-RENDERING.fr.md#réglages-de-performance-sur-rtx-30) pour les mesures et les compromis
 d'image. Les options propres à un moteur ne s'appliquent qu'au moteur indiqué ci-dessous ; changer de moteur ou
 d'option lue au démarrage demande de relancer le jeu.

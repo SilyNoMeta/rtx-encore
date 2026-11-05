@@ -12,7 +12,8 @@ Utilisez **RTX Encore Hub 1.2.0 ou ultérieur** pour installer ou mettre à jour
 
 - Windows 10 ou 11, 64 bits.
 - Une GeForce RTX 20, RTX 30 ou RTX 40 avec un pilote NVIDIA récent.
-- Pour la génération d'images : un jeu qui propose **DLSS Frame Generation** dans ses réglages.
+- Pour la génération d'images : un jeu qui propose **DLSS Frame Generation** dans ses réglages, ou, à titre
+  expérimental, un jeu sans aucun DLSS : voir [Jeux sans DLSS](GAMES-WITHOUT-DLSS.fr.md), où le Hub installe ce qu'il faut.
 - Pour Smooth Motion et Neural Rendering, voir leurs pages :
   [Smooth Motion](SMOOTH-MOTION.fr.md), [Neural Rendering](NEURAL-RENDERING.fr.md).
 
@@ -148,4 +149,4 @@ Le panneau optionnel Cyber Engine Tweaks est retiré en 1.3.0. Utilisez le menu 
 - Laissez `dxgi.dll` à l'outil qui le fournit et donnez un autre nom à RTX Encore.
 - Avec DXVK, le menu s'attache à la présentation Vulkan.
 - Avec OptiScaler, voir l'option de flip metering dans
-  [Génération d'images](FRAME-GENERATION.fr.md#lisser-x3--x4).
+  [Génération d'images](FRAME-GENERATION.fr.md#fluidifier-x3--x4).

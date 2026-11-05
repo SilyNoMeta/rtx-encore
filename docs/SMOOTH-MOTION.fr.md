@@ -1,5 +1,7 @@
 # Smooth Motion sur RTX 20 / RTX 30 / RTX 40 / RTX 50
 
+NVIDIA 621.14 : Smooth Motion accepte désormais les fichiers exacts du pilote sur RTX 20 (DirectX 12) et RTX 30 ; les RTX 40/50 conservent le chemin natif du pilote. Les Tensor Cores expérimentaux XeSS/XeFG admettent aussi ce pilote. Les vérifications de compatibilité portent sur les fichiers du pilote, sans installation. La validation en jeu sur 621.14 reste à faire ; cela ne couvre pas les pilotes inconnus.
+
 *[English](SMOOTH-MOTION.md) · [中文](SMOOTH-MOTION.zh-CN.md)*
 
 Smooth Motion est l'interpolation d'images du pilote NVIDIA : elle ajoute une image entre deux images calculées
@@ -13,14 +15,14 @@ les cartes RTX 30.
 ## Prérequis
 
 - Une carte **RTX 30**, ou **RTX 40 / RTX 50** avec RTX Encore **1.4.5 ou ultérieur**. Les RTX 40/50 utilisent le moteur natif du pilote et le même interrupteur Smooth Motion dans le Hub ou le menu en jeu. Les RTX 20 sont prises en charge expérimentalement à partir de RTX Encore 1.3.0 (voir ci-dessous).
-- L'une de ces versions du pilote NVIDIA, exactement : **621.01**, **620.12**, **617.42**, **617.14**,
+- L'une de ces versions du pilote NVIDIA, exactement : **621.14**, **621.01**, **620.12**, **617.42**, **617.14**,
   **616.92**, **616.64** ou **591.86**.
   Les 617.14 et 621.01 ont été vérifiées en jeu. Avec tout autre pilote, la fonction reste désactivée et dit
   pourquoi ; le reste de RTX Encore continue de fonctionner.
 
 ## L'activer
 
-1. Ouvrez le menu (**Inser**), onglet **Frames**, section **Smooth Motion**.
+1. Ouvrez le menu (**Inser**), onglet **Frame rate**, section **Smooth Motion**.
 2. Activez **Smooth Motion**.
 3. Réglez **Graphics API** sur l'API que le jeu utilise réellement : Direct3D 12, Direct3D 11 ou Vulkan. Ce n'est
    pas toujours celle que son moteur laisse supposer ; la page du jeu sur
@@ -35,7 +37,7 @@ Le compteur estime les FPS avec Smooth Motion à **2x** et affiche `2x sm` (par 
 
 ## RTX 20
 
-Les RTX 20 nécessitent **NVIDIA 621.01** et un jeu **DirectX 12**. À partir de 1.5.1, les RTX 20
+Les RTX 20 nécessitent **NVIDIA 621.01 / 621.14** et un jeu **DirectX 12**. À partir de 1.5.1, les RTX 20
 utilisent toujours la variante V2, que les utilisateurs ont trouvée la plus rapide ; il n'y a
 plus de variante à choisir. Une ligne `smoothMotionTuringVariant` restée dans un ancien fichier
 de configuration est ignorée. Sans effet sur les RTX 30, 40 et 50.

@@ -72,6 +72,9 @@ stops new instrumentation; existing GPU work retires through its completion.
 - A game with **DLSS Super Resolution or DLAA turned on**. NR is applied to its result.
   With **Ray Reconstruction**, NR is applied to RR's result, after its denoising: never to the raw ray-traced image.
   The game must provide the depth input NR needs; otherwise the image stays as DLSS made it and the menu says so.
+  **Games that ship no DLSS** are the exception since 2.0.0: there, the **Neural Rendering** switch runs NR on the
+  image the game displays, with motion estimated by RTX Encore and the game's depth buffer when it has one, in
+  DirectX 11, DirectX 12 and Vulkan. See [Games without DLSS](GAMES-WITHOUT-DLSS.md#neural-rendering).
 - With the 1.2 beta, compatible linear-depth inputs are also supported after RR on Direct3D 12. Invalid or unsupported depth inputs leave NR inactive; Direct3D 11 and Vulkan still do not support this linear-depth case. Local testing in 007 First Light with path tracing confirmed that NR runs, without measuring image quality or cost.
 - An RTX 40 or RTX 30 card. RTX 20 is experimental; RTX 50 is also admitted experimentally under Vulkan.
 
@@ -92,14 +95,14 @@ top of the menu shows whether NR is really running, and why not when it is not.
 | **Style** | Default | The look of the image: Default, Natural or Cinematic. |
 | **Passes** | 1 | NR can be applied again to its own result, up to four times. Each pass costs GPU time and VRAM, and more passes do not guarantee a better image. |
 | **Precision** | Exact | NVIDIA engine, RTX 20 and RTX 30: *Fast* reduces NR time, with about 17 % measured on RTX 30 and small image differences. |
-| **NR model preset** | B | With `nvngx_dlssnr.dll` 310.9.16: **B** is a smaller, much faster network, **A** the larger one that 310.8.0 runs, **DLL default** lets the file choose (B). With 310.8.0, every choice runs its single network. It sits beside the SR and RR model presets (**Image** tab, Upscaling) and applies live. |
+| **NR model preset** | B | With `nvngx_dlssnr.dll` 310.9.16: **B** is a smaller, much faster network, **A** the larger one that 310.8.0 runs, **DLL default** lets the file choose (B). With 310.8.0, every choice runs its single network. It sits beside the SR and RR model presets (**Image quality** tab, Upscaling) and applies live. |
 
 In a local test at 1080p on an RTX 3070 Ti Laptop, network B took about 15 ms of NR time and network A about
 27 ms. B gives a different image from A. Support for 310.9.16 is experimental and lightly tested.
 
 ### Performance controls on RTX 30
 
-The **Image → Neural Rendering → Performance** group exposes the work RTX Encore has done to reduce NR cost.
+The **Image quality → Neural Rendering → Performance** group exposes the work RTX Encore has done to reduce NR cost.
 These options have different tradeoffs; their gains are not percentages you can add together.
 
 | Control | Engine | Default | Benefit and tradeoff |

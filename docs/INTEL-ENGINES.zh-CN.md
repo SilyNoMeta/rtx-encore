@@ -1,5 +1,7 @@
 # Intel XeSS 与 XeFG（实验性）
 
+NVIDIA 621.14：Smooth Motion 现已接受 RTX 20（DirectX 12）和 RTX 30 上的精确驱动文件；RTX 40/50 保留原生驱动路径。实验性 XeSS/XeFG Tensor Cores 也允许此驱动。兼容性检查仅针对驱动文件进行，未安装驱动。621.14 的游戏内验证仍待完成，不代表支持未知驱动。
+
 [English](INTEL-ENGINES.md) · [Français](INTEL-ENGINES.fr.md) · [简体中文](INTEL-ENGINES.zh-CN.md)
 
 适用于 RTX Encore 1.5.0。可用版本请查看[发布页面](https://github.com/SilyNoMeta/rtx-encore/releases)。
@@ -18,8 +20,8 @@ RTX Encore 1.2.0 可选择重建和帧生成引擎。保留 **Game** 可继续�
 | :--- | :---: | :--- |
 | `reconstructionEngine` | `game` | `game` 或 `xess`：以 XeSS 替代兼容的 Super Resolution/DLAA 处理；Ray Reconstruction 保留原引擎。 |
 | `frameGenerationEngine` | `game` | `game`、`dlss-fg` 或 `xefg`。游戏保留原生 FG；DLSS-FG 将经过资格检查的原生 Intel FG 替换为 NVIDIA DLSS FG；XeFG 将兼容 DLSS FG 替换为 Intel XeFG。需要重启。 |
-| `xessTensorCores` | `false` | 实验性 NVIDIA Tensor Core XeSS Super Resolution，在下次 XeSS 执行时即时切换。初始验证：RTX 4090、NVIDIA 621.01、DirectX 12 和 Hub 提供的 Intel 运行库。其他 RTX 40、RTX 30 与 RTX 50 显卡在 NVIDIA 621.01 或 621.12 热修复驱动下以为各架构编译的同一加速路径准入，尚未在该硬件上完成游戏内验证。准备未通过时保留标准 XeSS。 |
-| `xefgTensorCores` | `false` | 实验性 NVIDIA Tensor Core XeFG；在初始化容量内支持固定 X2–X6。切换在命令重新记录时生效。初始验证：RTX 4090、NVIDIA 621.01、DirectX 12 和 Hub 提供的 Intel 运行库。其他 RTX 40、RTX 30 与 RTX 50 显卡在 NVIDIA 621.01 或 621.12 热修复驱动下以为各架构编译的同一加速路径准入，尚未在该硬件上完成游戏内验证。准备未通过时保留标准 XeFG；执行故障后须重启。 |
+| `xessTensorCores` | `false` | 实验性 NVIDIA Tensor Core XeSS Super Resolution，在下次 XeSS 执行时即时切换。初始验证：RTX 4090、NVIDIA 621.01、DirectX 12 和 Hub 提供的 Intel 运行库。其他 RTX 40、RTX 30 与 RTX 50 显卡在 NVIDIA 621.01、621.12 或 621.14 驱动下以为各架构编译的同一加速路径准入，尚未在该硬件上完成游戏内验证。准备未通过时保留标准 XeSS。 |
+| `xefgTensorCores` | `false` | 实验性 NVIDIA Tensor Core XeFG；在初始化容量内支持固定 X2–X6。切换在命令重新记录时生效。初始验证：RTX 4090、NVIDIA 621.01、DirectX 12 和 Hub 提供的 Intel 运行库。其他 RTX 40、RTX 30 与 RTX 50 显卡在 NVIDIA 621.01、621.12 或 621.14 驱动下以为各架构编译的同一加速路径准入，尚未在该硬件上完成游戏内验证。准备未通过时保留标准 XeFG；执行故障后须重启。 |
 | `xefgMfg4VariablePacing` | `true` | XeFG 高于 X2 的实验性帧间隔控制；关闭后，较高倍率可能不可用。 |
 | `xefgUiHandling` | `interpolate` | `interpolate` 或 `game`；请求单独处理游戏界面需要兼容输入。 |
 | `xefgUiAlpha` | `unknown` | `unknown`、`straight` 或 `premultiplied`；不清楚界面格式时请保留 unknown。 |
@@ -27,6 +29,10 @@ RTX Encore 1.2.0 可选择重建和帧生成引擎。保留 **Game** 可继续�
 兼容游戏可在运行中切换 DLSS 与 XeSS 重建。Vulkan 游戏需要在启动前安装兼容的 Intel 运行库；添加或替换运行库后必须重启游戏。修改帧生成引擎、XeFG 帧间隔或界面设置后仍需重启。使用 XeFG 时，修改 FPS 上限也需要重启。FPS 上限不能证明源帧节奏。
 
 HDR 输入和自动曝光使用所选重建引擎共用的 `srHdr` 与 `srAutoExposure`。默认 `game` 跟随游戏，修改后需重启。它们不会启用显示器 HDR，也不会将 SDR 转换为 HDR。错误的输入格式会损害画质。某些 DLSS 模型强制使用自动曝光；XeSS 自动曝光有 GPU 开销，不推荐用于 LDR。XeSS Vulkan 的 LDR 与手动曝光组合仍不受支持。RR 和帧生成保持不变。
+
+没有 DLSS 的游戏也可以使用 XeSS：在 **超分辨率 → 引擎** 中选择 **XeSS** 作为引擎（DirectX 11、DirectX 12 和 Vulkan；Tensor Cores 适用于 DirectX 12 游戏）。参见[没有 DLSS 的游戏](GAMES-WITHOUT-DLSS.zh-CN.md)。在这种情况下 `srHdr` 与 `srAutoExposure` 不适用：RTX Encore 知道显示的画面是 SDR 还是 HDR。
+
+自 2.0.0 起，**XeFG 也可以在完全没有帧生成的游戏中生成帧**：选择 **XeFG** 作为帧生成引擎（**帧生成 → 引擎**），然后重启。DirectX 12（可用 Tensor Cores）、Vulkan（SDR 和 HDR10）和 DirectX 11 均为 X2 至 X6，倍率可即时更改。Hub 会在此类游戏中随模组一起安装 Intel 运行库。参见[没有 DLSS 的游戏](GAMES-WITHOUT-DLSS.zh-CN.md#帧生成)。Tensor Cores 开关仅在适用的 DirectX 12 游戏中显示。
 
 XeFG 不能为所有游戏添加帧生成。更高倍率取决于获准的 Intel 运行库和完整游戏配置；X5/X6 仍属实验性，本测试版没有建立 X6 游戏支持证明。请求倍率、依赖已安装或生成帧计数，都不能测量实际显示内容或物理延迟。在 XeFG 测试中启用 NR 或 Smooth Motion，并不能证明这些组合已获认证。
 

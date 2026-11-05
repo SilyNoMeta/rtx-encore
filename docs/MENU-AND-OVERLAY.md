@@ -16,7 +16,7 @@ Restart the game after changing the engine, XeFG pacing or UI settings. With XeF
 Press **Insert** in the game window to open or close it. It opens once by itself on first launch. The shortcut can
 be changed in the menu.
 
-Choose **English**, **Français** or **简体中文** in the language selector. The choice applies immediately and is saved per game; untranslated messages stay in English. The session report copied for a bug report stays in English. The **About** tab shows the build version, project and Hub links, website, issue reporting, GitHub Sponsors, Ko-fi, third-party notices and public sponsor thanks. Links open in your default browser when selected.
+Choose **English**, **Français**, **简体中文**, **Deutsch**, **Español**, **Nederlands**, **Polski**, **Português (Brasil)**, **Tiếng Việt**, **Русский** or **日本語** in the language selector (eleven languages since 2.0.0; Arabic, a language of the Hub, is shown in English in the menu). The choice applies immediately and is saved per game, and the Hub can set it for every game; untranslated messages stay in English. The session report copied for a bug report stays in English. The **About** tab shows the build version, project and Hub links, website, the Discord, issue reporting, GitHub Sponsors, Ko-fi, third-party notices and public sponsor thanks. Links open in your default browser when selected.
 
 A strip of four chips heads every page: **Upscaling**, **Frame Generation**, **Smooth Motion** and **Neural
 Rendering**. Each shows the state of its feature with a colored dot and one figure; hover it for the detail, click it
@@ -27,8 +27,8 @@ Encore supplies. The driver does not report the model it actually runs, so a dri
 
 | Tab | What it holds |
 | :--- | :--- |
-| **Frames** | Frame generation with its model preset (A/B Normal, C Lite), independent Fast option, quality and interface options, Smooth Motion, the Reflex frame limit, V-Sync |
-| **Image** | DLSS render resolution, SR/RR/NR model presets, Fast super resolution (RTX 30), Neural Rendering |
+| **Frame rate** | Frame generation with its model preset (A/B Normal, C Lite), independent Fast option, quality and interface options, Smooth Motion, the Reflex frame limit, V-Sync |
+| **Image quality** | DLSS render resolution, SR/RR/NR model presets, Fast super resolution (RTX 30), Neural Rendering |
 | **Overlay** | A preview of the overlay, its position, its text size and the lines it shows |
 | **System** | Shortcuts, compatibility, diagnostics and the session details, with a **Copy** button for bug reports |
 | **About** | Build version, project links, support links, credits and public sponsor thanks |
@@ -84,10 +84,10 @@ Position (four corners) and text size (10 to 32 px) are in the same tab.
 
 | Setting | Tab | What it does |
 | :--- | :--- | :--- |
-| **Render resolution** | Image | Forces the resolution the game renders at before DLSS: DLAA, Quality, Balanced, Performance, Ultra Performance, or a custom scale from 50 to 100 %. The game must already use DLSS. The menu shows the resolution observed and whether the game follows the request; set it back to *Game* if a game misbehaves. In Unreal Engine 4 and 5 games the screen percentage is adjusted live when possible. |
-| **Fast super resolution (RTX 30)** | Image | Off by default. On RTX 30 cards, in DirectX 12 games using DLSS Super Resolution with preset M or L, runs a faster version of the upscaling: about 16 to 20 % less GPU time per upscaled frame on the system measured, with an image very close to the original. No effect on other cards. See [Super Resolution](SUPER-RESOLUTION.md#fast-super-resolution-rtx-30). |
-| **Frame limit (FPS)** | Frames | Requests a frame limit through NVIDIA Reflex when supported. 0 restores the game's settings. Generated frames may count toward the limit depending on the game/driver. Suspended in Dynamic mode. |
-| **V-Sync** | Frames | Game: the game's own V-Sync. Off: asks DirectX games to present without V-Sync. On: asks them to present with V-Sync, for games that gray out V-Sync with frame generation and laptops where the NVIDIA control panel V-Sync has no effect. A setting forced in the NVIDIA control panel keeps priority. No effect in Vulkan games or with XeSS-FG (the choice is grayed out while XeSS-FG presents the image). On can add latency with high multipliers on a 60 Hz screen: lower the multiplier or use the frame limit. |
+| **Render resolution** | Image quality | Forces the resolution the game renders at before DLSS: DLAA, Quality, Balanced, Performance, Ultra Performance, or a custom scale from 50 to 100 %. The game must already use DLSS. The menu shows the resolution observed and whether the game follows the request; set it back to *Game* if a game misbehaves. In Unreal Engine 4 and 5 games the screen percentage is adjusted live when possible. |
+| **Fast super resolution (RTX 30)** | Image quality | Off by default. On RTX 30 cards, in DirectX 12 games using DLSS Super Resolution with preset M or L, runs a faster version of the upscaling: about 16 to 20 % less GPU time per upscaled frame on the system measured, with an image very close to the original. No effect on other cards. See [Super Resolution](SUPER-RESOLUTION.md#fast-super-resolution-rtx-30). |
+| **Frame limit (FPS)** | Frame rate | Requests a frame limit through NVIDIA Reflex when supported. 0 restores the game's settings. Generated frames may count toward the limit depending on the game/driver. Suspended in Dynamic mode. |
+| **V-Sync** | Frame rate | Game: the game's own V-Sync. Off: asks DirectX games to present without V-Sync. On: asks them to present with V-Sync, for games that gray out V-Sync with frame generation and laptops where the NVIDIA control panel V-Sync has no effect. A setting forced in the NVIDIA control panel keeps priority. No effect in Vulkan games or with XeSS-FG (the choice is grayed out while XeSS-FG presents the image). On can add latency with high multipliers on a 60 Hz screen: lower the multiplier or use the frame limit. |
 | **Compatible ray-traced hair** | System | The Witcher 3 (DirectX 12, game builds 25575366 and 25646871): makes the game's ray-traced hair available on RTX 20, 30 and 40 cards. The game's own hair settings still decide whether hair is rendered. Not validated in game on RTX 20 and RTX 30 yet. Restart to apply. |
 
 ### Suggested Reflex cap
@@ -99,7 +99,7 @@ Actual limiting still depends on the game's Reflex integration and driver suppor
 
 **Reflex mode** — `game` follows the game's mode (default); `on` / `on-boost` request On / On+Boost, never lower than the game. Applied live independently of the cap, suspended in Dynamic and while XeLL owns latency. Returning to `game` restores the game's mode at the next safe boundary. Boost keeps GPU clocks high when CPU limited; compare the latency report, since no gain is guaranteed. The menu shows the game and accepted modes: an accepted options call does not prove the driver applies it. XeLL always uses Low Latency and its runtime does not support Boost.
 
-In **Frames → Frame pacing**, **For this display** suggests `refresh rate - refresh rate² / 3600`, rounded down:
+In **Frame rate → Frame pacing**, **For this display** suggests `refresh rate - refresh rate² / 3600`, rounded down:
 for example, **116 FPS at 120 Hz**, 138 at 144 Hz and 224 at 240 Hz. It does not divide the request by the FG multiplier. Depending on the
 game and driver, generated frames may count toward the cap. In Starfield with Streamline 2.12, a request
 of 90 was observed at about 22.5 rendered FPS with FG ×4. Compare the measured source and FG-inclusive rates.

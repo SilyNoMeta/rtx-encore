@@ -14,11 +14,12 @@ RTX Encore 1.2.0 adds a choice of reconstruction and frame-generation engines. L
 
 - A game with native **DLSS Frame Generation** in DirectX 12 or Vulkan, or a compatible native **Intel FG** route in DirectX 12. For the latter, use the experimental [DLSS-FG engine](INTEL-ENGINES.md), install the qualified runtimes through the Hub, restart, and enable Intel FG in the game. Native FSR is preserved.
 - A supported `nvngx_dlssg.dll` and compatible runtimes: see [Compatibility](COMPATIBILITY.md#dlss-frame-generation-versions). Exact versions determine available features.
-- Frame generation enabled in the game's settings. For games with no compatible native FG inputs, see [Smooth Motion](SMOOTH-MOTION.md).
+- Frame generation enabled in the game's settings.
+- **Games that ship no frame generation at all** can get it from RTX Encore since 2.0.0, with DLSS Frame Generation (DirectX 11, DirectX 12 and Vulkan) or Intel XeFG (DirectX 12, DirectX 11 and Vulkan), from the image they display: see [Games without DLSS](GAMES-WITHOUT-DLSS.md#frame-generation). The driver's [Smooth Motion](SMOOTH-MOTION.md) remains the other option for them on RTX 20 and RTX 30.
 
 ## Modes
 
-Choose the mode in the menu (**Frames** tab) or with the shortcuts.
+Choose the mode in the menu (**Frame rate** tab) or with the shortcuts.
 
 | Mode | What it does |
 | :--- | :--- |
@@ -36,7 +37,13 @@ each rendered one.
 
 ### Smooth out X3 / X4
 
-In some games, X3 and X4 look choppier than X2: the generated frames reach the screen in bursts instead of one after the other. **Smooth out X3 / X4** (`flipMeteringBypass`, off by default) lets Streamline space the generated frames itself instead of leaving it to the NVIDIA driver, in DirectX 12 and Vulkan. Turn it on in the menu, under the multiplier, or in RTX Encore Hub, then restart the game. Where the driver already spaces the frames well, it brings nothing visible.
+In some games, X3 and X4 look choppier than X2: the generated frames reach the screen in bursts instead of one after the other. **Smooth out X3 / X4** (`flipMeteringBypass`) lets Streamline space the generated frames itself instead of leaving it to the NVIDIA driver, in DirectX 12 and Vulkan. Since 2.0.0 it has three positions, in the menu under the multiplier or in RTX Encore Hub:
+
+- **Automatic** (default): RTX Encore watches how the generated frames reach the screen at X3 and above and learns, for this game, whether Streamline should pace them. When it decides, a notice says what it saw and what it changed; the choice applies from the next start and is kept for the game. The Hub shows it and can reset it so that RTX Encore measures again.
+- **On**: Streamline paces the frames. Restart the game to apply.
+- **Off**: the NVIDIA driver paces them. Restart the game to apply.
+
+Where the driver already spaces the frames well, On brings nothing visible. Frame generation for [games without frame generation](GAMES-WITHOUT-DLSS.md#frame-generation) always has Streamline pace the frames; Automatic knows it.
 
 On qualified older Streamline versions, DX12 Dynamic uses Encore’s adaptive X2–X4 mode. It starts at X2, reacts to the measured source-frame cadence, waits between changes and suspends adaptation if the game refuses a request. Modern qualified providers retain native Dynamic MFG. See [the version matrix](COMPATIBILITY.md#streamline-versions). D3D11 uses the separate Smooth Motion X2 path only.
 
@@ -56,7 +63,7 @@ menu (**System** tab).
 
 ## Image quality
 
-The **Quality** group of the **Frames** tab holds the options that act on the generated frames. They are on by
+The **Quality** group of the **Frame rate** tab holds the options that act on the generated frames. They are on by
 default and are read when the game starts.
 
 - **Anti-tearing / anti-ghosting**: protects thin geometry (fences, wires, foliage) and moving shadows in generated
@@ -71,6 +78,10 @@ DLSS-G 310.9.16.0. There is no second mode setting to select. **Fast frame gener
 remain enabled with every preset. Lite keeps NVIDIA's native image policy, so Anti-tearing and Protection tuning
 have no effect there, and UI recomposition is unavailable. A JSON-only override is reserved for diagnostics;
 leave it at its default. See [settings](SETTINGS.md#dlsspresets).
+
+Preset C needs DLSS-G 310.9.16. If the game ships an older one, either update its DLLs with RTX Encore Hub, or turn
+on **Use the NVIDIA App's newest DLSS models** in the **System** tab and restart (see
+[Compatibility options](#compatibility-options)).
 
 ### Fast frame generation
 
@@ -97,7 +108,7 @@ The neural-network optimizations require DirectX 12; Vulkan benefits only from t
 ## HUD and interface
 
 Generated frames are cleanest when the game's interface is handled apart from the 3D scene. Three switches, in the
-**Frames** tab:
+**Frame rate** tab:
 
 | Setting | Default | What it does |
 | :--- | :---: | :--- |
@@ -114,7 +125,7 @@ In the **System** tab:
 | Setting | Default | What it does |
 | :--- | :---: | :--- |
 | **Disable menu detection** | off | Off: frame generation idles in menus and loading screens, which avoids crashes there. Leave it off. |
-| **Force NVIDIA OTA models** | off | Uses the frame generation models downloaded by the NVIDIA app. Restart the game to apply. |
+| **Use the NVIDIA App's newest DLSS models** | off | Uses the newest frame generation, Super Resolution, Ray Reconstruction and Neural Rendering models the NVIDIA app downloaded when they are newer than the game's, for example to get frame generation preset C in a game that ships an older DLSS-G. Nothing is written to the game's or the NVIDIA app's files. The NVIDIA app must have downloaded those models. Restart the game to apply. |
 | **Graphics card series** | auto | Leave on auto unless the card is not recognized. |
 
 ## Reading the overlay

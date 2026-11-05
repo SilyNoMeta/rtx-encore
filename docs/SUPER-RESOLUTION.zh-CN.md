@@ -7,9 +7,12 @@ RTX 30 显卡上提供一个降低 GPU 开销的选项。
 
 渲染分辨率见[菜单和叠加层](MENU-AND-OVERLAY.zh-CN.md#其他控制)，预设的选择见[设置文件](SETTINGS.zh-CN.md#dlsspresets)。
 
+**没有 DLSS 的游戏**自 2.0.0 起可以从 RTX Encore 获得 DLSS 或 XeSS 超分辨率：对游戏显示的画面运行 DLAA，或把较低的游戏分辨率放大到
+屏幕分辨率，支持 DirectX 11、DirectX 12 和 Vulkan。SR 模型预设和下文的锐化同样适用。参见[没有 DLSS 的游戏](GAMES-WITHOUT-DLSS.zh-CN.md#超分辨率)。
+
 ## 重建后锐化
 
-默认关闭。在 **Image > Super Resolution** 中选择 **Off**、**Game** 或 **Custom**。Custom 的强度范围为 0–100%，默认 30%，运行中即时生效。Game 使用游戏提供的锐化强度，游戏未提供时不生效。无效设置将禁用效果。
+默认关闭。在 **Image quality > Super Resolution** 中选择 **Off**、**Game** 或 **Custom**。Custom 的强度范围为 0–100%，默认 30%，运行中即时生效。Game 使用游戏提供的锐化强度，游戏未提供时不生效。无效设置将禁用效果。
 
 适用于 DLSS 超分辨率、DLAA、光线重建和替换 XeSS，也适用于快速超分辨率。启用 Neural Rendering 时，锐化在其后执行。不会锐化覆盖层或之后绘制的 HUD。Off 和强度 0 不增加锐化处理。
 
@@ -26,7 +29,7 @@ RTX Encore 1.2.0 可选择重建和帧生成引擎。保留 **Game** 可继续�
 **Fast super resolution (RTX 30)** 可减少 DLSS 超分辨率占用的 GPU 时间。在 RTX 30（Ampere）显卡上，于 DirectX 12 下，当游戏使用预设为
 **M** 或 **L** 的 DLSS 超分辨率时，RTX Encore 会改用一个更快的模型版本来完成放大，该版本根据真实游戏的捕获画面校准。渲染分辨率、画质模式和预设均不改变。
 
-此选项**默认关闭**。在菜单中开启：**Image → DLSS Super Resolution → Fast super resolution (RTX 30)**。在设置文件中，对应的键是
+此选项**默认关闭**。在菜单中开启：**Image quality → DLSS Super Resolution → Fast super resolution (RTX 30)**。在设置文件中，对应的键是
 [`fastSuperResolution`](SETTINGS.zh-CN.md#dlsssuperresolution)。
 更改后需**重启游戏**才会生效，与模型预设相同。
 
@@ -53,3 +56,13 @@ RTX Encore 1.2.0 可选择重建和帧生成引擎。保留 **Game** 可继续�
 - 如果游戏或 DLSS 文件的版本未被识别，RTX Encore 会保留原有的超分辨率，且不显示任何错误信息。菜单和游戏的表现与该选项关闭时一致。
 - 画面与 NVIDIA 的结果并非逐位一致：非常接近，但不完全相同。
 - 仅在单一系统上测量：其他显卡、游戏和驱动下结果可能不同。
+
+## 渲染比例与锐化
+
+原生 DLSS SR 和 XeSS 重建新增 **Ultra（75%）**，与 DLAA、质量、平衡、性能及超级性能并列。它请求输出宽高各 75% 的输入分辨率（4K 对应 2880 × 1620），属于分辨率设置，不是模型预设。游戏需要遵循该分辨率请求。没有原生重建的游戏请使用[没有 DLSS 的游戏](GAMES-WITHOUT-DLSS.zh-CN.md)中的窗口模式输入分辨率方法。
+
+选择**锐化 → 自定义**后，可将强度设为 0–100%（默认 30%）。设置实时生效；锐化默认关闭，可能叠加游戏自身的锐化。
+
+## 运行库可用性与版本
+
+缺少运行库或版本不兼容时，菜单不提供对应引擎。旧版兼容运行库仍受支持：不会仅因存在更新版本而拒绝 NVIDIA 310.9.1。菜单中的警告会建议通过 RTX Encore Hub 更新并重启游戏。推荐版本：NVIDIA **310.9.16**、XeSS-SR **2.0.2.68**、XeFG **1.3.1.78**、XeLL **1.3.2.10**。添加的 DLSS 帧生成有更严格的要求：必须使用 **Streamline 2.14.16 + DLSS-G 310.9.16**。更新无法让不受支持的游戏或 GPU 自动变得兼容。

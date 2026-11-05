@@ -73,6 +73,9 @@ GPU déjà engagés attendent leur complétion pour libérer leurs ressources.
   Avec **Ray Reconstruction**, NR s'applique au résultat de RR, après son débruitage : jamais à l'image brute du
   ray tracing. Le jeu doit fournir l'entrée de profondeur dont NR a besoin ; sinon l'image reste telle que DLSS l'a
   produite et le menu l'indique.
+  **Les jeux sans DLSS** sont l'exception depuis la 2.0.0 : là, l'interrupteur **Neural Rendering** lance le NR sur
+  l'image que le jeu affiche, avec le mouvement estimé par RTX Encore et le depth buffer du jeu quand il en a un, en
+  DirectX 11, DirectX 12 et Vulkan. Voir [Jeux sans DLSS](GAMES-WITHOUT-DLSS.fr.md#neural-rendering).
 - Avec la bêta 1.2, les entrées de profondeur linéaire compatibles sont également prises en charge après RR sous Direct3D 12. Une profondeur invalide ou non prise en charge laisse NR inactif ; Direct3D 11 et Vulkan ne prennent toujours pas en charge ce cas. Un essai local dans 007 First Light en path tracing confirme que NR fonctionne, sans mesure de qualité d’image ni de coût.
 - Une carte RTX 40 ou RTX 30. RTX 20 est expérimental ; RTX 50 est aussi accepté à titre expérimental sous Vulkan.
 
@@ -80,7 +83,7 @@ GPU déjà engagés attendent leur complétion pour libérer leurs ressources.
 
 1. Placez `nvngx_dlssnr.dll` à côté du fichier du mod.
 2. Activez DLSS ou DLAA dans le jeu.
-3. Ouvrez le menu (**Inser**), onglet **Image**, et activez **Neural Rendering**.
+3. Ouvrez le menu (**Inser**), onglet **Image quality**, et activez **Neural Rendering**.
 
 **Ctrl + Alt + N** active ou désactive NR en cours de jeu, pour comparer l'image et la fréquence d'images avec et
 sans. Le choix est enregistré comme celui de l'interrupteur du menu. Le raccourci se change ou se désactive dans le
@@ -98,14 +101,14 @@ NR se prépare en arrière-plan : les premières images peuvent rester telles qu
 | **Style** | Default | Le rendu de l'image : Default, Natural ou Cinematic. |
 | **Passes** | 1 | NR peut être appliqué de nouveau à son propre résultat, jusqu'à quatre fois. Chaque passe coûte du temps GPU et de la VRAM, et davantage de passes ne garantit pas une meilleure image. |
 | **Precision** | Exact | Moteur NVIDIA, RTX 20 et RTX 30 : *Fast* réduit le temps NR, avec environ 17 % mesurés sur RTX 30 et de petites différences d'image. |
-| **NR model preset** | B | Avec `nvngx_dlssnr.dll` 310.9.16 : **B** est un réseau plus petit et bien plus rapide, **A** le plus grand, celui que 310.8.0 exécute, **DLL default** laisse le fichier choisir (B). Avec 310.8.0, chaque choix exécute son unique réseau. Il se trouve à côté des presets de modèle SR et RR (onglet **Image**, Upscaling) et s'applique en direct. |
+| **NR model preset** | B | Avec `nvngx_dlssnr.dll` 310.9.16 : **B** est un réseau plus petit et bien plus rapide, **A** le plus grand, celui que 310.8.0 exécute, **DLL default** laisse le fichier choisir (B). Avec 310.8.0, chaque choix exécute son unique réseau. Il se trouve à côté des presets de modèle SR et RR (onglet **Image quality**, Upscaling) et s'applique en direct. |
 
 Dans un test local en 1080p sur une RTX 3070 Ti Laptop, le réseau B a pris environ 15 ms de temps NR et le réseau A
 environ 27 ms. B donne une image différente de A. La prise en charge de 310.9.16 est expérimentale et peu testée.
 
 ### Réglages de performance sur RTX 30
 
-Le groupe **Image → Neural Rendering → Performance** donne accès aux travaux de RTX Encore pour réduire le coût
+Le groupe **Image quality → Neural Rendering → Performance** donne accès aux travaux de RTX Encore pour réduire le coût
 NR. Ces options ont des compromis différents ; leurs gains ne sont pas des pourcentages à additionner.
 
 | Réglage | Moteur | Défaut | Gain et compromis |

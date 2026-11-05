@@ -9,9 +9,13 @@ RTX 30 cards, offers an option that makes the upscaling cheaper for the GPU.
 For the render resolution, see [Menu and overlay](MENU-AND-OVERLAY.md#other-controls). For the preset choice, see
 [Settings](SETTINGS.md#dlsspresets).
 
+**Games that ship no DLSS** can get DLSS or XeSS upscaling from RTX Encore since 2.0.0: DLAA on the image the game
+displays, or a lower game resolution upscaled to the screen's, in DirectX 11, DirectX 12 and Vulkan. The SR model
+preset and the sharpening below apply there too. See [Games without DLSS](GAMES-WITHOUT-DLSS.md#upscaling).
+
 ## Sharpening after reconstruction
 
-Off by default. In **Image > Super Resolution**, choose **Off**, **Game** or **Custom**. Custom uses a strength from 0 to 100%, default 30%; changes apply while playing. Game uses the sharpness value sent by the game and does nothing if it sends none. Invalid settings disable the effect.
+Off by default. In **Image quality > Super Resolution**, choose **Off**, **Game** or **Custom**. Custom uses a strength from 0 to 100%, default 30%; changes apply while playing. Game uses the sharpness value sent by the game and does nothing if it sends none. Invalid settings disable the effect.
 
 Sharpening applies to DLSS Super Resolution, DLAA, Ray Reconstruction and replacement XeSS, including fast Super Resolution. If Neural Rendering is active, sharpening follows it. It does not sharpen the overlay or a HUD drawn afterwards. Off and zero strength add no sharpening pass.
 
@@ -30,7 +34,7 @@ DirectX 12, when the game uses DLSS Super Resolution with preset **M** or **L**,
 a faster version of the model, calibrated on captures from real games. The render resolution, the quality mode and
 the preset do not change.
 
-It is **off by default**. Turn it on in the menu: **Image → DLSS Super Resolution → Fast super resolution (RTX 30)**.
+It is **off by default**. Turn it on in the menu: **Image quality → DLSS Super Resolution → Fast super resolution (RTX 30)**.
 In the settings file, the key is [`fastSuperResolution`](SETTINGS.md#dlsssuperresolution).
 **Restart the game** for the change to apply, as for the model preset.
 
@@ -63,3 +67,13 @@ These figures come from one system. They are not a promise for every card, game 
   in place, without any error message. The menu and the game behave as if the option were off.
 - The image is not identical, bit for bit, to NVIDIA's: it is very close, not the same.
 - Measured on a single system: results can differ on other cards, games and drivers.
+
+## Render scale and sharpening
+
+**Ultra (75%)** joins DLAA, Quality, Balanced, Performance and Ultra Performance for native DLSS SR and XeSS reconstruction. It requests 75% of the output width and height (2880 × 1620 for 4K); it is a resolution setting, not a model preset. The game must honor the requested resolution. For games without native reconstruction, use the windowed input-resolution method in [Games without DLSS](GAMES-WITHOUT-DLSS.md).
+
+For image sharpness, select **Sharpening → Custom** and adjust **Strength** from 0 to 100% (default 30%). The change applies live; sharpening is off by default. It can add to the game’s own sharpening.
+
+## Runtime availability and versions
+
+Missing or incompatible runtimes make the corresponding engine unavailable in the menu. Older compatible versions remain supported: NVIDIA 310.9.1 is not rejected merely because a newer version exists. An integrated warning recommends updating with RTX Encore Hub and restarting the game. Recommended versions: NVIDIA **310.9.16**, XeSS-SR **2.0.2.68**, XeFG **1.3.1.78**, XeLL **1.3.2.10**. Added DLSS frame generation has a stricter requirement: **Streamline 2.14.16 + DLSS-G 310.9.16**. Updating does not make an unsupported game or GPU compatible.

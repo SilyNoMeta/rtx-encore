@@ -13,14 +13,17 @@ subject to their own terms.
 | RTX-Unlocker-RenoDX | Copyright (c) 2026 ImDreamt | MIT |
 | [dlss5-bridge](https://github.com/Yukikaze20170315/dlss5-bridge) | Copyright (c) 2026 NIGos | MIT |
 | [RenoDX-DLSS5-Generic](https://github.com/PEQHUB/RenoDX-DLSS5-Generic) | Copyright (c) 2025 Carlos Lopez Jr. | MIT |
+| [DLSS5-Feeder](https://github.com/jlrouzies-fr/DLSS5-Feeder) | Copyright (c) 2026 Jean-Laurent ROUZIES | MIT |
+| [vort_Shaders](https://github.com/vortigern11/vort_Shaders) (vort_Motion) | Copyright (c) 2023 vortigern11 | MIT |
 | [Ultimate ASI Loader](https://github.com/ThirteenAG/Ultimate-ASI-Loader) | Copyright (c) 2023 ThirteenAG | MIT |
-| [Dear ImGui](https://github.com/ocornut/imgui) | Copyright (c) 2014-2025 Omar Cornut | MIT |
+| [Dear ImGui](https://github.com/ocornut/imgui) | Copyright (c) 2014-2026 Omar Cornut | MIT |
 | ProggyClean font (in Dear ImGui) | Copyright (c) 2004, 2005 Tristan Grimmer | MIT |
 | [volk](https://github.com/zeux/volk) | Copyright (c) 2018-2026 Arseny Kapoulkine | MIT |
 | [Microsoft Detours](https://github.com/microsoft/Detours) | Copyright (c) Microsoft Corporation. All rights reserved. | MIT |
 | [NVIDIA Streamline SDK (interface definitions)](https://github.com/NVIDIA-RTX/Streamline) | Copyright (c) 2022-2023 NVIDIA CORPORATION. All rights reserved | MIT |
 | [MinHook](https://github.com/TsudaKageyu/minhook) | Copyright (C) 2009-2017 Tsuda Kageyu. All rights reserved. | BSD 2-Clause, below |
 | [Zstandard](https://github.com/facebook/zstd) | Copyright (c) Meta Platforms, Inc. and affiliates. All rights reserved. | BSD 3-Clause, below |
+| [NVIDIA Optical Flow SDK (interface definitions)](https://github.com/NVIDIA/NVIDIAOpticalFlowSDK) | Copyright (c) 2020, NVIDIA CORPORATION. All rights reserved. | BSD 3-Clause, below |
 
 ## MIT License
 
@@ -166,6 +169,39 @@ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
 ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+```
+
+## NVIDIA Optical Flow SDK headers
+
+The NVIDIA Optical Flow API definitions used by RTX Encore retain the following notice. The optical flow runtime is part of the NVIDIA driver and is not included.
+
+```text
+Copyright(c) 2020, NVIDIA CORPORATION.All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met :
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and / or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ```
 
 ## Intel XeSS SDK headers

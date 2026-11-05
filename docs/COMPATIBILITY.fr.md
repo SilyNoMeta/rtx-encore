@@ -1,5 +1,7 @@
 # Compatibilité
 
+NVIDIA 621.14 : Smooth Motion accepte désormais les fichiers exacts du pilote sur RTX 20 (DirectX 12) et RTX 30 ; les RTX 40/50 conservent le chemin natif du pilote. Les Tensor Cores expérimentaux XeSS/XeFG admettent aussi ce pilote. Les vérifications de compatibilité portent sur les fichiers du pilote, sans installation. La validation en jeu sur 621.14 reste à faire ; cela ne couvre pas les pilotes inconnus.
+
 *[English](COMPATIBILITY.md) · [中文](COMPATIBILITY.zh-CN.md)*
 
 Ces notes consignent ce qui a été testé et observé. Elles ne valent pas certification : une mise à jour du jeu, un
@@ -17,9 +19,9 @@ XeFG ne permet pas d’ajouter la génération d’images à tous les jeux. Les 
 | :--- | :--- | :--- | :--- | :--- |
 | RTX 40 | Prise en charge. DirectX 12 et Vulkan éprouvés sur une RTX 4090. | Fourni par NVIDIA | Pris en charge | Inactive |
 | RTX 30 | Prise en charge. DirectX 12 éprouvé sur un RTX 3070 Ti Laptop. | Pris en charge avec les pilotes listés plus bas | Pris en charge | DirectX 12, mesurée sur un RTX 3070 Ti Laptop. Voir [plus bas](#versions-de-dlss-super-resolution). |
-| RTX 20 | Expérimentale : pas encore validée sur une vraie carte RTX 20. | Expérimental dès 1.3.0 : 621.01 / DX12, V1 ou V2 | Expérimental | Inactive |
+| RTX 20 | Expérimentale : pas encore validée sur une vraie carte RTX 20. | Expérimental dès 1.3.0 : 621.01 / 621.14 / DX12, V1 ou V2 | Expérimental | Inactive |
 
-Les RTX 20 nécessitent le mod **1.3.0**, le pilote **621.01** et **DirectX 12** ; V1/V2 se choisit par jeu.
+Les RTX 20 nécessitent le mod **1.3.0**, le pilote **621.01 / 621.14** et **DirectX 12** ; V1/V2 se choisit par jeu.
 
 RTX Encore est fait pour les cartes RTX 20, 30 et 40. Les cartes GTX et celles d'autres fabricants ne sont pas
 prises en charge.
@@ -33,6 +35,8 @@ prises en charge.
 | Fast super resolution (RTX 30) | — | ✅ | — |
 | Smooth Motion (RTX 30) | ✅ | ✅ | ✅ |
 | Neural Rendering | 🧪 | 🧪 | 🧪 |
+| [Jeux sans DLSS](GAMES-WITHOUT-DLSS.fr.md) : reconstruction DLSS ou XeSS, Neural Rendering | 🧪 | 🧪 | 🧪 |
+| [Jeux sans DLSS](GAMES-WITHOUT-DLSS.fr.md) : génération d'images | 🧪 DLSS FG ou XeFG, X2 à X6 | 🧪 DLSS FG ou XeFG, X2 à X6 | 🧪 DLSS FG ou XeFG, X2 à X6 |
 | Menu et overlay | ✅ | ✅ | ✅ |
 
 Neural Rendering sous Vulkan accepte les RTX 20, RTX 30, RTX 40 et RTX 50. La validation Vulkan sur des cartes
@@ -92,7 +96,7 @@ ensemble ; ces notes ne recommandent pas de remplacer des fichiers individuellem
 
 ## Pilotes pour Smooth Motion
 
-Smooth Motion sur RTX 30 accepte les pilotes NVIDIA **621.01**, **620.12**, **617.42**, **617.14**, **616.92**,
+Smooth Motion sur RTX 30 accepte les pilotes NVIDIA **621.14**, **621.01**, **620.12**, **617.42**, **617.14**, **616.92**,
 **616.64** et **591.86**, et aucun autre. Les **617.14** et **621.01** ont été vérifiés en jeu. Voir [Smooth Motion](SMOOTH-MOTION.fr.md).
 
 ## Fichier pour Neural Rendering
@@ -106,7 +110,11 @@ Neural Rendering demande le fichier `nvngx_dlssnr.dll` **310.8.0** ou **310.9.16
 | :--- | :---: | :--- |
 | Cyberpunk 2077 | DX12 | Génération d'images testée sur un RTX 3070 Ti Laptop. Fonctionne sous le nom `version.dll` ou comme plugin `.asi` ; voir [Installation](INSTALLATION.fr.md#cyberpunk-2077). |
 | Black Myth: Wukong | DX12 | Génération d'images testée sur une RTX 4090. Neural Rendering confirmé par des utilisateurs. |
-| No Man's Sky | Vulkan | Génération d'images testée sur une RTX 4090. **Désactivez Automatic UI recomposition** : dans ce jeu, il provoque des contours dédoublés quand la caméra bouge. Neural Rendering avec la génération d'images X2 confirmé en 1080p et 1440p. |
+| No Man's Sky | Vulkan | Génération d'images testée sur une RTX 4090. **Désactivez Automatic UI recomposition** : dans ce jeu, il provoque des contours dédoublés quand la caméra bouge. Neural Rendering avec la génération d'images X2 confirmé en 1080p et 1440p. XeFG à la place du DLSS Frame Generation du jeu testé en X4 en HDR10 avec ReShade 6.8 installé (2.0.0) ; avec le jeu en **DLAA**, XeFG ne génère rien : choisissez un mode de qualité DLSS. XeSS Super Resolution fonctionne depuis la 2.0.0. |
+| PEAK | DX12, DX11, Vulkan | Sans DLSS. [Jeux sans DLSS](GAMES-WITHOUT-DLSS.fr.md) testé sur une RTX 4090 dans les trois API : DLAA, upscaling 1440p vers 4K, Neural Rendering, DLSS Frame Generation X2 et X4 (DX12, Vulkan), XeFG X4 (DX12 avec Tensor Cores, Vulkan) et X2 (DX11). Unity : choisissez **Fenêtré**, pas Plein écran fenêtré, sous la résolution de l'écran. |
+| The Sims 4 | DX11 | Sans DLSS. XeFG X2 et X3 testés sur une RTX 4090 en plein écran exclusif, affiché comme une fenêtre sans bordure, au-delà de 144 FPS sur un écran 144 Hz (2.0.0). |
+| The Elder Scrolls V: Skyrim Special Edition | DX11 | Sans DLSS. XeFG X3 à X6 testé sur une RTX 4090 (2.0.0). |
+| Football Life 2027 | DX11 | Sans DLSS. DLAA, upscaling 1440p vers 4K et Neural Rendering testés sur une RTX 4090 en HDR (2.0.0). Se fermait au lancement avec RTX Encore 1.6.0 et antérieurs : corrigé dans la 2.0.0. |
 | DOOM: The Dark Ages | Vulkan | Génération d'images testée sur une RTX 4090. Le jeu garde son propre choix pour le traitement de l'interface, quel que soit le réglage. |
 | Starfield | DX12 | Fonctionne avec UI assist activé ; un plantage au chargement d'une sauvegarde a été corrigé après le rapport d'un utilisateur. Avec Luma 2.0 (HDR natif), les images générées prennent un aspect en relief à franges rouges et cyan quand la caméra bouge, avec ou sans les derniers changements de RTX Encore : désactivez Luma ou sa sortie HDR. |
 | Star Wars Outlaws | DX12 | Le jeu complet (Ubisoft Connect) se ferme au lancement quand le menu RTX Encore est attaché. **Mettez `"disableInGameMenu": true`** dans `rtx-encore.jsonc`, ou appliquez le profil communautaire du jeu dans [RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub). Sans le menu, le jeu démarre avec la génération d'images jusqu'à X4, d'après deux utilisateurs ; changez les réglages dans le fichier ou avec le Hub. La démo fonctionne avec le menu. |
@@ -126,7 +134,7 @@ ou non.
 | :--- | :--- |
 | ReShade, Special K | Laissez-leur leur `dxgi.dll` et donnez un autre nom à RTX Encore. ReShade n'est pas nécessaire pour le menu. |
 | DXVK | Ne nommez pas RTX Encore `dxgi.dll` : DXVK fournit ce fichier. Le menu est dessiné dans sa sortie Vulkan. |
-| OptiScaler | Une option dédiée existe pour les installations qui en ont besoin : voir [Génération d'images](FRAME-GENERATION.fr.md#lisser-x3--x4). |
+| OptiScaler | Une option dédiée existe pour les installations qui en ont besoin : voir [Génération d'images](FRAME-GENERATION.fr.md#fluidifier-x3--x4). |
 | Cyber Engine Tweaks, RED4ext | Laissez-leur leurs fichiers sous leur nom. |
 | NVIDIA Profile Inspector | En mode **Game decides**, le multiplicateur qu'il fixe est suivi. |
 

@@ -1,5 +1,7 @@
 # 兼容性
 
+NVIDIA 621.14：Smooth Motion 现已接受 RTX 20（DirectX 12）和 RTX 30 上的精确驱动文件；RTX 40/50 保留原生驱动路径。实验性 XeSS/XeFG Tensor Cores 也允许此驱动。兼容性检查仅针对驱动文件进行，未安装驱动。621.14 的游戏内验证仍待完成，不代表支持未知驱动。
+
 *[English](COMPATIBILITY.md) · [Français](COMPATIBILITY.fr.md)*
 
 这些说明记录测试和观察结果，并非兼容性认证。游戏更新、其他驱动或其他模组都可能改变结果。
@@ -16,9 +18,9 @@ XeFG 不能为所有游戏添加帧生成。更高倍率取决于获准的 Intel
 | :--- | :--- | :--- | :--- | :--- |
 | RTX 40 | 支持。已在 RTX 4090 上测试 DirectX 12 和 Vulkan。 | 由 NVIDIA 提供 | 支持 | 未启用 |
 | RTX 30 | 支持。已在 RTX 3070 Ti Laptop 上测试 DirectX 12。 | 支持（需使用下文列出的驱动） | 支持 | DirectX 12，已在 RTX 3070 Ti Laptop 上测量。见[下文](#dlss-超分辨率版本)。 |
-| RTX 20 | 实验性：尚未在真实 RTX 20 显卡上验证。 | 从 1.3.0 起实验性支持：621.01 / DX12，可选 V1/V2 | 实验性 | 未启用 |
+| RTX 20 | 实验性：尚未在真实 RTX 20 显卡上验证。 | 从 1.3.0 起实验性支持：621.01 / 621.14 / DX12，可选 V1/V2 | 实验性 | 未启用 |
 
-RTX 20 需要模组 **1.3.0**、**621.01** 驱动和 **DirectX 12**；可按游戏选择 V1/V2。
+RTX 20 需要模组 **1.3.0**、**621.01 / 621.14** 驱动和 **DirectX 12**；可按游戏选择 V1/V2。
 
 RTX Encore 面向 RTX 20、30 和 40。不支持 GTX 显卡及其他厂商的显卡。
 
@@ -31,6 +33,8 @@ RTX Encore 面向 RTX 20、30 和 40。不支持 GTX 显卡及其他厂商的显
 | Fast super resolution（RTX 30） | — | ✅ | — |
 | Smooth Motion（RTX 30） | ✅ | ✅ | ✅ |
 | Neural Rendering | 🧪 | 🧪 | 🧪 |
+| [没有 DLSS 的游戏](GAMES-WITHOUT-DLSS.zh-CN.md)：DLSS 或 XeSS 超分辨率、Neural Rendering | 🧪 | 🧪 | 🧪 |
+| [没有 DLSS 的游戏](GAMES-WITHOUT-DLSS.zh-CN.md)：帧生成 | 🧪 DLSS FG 或 XeFG，X2 至 X6 | 🧪 DLSS FG 或 XeFG，X2 至 X6 | 🧪 DLSS FG 或 XeFG，X2 至 X6 |
 | 菜单和叠加层 | ✅ | ✅ | ✅ |
 
 Vulkan Neural Rendering 接受 RTX 20、RTX 30、RTX 40 和 RTX 50。使用官方构建在真实 RTX 20、RTX 40 和 RTX 50
@@ -81,7 +85,7 @@ Streamline 的支持范围因功能而异。已离线检查从 1.0.0 到 2.14.1 
 
 ## Smooth Motion 驱动
 
-RTX 30 上的 Smooth Motion 仅接受 NVIDIA 驱动 **621.01**、**620.12**、**617.42**、**617.14**、**616.92**、**616.64** 和 **591.86**。
+RTX 30 上的 Smooth Motion 仅接受 NVIDIA 驱动 **621.14**、**621.01**、**620.12**、**617.42**、**617.14**、**616.92**、**616.64** 和 **591.86**。
 **617.14** 和 **621.01** 已在游戏中验证。见 [Smooth Motion](SMOOTH-MOTION.zh-CN.md)。
 
 ## Neural Rendering 文件
@@ -95,7 +99,11 @@ Neural Rendering 需要 NVIDIA 的 `nvngx_dlssnr.dll` **310.8.0** 或 **310.9.16
 | :--- | :---: | :--- |
 | Cyberpunk 2077 | DX12 | 在 RTX 3070 Ti Laptop 上测试了帧生成。可作为 `version.dll` 或 `.asi` 插件运行；见[安装](INSTALLATION.zh-CN.md#cyberpunk-2077)。 |
 | Black Myth: Wukong（黑神话：悟空） | DX12 | 在 RTX 4090 上测试了帧生成。用户确认 NR 运行。 |
-| No Man's Sky | Vulkan | 在 RTX 4090 上测试了帧生成。**请关闭 Automatic UI recomposition**：它在此游戏的镜头移动中造成双重轮廓。用户确认了 1080p 和 1440p 下 NR 与帧生成 X2 一起运行。 |
+| No Man's Sky | Vulkan | 在 RTX 4090 上测试了帧生成。**请关闭 Automatic UI recomposition**：它在此游戏的镜头移动中造成双重轮廓。用户确认了 1080p 和 1440p 下 NR 与帧生成 X2 一起运行。用 XeFG 替换游戏的 DLSS 帧生成已在 HDR10 下以 X4 测试，且安装了 ReShade 6.8（2.0.0）；游戏使用 **DLAA** 时 XeFG 不生成任何帧：请选择 DLSS 质量模式。XeSS Super Resolution 自 2.0.0 起可运行。 |
+| PEAK | DX12, DX11, Vulkan | 没有 DLSS。[没有 DLSS 的游戏](GAMES-WITHOUT-DLSS.zh-CN.md)已在 RTX 4090 上于三种 API 中测试：DLAA、1440p 放大到 4K、Neural Rendering、DLSS 帧生成 X2 和 X4（DX12、Vulkan）、XeFG X4（DX12 带 Tensor Cores、Vulkan）和 X2（DX11）。Unity：低于屏幕分辨率时请选择**窗口化**，不要选择全屏窗口。 |
+| The Sims 4 | DX11 | 没有 DLSS。XeFG X2 和 X3 已在 RTX 4090 上以独占全屏测试，显示为无边框窗口，在 144 Hz 屏幕上超过 144 FPS（2.0.0）。 |
+| The Elder Scrolls V: Skyrim Special Edition | DX11 | 没有 DLSS。XeFG X3 至 X6 已在 RTX 4090 上测试（2.0.0）。 |
+| Football Life 2027 | DX11 | 没有 DLSS。DLAA、1440p 放大到 4K 和 Neural Rendering 已在 RTX 4090 上以 HDR 测试（2.0.0）。使用 RTX Encore 1.6.0 及更早版本时启动即关闭：2.0.0 已修复。 |
 | DOOM: The Dark Ages | Vulkan | 在 RTX 4090 上测试了帧生成。无论模组设置如何，游戏都保留自己的界面处理选择。 |
 | Starfield | DX12 | 开启 UI assist 时可运行；根据用户报告修复了读取存档时的崩溃。搭配 Luma 2.0（原生 HDR）时，镜头移动中生成的帧会呈现带红色和青色边缘的浮雕效果，与 RTX Encore 的最新改动无关：请关闭 Luma 或其 HDR 输出。 |
 | Star Wars Outlaws | DX12 | 完整版游戏（Ubisoft Connect）在附加 RTX Encore 菜单时会在启动时关闭。**请在 `rtx-encore.jsonc` 中设置 `"disableInGameMenu": true`**，或在 [RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub) 中应用该游戏的社区配置。不使用菜单时，游戏可以启动并使用最高 X4 的帧生成（两位用户报告）；请在文件中或通过 Hub 更改设置。试玩版可以正常使用菜单。 |
