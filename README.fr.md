@@ -22,12 +22,13 @@ Un menu intégré, avec RTX Encore Hub pour installer le mod et les runtimes né
 [![API graphiques](https://img.shields.io/badge/API-DirectX%2011%20%7C%2012%20%7C%20Vulkan-0078d4?style=flat-square)](docs/COMPATIBILITY.fr.md)
 
 **[Télécharger](https://github.com/SilyNoMeta/rtx-encore/releases)** ·
+**[Nexus Mods](https://www.nexusmods.com/site/mods/2547)** ·
 **[RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub)** ·
 **[Installation](docs/INSTALLATION.fr.md)** ·
 **[English](README.md)** ·
 **[中文](README.zh-CN.md)**
 
-<sub>Gratuit, développé sur du temps personnel. S'il vous est utile, vous pouvez soutenir le projet sur <a href="https://github.com/sponsors/SilyNoMeta">GitHub Sponsors</a> ou <a href="https://ko-fi.com/silynometa">Ko-fi</a> ❤</sub>
+<sub>Gratuit, développé sur du temps personnel. S'il vous est utile, vous pouvez soutenir le projet sur <a href="https://github.com/sponsors/SilyNoMeta">GitHub Sponsors</a> ou <a href="https://ko-fi.com/silynometa">Ko-fi</a>, ou lui donner un endorsement sur <a href="https://www.nexusmods.com/site/mods/2547">Nexus Mods</a> ❤</sub>
 
 <p>❤️ Merci à <a href="https://github.com/mennogreg">@mennogreg</a> et <a href="https://github.com/Scarhead666">@Scarhead666</a> pour leur soutien au développement de RTX Encore.</p>
 

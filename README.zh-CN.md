@@ -22,12 +22,13 @@ Smooth Motion 和 Neural Rendering——现在也适用于没有 DLSS 的游戏�
 [![图形 API](https://img.shields.io/badge/APIs-DirectX%2011%20%7C%2012%20%7C%20Vulkan-0078d4?style=flat-square)](docs/COMPATIBILITY.zh-CN.md)
 
 **[下载](https://github.com/SilyNoMeta/rtx-encore/releases)** ·
+**[Nexus Mods](https://www.nexusmods.com/site/mods/2547)** ·
 **[RTX Encore Hub](https://github.com/SilyNoMeta/rtx-encore-hub)** ·
 **[安装](docs/INSTALLATION.zh-CN.md)** ·
 **[English](README.md)** ·
 **[Français](README.fr.md)**
 
-<sub>免费，利用业余时间开发。如果它对你有帮助，欢迎通过 <a href="https://github.com/sponsors/SilyNoMeta">GitHub Sponsors</a> 或 <a href="https://ko-fi.com/silynometa">Ko-fi</a> 支持本项目 ❤</sub>
+<sub>免费，利用业余时间开发。如果它对你有帮助，欢迎通过 <a href="https://github.com/sponsors/SilyNoMeta">GitHub Sponsors</a> 或 <a href="https://ko-fi.com/silynometa">Ko-fi</a> 支持本项目，或在 <a href="https://www.nexusmods.com/site/mods/2547">Nexus Mods</a> 上点赞（Endorse） ❤</sub>
 
 <p>❤️ 感谢 <a href="https://github.com/mennogreg">@mennogreg</a> 和 <a href="https://github.com/Scarhead666">@Scarhead666</a> 对 RTX Encore 开发的支持。</p>
 
