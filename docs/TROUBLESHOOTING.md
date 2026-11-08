@@ -80,6 +80,10 @@ depends on the game/driver. If applying it does not reduce the actual render rat
 Compare measured source FPS and GPU readings; `accepted` alone does not prove a benefit. The saved limit
 stays fixed until you change it. See [the cap controls](MENU-AND-OVERLAY.md#suggested-reflex-cap).
 
+## Resolution, blurry text or offset game buttons
+
+For games without DLSS, compare the game’s **input** resolution with Encore’s **output** resolution. On Unreal Engine games, Windows display scaling can also limit the available render size. See [resolution and Windows display scaling](GAMES-WITHOUT-DLSS.md#resolution-and-windows-display-scaling) for the high-DPI setting, a 1080p-to-1440p example and what to report.
+
 ## Reporting a problem
 
 Normal Streamline/NGX messages, including the feature rejection reasons they report, are recorded automatically

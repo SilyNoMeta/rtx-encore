@@ -3,6 +3,49 @@
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
 
+## 2.1.0
+
+**RTX Encore 2.1.0 让 Intel XeFG 在 X3 及以上倍率下保持流畅。**新设置 **XeFG 稳定游戏帧节奏**默认开启，消除了 XeFG 高倍率下可能出现的镜头抖动。自带 DLSS 但没有帧生成的游戏，现在会把自己的深度和运动数据交给 RTX Encore 添加的帧生成；XeFG 在 DirectX 11 和 Vulkan 中也能使用 Tensor Core；此外还有一系列修复：博德之门 3、最终幻想 VII 重生、极限竞速：地平线 6、天国：拯救、Islands of Insight 以及刺客信条：黑旗 Resynced。
+
+### XeFG 稳定游戏帧节奏（新增，默认开启）
+
+在 X3 及以上倍率时，即使帧数计数看起来正常，XeFG 也可能让镜头运动出现抖动：游戏自身的帧时长忽短忽长，导致每组生成帧覆盖的时间各不相同。**XeFG 稳定游戏帧节奏**会以略低于游戏可维持帧率的固定节奏开始游戏的每一帧，并持续随游戏自动调整，使每一张生成帧之间的运动都保持均匀。
+
+- 默认开启，位于菜单 **帧率** 选项卡中，与其他 XeFG 设置在一起；[RTX Encore Hub 2.1.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.1.0) 中也可设置。即时生效：关闭再打开即可对比效果。
+- 代价是游戏自身帧率降低几 FPS。它不会催促迟到的帧，也不会一次性集中追赶。
+- 需配合 XeFG 可变帧节奏（默认开启），从 X3 起生效；X2 不受影响。
+- XeFG 自身的输出也更稳定：卡顿之后生成帧仍保持均匀间隔，且不再随时间漂移。
+
+维护者已在刺客信条：黑旗 Resynced 中以 X4、不限帧验证：帧时长交替消失，运动非常流畅。感谢 [Discord](https://discord.gg/Zwmq4Xc2Br) 上的 **Konan** 提供报告和日志（黑旗 Resynced、极限竞速：地平线 6、阿凡达：潘多拉边境），并发现抖动与 XeFG 可变帧节奏有关。设置项为 `xefgSourcePacing`，参见[设置](docs/SETTINGS.zh-CN.md)和 [Intel 引擎](docs/INTEL-ENGINES.zh-CN.md)。
+
+### 使用游戏自身的深度和运动数据进行帧生成
+
+- **有 DLSS 但没有帧生成的游戏**（例如博德之门 3）：RTX Encore 添加的 DLSS 帧生成或 XeFG 现在会使用游戏已经提供给其 DLSS 的深度和运动矢量，而不再从画面中估计，适用于 DirectX 11 和 Vulkan。若游戏的数据无法使用，帧生成会回退到 RTX Encore 的运动估计，此时菜单会显示 **运动估计**。维护者在 RTX 3070 Ti Laptop 上于博德之门 3 的四种组合（DirectX 11 与 Vulkan、DLSS-FG 与 XeFG）中均看到了 X4 生成。
+- **博德之门 3（DirectX 11）：即使 Streamline 文件已就位，DLSS 帧生成仍停留在“等待中”。**已修复；同时支持 10 位（RGB10）显示输出。感谢 [@deusimperatork](https://github.com/deusimperatork) 的报告（[#109](https://github.com/SilyNoMeta/rtx-encore/issues/109)）。报告者尚未重新测试。
+- **博德之门 3（Vulkan）：Neural Rendering 与 DLSS 帧生成可同时使用**，无需任何第三方工具。维护者已验证：超分辨率之后的 NR，以及 1440p 下 DLSS-FG 先 X2 后 X4。
+
+### DirectX 11 和 Vulkan 中的 Tensor Core（实验性）
+
+- **在 NVIDIA Tensor Core 上运行的 XeFG** 现在也适用于没有帧生成的 DirectX 11 和 Vulkan 游戏。在博德之门 3 的 DirectX 11 和 Vulkan 中，维护者看到绿色 **Tensor Cores** 标记处于激活状态，XeFG 为 X4。画面一致性和性能提升尚未测量。
+- **在 Tensor Core 上运行的 XeSS 超分辨率**现在可用于没有 DLSS 的 DirectX 11 和 Vulkan 游戏，以及 XeSS 替换 DirectX 11 游戏的 DLSS 时。尚未在游戏中验证。在 Vulkan 游戏中替换 DLSS 时仍使用标准 XeSS。
+
+### 修复
+
+- **最终幻想 VII 重生：帧生成一直不可用**，原因是开启了 NVIDIA App（或 NVIDIA Profile Inspector）的 DLSS 覆盖：此时游戏使用驱动下载的 Streamline 文件，而 RTX Encore 无法识别它们，于是 RTX 30 显卡被当作无法运行帧生成。现在已能识别。感谢 [@yannduwooz83](https://github.com/yannduwooz83) 的报告并找到了相关设置（[#106](https://github.com/SilyNoMeta/rtx-encore/issues/106)）。
+- **XeFG 与 RTSS（RivaTuner Statistics Server、MSI Afterburner）：**RTSS 会在 RTX Encore 之后接管游戏交换链的创建，从第二次创建起就绕过了 XeFG，导致游戏重新创建窗口时 XeFG 可能不生效或失败。RTX Encore 现在会重新排到 RTSS 之前，并把每次创建交给它，两者都能继续工作。已在 RTSS 运行时通过 RTX Encore 的 XeFG 自动化测试验证；尚未在游戏中验证。感谢 Discord 上的 **Konan**，其 RTSS 报告指明了方向。
+- **天国：拯救（DirectX 11）：**通过 Ultimate ASI Loader 启动游戏时菜单无法打开；使用 DLSS 帧生成时游戏失去焦点（Alt+Tab、最小化）会崩溃。两者均已修复，并由维护者在游戏中确认。感谢 Discord 上的 **SMN888** 的报告和诊断。
+- **刺客信条：黑旗 Resynced（XeFG）：**修复了约一秒的卡顿和黑屏，菜单在 XeFG 下可正常使用，叠加层会将游戏自身帧率与生成后的输出分开显示。维护者已确认游戏运行正常；菜单和计数器的改动尚未在游戏中确认。感谢 Discord 上的 **Konan** 的报告。
+- **极限竞速：地平线 6：**DirectX 12 中的 XeSS 超分辨率现在会正常启用而不再回退；游戏重置图形设备后，Tensor Core 上的 XeSS 仍能继续运行；并避免了与 Steam 叠加层相关的崩溃。维护者已在游戏中确认。感谢 Discord 上的 **Konan** 的报告。
+- **Islands of Insight 及其他放大到屏幕分辨率的无 DLSS 游戏：**在调整窗口大小和无边框窗口中，画面、尺寸与鼠标指针保持对齐；DirectX 11 中帧生成能够可靠启动；选择 **无** 时会真正关闭添加的超分辨率。维护者已在游戏中确认。感谢 Discord 上的 **SMN888**，其在无 DLSS 游戏中（配合 Windows 显示缩放）的测试促成了这些修复。新增指南说明 Windows 显示缩放如何限制虚幻引擎游戏的分辨率并导致文字模糊：[分辨率与 Windows 显示缩放](docs/GAMES-WITHOUT-DLSS.zh-CN.md#分辨率与-windows-显示缩放)。
+- **菜单：**游戏自带的 DLSS 在引擎选项中显示为 **游戏（DLSS）**；DLSS-FG 无法启动时会提示需通过 Hub 安装哪些 Streamline 组件；超分辨率引擎选择 **无** 时，XeSS 的 Tensor Cores 开关会隐藏，且仅帧生成使用 **运动估计** 时，该设置会移到帧生成部分。
+- **手动安装：**[运行库列表](README.zh-CN.md#手动安装所需的运行库)现在适用于所有游戏，并新增 NVIDIA DLSS SDK 310.9.16 中的光线重建（`nvngx_dlssd.dll`）。
+
+### 已验证的内容
+
+上述游戏由维护者在 RTX 4090 或 RTX 3070 Ti Laptop 上使用这些改动的测试版本运行过，尚未使用 2.1.0 最终二进制文件重新测试。发布检查包括编译、这些功能的回归测试套件以及压缩包完整性。
+
+**已知限制：**RTSS（RivaTuner Statistics Server）现在会被保持在 XeFG 之后（见“修复”），但其叠加层尚未在游戏中与 XeFG 一起实测。如果某个游戏仍然崩溃或 XeFG 未生效，请关闭 RTSS 叠加层并反馈。
+
 ## 2.0.1
 
 - **使用 NVIDIA 官方文件手动安装：**为没有帧生成的游戏提供的帧生成现在也接受 NVIDIA 官方的 DLSS 帧生成 310.9.16（Streamline SDK 2.14.16 和 DLSS SDK 中的 `nvngx_dlssg.dll`），所有文件都可以取自 NVIDIA 的 SDK。此前由于检测错误被拒绝。感谢 [@Kbx-7](https://github.com/Kbx-7) 的报告（[#108](https://github.com/SilyNoMeta/rtx-encore/issues/108)）。

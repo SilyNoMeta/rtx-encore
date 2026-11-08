@@ -54,6 +54,27 @@ RTX Encore 在画面显示之前取得已完成的画面。两帧之间的运动
 
 在**画质 → 超分辨率 → 引擎**中选择 **DLSS** 或 **XeSS** 即可启用重建，选择**无**即可关闭。不再需要单独的启用开关。默认输出为**游戏分辨率（DLAA）**：DLSS 以原生分辨率运行，XeSS 使用原生抗锯齿。需要放大时，以所需的输入分辨率在**窗口模式**（不是无边框窗口模式）启动游戏，然后在 Encore 中选择**屏幕分辨率**。Encore 会放大输出并移除窗口边框。例如，从 2560 × 1440 放大到 3840 × 2160，宽高比例约为 67%。
 
+### 分辨率与 Windows 显示缩放
+
+选择**屏幕分辨率**时，游戏决定输入分辨率，Encore 将输出保持为显示器分辨率。**1920×1080 → 2560×1440 的单轴比例是 75%**。输出显示为 1440p，不代表游戏以 1440p 渲染；画面仍铺满同一块屏幕也属于正常现象。如果游戏已经以 1080p 渲染，再次应用 1080p 不会改变分辨率。
+
+Windows 显示缩放是另一项设置。在 **150%** 缩放的 2560×1440 显示器上，不支持高 DPI 的游戏可能只看到约 **1707×960**。这可能限制游戏分辨率并使文字模糊。可以保留平时的 Windows 缩放比例，先检查游戏的高 DPI 支持。
+
+对于出现此问题的 Unreal Engine 游戏：
+
+1. 关闭游戏，备份游戏保存配置目录中的 `Engine.ini`。常见位置为 `%LOCALAPPDATA%\<游戏>\Saved\Config\WindowsNoEditor\`，部分游戏使用 `Windows` 目录。修改的是游戏配置，不是 Encore 配置。
+2. 在已有的 `[/Script/Engine.UserInterfaceSettings]` 节中设置 `bAllowHighDPIInGameMode=True`。没有该节时再添加，保留其他设置：
+
+   ```ini
+   [/Script/Engine.UserInterfaceSettings]
+   bAllowHighDPIInGameMode=True
+   ```
+
+3. 重新启动游戏，启用 **DLSS** 或 **XeSS**，选择**屏幕分辨率**，然后在游戏画面设置中应用所需分辨率。在 1440p 显示器上比较时，先应用 2560×1440，再应用 1920×1080。后者应为 1080p 输入、1440p 输出，比例约 75%。
+4. 同时检查游戏按钮的点击位置。如果光标仍然偏移，请恢复原设置，并在反馈时说明游戏、Windows 缩放比例、游戏分辨率和 Encore 输出模式。画面变清晰并不能单独证明鼠标位置正确。
+
+Epic 提供了此 [Unreal 高 DPI 设置的说明](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/Engine/Engine/UUserInterfaceSettings/bAllowHighDPIInGameMode?application_version=4.27)。已在 **Islands of Insight、DirectX 11、1440p 显示器、Windows 150% 缩放**下使用本次修复的测试版本确认该配置。不能据此保证所有 Unreal 游戏或旧版 Encore 都正常：游戏可能忽略此设置或使用其他配置目录。无效时请恢复备份的设置。添加的超分辨率仍会与场景一起处理文字和 HUD。
+
 ### Neural Rendering
 
 **画质**选项卡，**Neural Rendering** 部分：开启 **Neural Rendering**。在没有 DLSS 的游戏中，这一个开关就会在显示的画面上启动 NR，在超分辨率

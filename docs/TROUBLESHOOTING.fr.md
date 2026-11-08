@@ -83,6 +83,10 @@ rendu mesurée, essayez une demande plus basse. Comparez les FPS source et les m
 démontre pas un gain. Le plafond enregistré reste fixe jusqu’à votre prochaine modification.
 Voir [les commandes du plafond](MENU-AND-OVERLAY.fr.md#plafond-reflex-suggéré).
 
+## Résolution, textes flous ou boutons du jeu décalés
+
+Dans un jeu sans DLSS, distinguez la résolution d’**entrée** du jeu et la résolution de **sortie** d’Encore. Dans un jeu Unreal Engine, la mise à l’échelle Windows peut aussi plafonner le rendu. Voir [résolution et mise à l’échelle Windows](GAMES-WITHOUT-DLSS.fr.md#résolution-et-mise-à-léchelle-windows) pour le réglage haute résolution, un exemple 1080p vers 1440p et les informations à signaler.
+
 ## Signaler un problème
 
 Les messages normaux de Streamline/NGX, dont les motifs de refus des fonctions qu'ils signalent, sont enregistrés

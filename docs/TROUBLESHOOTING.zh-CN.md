@@ -76,6 +76,10 @@ RTX Encore 1.2.0 可选择重建和帧生成引擎。保留 **Game** 可继续�
 请对比实际源帧率和 GPU 读数；仅显示 `accepted` 不能证明有效。保存的上限不会自行变化。
 参见[帧率上限控制](MENU-AND-OVERLAY.zh-CN.md#建议的-reflex-帧率上限)。
 
+## 分辨率、文字模糊或游戏按钮点击偏移
+
+对于没有 DLSS 的游戏，请区分游戏的**输入**分辨率与 Encore 的**输出**分辨率。Unreal Engine 游戏还可能受到 Windows 显示缩放的分辨率限制。参见[分辨率与 Windows 显示缩放](GAMES-WITHOUT-DLSS.zh-CN.md#分辨率与-windows-显示缩放)，了解高 DPI 设置、1080p 到 1440p 的示例及反馈所需信息。
+
 ## 报告问题
 
 即使关闭诊断选项，也会自动记录 Streamline/NGX 的常规消息，包括它们报告的功能拒绝原因。

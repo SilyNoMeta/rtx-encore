@@ -69,6 +69,27 @@ the ones for games with DLSS.
 
 In **Image quality → Upscaling → Engine**, choose **DLSS** or **XeSS** to enable reconstruction, or **None** to leave it off. There is no separate activation switch. **Game resolution (DLAA)** is the default output: DLSS runs at native resolution; XeSS provides native anti-aliasing. For upscaling, launch the game in **Windowed**, not borderless, at the desired input resolution, then choose **Screen resolution** in Encore. Encore enlarges the output to the screen and removes the window borders. For example, 2560 × 1440 to 3840 × 2160 corresponds to about 67% per dimension.
 
+### Resolution and Windows display scaling
+
+With **Screen resolution**, the game chooses the input resolution and Encore keeps the output at the display resolution. **1920×1080 → 2560×1440 is 75% per dimension**. A 1440p output label does not mean the game rendered at 1440p, and the image filling the same screen is expected. Applying 1080p again when the game already renders at 1080p produces no resolution change.
+
+Windows display scaling is a separate setting. On a 2560×1440 display at **150%**, a game without high-DPI support can see about **1707×960** instead. This can limit the game resolution and make text blurry. Keep your preferred Windows scaling; first check the game's own high-DPI support.
+
+For an Unreal Engine game with this symptom:
+
+1. Close the game and back up its `Engine.ini` in its saved configuration folder, commonly `%LOCALAPPDATA%\<Game>\Saved\Config\WindowsNoEditor\` (some games use `Windows`). Use the game's file, not Encore's configuration.
+2. In the existing `[/Script/Engine.UserInterfaceSettings]` section, set `bAllowHighDPIInGameMode=True`. Add the section if absent; preserve other settings:
+
+   ```ini
+   [/Script/Engine.UserInterfaceSettings]
+   bAllowHighDPIInGameMode=True
+   ```
+
+3. Restart the game. Enable **DLSS** or **XeSS**, choose **Screen resolution**, and apply the desired resolution in the game's graphics settings. For a comparison on a 1440p display, apply 2560×1440 and then 1920×1080. The latter should produce 1080p input and 1440p output, about 75%.
+4. Check the game buttons as well as image quality. If the cursor remains offset, return the setting to its previous value and report the game, Windows scaling, game resolution and Encore output mode. A sharper image alone does not prove correct mouse alignment.
+
+Epic documents this [Unreal high-DPI setting](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/Engine/Engine/UUserInterfaceSettings/bAllowHighDPIInGameMode?application_version=4.27). The setup was confirmed with **Islands of Insight, DirectX 11, a 1440p display and 150% Windows scaling**, using the build tested for this fix. It is not a guarantee for every Unreal game or an older Encore release: a game may ignore the setting or use another configuration location. Restore the backed-up setting if it does not help. The added upscaler still processes the HUD and text with the rest of the image.
+
 ### Neural Rendering
 
 In the **Image quality** tab, **Neural Rendering** section, turn on **Neural Rendering**: in a game without DLSS, this one

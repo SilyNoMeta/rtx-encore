@@ -3,6 +3,49 @@
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
 
+## 2.1.0
+
+**RTX Encore 2.1.0 makes Intel XeFG smooth at X3 and above.** A new setting, **Steady game pacing for XeFG**, on by default, removes the camera judder that high XeFG multipliers could show. Games that ship DLSS but no frame generation now give their own depth and motion to the frame generation RTX Encore adds, XeFG runs on the Tensor Cores in DirectX 11 and Vulkan too, and a long list of fixes follows: Baldur's Gate 3, Final Fantasy VII Rebirth, Forza Horizon 6, Kingdom Come: Deliverance, Islands of Insight and Assassin's Creed Black Flag Resynced.
+
+### Steady game pacing for XeFG (new, on by default)
+
+At X3 and above, XeFG could make camera motion judder even while the frame counter looked fine: the game's own frames alternated between short and long ones, so each group of generated images covered a different slice of time. **Steady game pacing for XeFG** starts the game's frames on a regular schedule, just below the frame rate the game can sustain, and keeps adapting it to the game. Motion stays even across every generated image.
+
+- On by default, in the menu's **Frame rate** tab with the other XeFG settings, and in [RTX Encore Hub 2.1.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.1.0). It applies live: turn it off and on to see the difference.
+- It costs a few FPS of the game's own frame rate. It never hurries a late frame and never catches up in a burst.
+- It works with XeFG's variable pacing (on by default) from X3; X2 is unchanged.
+- XeFG's own output is steadier too: generated images keep their spacing after a hitch and no longer drift over time.
+
+Validated by the maintainer in Assassin's Creed Black Flag Resynced at X4 without a frame limit: the alternation is gone and motion is very smooth. Thanks to **Konan** on the [Discord](https://discord.gg/Zwmq4Xc2Br) for the reports and logs (Black Flag Resynced, Forza Horizon 6, Avatar: Frontiers of Pandora) and for spotting that the judder followed XeFG's variable pacing. Setting `xefgSourcePacing`, see [Settings](docs/SETTINGS.md) and [Intel engines](docs/INTEL-ENGINES.md).
+
+### Frame generation with the game's own depth and motion
+
+- **Games with DLSS but without frame generation** (Baldur's Gate 3, for example): the DLSS Frame Generation or XeFG that RTX Encore adds now uses the depth and motion vectors the game already gives its DLSS, instead of estimating them from the image, in DirectX 11 and Vulkan. When the game's data cannot be used, frame generation falls back to RTX Encore's motion estimation, and the menu then shows **Motion estimation**. The maintainer saw X4 generated in Baldur's Gate 3 in all four combinations (DirectX 11 and Vulkan, DLSS-FG and XeFG) on an RTX 3070 Ti Laptop.
+- **Baldur's Gate 3 (DirectX 11): DLSS Frame Generation stayed on "Waiting"** even with the Streamline files in place. Fixed; 10-bit (RGB10) displays are accepted too. Thanks to [@deusimperatork](https://github.com/deusimperatork) for the report ([#109](https://github.com/SilyNoMeta/rtx-encore/issues/109)). The reporter has not retested yet.
+- **Baldur's Gate 3 (Vulkan): Neural Rendering and DLSS Frame Generation together**, without any third-party tool. Checked by the maintainer: NR after super resolution and DLSS-FG X2 then X4 at 1440p.
+
+### Tensor Cores in DirectX 11 and Vulkan (experimental)
+
+- **XeFG on NVIDIA Tensor Cores** now also runs in DirectX 11 and Vulkan games without frame generation. In Baldur's Gate 3, DirectX 11 and Vulkan, the maintainer saw the green **Tensor Cores** badge active and XeFG X4. Image parity and the performance gain have not been measured yet.
+- **XeSS Super Resolution on Tensor Cores** is now offered in DirectX 11 and Vulkan games without DLSS, and when XeSS replaces DLSS in a DirectX 11 game. Not yet validated in a game. Replacing DLSS in a Vulkan game keeps standard XeSS.
+
+### Fixes
+
+- **Final Fantasy VII Rebirth: frame generation stayed unavailable** with the NVIDIA app's (or NVIDIA Profile Inspector's) DLSS override on: the game then uses the Streamline files the driver downloaded, which RTX Encore did not recognize, so an RTX 30 card was treated as unable to run frame generation. They are recognized now. Thanks to [@yannduwooz83](https://github.com/yannduwooz83) for the report and for finding the setting involved ([#106](https://github.com/SilyNoMeta/rtx-encore/issues/106)).
+- **XeFG with RTSS (RivaTuner Statistics Server, MSI Afterburner):** RTSS takes over the creation of the game's swap chain after RTX Encore and skipped XeFG from the second creation on, so XeFG could stay inactive or fail when the game recreated its window. RTX Encore now puts itself back in front of RTSS and hands each creation on to it, so both keep working. Checked with RTSS running in RTX Encore's automated XeFG tests; not yet in a game. Thanks to **Konan** on Discord, whose RTSS reports pointed at it.
+- **Kingdom Come: Deliverance (DirectX 11):** the menu did not open when the game was started through Ultimate ASI Loader, and the game crashed when it lost focus (Alt+Tab, minimizing) with DLSS Frame Generation. Both fixed and confirmed in the game by the maintainer. Thanks to **SMN888** on Discord for the report and diagnostic.
+- **Assassin's Creed Black Flag Resynced (XeFG):** one-second stalls and black screens are fixed, the menu keeps working with XeFG, and the overlay reports the game's own frame rate separately from the generated output. Gameplay confirmed by the maintainer; the menu and counter changes are not yet confirmed in the game. Thanks to **Konan** on Discord for the report.
+- **Forza Horizon 6:** XeSS Super Resolution in DirectX 12 now activates instead of falling back, XeSS on Tensor Cores keeps running after the game resets its graphics device, and a crash with the Steam overlay is avoided. Confirmed in the game by the maintainer. Thanks to **Konan** on Discord for the report.
+- **Islands of Insight and other games without DLSS upscaled to the screen's resolution:** the picture, its size and the mouse cursor stay aligned through resizes and the borderless window, frame generation starts reliably in DirectX 11, and **None** really turns the added upscaler off. Confirmed in the game by the maintainer. Thanks to **SMN888** on Discord, whose tests in games without DLSS (with Windows display scaling) led to these fixes. A new guide explains how Windows display scaling can limit the game's resolution and blur text in Unreal Engine games: [Resolution and Windows display scaling](docs/GAMES-WITHOUT-DLSS.md#resolution-and-windows-display-scaling).
+- **Menu:** a game's own DLSS is shown as **Game (DLSS)** in the engine choice, and a hint says which Streamline components to install with the Hub when DLSS-FG cannot start; with **None** as the upscaling engine, the XeSS Tensor Cores switch is hidden and **Motion estimation** moves to Frame generation when only frame generation uses it.
+- **Manual install:** the [list of runtimes](README.md#runtimes-for-a-manual-install) is now for every game, with Ray Reconstruction (`nvngx_dlssd.dll`) from NVIDIA's DLSS SDK 310.9.16.
+
+### What was checked
+
+The games named above were played by the maintainer with test builds of these changes on an RTX 4090 or an RTX 3070 Ti Laptop. Games were not retested with the final 2.1.0 binaries. Release checks cover compilation, the regression suites of these features and archive integrity.
+
+**Known limit:** RTSS (RivaTuner Statistics Server) is now kept behind XeFG (see Fixes), but its overlay has not been played with XeFG in a game yet. If a game still crashes or XeFG stays inactive with it, turn the RTSS overlay off and please report it.
+
 ## 2.0.1
 
 - **Manual install with NVIDIA's own files:** frame generation for games without it now also accepts NVIDIA's official DLSS Frame Generation 310.9.16 (the `nvngx_dlssg.dll` of the Streamline SDK 2.14.16 and of the DLSS SDK), so every file can come from NVIDIA's SDKs. It was refused by a detection error. Thanks to [@Kbx-7](https://github.com/Kbx-7) for the report ([#108](https://github.com/SilyNoMeta/rtx-encore/issues/108)).

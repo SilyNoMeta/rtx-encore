@@ -30,7 +30,7 @@ Un menu intégré, avec RTX Encore Hub pour installer le mod et les runtimes né
 
 <sub>Gratuit, développé sur du temps personnel. S'il vous est utile, vous pouvez soutenir le projet sur <a href="https://github.com/sponsors/SilyNoMeta">GitHub Sponsors</a> ou <a href="https://ko-fi.com/silynometa">Ko-fi</a>, ou lui donner un endorsement sur <a href="https://www.nexusmods.com/site/mods/2547">Nexus Mods</a> ❤</sub>
 
-<p>❤️ Merci à <a href="https://github.com/mennogreg">@mennogreg</a> et <a href="https://github.com/Scarhead666">@Scarhead666</a> pour leur soutien au développement de RTX Encore.</p>
+<p>❤️ Merci à <a href="https://github.com/mennogreg">@mennogreg</a>, <a href="https://github.com/Scarhead666">@Scarhead666</a> et <a href="https://github.com/MrMicko">@MrMicko</a> pour leur soutien au développement de RTX Encore.</p>
 
 </div>
 
@@ -41,7 +41,7 @@ Un menu intégré, avec RTX Encore Hub pour installer le mod et les runtimes né
 > Il se charge dans le jeu : ne l'utilisez pas dans un jeu en ligne ou protégé par un anti-triche, où il peut être
 > bloqué ou faire signaler un compte. Sauvegardez chaque fichier que vous remplacez.
 
-**[Dernière version : 2.0.0](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v2.0.0)** · [Notes de version](CHANGELOG.fr.md) · [Hub 2.0.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.0.0)
+**[Dernière version : 2.1.0](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v2.1.0)** · [Notes de version](CHANGELOG.fr.md) · [Hub 2.1.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.1.0)
 
 
 ## 2.0.0 : DLSS, XeSS, Neural Rendering et génération d'images pour les jeux sans DLSS

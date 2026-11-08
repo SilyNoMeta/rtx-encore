@@ -26,6 +26,7 @@
 | `xessTensorCores` | `false` | 实验性 NVIDIA Tensor Core XeSS Super Resolution，在下次 XeSS 执行时即时切换。初始验证：RTX 4090、NVIDIA 621.01、DirectX 12 和 Hub 提供的 Intel 运行库。其他 RTX 40、RTX 30 与 RTX 50 显卡在 NVIDIA 621.01 或 621.12 热修复驱动下以为各架构编译的同一加速路径准入，尚未在该硬件上完成游戏内验证。准备未通过时保留标准 XeSS。 |
 | `xefgTensorCores` | `false` | 实验性 NVIDIA Tensor Core XeFG；在初始化容量内支持固定 X2–X6。切换在命令重新记录时生效。初始验证：RTX 4090、NVIDIA 621.01、DirectX 12 和 Hub 提供的 Intel 运行库。其他 RTX 40、RTX 30 与 RTX 50 显卡在 NVIDIA 621.01 或 621.12 热修复驱动下以为各架构编译的同一加速路径准入，尚未在该硬件上完成游戏内验证。准备未通过时保留标准 XeFG；执行故障后须重启。 |
 | `xefgMfg4VariablePacing` | `true` | XeFG 高于 X2 的实验性帧间隔控制；关闭后，较高倍率可能不可用。 |
+| `xefgSourcePacing` | `true` | XeFG 在 X3 及以上时：以略低于游戏可维持帧率、随游戏自动调整的固定节奏开始每一帧，使镜头运动保持均匀。代价是少量 FPS；即时生效。关闭后各帧尽快开始，运动可能不均匀。 |
 | `xefgUiHandling` | `interpolate` | `interpolate` 或 `game`；请求单独处理游戏界面需要兼容输入。 |
 | `xefgUiAlpha` | `unknown` | `unknown`、`straight` 或 `premultiplied`；不清楚界面格式时请保留 unknown。 |
 
@@ -55,7 +56,7 @@ NVIDIA 运行库的兼容性不再要求文件位于预设列表中。旧的 `pr
 | `dlssCustomScale` | `67` | `"custom"` 时的百分比，`50` 至 `100` |
 | `fastSuperResolution` | `false` | RTX 30、DirectX 12：在预设为 M 或 L 时加速 DLSS 超分辨率，在测量的系统上每个放大帧约减少 16% 至 20% 的 GPU 时间，画面与原版非常接近。在其他显卡上不起作用。需重启游戏。见[超分辨率](SUPER-RESOLUTION.zh-CN.md#fast-super-resolution-rtx-30)。 |
 | `dlssWithoutGameDlss` | `false` | 没有 DLSS 的游戏：使用 DLSS 或 XeSS 对显示的画面运行 DLAA 或放大。实验性功能。参见[没有 DLSS 的游戏](GAMES-WITHOUT-DLSS.zh-CN.md)。 |
-| `dlssWithoutGameDlssEngine` | `"dlss"` | `"dlss"` 或 `"xess"`：`dlssWithoutGameDlss` 使用的引擎。XeSS 支持 1x 到 3x（超过时游戏画面直接拉伸显示），需要由 Hub 安装的 Intel 运行库；`xessTensorCores` 适用于 DirectX 12 游戏。即时生效。 |
+| `dlssWithoutGameDlssEngine` | `"dlss"` | `"dlss"` 或 `"xess"`：`dlssWithoutGameDlss` 使用的引擎。XeSS 支持 1x 到 3x（超过时游戏画面直接拉伸显示），需要由 Hub 安装的 Intel 运行库；`xessTensorCores` 在 DirectX 11、DirectX 12 和 Vulkan 中为实验性功能。即时生效。 |
 | `dlssWithoutGameDlssOutput` | `"game"` | `"game"`（游戏分辨率下的 DLAA）或 `"screen"`（放大到屏幕分辨率；游戏使用较低分辨率的窗口化模式）。 |
 | `presentOpticalFlow` | `"encore"` | 没有 DLSS 的游戏的运动估计：`"encore"`（RTX Encore 自己的着色器估计，更精细的向量，面向帧生成；不需要 Optical Flow），`"shader"`（着色器，vort_Motion 的方法；不需要 Optical Flow），或 `"quality"` 或 `"fast"`（NVIDIA Optical Flow）。 |
 

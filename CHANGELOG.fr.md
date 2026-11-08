@@ -3,6 +3,49 @@
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
 
+## 2.1.0
+
+**RTX Encore 2.1.0 rend Intel XeFG fluide à partir de X3.** Un nouveau réglage, **Cadence du jeu régulière pour XeFG**, activé par défaut, supprime les saccades de caméra que pouvaient montrer les multiplicateurs élevés de XeFG. Les jeux qui ont le DLSS mais pas de génération d'images donnent maintenant leur propre profondeur et leur propre mouvement à la génération d'images qu'ajoute RTX Encore, XeFG tourne aussi sur les Tensor Cores en DirectX 11 et Vulkan, et une longue liste de corrections suit : Baldur's Gate 3, Final Fantasy VII Rebirth, Forza Horizon 6, Kingdom Come: Deliverance, Islands of Insight et Assassin's Creed Black Flag Resynced.
+
+### Cadence du jeu régulière pour XeFG (nouveau, activé par défaut)
+
+À partir de X3, XeFG pouvait faire saccader la caméra alors même que le compteur d'images semblait correct : les images du jeu alternaient entre courtes et longues, si bien que chaque groupe d'images générées couvrait une durée différente. **Cadence du jeu régulière pour XeFG** lance les images du jeu à intervalle régulier, juste sous la cadence que le jeu peut tenir, et l'ajuste en continu au jeu. Le mouvement reste régulier sur chaque image générée.
+
+- Activé par défaut, dans l'onglet **Fluidité** du menu avec les autres réglages XeFG, et dans [RTX Encore Hub 2.1.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.1.0). Il s'applique à chaud : désactivez-le puis réactivez-le pour voir la différence.
+- Il coûte quelques FPS à la cadence propre du jeu. Il ne presse jamais une image en retard et ne rattrape jamais en rafale.
+- Il fonctionne avec la cadence variable de XeFG (activée par défaut) à partir de X3 ; X2 ne change pas.
+- La sortie de XeFG elle-même est plus régulière : les images générées gardent leur espacement après un à-coup et ne dérivent plus avec le temps.
+
+Validé par le mainteneur dans Assassin's Creed Black Flag Resynced en X4 sans limite d'images : l'alternance a disparu et le mouvement est très fluide. Merci à **Konan** sur le [Discord](https://discord.gg/Zwmq4Xc2Br) pour les signalements et les logs (Black Flag Resynced, Forza Horizon 6, Avatar: Frontiers of Pandora) et pour avoir repéré que la saccade suivait la cadence variable de XeFG. Réglage `xefgSourcePacing`, voir [Réglages](docs/SETTINGS.fr.md) et [Moteurs Intel](docs/INTEL-ENGINES.fr.md).
+
+### Génération d'images avec la profondeur et le mouvement du jeu
+
+- **Jeux avec DLSS mais sans génération d'images** (Baldur's Gate 3, par exemple) : le DLSS Frame Generation ou le XeFG qu'ajoute RTX Encore utilise maintenant la profondeur et les vecteurs de mouvement que le jeu donne déjà à son DLSS, au lieu de les estimer à partir de l'image, en DirectX 11 et Vulkan. Quand les données du jeu ne sont pas utilisables, la génération d'images revient à l'estimation du mouvement de RTX Encore, et le menu affiche alors **Estimation du mouvement**. Le mainteneur a vu X4 généré dans Baldur's Gate 3 dans les quatre combinaisons (DirectX 11 et Vulkan, DLSS-FG et XeFG) sur une RTX 3070 Ti Laptop.
+- **Baldur's Gate 3 (DirectX 11) : DLSS Frame Generation restait « en attente »** même avec les fichiers Streamline en place. Corrigé ; les écrans 10 bits (RGB10) sont aussi acceptés. Merci à [@deusimperatork](https://github.com/deusimperatork) pour le signalement ([#109](https://github.com/SilyNoMeta/rtx-encore/issues/109)). L'auteur du signalement n'a pas encore retesté.
+- **Baldur's Gate 3 (Vulkan) : Neural Rendering et DLSS Frame Generation ensemble**, sans aucun outil tiers. Vérifié par le mainteneur : NR après la super résolution et DLSS-FG X2 puis X4 en 1440p.
+
+### Tensor Cores en DirectX 11 et Vulkan (expérimental)
+
+- **XeFG sur les Tensor Cores NVIDIA** tourne maintenant aussi dans les jeux DirectX 11 et Vulkan sans génération d'images. Dans Baldur's Gate 3, en DirectX 11 et Vulkan, le mainteneur a vu le badge vert **Tensor Cores** actif et XeFG X4. La parité d'image et le gain de performance n'ont pas encore été mesurés.
+- **XeSS Super Resolution sur les Tensor Cores** est maintenant proposé dans les jeux DirectX 11 et Vulkan sans DLSS, et quand XeSS remplace le DLSS d'un jeu DirectX 11. Pas encore validé dans un jeu. Le remplacement du DLSS dans un jeu Vulkan garde le XeSS standard.
+
+### Corrections
+
+- **Final Fantasy VII Rebirth : la génération d'images restait indisponible** avec la surcharge DLSS de l'app NVIDIA (ou de NVIDIA Profile Inspector) activée : le jeu utilise alors les fichiers Streamline téléchargés par le pilote, que RTX Encore ne reconnaissait pas, et une carte RTX 30 était traitée comme incapable de générer des images. Ils sont reconnus désormais. Merci à [@yannduwooz83](https://github.com/yannduwooz83) pour le signalement et pour avoir trouvé le réglage en cause ([#106](https://github.com/SilyNoMeta/rtx-encore/issues/106)).
+- **XeFG avec RTSS (RivaTuner Statistics Server, MSI Afterburner) :** RTSS reprenait la création de la swap chain du jeu après RTX Encore et faisait sauter XeFG dès la deuxième création : XeFG pouvait rester inactif ou échouer quand le jeu recréait sa fenêtre. RTX Encore se replace maintenant devant RTSS et lui transmet chaque création, les deux continuent de fonctionner. Vérifié avec RTSS actif dans les tests automatisés XeFG de RTX Encore ; pas encore en jeu. Merci à **Konan** sur Discord, dont les signalements RTSS ont mis sur la piste.
+- **Kingdom Come: Deliverance (DirectX 11) :** le menu ne s'ouvrait pas quand le jeu était lancé par Ultimate ASI Loader, et le jeu plantait en perdant le focus (Alt+Tab, réduction) avec DLSS Frame Generation. Les deux sont corrigés et confirmés en jeu par le mainteneur. Merci à **SMN888** sur Discord pour le signalement et le diagnostic.
+- **Assassin's Creed Black Flag Resynced (XeFG) :** les blocages d'une seconde et les écrans noirs sont corrigés, le menu continue de fonctionner avec XeFG, et l'overlay affiche la cadence propre du jeu séparément de la sortie générée. Jeu confirmé par le mainteneur ; les changements du menu et du compteur ne sont pas encore confirmés en jeu. Merci à **Konan** sur Discord pour le signalement.
+- **Forza Horizon 6 :** XeSS Super Resolution en DirectX 12 s'active maintenant au lieu de se replier, XeSS sur les Tensor Cores continue de tourner après une réinitialisation du périphérique graphique par le jeu, et un plantage avec l'overlay Steam est évité. Confirmé en jeu par le mainteneur. Merci à **Konan** sur Discord pour le signalement.
+- **Islands of Insight et autres jeux sans DLSS agrandis à la résolution de l'écran :** l'image, sa taille et le curseur de la souris restent alignés lors des redimensionnements et dans la fenêtre sans bordure, la génération d'images démarre de façon fiable en DirectX 11, et **Aucun** désactive vraiment l'upscaler ajouté. Confirmé en jeu par le mainteneur. Merci à **SMN888** sur Discord, dont les essais dans des jeux sans DLSS (avec la mise à l'échelle de Windows) ont mené à ces corrections. Un nouveau guide explique comment la mise à l'échelle de l'affichage de Windows peut limiter la résolution du jeu et rendre le texte flou dans les jeux Unreal Engine : [Résolution et mise à l'échelle Windows](docs/GAMES-WITHOUT-DLSS.fr.md#résolution-et-mise-à-léchelle-windows).
+- **Menu :** le DLSS propre au jeu apparaît comme **Jeu (DLSS)** dans le choix du moteur, et une indication dit quels composants Streamline installer avec le Hub quand DLSS-FG ne peut pas démarrer ; avec **Aucun** comme moteur d'upscaling, l'interrupteur Tensor Cores de XeSS est masqué et **Estimation du mouvement** passe dans Génération d'images quand seule la génération d'images l'utilise.
+- **Installation manuelle :** la [liste des composants](README.fr.md#composants-pour-une-installation-manuelle) vaut maintenant pour tous les jeux, avec le Ray Reconstruction (`nvngx_dlssd.dll`) du SDK DLSS 310.9.16 de NVIDIA.
+
+### Ce qui a été vérifié
+
+Les jeux cités ont été joués par le mainteneur avec des builds de test de ces changements sur une RTX 4090 ou une RTX 3070 Ti Laptop. Ils n'ont pas été retestés avec les binaires finaux de la 2.1.0. Les vérifications de la release couvrent la compilation, les suites de non-régression de ces fonctions et l'intégrité de l'archive.
+
+**Limite connue :** RTSS (RivaTuner Statistics Server) est désormais maintenu derrière XeFG (voir Corrections), mais son overlay n'a pas encore été essayé avec XeFG en jeu. Si un jeu plante encore ou si XeFG reste inactif avec lui, désactivez l'overlay RTSS et signalez-le.
+
 ## 2.0.1
 
 - **Installation manuelle avec les fichiers de NVIDIA :** la génération d'images pour les jeux qui n'en ont pas accepte aussi le DLSS Frame Generation 310.9.16 officiel de NVIDIA (le `nvngx_dlssg.dll` du SDK Streamline 2.14.16 et du SDK DLSS) : tous les fichiers peuvent venir des SDK de NVIDIA. Il était refusé par une erreur de détection. Merci à [@Kbx-7](https://github.com/Kbx-7) pour le signalement ([#108](https://github.com/SilyNoMeta/rtx-encore/issues/108)).

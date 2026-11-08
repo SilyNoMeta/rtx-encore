@@ -30,7 +30,7 @@ Smooth Motion 和 Neural Rendering——现在也适用于没有 DLSS 的游戏�
 
 <sub>免费，利用业余时间开发。如果它对你有帮助，欢迎通过 <a href="https://github.com/sponsors/SilyNoMeta">GitHub Sponsors</a> 或 <a href="https://ko-fi.com/silynometa">Ko-fi</a> 支持本项目，或在 <a href="https://www.nexusmods.com/site/mods/2547">Nexus Mods</a> 上点赞（Endorse） ❤</sub>
 
-<p>❤️ 感谢 <a href="https://github.com/mennogreg">@mennogreg</a> 和 <a href="https://github.com/Scarhead666">@Scarhead666</a> 对 RTX Encore 开发的支持。</p>
+<p>❤️ 感谢 <a href="https://github.com/mennogreg">@mennogreg</a>、<a href="https://github.com/Scarhead666">@Scarhead666</a> 和 <a href="https://github.com/MrMicko">@MrMicko</a> 对 RTX Encore 开发的支持。</p>
 
 </div>
 
@@ -41,7 +41,7 @@ Smooth Motion 和 Neural Rendering——现在也适用于没有 DLSS 的游戏�
 > 它在游戏进程内加载：请勿在联机游戏或受反作弊保护的游戏中使用，否则可能被拦截，或导致账号被标记。
 > 替换任何文件之前请先备份。
 
-**[最新版本：2.0.0](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v2.0.0)** · [版本说明](CHANGELOG.zh-CN.md) · [Hub 2.0.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.0.0)
+**[最新版本：2.1.0](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v2.1.0)** · [版本说明](CHANGELOG.zh-CN.md) · [Hub 2.1.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.1.0)
 
 
 ## 2.0.0：为没有 DLSS 的游戏带来 DLSS、XeSS、Neural Rendering 和帧生成

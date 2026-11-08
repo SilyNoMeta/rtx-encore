@@ -20,9 +20,10 @@ RTX Encore 1.2.0 可选择重建和帧生成引擎。保留 **Game** 可继续�
 | :--- | :---: | :--- |
 | `reconstructionEngine` | `game` | `game` 或 `xess`：以 XeSS 替代兼容的 Super Resolution/DLAA 处理；Ray Reconstruction 保留原引擎。 |
 | `frameGenerationEngine` | `game` | `game`、`dlss-fg` 或 `xefg`。游戏保留原生 FG；DLSS-FG 将经过资格检查的原生 Intel FG 替换为 NVIDIA DLSS FG；XeFG 将兼容 DLSS FG 替换为 Intel XeFG。需要重启。 |
-| `xessTensorCores` | `false` | 实验性 NVIDIA Tensor Core XeSS Super Resolution，在下次 XeSS 执行时即时切换。初始验证：RTX 4090、NVIDIA 621.01、DirectX 12 和 Hub 提供的 Intel 运行库。其他 RTX 40、RTX 30 与 RTX 50 显卡在 NVIDIA 621.01、621.12 或 621.14 驱动下以为各架构编译的同一加速路径准入，尚未在该硬件上完成游戏内验证。准备未通过时保留标准 XeSS。 |
+| `xessTensorCores` | `false` | 实验性 NVIDIA Tensor Core XeSS Super Resolution，在下次 XeSS 执行时即时切换。初始验证：RTX 4090、NVIDIA 621.01、DirectX 12 和 Hub 提供的 Intel 运行库。其他 RTX 40、RTX 30 与 RTX 50 显卡在 NVIDIA 621.01、621.12 或 621.14 驱动下以为各架构编译的同一加速路径准入，尚未在该硬件上完成游戏内验证。DirectX 11 和 Vulkan 支持为实验性功能，尚待游戏内验证。在 Vulkan 游戏中替换 DLSS 时使用标准 XeSS。准备未通过时保留标准 XeSS。 |
 | `xefgTensorCores` | `false` | 实验性 NVIDIA Tensor Core XeFG；在初始化容量内支持固定 X2–X6。切换在命令重新记录时生效。初始验证：RTX 4090、NVIDIA 621.01、DirectX 12 和 Hub 提供的 Intel 运行库。其他 RTX 40、RTX 30 与 RTX 50 显卡在 NVIDIA 621.01、621.12 或 621.14 驱动下以为各架构编译的同一加速路径准入，尚未在该硬件上完成游戏内验证。准备未通过时保留标准 XeFG；执行故障后须重启。 |
 | `xefgMfg4VariablePacing` | `true` | XeFG 高于 X2 的实验性帧间隔控制；关闭后，较高倍率可能不可用。 |
+| `xefgSourcePacing` | `true` | XeFG 在 X3 及以上时：以略低于游戏可维持帧率、随游戏自动调整的固定节奏开始每一帧，使镜头运动保持均匀。代价是少量 FPS；即时生效。关闭后各帧尽快开始，运动可能不均匀。 |
 | `xefgUiHandling` | `interpolate` | `interpolate` 或 `game`；请求单独处理游戏界面需要兼容输入。 |
 | `xefgUiAlpha` | `unknown` | `unknown`、`straight` 或 `premultiplied`；不清楚界面格式时请保留 unknown。 |
 

@@ -30,7 +30,7 @@ A built-in menu, with RTX Encore Hub to install the mod and its required runtime
 
 <sub>Free, made on personal time. If it is useful to you, you can support the project on <a href="https://github.com/sponsors/SilyNoMeta">GitHub Sponsors</a> or <a href="https://ko-fi.com/silynometa">Ko-fi</a>, or endorse it on <a href="https://www.nexusmods.com/site/mods/2547">Nexus Mods</a> ❤</sub>
 
-<p>❤️ Thank you to <a href="https://github.com/mennogreg">@mennogreg</a> and <a href="https://github.com/Scarhead666">@Scarhead666</a> for supporting the development of RTX Encore.</p>
+<p>❤️ Thank you to <a href="https://github.com/mennogreg">@mennogreg</a>, <a href="https://github.com/Scarhead666">@Scarhead666</a> and <a href="https://github.com/MrMicko">@MrMicko</a> for supporting the development of RTX Encore.</p>
 
 </div>
 
@@ -41,7 +41,7 @@ A built-in menu, with RTX Encore Hub to install the mod and its required runtime
 > It loads inside the game: do not use it in online or anti-cheat protected games, where it can be blocked or get an
 > account flagged. Back up every file you replace.
 
-**[Latest: 2.0.0](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v2.0.0)** · [Release notes](CHANGELOG.md) · [Hub 2.0.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.0.0)
+**[Latest: 2.1.0](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v2.1.0)** · [Release notes](CHANGELOG.md) · [Hub 2.1.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.1.0)
 
 
 ## 2.0.0: DLSS, XeSS, Neural Rendering and frame generation for games without DLSS

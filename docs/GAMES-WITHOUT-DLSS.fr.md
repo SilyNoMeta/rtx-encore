@@ -71,6 +71,27 @@ place de celles des jeux avec DLSS.
 
 Dans **Qualité d’image → Reconstruction → Moteur**, choisissez **DLSS** ou **XeSS** pour activer la reconstruction, ou **Aucun** pour la désactiver. Il n’y a plus d’interrupteur d’activation séparé. La sortie par défaut est **Résolution du jeu (DLAA)** : DLSS fonctionne à la résolution native ; XeSS applique son anticrénelage natif. Pour agrandir l’image, lancez le jeu en **Fenêtré**, pas en fenêtré sans bordure, à la résolution d’entrée souhaitée, puis choisissez **Résolution de l’écran** dans Encore. Encore agrandit la sortie et retire les bordures. Par exemple, 2560 × 1440 vers 3840 × 2160 correspond à environ 67 % par dimension.
 
+### Résolution et mise à l’échelle Windows
+
+Avec **Résolution de l’écran**, le jeu choisit la résolution d’entrée et Encore conserve la sortie à la résolution de l’écran. **1920×1080 → 2560×1440 correspond à 75 % par axe**. Une sortie annoncée en 1440p ne signifie pas que le jeu calcule l’image en 1440p ; il est normal que l’image remplisse toujours le même écran. Réappliquer le 1080p quand le jeu fonctionne déjà en 1080p ne change pas la résolution.
+
+La mise à l’échelle Windows est un réglage distinct. Sur un écran 2560×1440 à **150 %**, un jeu sans prise en charge haute résolution peut ne voir qu’environ **1707×960**. Cela peut plafonner sa résolution et rendre les textes flous. Gardez votre mise à l’échelle Windows habituelle ; vérifiez d’abord la prise en charge DPI du jeu.
+
+Pour un jeu Unreal Engine présentant ce symptôme :
+
+1. Fermez le jeu et sauvegardez son `Engine.ini` dans son dossier de configuration, souvent `%LOCALAPPDATA%\<Jeu>\Saved\Config\WindowsNoEditor\` (certains jeux utilisent `Windows`). Il s’agit du fichier du jeu, pas de la configuration d’Encore.
+2. Dans la section `[/Script/Engine.UserInterfaceSettings]` existante, mettez `bAllowHighDPIInGameMode=True`. Ajoutez la section si elle n’existe pas et conservez les autres réglages :
+
+   ```ini
+   [/Script/Engine.UserInterfaceSettings]
+   bAllowHighDPIInGameMode=True
+   ```
+
+3. Relancez le jeu. Activez **DLSS** ou **XeSS**, choisissez **Résolution de l’écran**, puis appliquez la résolution souhaitée dans les graphismes du jeu. Pour comparer sur un écran 1440p, appliquez 2560×1440 puis 1920×1080. Ce dernier choix doit donner une entrée 1080p et une sortie 1440p, soit environ 75 %.
+4. Vérifiez aussi les boutons du jeu. Si le curseur reste décalé, remettez le réglage précédent et signalez le jeu, la mise à l’échelle Windows, la résolution du jeu et le mode de sortie Encore. Une image plus nette ne prouve pas à elle seule que les clics sont alignés.
+
+Epic documente ce [réglage haute résolution d’Unreal](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/Engine/Engine/UUserInterfaceSettings/bAllowHighDPIInGameMode?application_version=4.27). Cette configuration a été confirmée dans **Islands of Insight, DirectX 11, sur un écran 1440p à 150 %**, avec la version testée pour ce correctif. Elle ne garantit pas tous les jeux Unreal ni les anciennes versions d’Encore : un jeu peut ignorer l’option ou utiliser un autre dossier. Restaurez le réglage sauvegardé si cela n’aide pas. La reconstruction ajoutée continue de traiter les textes et le HUD avec le reste de l’image.
+
 ### Neural Rendering
 
 Onglet **Qualité d’image**, section **Neural Rendering** : activez **Neural Rendering**. Dans un jeu sans DLSS, ce seul
