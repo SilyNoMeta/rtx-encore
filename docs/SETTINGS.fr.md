@@ -60,7 +60,7 @@ La compatibilité des runtimes NVIDIA n’exige plus que le fichier figure dans 
 | `dlssCustomScale` | `67` | Pourcentage, `50` à `100`, avec `"custom"` |
 | `fastSuperResolution` | `false` | RTX 30, DirectX 12 : DLSS Super Resolution plus rapide avec le preset M ou L, environ 16 à 20 % de temps GPU en moins par image upscalée sur le système mesuré, image très proche de l'originale. Inactive sur les autres cartes. Relancez pour appliquer. Voir [Super Resolution](SUPER-RESOLUTION.fr.md#fast-super-resolution-rtx-30). |
 | `dlssWithoutGameDlss` | `false` | Jeux sans DLSS : DLAA ou upscaling sur l’image affichée, avec DLSS ou XeSS. Expérimental. Voir [Jeux sans DLSS](GAMES-WITHOUT-DLSS.fr.md). |
-| `dlssWithoutGameDlssEngine` | `"dlss"` | `"dlss"` ou `"xess"` : le moteur de `dlssWithoutGameDlss`. XeSS va de 1x à 3x (au-delà, l’image du jeu est affichée étirée) et nécessite les runtimes Intel installés par le Hub ; `xessTensorCores` est expérimental en DirectX 11, DirectX 12 et Vulkan. Appliqué à chaud. |
+| `dlssWithoutGameDlssEngine` | `"dlss"` | `"dlss"`, `"xess"` ou `"nis"` : le moteur de `dlssWithoutGameDlss`. XeSS va de 1x à 3x et nécessite les runtimes Intel ; NIS est une mise à l'échelle spatiale sans runtime DLSS ou Intel. Appliqué à chaud. |
 | `dlssWithoutGameDlssOutput` | `"game"` | `"game"` (DLAA à la résolution du jeu) ou `"screen"` (upscaling jusqu’à la résolution de l’écran ; le jeu en mode fenêtré à une résolution plus basse). |
 | `presentOpticalFlow` | `"encore"` | Jeux sans DLSS : estimation du mouvement, `"encore"` (l’estimation propre à RTX Encore dans des shaders, des vecteurs plus fins pour la génération d’images ; sans Optical Flow), `"shader"` (shaders, méthode de vort_Motion ; sans Optical Flow), ou `"quality"` ou `"fast"` (NVIDIA Optical Flow). |
 
@@ -83,6 +83,10 @@ Les anciennes clés DLSS/XeSS sont migrées selon le moteur de reconstruction s�
 | :--- | :---: | :--- |
 | `srSharpening` | `"off"` | Mode : `off` (défaut), `game` ou `custom`. Appliqué à chaud. |
 | `srSharpness` | `30` | Force Custom : 0 à 100 %, défaut 30 %. 0 désactive l’effet. |
+| `spatialSharpness` | `30` | Netteté NIS de 0 à 100 %. Appliqué à chaud. |
+| `spatialAa` | `"off"` | Anticrénelage facultatif autour de NIS : `"off"`, `"smaa"` ou `"fxaa"`. Image SDR couleur uniquement ; HUD compris. |
+| `spatialAaPlacement` | `"before"` | `"before"` NIS à la résolution source ou `"after"` à la résolution de sortie. NR Post et la génération d'images restent après l'anticrénelage. |
+| `spatialAaQuality` | `"high"` | Qualité SMAA 1x : `"low"`, `"medium"`, `"high"` ou `"ultra"`. FXAA utilise un préréglage fixe. |
 
 Elle se cumule avec la netteté ajoutée ensuite par le jeu. Une force élevée crée des halos et accentue le bruit. Le rendu dépend des traitements ultérieurs du jeu, y compris en HDR. Un format ou un chemin graphique non pris en charge laisse l'image inchangée. Les versions originales de DLSS antérieures à 2.5.1 gardent leur propre netteté ; la passe supplémentaire reste aussi inactive si cette version ne peut pas être identifiée. Vulkan et la qualité d'image en jeu ne sont pas encore validés.
 

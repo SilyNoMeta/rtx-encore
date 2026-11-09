@@ -57,7 +57,7 @@ NVIDIA 运行库的兼容性不再要求文件位于预设列表中。旧的 `pr
 | `dlssCustomScale` | `67` | `"custom"` 时的百分比，`50` 至 `100` |
 | `fastSuperResolution` | `false` | RTX 30、DirectX 12：在预设为 M 或 L 时加速 DLSS 超分辨率，在测量的系统上每个放大帧约减少 16% 至 20% 的 GPU 时间，画面与原版非常接近。在其他显卡上不起作用。需重启游戏。见[超分辨率](SUPER-RESOLUTION.zh-CN.md#fast-super-resolution-rtx-30)。 |
 | `dlssWithoutGameDlss` | `false` | 没有 DLSS 的游戏：使用 DLSS 或 XeSS 对显示的画面运行 DLAA 或放大。实验性功能。参见[没有 DLSS 的游戏](GAMES-WITHOUT-DLSS.zh-CN.md)。 |
-| `dlssWithoutGameDlssEngine` | `"dlss"` | `"dlss"` 或 `"xess"`：`dlssWithoutGameDlss` 使用的引擎。XeSS 支持 1x 到 3x（超过时游戏画面直接拉伸显示），需要由 Hub 安装的 Intel 运行库；`xessTensorCores` 在 DirectX 11、DirectX 12 和 Vulkan 中为实验性功能。即时生效。 |
+| `dlssWithoutGameDlssEngine` | `"dlss"` | `"dlss"`、`"xess"` 或 `"nis"`：`dlssWithoutGameDlss` 使用的引擎。XeSS 支持 1x 到 3x，需 Intel 运行库；NIS 是无需 DLSS 或 Intel 运行库的空间缩放。即时生效。 |
 | `dlssWithoutGameDlssOutput` | `"game"` | `"game"`（游戏分辨率下的 DLAA）或 `"screen"`（放大到屏幕分辨率；游戏使用较低分辨率的窗口化模式）。 |
 | `presentOpticalFlow` | `"encore"` | 没有 DLSS 的游戏的运动估计：`"encore"`（RTX Encore 自己的着色器估计，更精细的向量，面向帧生成；不需要 Optical Flow），`"shader"`（着色器，vort_Motion 的方法；不需要 Optical Flow），或 `"quality"` 或 `"fast"`（NVIDIA Optical Flow）。 |
 
@@ -80,6 +80,10 @@ NVIDIA 运行库的兼容性不再要求文件位于预设列表中。旧的 `pr
 | :--- | :---: | :--- |
 | `srSharpening` | `"off"` | 模式：`off`（默认）、`game` 或 `custom`，即时生效。 |
 | `srSharpness` | `30` | Custom 强度：0–100%，默认 30%。0 禁用效果。 |
+| `spatialSharpness` | `30` | NIS 锐化强度，0–100%。即时生效。 |
+| `spatialAa` | `"off"` | NIS 前后的可选抗锯齿：`"off"`、`"smaa"` 或 `"fxaa"`。仅用于 SDR 彩色画面，包含 HUD。 |
+| `spatialAaPlacement` | `"before"` | `"before"`：在源分辨率下、NIS 前处理；`"after"`：在输出分辨率下、NIS 后处理。NR Post 和帧生成仍在抗锯齿之后。 |
+| `spatialAaQuality` | `"high"` | SMAA 1x 质量：`"low"`、`"medium"`、`"high"` 或 `"ultra"`。FXAA 使用固定预设。 |
 
 会与游戏后续锐化叠加，高强度可能产生光晕并放大噪点。实际效果取决于游戏后续图像处理，包括 HDR。不支持的输出格式或图形路径会保持图像不变。2.5.1 之前的原版 DLSS 保留其自身锐化；无法识别版本时，额外锐化也保持关闭。Vulkan 与实际游戏画质尚未经验证。
 

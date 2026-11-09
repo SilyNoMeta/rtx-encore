@@ -71,6 +71,8 @@ place de celles des jeux avec DLSS.
 
 Dans **Qualité d’image → Reconstruction → Moteur**, choisissez **DLSS** ou **XeSS** pour activer la reconstruction, ou **Aucun** pour la désactiver. Il n’y a plus d’interrupteur d’activation séparé. La sortie par défaut est **Résolution du jeu (DLAA)** : DLSS fonctionne à la résolution native ; XeSS applique son anticrénelage natif. Pour agrandir l’image, lancez le jeu en **Fenêtré**, pas en fenêtré sans bordure, à la résolution d’entrée souhaitée, puis choisissez **Résolution de l’écran** dans Encore. Encore agrandit la sortie et retire les bordures. Par exemple, 2560 × 1440 vers 3840 × 2160 correspond à environ 67 % par dimension.
 
+**Nouveau dans la 2.2.0 :** choisissez **NIS** dans le même menu Moteur pour une mise à l'échelle spatiale sans runtime DLSS ou Intel, y compris en DirectX 11. Réglez la **netteté** de 0 à 100 %, puis choisissez éventuellement **SMAA** ou **FXAA** avant la mise à l'échelle (résolution source) ou après (résolution de sortie). Ces filtres agissent sur la couleur SDR et comprennent le HUD ; comparez-les en jeu.
+
 ### Résolution et mise à l’échelle Windows
 
 Avec **Résolution de l’écran**, le jeu choisit la résolution d’entrée et Encore conserve la sortie à la résolution de l’écran. **1920×1080 → 2560×1440 correspond à 75 % par axe**. Une sortie annoncée en 1440p ne signifie pas que le jeu calcule l’image en 1440p ; il est normal que l’image remplisse toujours le même écran. Réappliquer le 1080p quand le jeu fonctionne déjà en 1080p ne change pas la résolution.

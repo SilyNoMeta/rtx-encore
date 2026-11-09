@@ -69,6 +69,8 @@ the ones for games with DLSS.
 
 In **Image quality → Upscaling → Engine**, choose **DLSS** or **XeSS** to enable reconstruction, or **None** to leave it off. There is no separate activation switch. **Game resolution (DLAA)** is the default output: DLSS runs at native resolution; XeSS provides native anti-aliasing. For upscaling, launch the game in **Windowed**, not borderless, at the desired input resolution, then choose **Screen resolution** in Encore. Encore enlarges the output to the screen and removes the window borders. For example, 2560 × 1440 to 3840 × 2160 corresponds to about 67% per dimension.
 
+**New in 2.2.0:** choose **NIS** in the same Engine menu for spatial scaling without a DLSS or Intel runtime. It can also run in DirectX 11. Set **Sharpness** from 0 to 100%, then optionally choose **SMAA** or **FXAA** before scaling (source resolution) or after it (output resolution). These filters work on SDR color and include the HUD; compare them in the game.
+
 ### Resolution and Windows display scaling
 
 With **Screen resolution**, the game chooses the input resolution and Encore keeps the output at the display resolution. **1920×1080 → 2560×1440 is 75% per dimension**. A 1440p output label does not mean the game rendered at 1440p, and the image filling the same screen is expected. Applying 1080p again when the game already renders at 1080p produces no resolution change.

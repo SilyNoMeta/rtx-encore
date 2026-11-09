@@ -59,7 +59,7 @@ NVIDIA runtime compatibility no longer requires a file to appear in a fixed list
 | `dlssCustomScale` | `67` | Percent, `50` to `100`, with `"custom"` |
 | `fastSuperResolution` | `false` | RTX 30, DirectX 12: faster DLSS Super Resolution with preset M or L, about 16 to 20 % less GPU time per upscaled frame on the system measured, image very close to the original. Inactive on other cards. Restart to apply. See [Super Resolution](SUPER-RESOLUTION.md#fast-super-resolution-rtx-30). |
 | `dlssWithoutGameDlss` | `false` | Games without DLSS: DLAA or upscaling on the displayed image, with DLSS or XeSS. Experimental. See [Games without DLSS](GAMES-WITHOUT-DLSS.md). |
-| `dlssWithoutGameDlssEngine` | `"dlss"` | `"dlss"` or `"xess"`: the engine of `dlssWithoutGameDlss`. XeSS goes from 1x to 3x (beyond, the game's image is shown stretched) and needs the Intel runtimes installed by the Hub; `xessTensorCores` is experimental in DirectX 11, DirectX 12 and Vulkan. Applied live. |
+| `dlssWithoutGameDlssEngine` | `"dlss"` | `"dlss"`, `"xess"` or `"nis"`: the engine of `dlssWithoutGameDlss`. XeSS goes from 1x to 3x and needs Intel runtimes; NIS is spatial upscaling without a DLSS or Intel runtime. Applied live. |
 | `dlssWithoutGameDlssOutput` | `"game"` | `"game"` (DLAA at the game's resolution) or `"screen"` (upscaling to the screen's resolution; the game in windowed mode at a lower resolution). |
 | `presentOpticalFlow` | `"encore"` | Games without DLSS: motion estimation, `"encore"` (RTX Encore's own estimation in shaders, finer vectors for frame generation; no Optical Flow needed), `"shader"` (shaders, the method of vort_Motion; no Optical Flow needed), or `"quality"` or `"fast"` (NVIDIA Optical Flow). |
 
@@ -82,6 +82,10 @@ Earlier DLSS/XeSS input keys are migrated using the selected reconstruction engi
 | :--- | :---: | :--- |
 | `srSharpening` | `"off"` | Mode: `off` (default), `game` or `custom`. Applied live. |
 | `srSharpness` | `30` | Custom strength: 0 to 100%, default 30%. 0 disables the effect. |
+| `spatialSharpness` | `30` | NIS sharpness, 0 to 100%. Applied live. |
+| `spatialAa` | `"off"` | Optional anti-aliasing around NIS: `"off"`, `"smaa"` or `"fxaa"`. Color-only SDR; HUD is included. |
+| `spatialAaPlacement` | `"before"` | `"before"` NIS at source resolution, or `"after"` at output resolution. NR Post and frame generation remain after AA. |
+| `spatialAaQuality` | `"high"` | SMAA 1x quality: `"low"`, `"medium"`, `"high"` or `"ultra"`. FXAA uses a fixed preset. |
 
 It adds to any sharpening the game performs afterwards. High strengths can create halos and amplify noise. Appearance varies with each game's later image processing, including HDR. Unsupported output formats and graphics paths leave the image unchanged. Original DLSS versions older than 2.5.1 keep their own sharpening; the extra pass also stays off when that version cannot be identified. Vulkan and real-game image quality have not yet been validated.
 
