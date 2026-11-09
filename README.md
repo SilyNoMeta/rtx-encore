@@ -41,7 +41,11 @@ A built-in menu, with RTX Encore Hub to install the mod and its required runtime
 > It loads inside the game: do not use it in online or anti-cheat protected games, where it can be blocked or get an
 > account flagged. Back up every file you replace.
 
-**[Latest: 2.1.0](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v2.1.0)** · [Release notes](CHANGELOG.md) · [Hub 2.1.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.1.0)
+**[Latest: 2.2.0](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v2.2.0)** · [Release notes](CHANGELOG.md) · [Hub 2.2.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.2.0)
+
+**New in 2.2.0:** NVIDIA Image Scaling (NIS) for games without DLSS, optional FXAA/SMAA before or after NIS, customizable overlay styles and metrics, experimental XeFG Tensor Cores on RTX 20, and updated XeSS Tensor Cores paths for RTX 30/40. [All changes and limits](CHANGELOG.md#220).
+
+**Also new in 2.1.0:** steady game pacing makes XeFG X3–X6 smoother; added frame generation can use a DLSS game's own depth and motion in DirectX 11 and Vulkan; XeFG Tensor Cores reach those APIs too. The release also brought fixes for Baldur's Gate 3, Final Fantasy VII Rebirth, Forza Horizon 6, Kingdom Come: Deliverance, Islands of Insight and Black Flag Resynced. [2.1.0 details](CHANGELOG.md#210).
 
 
 ## 2.0.0: DLSS, XeSS, Neural Rendering and frame generation for games without DLSS
@@ -84,7 +88,7 @@ XeSS, XeFG and the native XeFG → DLSS FG adapter are experimental and require 
 | 🌀 | **[Smooth Motion on RTX 20 / 30](docs/SMOOTH-MOTION.md)** | NVIDIA's driver frame interpolation, including games without DLSS: DirectX 11, DirectX 12 and Vulkan on RTX 30; **experimental RTX 20 support** in DirectX 12 with driver 621.01 and V1 / V2 variants. Off by default. |
 | ✨ | **[Neural Rendering](docs/NEURAL-RENDERING.md)** | NR on RTX 20, 30 and 40, with RTX Encore's own performance options for Ampere: optimized processing, Fast precision, independent NR resolution. One to four passes, a style for each, HDR support. Experimental, off by default. |
 | 🎮 | **[Games without DLSS](docs/GAMES-WITHOUT-DLSS.md)** | DLSS or XeSS upscaling (DLAA or to the screen's resolution), Neural Rendering and frame generation (DLSS Frame Generation or Intel XeFG, X2 to X6) in DirectX 11, DirectX 12 and Vulkan games that ship no DLSS, from the image they display, with RTX Encore's own motion estimation. New in 2.0.0. Experimental, off by default. |
-| ⚡ | **[XeSS and XeFG on NVIDIA Tensor Cores](docs/INTEL-ENGINES.md)** | Two independent experimental options run XeSS reconstruction and XeFG frame generation on NVIDIA Tensor Cores, in DirectX 12, in games with their own DLSS and in games without. Off by default; the menu chips show a **Tensor Cores** badge while they run. Qualified on RTX 4090 / NVIDIA 621.01; other RTX 30, 40 and 50 cards are admitted without in-game validation. |
+| ⚡ | **[XeSS and XeFG on NVIDIA Tensor Cores](docs/INTEL-ENGINES.md)** | Independent experimental XeSS reconstruction and XeFG frame generation options. DirectX 12, with additional DirectX 11/Vulkan routes since 2.1.0; XeFG also admits RTX 20 from 2.2.0. Off by default; an active route shows a **Tensor Cores** badge. Availability and game validation vary by route and GPU. |
 | 🎛️ | **[Built-in menu and overlay](docs/MENU-AND-OVERLAY.md)** | Press **Insert** in the game: every setting, the state of each feature, and an overlay with frame rate, multiplier, frame pacing, GPU and VRAM. DirectX 11, DirectX 12 and Vulkan. In eleven languages since 2.0.0. |
 | 🚀 | **[Fast super resolution on RTX 30](docs/SUPER-RESOLUTION.md)** | A faster DLSS Super Resolution for RTX 30 in DirectX 12 games with preset M or L: about 16 to 20 % less GPU time per upscaled frame on the system measured, with an image very close to the original. Off by default. |
 | 🔍 | **DLSS render resolution** | Choose DLAA, Ultra (75%), Quality, Balanced, Performance, Ultra Performance or a custom scale in games that already use DLSS. |
@@ -214,6 +218,7 @@ TonyJoaca and has since grown into a project of its own. It also owes much to th
 - [vortigern11/vort_Shaders](https://github.com/vortigern11/vort_Shaders) (vort_Motion): the shader motion estimation for games without DLSS;
 - [crosire/reshade](https://github.com/crosire/reshade) (Generic Depth add-on): how to find the depth buffer a game draws with;
 - [Dear ImGui](https://github.com/ocornut/imgui) by Omar Cornut: the toolkit the in-game menu and overlay are built with;
+- [SMAA](https://github.com/iryoku/smaa): Jorge Jimenez, Jose I. Echevarria, Belen Masia, Fernando Navarro and Diego Gutierrez; [FXAA 3.11](https://github.com/GameTechDev/CMAA2): NVIDIA, Timothy Lottes;
 - [Noto Sans SC](https://github.com/google/fonts/tree/main/ofl/notosanssc): menu typeface;
 - everyone who tests a build and reports a bug: several fixes exist only because of those reports.
 

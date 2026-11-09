@@ -31,9 +31,9 @@ RTX Encore 1.2.0 可选择重建和帧生成引擎。保留 **Game** 可继续�
 
 HDR 输入和自动曝光使用所选重建引擎共用的 `srHdr` 与 `srAutoExposure`。默认 `game` 跟随游戏，修改后需重启。它们不会启用显示器 HDR，也不会将 SDR 转换为 HDR。错误的输入格式会损害画质。某些 DLSS 模型强制使用自动曝光；XeSS 自动曝光有 GPU 开销，不推荐用于 LDR。XeSS Vulkan 的 LDR 与手动曝光组合仍不受支持。RR 和帧生成保持不变。
 
-没有 DLSS 的游戏也可以使用 XeSS：在 **超分辨率 → 引擎** 中选择 **XeSS** 作为引擎（DirectX 11、DirectX 12 和 Vulkan；Tensor Cores 适用于 DirectX 12 游戏）。参见[没有 DLSS 的游戏](GAMES-WITHOUT-DLSS.zh-CN.md)。在这种情况下 `srHdr` 与 `srAutoExposure` 不适用：RTX Encore 知道显示的画面是 SDR 还是 HDR。
+没有 DLSS 的游戏也可以使用 XeSS：在 **超分辨率 → 引擎** 中选择 **XeSS** 作为引擎（DirectX 11、DirectX 12 和 Vulkan）。相应路径支持时，三个 API 中的 Tensor Cores 均为实验性功能；替换 Vulkan 游戏自身的 DLSS 时仍使用标准 XeSS。参见[没有 DLSS 的游戏](GAMES-WITHOUT-DLSS.zh-CN.md)。在这种情况下 `srHdr` 与 `srAutoExposure` 不适用：RTX Encore 知道显示的画面是 SDR 还是 HDR。
 
-自 2.0.0 起，**XeFG 也可以在完全没有帧生成的游戏中生成帧**：选择 **XeFG** 作为帧生成引擎（**帧生成 → 引擎**），然后重启。DirectX 12（可用 Tensor Cores）、Vulkan（SDR 和 HDR10）和 DirectX 11 均为 X2 至 X6，倍率可即时更改。Hub 会在此类游戏中随模组一起安装 Intel 运行库。参见[没有 DLSS 的游戏](GAMES-WITHOUT-DLSS.zh-CN.md#帧生成)。Tensor Cores 开关仅在适用的 DirectX 12 游戏中显示。
+自 2.0.0 起，**XeFG 也可以在完全没有帧生成的游戏中生成帧**：选择 **XeFG** 作为帧生成引擎（**帧生成 → 引擎**），然后重启。DirectX 12、Vulkan（SDR 和 HDR10）和 DirectX 11 均为 X2 至 X6，倍率可即时更改。Hub 会在此类游戏中随模组一起安装 Intel 运行库。参见[没有 DLSS 的游戏](GAMES-WITHOUT-DLSS.zh-CN.md#帧生成)。自 2.1.0 起，XeFG Tensor Cores 也实验性支持 DirectX 11 和 Vulkan；2.2.0 新增 RTX 20 实验性准入。
 
 XeFG 不能为所有游戏添加帧生成。更高倍率取决于获准的 Intel 运行库和完整游戏配置；X5/X6 仍属实验性，本测试版没有建立 X6 游戏支持证明。请求倍率、依赖已安装或生成帧计数，都不能测量实际显示内容或物理延迟。在 XeFG 测试中启用 NR 或 Smooth Motion，并不能证明这些组合已获认证。
 

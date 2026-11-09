@@ -169,7 +169,7 @@ the upscaler, so fine detail cannot be rebuilt as well. DLAA at the game's resol
 - Without a depth buffer (or when it is not found), everything still runs, with slightly less stable motion.
 - The upscaled image is a little softer than a game's own DLSS, which has the game's camera jitter; DLAA does not
   have this limit.
-- Tensor Cores, for XeSS and for XeFG, apply to DirectX 12 games only.
+- XeFG Tensor Cores also work experimentally in DirectX 11 and Vulkan; XeSS Tensor Cores are offered experimentally there where the route supports them. Replacing a Vulkan game's own DLSS with XeSS keeps standard XeSS.
 - scRGB (16-bit floating point) output keeps the game's own frames: no frame generation.
 - Frame generation and NVIDIA Smooth Motion do not combine: turn Smooth Motion off.
 - DirectX 11 games that run on top of DirectX 12 (some translation layers) are not supported.

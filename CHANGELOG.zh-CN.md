@@ -2,6 +2,26 @@
 
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
+## 2.2.0
+
+**RTX Encore 2.2.0 新增空间缩放和可自定义的性能叠加层。**没有 DLSS 的游戏现在可以选择 NVIDIA Image Scaling（NIS），并可在缩放前后使用 FXAA 或 SMAA。叠加层新增样式和独立指标选项。XeFG Tensor Cores 扩展到 RTX 20，XeSS Tensor Cores 则获得 RTX 30/40 优化。
+
+### 缩放与抗锯齿
+
+- **NVIDIA Image Scaling（NIS）**成为无 DLSS 游戏的新选项，包括 DirectX 11。可选择在 NIS 前或后运行 **FXAA** 或 **SMAA**，也可以关闭。请按游戏画面选择；空间滤镜无法还原源图像中不存在的细节。Hub 2.2.0 提供相应设置。
+- 空间缩放现在能更好地与所选重建引擎组合，并更准确地处理游戏源画面的尺寸。模拟人生 4 的修复已在游戏中确认。动态加载引擎时，NIS 窗口尺寸也会考虑 Windows 显示缩放。
+- **XeSS Super Resolution Tensor Cores** 新增 RTX 30 和 RTX 40 优化路径。RTX 3070 Ti 与 RTX 4090 已检查输出一致性；RTX 3070 Ti 的测量结果随分辨率变化，因此不保证所有场景都提速。
+
+### 帧生成与叠加层
+
+- **DLSS-G 与游戏 Auto 模式：**新设置 `overrideAutoFrameGeneration` 默认开启。当游戏请求 Auto 且 NVIDIA 可能在高负载场景关闭帧生成时，它会请求保持 On。关闭后会原样传递游戏的 Auto 请求。设置即时生效，Hub 2.2.0 也提供该选项。感谢 [@avikpal693](https://github.com/avikpal693) 的报告（[#116](https://github.com/SilyNoMeta/rtx-encore/issues/116)）；报告者尚未确认最终版本。
+- **XeFG NVIDIA Tensor Cores** 现在实验性支持 RTX 20（Turing）。兼容性仍取决于驱动、运行时、游戏和图形 API；此版本不宣称已在 RTX 20 的所有游戏中验证。感谢 [@MxHassan195](https://github.com/MxHassan195) 提出请求（[#117](https://github.com/SilyNoMeta/rtx-encore/issues/117)）。
+- **Overlay Studio：**可选择性能指标和显示样式。新增经典样式，恢复白色文字条；可选图表和已选指标继续可用。Hub 2.2.0 可预览和设置样式及各项指标。
+- **博德之门 3：**在 DirectX 11 中添加独立 DLSS 帧生成时，Script Extender 的 ImGui/MCM 菜单现在可以正常打开。维护者已用测试版本在游戏中确认。
+- **天国：拯救：**独立 DLSS 帧生成不再绑定到游戏的小型测试窗口，游戏窗口可正常运行 X2。NVIDIA 驱动的 Streamline override 也可用于原生 DLSS-G。维护者已用测试版本在游戏中确认两项修复。
+
+最终发布包的构建和检查与上述游戏测试分别进行。实验性功能仍取决于各游戏的集成；如无法启用，请提供游戏、图形 API、GPU 和 Hub 诊断。
+
 
 ## 2.1.0
 

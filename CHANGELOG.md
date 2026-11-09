@@ -2,6 +2,26 @@
 
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 2.2.0
+
+**RTX Encore 2.2.0 adds spatial upscaling and a customizable performance overlay.** Games without DLSS can now use NVIDIA Image Scaling (NIS), with optional FXAA or SMAA before or after scaling. The overlay offers configurable styles and metrics. XeFG Tensor Cores reach RTX 20 cards, and XeSS Tensor Cores have new RTX 30/40 optimizations.
+
+### Upscaling and anti-aliasing
+
+- **NVIDIA Image Scaling (NIS)** is a new upscaling choice for games without DLSS, including DirectX 11. Optional **FXAA** and **SMAA** can run before or after NIS, or be disabled. Choose the order that looks best for the game; these are spatial filters and cannot restore detail absent from the source image. The corresponding controls are available in Hub 2.2.0.
+- Spatial upscaling now composes correctly with the selected reconstruction engine and handles the game's source geometry more reliably. The Sims 4 source-geometry correction was confirmed in game. NIS window sizing also accounts for Windows display scaling when an engine loads dynamically.
+- **XeSS Super Resolution on Tensor Cores** has updated RTX 30 and RTX 40 paths. Output parity was checked on an RTX 3070 Ti and RTX 4090; the RTX 3070 Ti measurements varied by resolution, so this is an optimization rather than a blanket speed claim.
+
+### Frame generation and overlay
+
+- **DLSS-G and game Auto mode:** the new `overrideAutoFrameGeneration` setting, on by default, asks NVIDIA to keep frame generation On when a game requests Auto and NVIDIA would otherwise turn it off during a heavy scene. Turn it off to pass the game's Auto request through unchanged. It applies live and is available in Hub 2.2.0. Thanks to [@avikpal693](https://github.com/avikpal693) for the report ([#116](https://github.com/SilyNoMeta/rtx-encore/issues/116)); the reporter has not confirmed the final build.
+- **XeFG on NVIDIA Tensor Cores** now admits RTX 20 (Turing) cards as an experimental option. Compatibility still depends on the driver, runtime, game and graphics API; this release does not claim general in-game validation for RTX 20 XeFG. Thanks to [@MxHassan195](https://github.com/MxHassan195) for requesting it ([#117](https://github.com/SilyNoMeta/rtx-encore/issues/117)).
+- **Overlay Studio:** choose which performance metrics appear, and select a visual style. The new classic style restores white text strips; the optional graph and selected metrics remain available. Hub 2.2.0 previews and configures the styles and individual metrics.
+- **Baldur's Gate 3:** the Script Extender's ImGui/MCM menu opens again with standalone DLSS Frame Generation in DirectX 11. Confirmed by the maintainer in game with a test build.
+- **Kingdom Come: Deliverance:** standalone DLSS Frame Generation no longer attaches to the game's small probe window; its own window runs at X2. The NVIDIA driver Streamline override is also accepted for native DLSS-G. Both were confirmed by the maintainer in game with test builds.
+
+The release archive is built and checked separately from these game tests. Experimental paths remain dependent on each game's integration; report the game, graphics API, GPU and Hub diagnostic when a feature does not activate.
+
 
 ## 2.1.0
 

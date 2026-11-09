@@ -41,7 +41,11 @@ Un menu intégré, avec RTX Encore Hub pour installer le mod et les runtimes né
 > Il se charge dans le jeu : ne l'utilisez pas dans un jeu en ligne ou protégé par un anti-triche, où il peut être
 > bloqué ou faire signaler un compte. Sauvegardez chaque fichier que vous remplacez.
 
-**[Dernière version : 2.1.0](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v2.1.0)** · [Notes de version](CHANGELOG.fr.md) · [Hub 2.1.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.1.0)
+**[Dernière version : 2.2.0](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v2.2.0)** · [Notes de version](CHANGELOG.fr.md) · [Hub 2.2.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.2.0)
+
+**Nouveau dans la 2.2.0 :** NVIDIA Image Scaling (NIS) pour les jeux sans DLSS, FXAA/SMAA en option avant ou après NIS, styles et métriques d'overlay personnalisables, XeFG sur les Tensor Cores des RTX 20 à titre expérimental et nouveaux chemins XeSS Tensor Cores pour les RTX 30/40. [Tous les changements et limites](CHANGELOG.fr.md#220).
+
+**Également nouveau depuis la 2.1.0 :** la cadence régulière du jeu rend XeFG X3 à X6 plus fluide ; la génération d'images ajoutée peut utiliser la profondeur et le mouvement d'un jeu DLSS en DirectX 11 et Vulkan ; XeFG Tensor Cores s'étend aussi à ces API. Cette version corrigeait également Baldur's Gate 3, Final Fantasy VII Rebirth, Forza Horizon 6, Kingdom Come: Deliverance, Islands of Insight et Black Flag Resynced. [Détails de la 2.1.0](CHANGELOG.fr.md#210).
 
 
 ## 2.0.0 : DLSS, XeSS, Neural Rendering et génération d'images pour les jeux sans DLSS
@@ -84,7 +88,7 @@ XeSS, XeFG et l’adaptateur XeFG natif → DLSS FG sont expérimentaux et exige
 | 🌀 | **[Smooth Motion sur RTX 20 / 30](docs/SMOOTH-MOTION.fr.md)** | L'interpolation d'images du pilote NVIDIA, y compris sans DLSS : DirectX 11, DirectX 12 et Vulkan sur RTX 30 ; prise en charge **expérimentale sur RTX 20**, en DirectX 12 avec le pilote 621.01 et les variantes V1 / V2. Désactivé par défaut. |
 | ✨ | **[Neural Rendering](docs/NEURAL-RENDERING.fr.md)** | NR sur RTX 20, 30 et 40, avec les options de performance Ampere développées par RTX Encore : traitement optimisé, précision Fast, résolution NR indépendante. Une à quatre passes, un style pour chacune, prise en charge du HDR. Expérimental, désactivé par défaut. |
 | 🎮 | **[Jeux sans DLSS](docs/GAMES-WITHOUT-DLSS.fr.md)** | Reconstruction DLSS ou XeSS (DLAA ou jusqu’à la résolution de l’écran), Neural Rendering et génération d’images (DLSS Frame Generation ou Intel XeFG, X2 à X6) dans les jeux DirectX 11, DirectX 12 et Vulkan qui n’ont pas de DLSS, à partir de l’image qu’ils affichent, avec l’estimation du mouvement propre à RTX Encore. Nouveau dans la 2.0.0. Expérimental, désactivé par défaut. |
-| ⚡ | **[XeSS et XeFG sur les Tensor Cores NVIDIA](docs/INTEL-ENGINES.fr.md)** | Deux options expérimentales indépendantes font tourner la reconstruction XeSS et la génération d’images XeFG sur les Tensor Cores NVIDIA, en DirectX 12, dans les jeux avec DLSS comme dans les jeux sans. Désactivées par défaut ; les puces du menu portent un badge **Tensor Cores** tant qu’elles tournent. Qualifiées sur RTX 4090 / NVIDIA 621.01 ; les autres RTX 30, 40 et 50 sont admises sans validation en jeu. |
+| ⚡ | **[XeSS et XeFG sur les Tensor Cores NVIDIA](docs/INTEL-ENGINES.fr.md)** | Deux options expérimentales indépendantes pour XeSS et XeFG. DirectX 12, avec des chemins DirectX 11/Vulkan supplémentaires depuis la 2.1.0 ; XeFG admet aussi les RTX 20 depuis la 2.2.0. Désactivées par défaut ; le badge **Tensor Cores** indique un chemin actif. Disponibilité et validation en jeu varient selon le chemin et le GPU. |
 | 🎛️ | **[Menu et overlay intégrés](docs/MENU-AND-OVERLAY.fr.md)** | Appuyez sur **Inser** dans le jeu : tous les réglages, l'état de chaque fonction, et un overlay avec la fréquence d'images, le multiplicateur, la régularité des images, le GPU et la VRAM. DirectX 11, DirectX 12 et Vulkan. En onze langues depuis la 2.0.0. |
 | 🚀 | **[Fast super resolution sur RTX 30](docs/SUPER-RESOLUTION.fr.md)** | Un DLSS Super Resolution plus rapide pour RTX 30 dans les jeux DirectX 12 avec le preset M ou L : environ 16 à 20 % de temps GPU en moins par image upscalée sur le système mesuré, pour une image très proche de l'originale. Désactivée par défaut. |
 | 🔍 | **Résolution de rendu DLSS** | Choisissez DLAA, Ultra (75 %), Qualité, Équilibré, Performance, Ultra Performance ou une échelle personnalisée dans les jeux qui utilisent déjà DLSS. |
@@ -215,6 +219,7 @@ TonyJoaca et est devenu depuis un projet à part entière. Il doit aussi beaucou
 - [vortigern11/vort_Shaders](https://github.com/vortigern11/vort_Shaders) (vort_Motion) : l’estimation du mouvement par shaders pour les jeux sans DLSS ;
 - [crosire/reshade](https://github.com/crosire/reshade) (add-on Generic Depth) : la façon de trouver le depth buffer dans lequel dessine un jeu ;
 - [Dear ImGui](https://github.com/ocornut/imgui) d’Omar Cornut : la bibliothèque avec laquelle sont faits le menu en jeu et l’overlay ;
+- [SMAA](https://github.com/iryoku/smaa) : Jorge Jimenez, Jose I. Echevarria, Belen Masia, Fernando Navarro et Diego Gutierrez ; [FXAA 3.11](https://github.com/GameTechDev/CMAA2) : NVIDIA, Timothy Lottes ;
 - [Noto Sans SC](https://github.com/google/fonts/tree/main/ofl/notosanssc) : police du menu ;
 - toutes les personnes qui testent une version et signalent un bug : plusieurs corrections n'existent que grâce à ces rapports.
 

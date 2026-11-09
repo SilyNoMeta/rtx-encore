@@ -42,6 +42,7 @@ Reconstruction can switch between DLSS and XeSS while playing in compatible game
 | :--- | :---: | :--- |
 | `mode` | `"game"` | `"game"` (the game or NVIDIA Profile Inspector decides), `"fixed"`, `"dynamic"` |
 | `multiplier` | `4` | `2` to `6`, used in fixed mode. `5` and `6` are experimental. |
+| `overrideAutoFrameGeneration` | `true` | Only when `mode` is `"game"`. When the game asks for frame generation in Auto mode, NVIDIA keeps checking whether it is worth it and can turn it off by itself, in heavy scenes for example, while the menu still shows it on. `true` asks for it On instead, so it stays on as long as the game wants it; short pauses remain when the game stops providing what frame generation needs (menus, cutscenes). `false` lets NVIDIA decide. Fixed and dynamic modes already keep it on. Applied live. |
 | `dynamicTargetFrameRate` | `0` | Target FPS of dynamic mode. `0` follows the refresh rate of the monitor showing the game. |
 | `dynamicExperimental56` | `false` | Lets dynamic mode go up to X5 and X6. |
 | `flipMeteringBypass` | `"auto"` | Smooth out X3 / X4: `"auto"`, `true` or `false`. `true`: Streamline spaces the generated frames itself instead of the NVIDIA driver (DirectX 12 and Vulkan); `false`: the driver does. `"auto"`: RTX Encore measures how the generated frames reach the screen at X3 and above and learns which one this game needs, written to `flipMeteringLearned`. Restart the game to apply. See [Frame generation](FRAME-GENERATION.md#smooth-out-x3--x4). |
@@ -189,7 +190,25 @@ game restart.
 | `showOverlay` | `false` | Shows the overlay. |
 | `overlayPosition` | `"top-left"` | `"top-left"`, `"top-right"`, `"bottom-left"`, `"bottom-right"` |
 | `overlayFontSize` | `14` | Text size in pixels, `10` to `32` |
-| `overlayShowNr`, `overlayShowFramePacing`, `overlayShowLatency`, `overlayShowGpu`, `overlayShowVram`, `overlayShowVersions` | `false` | Optional lines |
+| `overlayStyle` | `"card"` | `"minimal"` compact text, `"card"` a single panel, `"dashboard"` grouped panels with usage gauges, `"legacy"` historical white text strips |
+| `overlayLabels`, `overlayUnits` | `true` | Show metric names and units independently. Disable both for values only |
+| `overlayOpacity` | `75` | Background opacity, `0` to `100`; text remains readable |
+| `overlayGraph` | `false` | Recent source-frame presentation intervals in milliseconds |
+| `overlayShowFps`, `overlayShowSourceFps` | `true` | Output FPS and rendered/source FPS, independently selectable |
+| `overlayShowGpuLoad`, `overlayShowGpuTemperature`, `overlayShowGpuPower`, `overlayShowGpuClock`, `overlayShowGpuMemoryClock` | `false` | Separate GPU load, temperature, power, core clock and memory clock switches. Absent switches inherit the old `overlayShowGpu` value |
+| `overlayShowCpu`, `overlayShowRam` | `false` | Whole-system CPU load and physical RAM usage |
+| `overlayShowNr`, `overlayShowFramePacing`, `overlayShowLatency`, `overlayShowVram`, `overlayShowVersions` | `false` | Optional metrics and engine details |
+
+Choose a style and content preset in the Overlay menu, then adjust individual metrics.
+These new styles and controls are currently available in the `+overlay-studio` development build.
+The matching development Hub offers them only when that build is installed.
+
+Unavailable sensors display `--`, rather than a false zero. GPU and VRAM readings
+cover the whole NVIDIA GPU; on systems with multiple NVIDIA GPUs the first GPU
+may differ from the game's rendering GPU. CPU and RAM figures cover the system.
+The graph measures source presentation cadence, not generated frames or GPU render
+time. Output FPS uses the observed FG multiplier; Smooth Motion output includes a
+nominal 2× estimate. Reflex and XeLL reports do not measure full display latency.
 
 ### `hudUi`
 

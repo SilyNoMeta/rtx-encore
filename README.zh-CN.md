@@ -41,7 +41,11 @@ Smooth Motion 和 Neural Rendering——现在也适用于没有 DLSS 的游戏�
 > 它在游戏进程内加载：请勿在联机游戏或受反作弊保护的游戏中使用，否则可能被拦截，或导致账号被标记。
 > 替换任何文件之前请先备份。
 
-**[最新版本：2.1.0](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v2.1.0)** · [版本说明](CHANGELOG.zh-CN.md) · [Hub 2.1.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.1.0)
+**[最新版本：2.2.0](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v2.2.0)** · [版本说明](CHANGELOG.zh-CN.md) · [Hub 2.2.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.2.0)
+
+**2.2.0 新增：**无 DLSS 游戏可选 NVIDIA Image Scaling（NIS），可在 NIS 前后使用 FXAA/SMAA，自定义叠加层样式与指标，RTX 20 实验性支持 XeFG Tensor Cores，并更新 RTX 30/40 的 XeSS Tensor Cores 路径。[查看全部更改与限制](CHANGELOG.zh-CN.md#220)。
+
+**2.1.0 的主要新增内容仍在：**稳定游戏帧节奏让 XeFG X3–X6 更流畅；添加的帧生成可在 DirectX 11 和 Vulkan 中利用 DLSS 游戏自身的深度与运动数据；XeFG Tensor Cores 也扩展到这两种 API。该版本还修复了博德之门 3、最终幻想 VII 重生、极限竞速：地平线 6、天国：拯救、Islands of Insight 和黑旗 Resynced 的问题。[2.1.0 详情](CHANGELOG.zh-CN.md#210)。
 
 
 ## 2.0.0：为没有 DLSS 的游戏带来 DLSS、XeSS、Neural Rendering 和帧生成
@@ -84,7 +88,7 @@ XeSS、XeFG 和原生 XeFG → DLSS FG 适配器仍属实验功能，需要兼�
 | 🌀 | **[RTX 20 / 30 上的 Smooth Motion](docs/SMOOTH-MOTION.zh-CN.md)** | NVIDIA 驱动的插帧功能，也适用于没有 DLSS 的游戏：RTX 30 支持 DirectX 11、DirectX 12 和 Vulkan；**RTX 20 为实验性支持**，限 DirectX 12、621.01 驱动，可选 V1 / V2。默认关闭。 |
 | ✨ | **[Neural Rendering](docs/NEURAL-RENDERING.zh-CN.md)** | 在 RTX 20、30 和 40 上运行 NR，并提供 RTX Encore 自行开发的 Ampere 性能选项：优化处理、Fast 精度、独立的 NR 分辨率。支持一至四遍处理、每遍独立风格以及 HDR。实验性功能，默认关闭。 |
 | 🎮 | **[没有 DLSS 的游戏](docs/GAMES-WITHOUT-DLSS.zh-CN.md)** | 在没有 DLSS 的 DirectX 11、DirectX 12 和 Vulkan 游戏中，基于游戏显示的画面运行 DLSS 或 XeSS 超分辨率（DLAA 或放大到屏幕分辨率）、Neural Rendering 和帧生成（DLSS 帧生成或 Intel XeFG，X2 至 X6），使用 RTX Encore 自己的运动估计。2.0.0 新增。实验性功能，默认关闭。 |
-| ⚡ | **[使用 NVIDIA Tensor Cores 的 XeSS 与 XeFG](docs/INTEL-ENGINES.zh-CN.md)** | 两个独立的实验选项，让 XeSS 重建和 XeFG 帧生成在 DirectX 12 中运行于 NVIDIA Tensor Cores 上，自带 DLSS 的游戏和没有 DLSS 的游戏均可。默认关闭；运行时菜单卡片显示 **Tensor Cores** 标记。已在 RTX 4090 / NVIDIA 621.01 上验证；其他 RTX 30、40 和 50 显卡可用，但未经游戏内验证。 |
+| ⚡ | **[使用 NVIDIA Tensor Cores 的 XeSS 与 XeFG](docs/INTEL-ENGINES.zh-CN.md)** | XeSS 重建与 XeFG 帧生成分别提供实验性选项。支持 DirectX 12；自 2.1.0 起还有额外的 DirectX 11/Vulkan 路径，2.2.0 起 XeFG 也准入 RTX 20。默认关闭；实际运行时显示 **Tensor Cores** 标记。可用性与游戏内验证范围因路径和 GPU 而异。 |
 | 🎛️ | **[内置菜单和叠加层](docs/MENU-AND-OVERLAY.zh-CN.md)** | 在游戏中按 **Insert**：所有设置、每项功能的状态，以及显示帧率、倍率、帧时间稳定性、GPU 和显存的叠加层。支持 DirectX 11、DirectX 12 和 Vulkan。自 2.0.0 起支持十一种语言。 |
 | 🚀 | **[RTX 30 上的 Fast super resolution](docs/SUPER-RESOLUTION.zh-CN.md)** | 为 RTX 30 在预设为 M 或 L 的 DirectX 12 游戏中提供更快的 DLSS 超分辨率：在测量的系统上每个放大帧约减少 16% 至 20% 的 GPU 时间，画面与原版非常接近。默认关闭。 |
 | 🔍 | **DLSS 渲染分辨率** | 在已使用 DLSS 的游戏中选择 DLAA、Ultra（75%）、质量、平衡、性能、超级性能或自定义比例。 |
@@ -212,6 +216,7 @@ RTX Encore 最初是 TonyJoaca 的 [DLSSG-Transfusion](https://github.com/TonyJo
 - [vortigern11/vort_Shaders](https://github.com/vortigern11/vort_Shaders)（vort_Motion）：没有 DLSS 的游戏的着色器运动估计；
 - [crosire/reshade](https://github.com/crosire/reshade)（Generic Depth 插件）：找到游戏绘制所用深度缓冲的方法；
 - [Dear ImGui](https://github.com/ocornut/imgui)（Omar Cornut）：游戏内菜单和叠加层所用的界面库；
+- [SMAA](https://github.com/iryoku/smaa)：Jorge Jimenez、Jose I. Echevarria、Belen Masia、Fernando Navarro 和 Diego Gutierrez；[FXAA 3.11](https://github.com/GameTechDev/CMAA2)：NVIDIA、Timothy Lottes；
 - [Noto Sans SC](https://github.com/google/fonts/tree/main/ofl/notosanssc)：菜单字体；
 - 所有测试版本并报告问题的人：有好几项修复正是因为这些报告才得以完成。
 

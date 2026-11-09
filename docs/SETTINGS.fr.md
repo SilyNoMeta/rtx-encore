@@ -43,6 +43,7 @@ La reconstruction peut passer de DLSS à XeSS en cours de jeu dans les jeux comp
 | :--- | :---: | :--- |
 | `mode` | `"game"` | `"game"` (le jeu ou NVIDIA Profile Inspector décide), `"fixed"`, `"dynamic"` |
 | `multiplier` | `4` | `2` à `6`, utilisé en mode fixe. `5` et `6` sont expérimentaux. |
+| `overrideAutoFrameGeneration` | `true` | Uniquement si `mode` vaut `"game"`. Quand le jeu demande la génération d'images en mode Auto, NVIDIA vérifie en permanence si elle vaut le coup et peut la couper de lui-même, dans les scènes lourdes par exemple, alors que le menu l'affiche toujours active. `true` la demande en mode On : elle reste active tant que le jeu la veut ; de courtes pauses subsistent quand le jeu cesse de fournir ce dont elle a besoin (menus, cinématiques). `false` laisse NVIDIA décider. Les modes fixe et dynamique la gardent déjà active. Appliqué en direct. |
 | `dynamicTargetFrameRate` | `0` | FPS visés en mode dynamique. `0` suit la fréquence de rafraîchissement de l'écran qui affiche le jeu. |
 | `dynamicExperimental56` | `false` | Laisse le mode dynamique monter à X5 et X6. |
 | `flipMeteringBypass` | `"auto"` | Fluidifier X3 / X4 : `"auto"`, `true` ou `false`. `true` : Streamline espace lui-même les images générées au lieu du pilote NVIDIA (DirectX 12 et Vulkan) ; `false` : le pilote s’en charge. `"auto"` : RTX Encore mesure comment les images générées arrivent à l’écran à partir de X3 et apprend ce dont ce jeu a besoin, écrit dans `flipMeteringLearned`. Relancez le jeu pour appliquer. Voir [Génération d’images](FRAME-GENERATION.fr.md#fluidifier-x3--x4). |
@@ -193,7 +194,27 @@ d'option lue au démarrage demande de relancer le jeu.
 | `showOverlay` | `false` | Affiche l'overlay. |
 | `overlayPosition` | `"top-left"` | `"top-left"`, `"top-right"`, `"bottom-left"`, `"bottom-right"` |
 | `overlayFontSize` | `14` | Taille du texte en pixels, `10` à `32` |
-| `overlayShowNr`, `overlayShowFramePacing`, `overlayShowLatency`, `overlayShowGpu`, `overlayShowVram`, `overlayShowVersions` | `false` | Lignes optionnelles |
+| `overlayStyle` | `"card"` | `"minimal"` texte compact, `"card"` panneau unique, `"dashboard"` panneaux regroupés avec jauges d'utilisation, `"legacy"` lignes blanches historiques |
+| `overlayLabels`, `overlayUnits` | `true` | Affiche séparément les noms des métriques et les unités. Désactivez les deux pour les valeurs seules |
+| `overlayOpacity` | `75` | Opacité du fond, de `0` à `100` ; le texte reste lisible |
+| `overlayGraph` | `false` | Intervalles récents de présentation des images source, en millisecondes |
+| `overlayShowFps`, `overlayShowSourceFps` | `true` | FPS de sortie et FPS rendus/source, sélectionnables séparément |
+| `overlayShowGpuLoad`, `overlayShowGpuTemperature`, `overlayShowGpuPower`, `overlayShowGpuClock`, `overlayShowGpuMemoryClock` | `false` | Cases indépendantes : charge, température, puissance, fréquence GPU et fréquence mémoire. Une clé absente reprend l'ancien réglage `overlayShowGpu` |
+| `overlayShowCpu`, `overlayShowRam` | `false` | Charge CPU et mémoire physique de tout le système |
+| `overlayShowNr`, `overlayShowFramePacing`, `overlayShowLatency`, `overlayShowVram`, `overlayShowVersions` | `false` | Métriques et détails des moteurs optionnels |
+
+Choisissez un style et un préréglage de contenu dans le menu Overlay, puis ajustez
+chaque métrique. Ces nouveaux styles et réglages sont actuellement disponibles
+dans la build de développement `+overlay-studio`. Le Hub de développement associé
+les propose seulement lorsque cette build est installée.
+
+Un capteur indisponible affiche `--`, jamais un faux zéro. Les mesures GPU et VRAM
+concernent toute la carte NVIDIA ; avec plusieurs GPU NVIDIA, le premier peut
+différer de celui qui rend le jeu. Les chiffres CPU et RAM concernent le système.
+Le graphe mesure la cadence de présentation source, pas les images générées ni le
+temps de rendu GPU. Les FPS de sortie utilisent le multiplicateur FG observé ;
+Smooth Motion ajoute une estimation nominale 2×. Les rapports Reflex et XeLL ne
+mesurent pas la latence complète jusqu'à l'écran.
 
 ### `hudUi`
 

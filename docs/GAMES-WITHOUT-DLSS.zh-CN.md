@@ -142,7 +142,7 @@ DLSS 只能以 DLAA 方式运行。独占全屏保持游戏分辨率。
 - 快速运动、新露出的区域和放大的回放可能比自带 DLSS 的游戏出现更多拖影，放大后的画面和生成帧都是如此。
 - 没有深度缓冲（或未找到）时，一切仍会运行，运动稳定性略差。
 - 放大后的画面比游戏自带的 DLSS 稍软，后者拥有游戏的镜头抖动；DLAA 没有这一限制。
-- XeSS 和 XeFG 的 Tensor Cores 仅适用于 DirectX 12 游戏。
+- XeFG Tensor Cores 也实验性支持 DirectX 11 和 Vulkan；XeSS Tensor Cores 在相应路径支持时也会提供。替换 Vulkan 游戏自身的 DLSS 时仍使用标准 XeSS。
 - scRGB（16 位浮点）输出保留游戏自己的帧：没有帧生成。
 - 帧生成与 NVIDIA Smooth Motion 不能组合：请关闭 Smooth Motion。
 - 不支持运行在 DirectX 12 之上的 DirectX 11 游戏（某些转换层）。

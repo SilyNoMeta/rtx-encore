@@ -40,6 +40,7 @@
 | :--- | :---: | :--- |
 | `mode` | `"game"` | `"game"`（由游戏或 NVIDIA Profile Inspector 决定）、`"fixed"`、`"dynamic"` |
 | `multiplier` | `4` | `2` 至 `6`，用于固定模式。`5` 和 `6` 是实验性的。 |
+| `overrideAutoFrameGeneration` | `true` | 仅在 `mode` 为 `"game"` 时有效。当游戏以 Auto 模式请求帧生成时，NVIDIA 会持续判断是否值得开启，并可能自行将其关闭（例如在高负载场景中），而菜单仍显示为开启。`true`：改为以 On 模式请求，只要游戏需要就保持开启；当游戏不再提供帧生成所需内容（菜单、过场动画）时仍会短暂暂停。`false`：由 NVIDIA 决定。固定和动态模式本来就会保持开启。实时生效。 |
 | `dynamicTargetFrameRate` | `0` | 动态模式的目标 FPS。`0` 跟随显示游戏的显示器的刷新率。 |
 | `dynamicExperimental56` | `false` | 允许动态模式达到 X5 和 X6。 |
 | `flipMeteringBypass` | `"auto"` | 平滑 X3 / X4：`"auto"`、`true` 或 `false`。`true`：由 Streamline 自行安排生成帧的间隔，而不是交给 NVIDIA 驱动（DirectX 12 和 Vulkan）；`false`：由驱动安排。`"auto"`：RTX Encore 测量 X3 及以上时生成帧到达屏幕的方式，并学习该游戏需要哪一种，写入 `flipMeteringLearned`。需重启游戏生效。参见[帧生成](FRAME-GENERATION.zh-CN.md#平滑-x3--x4)。 |
@@ -179,7 +180,24 @@ FG 预设选择支持以下经过逐一验证的 NVIDIA **DLSS-G 正式版二进
 | `showOverlay` | `false` | 显示叠加层。 |
 | `overlayPosition` | `"top-left"` | `"top-left"`、`"top-right"`、`"bottom-left"`、`"bottom-right"` |
 | `overlayFontSize` | `14` | 文字大小，`10` 至 `32` 像素 |
-| `overlayShowNr`、`overlayShowFramePacing`、`overlayShowLatency`、`overlayShowGpu`、`overlayShowVram`、`overlayShowVersions` | `false` | 可选显示项目 |
+| `overlayStyle` | `"card"` | `"minimal"` 紧凑文字、`"card"` 单面板、`"dashboard"` 分组面板及使用率条、`"legacy"` 经典白色文字条 |
+| `overlayLabels`、`overlayUnits` | `true` | 分别显示指标名称和单位；关闭两者即可只显示数值 |
+| `overlayOpacity` | `75` | 背景不透明度，`0` 至 `100`；文字保持清晰 |
+| `overlayGraph` | `false` | 最近源帧的呈现间隔，单位为毫秒 |
+| `overlayShowFps`、`overlayShowSourceFps` | `true` | 分别选择输出 FPS 和渲染／源 FPS |
+| `overlayShowGpuLoad`、`overlayShowGpuTemperature`、`overlayShowGpuPower`、`overlayShowGpuClock`、`overlayShowGpuMemoryClock` | `false` | 独立选择 GPU 负载、温度、功耗、核心频率和显存频率；缺少的键继承旧设置 `overlayShowGpu` |
+| `overlayShowCpu`、`overlayShowRam` | `false` | 整个系统的 CPU 负载和物理内存使用情况 |
+| `overlayShowNr`、`overlayShowFramePacing`、`overlayShowLatency`、`overlayShowVram`、`overlayShowVersions` | `false` | 可选指标及引擎信息 |
+
+在叠加层菜单中选择样式和内容预设，然后单独调整各项指标。
+这些新样式和设置目前适用于 `+overlay-studio` 开发版；配套开发版 Hub
+仅在安装了该版本时提供这些选项。
+
+不可用的传感器显示 `--`，不会显示为错误的零值。GPU 和显存数据覆盖整张
+NVIDIA 显卡；安装多张 NVIDIA 显卡时，第一张显卡可能不是游戏的渲染显卡。
+CPU 和内存数据覆盖整个系统。图表测量源帧呈现间隔，不代表生成帧或 GPU
+渲染时间。输出 FPS 使用观测到的 FG 倍率；Smooth Motion 包含标称 2× 估算。
+Reflex 和 XeLL 报告不测量完整的显示延迟。
 
 ### `hudUi`
 

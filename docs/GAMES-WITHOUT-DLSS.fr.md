@@ -176,7 +176,7 @@ pas cette limite.
 - Sans depth buffer (ou s’il n’est pas trouvé), tout fonctionne quand même, avec un mouvement un peu moins stable.
 - L’image agrandie est un peu plus douce que le DLSS d’un jeu, qui dispose du jitter de la caméra ; le DLAA n’a pas
   cette limite.
-- Les Tensor Cores, pour XeSS comme pour XeFG, ne s’appliquent qu’aux jeux DirectX 12.
+- XeFG sur les Tensor Cores fonctionne aussi à titre expérimental en DirectX 11 et Vulkan ; XeSS sur les Tensor Cores y est proposé lorsque le chemin le permet. Remplacer le DLSS d'un jeu Vulkan par XeSS conserve le XeSS standard.
 - Une sortie scRGB (16 bits flottants) garde les images du jeu : pas de génération d’images.
 - La génération d’images et le Smooth Motion de NVIDIA ne se combinent pas : désactivez Smooth Motion.
 - Les jeux DirectX 11 qui tournent par-dessus DirectX 12 (certaines couches de traduction) ne sont pas pris en charge.
