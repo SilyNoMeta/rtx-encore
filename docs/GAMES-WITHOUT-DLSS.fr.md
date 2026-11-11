@@ -25,7 +25,7 @@ pas été vérifiés : dites-nous ce que vous voyez dans une [issue](https://git
 ## Le principe, en bref
 
 RTX Encore prend l’image terminée juste avant son affichage. Le mouvement entre deux images est estimé à partir des
-images elles-mêmes, sur la carte graphique (par l’estimation propre à RTX Encore, par défaut), et le depth buffer du
+images elles-mêmes, sur la carte graphique (avec les vecteurs du jeu disponibles par défaut et l’estimation RTX Encore en repli), et le depth buffer du
 jeu est trouvé automatiquement quand le jeu dessine avec. Le DLSS ou XeSS, le Neural Rendering et la génération
 d’images travaillent ensuite sur cette image, et c’est le résultat qui s’affiche.
 
@@ -115,7 +115,8 @@ jouant.
 
 | Choix | Ce que c’est | Coût en 4K sur une RTX 4090 |
 | :--- | :--- | :--- |
-| **RTX Encore** (par défaut) | L’estimation propre à RTX Encore, dans les shaders de la carte graphique : des vecteurs fins, un par 2×2 pixels, qui suivent les bords des objets et s’appuient sur le depth buffer quand le jeu en a un. Pensée pour la génération d’images à partir de ces images ; sans accélérateur. | environ 1,0 ms par image |
+| **Game motion vectors** (par défaut) | Utilise les vecteurs compatibles du jeu, avec repli automatique vers l’estimation RTX Encore. Pour la génération d’images ajoutée et le NR Image finale compatible en DirectX 12, DirectX 11 et Vulkan. | Selon les entrées disponibles |
+| **RTX Encore** | L’estimation propre à RTX Encore, dans les shaders de la carte graphique : des vecteurs fins, un par 2×2 pixels, qui suivent les bords des objets et s’appuient sur le depth buffer quand le jeu en a un. Pensée pour la génération d’images à partir de ces images ; sans accélérateur. | environ 1,0 ms par image |
 | **Shader (vort)** | Estimé aussi dans des shaders, selon la méthode de vort_Motion de vortigern11. Comparez-le avec RTX Encore dans votre jeu. | environ 0,6 ms par image |
 | **Optical Flow (Qualité)** | NVIDIA Optical Flow, l’accélérateur des cartes RTX. | — |
 | **Optical Flow (Rapide)** | NVIDIA Optical Flow dans son mode rapide : environ une milliseconde de moins par image, mais un mouvement un peu moins précis, ce qui peut laisser plus de traînées sur les mouvements rapides. | — |

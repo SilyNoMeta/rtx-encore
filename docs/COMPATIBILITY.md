@@ -34,7 +34,7 @@ RTX Encore is made for RTX 20, 30 and 40 cards. GTX cards and cards from other v
 | Fast super resolution (RTX 30) | — | ✅ | — |
 | Smooth Motion (RTX 30) | ✅ | ✅ | ✅ |
 | Neural Rendering | 🧪 | 🧪 | 🧪 |
-| [NR Final image mode](NEURAL-RENDERING.md#present-mode) | 🧪 (game DLSS or compatible NIS, compatible DirectX 11 on 12 and Encore-added frame generation) | 🧪 (game DLSS, compatible frame generation and separate HUD) | 🧪 (game DLSS, compatible frame generation and separate HUD) |
+| [NR Final image mode](NEURAL-RENDERING.md#present-mode) | 🧪 (game DLSS or compatible NIS/FSR 1, compatible DirectX 11 on 12 and Encore-added frame generation) | 🧪 (game DLSS, compatible frame generation and separate HUD) | 🧪 (game DLSS, compatible frame generation and separate HUD) |
 | [Games without DLSS](GAMES-WITHOUT-DLSS.md): DLSS or XeSS upscaling, Neural Rendering | 🧪 | 🧪 | 🧪 |
 | [Games without DLSS](GAMES-WITHOUT-DLSS.md): frame generation | 🧪 DLSS FG or XeFG, X2 to X6 | 🧪 DLSS FG or XeFG, X2 to X6 | 🧪 DLSS FG or XeFG, X2 to X6 |
 | Menu and overlay | ✅ | ✅ | ✅ |

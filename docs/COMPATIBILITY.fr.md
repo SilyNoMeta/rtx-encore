@@ -35,7 +35,7 @@ prises en charge.
 | Fast super resolution (RTX 30) | — | ✅ | — |
 | Smooth Motion (RTX 30) | ✅ | ✅ | ✅ |
 | Neural Rendering | 🧪 | 🧪 | 🧪 |
-| [NR en mode Image finale](NEURAL-RENDERING.fr.md#mode-present) | 🧪 (DLSS du jeu ou NIS compatible, DirectX 11 sur 12 et génération d’images Encore compatibles) | 🧪 (DLSS du jeu, génération d’images et HUD séparé compatibles) | 🧪 (DLSS du jeu, génération d’images et HUD séparé compatibles) |
+| [NR en mode Image finale](NEURAL-RENDERING.fr.md#mode-present) | 🧪 (DLSS du jeu ou NIS/FSR 1 compatible, DirectX 11 sur 12 et génération d’images Encore compatibles) | 🧪 (DLSS du jeu, génération d’images et HUD séparé compatibles) | 🧪 (DLSS du jeu, génération d’images et HUD séparé compatibles) |
 | [Jeux sans DLSS](GAMES-WITHOUT-DLSS.fr.md) : reconstruction DLSS ou XeSS, Neural Rendering | 🧪 | 🧪 | 🧪 |
 | [Jeux sans DLSS](GAMES-WITHOUT-DLSS.fr.md) : génération d'images | 🧪 DLSS FG ou XeFG, X2 à X6 | 🧪 DLSS FG ou XeFG, X2 à X6 | 🧪 DLSS FG ou XeFG, X2 à X6 |
 | Menu et overlay | ✅ | ✅ | ✅ |

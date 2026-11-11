@@ -25,7 +25,7 @@ tell us what you see in an [issue](https://github.com/SilyNoMeta/rtx-encore/issu
 ## How it works, in short
 
 RTX Encore takes the finished image just before it is shown. The motion between two images is estimated from the
-images themselves, on the graphics card (by RTX Encore's own estimation, by default), and the game's depth buffer is
+images themselves, on the graphics card (using available game motion vectors by default, with RTX Encore estimation as fallback), and the game's depth buffer is
 found automatically when the game draws with one. DLSS or XeSS, Neural Rendering and frame generation then run on
 that image, and the result is what you see.
 
@@ -112,7 +112,8 @@ for the upscaler, Neural Rendering and frame generation alike. You can switch wh
 
 | Choice | What it is | Cost at 4K on an RTX 4090 |
 | :--- | :--- | :--- |
-| **RTX Encore** (default) | RTX Encore's own estimation, in the graphics card's shaders: fine vectors, one per 2×2 pixels, that follow the edges of objects and use the depth buffer when the game has one. Made for frame generation from these images; needs no accelerator. | about 1.0 ms per frame |
+| **Game motion vectors** (default) | Uses compatible motion vectors from the game; falls back automatically to RTX Encore estimation. Available for added frame generation and compatible Final image NR in DirectX 12, DirectX 11 and Vulkan. | Depends on the available inputs |
+| **RTX Encore** | RTX Encore's own estimation, in the graphics card's shaders: fine vectors, one per 2×2 pixels, that follow the edges of objects and use the depth buffer when the game has one. Made for frame generation from these images; needs no accelerator. | about 1.0 ms per frame |
 | **Shader (vort)** | Estimated in shaders too, with the method of vortigern11's vort_Motion. Compare it with RTX Encore in your game. | about 0.6 ms per frame |
 | **Optical Flow (Quality)** | NVIDIA Optical Flow, the accelerator of RTX cards. | — |
 | **Optical Flow (Fast)** | NVIDIA Optical Flow in its faster mode: about a millisecond less per frame, but motion is slightly less precise, which can show as more ghosting on fast movement. | — |

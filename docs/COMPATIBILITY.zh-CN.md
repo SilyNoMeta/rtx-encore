@@ -33,7 +33,7 @@ RTX Encore 面向 RTX 20、30 和 40。不支持 GTX 显卡及其他厂商的显
 | Fast super resolution（RTX 30） | — | ✅ | — |
 | Smooth Motion（RTX 30） | ✅ | ✅ | ✅ |
 | Neural Rendering | 🧪 | 🧪 | 🧪 |
-| [NR 最终画面模式](NEURAL-RENDERING.zh-CN.md#present-模式) | 🧪 （游戏自带 DLSS 或兼容的 NIS，支持兼容的 DirectX 11 on 12 和 Encore 帧生成） | 🧪 （游戏自带 DLSS，支持兼容的帧生成和独立 HUD） | 🧪 （游戏自带 DLSS，支持兼容的帧生成和独立 HUD） |
+| [NR 最终画面模式](NEURAL-RENDERING.zh-CN.md#present-模式) | 🧪 （游戏自带 DLSS 或兼容的 NIS/FSR 1，支持兼容的 DirectX 11 on 12 和 Encore 帧生成） | 🧪 （游戏自带 DLSS，支持兼容的帧生成和独立 HUD） | 🧪 （游戏自带 DLSS，支持兼容的帧生成和独立 HUD） |
 | [没有 DLSS 的游戏](GAMES-WITHOUT-DLSS.zh-CN.md)：DLSS 或 XeSS 超分辨率、Neural Rendering | 🧪 | 🧪 | 🧪 |
 | [没有 DLSS 的游戏](GAMES-WITHOUT-DLSS.zh-CN.md)：帧生成 | 🧪 DLSS FG 或 XeFG，X2 至 X6 | 🧪 DLSS FG 或 XeFG，X2 至 X6 | 🧪 DLSS FG 或 XeFG，X2 至 X6 |
 | 菜单和叠加层 | ✅ | ✅ | ✅ |

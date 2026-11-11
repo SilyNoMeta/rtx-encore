@@ -94,7 +94,8 @@ Fast 精度、HDR 亮度）。**Ctrl + Alt + N** 可在游玩时开关它。
 
 | 选项 | 说明 | RTX 4090 上 4K 的开销 |
 | :--- | :--- | :--- |
-| **RTX Encore**（默认） | RTX Encore 自己的估计，在显卡的着色器中：精细的向量（每 2×2 像素一个），能跟随对象边缘，并在游戏有深度缓冲时加以利用。为基于这些画面的帧生成而设计；不需要加速器。 | 每帧约 1.0 毫秒 |
+| **Game motion vectors**（默认） | 使用游戏的兼容运动矢量，不可用时自动回退至 RTX Encore 估算。适用于 DirectX 12、DirectX 11 和 Vulkan 的附加帧生成及兼容的最终画面 NR。 | 取决于可用输入 |
+| **RTX Encore** | RTX Encore 自己的估计，在显卡的着色器中：精细的向量（每 2×2 像素一个），能跟随对象边缘，并在游戏有深度缓冲时加以利用。为基于这些画面的帧生成而设计；不需要加速器。 | 每帧约 1.0 毫秒 |
 | **着色器 (vort)** | 同样在着色器中估计，采用 vortigern11 的 vort_Motion 方法。可在你的游戏中与 RTX Encore 对比。 | 每帧约 0.6 毫秒 |
 | **Optical Flow (质量)** | NVIDIA Optical Flow，RTX 显卡的加速器。 | — |
 | **Optical Flow (快速)** | NVIDIA Optical Flow 的快速模式：每帧约少 1 毫秒，但运动略不精确，快速移动时拖影可能更多。 | — |
