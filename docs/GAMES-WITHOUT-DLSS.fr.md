@@ -15,7 +15,7 @@ ni aucun autre outil :
   changez en jouant.
 
 Chaque fonction marche seule ou avec les autres. Elles sont expérimentales et désactivées par défaut. Les jeux qui ont
-leur propre DLSS le gardent : ces options y restent masquées et RTX Encore travaille avec le DLSS du jeu comme avant.
+leur propre DLSS le gardent. Pour ces jeux, consultez le [mode NR Image finale expérimental](NEURAL-RENDERING.fr.md#mode-present).
 
 **Testé par le mainteneur** (RTX 4090, NVIDIA 621.01) : PEAK en DirectX 12, DirectX 11 et Vulkan (reconstruction,
 Neural Rendering, DLSS Frame Generation X2 et X4, XeFG X2 à X4), The Sims 4 en DirectX 11 (XeFG X2), Football Life
@@ -25,7 +25,7 @@ pas été vérifiés : dites-nous ce que vous voyez dans une [issue](https://git
 ## Le principe, en bref
 
 RTX Encore prend l’image terminée juste avant son affichage. Le mouvement entre deux images est estimé à partir des
-images elles-mêmes, sur la carte graphique (par l’estimation propre à RTX Encore, par défaut), et le depth buffer du
+images elles-mêmes, sur la carte graphique (avec les vecteurs du jeu disponibles par défaut et l’estimation RTX Encore en repli), et le depth buffer du
 jeu est trouvé automatiquement quand le jeu dessine avec. Le DLSS ou XeSS, le Neural Rendering et la génération
 d’images travaillent ensuite sur cette image, et c’est le résultat qui s’affiche.
 
@@ -71,7 +71,9 @@ place de celles des jeux avec DLSS.
 
 Dans **Qualité d’image → Reconstruction → Moteur**, choisissez **DLSS** ou **XeSS** pour activer la reconstruction, ou **Aucun** pour la désactiver. Il n’y a plus d’interrupteur d’activation séparé. La sortie par défaut est **Résolution du jeu (DLAA)** : DLSS fonctionne à la résolution native ; XeSS applique son anticrénelage natif. Pour agrandir l’image, lancez le jeu en **Fenêtré**, pas en fenêtré sans bordure, à la résolution d’entrée souhaitée, puis choisissez **Résolution de l’écran** dans Encore. Encore agrandit la sortie et retire les bordures. Par exemple, 2560 × 1440 vers 3840 × 2160 correspond à environ 67 % par dimension.
 
-**Nouveau dans la 2.2.0 :** choisissez **NIS** dans le même menu Moteur pour une mise à l'échelle spatiale sans runtime DLSS ou Intel, y compris en DirectX 11. Réglez la **netteté** de 0 à 100 %, puis choisissez éventuellement **SMAA** ou **FXAA** avant la mise à l'échelle (résolution source) ou après (résolution de sortie). Ces filtres agissent sur la couleur SDR et comprennent le HUD ; comparez-les en jeu.
+Choisissez **NIS** ou **FSR 1** dans le même menu Moteur pour une mise à l’échelle sans runtime DLSS ou Intel. En DirectX 11 et DirectX 12, choisissez une résolution fenêtrée inférieure au même format d’image que l’écran. La largeur et la hauteur doivent toutes deux augmenter, jusqu’à 2x par axe. La **netteté** va de 0 à 100 % et vaut 30 % par défaut. En DirectX 11, vous pouvez aussi appliquer **SMAA** ou **FXAA** avant la mise à l’échelle (résolution source) ou après (résolution de sortie). Ces filtres nécessitent le mode SDR et incluent le HUD. L’anticrénelage spatial est indisponible en DirectX 12.
+
+NIS et FSR 1 prennent en charge le SDR et le HDR, y compris les chemins de présentation Vulkan compatibles. La disponibilité sous Vulkan dépend du jeu et de son format de présentation.
 
 ### Résolution et mise à l’échelle Windows
 
@@ -96,7 +98,7 @@ Epic documente ce [réglage haute résolution d’Unreal](https://dev.epicgames.
 
 ### Neural Rendering
 
-Onglet **Qualité d’image**, section **Neural Rendering** : activez **Neural Rendering**. Dans un jeu sans DLSS, ce seul
+Dans **Qualité d’image → Neural Rendering**, gardez **Ordre de traitement** sur **Post-SR** et activez **Neural Rendering**. Dans un jeu sans DLSS, ce seul
 interrupteur lance le NR sur l’image affichée, après la reconstruction si elle est active, ou seul. Tous les réglages
 NR de la page [Neural Rendering](NEURAL-RENDERING.fr.md) s’appliquent ensuite (passes, styles, résolution, précision
 Fast sur RTX 30, luminosité HDR). **Ctrl + Alt + N** l’active et le désactive en jouant.
@@ -113,7 +115,8 @@ jouant.
 
 | Choix | Ce que c’est | Coût en 4K sur une RTX 4090 |
 | :--- | :--- | :--- |
-| **RTX Encore** (par défaut) | L’estimation propre à RTX Encore, dans les shaders de la carte graphique : des vecteurs fins, un par 2×2 pixels, qui suivent les bords des objets et s’appuient sur le depth buffer quand le jeu en a un. Pensée pour la génération d’images à partir de ces images ; sans accélérateur. | environ 1,0 ms par image |
+| **Game motion vectors** (par défaut) | Utilise les vecteurs compatibles du jeu, avec repli automatique vers l’estimation RTX Encore. Pour la génération d’images ajoutée et le NR Image finale compatible en DirectX 12, DirectX 11 et Vulkan. | Selon les entrées disponibles |
+| **RTX Encore** | L’estimation propre à RTX Encore, dans les shaders de la carte graphique : des vecteurs fins, un par 2×2 pixels, qui suivent les bords des objets et s’appuient sur le depth buffer quand le jeu en a un. Pensée pour la génération d’images à partir de ces images ; sans accélérateur. | environ 1,0 ms par image |
 | **Shader (vort)** | Estimé aussi dans des shaders, selon la méthode de vort_Motion de vortigern11. Comparez-le avec RTX Encore dans votre jeu. | environ 0,6 ms par image |
 | **Optical Flow (Qualité)** | NVIDIA Optical Flow, l’accélérateur des cartes RTX. | — |
 | **Optical Flow (Rapide)** | NVIDIA Optical Flow dans son mode rapide : environ une milliseconde de moins par image, mais un mouvement un peu moins précis, ce qui peut laisser plus de traînées sur les mouvements rapides. | — |

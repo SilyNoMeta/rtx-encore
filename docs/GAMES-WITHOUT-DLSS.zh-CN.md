@@ -11,8 +11,7 @@ DirectX 11、DirectX 12 和 Vulkan 中为它们带来这三项功能，无需 Re
 - **帧生成**：NVIDIA DLSS 帧生成（DirectX 12 和 Vulkan，X2 至 X6）或 Intel XeFG（DirectX 12 最高 X6 并可使用 Tensor
   Cores，Vulkan X2 至 X6 并支持 HDR10，DirectX 11 X2 至 X6），倍率可在游玩中更改。
 
-每项功能可单独使用，也可组合使用。它们都是实验性功能，默认关闭。自带 DLSS 的游戏保留自己的 DLSS：这些选项在那里会隐藏，RTX Encore
-像以前一样配合游戏自己的 DLSS 工作。
+每项功能可单独使用，也可组合使用。它们都是实验性功能，默认关闭。自带 DLSS 的游戏保留自己的 DLSS，可另行参阅[实验性 NR 最终画面模式](NEURAL-RENDERING.zh-CN.md#present-模式)。
 
 **维护者已测试**（RTX 4090，NVIDIA 621.01）：PEAK 的 DirectX 12、DirectX 11 和 Vulkan（超分辨率、Neural Rendering、DLSS 帧生成
 X2 和 X4、XeFG X2 至 X4），The Sims 4 的 DirectX 11（XeFG X2），Football Life 2027 的 DirectX 11（DLAA、放大到 4K 和 Neural
@@ -54,7 +53,9 @@ RTX Encore 在画面显示之前取得已完成的画面。两帧之间的运动
 
 在**画质 → 超分辨率 → 引擎**中选择 **DLSS** 或 **XeSS** 即可启用重建，选择**无**即可关闭。不再需要单独的启用开关。默认输出为**游戏分辨率（DLAA）**：DLSS 以原生分辨率运行，XeSS 使用原生抗锯齿。需要放大时，以所需的输入分辨率在**窗口模式**（不是无边框窗口模式）启动游戏，然后在 Encore 中选择**屏幕分辨率**。Encore 会放大输出并移除窗口边框。例如，从 2560 × 1440 放大到 3840 × 2160，宽高比例约为 67%。
 
-**2.2.0 新增：**在同一引擎菜单中选择 **NIS**，无需 DLSS 或 Intel 运行库即可进行空间缩放，包括 DirectX 11。可将**锐化强度**设为 0–100%，并选择在缩放前（源分辨率）或缩放后（输出分辨率）使用 **SMAA** 或 **FXAA**。这些滤镜处理 SDR 彩色画面，也会作用于 HUD；请在游戏中比较效果。
+在同一引擎菜单中选择 **NIS** 或 **FSR 1**，无需 DLSS 或 Intel 运行库即可缩放。在 DirectX 11 和 DirectX 12 中，请选择宽高比与显示器相同的较低窗口分辨率。宽和高都必须放大，每个方向最多 2 倍。**锐化强度**范围为 0–100%，默认为 30%。在 DirectX 11 下，还可以在缩放前（源分辨率）或缩放后（输出分辨率）使用 **SMAA** 或 **FXAA**。这些滤镜需要 SDR，也会处理 HUD。DirectX 12 不提供空间抗锯齿。
+
+NIS 和 FSR 1 支持 SDR 和 HDR，也支持兼容的 Vulkan 呈现路径。Vulkan 的可用性取决于游戏及其呈现格式。
 
 ### 分辨率与 Windows 显示缩放
 
@@ -79,7 +80,7 @@ Epic 提供了此 [Unreal 高 DPI 设置的说明](https://dev.epicgames.com/doc
 
 ### Neural Rendering
 
-**画质**选项卡，**Neural Rendering** 部分：开启 **Neural Rendering**。在没有 DLSS 的游戏中，这一个开关就会在显示的画面上启动 NR，在超分辨率
+在**画质 → Neural Rendering**中，将**处理顺序**保留为 **Post-SR**，并开启 **Neural Rendering**。在没有 DLSS 的游戏中，这一个开关就会在显示的画面上启动 NR，在超分辨率
 之后（若已开启）或单独运行。随后 [Neural Rendering](NEURAL-RENDERING.zh-CN.md) 页面的所有 NR 控件都适用（遍数、风格、分辨率、RTX 30 上的
 Fast 精度、HDR 亮度）。**Ctrl + Alt + N** 可在游玩时开关它。
 
@@ -93,7 +94,8 @@ Fast 精度、HDR 亮度）。**Ctrl + Alt + N** 可在游玩时开关它。
 
 | 选项 | 说明 | RTX 4090 上 4K 的开销 |
 | :--- | :--- | :--- |
-| **RTX Encore**（默认） | RTX Encore 自己的估计，在显卡的着色器中：精细的向量（每 2×2 像素一个），能跟随对象边缘，并在游戏有深度缓冲时加以利用。为基于这些画面的帧生成而设计；不需要加速器。 | 每帧约 1.0 毫秒 |
+| **Game motion vectors**（默认） | 使用游戏的兼容运动矢量，不可用时自动回退至 RTX Encore 估算。适用于 DirectX 12、DirectX 11 和 Vulkan 的附加帧生成及兼容的最终画面 NR。 | 取决于可用输入 |
+| **RTX Encore** | RTX Encore 自己的估计，在显卡的着色器中：精细的向量（每 2×2 像素一个），能跟随对象边缘，并在游戏有深度缓冲时加以利用。为基于这些画面的帧生成而设计；不需要加速器。 | 每帧约 1.0 毫秒 |
 | **着色器 (vort)** | 同样在着色器中估计，采用 vortigern11 的 vort_Motion 方法。可在你的游戏中与 RTX Encore 对比。 | 每帧约 0.6 毫秒 |
 | **Optical Flow (质量)** | NVIDIA Optical Flow，RTX 显卡的加速器。 | — |
 | **Optical Flow (快速)** | NVIDIA Optical Flow 的快速模式：每帧约少 1 毫秒，但运动略不精确，快速移动时拖影可能更多。 | — |

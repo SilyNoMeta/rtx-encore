@@ -26,7 +26,11 @@
 | `xessTensorCores` | `false` | 实验性 NVIDIA Tensor Core XeSS Super Resolution，在下次 XeSS 执行时即时切换。初始验证：RTX 4090、NVIDIA 621.01、DirectX 12 和 Hub 提供的 Intel 运行库。其他 RTX 40、RTX 30 与 RTX 50 显卡在 NVIDIA 621.01 或 621.12 热修复驱动下以为各架构编译的同一加速路径准入，尚未在该硬件上完成游戏内验证。准备未通过时保留标准 XeSS。 |
 | `xefgTensorCores` | `false` | 实验性 NVIDIA Tensor Core XeFG；在初始化容量内支持固定 X2–X6。切换在命令重新记录时生效。初始验证：RTX 4090、NVIDIA 621.01、DirectX 12 和 Hub 提供的 Intel 运行库。其他 RTX 40、RTX 30 与 RTX 50 显卡在 NVIDIA 621.01 或 621.12 热修复驱动下以为各架构编译的同一加速路径准入，尚未在该硬件上完成游戏内验证。准备未通过时保留标准 XeFG；执行故障后须重启。 |
 | `xefgMfg4VariablePacing` | `true` | XeFG 高于 X2 的实验性帧间隔控制；关闭后，较高倍率可能不可用。 |
-| `xefgSourcePacing` | `true` | XeFG 在 X3 及以上时：以略低于游戏可维持帧率、随游戏自动调整的固定节奏开始每一帧，使镜头运动保持均匀。代价是少量 FPS；即时生效。关闭后各帧尽快开始，运动可能不均匀。 |
+| `xefgSourcePacing` | `true` | XeFG 在 X3 及以上时：观察源帧节奏，不限制正常帧。仅在帧时长持续交替时尝试修正，并仅在节奏改善且帧率损失较小时保留。逐步放宽节奏限制，若帧时长再次交替则立即恢复有效节奏；即时生效。 |
+| `xefgSourcePacingMode` | `"auto"` | `auto` 保持现有的条件式调整和 4% 的实测源帧率损失上限。`manual` 显示下方的损失上限和检查选项。更改即时生效并重新校准。 |
+| `xefgSourcePacingLossPercent` | `4` | 手动源帧率损失上限，0–30%。开启自动调整时是上限而非强制损失；关闭后，完整设定值根据未限速的实测帧节奏确定并保持固定间隔。 |
+| `xefgSourcePacingManualDetection` | `true` | 仅手动模式：先等待持续不均匀的帧节奏。关闭后在校准完成时应用，即使原有节奏正常。 |
+| `xefgSourcePacingManualAdjustments` | `true` | 仅手动模式：保留效果检查和逐步放宽限制。关闭后保持完整设定值，直到设置或上下文变化。呈现错误仍会停止调整。 |
 | `xefgUiHandling` | `interpolate` | `interpolate` 或 `game`；请求单独处理游戏界面需要兼容输入。 |
 | `xefgUiAlpha` | `unknown` | `unknown`、`straight` 或 `premultiplied`；不清楚界面格式时请保留 unknown。 |
 
@@ -57,9 +61,9 @@ NVIDIA 运行库的兼容性不再要求文件位于预设列表中。旧的 `pr
 | `dlssCustomScale` | `67` | `"custom"` 时的百分比，`50` 至 `100` |
 | `fastSuperResolution` | `false` | RTX 30、DirectX 12：在预设为 M 或 L 时加速 DLSS 超分辨率，在测量的系统上每个放大帧约减少 16% 至 20% 的 GPU 时间，画面与原版非常接近。在其他显卡上不起作用。需重启游戏。见[超分辨率](SUPER-RESOLUTION.zh-CN.md#fast-super-resolution-rtx-30)。 |
 | `dlssWithoutGameDlss` | `false` | 没有 DLSS 的游戏：使用 DLSS 或 XeSS 对显示的画面运行 DLAA 或放大。实验性功能。参见[没有 DLSS 的游戏](GAMES-WITHOUT-DLSS.zh-CN.md)。 |
-| `dlssWithoutGameDlssEngine` | `"dlss"` | `"dlss"`、`"xess"` 或 `"nis"`：`dlssWithoutGameDlss` 使用的引擎。XeSS 支持 1x 到 3x，需 Intel 运行库；NIS 是无需 DLSS 或 Intel 运行库的空间缩放。即时生效。 |
+| `dlssWithoutGameDlssEngine` | `"dlss"` | 可选 `"dlss"`、`"xess"`、`"nis"` 或 `"fsr1"`。XeSS 支持 1x 到 3x，需要 Intel 运行库。NIS 和 FSR 1 是空间缩放引擎，无需 DLSS 或 Intel 运行库。即时生效。 |
 | `dlssWithoutGameDlssOutput` | `"game"` | `"game"`（游戏分辨率下的 DLAA）或 `"screen"`（放大到屏幕分辨率；游戏使用较低分辨率的窗口化模式）。 |
-| `presentOpticalFlow` | `"encore"` | 没有 DLSS 的游戏的运动估计：`"encore"`（RTX Encore 自己的着色器估计，更精细的向量，面向帧生成；不需要 Optical Flow），`"shader"`（着色器，vort_Motion 的方法；不需要 Optical Flow），或 `"quality"` 或 `"fast"`（NVIDIA Optical Flow）。 |
+| `presentOpticalFlow` | `"game"` | 用于额外帧生成、NR 最终画面模式和没有 DLSS 的游戏的运动来源。`"game"` 优先使用捕获到的游戏运动矢量；不可用时回退到 `"encore"`。`"encore"` 使用 RTX Encore 的着色器，`"shader"` 使用 vort_Motion 的方法，`"quality"` 或 `"fast"` 使用 NVIDIA Optical Flow。 |
 
 ### `superResolutionInputs`
 
@@ -80,9 +84,9 @@ NVIDIA 运行库的兼容性不再要求文件位于预设列表中。旧的 `pr
 | :--- | :---: | :--- |
 | `srSharpening` | `"off"` | 模式：`off`（默认）、`game` 或 `custom`，即时生效。 |
 | `srSharpness` | `30` | Custom 强度：0–100%，默认 30%。0 禁用效果。 |
-| `spatialSharpness` | `30` | NIS 锐化强度，0–100%。即时生效。 |
-| `spatialAa` | `"off"` | NIS 前后的可选抗锯齿：`"off"`、`"smaa"` 或 `"fxaa"`。仅用于 SDR 彩色画面，包含 HUD。 |
-| `spatialAaPlacement` | `"before"` | `"before"`：在源分辨率下、NIS 前处理；`"after"`：在输出分辨率下、NIS 后处理。NR Post 和帧生成仍在抗锯齿之后。 |
+| `spatialSharpness` | `30` | NIS 和 FSR 1 的锐化强度，0–100%。即时生效。 |
+| `spatialAa` | `"off"` | DirectX 11 下可在 NIS 或 FSR 1 缩放前后使用抗锯齿。可选 `"off"`、`"smaa"` 或 `"fxaa"`。需要 SDR，也会处理 HUD。 |
+| `spatialAaPlacement` | `"before"` | `"before"` 在空间缩放前按源分辨率处理，`"after"` 在缩放后按输出分辨率处理。Post-SR NR、最终画面 NR 和兼容的帧生成都在空间缩放和已配置的抗锯齿之后运行。 |
 | `spatialAaQuality` | `"high"` | SMAA 1x 质量：`"low"`、`"medium"`、`"high"` 或 `"ultra"`。FXAA 使用固定预设。 |
 
 会与游戏后续锐化叠加，高强度可能产生光晕并放大噪点。实际效果取决于游戏后续图像处理，包括 HDR。不支持的输出格式或图形路径会保持图像不变。2.5.1 之前的原版 DLSS 保留其自身锐化；无法识别版本时，额外锐化也保持关闭。Vulkan 与实际游戏画质尚未经验证。
@@ -132,9 +136,10 @@ FG 预设选择支持以下经过逐一验证的 NVIDIA **DLSS-G 正式版二进
 | 键 | 默认 | 值 |
 | :--- | :---: | :--- |
 | `nrEnabled` | `false` | 开启 Neural Rendering。 |
+| `nrPlacement` | `"after-sr"` | `"after-sr"` 对应 Post-SR，`"before-sr"` 对应实验性 Pre-SR，`"present"` 对应最终画面模式，处理呈现前的画面，兼容配置可单独处理 HUD。`"present"` 独立于 `nrWithoutGameDlss`，可在兼容的 DirectX 11 配置中接在 NIS 或 FSR 1 之后，有单独的[使用条件](NEURAL-RENDERING.zh-CN.md#present-模式)。若要回退到没有最终画面模式的版本，请先手动改回 `"after-sr"`。 |
 | `nrPasses` | `1` | `1` 至 `4` |
 | `nrLaterPassLocalTone` | `0` | 第一遍之后应用的色调，`0` 至 `2` |
-| `nrResolution` | `"render"` | `"render"`、`"output"`、`"quality"`、`"balanced"`、`"performance"`、`"ultra-performance"`、`"custom"` |
+| `nrResolution` | `"render"` | `"render"`、`"output"`、`"quality"`、`"balanced"`、`"performance"`、`"ultra-performance"`、`"custom"`。Pre-SR 始终使用渲染尺寸。在最终画面模式下，`"render"` 以游戏的渲染尺寸为基准，无法获取时改用输出尺寸。 |
 | `nrResolutionScale` | `67` | `"custom"` 时相对于输出尺寸的百分比，`33` 至 `100` |
 | `nrIntensity` | `1` | 强度，`0` 至 `2` |
 | `nrStyle` | `0` | `0` 默认、`1` 自然、`2` 电影风格 |
@@ -159,7 +164,7 @@ FG 预设选择支持以下经过逐一验证的 NVIDIA **DLSS-G 正式版二进
 
 | 键 | 默认 | 效果 |
 | :--- | :---: | :--- |
-| `nrFoveation` | `false` | 启用中央优先 NR。 |
+| `nrFoveation` | `false` | 在兼容的 Post-SR 和最终画面路径上启用中央优先 NR。 |
 | `nrFoveaPreset` | `"balanced"` | `"light"`、`"balanced"`、`"strong"` 或 `"custom"`。 |
 | `nrFoveaWidth` | `55` | 使用 `"custom"` 时：全强度中央区域的宽度，占屏幕的 1–100%。 |
 | `nrFoveaHeight` | `55` | 使用 `"custom"` 时：全强度中央区域的高度，占屏幕的 1–100%。 |
@@ -174,7 +179,7 @@ FG 预设选择支持以下经过逐一验证的 NVIDIA **DLSS-G 正式版二进
 
 | 键 | 默认 | 收益与取舍 |
 | :--- | :---: | :--- |
-| `nrPaddingAware` | `false` | 允许 NR 使用略小的相邻尺寸，每个方向最多减少 2 %，不改变 DLSS 渲染尺寸。可能改变画面。实时生效。 |
+| `nrPaddingAware` | `false` | 允许 NR 使用略小的相邻尺寸，每个方向最多减少 2 %，不改变 DLSS 渲染尺寸。支持兼容的 Post-SR 和最终画面路径，可与中央优先 NR 同时使用。可能改变画面。实时生效。 |
 | `nrMaxInFlight` | `0` | 支持 Reflex 的 DirectX 12 游戏中的 NVIDIA 引擎：`0` 不限制，`1` 或 `2` 个待完成的 NR 帧；帧生成启用时至少使用 `2`。实时生效，游戏内性能影响仍待验证。 |
 
 ### `overlay`
@@ -257,3 +262,18 @@ Reflex 和 XeLL 报告不测量完整的显示延迟。
 | `nrPass1LocalTone` … `nrPass4LocalTone` | `"inherit"` | `"inherit"`, 0–2 |
 | `nrPass1SkinStructure` … `nrPass4SkinStructure` | `"inherit"` | `"inherit"`, 0–2 |
 | `nrPass1AutoMask` … `nrPass4AutoMask` | `"inherit"` | `"inherit"`, `true`, `false` |
+
+
+## 2.3.0
+
+### 默认使用游戏运动矢量
+
+为有 DLSS Super Resolution、但没有 DLSS Frame Generation 的游戏添加帧生成时，Game motion vectors 在 DirectX 12、DirectX 11 和 Vulkan 上优先使用游戏提供的运动矢量，不可用时自动回退至 RTX Encore 估算。兼容的最终画面 NR 也可使用这些矢量。保留已有的明确选择。此前的 DX11/Vulkan 游戏输入路径继续保留；2.3.0 提供统一选项并将其设为默认。模组与 Hub 现在一致显示全部五个选项。
+
+### NR 外观与曝光
+
+模组和 Hub 提供标准、柔和、自然、电影、人脸、柔肤及 NVIDIA 参考七种外观。应用外观会修改全局外观并将逐遍外观覆盖恢复为继承，不改变遍数、模型、分辨率或曝光。NR 曝光提供游戏、自动、测量和手动模式，适用于兼容的场景线性 DLSS 输入。新配置使用自动；已有文件缺少该键时保留游戏模式。
+
+### 更有针对性的 XeFG 帧节奏
+
+从 X3 起，自动模式先检测持续不均匀的游戏帧间隔，再尝试修正；只有在源帧率损失预算内改善节奏时才保留修正。逐步放宽限制，必要时恢复有效修正。手动模式可实时调整 0–30% 损失预算、检测和自动调整开关。自动模式采用 4% 预算。

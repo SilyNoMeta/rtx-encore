@@ -2,6 +2,48 @@
 
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
+## 2.3.0
+
+**RTX Encore 2.3.0 带来最终画面 Neural Rendering、默认使用游戏运动矢量、全新游戏内控制台，以及支持 HDR 的 FSR 1。**
+
+### 最终画面 Neural Rendering
+
+在兼容的 DirectX 12、DirectX 11 和 Vulkan 路径上，于游戏后期处理之后、帧生成和显示之前处理画面。兼容的独立场景/HUD 输入可保留 HUD；已合成进场景的 HUD 会随画面一起处理。兼容路径支持一至四遍处理、注视点 NR 和 HDR。Vulkan 请在启动游戏前选择最终画面，或在切换后重启游戏。具体组合请参阅 NR 指南。
+
+### 默认使用游戏运动矢量
+
+为有 DLSS Super Resolution、但没有 DLSS Frame Generation 的游戏添加帧生成时，Game motion vectors 在 DirectX 12、DirectX 11 和 Vulkan 上优先使用游戏提供的运动矢量，不可用时自动回退至 RTX Encore 估算。兼容的最终画面 NR 也可使用这些矢量。保留已有的明确选择。此前的 DX11/Vulkan 游戏输入路径继续保留；2.3.0 提供统一选项并将其设为默认。模组与 Hub 现在一致显示全部五个选项。
+
+### 全新游戏内控制台
+
+重新组织导航，使用更清晰的引擎卡片和可见的处理流程，方便调整超分辨率、帧生成、NR 与性能。NR 包含全局外观、逐遍设置和完整的多遍配置。
+
+### FSR 1 与 NIS，支持 HDR
+
+没有 DLSS 的游戏现在也可选择 AMD FidelityFX Super Resolution 1。NIS 和 FSR 1 支持兼容的 DirectX 11、DirectX 12 和 Vulkan 呈现路径，包含 SDR、HDR10 和 scRGB。锐度可实时调整。缩放前后的 FXAA/SMAA 仍仅适用于 DirectX 11 SDR。需要较低的窗口分辨率、相同宽高比，且每轴严格放大、最高 2 倍。
+
+### NR 外观与曝光
+
+模组和 Hub 提供标准、柔和、自然、电影、人脸、柔肤及 NVIDIA 参考七种外观。应用外观会修改全局外观并将逐遍外观覆盖恢复为继承，不改变遍数、模型、分辨率或曝光。NR 曝光提供游戏、自动、测量和手动模式，适用于兼容的场景线性 DLSS 输入。新配置使用自动；已有文件缺少该键时保留游戏模式。
+
+### 比较画面与开销
+
+图像与性能实验室支持比较 Post-SR、Pre-SR 和最终画面，包含截图、测量和导出。Hub 在比较卡片中标明选择的处理位置。请保持比较条件一致；NR GPU 时间只覆盖 NR 处理，不包含全部传输或完整图形管线。
+
+### 更有针对性的 XeFG 帧节奏
+
+从 X3 起，自动模式先检测持续不均匀的游戏帧间隔，再尝试修正；只有在源帧率损失预算内改善节奏时才保留修正。逐步放宽限制，必要时恢复有效修正。手动模式可实时调整 0–30% 损失预算、检测和自动调整开关。自动模式采用 4% 预算。
+
+### 兼容性与恢复
+
+修复 The Sims 4 DX11 DLSS-G 启动、BG3 Vulkan Script Extender/MCM 与最终画面、Cyberpunk 2077 旧版 Streamline 最终画面输入、Forza Horizon 6 最终画面/HUD、GTA V Enhanced 输入跟踪，以及 RDR2 Vulkan 队列/引导数据和探测 Vulkan 后的 DX12 启动。Encore 先初始化 FG 时仍保留原生 SR。另有 ReShade 与空间缩放/FG、缓冲格式、窗口和光标修复；Encore 管理的兼容 DXGI FG 可在 VRAM 预算压力后恢复。
+
+### RTX Encore Hub 2.3.0
+
+配套 Hub 识别稳定版 FSR 1 压缩包与已安装的代理/ASI，提供游戏运动矢量、NR 曝光及手动 XeFG 节奏设置，并限制旧模组不支持的选项。引导安装支持 NIS/FSR 1 和适用的 AA。社区配置架构接受最终画面与新增的共享 XeFG 控制。此前的 NIS、Overlay Studio、Tensor Core 选项和逐文件组件选择均继续保留。
+
+兼容性取决于游戏、图形 API、GPU 和受支持的运行库。Neural Rendering 及现有实验性路径仍有各自指南所述的限制。本次不宣称普遍的 FPS 提升。
+
 ## 2.2.0
 
 **RTX Encore 2.2.0 新增空间缩放和可自定义的性能叠加层。**没有 DLSS 的游戏现在可以选择 NVIDIA Image Scaling（NIS），并可在缩放前后使用 FXAA 或 SMAA。叠加层新增样式和独立指标选项。XeFG Tensor Cores 扩展到 RTX 20，XeSS Tensor Cores 则获得 RTX 30/40 优化。

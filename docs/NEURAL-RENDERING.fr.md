@@ -22,7 +22,7 @@ d'images.
 | **Traitement plus rapide, à image identique** | Des optimisations activées par défaut pour le moteur NVIDIA sur RTX 20 et RTX 30, avec une sortie identique dans les tests locaux de référence. Performances mesurées sur RTX 30 ; la validation sur une RTX 20 physique reste à faire. Une partie est propre à 310.8.0 : avec 310.9.16, le réseau A prend un peu plus de temps qu'avec 310.8.0. |
 | **Précision Fast** | Moteur NVIDIA : environ 17 % de temps NR en moins mesurés sur RTX 30, avec de petites différences d'image. |
 | **Résolution NR indépendante** | NR peut travailler sous la résolution de l'écran, tandis que DLSS conserve sa résolution de rendu et les détails reconstruits. Performance et Ultra Performance réduisent le travail NR sans imposer un réglage DLSS inférieur. |
-| **Conçu pour cohabiter avec la génération d'images** | NR s'exécute une fois par image calculée, jamais sur les images générées. |
+| **Génération d’images** | Dans les configurations Post-SR et Pre-SR compatibles, NR travaille sur les images calculées par le jeu. Voir les limites du [mode Image finale](#mode-present). |
 | **Plusieurs passes, un style pour chacune** | Une à quatre passes, chacune avec son rendu. |
 | **Jeux HDR** | Pris en charge, avec un réglage de luminosité. |
 | **Préparation en arrière-plan** | Pendant la préparation de NR ou quand des données nécessaires du jeu manquent, l'image reste telle que DLSS l'a produite. |
@@ -38,20 +38,28 @@ effectif. Pre-SR exige DLSS SR et une entrée uniforme : RR, DLAA, fovéation,
 taille évitant le padding et mouvements jitterés sont indisponibles. Une entrée
 incompatible conserve le SR original. La qualification GPU et en jeu reste à faire.
 
-Dans **Atelier image et performances**, garder une scène et une caméra
-reproductibles. Mesurer Post-SR (A), puis Pre-SR (B) : 60 images source de
-chauffe exclues, puis 240 images terminées par série. Capturer chaque mode et
-activer **Examiner les captures** pour le zoom, la vue côte à côte ou la
-séparation A/B. Les captures suivent le sharpening configuré et précèdent FG
-et le menu Encore ; les effets ajoutés ensuite par le jeu sont hors comparaison.
+Dans **Atelier image et performances**, gardez une scène et une caméra
+reproductibles. Mesurez séparément Post-SR, Pre-SR ou Image finale, puis choisissez
+les deux modes à comparer. Chaque série exclut 60 images de chauffe et recueille
+240 images source terminées. Capturez chaque mode, puis activez **Examiner les
+captures** pour le zoom, la vue côte à côte ou la séparation A/B. Post-SR et
+Pre-SR capturent après l’accentuation configurée au niveau de DLSS, avant les
+effets ajoutés ensuite par le jeu. Le mode Image finale capture l’image du jeu traitée, avec
+le HUD préservé le cas échéant, avant la génération d’images et le menu Encore.
+Le point de capture figure dans l’export.
 
 Le panneau sépare temps GPU NR/SR, modèles mesurables, intervalles source et
 mémoire en MiB. Les allocations NR suivies, l’usage local du processus sur le
 nœud 0 de l’adaptateur de rendu et l’usage global NVIDIA restent distincts.
+Le point de capture du mode Image finale ne mesure pas le temps GPU de SR. Les temps GPU
+de NR et de ses modèles sont disponibles quand le travail peut être mesuré
+dans le même flux de commandes. En mode Image finale, le compteur GPU de NR démarre
+après la préparation du mouvement et de la profondeur et exclut les transferts
+Vulkan ou DirectX 11 de certains chemins. Il mesure uniquement le traitement NR.
 Une mesure absente reste **N/D**. Le détail des modèles du pont D3D11 et son
 compte complet d’allocations privées sont indisponibles. Le suivi exclut les
-allocations opaques NVIDIA et ne mesure pas la résidence. Une variation globale
-ne prouve pas une économie causée par Pre-SR.
+allocations opaques NVIDIA et ne mesure pas la résidence. Une variation globale donne du contexte et ne suffit pas à attribuer une
+économie de mémoire à un ordre de traitement.
 
 Exporter hors du dossier du jeu produit JSON, CSV, pixels originaux, aperçus
 SDR BMP et `compare.html` pour examiner les pixels à pleine résolution. Le HDR
@@ -63,6 +71,24 @@ L’annulation reste possible. La restauration du mode initial conserve les
 modifications manuelles ultérieures. Aucun gain relatif n’est présenté pour
 des séries incompatibles. L’arrêt cesse les nouvelles mesures ; les travaux
 GPU déjà engagés attendent leur complétion pour libérer leurs ressources.
+
+<a name="mode-present"></a>
+
+## Mode Image finale
+
+Dans **Qualité d’image → Neural Rendering**, activez **Neural Rendering** et réglez **Ordre de traitement** sur **Image finale**. Ce mode expérimental traite les images compatibles du jeu après le post-traitement, avant la génération d’images, le menu Encore et l’affichage. Si une configuration compatible fournit la scène et le HUD séparément, NR traite la scène et préserve le HUD. Les petits textes et les éléments mobiles du HUD déjà dessinés dans une image traitée d’un seul bloc peuvent changer avec le reste de l’image.
+
+Le mode Image finale accepte les chemins DirectX 11, DirectX 12 et Vulkan compatibles utilisant le DLSS du jeu, en SDR, HDR10 10 bits (PQ) ou scRGB en virgule flottante, avec une à quatre passes NR. **NR fovéal** et **Éviter le padding NR** peuvent être utilisés ensemble. Avec **NIS ou FSR 1** compatible sous DirectX 11, le mode Image finale intervient après la mise à l’échelle spatiale et son anticrénelage optionnel, y compris dans les jeux sans DLSS. Ce chemin peut alimenter la génération d’images compatible ajoutée par Encore. Les moteurs spatiaux conservent leurs limites de mode fenêtré, de format et de mise à l’échelle ; leur anticrénelage optionnel exige du SDR. Les autres moteurs de mise à l’échelle ajoutés restent hors de ce mode. Les combinaisons avec DLAA et Ray Reconstruction restent à valider en jeu.
+
+- **DirectX 11.** Les configurations compatibles de XeFG ou de génération d’images DLSS ajoutées par Encore peuvent utiliser l’image source améliorée. DirectX 11 sur DirectX 12 est aussi pris en charge lorsque le jeu crée une chaîne de présentation DirectX 11 compatible dans cette configuration. Si le jeu crée sa chaîne en DirectX 12 et en enveloppe séparément les tampons pour DirectX 11, ce chemin est hors périmètre.
+- **DirectX 12.** La génération d’images DLSS du jeu via Streamline peut utiliser l’image entière ou une scène et un HUD prémultiplié correspondants en SDR ou HDR10. En HDR10, l’interface doit utiliser une texture séparée de haute précision. Si l’image ne correspond pas à la composition attendue du HUD, le mode Image finale conserve ses couleurs d’origine. Les configurations FSR natives prises en charge exigent une composition standard compatible de l’interface. Les configurations natives compatibles de génération d’images XeSS acceptent l’image entière ou des couches prémultipliées correspondantes de pleine taille en SDR ou HDR10. Le chemin HDR10 natif XeSS exige une scène, une interface et une sortie au même format RGB10A2. Les images d’origine sont conservées si l’alpha 2 bits de l’interface ne reproduit pas l’image du jeu. Le mode Image finale fonctionne aussi avec les configurations compatibles de génération d’images DLSS ou XeFG ajoutées par Encore. Pour XeFG ajouté par Encore sous DirectX, réglez **Traitement HUD/interface** sur **Interpoler**.
+- **Vulkan.** Les configurations compatibles de génération d’images DLSS du jeu via Streamline et de XeFG ajouté par Encore peuvent utiliser l’image entière ou des couches de scène et de HUD séparées compatibles. Ce second chemin exige une interface prémultipliée de pleine taille avec une scène correspondante. La génération d’images DLSS du jeu accepte le SDR compatible, le HDR10 avec une texture d’interface haute précision et le scRGB avec une scène et une interface en virgule flottante. Avec XeFG ajouté par Encore, les couches séparées exigent du SDR et le réglage **Traitement HUD/interface → Couches du jeu**. Les couches partielles et les entrées d’interface ne contenant que l’alpha restent hors périmètre. Sélectionnez **Image finale** avant de lancer un jeu Vulkan. Si vous passez à ce mode en jeu, y compris après avoir utilisé Pre-SR ou Post-SR, redémarrez le jeu pour appliquer le changement.
+- **Smooth Motion.** Le mode Image finale accepte certaines configurations DirectX 11 et les chemins DirectX 12 compatibles d’Encore avec le pilote NVIDIA 621.14 exact. Le Smooth Motion natif sous DirectX 12 sur RTX 40/50 et celui sous Vulkan sont hors périmètre.
+- **Génération d’images désactivée.** Les jeux utilisant une configuration Streamline DLSS compatible peuvent toujours utiliser le mode Image finale s’ils fournissent des entrées d’interface séparées.
+
+Utilisez **Estimation du mouvement** dans la section NR pour choisir comment estimer le mouvement à partir de l’image soumise à l’affichage. Cela ajoute du travail GPU et peut se comporter différemment du mouvement fourni par le jeu à DLSS. **Résolution → Rendu** prend pour base la taille de rendu du jeu si elle est disponible pour l’image courante, sinon la taille de sortie. Le repli sur la taille de sortie peut coûter plus cher. Les échelles en pourcentage et personnalisées sont relatives à la taille de sortie. Vérifiez les dimensions en direct et le **Mode effectif** dans le menu.
+
+En l’absence d’image compatible, l’image d’origine et le mode demandé sont conservés. Utilisez l’**Atelier image et performances** pour capturer en mode Image finale et le comparer à l’un des deux modes SR. La qualité d’image, les temps de traitement et la génération d’images sur ces chemins restent à valider en jeu.
 
 ## Prérequis
 
@@ -138,7 +164,7 @@ OpenNR est retiré en 1.3.0. Neural Rendering utilise le runtime NVIDIA. Une con
 
 ## Coût
 
-NR ajoute du travail GPU à chaque image calculée. Mesuré dans le benchmark intégré de Black Myth: Wukong sur un
+NR ajoute du travail GPU quand il traite une image. Mesuré dans le benchmark intégré de Black Myth: Wukong sur un
 RTX 3070 Ti Laptop (2560×1440, DLSS à 58 %, génération d'images X3) :
 
 | Configuration | FPS moyens | 5 % les plus bas |
@@ -150,8 +176,7 @@ RTX 3070 Ti Laptop (2560×1440, DLSS à 58 %, génération d'images X3) :
 
 Il s'agit des **FPS affichés avec la génération d'images X3**, avec le moteur NR NVIDIA. Dans ce test, passer des
 réglages par défaut à Precision Fast et Resolution Performance augmente les FPS affichés de 18 % (76 à 90 FPS).
-Cela ne mesure pas une hausse de 17 % des FPS du jeu : ce chiffre concerne le temps de traitement NR. Avec la
-génération d'images, NR s'applique aux images que le jeu calcule, jamais aux images générées.
+Le chiffre de 17 % concerne le temps de traitement NR. Ces mesures s’appliquent au chemin de reconstruction DLSS testé avec la génération d’images X3.
 
 ## Quand quelque chose ne fonctionne pas
 
@@ -171,3 +196,10 @@ menu (onglet **System**, **Copy**).
 ## Réglages par passe (depuis la 1.2.0)
 
 Chacune des quatre passes NR possibles peut remplacer l’intensité, le ton local, la structure locale, la structure de peau et le masque de personnage, ou suivre la valeur globale. Les valeurs numériques vont de 0 à 2 ; le masque prend `inherit`, `true` ou `false`. Après la première passe, le ton hérité vient de `nrLaterPassLocalTone`. Une intensité à zéro laisse la passe tourner et ne supprime pas son coût GPU/VRAM.
+
+
+## 2.3.0
+
+### Looks NR et exposition
+
+Sept looks sont disponibles dans le mod et le Hub : Standard, Discret, Naturel, Cinématique, Visages, Peau douce et Référence NVIDIA. Un look modifie l’apparence et remet les surcharges d’apparence par passe sur Global, sans changer le nombre de passes, les modèles, la résolution ni l’exposition. L’exposition NR propose Jeu, Automatique, Mesurée et Manuelle pour les entrées DLSS linéaires scène compatibles. Une nouvelle configuration utilise Automatique ; un fichier existant sans cette clé conserve Jeu.

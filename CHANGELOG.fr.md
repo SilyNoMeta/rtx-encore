@@ -2,6 +2,48 @@
 
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 2.3.0
+
+**RTX Encore 2.3.0 apporte le Neural Rendering sur l’image finale, les vecteurs de mouvement du jeu par défaut, une nouvelle console en jeu et FSR 1 avec prise en charge du HDR.**
+
+### Neural Rendering sur l’image finale
+
+Traitez les images compatibles après les effets du jeu, avant la génération d’images et l’affichage, en DirectX 12, DirectX 11 et Vulkan. Des entrées scène/HUD séparées compatibles permettent de préserver le HUD ; un HUD déjà intégré à la scène est traité avec elle. Une à quatre passes, NR fovéal et HDR sur les chemins compatibles. En Vulkan, choisissez Image finale avant le lancement ou redémarrez après la bascule. Le guide NR détaille les combinaisons prises en charge.
+
+### Vecteurs de mouvement du jeu par défaut
+
+Pour la génération d’images ajoutée aux jeux avec DLSS Super Resolution mais sans DLSS Frame Generation, Game motion vectors utilise les vecteurs disponibles du jeu en DirectX 12, DirectX 11 et Vulkan, avec repli automatique vers l’estimation RTX Encore. Ils alimentent aussi le NR Image finale compatible. Les choix explicites existants sont conservés. Les chemins DX11/Vulkan utilisant les entrées du jeu existaient déjà ; la 2.3.0 expose ce choix commun et en fait le défaut. Les cinq choix sont désormais affichés de façon cohérente dans le mod et le Hub.
+
+### Une nouvelle console en jeu
+
+Navigation réorganisée, cartes de moteurs plus lisibles et pipeline de traitement visible pour retrouver les réglages de reconstruction, génération d’images, NR et performances. Le NR présente l’apparence globale, les réglages par passe et des profils multipasses complets.
+
+### FSR 1 rejoint NIS, HDR compris
+
+AMD FidelityFX Super Resolution 1 rejoint NVIDIA Image Scaling pour les jeux sans DLSS. Les chemins de présentation DirectX 11, DirectX 12 et Vulkan compatibles acceptent SDR, HDR10 et scRGB. La netteté spatiale se règle à chaud. FXAA/SMAA avant ou après la mise à l’échelle restent limités au DirectX 11 SDR. Choisissez une résolution fenêtrée inférieure, au même format d’image, avec un agrandissement strict jusqu’à 2x par axe.
+
+### Looks NR et exposition
+
+Sept looks sont disponibles dans le mod et le Hub : Standard, Discret, Naturel, Cinématique, Visages, Peau douce et Référence NVIDIA. Un look modifie l’apparence et remet les surcharges d’apparence par passe sur Global, sans changer le nombre de passes, les modèles, la résolution ni l’exposition. L’exposition NR propose Jeu, Automatique, Mesurée et Manuelle pour les entrées DLSS linéaires scène compatibles. Une nouvelle configuration utilise Automatique ; un fichier existant sans cette clé conserve Jeu.
+
+### Comparer l’image et son coût
+
+Le laboratoire Image et performances compare Post-SR, Pre-SR et Image finale, avec captures, mesures et export. Le Hub affiche les placements sélectionnés sur les cartes de comparaison. Comparez des conditions identiques ; le temps GPU NR mesure le traitement NR, pas tous les transferts ni le pipeline graphique complet.
+
+### Cadence XeFG plus sélective
+
+À partir de X3, le mode automatique attend des intervalles durablement irréguliers avant d’intervenir et conserve une correction seulement si elle améliore la régularité dans son budget de perte des FPS de base. Il relâche la contrainte et rétablit une correction efficace si nécessaire. Le mode manuel expose un budget de 0 à 30 %, la détection et les ajustements automatiques, à chaud. Le mode automatique utilise un budget de 4 %.
+
+### Compatibilité et récupération
+
+Corrections du démarrage DLSS-G DX11 des Sims 4, de Script Extender/MCM et Image finale dans BG3 Vulkan, des entrées Streamline historiques de Cyberpunk 2077, du NR Image finale/HUD de Forza Horizon 6, du suivi des entrées de GTA V Enhanced, et des files/guides Vulkan de RDR2 ainsi que de son démarrage DX12 après découverte Vulkan. Le SR natif reste disponible si Encore initialise le FG en premier. Autres corrections : ReShade avec mise à l’échelle/FG, formats des buffers, taille des fenêtres, curseur et récupération du FG DXGI géré par Encore après pression sur le budget VRAM.
+
+### RTX Encore Hub 2.3.0
+
+Le Hub associé reconnaît les archives FSR 1 stables et les proxy/ASI installés, propose Game motion vectors, l’exposition NR et la cadence XeFG manuelle, tout en respectant les versions anciennes du mod. L’installation guidée prend en charge NIS/FSR 1 et leur AA applicable. Le schéma communautaire accepte Image finale et les nouvelles commandes XeFG partagées. NIS, Overlay Studio, options Tensor Cores et choix des composants par fichier restent disponibles.
+
+La compatibilité dépend du jeu, de l’API, du GPU et des runtimes admis. Le Neural Rendering et les chemins expérimentaux conservent les limites décrites dans leurs guides. Aucun nouveau gain universel de FPS n’est annoncé.
+
 ## 2.2.0
 
 **RTX Encore 2.2.0 ajoute la mise à l'échelle spatiale et un overlay personnalisable.** Les jeux sans DLSS peuvent utiliser NVIDIA Image Scaling (NIS), avec FXAA ou SMAA en option avant ou après la mise à l'échelle. L'overlay propose plusieurs styles et des métriques au choix. XeFG sur les Tensor Cores s'étend aux RTX 20, et XeSS sur les Tensor Cores reçoit des optimisations pour les RTX 30/40.

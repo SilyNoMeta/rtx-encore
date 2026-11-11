@@ -34,6 +34,13 @@ A built-in menu, with RTX Encore Hub to install the mod and its required runtime
 
 </div>
 
+## New in 2.3.0
+
+RTX Encore 2.3.0 brings Final image Neural Rendering, game motion vectors by default, a redesigned in-game Console and FSR 1 with HDR support.
+
+[2.3.0](CHANGELOG.md#230)
+
+
 **RTX Encore now has a Discord.** Share your 2.0.0 results, compare settings, or get help with the mod and Hub. [Join the Discord](https://discord.gg/Zwmq4Xc2Br).
 
 > [!IMPORTANT]
@@ -214,6 +221,8 @@ TonyJoaca and has since grown into a project of its own. It also owes much to th
 - [sdli1995/dlssg_for_sm86](https://github.com/sdli1995/dlssg_for_sm86): frame-generation research on RTX 20 and RTX 30;
 - [Intel XeSS](https://github.com/intel/xess): XeSS, XeFG and XeLL SDK interfaces;
 - [maximedgoulet/FoveatedDLSS5](https://github.com/maximedgoulet/FoveatedDLSS5): the foveated Neural Rendering idea;
+- [janblade/OptiScaler F5](https://github.com/janblade/OptiScaler-F5-DLSSNR-Multipass) inspired NR looks and automatic exposure;
+- [Skynizz/optiscaler-dlss5](https://github.com/Skynizz/optiscaler-dlss5) inspired multipass NR profiles;
 - [jlrouzies-fr/DLSS5-Feeder](https://github.com/jlrouzies-fr/DLSS5-Feeder): Neural Rendering fed from the displayed image, and its motion validation;
 - [vortigern11/vort_Shaders](https://github.com/vortigern11/vort_Shaders) (vort_Motion): the shader motion estimation for games without DLSS;
 - [crosire/reshade](https://github.com/crosire/reshade) (Generic Depth add-on): how to find the depth buffer a game draws with;
