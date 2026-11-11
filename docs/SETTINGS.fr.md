@@ -29,7 +29,11 @@ Aucune clé ne contient de chemin ni de commande : un fichier de réglages peut 
 | `xessTensorCores` | `false` | Tensor Cores NVIDIA expérimentaux pour XeSS Super Resolution ; bascule à chaud au prochain calcul XeSS. Qualification initiale : RTX 4090, NVIDIA 621.01, DirectX 12 et runtime Intel fourni par le Hub. Les autres RTX 40, les RTX 30 et les RTX 50, avec NVIDIA 621.01 ou le hotfix 621.12, sont admises avec la même accélération compilée pour leur architecture, sans validation en jeu à ce jour. Une préparation refusée conserve le XeSS classique. |
 | `xefgTensorCores` | `false` | Tensor Cores NVIDIA expérimentaux pour XeFG ; facteurs fixes X2–X6 dans la capacité initialisée. Bascule à chaud au renouvellement des commandes. Qualification initiale : RTX 4090, NVIDIA 621.01, DirectX 12 et runtime Intel fourni par le Hub. Les autres RTX 40, les RTX 30 et les RTX 50, avec NVIDIA 621.01 ou le hotfix 621.12, sont admises avec la même accélération compilée pour leur architecture, sans validation en jeu à ce jour. Une préparation refusée conserve le XeFG classique ; une erreur d’exécution impose un redémarrage. |
 | `xefgMfg4VariablePacing` | `true` | Espacement expérimental des images XeFG au-delà de X2 ; le désactiver peut rendre les facteurs élevés indisponibles. |
-| `xefgSourcePacing` | `true` | XeFG à partir de X3 : lance les images du jeu à intervalle régulier, ajusté au jeu, juste sous la cadence qu’il tient, pour que les mouvements de caméra restent réguliers. Coûte quelques FPS ; s’applique à chaud. Désactivé : les images démarrent dès que possible, ce qui peut rendre les mouvements irréguliers. |
+| `xefgSourcePacing` | `true` | XeFG à partir de X3 : observe la cadence source sans limiter les images régulières. Essaie une correction uniquement en cas d'alternance courte/longue persistante et ne la conserve que si la régularité s'améliore avec une faible perte de FPS. Relâche progressivement la contrainte et restaure la cadence efficace si l'alternance revient ; s'applique à chaud. |
+| `xefgSourcePacingMode` | `"auto"` | `auto` conserve la correction conditionnelle actuelle et son budget de perte mesurée de 4% des FPS de base. `manual` affiche le budget et les vérifications ci-dessous. Les changements s’appliquent à chaud et relancent la calibration. |
+| `xefgSourcePacingLossPercent` | `4` | Budget manuel de perte des FPS de base, 0–30%. Avec les ajustements automatiques, c’est un maximum, pas une perte imposée. Sans eux, la valeur entière fixe une période à partir de la cadence mesurée sans régulation. |
+| `xefgSourcePacingManualDetection` | `true` | Manuel uniquement : attendre une cadence durablement irrégulière avant d’intervenir. Désactivé : appliquer après calibration, même sur une cadence régulière. |
+| `xefgSourcePacingManualAdjustments` | `true` | Manuel uniquement : conserver les vérifications du gain et le relâchement progressif. Désactivé : tenir le budget entier jusqu’à un changement des réglages ou du contexte. Les erreurs de présentation arrêtent toujours la correction. |
 | `xefgUiHandling` | `interpolate` | `interpolate` ou `game` ; le traitement séparé de l’interface du jeu exige des entrées compatibles. |
 | `xefgUiAlpha` | `unknown` | `unknown`, `straight` ou `premultiplied` ; laissez unknown si le format de l’interface est inconnu. |
 
@@ -60,9 +64,9 @@ La compatibilité des runtimes NVIDIA n’exige plus que le fichier figure dans 
 | `dlssCustomScale` | `67` | Pourcentage, `50` à `100`, avec `"custom"` |
 | `fastSuperResolution` | `false` | RTX 30, DirectX 12 : DLSS Super Resolution plus rapide avec le preset M ou L, environ 16 à 20 % de temps GPU en moins par image upscalée sur le système mesuré, image très proche de l'originale. Inactive sur les autres cartes. Relancez pour appliquer. Voir [Super Resolution](SUPER-RESOLUTION.fr.md#fast-super-resolution-rtx-30). |
 | `dlssWithoutGameDlss` | `false` | Jeux sans DLSS : DLAA ou upscaling sur l’image affichée, avec DLSS ou XeSS. Expérimental. Voir [Jeux sans DLSS](GAMES-WITHOUT-DLSS.fr.md). |
-| `dlssWithoutGameDlssEngine` | `"dlss"` | `"dlss"`, `"xess"` ou `"nis"` : le moteur de `dlssWithoutGameDlss`. XeSS va de 1x à 3x et nécessite les runtimes Intel ; NIS est une mise à l'échelle spatiale sans runtime DLSS ou Intel. Appliqué à chaud. |
+| `dlssWithoutGameDlssEngine` | `"dlss"` | `"dlss"`, `"xess"`, `"nis"` ou `"fsr1"`. XeSS va de 1x à 3x et nécessite les runtimes Intel. NIS et FSR 1 font une mise à l’échelle spatiale sans runtime DLSS ou Intel. Appliqué à chaud. |
 | `dlssWithoutGameDlssOutput` | `"game"` | `"game"` (DLAA à la résolution du jeu) ou `"screen"` (upscaling jusqu’à la résolution de l’écran ; le jeu en mode fenêtré à une résolution plus basse). |
-| `presentOpticalFlow` | `"encore"` | Jeux sans DLSS : estimation du mouvement, `"encore"` (l’estimation propre à RTX Encore dans des shaders, des vecteurs plus fins pour la génération d’images ; sans Optical Flow), `"shader"` (shaders, méthode de vort_Motion ; sans Optical Flow), ou `"quality"` ou `"fast"` (NVIDIA Optical Flow). |
+| `presentOpticalFlow` | `"game"` | Source de mouvement pour la génération d’images ajoutée, le mode NR Image finale et les jeux sans DLSS. `"game"` privilégie les vecteurs de mouvement capturés du jeu lorsqu’ils sont disponibles et se replie sur `"encore"`. `"encore"` utilise les shaders de RTX Encore, `"shader"` la méthode de vort_Motion, et `"quality"` ou `"fast"` NVIDIA Optical Flow. |
 
 ### `superResolutionInputs`
 
@@ -83,9 +87,9 @@ Les anciennes clés DLSS/XeSS sont migrées selon le moteur de reconstruction s�
 | :--- | :---: | :--- |
 | `srSharpening` | `"off"` | Mode : `off` (défaut), `game` ou `custom`. Appliqué à chaud. |
 | `srSharpness` | `30` | Force Custom : 0 à 100 %, défaut 30 %. 0 désactive l’effet. |
-| `spatialSharpness` | `30` | Netteté NIS de 0 à 100 %. Appliqué à chaud. |
-| `spatialAa` | `"off"` | Anticrénelage facultatif autour de NIS : `"off"`, `"smaa"` ou `"fxaa"`. Image SDR couleur uniquement ; HUD compris. |
-| `spatialAaPlacement` | `"before"` | `"before"` NIS à la résolution source ou `"after"` à la résolution de sortie. NR Post et la génération d'images restent après l'anticrénelage. |
+| `spatialSharpness` | `30` | Netteté de NIS et FSR 1 de 0 à 100 %. Appliqué à chaud. |
+| `spatialAa` | `"off"` | Anticrénelage facultatif autour de NIS ou FSR 1 en DirectX 11. Choisissez `"off"`, `"smaa"` ou `"fxaa"`. Fonctionne en SDR et inclut le HUD. |
+| `spatialAaPlacement` | `"before"` | `"before"` applique l’anticrénelage avant la mise à l’échelle spatiale à la résolution source et `"after"` l’applique à la résolution de sortie. NR Post-SR, NR Image finale et la génération d’images compatible suivent la mise à l’échelle spatiale et l’anticrénelage configuré. |
 | `spatialAaQuality` | `"high"` | Qualité SMAA 1x : `"low"`, `"medium"`, `"high"` ou `"ultra"`. FXAA utilise un préréglage fixe. |
 
 Elle se cumule avec la netteté ajoutée ensuite par le jeu. Une force élevée crée des halos et accentue le bruit. Le rendu dépend des traitements ultérieurs du jeu, y compris en HDR. Un format ou un chemin graphique non pris en charge laisse l'image inchangée. Les versions originales de DLSS antérieures à 2.5.1 gardent leur propre netteté ; la passe supplémentaire reste aussi inactive si cette version ne peut pas être identifiée. Vulkan et la qualité d'image en jeu ne sont pas encore validés.
@@ -145,9 +149,10 @@ Laissez `"game"` pour conserver le comportement actuel.
 | Clé | Défaut | Valeurs |
 | :--- | :---: | :--- |
 | `nrEnabled` | `false` | Active Neural Rendering. |
+| `nrPlacement` | `"after-sr"` | `"after-sr"` pour Post-SR, `"before-sr"` pour Pre-SR expérimental ou `"present"` pour le mode Image finale avant présentation, avec traitement séparé du HUD sur les configurations compatibles. `"present"` est indépendant de `nrWithoutGameDlss`, peut suivre NIS ou FSR 1 sous DirectX 11 compatible et a ses propres [prérequis](NEURAL-RENDERING.fr.md#mode-present). Remettez `"after-sr"` manuellement avant de revenir à une version sans le mode Image finale. |
 | `nrPasses` | `1` | `1` à `4` |
 | `nrLaterPassLocalTone` | `0` | Ton appliqué après la première passe, `0` à `2` |
-| `nrResolution` | `"render"` | `"render"`, `"output"`, `"quality"`, `"balanced"`, `"performance"`, `"ultra-performance"`, `"custom"` |
+| `nrResolution` | `"render"` | `"render"`, `"output"`, `"quality"`, `"balanced"`, `"performance"`, `"ultra-performance"`, `"custom"`. Pre-SR utilise toujours la taille de rendu. En mode Image finale, `"render"` prend pour base la taille de rendu du jeu ou, à défaut, la taille de sortie. |
 | `nrResolutionScale` | `67` | Pourcentage de la taille de sortie, `33` à `100`, avec `"custom"` |
 | `nrIntensity` | `1` | Intensité, `0` à `2` |
 | `nrStyle` | `0` | `0` par défaut, `1` naturel, `2` cinématique |
@@ -172,7 +177,7 @@ Nécessite `nrEnabled`. Le NR travaille à pleine force au milieu de l'écran et
 
 | Clé | Défaut | Effet |
 | :--- | :---: | :--- |
-| `nrFoveation` | `false` | Active le NR fovéal. |
+| `nrFoveation` | `false` | Active le NR fovéal sur les chemins Post-SR et Image finale compatibles. |
 | `nrFoveaPreset` | `"balanced"` | `"light"`, `"balanced"`, `"strong"` ou `"custom"`. |
 | `nrFoveaWidth` | `55` | Avec `"custom"` : largeur du centre à pleine force, 1–100 % de l'écran. |
 | `nrFoveaHeight` | `55` | Avec `"custom"` : hauteur du centre à pleine force, 1–100 % de l'écran. |
@@ -188,7 +193,7 @@ d'option lue au démarrage demande de relancer le jeu.
 
 | Clé | Défaut | Gain et compromis |
 | :--- | :---: | :--- |
-| `nrPaddingAware` | `false` | Autorise une taille NR voisine plus petite, au plus 2 % de moins par axe, sans changer la taille de rendu DLSS. Peut changer l'image. S'applique en direct. |
+| `nrPaddingAware` | `false` | Autorise une taille NR voisine plus petite, au plus 2 % de moins par axe, sans changer la taille de rendu DLSS. Fonctionne sur les chemins Post-SR et Image finale compatibles, y compris avec le NR fovéal. Peut changer l’image. S’applique en direct. |
 | `nrMaxInFlight` | `0` | NVIDIA, DirectX 12 avec Reflex : `0` sans limite, `1` ou `2` images NR en attente ; la génération d'images active utilise au moins `2`. S'applique en direct ; effet sur les performances en jeu à vérifier. |
 
 ### `overlay`
@@ -275,3 +280,18 @@ Chacune des quatre passes NR possibles peut remplacer l’intensité, le ton loc
 | `nrPass1LocalTone` … `nrPass4LocalTone` | `"inherit"` | `"inherit"`, 0–2 |
 | `nrPass1SkinStructure` … `nrPass4SkinStructure` | `"inherit"` | `"inherit"`, 0–2 |
 | `nrPass1AutoMask` … `nrPass4AutoMask` | `"inherit"` | `"inherit"`, `true`, `false` |
+
+
+## 2.3.0
+
+### Vecteurs de mouvement du jeu par défaut
+
+Pour la génération d’images ajoutée aux jeux avec DLSS Super Resolution mais sans DLSS Frame Generation, Game motion vectors utilise les vecteurs disponibles du jeu en DirectX 12, DirectX 11 et Vulkan, avec repli automatique vers l’estimation RTX Encore. Ils alimentent aussi le NR Image finale compatible. Les choix explicites existants sont conservés. Les chemins DX11/Vulkan utilisant les entrées du jeu existaient déjà ; la 2.3.0 expose ce choix commun et en fait le défaut. Les cinq choix sont désormais affichés de façon cohérente dans le mod et le Hub.
+
+### Looks NR et exposition
+
+Sept looks sont disponibles dans le mod et le Hub : Standard, Discret, Naturel, Cinématique, Visages, Peau douce et Référence NVIDIA. Un look modifie l’apparence et remet les surcharges d’apparence par passe sur Global, sans changer le nombre de passes, les modèles, la résolution ni l’exposition. L’exposition NR propose Jeu, Automatique, Mesurée et Manuelle pour les entrées DLSS linéaires scène compatibles. Une nouvelle configuration utilise Automatique ; un fichier existant sans cette clé conserve Jeu.
+
+### Cadence XeFG plus sélective
+
+À partir de X3, le mode automatique attend des intervalles durablement irréguliers avant d’intervenir et conserve une correction seulement si elle améliore la régularité dans son budget de perte des FPS de base. Il relâche la contrainte et rétablit une correction efficace si nécessaire. Le mode manuel expose un budget de 0 à 30 %, la détection et les ajustements automatiques, à chaud. Le mode automatique utilise un budget de 4 %.

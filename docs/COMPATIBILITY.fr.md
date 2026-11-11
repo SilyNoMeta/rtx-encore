@@ -35,9 +35,12 @@ prises en charge.
 | Fast super resolution (RTX 30) | — | ✅ | — |
 | Smooth Motion (RTX 30) | ✅ | ✅ | ✅ |
 | Neural Rendering | 🧪 | 🧪 | 🧪 |
+| [NR en mode Image finale](NEURAL-RENDERING.fr.md#mode-present) | 🧪 (DLSS du jeu ou NIS compatible, DirectX 11 sur 12 et génération d’images Encore compatibles) | 🧪 (DLSS du jeu, génération d’images et HUD séparé compatibles) | 🧪 (DLSS du jeu, génération d’images et HUD séparé compatibles) |
 | [Jeux sans DLSS](GAMES-WITHOUT-DLSS.fr.md) : reconstruction DLSS ou XeSS, Neural Rendering | 🧪 | 🧪 | 🧪 |
 | [Jeux sans DLSS](GAMES-WITHOUT-DLSS.fr.md) : génération d'images | 🧪 DLSS FG ou XeFG, X2 à X6 | 🧪 DLSS FG ou XeFG, X2 à X6 | 🧪 DLSS FG ou XeFG, X2 à X6 |
 | Menu et overlay | ✅ | ✅ | ✅ |
+
+La ligne Image finale répertorie les chemins logiciels expérimentaux. Leur validation en jeu reste à faire. Le [guide du mode Image finale](NEURAL-RENDERING.fr.md#mode-present) détaille les limites de Smooth Motion, NIS et des couches HUD séparées.
 
 Neural Rendering sous Vulkan accepte les RTX 20, RTX 30, RTX 40 et RTX 50. La validation Vulkan sur des cartes
 physiques avec une build officielle reste à faire sur RTX 20, RTX 40 et RTX 50 ; voir [Neural Rendering](NEURAL-RENDERING.fr.md).

@@ -28,7 +28,11 @@ No key holds a path or a command: a settings file can be shared with someone els
 | `xessTensorCores` | `false` | Experimental NVIDIA Tensor Cores for XeSS Super Resolution; toggle live at the next XeSS execution. Initial qualification: RTX 4090, NVIDIA 621.01, DirectX 12 and the Intel runtime supplied by Hub. Other RTX 40, RTX 30 and RTX 50 adapters, on NVIDIA 621.01 or the 621.12 hotfix, are admitted with the same acceleration built for their architecture, not yet validated in-game. Refused preparation retains standard XeSS. |
 | `xefgTensorCores` | `false` | Experimental NVIDIA Tensor Cores for XeFG; fixed X2–X6 within initialized capacity. Toggle live as command recordings renew. Initial qualification: RTX 4090, NVIDIA 621.01, DirectX 12 and the Intel runtime supplied by Hub. Other RTX 40, RTX 30 and RTX 50 adapters, on NVIDIA 621.01 or the 621.12 hotfix, are admitted with the same acceleration built for their architecture, not yet validated in-game. Refused preparation retains standard XeFG; an execution fault requires a restart. |
 | `xefgMfg4VariablePacing` | `true` | Experimental pacing for XeFG above X2; disabling it can make higher factors unavailable. |
-| `xefgSourcePacing` | `true` | XeFG at X3 and above: starts the game's frames on a regular schedule that adapts to the game, just below the frame rate it sustains, so camera motion stays even. Costs a few FPS; applies live. Off: frames start as soon as possible, which can make motion uneven. |
+| `xefgSourcePacing` | `true` | XeFG at X3 and above: observes source cadence without limiting regular frames. Tries a correction only for persistent short/long alternation, and keeps it only when pacing improves within a small FPS budget. Relaxes the schedule gradually and restores the proven cadence if alternation returns; applies live. |
+| `xefgSourcePacingMode` | `"auto"` | `auto` retains the existing conditional correction and its 4% measured source-FPS loss budget. `manual` exposes the budget and checks below. Changes apply live and recalibrate pacing. |
+| `xefgSourcePacingLossPercent` | `4` | Manual source-FPS loss budget, 0–30%. With automatic adjustments on, this is a maximum, not a forced loss. With adjustments off, the full value sets a held period relative to the measured unpaced cadence. |
+| `xefgSourcePacingManualDetection` | `true` | Manual only: wait for persistent uneven pacing before intervening. Off applies after calibration even on a regular cadence. |
+| `xefgSourcePacingManualAdjustments` | `true` | Manual only: keep benefit checks and progressive relaxation. Off holds the full chosen budget until settings or context change. Presentation errors still stop the correction. |
 | `xefgUiHandling` | `interpolate` | `interpolate` or `game`; requesting separate game UI handling only works with supported inputs. |
 | `xefgUiAlpha` | `unknown` | `unknown`, `straight` or `premultiplied`; leave unknown unless the game’s UI format is known. |
 
@@ -59,9 +63,9 @@ NVIDIA runtime compatibility no longer requires a file to appear in a fixed list
 | `dlssCustomScale` | `67` | Percent, `50` to `100`, with `"custom"` |
 | `fastSuperResolution` | `false` | RTX 30, DirectX 12: faster DLSS Super Resolution with preset M or L, about 16 to 20 % less GPU time per upscaled frame on the system measured, image very close to the original. Inactive on other cards. Restart to apply. See [Super Resolution](SUPER-RESOLUTION.md#fast-super-resolution-rtx-30). |
 | `dlssWithoutGameDlss` | `false` | Games without DLSS: DLAA or upscaling on the displayed image, with DLSS or XeSS. Experimental. See [Games without DLSS](GAMES-WITHOUT-DLSS.md). |
-| `dlssWithoutGameDlssEngine` | `"dlss"` | `"dlss"`, `"xess"` or `"nis"`: the engine of `dlssWithoutGameDlss`. XeSS goes from 1x to 3x and needs Intel runtimes; NIS is spatial upscaling without a DLSS or Intel runtime. Applied live. |
+| `dlssWithoutGameDlssEngine` | `"dlss"` | `"dlss"`, `"xess"`, `"nis"` or `"fsr1"`. XeSS supports 1x to 3x and needs Intel runtimes. NIS and FSR 1 are spatial upscalers and need no DLSS or Intel runtime. Applied live. |
 | `dlssWithoutGameDlssOutput` | `"game"` | `"game"` (DLAA at the game's resolution) or `"screen"` (upscaling to the screen's resolution; the game in windowed mode at a lower resolution). |
-| `presentOpticalFlow` | `"encore"` | Games without DLSS: motion estimation, `"encore"` (RTX Encore's own estimation in shaders, finer vectors for frame generation; no Optical Flow needed), `"shader"` (shaders, the method of vort_Motion; no Optical Flow needed), or `"quality"` or `"fast"` (NVIDIA Optical Flow). |
+| `presentOpticalFlow` | `"game"` | Motion source for added frame generation, NR Final image mode and games without DLSS. `"game"` prefers the game's captured motion vectors when available and falls back to `"encore"`. `"encore"` uses RTX Encore's shaders, `"shader"` uses vort_Motion's method, and `"quality"` or `"fast"` uses NVIDIA Optical Flow. |
 
 ### `superResolutionInputs`
 
@@ -82,9 +86,9 @@ Earlier DLSS/XeSS input keys are migrated using the selected reconstruction engi
 | :--- | :---: | :--- |
 | `srSharpening` | `"off"` | Mode: `off` (default), `game` or `custom`. Applied live. |
 | `srSharpness` | `30` | Custom strength: 0 to 100%, default 30%. 0 disables the effect. |
-| `spatialSharpness` | `30` | NIS sharpness, 0 to 100%. Applied live. |
-| `spatialAa` | `"off"` | Optional anti-aliasing around NIS: `"off"`, `"smaa"` or `"fxaa"`. Color-only SDR; HUD is included. |
-| `spatialAaPlacement` | `"before"` | `"before"` NIS at source resolution, or `"after"` at output resolution. NR Post and frame generation remain after AA. |
+| `spatialSharpness` | `30` | NIS and FSR 1 sharpness, 0 to 100%. Applied live. |
+| `spatialAa` | `"off"` | Optional anti-aliasing around NIS or FSR 1 in DirectX 11. Use `"off"`, `"smaa"` or `"fxaa"`. Requires SDR and includes the HUD. |
+| `spatialAaPlacement` | `"before"` | `"before"` spatial upscaling at source resolution or `"after"` at output resolution. Post-SR NR, Final image NR and compatible frame generation run after spatial upscaling and its configured anti-aliasing. |
 | `spatialAaQuality` | `"high"` | SMAA 1x quality: `"low"`, `"medium"`, `"high"` or `"ultra"`. FXAA uses a fixed preset. |
 
 It adds to any sharpening the game performs afterwards. High strengths can create halos and amplify noise. Appearance varies with each game's later image processing, including HDR. Unsupported output formats and graphics paths leave the image unchanged. Original DLSS versions older than 2.5.1 keep their own sharpening; the extra pass also stays off when that version cannot be identified. Vulkan and real-game image quality have not yet been validated.
@@ -141,9 +145,10 @@ model executed. Leave `"game"` selected to preserve the existing behavior.
 | Key | Default | Values |
 | :--- | :---: | :--- |
 | `nrEnabled` | `false` | Turns Neural Rendering on. |
+| `nrPlacement` | `"after-sr"` | `"after-sr"` for Post-SR, `"before-sr"` for experimental Pre-SR, or `"present"` for Final image mode before presentation, with separate HUD handling where supported. `"present"` works independently of `nrWithoutGameDlss`, can follow compatible DirectX 11 NIS or FSR 1 and has separate [requirements](NEURAL-RENDERING.md#present-mode). Set `"after-sr"` manually before returning to a release without Final image mode. |
 | `nrPasses` | `1` | `1` to `4` |
 | `nrLaterPassLocalTone` | `0` | Tone applied after pass one, `0` to `2` |
-| `nrResolution` | `"render"` | `"render"`, `"output"`, `"quality"`, `"balanced"`, `"performance"`, `"ultra-performance"`, `"custom"` |
+| `nrResolution` | `"render"` | `"render"`, `"output"`, `"quality"`, `"balanced"`, `"performance"`, `"ultra-performance"`, `"custom"`. Pre-SR always uses render size. In Final image mode, `"render"` uses the game’s render size as its starting point, or output size if the render size is unavailable. |
 | `nrResolutionScale` | `67` | Percent of the output size, `33` to `100`, with `"custom"` |
 | `nrIntensity` | `1` | Strength, `0` to `2` |
 | `nrStyle` | `0` | `0` default, `1` natural, `2` cinematic |
@@ -168,7 +173,7 @@ Requires `nrEnabled`. NR runs at full strength in the middle of the screen and l
 
 | Key | Default | Effect |
 | :--- | :---: | :--- |
-| `nrFoveation` | `false` | Turns foveated NR on. |
+| `nrFoveation` | `false` | Turns foveated NR on for supported Post-SR and Final image paths. |
 | `nrFoveaPreset` | `"balanced"` | `"light"`, `"balanced"`, `"strong"` or `"custom"`. |
 | `nrFoveaWidth` | `55` | With `"custom"`: width of the full-strength centre, 1–100% of the screen. |
 | `nrFoveaHeight` | `55` | With `"custom"`: height of the full-strength centre, 1–100% of the screen. |
@@ -184,7 +189,7 @@ game restart.
 
 | Key | Default | Benefit and tradeoff |
 | :--- | :---: | :--- |
-| `nrPaddingAware` | `false` | Allows a nearby smaller NR size, at most 2 % less per axis, without changing the DLSS render size. Can change the image. Applies live. |
+| `nrPaddingAware` | `false` | Allows a nearby smaller NR size, at most 2 % less per axis, without changing the DLSS render size. Works on supported Post-SR and Final image paths, including with Foveated NR. Can change the image. Applies live. |
 | `nrMaxInFlight` | `0` | NVIDIA, DirectX 12 with Reflex: `0` no limit, `1` or `2` outstanding NR frames; active frame generation uses at least `2`. Applies live; in-game performance effect unverified. |
 
 ### `overlay`
@@ -269,3 +274,18 @@ Each of up to four NR passes can override intensity, local tone, local structure
 | `nrPass1LocalTone` … `nrPass4LocalTone` | `"inherit"` | `"inherit"`, 0–2 |
 | `nrPass1SkinStructure` … `nrPass4SkinStructure` | `"inherit"` | `"inherit"`, 0–2 |
 | `nrPass1AutoMask` … `nrPass4AutoMask` | `"inherit"` | `"inherit"`, `true`, `false` |
+
+
+## 2.3.0
+
+### Game motion vectors, now the default
+
+For added frame generation in games with DLSS Super Resolution but no DLSS Frame Generation, Game motion vectors uses the game’s available motion in DirectX 12, DirectX 11 and Vulkan, with automatic fallback to RTX Encore estimation. It also supplies compatible Final image NR. Existing explicit motion choices are preserved. Earlier DX11/Vulkan game-input routes remain available; 2.3.0 exposes the shared choice and makes it the default. The same five choices are now shown consistently throughout the mod and Hub.
+
+### NR looks and exposure
+
+Seven appearance recipes are available in the mod and Hub: Standard, Subtle, Natural, Cinematic, Faces, Soft skin and NVIDIA reference. Applying a look changes appearance and clears per-pass appearance overrides, while preserving pass count, models, resolution and exposure. NR exposure offers Game, Automatic, Measured and Manual for compatible scene-linear DLSS inputs. New configurations use Automatic; existing files without the key keep Game behavior.
+
+### More selective XeFG pacing
+
+From X3, automatic source pacing looks for persistent uneven intervals before intervening and keeps a correction only when it improves regularity within its source-FPS loss budget. It relaxes the constraint and restores an effective correction when needed. Manual mode exposes a 0–30% loss budget, detection and automatic-adjustment switches, applied live. Automatic uses a 4% budget.

@@ -15,7 +15,7 @@ tool:
   playing.
 
 Each works on its own or with the others. They are experimental and off by default. Games that have their own DLSS
-keep it: these options stay hidden there, and RTX Encore works with the game's DLSS as before.
+keep it. For those games, see the separate experimental [NR Final image mode](NEURAL-RENDERING.md#present-mode).
 
 **Tested by the maintainer** (RTX 4090, NVIDIA 621.01): PEAK in DirectX 12, DirectX 11 and Vulkan (upscaling, Neural
 Rendering, DLSS Frame Generation X2 and X4, XeFG X2 to X4), The Sims 4 in DirectX 11 (XeFG X2), Football Life 2027 in
@@ -69,7 +69,9 @@ the ones for games with DLSS.
 
 In **Image quality → Upscaling → Engine**, choose **DLSS** or **XeSS** to enable reconstruction, or **None** to leave it off. There is no separate activation switch. **Game resolution (DLAA)** is the default output: DLSS runs at native resolution; XeSS provides native anti-aliasing. For upscaling, launch the game in **Windowed**, not borderless, at the desired input resolution, then choose **Screen resolution** in Encore. Encore enlarges the output to the screen and removes the window borders. For example, 2560 × 1440 to 3840 × 2160 corresponds to about 67% per dimension.
 
-**New in 2.2.0:** choose **NIS** in the same Engine menu for spatial scaling without a DLSS or Intel runtime. It can also run in DirectX 11. Set **Sharpness** from 0 to 100%, then optionally choose **SMAA** or **FXAA** before scaling (source resolution) or after it (output resolution). These filters work on SDR color and include the HUD; compare them in the game.
+Choose **NIS** or **FSR 1** in the same Engine menu to upscale without a DLSS or Intel runtime. In DirectX 11 and DirectX 12, choose a lower windowed resolution with the same aspect ratio as the display. Both dimensions must increase, up to 2x per axis. The **Sharpness** control ranges from 0 to 100% and defaults to 30%. In DirectX 11, you can also choose **SMAA** or **FXAA** before scaling (source resolution) or after it (output resolution). These filters require SDR and include the HUD. Spatial anti-aliasing is unavailable in DirectX 12.
+
+NIS and FSR 1 support SDR and HDR, including compatible Vulkan presentation paths. Vulkan availability depends on the game and its presentation format.
 
 ### Resolution and Windows display scaling
 
@@ -94,7 +96,7 @@ Epic documents this [Unreal high-DPI setting](https://dev.epicgames.com/document
 
 ### Neural Rendering
 
-In the **Image quality** tab, **Neural Rendering** section, turn on **Neural Rendering**: in a game without DLSS, this one
+In the **Image quality** tab, **Neural Rendering** section, keep **Processing order** at **Post-SR** and turn on **Neural Rendering**. In a game without DLSS, this one
 switch starts NR on the displayed image, after the upscaler when it is on, or alone. Every NR control of the
 [Neural Rendering](NEURAL-RENDERING.md) page then applies (passes, styles, resolution, Fast precision on RTX 30, HDR
 brightness). **Ctrl + Alt + N** turns it on and off while you play.

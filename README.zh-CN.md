@@ -34,6 +34,13 @@ Smooth Motion 和 Neural Rendering——现在也适用于没有 DLSS 的游戏�
 
 </div>
 
+## 2.3.0 新功能
+
+RTX Encore 2.3.0 带来最终画面 Neural Rendering、默认使用游戏运动矢量、全新游戏内控制台，以及支持 HDR 的 FSR 1。
+
+[2.3.0](CHANGELOG.zh-CN.md#230)
+
+
 **RTX Encore 的 Discord 服务器现已开放。** 欢迎分享 2.0.0 的测试结果、交流设置，或就模组和 Hub 寻求帮助。[加入 Discord](https://discord.gg/Zwmq4Xc2Br)。
 
 > [!IMPORTANT]
@@ -212,6 +219,8 @@ RTX Encore 最初是 TonyJoaca 的 [DLSSG-Transfusion](https://github.com/TonyJo
 - [sdli1995/dlssg_for_sm86](https://github.com/sdli1995/dlssg_for_sm86)：RTX 20 和 RTX 30 上的帧生成研究；
 - [Intel XeSS](https://github.com/intel/xess)：XeSS、XeFG 和 XeLL SDK 接口；
 - [maximedgoulet/FoveatedDLSS5](https://github.com/maximedgoulet/FoveatedDLSS5)：中央优先 Neural Rendering 的构想；
+- [janblade/OptiScaler F5](https://github.com/janblade/OptiScaler-F5-DLSSNR-Multipass) 为 NR 外观预设和自动曝光提供了灵感；
+- [Skynizz/optiscaler-dlss5](https://github.com/Skynizz/optiscaler-dlss5) 为多次处理 NR 配置方案提供了灵感；
 - [jlrouzies-fr/DLSS5-Feeder](https://github.com/jlrouzies-fr/DLSS5-Feeder)：基于显示画面的 Neural Rendering 及其运动校验；
 - [vortigern11/vort_Shaders](https://github.com/vortigern11/vort_Shaders)（vort_Motion）：没有 DLSS 的游戏的着色器运动估计；
 - [crosire/reshade](https://github.com/crosire/reshade)（Generic Depth 插件）：找到游戏绘制所用深度缓冲的方法；

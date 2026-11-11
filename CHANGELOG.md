@@ -2,6 +2,48 @@
 
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 2.3.0
+
+**RTX Encore 2.3.0 brings Final image Neural Rendering, game motion vectors by default, a redesigned in-game Console and FSR 1 with HDR support.**
+
+### Final image Neural Rendering
+
+Process compatible game images after post-processing, before frame generation and display, in DirectX 12, DirectX 11 and Vulkan. Compatible separate scene/HUD inputs preserve the HUD; a HUD already baked into the scene is processed with it. One to four passes, foveated NR and HDR are supported on compatible routes. Vulkan: select Final image before launch, or restart after switching to it. See the Neural Rendering guide for the supported combinations.
+
+### Game motion vectors, now the default
+
+For added frame generation in games with DLSS Super Resolution but no DLSS Frame Generation, Game motion vectors uses the game’s available motion in DirectX 12, DirectX 11 and Vulkan, with automatic fallback to RTX Encore estimation. It also supplies compatible Final image NR. Existing explicit motion choices are preserved. Earlier DX11/Vulkan game-input routes remain available; 2.3.0 exposes the shared choice and makes it the default. The same five choices are now shown consistently throughout the mod and Hub.
+
+### A new in-game Console
+
+Reorganized navigation, clearer engine cards and a visible image-processing pipeline make it easier to find upscaling, frame generation, Neural Rendering and performance controls. NR exposes global appearance, per-pass controls and complete multipass profiles.
+
+### FSR 1 alongside NIS, including HDR
+
+AMD FidelityFX Super Resolution 1 joins NVIDIA Image Scaling for games without DLSS. Both support compatible DirectX 11, DirectX 12 and Vulkan presentation paths in SDR, HDR10 and scRGB. Adjust spatial sharpness live. Optional FXAA/SMAA before or after scaling remains limited to DirectX 11 SDR. Spatial scaling requires a lower windowed resolution, the same aspect ratio and a strict upscale up to 2x per axis.
+
+### NR looks and exposure
+
+Seven appearance recipes are available in the mod and Hub: Standard, Subtle, Natural, Cinematic, Faces, Soft skin and NVIDIA reference. Applying a look changes appearance and clears per-pass appearance overrides, while preserving pass count, models, resolution and exposure. NR exposure offers Game, Automatic, Measured and Manual for compatible scene-linear DLSS inputs. New configurations use Automatic; existing files without the key keep Game behavior.
+
+### Compare the image and its cost
+
+The Image and performance lab can compare Post-SR, Pre-SR and Final image, with captures, measurements and exports. The Hub displays the selected placement pair and supports the resulting comparisons. Compare matching conditions; NR GPU time covers the NR work, not every transfer or the entire graphics pipeline.
+
+### More selective XeFG pacing
+
+From X3, automatic source pacing looks for persistent uneven intervals before intervening and keeps a correction only when it improves regularity within its source-FPS loss budget. It relaxes the constraint and restores an effective correction when needed. Manual mode exposes a 0–30% loss budget, detection and automatic-adjustment switches, applied live. Automatic uses a 4% budget.
+
+### Compatibility and recovery
+
+Fixes cover The Sims 4 DX11 DLSS-G startup, Baldur’s Gate 3 Vulkan Script Extender/MCM and Final image operation, Cyberpunk 2077 legacy Streamline Final image inputs, Forza Horizon 6 Final image/HUD handling, GTA V Enhanced input tracking, and Red Dead Redemption 2 Vulkan queue/guide handling and DX12 startup after Vulkan discovery. Native SR remains available when Encore initializes FG first. Additional fixes preserve ReShade with spatial/FG routes, buffer formats, window size and cursor behavior; compatible owned DXGI FG can recover after VRAM budget pressure.
+
+### RTX Encore Hub 2.3.0
+
+The matching Hub recognizes stable FSR 1 archives and installed proxy/ASI files, exposes Game motion vectors, NR exposure and XeFG manual pacing, and keeps older mod versions gated correctly. Guided setup supports NIS/FSR 1 and their applicable AA controls. The community schema accepts Final image and the new shared XeFG controls. NIS, Overlay Studio, Tensor Core options and per-file component selection from earlier releases remain available.
+
+Compatibility depends on the game, graphics API, GPU and admitted runtimes. Neural Rendering and the existing experimental routes retain the limits described in their guides. No new universal FPS gain is claimed.
+
 ## 2.2.0
 
 **RTX Encore 2.2.0 adds spatial upscaling and a customizable performance overlay.** Games without DLSS can now use NVIDIA Image Scaling (NIS), with optional FXAA or SMAA before or after scaling. The overlay offers configurable styles and metrics. XeFG Tensor Cores reach RTX 20 cards, and XeSS Tensor Cores have new RTX 30/40 optimizations.

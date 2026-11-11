@@ -34,9 +34,12 @@ RTX Encore is made for RTX 20, 30 and 40 cards. GTX cards and cards from other v
 | Fast super resolution (RTX 30) | — | ✅ | — |
 | Smooth Motion (RTX 30) | ✅ | ✅ | ✅ |
 | Neural Rendering | 🧪 | 🧪 | 🧪 |
+| [NR Final image mode](NEURAL-RENDERING.md#present-mode) | 🧪 (game DLSS or compatible NIS, compatible DirectX 11 on 12 and Encore-added frame generation) | 🧪 (game DLSS, compatible frame generation and separate HUD) | 🧪 (game DLSS, compatible frame generation and separate HUD) |
 | [Games without DLSS](GAMES-WITHOUT-DLSS.md): DLSS or XeSS upscaling, Neural Rendering | 🧪 | 🧪 | 🧪 |
 | [Games without DLSS](GAMES-WITHOUT-DLSS.md): frame generation | 🧪 DLSS FG or XeFG, X2 to X6 | 🧪 DLSS FG or XeFG, X2 to X6 | 🧪 DLSS FG or XeFG, X2 to X6 |
 | Menu and overlay | ✅ | ✅ | ✅ |
+
+The Final image row lists experimental software paths. Game validation is pending. The [Final image guide](NEURAL-RENDERING.md#present-mode) covers the remaining limits, including Smooth Motion, NIS and separate HUD layers.
 
 Vulkan Neural Rendering admits RTX 20, RTX 30, RTX 40 and RTX 50. Physical Vulkan validation with an official
 build is still pending on RTX 20, RTX 40 and RTX 50; see [Neural Rendering](NEURAL-RENDERING.md).

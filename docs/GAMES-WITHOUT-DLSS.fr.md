@@ -15,7 +15,7 @@ ni aucun autre outil :
   changez en jouant.
 
 Chaque fonction marche seule ou avec les autres. Elles sont expérimentales et désactivées par défaut. Les jeux qui ont
-leur propre DLSS le gardent : ces options y restent masquées et RTX Encore travaille avec le DLSS du jeu comme avant.
+leur propre DLSS le gardent. Pour ces jeux, consultez le [mode NR Image finale expérimental](NEURAL-RENDERING.fr.md#mode-present).
 
 **Testé par le mainteneur** (RTX 4090, NVIDIA 621.01) : PEAK en DirectX 12, DirectX 11 et Vulkan (reconstruction,
 Neural Rendering, DLSS Frame Generation X2 et X4, XeFG X2 à X4), The Sims 4 en DirectX 11 (XeFG X2), Football Life
@@ -71,7 +71,9 @@ place de celles des jeux avec DLSS.
 
 Dans **Qualité d’image → Reconstruction → Moteur**, choisissez **DLSS** ou **XeSS** pour activer la reconstruction, ou **Aucun** pour la désactiver. Il n’y a plus d’interrupteur d’activation séparé. La sortie par défaut est **Résolution du jeu (DLAA)** : DLSS fonctionne à la résolution native ; XeSS applique son anticrénelage natif. Pour agrandir l’image, lancez le jeu en **Fenêtré**, pas en fenêtré sans bordure, à la résolution d’entrée souhaitée, puis choisissez **Résolution de l’écran** dans Encore. Encore agrandit la sortie et retire les bordures. Par exemple, 2560 × 1440 vers 3840 × 2160 correspond à environ 67 % par dimension.
 
-**Nouveau dans la 2.2.0 :** choisissez **NIS** dans le même menu Moteur pour une mise à l'échelle spatiale sans runtime DLSS ou Intel, y compris en DirectX 11. Réglez la **netteté** de 0 à 100 %, puis choisissez éventuellement **SMAA** ou **FXAA** avant la mise à l'échelle (résolution source) ou après (résolution de sortie). Ces filtres agissent sur la couleur SDR et comprennent le HUD ; comparez-les en jeu.
+Choisissez **NIS** ou **FSR 1** dans le même menu Moteur pour une mise à l’échelle sans runtime DLSS ou Intel. En DirectX 11 et DirectX 12, choisissez une résolution fenêtrée inférieure au même format d’image que l’écran. La largeur et la hauteur doivent toutes deux augmenter, jusqu’à 2x par axe. La **netteté** va de 0 à 100 % et vaut 30 % par défaut. En DirectX 11, vous pouvez aussi appliquer **SMAA** ou **FXAA** avant la mise à l’échelle (résolution source) ou après (résolution de sortie). Ces filtres nécessitent le mode SDR et incluent le HUD. L’anticrénelage spatial est indisponible en DirectX 12.
+
+NIS et FSR 1 prennent en charge le SDR et le HDR, y compris les chemins de présentation Vulkan compatibles. La disponibilité sous Vulkan dépend du jeu et de son format de présentation.
 
 ### Résolution et mise à l’échelle Windows
 
@@ -96,7 +98,7 @@ Epic documente ce [réglage haute résolution d’Unreal](https://dev.epicgames.
 
 ### Neural Rendering
 
-Onglet **Qualité d’image**, section **Neural Rendering** : activez **Neural Rendering**. Dans un jeu sans DLSS, ce seul
+Dans **Qualité d’image → Neural Rendering**, gardez **Ordre de traitement** sur **Post-SR** et activez **Neural Rendering**. Dans un jeu sans DLSS, ce seul
 interrupteur lance le NR sur l’image affichée, après la reconstruction si elle est active, ou seul. Tous les réglages
 NR de la page [Neural Rendering](NEURAL-RENDERING.fr.md) s’appliquent ensuite (passes, styles, résolution, précision
 Fast sur RTX 30, luminosité HDR). **Ctrl + Alt + N** l’active et le désactive en jouant.

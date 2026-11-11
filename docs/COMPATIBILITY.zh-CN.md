@@ -33,9 +33,12 @@ RTX Encore 面向 RTX 20、30 和 40。不支持 GTX 显卡及其他厂商的显
 | Fast super resolution（RTX 30） | — | ✅ | — |
 | Smooth Motion（RTX 30） | ✅ | ✅ | ✅ |
 | Neural Rendering | 🧪 | 🧪 | 🧪 |
+| [NR 最终画面模式](NEURAL-RENDERING.zh-CN.md#present-模式) | 🧪 （游戏自带 DLSS 或兼容的 NIS，支持兼容的 DirectX 11 on 12 和 Encore 帧生成） | 🧪 （游戏自带 DLSS，支持兼容的帧生成和独立 HUD） | 🧪 （游戏自带 DLSS，支持兼容的帧生成和独立 HUD） |
 | [没有 DLSS 的游戏](GAMES-WITHOUT-DLSS.zh-CN.md)：DLSS 或 XeSS 超分辨率、Neural Rendering | 🧪 | 🧪 | 🧪 |
 | [没有 DLSS 的游戏](GAMES-WITHOUT-DLSS.zh-CN.md)：帧生成 | 🧪 DLSS FG 或 XeFG，X2 至 X6 | 🧪 DLSS FG 或 XeFG，X2 至 X6 | 🧪 DLSS FG 或 XeFG，X2 至 X6 |
 | 菜单和叠加层 | ✅ | ✅ | ✅ |
+
+最终画面一行列出实验性软件路径，仍待实际游戏验证。Smooth Motion、NIS 和独立 HUD 图层的限制见 [最终画面指南](NEURAL-RENDERING.zh-CN.md#present-模式)。
 
 Vulkan Neural Rendering 接受 RTX 20、RTX 30、RTX 40 和 RTX 50。使用官方构建在真实 RTX 20、RTX 40 和 RTX 50
 显卡上的 Vulkan 验证仍待完成；见 [Neural Rendering](NEURAL-RENDERING.zh-CN.md)。
