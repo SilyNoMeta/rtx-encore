@@ -2,6 +2,43 @@
 
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
+## 2.4.0
+
+**RTX Encore 2.4.0 新增逐遍 NR 处理位置、支持 HDR 的 DirectX/Vulkan 空间抗锯齿，以及最低 33% 的自定义 DLSS 比例。Hub 2.4.0 可选择模组版本并回退。**
+
+### 跨阶段 Neural Rendering
+
+将一至四遍 NR 分别分配至 Pre-SR、Post-SR 或最终画面，也可继承全局位置。执行顺序遵循画面管线，保留每遍的外观设置。已有配置行为不变。兼容的 DX11、DX12 和 Vulkan 原生游戏 DLSS 钩子支持此功能；各阶段仍有输入、HUD、HDR 和 FG 条件。前一阶段成功并不保证后一阶段可用。
+
+### FXAA 和 SMAA，包含 HDR
+
+NIS/FSR 1 缩放前后的可选空间抗锯齿现支持兼容的 DirectX 11、DirectX 12 和 Vulkan 路径，覆盖 SDR、HDR10 和 scRGB，扩展了 2.3.0 的 DX11 SDR 支持。实体 HDR 显示与各游戏的效果仍取决于配置。
+
+### 自定义 DLSS 比例：33–100%
+
+DLSS Super Resolution 自定义输入比例现最低为每轴 33%，Hub 同步调整范围。更低输入分辨率以源细节换取较低渲染开销，结果取决于游戏和 GPU。
+
+### 帧生成与显存
+
+物理显存余量检查避免重复计算分配。显存预算警告改为提示信息，不再仅凭警告关闭帧生成。这不保证所有配置都有足够显存。
+
+### 兼容性修复
+
+整合 FC27 原生 SR、游戏运动输入与 Intel 路由修复。KCD2 在 NGX 客户端导出存在时保留菜单引擎控制。修复旧版 DLSS-G 运行库限制与 X2 活动状态显示。新增 NVIDIA 621.24 离线驱动配置，仍要求兼容的硬件和运行库。
+
+### Horizon 与最终画面
+
+修复 D3D12 提交钩子输入、原生 FG 遥测、RGB10 Pre-SR 输入和最终画面场景/HUD 合成。较早候选版本的 Pre-SR/Post-SR/最终画面与遥测已获游戏内确认。最新 HUD 闪烁修复已有自动化测试与回放覆盖，但仍待游戏内确认；过场动画中间歇 Waiting 仍在调查。
+
+
+D3D12 抖动运动输入 NR 仍为需明确启用的诊断试验，默认关闭；本版本不代表这些输入已获得普遍支持。感谢 [@OliverBokan](https://github.com/OliverBokan) 的 Horizon 报告（[#126](https://github.com/SilyNoMeta/rtx-encore/issues/126)），以及 [@deusimperatork](https://github.com/deusimperatork) 提供 KCD2 报告与日志（[#125](https://github.com/SilyNoMeta/rtx-encore/issues/125)）。
+
+### Hub 版本选择与组件修复
+
+在 Hub 设置中选择已发布模组版本，可固定版本或回退。配套 Hub 提供 2.4.0 逐遍 NR 位置与最低 33% 比例，识别 NVIDIA 621.24，并安装/修复所需 Streamline SR 依赖。较旧模组继续使用适用的控制选项。
+
+Neural Rendering 仍为实验功能，默认关闭。兼容性取决于游戏、API、GPU、驱动和运行库，不保证普遍的 FPS 或画质提升。
+
 ## 2.3.0
 
 **RTX Encore 2.3.0 带来最终画面 Neural Rendering、默认使用游戏运动矢量、全新游戏内控制台，以及支持 HDR 的 FSR 1。**

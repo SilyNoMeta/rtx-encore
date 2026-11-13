@@ -77,3 +77,8 @@ For image sharpness, select **Sharpening → Custom** and adjust **Strength** fr
 ## Runtime availability and versions
 
 Missing or incompatible runtimes make the corresponding engine unavailable in the menu. Older compatible versions remain supported: NVIDIA 310.9.1 is not rejected merely because a newer version exists. An integrated warning recommends updating with RTX Encore Hub and restarting the game. Recommended versions: NVIDIA **310.9.16**, XeSS-SR **2.0.2.68**, XeFG **1.3.1.78**, XeLL **1.3.2.10**. Added DLSS frame generation has a stricter requirement: **Streamline 2.14.16 + DLSS-G 310.9.16**. Updating does not make an unsupported game or GPU compatible.
+
+
+## 2.4.0
+
+Custom DLSS Super Resolution scale now reaches 33% per axis, with matching Hub bounds. Lower input resolutions trade source detail for rendering cost; results depend on the game and GPU.

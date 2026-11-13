@@ -79,3 +79,8 @@ Pour la netteté, choisissez **Netteté → Personnalisé**, puis réglez l’in
 ## Disponibilité et versions des runtimes
 
 Les moteurs dont les runtimes manquent ou sont incompatibles ne sont pas proposés dans le menu. Les anciennes versions compatibles restent prises en charge : NVIDIA 310.9.1 n’est pas refusée simplement parce qu’une version plus récente existe. Un avertissement intégré recommande une mise à jour via RTX Encore Hub puis un redémarrage du jeu. Versions recommandées : NVIDIA **310.9.16**, XeSS-SR **2.0.2.68**, XeFG **1.3.1.78**, XeLL **1.3.2.10**. La génération DLSS ajoutée exige précisément **Streamline 2.14.16 + DLSS-G 310.9.16**. Une mise à jour ne rend pas compatible un jeu ou un GPU non pris en charge.
+
+
+## 2.4.0
+
+L’échelle personnalisée DLSS Super Resolution descend à 33 % par axe, avec les mêmes bornes dans le Hub. Une résolution d’entrée réduite échange du détail source contre un coût de rendu inférieur ; le résultat dépend du jeu et du GPU.

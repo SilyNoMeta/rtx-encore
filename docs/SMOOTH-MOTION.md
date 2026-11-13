@@ -1,5 +1,7 @@
 # Smooth Motion on RTX 20 / RTX 30 / RTX 40 / RTX 50
 
+NVIDIA 621.24: support is prepared for the next update (planned 2.3.1), including Smooth Motion on RTX 20 (DirectX 12) and RTX 30/40/50, and experimental XeSS/XeFG Tensor Cores. Qualification is offline only; no GPU or in-game validation on 621.24 yet.
+
 NVIDIA 621.14: Smooth Motion now accepts the exact driver files on RTX 20 (DirectX 12) and RTX 30; RTX 40/50 keep the native driver path. Experimental XeSS/XeFG Tensor Cores also admit this driver. Compatibility checks were performed on the driver files without installing the driver. In-game validation on 621.14 is still pending; this does not extend support to unknown drivers.
 
 *[Français](SMOOTH-MOTION.fr.md) · [中文](SMOOTH-MOTION.zh-CN.md)*
@@ -15,7 +17,7 @@ cards.
 ## Requirements
 
 - An **RTX 30** card, or **RTX 40 / RTX 50** with RTX Encore **1.4.5 or later**. RTX 40/50 use the native driver engine and the same Smooth Motion switch in the Hub or in-game menu. RTX 20 support is experimental from RTX Encore 1.3.0; see below.
-- One of these NVIDIA driver versions, exactly: **621.14**, **621.01**, **620.12**, **617.42**, **617.14**, **616.92**,
+- One of these NVIDIA driver versions, exactly: **621.24**, **621.14**, **621.01**, **620.12**, **617.42**, **617.14**, **616.92**,
   **616.64** or **591.86**.
   617.14 and 621.01 have been verified in a game. With any other driver the feature stays off and says why; the
   rest of RTX Encore keeps working.
@@ -36,7 +38,7 @@ The FPS counter estimates Smooth Motion output at **2x** and shows `2x sm` (for 
 
 ## RTX 20
 
-RTX 20 requires **NVIDIA 621.01 / 621.14** and a **DirectX 12** game. From 1.5.1, RTX 20 always uses
+RTX 20 requires **NVIDIA 621.01 / 621.14 / 621.24** and a **DirectX 12** game. From 1.5.1, RTX 20 always uses
 V2, which users found the faster of the two; there is no variant to choose any
 more. A `smoothMotionTuringVariant` line left in an older configuration file is ignored.
 This has no effect on RTX 30, 40 or 50.

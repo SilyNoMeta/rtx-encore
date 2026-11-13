@@ -34,11 +34,11 @@ A built-in menu, with RTX Encore Hub to install the mod and its required runtime
 
 </div>
 
-## New in 2.3.0
+## RTX Encore 2.4.0
 
-RTX Encore 2.3.0 brings Final image Neural Rendering, game motion vectors by default, a redesigned in-game Console and FSR 1 with HDR support.
+RTX Encore 2.4.0 adds NR placement per pass, spatial anti-aliasing across DirectX and Vulkan with HDR, and DLSS custom scales down to 33%. Hub 2.4.0 lets you choose a mod version and roll back.
 
-[2.3.0](CHANGELOG.md#230)
+[2.4.0](CHANGELOG.md#240)
 
 
 **RTX Encore now has a Discord.** Share your 2.0.0 results, compare settings, or get help with the mod and Hub. [Join the Discord](https://discord.gg/Zwmq4Xc2Br).

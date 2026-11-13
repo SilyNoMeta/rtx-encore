@@ -1,5 +1,7 @@
 # RTX 20 / RTX 30 / RTX 40 / RTX 50 上的 Smooth Motion
 
+NVIDIA 621.24：已为下一次更新（计划为 2.3.1）准备兼容支持，包括 RTX 20（DirectX 12）和 RTX 30/40/50 上的 Smooth Motion，以及实验性 XeSS/XeFG Tensor Cores。目前仅完成离线验证，尚未在 621.24 上完成 GPU 或游戏内验证。
+
 NVIDIA 621.14：Smooth Motion 现已接受 RTX 20（DirectX 12）和 RTX 30 上的精确驱动文件；RTX 40/50 保留原生驱动路径。实验性 XeSS/XeFG Tensor Cores 也允许此驱动。兼容性检查仅针对驱动文件进行，未安装驱动。621.14 的游戏内验证仍待完成，不代表支持未知驱动。
 
 *[English](SMOOTH-MOTION.md) · [Français](SMOOTH-MOTION.fr.md)*
@@ -14,7 +16,7 @@ Smooth Motion 是 NVIDIA 驱动的插帧功能：在 DirectX 11、DirectX 12 和
 ## 要求
 
 - 一块 **RTX 30** 显卡，或搭配 RTX Encore **1.4.5 或更高版本**的 **RTX 40 / RTX 50**。RTX 40/50 使用驱动原生引擎，可通过 Hub 或游戏内菜单的同一 Smooth Motion 开关启用。从 RTX Encore 1.3.0 起实验性支持 RTX 20，详见下文。
-- NVIDIA 驱动必须恰好是以下版本之一：**621.14**、**621.01**、**620.12**、**617.42**、**617.14**、**616.92**、**616.64** 或
+- NVIDIA 驱动必须恰好是以下版本之一：**621.24**、**621.14**、**621.01**、**620.12**、**617.42**、**617.14**、**616.92**、**616.64** 或
   **591.86**。
   617.14 和 621.01 已在游戏中得到验证。使用其他任何驱动时，该功能保持关闭并说明原因；RTX Encore 的其余功能
   照常工作。
@@ -34,7 +36,7 @@ FPS 计数器按 **2 倍**估算 Smooth Motion 输出，并显示 `2x sm`（例�
 
 ## RTX 20
 
-RTX 20 需要 **NVIDIA 621.01 / 621.14** 驱动和 **DirectX 12** 游戏。从 1.5.1 起，RTX 20 始终使用
+RTX 20 需要 **NVIDIA 621.01 / 621.14 / 621.24** 驱动和 **DirectX 12** 游戏。从 1.5.1 起，RTX 20 始终使用
 V2（用户反馈中速度更快的版本），不再需要选择版本。旧配置文件中残留的
 `smoothMotionTuringVariant` 会被忽略。此变更不影响 RTX 30、40 或 50。
 

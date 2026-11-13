@@ -60,7 +60,7 @@ NVIDIA runtime compatibility no longer requires a file to appear in a fixed list
 | Key | Default | Values |
 | :--- | :---: | :--- |
 | `dlssRenderScale` | `"game"` | `"game"`, `"dlaa"`, `"ultra"`, `"quality"`, `"balanced"`, `"performance"`, `"ultra-performance"`, `"custom"` |
-| `dlssCustomScale` | `67` | Percent, `50` to `100`, with `"custom"` |
+| `dlssCustomScale` | `67` | Percent, `33` to `100`, with `"custom"` |
 | `fastSuperResolution` | `false` | RTX 30, DirectX 12: faster DLSS Super Resolution with preset M or L, about 16 to 20 % less GPU time per upscaled frame on the system measured, image very close to the original. Inactive on other cards. Restart to apply. See [Super Resolution](SUPER-RESOLUTION.md#fast-super-resolution-rtx-30). |
 | `dlssWithoutGameDlss` | `false` | Games without DLSS: DLAA or upscaling on the displayed image, with DLSS or XeSS. Experimental. See [Games without DLSS](GAMES-WITHOUT-DLSS.md). |
 | `dlssWithoutGameDlssEngine` | `"dlss"` | `"dlss"`, `"xess"`, `"nis"` or `"fsr1"`. XeSS supports 1x to 3x and needs Intel runtimes. NIS and FSR 1 are spatial upscalers and need no DLSS or Intel runtime. Applied live. |
