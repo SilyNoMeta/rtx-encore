@@ -34,6 +34,12 @@ Un menu intégré, avec RTX Encore Hub pour installer le mod et les runtimes né
 
 </div>
 
+## RTX Encore 2.4.1
+
+RTX Encore 2.4.1 corrige une régression de la 2.4.0 qui pouvait limiter le menu de génération d’images du jeu à X2, alors que X3/X4 fonctionnaient depuis l’overlay RTX Encore.
+
+[2.4.1](CHANGELOG.fr.md#241)
+
 ## RTX Encore 2.4.0
 
 RTX Encore 2.4.0 ajoute le placement NR par passe, l’anticrénelage spatial en DirectX et Vulkan avec HDR, et une échelle DLSS personnalisée jusqu’à 33 %. Le Hub 2.4.0 permet de choisir une version du mod et de revenir en arrière.

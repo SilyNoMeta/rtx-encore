@@ -34,6 +34,12 @@ Smooth Motion 和 Neural Rendering——现在也适用于没有 DLSS 的游戏�
 
 </div>
 
+## RTX Encore 2.4.1
+
+RTX Encore 2.4.1 修复 2.4.0 的一项回归：游戏自身的帧生成菜单可能仅显示 X2，但通过 RTX Encore 叠加菜单仍可使用 X3/X4。
+
+[2.4.1](CHANGELOG.zh-CN.md#241)
+
 ## RTX Encore 2.4.0
 
 RTX Encore 2.4.0 新增逐遍 NR 处理位置、支持 HDR 的 DirectX/Vulkan 空间抗锯齿，以及最低 33% 的自定义 DLSS 比例。Hub 2.4.0 可选择模组版本并回退。
