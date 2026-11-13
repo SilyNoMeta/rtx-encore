@@ -58,7 +58,7 @@ NVIDIA 运行库的兼容性不再要求文件位于预设列表中。旧的 `pr
 | 键 | 默认 | 值 |
 | :--- | :---: | :--- |
 | `dlssRenderScale` | `"game"` | `"game"`、`"dlaa"`、`"ultra"`、`"quality"`、`"balanced"`、`"performance"`、`"ultra-performance"`、`"custom"` |
-| `dlssCustomScale` | `67` | `"custom"` 时的百分比，`50` 至 `100` |
+| `dlssCustomScale` | `67` | `"custom"` 时的百分比，`33` 至 `100` |
 | `fastSuperResolution` | `false` | RTX 30、DirectX 12：在预设为 M 或 L 时加速 DLSS 超分辨率，在测量的系统上每个放大帧约减少 16% 至 20% 的 GPU 时间，画面与原版非常接近。在其他显卡上不起作用。需重启游戏。见[超分辨率](SUPER-RESOLUTION.zh-CN.md#fast-super-resolution-rtx-30)。 |
 | `dlssWithoutGameDlss` | `false` | 没有 DLSS 的游戏：使用 DLSS 或 XeSS 对显示的画面运行 DLAA 或放大。实验性功能。参见[没有 DLSS 的游戏](GAMES-WITHOUT-DLSS.zh-CN.md)。 |
 | `dlssWithoutGameDlssEngine` | `"dlss"` | 可选 `"dlss"`、`"xess"`、`"nis"` 或 `"fsr1"`。XeSS 支持 1x 到 3x，需要 Intel 运行库。NIS 和 FSR 1 是空间缩放引擎，无需 DLSS 或 Intel 运行库。即时生效。 |

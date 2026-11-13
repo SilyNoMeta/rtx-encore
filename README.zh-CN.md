@@ -34,11 +34,11 @@ Smooth Motion 和 Neural Rendering——现在也适用于没有 DLSS 的游戏�
 
 </div>
 
-## 2.3.0 新功能
+## RTX Encore 2.4.0
 
-RTX Encore 2.3.0 带来最终画面 Neural Rendering、默认使用游戏运动矢量、全新游戏内控制台，以及支持 HDR 的 FSR 1。
+RTX Encore 2.4.0 新增逐遍 NR 处理位置、支持 HDR 的 DirectX/Vulkan 空间抗锯齿，以及最低 33% 的自定义 DLSS 比例。Hub 2.4.0 可选择模组版本并回退。
 
-[2.3.0](CHANGELOG.zh-CN.md#230)
+[2.4.0](CHANGELOG.zh-CN.md#240)
 
 
 **RTX Encore 的 Discord 服务器现已开放。** 欢迎分享 2.0.0 的测试结果、交流设置，或就模组和 Hub 寻求帮助。[加入 Discord](https://discord.gg/Zwmq4Xc2Br)。

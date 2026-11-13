@@ -203,3 +203,8 @@ Chacune des quatre passes NR possibles peut remplacer l’intensité, le ton loc
 ### Looks NR et exposition
 
 Sept looks sont disponibles dans le mod et le Hub : Standard, Discret, Naturel, Cinématique, Visages, Peau douce et Référence NVIDIA. Un look modifie l’apparence et remet les surcharges d’apparence par passe sur Global, sans changer le nombre de passes, les modèles, la résolution ni l’exposition. L’exposition NR propose Jeu, Automatique, Mesurée et Manuelle pour les entrées DLSS linéaires scène compatibles. Une nouvelle configuration utilise Automatique ; un fichier existant sans cette clé conserve Jeu.
+
+
+## 2.4.0
+
+Affectez chacune des une à quatre passes NR à Pre-SR, Post-SR ou Image finale, ou conservez le placement global. L’exécution suit le pipeline de l’image en préservant l’apparence de chaque passe. Les configurations existantes gardent leur comportement. L’intégration DLSS native couvrent les chemins DX11, DX12 et Vulkan compatibles ; chaque étape conserve ses exigences d’entrées, HUD, HDR et FG. Une étape tardive indisponible peut être refusée même si une étape précédente fonctionne.

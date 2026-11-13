@@ -2,6 +2,43 @@
 
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 2.4.0
+
+**RTX Encore 2.4.0 adds NR placement per pass, spatial anti-aliasing across DirectX and Vulkan with HDR, and DLSS custom scales down to 33%. Hub 2.4.0 lets you choose a mod version and roll back.**
+
+### Neural Rendering at several stages
+
+Assign each of the one to four NR passes to Pre-SR, Post-SR or Final image, or inherit the global placement. Execution follows the image pipeline, preserving each pass’s appearance settings. Existing configurations retain their behavior. Native game-DLSS integration support compatible DX11, DX12 and Vulkan routes; each stage keeps its existing input, HUD, HDR and FG requirements. An unavailable later stage can be refused even when an earlier stage runs.
+
+### FXAA and SMAA, including HDR
+
+Optional spatial anti-aliasing before or after NIS/FSR 1 now supports compatible DirectX 11, DirectX 12 and Vulkan paths in SDR, HDR10 and scRGB. This extends the DX11 SDR support of 2.3.0. Physical HDR display and individual game results still depend on the setup.
+
+### Custom DLSS render scale: 33–100%
+
+Custom DLSS Super Resolution scale now reaches 33% per axis, with matching Hub bounds. Lower input resolutions trade source detail for rendering cost; results depend on the game and GPU.
+
+### Frame generation and VRAM
+
+Physical VRAM headroom checks avoid double-counting allocations. VRAM budget warnings are informational and no longer disable frame generation by themselves. This does not guarantee enough memory for every configuration.
+
+### Compatibility fixes
+
+FC27 gains integrated native SR/game-motion and Intel routing fixes. KCD2 retains menu engine ownership with NGX client exports. Legacy DLSS-G runtime limits and X2 activity reporting are corrected. NVIDIA 621.24 offline driver profiles are added; admission remains specific to supported runtimes and hardware.
+
+### Horizon and Final image
+
+Correct D3D12 submission inputs, native FG telemetry, RGB10 Pre-SR inputs and Final image scene/HUD composition. Pre-SR/Post-SR/Final operation and telemetry were confirmed on an earlier candidate. The final HUD flicker correction has automated/replay coverage but still needs in-game confirmation; intermittent cinematic Waiting remains under investigation.
+
+
+D3D12 jittered-motion NR remains an explicit diagnostic trial, disabled by default; this release does not qualify those inputs generally. Thanks to [@OliverBokan](https://github.com/OliverBokan) for the Horizon report ([#126](https://github.com/SilyNoMeta/rtx-encore/issues/126)) and [@deusimperatork](https://github.com/deusimperatork) for the KCD2 report and logs ([#125](https://github.com/SilyNoMeta/rtx-encore/issues/125)).
+
+### Hub version selection and component repair
+
+Select a published mod version in Hub settings to pin it or return to an earlier release. The matching Hub exposes 2.4.0 NR placement controls and 33% custom scales, recognizes NVIDIA 621.24, and repairs/installs the required Streamline SR dependencies. Older mod versions retain their applicable controls.
+
+Neural Rendering remains experimental and off by default. Compatibility depends on the game, API, GPU, driver and runtime. No universal FPS or image-quality gain is promised.
+
 ## 2.3.0
 
 **RTX Encore 2.3.0 brings Final image Neural Rendering, game motion vectors by default, a redesigned in-game Console and FSR 1 with HDR support.**

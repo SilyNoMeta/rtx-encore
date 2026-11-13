@@ -1,5 +1,7 @@
 # Compatibilité
 
+NVIDIA 621.24 : la prise en charge est préparée pour la prochaine mise à jour (2.3.1 prévue), avec Smooth Motion sur RTX 20 (DirectX 12) et RTX 30/40/50, ainsi que les Tensor Cores expérimentaux XeSS/XeFG. Qualification hors ligne uniquement ; aucune validation GPU ou en jeu sur 621.24 pour le moment.
+
 NVIDIA 621.14 : Smooth Motion accepte désormais les fichiers exacts du pilote sur RTX 20 (DirectX 12) et RTX 30 ; les RTX 40/50 conservent le chemin natif du pilote. Les Tensor Cores expérimentaux XeSS/XeFG admettent aussi ce pilote. Les vérifications de compatibilité portent sur les fichiers du pilote, sans installation. La validation en jeu sur 621.14 reste à faire ; cela ne couvre pas les pilotes inconnus.
 
 *[English](COMPATIBILITY.md) · [中文](COMPATIBILITY.zh-CN.md)*
@@ -19,9 +21,9 @@ XeFG ne permet pas d’ajouter la génération d’images à tous les jeux. Les 
 | :--- | :--- | :--- | :--- | :--- |
 | RTX 40 | Prise en charge. DirectX 12 et Vulkan éprouvés sur une RTX 4090. | Fourni par NVIDIA | Pris en charge | Inactive |
 | RTX 30 | Prise en charge. DirectX 12 éprouvé sur un RTX 3070 Ti Laptop. | Pris en charge avec les pilotes listés plus bas | Pris en charge | DirectX 12, mesurée sur un RTX 3070 Ti Laptop. Voir [plus bas](#versions-de-dlss-super-resolution). |
-| RTX 20 | Expérimentale : pas encore validée sur une vraie carte RTX 20. | Expérimental dès 1.3.0 : 621.01 / 621.14 / DX12, V1 ou V2 | Expérimental | Inactive |
+| RTX 20 | Expérimentale : pas encore validée sur une vraie carte RTX 20. | Expérimental dès 1.3.0 : 621.01 / 621.14 / 621.24 / DX12, V1 ou V2 | Expérimental | Inactive |
 
-Les RTX 20 nécessitent le mod **1.3.0**, le pilote **621.01 / 621.14** et **DirectX 12** ; V1/V2 se choisit par jeu.
+Les RTX 20 nécessitent le mod **1.3.0**, le pilote **621.01 / 621.14 / 621.24** et **DirectX 12** ; V1/V2 se choisit par jeu.
 
 RTX Encore est fait pour les cartes RTX 20, 30 et 40. Les cartes GTX et celles d'autres fabricants ne sont pas
 prises en charge.
@@ -99,7 +101,7 @@ ensemble ; ces notes ne recommandent pas de remplacer des fichiers individuellem
 
 ## Pilotes pour Smooth Motion
 
-Smooth Motion sur RTX 30 accepte les pilotes NVIDIA **621.14**, **621.01**, **620.12**, **617.42**, **617.14**, **616.92**,
+Smooth Motion sur RTX 30 accepte les pilotes NVIDIA **621.24**, **621.14**, **621.01**, **620.12**, **617.42**, **617.14**, **616.92**,
 **616.64** et **591.86**, et aucun autre. Les **617.14** et **621.01** ont été vérifiés en jeu. Voir [Smooth Motion](SMOOTH-MOTION.fr.md).
 
 ## Fichier pour Neural Rendering
