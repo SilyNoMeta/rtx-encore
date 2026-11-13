@@ -4,13 +4,48 @@
 
 ## 2.4.1
 
-**RTX Encore 2.4.1 corrige une régression de la 2.4.0 qui pouvait limiter le menu de génération d’images du jeu à X2, alors que X3/X4 fonctionnaient depuis l’overlay RTX Encore.**
+**RTX Encore 2.4.1 réunit le placement NR par passe, l’anticrénelage spatial DirectX/Vulkan avec HDR, l’échelle DLSS jusqu’à 33 % et le correctif des menus FG du jeu bloqués à X2. Le Hub 2.4.0 permet de choisir la version du mod et reste le Hub associé.**
+
+### Menu FG du jeu : X3/X4 au démarrage
 
 Lorsque la DLL DLSS-G installée et un modèle du cache NVIDIA sont tous deux chargés, le fournisseur actif peut ne pas être identifié lors de la première requête de capacités du jeu. Encore conserve désormais le maximum natif annoncé pendant cette phase, au lieu de le remplacer par X2. Les requêtes FG restent limitées à X2 tant que le fournisseur n’est pas admis ; un fournisseur historique identifié conserve sa limite réelle.
 
 Le test de régression compile les fonctions exactes de sélection du fournisseur et d’annonce des capacités. Il reproduit la requête au démarrage avant identification, l’admission ultérieure des multiplicateurs supérieurs, les fournisseurs limités à X2 et les limites intermédiaires, les identités périmées et les bornes des menus par jeu. Il échoue avec le comportement 2.4.0 et passe avec le correctif.
 
 Merci à la personne ayant signalé le problème dans S.T.A.L.K.E.R. 2 pour les logs de démarrage détaillés et les vérifications X3/X4. Les logs confirment la régression initiale ; le correctif reste à confirmer dans son jeu. Le Hub 2.4.0 reste compatible et ne nécessite pas de mise à jour.
+
+### Neural Rendering à plusieurs étapes
+
+Affectez chacune des une à quatre passes NR à Pre-SR, Post-SR ou Image finale, ou conservez le placement global. L’exécution suit le pipeline de l’image en préservant l’apparence de chaque passe. Les configurations existantes gardent leur comportement. L’intégration DLSS native couvrent les chemins DX11, DX12 et Vulkan compatibles ; chaque étape conserve ses exigences d’entrées, HUD, HDR et FG. Une étape tardive indisponible peut être refusée même si une étape précédente fonctionne.
+
+### FXAA et SMAA, HDR compris
+
+L’anticrénelage spatial optionnel avant ou après NIS/FSR 1 prend désormais en charge les chemins DirectX 11, DirectX 12 et Vulkan compatibles en SDR, HDR10 et scRGB. Cela étend le support DX11 SDR de la 2.3.0. Le résultat sur écran HDR physique et dans chaque jeu dépend toujours de la configuration.
+
+### Échelle DLSS personnalisée : 33–100 %
+
+L’échelle personnalisée DLSS Super Resolution descend à 33 % par axe, avec les mêmes bornes dans le Hub. Une résolution d’entrée réduite échange du détail source contre un coût de rendu inférieur ; le résultat dépend du jeu et du GPU.
+
+### Génération d’images et VRAM
+
+Les contrôles de marge VRAM physique évitent le double comptage des allocations. Les alertes de budget VRAM sont informatives et ne désactivent plus à elles seules la génération d’images. Cela ne garantit pas assez de mémoire pour toutes les configurations.
+
+### Correctifs de compatibilité
+
+Intégration SR natif, mouvement du jeu et routage Intel pour FC27. KCD2 conserve le contrôle du moteur de menu avec les exports clients NGX. Correction des limites des anciens runtimes DLSS-G et de l’activité affichée en X2. Ajout des profils hors ligne du pilote NVIDIA 621.24 ; les runtimes et matériels doivent rester compatibles.
+
+### Horizon et Image finale
+
+Correction des entrées de soumission D3D12, de la télémétrie FG native, des entrées Pre-SR RGB10 et de la composition scène/HUD en Image finale. Pre-SR/Post-SR/Image finale et la télémétrie ont été confirmés sur un candidat précédent. Le dernier correctif de scintillement du HUD est couvert par les tests et replays, mais reste à confirmer en jeu ; les attentes intermittentes en cinématique restent à examiner.
+
+
+Le NR avec mouvement jitteré en D3D12 reste un essai de diagnostic explicite, désactivé par défaut ; ces entrées ne sont pas qualifiées de façon générale. Merci à [@OliverBokan](https://github.com/OliverBokan) pour le signalement Horizon ([#126](https://github.com/SilyNoMeta/rtx-encore/issues/126)) et à [@deusimperatork](https://github.com/deusimperatork) pour le signalement et les logs KCD2 ([#125](https://github.com/SilyNoMeta/rtx-encore/issues/125)).
+
+### Choix de version et réparation des composants dans le Hub
+
+Choisissez une version publiée du mod dans les paramètres pour la conserver ou revenir à une version précédente. Le Hub associé expose le placement NR de la 2.4.0 et l’échelle à 33 %, reconnaît NVIDIA 621.24 et installe/répare les dépendances Streamline SR nécessaires. Les anciens mods gardent les commandes qui leur correspondent.
+
+Le Neural Rendering reste expérimental et désactivé par défaut. La compatibilité dépend du jeu, de l’API, du GPU, du pilote et des runtimes. Aucun gain universel de FPS ou de qualité d’image n’est promis.
 
 ## 2.4.0
 

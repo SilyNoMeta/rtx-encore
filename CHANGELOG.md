@@ -4,13 +4,48 @@
 
 ## 2.4.1
 
-**RTX Encore 2.4.1 fixes a 2.4.0 regression that could leave the game’s own frame-generation menu limited to X2 even though X3/X4 worked from RTX Encore’s overlay.**
+**RTX Encore 2.4.1 brings per-pass NR placement, spatial anti-aliasing across DirectX and Vulkan with HDR, DLSS custom scales down to 33%, and the fix for game FG menus stuck at X2. Hub 2.4.0 provides mod-version selection and remains the matching Hub.**
+
+### Game frame-generation menu: X3/X4 at startup
 
 When the installed DLSS-G DLL and an NVIDIA-cache model are both loaded, the active provider may not be identified during the game’s first capability query. RTX Encore now preserves the native reported maximum during that unresolved phase instead of replacing it with X2. Higher-factor FG requests remain limited to X2 until provider admission resolves; an identified legacy provider retains its real limit.
 
 The regression test compiles the exact production provider-selection and capability-advertisement functions. It reproduces the startup query before provider selection, the later higher-factor admission, and known X2-only/limited providers, stale identities and game-specific menu bounds. It fails with the 2.4.0 behavior and passes with the fix.
 
 Thanks to the S.T.A.L.K.E.R. 2 reporter for the detailed startup logs and X3/X4 checks. The logs confirm the original regression; the fixed build still needs confirmation in their game. Hub 2.4.0 remains compatible; no Hub update is required.
+
+### Neural Rendering at several stages
+
+Assign each of the one to four NR passes to Pre-SR, Post-SR or Final image, or inherit the global placement. Execution follows the image pipeline, preserving each pass’s appearance settings. Existing configurations retain their behavior. Native game-DLSS integration support compatible DX11, DX12 and Vulkan routes; each stage keeps its existing input, HUD, HDR and FG requirements. An unavailable later stage can be refused even when an earlier stage runs.
+
+### FXAA and SMAA, including HDR
+
+Optional spatial anti-aliasing before or after NIS/FSR 1 now supports compatible DirectX 11, DirectX 12 and Vulkan paths in SDR, HDR10 and scRGB. This extends the DX11 SDR support of 2.3.0. Physical HDR display and individual game results still depend on the setup.
+
+### Custom DLSS render scale: 33–100%
+
+Custom DLSS Super Resolution scale now reaches 33% per axis, with matching Hub bounds. Lower input resolutions trade source detail for rendering cost; results depend on the game and GPU.
+
+### Frame generation and VRAM
+
+Physical VRAM headroom checks avoid double-counting allocations. VRAM budget warnings are informational and no longer disable frame generation by themselves. This does not guarantee enough memory for every configuration.
+
+### Compatibility fixes
+
+FC27 gains integrated native SR/game-motion and Intel routing fixes. KCD2 retains menu engine ownership with NGX client exports. Legacy DLSS-G runtime limits and X2 activity reporting are corrected. NVIDIA 621.24 offline driver profiles are added; admission remains specific to supported runtimes and hardware.
+
+### Horizon and Final image
+
+Correct D3D12 submission inputs, native FG telemetry, RGB10 Pre-SR inputs and Final image scene/HUD composition. Pre-SR/Post-SR/Final operation and telemetry were confirmed on an earlier candidate. The final HUD flicker correction has automated/replay coverage but still needs in-game confirmation; intermittent cinematic Waiting remains under investigation.
+
+
+D3D12 jittered-motion NR remains an explicit diagnostic trial, disabled by default; this release does not qualify those inputs generally. Thanks to [@OliverBokan](https://github.com/OliverBokan) for the Horizon report ([#126](https://github.com/SilyNoMeta/rtx-encore/issues/126)) and [@deusimperatork](https://github.com/deusimperatork) for the KCD2 report and logs ([#125](https://github.com/SilyNoMeta/rtx-encore/issues/125)).
+
+### Hub version selection and component repair
+
+Select a published mod version in Hub settings to pin it or return to an earlier release. The matching Hub exposes 2.4.0 NR placement controls and 33% custom scales, recognizes NVIDIA 621.24, and repairs/installs the required Streamline SR dependencies. Older mod versions retain their applicable controls.
+
+Neural Rendering remains experimental and off by default. Compatibility depends on the game, API, GPU, driver and runtime. No universal FPS or image-quality gain is promised.
 
 ## 2.4.0
 
