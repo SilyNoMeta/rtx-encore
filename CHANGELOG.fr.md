@@ -2,6 +2,16 @@
 
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 2.4.1
+
+**RTX Encore 2.4.1 corrige une régression de la 2.4.0 qui pouvait limiter le menu de génération d’images du jeu à X2, alors que X3/X4 fonctionnaient depuis l’overlay RTX Encore.**
+
+Lorsque la DLL DLSS-G installée et un modèle du cache NVIDIA sont tous deux chargés, le fournisseur actif peut ne pas être identifié lors de la première requête de capacités du jeu. Encore conserve désormais le maximum natif annoncé pendant cette phase, au lieu de le remplacer par X2. Les requêtes FG restent limitées à X2 tant que le fournisseur n’est pas admis ; un fournisseur historique identifié conserve sa limite réelle.
+
+Le test de régression compile les fonctions exactes de sélection du fournisseur et d’annonce des capacités. Il reproduit la requête au démarrage avant identification, l’admission ultérieure des multiplicateurs supérieurs, les fournisseurs limités à X2 et les limites intermédiaires, les identités périmées et les bornes des menus par jeu. Il échoue avec le comportement 2.4.0 et passe avec le correctif.
+
+Merci à la personne ayant signalé le problème dans S.T.A.L.K.E.R. 2 pour les logs de démarrage détaillés et les vérifications X3/X4. Les logs confirment la régression initiale ; le correctif reste à confirmer dans son jeu. Le Hub 2.4.0 reste compatible et ne nécessite pas de mise à jour.
+
 ## 2.4.0
 
 **RTX Encore 2.4.0 ajoute le placement NR par passe, l’anticrénelage spatial en DirectX et Vulkan avec HDR, et une échelle DLSS personnalisée jusqu’à 33 %. Le Hub 2.4.0 permet de choisir une version du mod et de revenir en arrière.**

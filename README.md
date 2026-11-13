@@ -34,6 +34,12 @@ A built-in menu, with RTX Encore Hub to install the mod and its required runtime
 
 </div>
 
+## RTX Encore 2.4.1
+
+RTX Encore 2.4.1 fixes a 2.4.0 regression that could leave the game’s own frame-generation menu limited to X2 even though X3/X4 worked from RTX Encore’s overlay.
+
+[2.4.1](CHANGELOG.md#241)
+
 ## RTX Encore 2.4.0
 
 RTX Encore 2.4.0 adds NR placement per pass, spatial anti-aliasing across DirectX and Vulkan with HDR, and DLSS custom scales down to 33%. Hub 2.4.0 lets you choose a mod version and roll back.

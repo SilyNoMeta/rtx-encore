@@ -2,6 +2,16 @@
 
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 2.4.1
+
+**RTX Encore 2.4.1 fixes a 2.4.0 regression that could leave the game’s own frame-generation menu limited to X2 even though X3/X4 worked from RTX Encore’s overlay.**
+
+When the installed DLSS-G DLL and an NVIDIA-cache model are both loaded, the active provider may not be identified during the game’s first capability query. RTX Encore now preserves the native reported maximum during that unresolved phase instead of replacing it with X2. Higher-factor FG requests remain limited to X2 until provider admission resolves; an identified legacy provider retains its real limit.
+
+The regression test compiles the exact production provider-selection and capability-advertisement functions. It reproduces the startup query before provider selection, the later higher-factor admission, and known X2-only/limited providers, stale identities and game-specific menu bounds. It fails with the 2.4.0 behavior and passes with the fix.
+
+Thanks to the S.T.A.L.K.E.R. 2 reporter for the detailed startup logs and X3/X4 checks. The logs confirm the original regression; the fixed build still needs confirmation in their game. Hub 2.4.0 remains compatible; no Hub update is required.
+
 ## 2.4.0
 
 **RTX Encore 2.4.0 adds NR placement per pass, spatial anti-aliasing across DirectX and Vulkan with HDR, and DLSS custom scales down to 33%. Hub 2.4.0 lets you choose a mod version and roll back.**
