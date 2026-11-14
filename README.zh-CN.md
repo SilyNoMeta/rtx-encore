@@ -34,32 +34,30 @@ Smooth Motion 和 Neural Rendering——现在也适用于没有 DLSS 的游戏�
 
 </div>
 
-## RTX Encore 2.4.1
+## 最新版本：2.4.2
 
-RTX Encore 2.4.1 包含逐遍 NR 位置、支持 HDR 的 DirectX/Vulkan 空间抗锯齿、最低 33% 的自定义 DLSS 比例，以及游戏 FG 菜单停留在 X2 的修复。配套 Hub 2.4.0 提供模组版本选择，无需更新 Hub。
+**修复《天国：拯救 2》中帧生成停在 X2 或 X1 的问题，游戏内菜单新增韩语。** 配套 Hub 为 2.4.2。
 
-[2.4.1](CHANGELOG.zh-CN.md#241)
+- 🎞️ **《天国：拯救 2》：**倍数不再被限制在 X2，叠加层不再显示“Ada”，使用放大器时 XeFG 也能再次运行。
+- 🌐 **游戏内菜单支持韩语：**菜单共十二种语言，内置韩文字体。
 
-## RTX Encore 2.4.0
-
-RTX Encore 2.4.0 新增逐遍 NR 处理位置、支持 HDR 的 DirectX/Vulkan 空间抗锯齿，以及最低 33% 的自定义 DLSS 比例。Hub 2.4.0 可选择模组版本并回退。
-
-[2.4.0](CHANGELOG.zh-CN.md#240)
-
-
-**RTX Encore 的 Discord 服务器现已开放。** 欢迎分享 2.0.0 的测试结果、交流设置，或就模组和 Hub 寻求帮助。[加入 Discord](https://discord.gg/Zwmq4Xc2Br)。
+**[下载 2.4.2](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v2.4.2)** · [版本说明](CHANGELOG.zh-CN.md#242) · [Hub 2.4.2](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.4.2)
 
 > [!IMPORTANT]
 > RTX Encore 是一个独立的实验性模组，与 NVIDIA 没有关联，也未获得 NVIDIA 的认可。
 > 它在游戏进程内加载：请勿在联机游戏或受反作弊保护的游戏中使用，否则可能被拦截，或导致账号被标记。
 > 替换任何文件之前请先备份。
 
-**[最新版本：2.2.0](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v2.2.0)** · [版本说明](CHANGELOG.zh-CN.md) · [Hub 2.2.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.2.0)
+### 往期亮点
 
-**2.2.0 新增：**无 DLSS 游戏可选 NVIDIA Image Scaling（NIS），可在 NIS 前后使用 FXAA/SMAA，自定义叠加层样式与指标，RTX 20 实验性支持 XeFG Tensor Cores，并更新 RTX 30/40 的 XeSS Tensor Cores 路径。[查看全部更改与限制](CHANGELOG.zh-CN.md#220)。
+| 版本 | 主要内容 |
+| :--- | :--- |
+| **[2.4](CHANGELOG.zh-CN.md#240)** | 逐遍 NR 位置、DirectX 与 Vulkan 下支持 HDR 的 FXAA/SMAA、最低 33% 的自定义 DLSS 比例、Hub 中的模组版本选择，以及游戏 FG 菜单停留在 X2 的修复。 |
+| **[2.3](CHANGELOG.zh-CN.md#230)** | 最终图像 Neural Rendering、默认使用游戏运动矢量、全新游戏内控制台、支持 HDR 的 FSR 1。 |
+| **[2.2](CHANGELOG.zh-CN.md#220)** | 面向无 DLSS 游戏的 NVIDIA Image Scaling（NIS）、可选 FXAA/SMAA、可自定义叠加层、RTX 20 上的 XeFG。 |
+| **[2.1](CHANGELOG.zh-CN.md#210)** | 稳定游戏帧节奏让 XeFG X3–X6 更流畅，DirectX 11 和 Vulkan 中的附加帧生成可使用游戏自身的深度与运动数据。 |
 
-**2.1.0 的主要新增内容仍在：**稳定游戏帧节奏让 XeFG X3–X6 更流畅；添加的帧生成可在 DirectX 11 和 Vulkan 中利用 DLSS 游戏自身的深度与运动数据；XeFG Tensor Cores 也扩展到这两种 API。该版本还修复了博德之门 3、最终幻想 VII 重生、极限竞速：地平线 6、天国：拯救、Islands of Insight 和黑旗 Resynced 的问题。[2.1.0 详情](CHANGELOG.zh-CN.md#210)。
-
+有问题、想对比设置或分享结果？[加入 Discord](https://discord.gg/Zwmq4Xc2Br)。所有版本见[完整更新日志](CHANGELOG.zh-CN.md)。
 
 ## 2.0.0：为没有 DLSS 的游戏带来 DLSS、XeSS、Neural Rendering 和帧生成
 

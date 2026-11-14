@@ -2,6 +2,24 @@
 
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 2.4.2
+
+**RTX Encore 2.4.2 corrige la génération d’images bloquée à X2 ou X1 dans Kingdom Come: Deliverance II et ajoute le coréen au menu en jeu. Le Hub 2.4.2 est le Hub associé.**
+
+### Génération d’images dans Kingdom Come: Deliverance II
+
+- **Multiplicateur plus plafonné à X2.** Quand le Streamline du jeu fournit DLSS Frame Generation, RTX Encore limitait tous ces jeux à X2 alors que le menu proposait jusqu’à X6. La limite suit désormais ce que le fournisseur du jeu prend en charge.
+- **Ligne de performance.** Une copie de DLSS-G que le pilote charge pour comparer les versions ne réinitialise plus l’état de qualité des multiplicateurs élevés défini par le fournisseur du jeu : l’overlay n’affiche plus « Ada ».
+- **XeFG avec un upscaler.** Dans les jeux DirectX 12 avec guides de génération d’images, XeFG refusait chaque image et le jeu restait à X1. RTX Encore déclare maintenant les vecteurs de mouvement avec la convention de l’image réellement fournie.
+
+Le mainteneur a vérifié ces correctifs dans Kingdom Come: Deliverance II. D’autres jeux qui empruntent les mêmes chemins peuvent se comporter autrement.
+
+### Menu en jeu en coréen
+
+Choisissez **한국어** dans le sélecteur de langue du menu, ou réglez-le pour tous les jeux depuis le Hub 2.4.2 (`menuState.menuLanguage` = `ko`). Le menu compte désormais douze langues. Sa police embarquée reçoit les caractères hangul nécessaires : aucune police coréenne n’a besoin d’être installée. Les looks du rendu neuronal sont aussi nommés en coréen, ce qui donne une nouvelle révision à leur catalogue : les looks sont proposés par le Hub 2.4.2, pas par un Hub plus ancien.
+
+La traduction a été vérifiée sur des captures du menu, pas encore en jeu.
+
 ## 2.4.1
 
 **RTX Encore 2.4.1 réunit le placement NR par passe, l’anticrénelage spatial DirectX/Vulkan avec HDR, l’échelle DLSS jusqu’à 33 % et le correctif des menus FG du jeu bloqués à X2. Le Hub 2.4.0 permet de choisir la version du mod et reste le Hub associé.**

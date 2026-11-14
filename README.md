@@ -34,32 +34,30 @@ A built-in menu, with RTX Encore Hub to install the mod and its required runtime
 
 </div>
 
-## RTX Encore 2.4.1
+## Latest release: 2.4.2
 
-RTX Encore 2.4.1 brings per-pass NR placement, spatial anti-aliasing across DirectX and Vulkan with HDR, DLSS custom scales down to 33%, and the fix for game FG menus stuck at X2. Hub 2.4.0 provides mod-version selection and remains the matching Hub.
+**Frame generation no longer stuck at X2 or X1 in Kingdom Come: Deliverance II, and the in-game menu in Korean.** The matching Hub is 2.4.2.
 
-[2.4.1](CHANGELOG.md#241)
+- 🎞️ **Kingdom Come: Deliverance II:** the multiplier is no longer capped at X2, the overlay stops showing "Ada", and XeFG runs again with an upscaler.
+- 🌐 **Korean in the in-game menu:** twelve menu languages, with the Hangul font built in.
 
-## RTX Encore 2.4.0
-
-RTX Encore 2.4.0 adds NR placement per pass, spatial anti-aliasing across DirectX and Vulkan with HDR, and DLSS custom scales down to 33%. Hub 2.4.0 lets you choose a mod version and roll back.
-
-[2.4.0](CHANGELOG.md#240)
-
-
-**RTX Encore now has a Discord.** Share your 2.0.0 results, compare settings, or get help with the mod and Hub. [Join the Discord](https://discord.gg/Zwmq4Xc2Br).
+**[Download 2.4.2](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v2.4.2)** · [Release notes](CHANGELOG.md#242) · [Hub 2.4.2](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.4.2)
 
 > [!IMPORTANT]
 > RTX Encore is an independent, experimental mod. It is not affiliated with or endorsed by NVIDIA.
 > It loads inside the game: do not use it in online or anti-cheat protected games, where it can be blocked or get an
 > account flagged. Back up every file you replace.
 
-**[Latest: 2.2.0](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v2.2.0)** · [Release notes](CHANGELOG.md) · [Hub 2.2.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.2.0)
+### Earlier highlights
 
-**New in 2.2.0:** NVIDIA Image Scaling (NIS) for games without DLSS, optional FXAA/SMAA before or after NIS, customizable overlay styles and metrics, experimental XeFG Tensor Cores on RTX 20, and updated XeSS Tensor Cores paths for RTX 30/40. [All changes and limits](CHANGELOG.md#220).
+| Version | What it brought |
+| :--- | :--- |
+| **[2.4](CHANGELOG.md#240)** | NR placement per pass, FXAA/SMAA with HDR across DirectX and Vulkan, DLSS custom scales down to 33%, mod-version selection in the Hub, and the fix for game FG menus stuck at X2. |
+| **[2.3](CHANGELOG.md#230)** | Final image Neural Rendering, game motion vectors by default, a redesigned in-game Console, FSR 1 with HDR. |
+| **[2.2](CHANGELOG.md#220)** | NVIDIA Image Scaling (NIS) for games without DLSS, optional FXAA/SMAA, customizable overlay, XeFG on RTX 20. |
+| **[2.1](CHANGELOG.md#210)** | Steady game pacing for smoother XeFG X3–X6, game depth and motion for added frame generation in DirectX 11 and Vulkan. |
 
-**Also new in 2.1.0:** steady game pacing makes XeFG X3–X6 smoother; added frame generation can use a DLSS game's own depth and motion in DirectX 11 and Vulkan; XeFG Tensor Cores reach those APIs too. The release also brought fixes for Baldur's Gate 3, Final Fantasy VII Rebirth, Forza Horizon 6, Kingdom Come: Deliverance, Islands of Insight and Black Flag Resynced. [2.1.0 details](CHANGELOG.md#210).
-
+Questions, settings to compare or results to share? [Join the Discord](https://discord.gg/Zwmq4Xc2Br). Every version is in the [full changelog](CHANGELOG.md).
 
 ## 2.0.0: DLSS, XeSS, Neural Rendering and frame generation for games without DLSS
 

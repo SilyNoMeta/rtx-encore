@@ -14,7 +14,7 @@ RTX Encore 在 DirectX 11、DirectX 12 和 Vulkan 游戏中绘制自己的菜单
 
 在游戏窗口中按 **Insert** 打开或关闭菜单。首次启动时菜单会自动打开一次。快捷键可以在菜单中修改。
 
-在语言选择器中选择 **English**、**Français**、**简体中文**、**Deutsch**、**Español**、**Nederlands**、**Polski**、**Português (Brasil)**、**Tiếng Việt**、**Русский** 或 **日本語**（自 2.0.0 起共十一种语言；阿拉伯语是 Hub 的语言之一，在菜单中显示为英语）。选择立即生效并按游戏保存，Hub 也可以为所有游戏统一设置；未翻译消息保持英语。复制用于报告问题的会话报告保持英语。**关于**选项卡显示构建版本、项目与 Hub 链接、网站、Discord、问题报告、GitHub Sponsors、Ko-fi、第三方声明及公开赞助者致谢。选择链接时将在默认浏览器中打开。
+在语言选择器中选择 **English**、**Français**、**简体中文**、**Deutsch**、**Español**、**Nederlands**、**Polski**、**Português (Brasil)**、**Tiếng Việt**、**Русский**、**日本語** 或 **한국어**（共十二种语言；阿拉伯语是 Hub 的语言之一，在菜单中显示为英语）。选择立即生效并按游戏保存，Hub 也可以为所有游戏统一设置；未翻译消息保持英语。复制用于报告问题的会话报告保持英语。**关于**选项卡显示构建版本、项目与 Hub 链接、网站、Discord、问题报告、GitHub Sponsors、Ko-fi、第三方声明及公开赞助者致谢。选择链接时将在默认浏览器中打开。
 
 每个页面顶部都有四个状态标签：**Upscaling**、**Frame Generation**、**Smooth Motion** 和 **Neural Rendering**。
 每个标签通过彩色圆点和一个数值显示相应功能的状态；悬停查看详情，点击进入设置。持续存在的问题会显示在标签下方的

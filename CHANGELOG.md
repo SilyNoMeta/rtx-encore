@@ -2,6 +2,24 @@
 
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 2.4.2
+
+**RTX Encore 2.4.2 fixes frame generation stuck at X2 or X1 in Kingdom Come: Deliverance II and adds Korean to the in-game menu. Hub 2.4.2 is the matching Hub.**
+
+### Frame generation in Kingdom Come: Deliverance II
+
+- **Multiplier no longer capped at X2.** When the game's own Streamline provides DLSS Frame Generation, RTX Encore limited every such game to X2 even though the menu offered up to X6. The limit now follows what the game's provider supports.
+- **Performance line.** A DLSS-G copy that the driver loads to compare versions no longer resets the high-multiplier quality state set by the game's provider, so the overlay stops showing "Ada".
+- **XeFG with an upscaler.** In DirectX 12 games with frame-generation guides, XeFG refused every frame and the game stayed at X1. RTX Encore now declares the motion vectors with the convention of the image it actually supplies.
+
+The maintainer checked these fixes in Kingdom Come: Deliverance II. Other games that use the same routes may behave differently.
+
+### In-game menu in Korean
+
+Choose **한국어** in the menu's language selector, or set it for every game from Hub 2.4.2 (`menuState.menuLanguage` = `ko`). The menu now has twelve languages. Its embedded font gains the Hangul it needs, so no Korean font has to be installed. The Neural Rendering looks are named in Korean too, which gives their catalog a new revision: the looks are offered by Hub 2.4.2, not by an older Hub.
+
+The translation was checked on screen captures of the menu, not yet in a game.
+
 ## 2.4.1
 
 **RTX Encore 2.4.1 brings per-pass NR placement, spatial anti-aliasing across DirectX and Vulkan with HDR, DLSS custom scales down to 33%, and the fix for game FG menus stuck at X2. Hub 2.4.0 provides mod-version selection and remains the matching Hub.**

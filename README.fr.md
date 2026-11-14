@@ -34,32 +34,30 @@ Un menu intégré, avec RTX Encore Hub pour installer le mod et les runtimes né
 
 </div>
 
-## RTX Encore 2.4.1
+## Dernière version : 2.4.2
 
-RTX Encore 2.4.1 réunit le placement NR par passe, l’anticrénelage spatial DirectX/Vulkan avec HDR, l’échelle DLSS jusqu’à 33 % et le correctif des menus FG du jeu bloqués à X2. Le Hub 2.4.0 permet de choisir la version du mod et reste le Hub associé.
+**Génération d’images qui n’est plus bloquée à X2 ou X1 dans Kingdom Come: Deliverance II, et menu en jeu en coréen.** Le Hub associé est le 2.4.2.
 
-[2.4.1](CHANGELOG.fr.md#241)
+- 🎞️ **Kingdom Come: Deliverance II :** le multiplicateur n’est plus plafonné à X2, l’overlay n’affiche plus « Ada » et XeFG fonctionne de nouveau avec un upscaler.
+- 🌐 **Menu en jeu en coréen :** douze langues dans le menu, avec la police hangul intégrée.
 
-## RTX Encore 2.4.0
-
-RTX Encore 2.4.0 ajoute le placement NR par passe, l’anticrénelage spatial en DirectX et Vulkan avec HDR, et une échelle DLSS personnalisée jusqu’à 33 %. Le Hub 2.4.0 permet de choisir une version du mod et de revenir en arrière.
-
-[2.4.0](CHANGELOG.fr.md#240)
-
-
-**Le Discord de RTX Encore est ouvert.** Partagez vos essais de la 2.0.0, comparez vos réglages ou demandez de l’aide pour le mod et le Hub. [Rejoindre le Discord](https://discord.gg/Zwmq4Xc2Br).
+**[Télécharger la 2.4.2](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v2.4.2)** · [Notes de version](CHANGELOG.fr.md#242) · [Hub 2.4.2](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.4.2)
 
 > [!IMPORTANT]
 > RTX Encore est un mod indépendant et expérimental. Il n'est ni affilié à NVIDIA ni approuvé par NVIDIA.
 > Il se charge dans le jeu : ne l'utilisez pas dans un jeu en ligne ou protégé par un anti-triche, où il peut être
 > bloqué ou faire signaler un compte. Sauvegardez chaque fichier que vous remplacez.
 
-**[Dernière version : 2.2.0](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v2.2.0)** · [Notes de version](CHANGELOG.fr.md) · [Hub 2.2.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.2.0)
+### Rappel des versions précédentes
 
-**Nouveau dans la 2.2.0 :** NVIDIA Image Scaling (NIS) pour les jeux sans DLSS, FXAA/SMAA en option avant ou après NIS, styles et métriques d'overlay personnalisables, XeFG sur les Tensor Cores des RTX 20 à titre expérimental et nouveaux chemins XeSS Tensor Cores pour les RTX 30/40. [Tous les changements et limites](CHANGELOG.fr.md#220).
+| Version | Ce qu’elle apportait |
+| :--- | :--- |
+| **[2.4](CHANGELOG.fr.md#240)** | Placement NR par passe, FXAA/SMAA avec HDR en DirectX et Vulkan, échelle DLSS personnalisée jusqu’à 33 %, choix de la version du mod dans le Hub, et correctif des menus FG du jeu bloqués à X2. |
+| **[2.3](CHANGELOG.fr.md#230)** | NR sur l’image finale, vecteurs de mouvement du jeu par défaut, nouvelle Console en jeu, FSR 1 avec HDR. |
+| **[2.2](CHANGELOG.fr.md#220)** | NVIDIA Image Scaling (NIS) pour les jeux sans DLSS, FXAA/SMAA en option, overlay personnalisable, XeFG sur RTX 20. |
+| **[2.1](CHANGELOG.fr.md#210)** | Cadence régulière du jeu pour un XeFG X3–X6 plus fluide, profondeur et mouvement du jeu pour la génération d’images ajoutée en DirectX 11 et Vulkan. |
 
-**Également nouveau depuis la 2.1.0 :** la cadence régulière du jeu rend XeFG X3 à X6 plus fluide ; la génération d'images ajoutée peut utiliser la profondeur et le mouvement d'un jeu DLSS en DirectX 11 et Vulkan ; XeFG Tensor Cores s'étend aussi à ces API. Cette version corrigeait également Baldur's Gate 3, Final Fantasy VII Rebirth, Forza Horizon 6, Kingdom Come: Deliverance, Islands of Insight et Black Flag Resynced. [Détails de la 2.1.0](CHANGELOG.fr.md#210).
-
+Des questions, des réglages à comparer ou des résultats à partager ? [Rejoindre le Discord](https://discord.gg/Zwmq4Xc2Br). Toutes les versions sont dans le [journal complet](CHANGELOG.fr.md).
 
 ## 2.0.0 : DLSS, XeSS, Neural Rendering et génération d'images pour les jeux sans DLSS
 
