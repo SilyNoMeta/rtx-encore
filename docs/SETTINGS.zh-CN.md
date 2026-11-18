@@ -61,7 +61,7 @@ NVIDIA 运行库的兼容性不再要求文件位于预设列表中。旧的 `pr
 | `dlssCustomScale` | `67` | `"custom"` 时的百分比，`33` 至 `100` |
 | `fastSuperResolution` | `false` | RTX 30、DirectX 12：在预设为 M 或 L 时加速 DLSS 超分辨率，在测量的系统上每个放大帧约减少 16% 至 20% 的 GPU 时间，画面与原版非常接近。在其他显卡上不起作用。需重启游戏。见[超分辨率](SUPER-RESOLUTION.zh-CN.md#fast-super-resolution-rtx-30)。 |
 | `dlssWithoutGameDlss` | `false` | 没有 DLSS 的游戏：使用 DLSS 或 XeSS 对显示的画面运行 DLAA 或放大。实验性功能。参见[没有 DLSS 的游戏](GAMES-WITHOUT-DLSS.zh-CN.md)。 |
-| `dlssWithoutGameDlssEngine` | `"dlss"` | 可选 `"dlss"`、`"xess"`、`"nis"` 或 `"fsr1"`。XeSS 支持 1x 到 3x，需要 Intel 运行库。NIS 和 FSR 1 是空间缩放引擎，无需 DLSS 或 Intel 运行库。即时生效。 |
+| `dlssWithoutGameDlssEngine` | `"dlss"` | 可选 `"dlss"`、`"xess"`、`"nis"`、`"fsr1"` 或 `"mwsr"`。XeSS 支持 1x 到 3x，需要 Intel 运行库。NIS、FSR 1 和 MWSR 是空间缩放引擎，无需 DLSS 或 Intel 运行库。即时生效。 |
 | `dlssWithoutGameDlssOutput` | `"game"` | `"game"`（游戏分辨率下的 DLAA）或 `"screen"`（放大到屏幕分辨率；游戏使用较低分辨率的窗口化模式）。 |
 | `presentOpticalFlow` | `"game"` | 用于额外帧生成、NR 最终画面模式和没有 DLSS 的游戏的运动来源。`"game"` 优先使用捕获到的游戏运动矢量；不可用时回退到 `"encore"`。`"encore"` 使用 RTX Encore 的着色器，`"shader"` 使用 vort_Motion 的方法，`"quality"` 或 `"fast"` 使用 NVIDIA Optical Flow。 |
 
@@ -84,8 +84,8 @@ NVIDIA 运行库的兼容性不再要求文件位于预设列表中。旧的 `pr
 | :--- | :---: | :--- |
 | `srSharpening` | `"off"` | 模式：`off`（默认）、`game` 或 `custom`，即时生效。 |
 | `srSharpness` | `30` | Custom 强度：0–100%，默认 30%。0 禁用效果。 |
-| `spatialSharpness` | `30` | NIS 和 FSR 1 的锐化强度，0–100%。即时生效。 |
-| `spatialAa` | `"off"` | DirectX 11 下可在 NIS 或 FSR 1 缩放前后使用抗锯齿。可选 `"off"`、`"smaa"` 或 `"fxaa"`。需要 SDR，也会处理 HUD。 |
+| `spatialSharpness` | `30` | NIS、FSR 1 和 MWSR 的锐化强度，0–100%。对 MWSR 而言，30 保留其自身锐化，0 关闭锐化，100 将其加倍。即时生效。 |
+| `spatialAa` | `"off"` | DirectX 11 下可在 NIS、FSR 1 或 MWSR 缩放前后使用抗锯齿。可选 `"off"`、`"smaa"` 或 `"fxaa"`。需要 SDR，也会处理 HUD。 |
 | `spatialAaPlacement` | `"before"` | `"before"` 在空间缩放前按源分辨率处理，`"after"` 在缩放后按输出分辨率处理。Post-SR NR、最终画面 NR 和兼容的帧生成都在空间缩放和已配置的抗锯齿之后运行。 |
 | `spatialAaQuality` | `"high"` | SMAA 1x 质量：`"low"`、`"medium"`、`"high"` 或 `"ultra"`。FXAA 使用固定预设。 |
 

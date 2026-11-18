@@ -34,14 +34,11 @@ Un menu intégré, avec RTX Encore Hub pour installer le mod et les runtimes né
 
 </div>
 
-## Dernière version : 2.4.2
+## Dernière version 2.5.0
 
-**Génération d’images qui n’est plus bloquée à X2 ou X1 dans Kingdom Come: Deliverance II, et menu en jeu en coréen.** Le Hub associé est le 2.4.2.
+**Mise à l’échelle MWSR, améliorations de XeSS et XeFG sous Vulkan et correctifs pour RDR2 et ReShade.**
 
-- 🎞️ **Kingdom Come: Deliverance II :** le multiplicateur n’est plus plafonné à X2, l’overlay n’affiche plus « Ada » et XeFG fonctionne de nouveau avec un upscaler.
-- 🌐 **Menu en jeu en coréen :** douze langues dans le menu, avec la police hangul intégrée.
-
-**[Télécharger la 2.4.2](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v2.4.2)** · [Notes de version](CHANGELOG.fr.md#242) · [Hub 2.4.2](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.4.2)
+**[Télécharger la 2.5.0](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v2.5.0)** · [Notes de version](CHANGELOG.fr.md#250) · [Hub 2.5.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.5.0)
 
 > [!IMPORTANT]
 > RTX Encore est un mod indépendant et expérimental. Il n'est ni affilié à NVIDIA ni approuvé par NVIDIA.
@@ -230,6 +227,7 @@ TonyJoaca et est devenu depuis un projet à part entière. Il doit aussi beaucou
 - [Skynizz/optiscaler-dlss5](https://github.com/Skynizz/optiscaler-dlss5) pour l’idée des profils NR multipasses ;
 - [jlrouzies-fr/DLSS5-Feeder](https://github.com/jlrouzies-fr/DLSS5-Feeder) : le Neural Rendering alimenté par l’image affichée, et sa validation du mouvement ;
 - [vortigern11/vort_Shaders](https://github.com/vortigern11/vort_Shaders) (vort_Motion) : l’estimation du mouvement par shaders pour les jeux sans DLSS ;
+- [linckosz/moonlight-web](https://github.com/linckosz/moonlight-web) (MWSR), de Bruno Martin : la mise à l’échelle spatiale MWSR ;
 - [crosire/reshade](https://github.com/crosire/reshade) (add-on Generic Depth) : la façon de trouver le depth buffer dans lequel dessine un jeu ;
 - [Dear ImGui](https://github.com/ocornut/imgui) d’Omar Cornut : la bibliothèque avec laquelle sont faits le menu en jeu et l’overlay ;
 - [SMAA](https://github.com/iryoku/smaa) : Jorge Jimenez, Jose I. Echevarria, Belen Masia, Fernando Navarro et Diego Gutierrez ; [FXAA 3.11](https://github.com/GameTechDev/CMAA2) : NVIDIA, Timothy Lottes ;

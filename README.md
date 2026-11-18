@@ -34,14 +34,11 @@ A built-in menu, with RTX Encore Hub to install the mod and its required runtime
 
 </div>
 
-## Latest release: 2.4.2
+## Latest release 2.5.0
 
-**Frame generation no longer stuck at X2 or X1 in Kingdom Come: Deliverance II, and the in-game menu in Korean.** The matching Hub is 2.4.2.
+**MWSR spatial upscaling, improved Vulkan XeSS and XeFG, and compatibility fixes for RDR2 and ReShade.**
 
-- 🎞️ **Kingdom Come: Deliverance II:** the multiplier is no longer capped at X2, the overlay stops showing "Ada", and XeFG runs again with an upscaler.
-- 🌐 **Korean in the in-game menu:** twelve menu languages, with the Hangul font built in.
-
-**[Download 2.4.2](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v2.4.2)** · [Release notes](CHANGELOG.md#242) · [Hub 2.4.2](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.4.2)
+**[Download 2.5.0](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v2.5.0)** · [Release notes](CHANGELOG.md#250) · [Hub 2.5.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.5.0)
 
 > [!IMPORTANT]
 > RTX Encore is an independent, experimental mod. It is not affiliated with or endorsed by NVIDIA.
@@ -229,6 +226,7 @@ TonyJoaca and has since grown into a project of its own. It also owes much to th
 - [Skynizz/optiscaler-dlss5](https://github.com/Skynizz/optiscaler-dlss5) inspired multipass NR profiles;
 - [jlrouzies-fr/DLSS5-Feeder](https://github.com/jlrouzies-fr/DLSS5-Feeder): Neural Rendering fed from the displayed image, and its motion validation;
 - [vortigern11/vort_Shaders](https://github.com/vortigern11/vort_Shaders) (vort_Motion): the shader motion estimation for games without DLSS;
+- [linckosz/moonlight-web](https://github.com/linckosz/moonlight-web) (MWSR) by Bruno Martin: the MWSR spatial upscaler;
 - [crosire/reshade](https://github.com/crosire/reshade) (Generic Depth add-on): how to find the depth buffer a game draws with;
 - [Dear ImGui](https://github.com/ocornut/imgui) by Omar Cornut: the toolkit the in-game menu and overlay are built with;
 - [SMAA](https://github.com/iryoku/smaa): Jorge Jimenez, Jose I. Echevarria, Belen Masia, Fernando Navarro and Diego Gutierrez; [FXAA 3.11](https://github.com/GameTechDev/CMAA2): NVIDIA, Timothy Lottes;

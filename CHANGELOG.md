@@ -2,6 +2,16 @@
 
 *[Français](CHANGELOG.fr.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 2.5.0
+
+- **MWSR spatial upscaling.** MoonlightWeb Super Resolution joins NIS and FSR 1 and becomes the default spatial engine. It supports SDR and HDR on DirectX 11, DirectX 12 and compatible Vulkan paths. Bruno Martin developed MWSR.
+- **XeSS and XeFG on Vulkan.** Experimental XeSS SR Tensor acceleration is available on supported NVIDIA configurations, with a Tensor Cores badge when it is active. XeFG can use the game's motion vectors on compatible Vulkan paths. In RDR2, XeSS SR can resume after temporarily falling back to DLSS, and Encore handles more layouts for the game's motion vectors. Thanks to [AhamedM07 for the RDR2 report and logs](https://github.com/SilyNoMeta/rtx-encore/issues/131).
+- **Frame generation and overlays.** More games that use DLSS Frame Generation directly can use XeFG. Compatible games with their own XeFG can expose Encore's menu and Tensor Cores option. This release improves DLSS-FG routing with ReShade and the menu behind compatible ReShade or GShade overlays, including the DirectX 11 XeFG path. Thanks to [RankFTW for the Townfall and ABZU comparison and crash logs](https://github.com/SilyNoMeta/rtx-encore/issues/133).
+- **Stability and diagnostics.** Fixed a crash after long sessions while cleaning up DLSS preset use. Improved XeFG game-vector reporting and made VRAM pressure advisory for captured guides. Runtime warnings now appear in a separate window so they do not move the menu. The motion estimation selector is available for Neural Rendering in games without DLSS. Thanks to [deusimperatork for the performance report and logs](https://github.com/SilyNoMeta/rtx-encore/issues/129).
+- **DLSS-G recovery and game motion vectors on DirectX 12.** Fixed a crash in Townfall when submitting frame-generation inputs with ReShade. Added DLSS-G can resume after a successful resize following an invalid Present. Encore recycles native motion and depth captures, including when the game changes its output size.
+
+Townfall still falls back to estimated motion when the black bars change the rendered area size. This update addresses the startup crash with DLSS Super Resolution or Ray Reconstruction and ReShade. The final build still needs an in-game retest. The KCD2 FPS regression and the Witcher 3 post-dialogue issue still need in-game follow-up.
+
 ## 2.4.2
 
 **RTX Encore 2.4.2 fixes frame generation stuck at X2 or X1 in Kingdom Come: Deliverance II and adds Korean to the in-game menu. Hub 2.4.2 is the matching Hub.**

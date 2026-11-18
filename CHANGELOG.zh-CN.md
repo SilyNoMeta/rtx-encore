@@ -2,6 +2,16 @@
 
 *[English](CHANGELOG.md) · [Français](CHANGELOG.fr.md)*
 
+## 2.5.0
+
+- **MWSR 空间缩放。** MoonlightWeb Super Resolution 与 NIS 和 FSR 1 一起提供，并成为默认空间缩放引擎。它支持 DirectX 11、DirectX 12 和兼容 Vulkan 路径上的 SDR 和 HDR。MWSR 由 Bruno Martin 开发。
+- **Vulkan 下的 XeSS 和 XeFG。** 兼容的 NVIDIA 配置可以使用实验性的 XeSS SR Tensor 加速，启用时会显示 Tensor Cores 徽标。XeFG 可以在兼容的 Vulkan 路径中使用游戏运动矢量。在 RDR2 中，XeSS SR 可以在临时回退到 DLSS 后恢复，Encore 也支持更多运动矢量图像布局。感谢 [AhamedM07 提供 RDR2 报告和日志](https://github.com/SilyNoMeta/rtx-encore/issues/131)。
+- **帧生成和覆盖层。** 更多直接使用 DLSS 帧生成的游戏可以使用 XeFG。兼容且自带 XeFG 的游戏可以显示 Encore 菜单和 Tensor Cores 选项。此版本改进了 ReShade 下的 DLSS-FG 路由，以及兼容 ReShade 或 GShade 覆盖层下的菜单显示，包括 DirectX 11 的 XeFG 路径。感谢 [RankFTW 提供 Townfall 与 ABZU 对比及崩溃日志](https://github.com/SilyNoMeta/rtx-encore/issues/133)。
+- **稳定性和诊断。** 修复长时间运行后在清理 DLSS 预设使用记录时发生的崩溃。改进 XeFG 游戏运动矢量状态显示，已捕获引导数据的显存压力提示为参考信息。运行警告移到独立窗口，避免菜单移动。无 DLSS 游戏中的神经渲染可以选择运动估计方式。感谢 [deusimperatork提供测试数据和日志](https://github.com/SilyNoMeta/rtx-encore/issues/129)。
+- **DirectX 12 下的 DLSS-G 恢复与游戏运动矢量。** 修复 Townfall 在使用 ReShade 时提交帧生成输入导致的崩溃。若 Present 调用无效，添加的 DLSS-G 可在成功调整交换链大小后恢复。Encore 会回收捕获的运动矢量与深度数据，包括游戏更改输出尺寸时。
+
+在 Townfall 中，黑边改变渲染区域尺寸时仍会回退到估算运动矢量。此版本修正了 DLSS 超分辨率或光线重建与 ReShade 同时使用时导致启动崩溃的路径，最终版仍待游戏内复测。KCD2 的性能下降及《巫师 3》对话后帧生成恢复问题仍需在游戏中跟进。
+
 ## 2.4.2
 
 **RTX Encore 2.4.2 修复《天国：拯救 2》中帧生成停在 X2 或 X1 的问题，并为游戏内菜单新增韩语。配套 Hub 为 2.4.2。**

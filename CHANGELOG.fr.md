@@ -2,6 +2,16 @@
 
 *[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md)*
 
+## 2.5.0
+
+- **Mise à l’échelle spatiale MWSR.** MoonlightWeb Super Resolution rejoint NIS et FSR 1 et devient le moteur spatial par défaut. Il prend en charge le SDR et le HDR sous DirectX 11, DirectX 12 et sur les chemins Vulkan compatibles. MWSR est développé par Bruno Martin.
+- **XeSS et XeFG sous Vulkan.** L’accélération Tensor expérimentale de XeSS SR est disponible sur les configurations NVIDIA compatibles. Le badge Tensor Cores indique son activation. XeFG peut utiliser les vecteurs du jeu sur les chemins Vulkan compatibles. Dans RDR2, XeSS SR peut reprendre après un repli temporaire sur DLSS et Encore gère davantage de layouts pour les vecteurs. Merci à [AhamedM07 pour le signalement et les logs RDR2](https://github.com/SilyNoMeta/rtx-encore/issues/131).
+- **Génération d’images et overlays.** XeFG couvre davantage de jeux qui utilisent directement DLSS Frame Generation. Les jeux compatibles qui fournissent leur propre XeFG peuvent afficher le menu Encore et son option Tensor Cores. Le routage DLSS-FG avec ReShade et l’accès au menu derrière les overlays ReShade ou GShade compatibles sont améliorés, y compris pour XeFG sous DirectX 11. Merci à [RankFTW pour la comparaison Townfall et ABZU et les logs de crash](https://github.com/SilyNoMeta/rtx-encore/issues/133).
+- **Stabilité et diagnostics.** Correction d’un crash en fin de longue session lors du nettoyage des usages des presets DLSS. Amélioration de l’indication des vecteurs utilisés par XeFG. L’alerte VRAM reste informative pour les guides capturés. Les avertissements apparaissent dans une fenêtre séparée pour garder le menu stable. Le choix de l’estimation du mouvement est disponible pour le rendu neuronal dans les jeux sans DLSS. Merci à [deusimperatork pour ses mesures et ses logs](https://github.com/SilyNoMeta/rtx-encore/issues/129).
+- **Reprise de DLSS-G et vecteurs du jeu sous DirectX 12.** Correction d’un crash de Townfall lors de la soumission des entrées de génération d’images avec ReShade. DLSS-G ajouté peut reprendre après un redimensionnement réussi à la suite d’un appel Present invalide. Encore recycle les captures de mouvement et de profondeur, y compris lorsque le jeu change la taille de sa sortie.
+
+Dans Townfall, les bandes noires déclenchent encore le repli sur l’estimation du mouvement lorsqu’elles changent la taille de la zone rendue. Cette version corrige le chemin à l’origine du plantage au lancement avec DLSS Super Resolution ou Ray Reconstruction et ReShade. Le retest en jeu de la build finale reste à faire. La baisse de FPS dans KCD2 et le souci de reprise après les dialogues dans The Witcher 3 demandent encore un suivi en jeu.
+
 ## 2.4.2
 
 **RTX Encore 2.4.2 corrige la génération d’images bloquée à X2 ou X1 dans Kingdom Come: Deliverance II et ajoute le coréen au menu en jeu. Le Hub 2.4.2 est le Hub associé.**

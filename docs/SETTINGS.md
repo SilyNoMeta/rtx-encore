@@ -63,7 +63,7 @@ NVIDIA runtime compatibility no longer requires a file to appear in a fixed list
 | `dlssCustomScale` | `67` | Percent, `33` to `100`, with `"custom"` |
 | `fastSuperResolution` | `false` | RTX 30, DirectX 12: faster DLSS Super Resolution with preset M or L, about 16 to 20 % less GPU time per upscaled frame on the system measured, image very close to the original. Inactive on other cards. Restart to apply. See [Super Resolution](SUPER-RESOLUTION.md#fast-super-resolution-rtx-30). |
 | `dlssWithoutGameDlss` | `false` | Games without DLSS: DLAA or upscaling on the displayed image, with DLSS or XeSS. Experimental. See [Games without DLSS](GAMES-WITHOUT-DLSS.md). |
-| `dlssWithoutGameDlssEngine` | `"dlss"` | `"dlss"`, `"xess"`, `"nis"` or `"fsr1"`. XeSS supports 1x to 3x and needs Intel runtimes. NIS and FSR 1 are spatial upscalers and need no DLSS or Intel runtime. Applied live. |
+| `dlssWithoutGameDlssEngine` | `"dlss"` | `"dlss"`, `"xess"`, `"nis"`, `"fsr1"` or `"mwsr"`. XeSS supports 1x to 3x and needs Intel runtimes. NIS, FSR 1 and MWSR are spatial upscalers and need no DLSS or Intel runtime. Applied live. |
 | `dlssWithoutGameDlssOutput` | `"game"` | `"game"` (DLAA at the game's resolution) or `"screen"` (upscaling to the screen's resolution; the game in windowed mode at a lower resolution). |
 | `presentOpticalFlow` | `"game"` | Motion source for added frame generation, NR Final image mode and games without DLSS. `"game"` prefers the game's captured motion vectors when available and falls back to `"encore"`. `"encore"` uses RTX Encore's shaders, `"shader"` uses vort_Motion's method, and `"quality"` or `"fast"` uses NVIDIA Optical Flow. |
 
@@ -86,8 +86,8 @@ Earlier DLSS/XeSS input keys are migrated using the selected reconstruction engi
 | :--- | :---: | :--- |
 | `srSharpening` | `"off"` | Mode: `off` (default), `game` or `custom`. Applied live. |
 | `srSharpness` | `30` | Custom strength: 0 to 100%, default 30%. 0 disables the effect. |
-| `spatialSharpness` | `30` | NIS and FSR 1 sharpness, 0 to 100%. Applied live. |
-| `spatialAa` | `"off"` | Optional anti-aliasing around NIS or FSR 1 in DirectX 11. Use `"off"`, `"smaa"` or `"fxaa"`. Requires SDR and includes the HUD. |
+| `spatialSharpness` | `30` | NIS, FSR 1 and MWSR sharpness, 0 to 100%. For MWSR, 30 keeps its own sharpening, 0 removes it and 100 doubles it. Applied live. |
+| `spatialAa` | `"off"` | Optional anti-aliasing around NIS, FSR 1 or MWSR in DirectX 11. Use `"off"`, `"smaa"` or `"fxaa"`. Requires SDR and includes the HUD. |
 | `spatialAaPlacement` | `"before"` | `"before"` spatial upscaling at source resolution or `"after"` at output resolution. Post-SR NR, Final image NR and compatible frame generation run after spatial upscaling and its configured anti-aliasing. |
 | `spatialAaQuality` | `"high"` | SMAA 1x quality: `"low"`, `"medium"`, `"high"` or `"ultra"`. FXAA uses a fixed preset. |
 

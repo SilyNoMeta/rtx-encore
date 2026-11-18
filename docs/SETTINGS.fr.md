@@ -64,7 +64,7 @@ La compatibilité des runtimes NVIDIA n’exige plus que le fichier figure dans 
 | `dlssCustomScale` | `67` | Pourcentage, `33` à `100`, avec `"custom"` |
 | `fastSuperResolution` | `false` | RTX 30, DirectX 12 : DLSS Super Resolution plus rapide avec le preset M ou L, environ 16 à 20 % de temps GPU en moins par image upscalée sur le système mesuré, image très proche de l'originale. Inactive sur les autres cartes. Relancez pour appliquer. Voir [Super Resolution](SUPER-RESOLUTION.fr.md#fast-super-resolution-rtx-30). |
 | `dlssWithoutGameDlss` | `false` | Jeux sans DLSS : DLAA ou upscaling sur l’image affichée, avec DLSS ou XeSS. Expérimental. Voir [Jeux sans DLSS](GAMES-WITHOUT-DLSS.fr.md). |
-| `dlssWithoutGameDlssEngine` | `"dlss"` | `"dlss"`, `"xess"`, `"nis"` ou `"fsr1"`. XeSS va de 1x à 3x et nécessite les runtimes Intel. NIS et FSR 1 font une mise à l’échelle spatiale sans runtime DLSS ou Intel. Appliqué à chaud. |
+| `dlssWithoutGameDlssEngine` | `"dlss"` | `"dlss"`, `"xess"`, `"nis"`, `"fsr1"` ou `"mwsr"`. XeSS va de 1x à 3x et nécessite les runtimes Intel. NIS, FSR 1 et MWSR font une mise à l’échelle spatiale sans runtime DLSS ou Intel. Appliqué à chaud. |
 | `dlssWithoutGameDlssOutput` | `"game"` | `"game"` (DLAA à la résolution du jeu) ou `"screen"` (upscaling jusqu’à la résolution de l’écran ; le jeu en mode fenêtré à une résolution plus basse). |
 | `presentOpticalFlow` | `"game"` | Source de mouvement pour la génération d’images ajoutée, le mode NR Image finale et les jeux sans DLSS. `"game"` privilégie les vecteurs de mouvement capturés du jeu lorsqu’ils sont disponibles et se replie sur `"encore"`. `"encore"` utilise les shaders de RTX Encore, `"shader"` la méthode de vort_Motion, et `"quality"` ou `"fast"` NVIDIA Optical Flow. |
 
@@ -87,8 +87,8 @@ Les anciennes clés DLSS/XeSS sont migrées selon le moteur de reconstruction s�
 | :--- | :---: | :--- |
 | `srSharpening` | `"off"` | Mode : `off` (défaut), `game` ou `custom`. Appliqué à chaud. |
 | `srSharpness` | `30` | Force Custom : 0 à 100 %, défaut 30 %. 0 désactive l’effet. |
-| `spatialSharpness` | `30` | Netteté de NIS et FSR 1 de 0 à 100 %. Appliqué à chaud. |
-| `spatialAa` | `"off"` | Anticrénelage facultatif autour de NIS ou FSR 1 en DirectX 11. Choisissez `"off"`, `"smaa"` ou `"fxaa"`. Fonctionne en SDR et inclut le HUD. |
+| `spatialSharpness` | `30` | Netteté de NIS, FSR 1 et MWSR de 0 à 100 %. Pour MWSR, 30 conserve sa netteté propre, 0 la supprime et 100 la double. Appliqué à chaud. |
+| `spatialAa` | `"off"` | Anticrénelage facultatif autour de NIS, FSR 1 ou MWSR en DirectX 11. Choisissez `"off"`, `"smaa"` ou `"fxaa"`. Fonctionne en SDR et inclut le HUD. |
 | `spatialAaPlacement` | `"before"` | `"before"` applique l’anticrénelage avant la mise à l’échelle spatiale à la résolution source et `"after"` l’applique à la résolution de sortie. NR Post-SR, NR Image finale et la génération d’images compatible suivent la mise à l’échelle spatiale et l’anticrénelage configuré. |
 | `spatialAaQuality` | `"high"` | Qualité SMAA 1x : `"low"`, `"medium"`, `"high"` ou `"ultra"`. FXAA utilise un préréglage fixe. |
 

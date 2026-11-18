@@ -34,14 +34,11 @@ Smooth Motion 和 Neural Rendering——现在也适用于没有 DLSS 的游戏�
 
 </div>
 
-## 最新版本：2.4.2
+## 最新版本 2.5.0
 
-**修复《天国：拯救 2》中帧生成停在 X2 或 X1 的问题，游戏内菜单新增韩语。** 配套 Hub 为 2.4.2。
+**MWSR 空间缩放、Vulkan XeSS 和 XeFG 改进，以及 RDR2 和 ReShade 兼容性修复。**
 
-- 🎞️ **《天国：拯救 2》：**倍数不再被限制在 X2，叠加层不再显示“Ada”，使用放大器时 XeFG 也能再次运行。
-- 🌐 **游戏内菜单支持韩语：**菜单共十二种语言，内置韩文字体。
-
-**[下载 2.4.2](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v2.4.2)** · [版本说明](CHANGELOG.zh-CN.md#242) · [Hub 2.4.2](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.4.2)
+**[下载 2.5.0](https://github.com/SilyNoMeta/rtx-encore/releases/tag/v2.5.0)** · [版本说明](CHANGELOG.zh-CN.md#250) · [Hub 2.5.0](https://github.com/SilyNoMeta/rtx-encore-hub/releases/tag/v2.5.0)
 
 > [!IMPORTANT]
 > RTX Encore 是一个独立的实验性模组，与 NVIDIA 没有关联，也未获得 NVIDIA 的认可。
@@ -227,6 +224,7 @@ RTX Encore 最初是 TonyJoaca 的 [DLSSG-Transfusion](https://github.com/TonyJo
 - [Skynizz/optiscaler-dlss5](https://github.com/Skynizz/optiscaler-dlss5) 为多次处理 NR 配置方案提供了灵感；
 - [jlrouzies-fr/DLSS5-Feeder](https://github.com/jlrouzies-fr/DLSS5-Feeder)：基于显示画面的 Neural Rendering 及其运动校验；
 - [vortigern11/vort_Shaders](https://github.com/vortigern11/vort_Shaders)（vort_Motion）：没有 DLSS 的游戏的着色器运动估计；
+- [linckosz/moonlight-web](https://github.com/linckosz/moonlight-web)（MWSR），作者 Bruno Martin：MWSR 空间缩放；
 - [crosire/reshade](https://github.com/crosire/reshade)（Generic Depth 插件）：找到游戏绘制所用深度缓冲的方法；
 - [Dear ImGui](https://github.com/ocornut/imgui)（Omar Cornut）：游戏内菜单和叠加层所用的界面库；
 - [SMAA](https://github.com/iryoku/smaa)：Jorge Jimenez、Jose I. Echevarria、Belen Masia、Fernando Navarro 和 Diego Gutierrez；[FXAA 3.11](https://github.com/GameTechDev/CMAA2)：NVIDIA、Timothy Lottes；
